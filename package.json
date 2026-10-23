@@ -5,6 +5,6 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-preview.mjs",
-    "test": "node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs"
+    "test": "node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs && node tests/installer-scan-order.test.mjs"
   }
 }

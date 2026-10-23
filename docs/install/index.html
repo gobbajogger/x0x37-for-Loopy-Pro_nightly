@@ -1668,17 +1668,22 @@ async function midiAccess() {
   return midi;
 }
 
+let scanSerial = 0;
 async function scan() {
+  const requestId = ++scanSerial;
   if (writing) return;
   led("busy");
   $("conn").textContent = t("looking");
   try {
     const up = new Updater(await midiAccess(), () => {});
+    if (requestId !== scanSerial || writing) return;
     // Prefer a running app; if only the update loader is present, resume from there.
     let dev = await up.find((id) => !/^ota-/i.test(id.model));
+    if (requestId !== scanSerial || writing) { if (dev) dev.link.close(); return; }
     let inOta = false;
     if (!dev) {
       dev = await up.find((id) => /^ota-/i.test(id.model));
+      if (requestId !== scanSerial || writing) { if (dev) dev.link.close(); return; }
       inOta = !!dev;
     }
     if (!dev) {
@@ -1696,6 +1701,7 @@ async function scan() {
     suggestModel(bare);
     dev.link.close();
   } catch (e) {
+    if (requestId !== scanSerial || writing) return;
     lastId = null;
     setConnected(false, (e && e.message) || t("error"));
   }

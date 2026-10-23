@@ -14,8 +14,18 @@ const gitBlobSha = (p) => {
   return createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 };
 const provenance = JSON.parse(read('SOURCE_PROVENANCE.json'));
-for (const [path, expected] of Object.entries(provenance.publicSourceBlobs)) {
-  assert.equal(gitBlobSha(path), expected, `source provenance mismatch: ${path}`);
+const changes = new Map((provenance.nightlySourceChanges || []).map(x => [x.file, x]));
+for (const [path, upstreamBlob] of Object.entries(provenance.publicSourceBlobs)) {
+  const change = changes.get(path);
+  if (change) {
+    assert.equal(change.baseUpstreamBlob, upstreamBlob, `upstream provenance mismatch: ${path}`);
+    assert.equal(gitBlobSha(path), change.nightlySourceBlob, `nightly derived source mismatch: ${path}`);
+  } else {
+    assert.equal(gitBlobSha(path), upstreamBlob, `source provenance mismatch: ${path}`);
+  }
+}
+for (const path of changes.keys()) {
+  assert.ok(Object.hasOwn(provenance.publicSourceBlobs, path), `untracked nightly source change: ${path}`);
 }
 const catalog = JSON.parse(read('docs/versions.json'));
 assert.deepEqual(catalog.versions, [], 'preview must contain zero firmware packages');
