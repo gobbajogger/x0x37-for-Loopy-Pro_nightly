@@ -8,6 +8,12 @@ from pathlib import Path
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from playwright.async_api import async_playwright
 ROOT=Path(__file__).resolve().parents[1]
+# Pin browser assertions to the independently verified source history lock, not the DOM.
+PINNED_HISTORY_ROWS=json.loads((ROOT/'tests/fixtures/history-appendonly-baseline-20261024.json').read_text())['rows']
+PINNED_HISTORY_IDS=[row['id'] for row in PINNED_HISTORY_ROWS]
+PINNED_HISTORY_COUNT=len(PINNED_HISTORY_IDS)
+SOURCE_HISTORY_IDS=[row['id'] for row in json.loads((ROOT/'docs/build-status.json').read_text())['history']]
+assert PINNED_HISTORY_COUNT>=123 and SOURCE_HISTORY_IDS==PINNED_HISTORY_IDS, 'browser fixture and source history disagree'
 ap=argparse.ArgumentParser();ap.add_argument('--source');ap.add_argument('--red-only',action='store_true');ap.add_argument('--race-only',action='store_true');ap.add_argument('--local-files-only',action='store_true');args=ap.parse_args()
 def raw(product):
     b=bytearray([125]*1024)
@@ -254,8 +260,13 @@ async def main():
   for width in [320,375,768,1280]:
    p=await browser.new_page(viewport={'width':width,'height':900})
    await p.goto(f'http://127.0.0.1:{srv.server_port}/builds/',wait_until='domcontentloaded')
-   await p.wait_for_function("document.querySelector('#history').children.length===122")
-   check(await p.locator('#history article').count()==122 and await p.locator('#builds article').count()==2,'actual history rows retained '+str(width))
+   await p.wait_for_function("(count) => document.querySelector('#history').children.length === count",arg=PINNED_HISTORY_COUNT)
+   check(await p.locator('#history article').count()==PINNED_HISTORY_COUNT and await p.locator('#builds article').count()==2,'pinned history count retained '+str(width))
+   rendered_ids=await p.locator('#history article').evaluate_all("""cards => cards.map(card => {
+     const label=[...card.querySelectorAll('dt')].find(node=>node.textContent==='Checkpoint');
+     return label?.nextElementSibling?.textContent ?? null;
+   })""")
+   check(rendered_ids==PINNED_HISTORY_IDS,'pinned history identities and order '+str(width))
    geometry=await p.evaluate("""()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,
     overflow:[...document.querySelectorAll('.item,.item h3,.item p,.item dd,.tag')]
      .filter(el=>el.scrollWidth>el.clientWidth+1).map(el=>el.textContent.slice(0,80))})""")

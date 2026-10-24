@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "kind": "catalog-producer-source-only",
+  "evidence_revision": "catalog-pr3-r31-reconcile-merged-main-123-source-lock-20261025-r1",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "own_pr": 3,
+  "owner": "Sole Build Catalog Sync source producer",
+  "pinned_website_main": "5d1cf4db62f8700da7671b6b44a6c7dea989228c",
+  "pinned_own_pr3_parent": "f1492a9a17fdc617d329a4dbf3c5a145938f4ef8",
+  "end_user_behavior": "At narrow and desktop widths, NIGHTLY build history renders all SHA-256-locked 123 source checkpoints in correct order. Browser installability remains independent: no new selectable package.",
+  "changes": [
+    "Accepted production NIGHTLY website main browser/installer/runtime/source retained byte-for-byte",
+    "Only R30 source history appends to 122 existing source/history records",
+    "Source/docs status parity, 123-row historical SHA lock and R30 continuity negatives maintained",
+    "Registered browser test expected count derived from pinned source lock; every rendered checkpoint ID and order checked",
+    "R30 delete/forge/false-installability and distribution negative CLI regressions added",
+    "All five PR3-owned historical receipt JSON blobs retained without losing merged-main receipts",
+    "Main package.json full native/browser suite retained unchanged"
+  ],
+  "verification": {
+    "source_v8": {
+      "status": "PASS",
+      "observed": "Current Git main 122 rows are JSON-identical to PR3 prefix, 122 SHA-256 lock entries identical; generations, source policy and versioning identical; R30 123rd row nonflashable"
+    },
+    "native_git_checkout": {
+      "status": "FAIL",
+      "exit_code": 128,
+      "command": "git ls-remote https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly.git refs/heads/main",
+      "stderr": "Could not resolve host: github.com"
+    },
+    "npm_test": {
+      "status": "NOT_RUN",
+      "reason": "Git checkout failed DNS; no complete checked-out source"
+    },
+    "npm_run_build": {
+      "status": "NOT_RUN",
+      "reason": "Git checkout failed DNS; no complete checked-out source"
+    },
+    "node_chromium_responsive": {
+      "status": "NOT_RUN",
+      "reason": "Git checkout failed DNS; no complete checked-out source"
+    },
+    "device": {
+      "status": "NOT_TESTED"
+    },
+    "target_firmware_compiler": {
+      "status": "NOT_APPLICABLE"
+    }
+  },
+  "history_count": 123,
+  "firmware_generations": 2,
+  "selectable_packages": 0,
+  "physical_device_verified": false,
+  "public_hosting_changed": false,
+  "receiving_role": "Existing independent NIGHTLY Website QA; then sole Website Main Merger; Pages separately owned",
+  "halt_rule": "No QA self-approval, no main/gh-pages change, no hardware claim or firmware publication; require exact combined-root native npm/build/browser receipts before merge"
+}

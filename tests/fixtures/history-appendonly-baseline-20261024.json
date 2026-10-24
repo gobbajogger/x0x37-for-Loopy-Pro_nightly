@@ -495,6 +495,18 @@
     {
       "id": "bugfinder-bf022-pr128-legacy-master-highpass-20261024",
       "sha256": "717dd638ee298a955ce5d29d75ff7356e4e6f2e0d593e336ccb8bb9f32fdd4f6"
+    },
+    {
+      "id": "integration-pr103-firmware-nightly-merged-browser-route-20261024",
+      "sha256": "947cf62d42db972250fbbfd32c7f2dd266b1505f9f43c4bbc8f54178b2ac3e67"
+    },
+    {
+      "id": "nightly-pages-git-dev-candidate-54f2ffbc-20261024",
+      "sha256": "a51e81dbf891f719a0a9a80c76e6374cac361c6536df5b64ac9e33ddd1ad1b2c"
+    },
+    {
+      "id": "data-safety-pr114-r18-native-extract-fdopen-needs-changes-20261025",
+      "sha256": "5d131bd92c9201acb7363d7482c8f87c73cf29e381cc14da9abc2b482ca1cf7e"
     }
   ]
 }

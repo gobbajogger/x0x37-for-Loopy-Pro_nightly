@@ -626,3 +626,77 @@ run('r28-tree-path-contains-claimed-SHA-but-Git-ref-differs-REJECTED',
 
 run('r28-mutable-blob-ref-with-claimed-SHA-in-path-REJECTED',
   r28AppendEvidence('blob','main','/docs/'+r28Claim+'/receipt.json',r28Claim));
+
+
+// The protected firmware NIGHTLY source merge is append-only history;
+// it is not a new flashable build, a physical PASS, or distribution approval.
+const r30Id='integration-pr103-firmware-nightly-merged-browser-route-20261024';
+const editR30=fn=>edit(j=>{
+  const row=j.history.find(entry=>entry.id===r30Id);
+  assert.ok(row,'R30 merged source record must exist');
+  fn(row,j);
+});
+run('r30-real-noninstallable-merged-source-history-positive',editR30((row,j)=>{
+  assert.equal(j.history[122].id,r30Id);
+  assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+  assert.equal(row.status,'validation-evidence-only');
+  assert.equal(row.source_commit,'54f2ffbc3124f7449a69067dc8215a2d91a2e675');
+  assert.equal(row.source_tree,'3b5cadafba33f4c1b116660bc9d19a27a892337c');
+  assert.equal(row.firmware_subtree,'5c209609b770fd13949230aeb80956594fd6b741');
+  assert.equal(row.installable,false);
+  assert.equal(row.device_verified,false);
+  assert.equal(row.artifact_distribution_approved,false);
+}),true);
+run('r30-delete-merge-receipt-and-adjust-count-REJECT',editR30((row,j)=>{
+  j.history.splice(122,1);j.counts.source_or_historical_checkpoints--;
+}));
+run('r30-forge-merged-source-SHA-REJECT',editR30(row=>{row.source_commit='f'.repeat(40);}));
+run('r30-forge-compiled-subtree-REJECT',editR30(row=>{row.firmware_subtree='f'.repeat(40);}));
+run('r30-claim-downloadable-package-REJECT',editR30(row=>{row.installable=true;}));
+run('r30-claim-hardware-PASS-REJECT',editR30(row=>{row.device_verified=true;}));
+run('r30-claim-distribution-approved-REJECT',editR30(row=>{row.artifact_distribution_approved=true;}));
+run('r30-claim-new-native-build-REJECT',editR30(row=>{row.status='dev-checked';}));
+
+// R33: real shipping verifier must fail closed on falsely qualified Pages Git metadata.
+const r33Id='nightly-pages-git-dev-candidate-54f2ffbc-20261024';
+const editR33=fn=>edit(j=>{const row=j.history.find(x=>x.id===r33Id);assert.ok(row);fn(row,j);});
+run('r33-pages-Git-declaration-nonflashable-positive',editR33((row,j)=>{
+  assert.equal(j.history[123].id,r33Id);
+  assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+  assert.equal(row.status,'validation-evidence-only');
+  assert.equal(row.source_commit,'54f2ffbc3124f7449a69067dc8215a2d91a2e675');
+  assert.equal(row.firmware_subtree,'5c209609b770fd13949230aeb80956594fd6b741');
+  assert.equal(row.installable,false);
+  assert.equal(row.device_verified,false);
+  assert.equal(row.artifact_distribution_approved,false);
+  assert.match(row.source_identity_note,/b7af05f00a91056ca732b21cbe1dc719edbcb585/);
+}),true);
+run('r33-delete-pages-evidence-REJECT',editR33((row,j)=>{j.history.splice(123,1);j.counts.source_or_historical_checkpoints--;}));
+run('r33-pages-Git-SHA-forgery-REJECT',editR33(row=>{row.source_identity_note=row.source_identity_note.replace('b7af05f00a91056ca732b21cbe1dc719edbcb585','f'.repeat(40));}));
+run('r33-unapproved-firmware-link-REJECT',editR33(row=>{row.download_url='https://evil.invalid/package';}));
+run('r33-fake-source-download-admission-REJECT',editR33(row=>{row.installable=true;}));
+run('r33-fake-device-PASS-REJECT',editR33(row=>{row.device_verified=true;}));
+run('r33-fake-distribution-approval-REJECT',editR33(row=>{row.artifact_distribution_approved=true;}));
+
+
+
+// R35: fail closed on native CLI failure disguised as firmware/browser eligibility.
+const r35Id='data-safety-pr114-r18-native-extract-fdopen-needs-changes-20261025';
+const editR35=fn=>edit(j=>{const row=j.history[124];assert.equal(row.id,r35Id);fn(row,j);});
+run('r35-native-independent-qa-failure-safely-recorded',editR35((row,j)=>{
+  assert.equal(j.counts.source_or_historical_checkpoints,125);
+  assert.equal(row.status,'source-only');
+  assert.equal(row.installable,false);
+  assert.equal(row.device_verified,false);
+  assert.equal(row.artifact_distribution_approved,false);
+  assert.equal(row.exact_remote_native_build,false);
+  assert.match(row.reported_checks.result,/NEEDS CHANGES/);
+  assert.match(row.reported_checks.command,/exit 1, 5\/6/);
+}),true);
+run('r35-failed-native-test-concealed-REJECT',editR35(row=>row.reported_checks.result='PASS'));
+run('r35-unqualified-download-REJECT',editR35(row=>row.installable=true));
+run('r35-false-device-approval-REJECT',editR35(row=>row.device_verified=true));
+run('r35-false-distribution-approval-REJECT',editR35(row=>row.artifact_distribution_approved=true));
+run('r35-artifact-link-smuggling-REJECT',editR35(row=>row.pkg='https://invalid.example/fw.fwsc'));
+run('r35-status-forged-success-REJECT',editR35(row=>row.status='dev-checked'));
+run('r35-history-tail-deleted-REJECT',editR35((row,j)=>{j.history.splice(124,1);j.counts.source_or_historical_checkpoints--;}));

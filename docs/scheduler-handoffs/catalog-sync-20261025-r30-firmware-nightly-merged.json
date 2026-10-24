@@ -1,0 +1,70 @@
+{
+  "schema": "x0x37-catalog-sync-evidence/v1",
+  "revision": "catalog-pr3-r30-fw-protected-nightly-source-merge-20261025-r1",
+  "role": "Sole NIGHTLY status/history/catalog SOURCE producer; existing OWN PR3 only",
+  "website_source": {
+    "repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "pr": 3,
+    "branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+    "old_head": "2219ca0ab20ba5e13f73870937c0370171b5212a",
+    "old_root": "363cfa7e75ad425d286846ef51a4f60f4e7f2d86",
+    "status_blob_old": "30dd86eb3d351267f61a90c3e2adb9ef22dfa4e3",
+    "digest_lock_blob_old": "d71c42f243bc7556420d88698f4b59313cc75708",
+    "old_history_rows": 122,
+    "new_history_rows": 123
+  },
+  "website_merged_main": {
+    "sha": "5d1cf4db62f8700da7671b6b44a6c7dea989228c",
+    "root": "2aae49f1c4835733a21c7d98727dfbcc7f371df5",
+    "merged_pr": 10,
+    "merged_at": "2026-10-24T16:00:09Z",
+    "source_only_review": "Independent final PR10 215 installer + 34 history Chromium assertions PASS on aeff10622163cb1a7e05eee89238352e9ca0bf71 and matching merged ROOT; public package eligibility still unverified"
+  },
+  "firmware_merged_nightly": {
+    "sha": "54f2ffbc3124f7449a69067dc8215a2d91a2e675",
+    "root": "3b5cadafba33f4c1b116660bc9d19a27a892337c",
+    "parents": [
+      "58b5b45a2dd90581de7a674c331ca5cbe8a67c7e",
+      "7e89df2b71b2b8e4409cc6a489f4939bbe0b71f7"
+    ],
+    "firmware_subtree": "5c209609b770fd13949230aeb80956594fd6b741",
+    "reviewed_pr": 103,
+    "independent_qa": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/103#pullrequestreview-5638784846",
+    "owner_merge": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/103#issuecomment-6386112836",
+    "compiler_bytes_changed_from_prior_source": false
+  },
+  "new_row": {
+    "id": "integration-pr103-firmware-nightly-merged-browser-route-20261024",
+    "sha256_json_stringify": "947cf62d42db972250fbbfd32c7f2dd266b1505f9f43c4bbc8f54178b2ac3e67",
+    "source_commit": "54f2ffbc3124f7449a69067dc8215a2d91a2e675",
+    "merged_source_status": "validation-evidence-only",
+    "installable": false,
+    "device_verified": false,
+    "artifact_distribution_approved": false
+  },
+  "producer_scoped_testing": {
+    "executed": [
+      "GitHub authenticated exact PR/branch commit/root and website/firmware merge source identities checked",
+      "V8 SHA256 empty/abc/hello official known-answer vectors PASS 3/3",
+      "V8 122 existing SHA256-pinned history rows matched",
+      "V8 proposed 123rd row digest and effective missing/deleted/forged source/status/device/link negatives",
+      "New Node JS test source parsed by V8 with import.meta substituted for syntax-only parsing"
+    ],
+    "native_npm_test": "NOT RUN; full exact checkout unavailable, git ls-remote returned exit 128 Could not resolve host: github.com",
+    "native_npm_run_build": "NOT RUN; same unavailable byte-complete exact checkout",
+    "native_chromium": "NOT RUN on own new PR3 head; prior independent merged PR10 is different exact ROOT",
+    "firmware_build": "NOT RUN (not required for noninstallable source-history event)",
+    "device_tests": "NOT RUN",
+    "live_http": "NOT VERIFIED"
+  },
+  "release_gates": {
+    "source_history_append_only": true,
+    "build_generations": 2,
+    "selectable_nightly_versions": 0,
+    "firmware_url_count": 0,
+    "public_vendor_artifacts_added": false,
+    "other_producer_branches_modified": false,
+    "protected_main_gh_pages_modified": false
+  },
+  "receiving_role": "Existing independent NIGHTLY Website QA on PR3 R30 123-row digest; sole website Main Merger rebase/cherry-pick reconciliation onto merged PR10 main; separate Pages Publisher only after legal/HTTP/prehardware independent gates"
+}
