@@ -1,0 +1,91 @@
+{
+  "schema": "loopyx0x37-scheduler-handoff/1",
+  "evidence_revision": "catalog-pr3-strict-scalar-pr103-smc58-intake-20261024-r17",
+  "utc_date": "2026-10-24",
+  "owner": "X0X37 Build Catalog Sync",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "consumed_website": {
+    "head": "7bd92540532fd2721b4b1289dff88398332ab5cf",
+    "full_root": "88bb048a78b76cb9b4ceab56e32af0cd4e7187cc",
+    "pr": 3,
+    "existing_status_blob": "4c581c89e075a8ce4fad817e045f6519f7a1b7ac"
+  },
+  "consumed_firmware": [
+    {
+      "pr": 58,
+      "head": "bad8e453b20e4f837a0d8a5f961d517b0b095816",
+      "root": "bf84eae81700c08d8f8db2949da3edcd5212e724",
+      "firmware_subtree": "e42f1fbaa60e02a8d338a54b39c5a57c617813ee",
+      "evidence_revision": "smc-solo-overflow-runner-registration-20261024-r1"
+    },
+    {
+      "pr": 103,
+      "head": "8e8338792ca20508163a2b42b17ae542825da10a",
+      "root": "3609692ed833c5660028d2ed514e255877ca187a",
+      "firmware_subtree": "a32c68ba72eb21f77bfeccb1f86954db8823b244",
+      "evidence_revision": "safe-merge-pr103-smc58-solo-overflow-20261024-r12",
+      "previous_model_compilation_firmware_subtree": "b3179883a83e9878b65a8a52385aa0210e866f05"
+    }
+  ],
+  "disposition": "SOURCE-ONLY READ-ONLY HISTORY 2+107 => 2+109; exact-source website schema scalar gap repaired, PR READY FOR INDEPENDENT REVIEW NOT APPROVED/NOT MERGED; ELITE NO INSTALLABLE, PRO NO INSTALLABLE; DEVICE UNKNOWN",
+  "validation": {
+    "test_scope": "SCOPED_V8_GITHUB_EXACT_VALIDATOR_EXTRACT_ONLY__NOT_FULL_NODE_NPM_OR_CHROMIUM",
+    "baseline": {
+      "pass": true,
+      "history": 107,
+      "assertions": 6292
+    },
+    "old_fail_open_reproduced": true,
+    "new_positive": {
+      "pass": true,
+      "history": 109,
+      "assertions": 7503
+    },
+    "empty_history_positive": {
+      "pass": true,
+      "history": 0,
+      "assertions": 68
+    },
+    "malicious_negatives_rejected": 14,
+    "total_malicious_negatives": 14,
+    "malicious_synthetic_release_rejected": true,
+    "continuity": true,
+    "picker_is_empty": true
+  },
+  "command": "Code Mode V8 new Function(read, assert) scoped exact Git validator script excluding Node fs/import and HTML vm tail, injected matching Git JSON sources",
+  "observed_exit_code": 0,
+  "not_run": [
+    "native full exact-tree npm run build",
+    "native full exact-tree npm test",
+    "responsive Chromium current branch",
+    "independent firmware full-root QA",
+    "new current-subtree Elite/Pro/controller build",
+    "physical owner device tests",
+    "lawful external immutable firmware host and actual HTTP SHA"
+  ],
+  "git_source_docs_parity": "new Git blob reused for both files; verify after ref update",
+  "next_owners": [
+    {
+      "owner": "Independent NIGHTLY Website QA",
+      "action": "Run full exact PR3 SHA npm build/test, browser responsive/negative, all schema and continuity plus Git source/docs parity; submit independent QA."
+    },
+    {
+      "owner": "Sole NIGHTLY Website Main Merger",
+      "action": "After independent QA, review/merge non-draft PR3 normally; no physical device prerequisite for truthful read-only history."
+    },
+    {
+      "owner": "Hourly Firmware Build",
+      "action": "Immediately build Elite, Pro and matching private controller at PR103 a32c68 subtree BUILD_ONLY; no QA/merge/host/device waiting."
+    },
+    {
+      "owner": "Independent Firmware QA + Data Safety",
+      "action": "Review exact PR103 360969 full root SMC Solo overflow and #109 ACK, sample preservation/OTA negative regressions."
+    },
+    {
+      "owner": "Sole NIGHTLY Pages Publisher",
+      "action": "Preserve any previous safe live candidate; do not introduce URL until exact built package/controller/model/source/license/backup/QA/immutable lawful host and external HTTP hash gates pass."
+    }
+  ],
+  "safety": "No private binary/vendor code, direct protected main/gh-pages, forced Git, hosting, firmware flash, production promotion."
+}

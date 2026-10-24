@@ -46,3 +46,12 @@ Do not force-push, publish stable firmware, publish new GitHub Pages, or flash a
 ## License
 
 GPL-3.0-only. Full corresponding source for this *preview* is in `web/` and the build script; sources for the underlying project are linked above. Retain attribution and GPL terms when redistributing modifications.
+
+
+## Complete nightly build history
+
+The nightly source branch maintains `build-status.json` and an identical, **read-only, non-installable** Pages-source copy at `docs/build-status.json`. The beta homepage now links to `docs/builds/index.html`, a responsive read-only history view that loads this status manifest without firmware download links. They list the currently verified inventory of all known build generations and historical/source-only/failed checkpoints, without offering unapproved firmware downloads. Use `npm run catalog:check` (also included in `npm test`) to verify metadata integrity and source/Pages-copy parity.
+
+**Only the public production installer is the proven-working channel.** It may list a development build for an individual Elite or Pro model only after attributable hands-on device PASS, exact package/controller/source integrity, host/installer/sample-preservation checks and separate owner publication approval. DEV CHECKED by itself is **not** proof that the build works on hardware.
+
+The separate nightly **installable** preview catalog is still empty: `preview-catalog.json` and `docs/versions.json` intentionally contain no firmware packages. A specific candidate's checked build and approved distribution are prerequisites to exposing any nightly flash link. Read-only nightly status metadata is not permission to flash or a stable release. The Pages branch is updated only by the designated publisher after verification; a development branch update is not automatically live.

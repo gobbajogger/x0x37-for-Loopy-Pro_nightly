@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "nightly-source-only-unreviewed-release-download-bypass-repair",
+  "date": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "base_exact_commit": "5d3c1c1f2827400704d06d9566d9bb0a3aa3f6ef",
+  "root_source_lineage": "web/x0x_installer.html originally from upstream firmware PR32, now has tracked NIGHTLY source-only overlay in SOURCE_PROVENANCE.json",
+  "baseline_reproduced": {
+    "commit": "1a176e156b049f476074b77d7e6d54be03e8c9ad",
+    "source_blob": "b4c31daabeaa0219960ef0628a1fd81bfda4e54d",
+    "case": "synthetic GitHub Release version injected with no SHA256",
+    "direct_download_url_exposed": true,
+    "auto_flash_eligible": false,
+    "scope": "actual Git-fetched refreshMeta/isCatalogChecked source executed with V8 mock DOM; no real Release or hardware"
+  },
+  "repair": {
+    "source_blob": "ecc861643de8f9377dc1cb34f54d3db6a40aad63",
+    "generated_html_blob": "e4c772ccae1cd15761c8422484636bfa02ff5df8",
+    "test_blob": "86a7b38a93199914123ff27cbafa51d746665c49",
+    "description": "No background Releases import; no direct href unless catalog-check passes including exact selected model, SHA format, HTTPS, and explicit non-Release source; remove stale link, require exact product marker during package load"
+  },
+  "verified": [
+    {
+      "action": "V8 baseline source direct link exposure",
+      "result": "REPRODUCED unapproved link visible, automatic write not eligible"
+    },
+    {
+      "action": "V8 exact patched Git source function positive + six negative cases",
+      "result": "PASS; stale link removed, fromRelease/wrong-model/HTTP/missing or malformed hash rejected"
+    },
+    {
+      "action": "npm generator in-memory parity with exact Git source and generated site preview",
+      "result": "PASS before/after; empty picker retained; no unreviewed Release API"
+    },
+    {
+      "action": "Node.js exact test source git blob hash-object plus node --check",
+      "result": "PASS; synthetic local source fixture used for Node runtime"
+    },
+    {
+      "action": "Node.js synthetic dynamic download guard positive+negatives",
+      "result": "PASS on same function bodies copied to fixture; not whole-Git-site native QA"
+    }
+  ],
+  "no_executed": [
+    "exact full-branch npm run build",
+    "exact full-branch npm test",
+    "full Chromium device/peripherals",
+    "independent QA",
+    "lawful downloadable Elite/Pro source and package hosting",
+    "live HTTP page byte checks",
+    "hardware"
+  ],
+  "publish_state": "SOURCE_ONLY / QA_PENDING / NO INSTALLABLE / NO gh-pages/MAIN/firmware write",
+  "next": "Independent website QA must run full branch npm and browser negatives, review source provenance. Sole website Main Merger coordinates PR #3 history and PR #6 site safety. Sole Pages publisher controls source-only site deploy and later checked DEV candidates; no Releases auto-import."
+}

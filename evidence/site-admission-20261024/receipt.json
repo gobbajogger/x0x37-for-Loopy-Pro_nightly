@@ -1,0 +1,90 @@
+{
+  "schema": "nightly-site-publisher-admission-repair-v1",
+  "source_commit": "78b38f07dc77f5eb8afdffcc2cd565233db1b6a9",
+  "source_root_tree": "c4a3038b6393115fe4e807c2886a49631cd5c349",
+  "base_commit": "ddbd8d89f7c4dfd5afa432dd51e940b6dd428592",
+  "base_root_tree": "623051b36a1c125288d11a316644149bf27c43f0",
+  "source_blob": "a349274a153debe515fa80fe6473077347628dcb",
+  "generated_blob": "0b23ced80d537113b013c9228b87bee2b8458dcc",
+  "commands": [
+    {
+      "argv": "node evidence/site-admission-20261024/baseline-probe.mjs",
+      "exit": 1,
+      "intent": "expected RED",
+      "result": "8/8 actual baseline source unsafe admission cases reproduced"
+    },
+    {
+      "argv": "npm run build",
+      "exit": 0
+    },
+    {
+      "argv": "npm test",
+      "exit": 0,
+      "result": "Existing preview/provenance/controller tests plus116 source-executed Node assertions PASS"
+    },
+    {
+      "argv": "python3 tests/browser-admission-check.py",
+      "exit": 0,
+      "result": "Real Chromium12 scenarios at320/390/1280 \u00d7 empty/approved/revoked/unapproved PASS; synthetic in-memory bytes/attestations only"
+    }
+  ],
+  "approval_schema": {
+    "source_commit": "full immutable firmware commit",
+    "source_tree": "complete firmware root Git tree",
+    "firmware_tree_sha": "compiled firmware subtree; separate from complete root",
+    "fields": [
+      "model",
+      "product",
+      "package_url",
+      "package_sha256",
+      "controller_sha256",
+      "host_sha256",
+      "prehardware_qa_pass",
+      "license_and_source_ok",
+      "backup_integrity_pass",
+      "model_and_controller_pass",
+      "immutable_http_pass"
+    ]
+  },
+  "real_catalog": {
+    "latest": null,
+    "versions": [],
+    "history": [],
+    "compiled_approvals": {}
+  },
+  "not_claimed": [
+    "Independent source acceptance",
+    "Firmware build or model/device PASS",
+    "Lawful hosted model bytes",
+    "Live served HTTP hash",
+    "Protected merge or Pages deployment"
+  ],
+  "integration_pending": [
+    "Existing qualified renderer33252473 must compile approvals only from validated independent qualifications and actual HTTP bytes; current renderInstaller does not inject approvals",
+    "Preserve renderer matching owner-supplied-controller requirement (stronger than PR6 optional controller path)",
+    "Website Main Merger retains catalog-history and installer/controller suites in combined package.json",
+    "Independent exact combined-root source/browser/negative review before publisher promotion"
+  ],
+  "files": {
+    "baseline-probe.mjs": {
+      "bytes": 1503,
+      "sha256": "054d36fc5b6c9511f337edf3ad85b6ef5c8082f03b2eec25f65747895838ee3e"
+    },
+    "browser.json": {
+      "bytes": 1026,
+      "sha256": "5546f60074cf8b1289072da09d834b1339e3fe705f28ee3abc0b1d75e3f419c9"
+    },
+    "baseline-red.log": {
+      "bytes": 518,
+      "sha256": "829e3cd45a39ffc3987948113a3293a2eaeb61b0e5e173c188d35851c715f19b"
+    },
+    "test.log": {
+      "bytes": 639,
+      "sha256": "3811a5082ea7c64b819c7dcb3328a43855ab2dc9bffc6a96c19fb1311060c721"
+    },
+    "build.log": {
+      "bytes": 179,
+      "sha256": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a"
+    }
+  }
+}

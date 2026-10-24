@@ -1,0 +1,66 @@
+{
+  "chromium_scenarios": [
+    {
+      "width": 320,
+      "mode": "empty",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "mode": "approved",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "mode": "revoked",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "mode": "unapproved",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "mode": "empty",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "mode": "approved",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "mode": "revoked",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "mode": "unapproved",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "mode": "empty",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "mode": "approved",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "mode": "revoked",
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "mode": "unapproved",
+      "pass": true
+    }
+  ],
+  "physical_device": "NOT TESTED",
+  "bytes": "SYNTHETIC"
+}

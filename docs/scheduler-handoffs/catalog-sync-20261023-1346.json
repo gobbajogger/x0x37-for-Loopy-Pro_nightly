@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "role": "Build Catalog Sync",
+  "run_utc": "2026-10-23T13:46:00Z",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "base_head": "c4b0051c38b1ece6ba2be81ade5563c5f3cd4a34",
+  "firm_nightly_commit": "58b5b45a2dd90581de7a674c331ca5cbe8a67c7e",
+  "firm_nightly_tree": "71b759dd206d844cceed9e40ae68966142720e9c",
+  "producer_build_evidence_pr84": "a24120979a2c196d3e9ff105bccb8dabf739d978",
+  "producer_build_evidence_pr85": "fc4ef6961e90c88212eded96182a1b7f1df6f120",
+  "source_manifest_git_blob": "191920237cb3c113a6f4f2fcfed1f26e8162625e",
+  "checks": [
+    {
+      "name": "PR84_PR85_per_model_model_sha_size_match",
+      "status": "PASS",
+      "cases": 2
+    },
+    {
+      "name": "V8_full_status_validator",
+      "status": "PASS",
+      "items": 71
+    },
+    {
+      "name": "V8_unsafe_cases",
+      "status": "PASS",
+      "cases": 14
+    },
+    {
+      "name": "native_npm_run_build",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "native_npm_test",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "chromium_responsive",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "independent_QA",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "HTTP_download",
+      "status": "NOT_RUN"
+    }
+  ],
+  "producer_reported_native": {
+    "pass": 13,
+    "fail": [
+      {
+        "name": "smc-reachability",
+        "exit_code": 134
+      }
+    ],
+    "status": "UNREVIEWED"
+  },
+  "models": {
+    "elite": {
+      "build": "BUILD_SUCCEEDED_UNREVIEWED",
+      "qa": "QA_PENDING",
+      "installable": false,
+      "device_tested": false
+    },
+    "pro": {
+      "build": "BUILD_SUCCEEDED_UNREVIEWED",
+      "qa": "QA_PENDING",
+      "installable": false,
+      "device_tested": false
+    }
+  },
+  "incoming": [
+    {
+      "number": 85,
+      "commit": "fc4ef6961e90c88212eded96182a1b7f1df6f120",
+      "tree": "f9b9c8c1e4af825447ed356cd7c19533fe6172d8",
+      "status": "evidence-only"
+    },
+    {
+      "number": 86,
+      "commit": "b680720d4031f73fe22143edaf1c6c55208f886e",
+      "tree": "7e518dc174ac2146cf6643189334e0818be033e6",
+      "status": "source-only"
+    },
+    {
+      "number": 87,
+      "commit": "6fbeac18fe3e92190c0683dc091595fff5c48e2e",
+      "tree": "fb61e613dc6c4f825083bcaac2a194fa6573e0e6",
+      "status": "evidence-only"
+    },
+    {
+      "number": 88,
+      "commit": "45d78ffafc2d0733c50327703784b3b22acb657f",
+      "tree": "0c19512732019e4313980ec73a3f95255225b97b",
+      "status": "evidence-only"
+    },
+    {
+      "number": 89,
+      "commit": "ca777a056e7de0075aac30927a4f6b158d55c465",
+      "tree": "83bfff30c28ce641884c5d1d9b13330ced3aaa79",
+      "status": "source-only"
+    },
+    {
+      "number": 90,
+      "commit": "04cce762dda5fa473f44fb2463cb47b14f236fd5",
+      "tree": "9073285b1b3203a13a2d0553e84db6686eb4cc5a",
+      "status": "source-only"
+    },
+    {
+      "number": 91,
+      "commit": "595fe8748c808d9f20671b6be35cfac6560a4a1f",
+      "tree": "388c71a372359f8c5f8ea2eb72598d2351c7090a",
+      "status": "source-only"
+    },
+    {
+      "number": 92,
+      "commit": "46299fb0f2a38af5fabc1372790e1b0f84e50dc3",
+      "tree": "b417526152125c9c2632190b11ccb6ee49126a89",
+      "status": "evidence-only"
+    }
+  ],
+  "old_history": 61,
+  "new_history": 69,
+  "actual_build_generations": 2,
+  "installable": 0,
+  "branch_delivery": "PENDING_NONFORCE_PUSH"
+}

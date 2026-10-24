@@ -1,0 +1,8 @@
+
+> x0x37-nightly-installer-preview@0.0.0-dev test
+> node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs && node tests/controller-padding.test.mjs && node tests/installer-download-admission.test.mjs
+
+CHECK PASS — self-contained nightly installer, samples and empty catalog; no firmware files
+PASS: upstream public-blob identity, generated scripts, accessibility, safeguards, empty firmware catalog, site links
+PASS: controller-image non-erased tail rejected, erased bytes retained, CRC/bounds guarded
+PASS: 116 publisher admission, verified download, stale-selection and install-gate assertions (synthetic only)

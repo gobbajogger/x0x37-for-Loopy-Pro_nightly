@@ -1,0 +1,159 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Synthetic evidence/bytes exercise preparation; none represents a real approval.
+import assert from 'node:assert/strict';
+import { createHash, webcrypto } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { Script } from 'node:vm';
+import { validateCatalog, verifyDownloads, renderInstaller, prepareInstaller, installerFingerprint, requiredGates }
+  from '../scripts/render-qualified-nightly.mjs';
+
+const hash = b => createHash('sha256').update(b).digest('hex');
+const raw = Buffer.alloc(1024, 0x7d), product = 'SMK-37 Pro_900';
+for (let i = 0; i < product.length; i++) raw[i * 48 + 47] = (product.charCodeAt(i) + i + 1) & 255;
+const digest = hash(raw), ctl = new Uint8Array([1, 2, 3]);
+const evidence = 'https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/103';
+const commit = '1'.repeat(40), tree = '2'.repeat(40);
+const firmwareTree = '3'.repeat(40);
+const pkg = { product, sha256: digest, size: raw.length,
+  controller_sha256: hash(ctl), pkg: `https://example.org/${digest}/pro.fwsc` };
+const catalog = { schema: 1, latest: 'synthetic-test', history: [], versions: [{
+  version: 'synthetic-test', label: 'DEV / HARDWARE TEST — DEVICE NOT TESTED',
+  status: 'dev-checked', config: 'dev', hardware_tested: false,
+  source_commit: commit, source_tree: tree, firmware_tree_sha: firmwareTree, models: { pro: pkg } }] };
+const qualification = { schema: 1, installer_sha256: installerFingerprint(), packages: { [digest]: {
+  source_commit: commit, source_tree: tree, firmware_tree_sha: firmwareTree, size: raw.length, product, url: pkg.pkg,
+  integration: { ref: 'nightly', commit, tree, evidence_url: evidence },
+  controller: { strategy: 'owner-supplied', sha256: hash(ctl), size: 68 },
+  budgets: { app_code_free: 5620, ram_free: 460, pool_free: 8324 },
+  gates: Object.fromEntries(requiredGates.map(g => [g, { status: 'PASS', evidence_url: evidence }])),
+  corresponding_source: `https://github.com/gobbajogger/X0X37-for-Loopy-Pro/archive/${commit}.tar.gz`,
+  notices: `https://example.org/${digest}/notices.zip`,
+} } };
+let negatives = 0;
+const reject = mutate => {
+  const c = structuredClone(catalog), q = structuredClone(qualification);
+  mutate(c, q, q.packages[digest]);
+  assert.throws(() => validateCatalog(c, q), /NOT INSTALLABLE/);
+  negatives++;
+};
+validateCatalog(catalog, qualification);
+for (const key of ['revoked', 'blocked', 'withdrawn', 'disabled', 'fromRelease']) {
+  reject(c => c.versions[0][key] = true);
+  reject(c => c.versions[0].models.pro[key] = true);
+  reject((c, q) => q[key] = true);
+  reject((c, q, r) => r[key] = true);
+}
+reject(c => c.versions[0].models.pro.status = 'failed');
+reject(c => delete c.versions[0].firmware_tree_sha);
+reject((c, q, r) => r.firmware_tree_sha = 'f'.repeat(40));
+reject((c, q, r) => {
+  c.versions[0].models = Object.fromEntries([['__proto__', { ...pkg, product: '[object Object]_900' }]]);
+  r.product = '[object Object]_900';
+});
+for (const layer of ['version', 'model', 'qualification', 'receipt']) {
+  reject((c, q, r) => {
+    const target = { version: c.versions[0], model: c.versions[0].models.pro, qualification: q, receipt: r }[layer];
+    target.lifecycle = 'withdrawn';
+  });
+}
+for (const gate of requiredGates) {
+  reject((c, q, r) => r.gates[gate].status = 'PENDING');
+  reject((c, q, r) => delete r.gates[gate].evidence_url);
+}
+reject((c, q) => q.installer_sha256 = 'f'.repeat(64));
+reject((c, q, r) => r.source_commit = '3'.repeat(40));
+reject((c, q, r) => r.integration.ref = 'main');
+reject((c, q, r) => r.integration.tree = '3'.repeat(40));
+reject((c, q, r) => r.budgets.pool_free = 8191);
+reject((c, q, r) => r.budgets.ram_free = -1);
+reject((c, q, r) => r.budgets.app_code_free = null);
+reject(c => c.versions[0].models.pro.product = 'SMK-37 Elite_900');
+reject(c => c.versions[0].models.pro.pkg = `http://example.org/${digest}/p.fwsc`);
+reject(c => c.versions[0].models.pro.pkg = 'https://example.org/mutable.fwsc');
+reject(c => c.versions[0].models.pro.pkg += '?sha256=' + digest);
+reject(c => c.versions[0].models.pro.fromRelease = true);
+reject(c => c.versions[0].hardware_tested = true);
+reject(c => c.versions[0].status = 'release-checked');
+reject(c => c.versions[0].version = '</script>');
+reject(c => c.versions[0].models.pro.size = 0);
+reject(c => c.versions[0].models.pro.controller_sha256 = 'f'.repeat(64));
+reject((c, q, r) => r.controller.strategy = 'hosted');
+reject((c, q, r) => r.corresponding_source = 'https://example.org/main.zip');
+reject(c => c.latest = 'absent');
+reject(c => c.history.push({ status: 'FAILED' }));
+reject(c => c.versions.push(structuredClone(c.versions[0])));
+
+let calls = 0;
+await verifyDownloads(catalog, async (url, opts) => {
+  calls++; assert.equal(url, pkg.pkg); assert.equal(opts.redirect, 'error');
+  return new Response(raw);
+});
+assert.equal(calls, 1);
+for (const response of [new Response('missing', { status: 404 }), new Response(raw.subarray(1)),
+  new Response(Buffer.concat([raw, Buffer.of(0)])), new Response(Buffer.alloc(raw.length))]) {
+  await assert.rejects(verifyDownloads(catalog, async () => response)); negatives++;
+}
+await assert.rejects(verifyDownloads(catalog, async () => { throw new Error('TLS/network failure'); }));
+const prepared = await prepareInstaller(catalog, qualification, async () => new Response(raw));
+const html = prepared.html;
+await assert.rejects(renderInstaller(catalog, qualification, async () => new Response('bad bytes')));
+const snapshot = structuredClone(catalog);
+const snapshotHtml = await renderInstaller(snapshot, qualification, async () => {
+  snapshot.versions[0].models.pro.product = 'SMK-37 Elite_900';
+  return new Response(raw);
+});
+assert.ok(snapshotHtml.includes('SMK-37 Pro_900'));
+assert.ok(html.includes(pkg.pkg) && html.includes(digest));
+assert.ok(html.includes('DEV / HARDWARE TEST — DEVICE NOT TESTED'));
+assert.doesNotMatch(html, /\/\*CATALOG\*\/|\/\*LIB\*\//);
+new Script(html.match(/<script type="module">([\s\S]*?)<\/script>/)[1]);
+
+// Invoke the actual click handler to prove absent/wrong controller blocks run(),
+// selection changes during asynchronous hashing cannot flash, and a matching one can.
+const source = readFileSync(new URL('../web/x0x_installer.html', import.meta.url), 'utf8');
+const handler = source.slice(source.indexOf('$("go").addEventListener("click", async'),
+  source.indexOf('$("stockgo").addEventListener'));
+let callback, runs, messages;
+const go = { disabled: false, addEventListener: (event, fn) => callback = fn };
+const version = prepared.catalog.versions[0], selectedPackage = version.models.pro;
+const context = { URL, image: new Uint8Array([7]), selectedProduct: product, writing: false,
+  chosenModel: 'pro', ctl: null, ctlNeedsResolution: false, loadSerial: 1,
+  verifiedDownload: { pkg: selectedPackage, model: 'pro', version: version.version,
+    sha256: selectedPackage.sha256, size: selectedPackage.size,
+    product: selectedPackage.product, href: 'blob:checked' },
+  currentVersion: () => version,
+  $: () => go, confirmWrite: () => true, sayK: (k, v) => messages.push([k, v]), t: k => k,
+  updateInstallGate: () => { go.disabled = false; }, insertCtl: i => i,
+  run: () => { runs++; }, sha256Hex: async b => hash(b) };
+const approvalFunctions = html.slice(html.indexOf('const NIGHTLY_PUBLISHER_APPROVALS ='),
+  html.indexOf('\nfunction versions()'));
+const selectionFunctions = source.slice(source.indexOf('function isCatalogChecked(v,p) {'),
+  source.indexOf('\nfunction updateInstallGate()'));
+new Script(approvalFunctions + '\n' + selectionFunctions + '\n' + handler).runInNewContext(context);
+// The actual generated approval map admits the validated renderer output; a
+// catalog's own QA flags cannot grant admission through the empty source map.
+const sourceAdmission = source.slice(source.indexOf('const NIGHTLY_PUBLISHER_APPROVALS ='),
+  source.indexOf('\nfunction versions()'));
+const unapproved = { URL, version };
+new Script(sourceAdmission + '\nglobalThis.models=approvedNightlyModels(version);').runInNewContext(unapproved);
+assert.equal(unapproved.models.length, 0);
+async function click(controller) { runs = 0; messages = []; go.disabled = false; context.ctl = controller; await callback(); }
+await click(null); assert.equal(runs, 0);
+await click(new Uint8Array([9])); assert.equal(runs, 0);
+await click(ctl); assert.equal(runs, 1);
+context.sha256Hex = async b => { context.loadSerial++; return hash(b); };
+await click(ctl); assert.equal(runs, 0);
+context.sha256Hex = async b => hash(b);
+context.sha256Hex = async b => { version.revoked = true; return hash(b); };
+await click(ctl); assert.equal(runs, 0);
+delete version.revoked;
+context.sha256Hex = async b => {
+  context.currentVersion = () => structuredClone(version);
+  return hash(b);
+};
+await click(ctl); assert.equal(runs, 0);
+context.currentVersion = () => version;
+context.sha256Hex = async b => hash(b);
+context.insertCtl = () => { throw new Error('controller cannot fit package'); };
+await click(ctl); assert.equal(runs, 0); assert.equal(go.disabled, false);
+console.log(`PASS: qualified local rendering, ${negatives} rejection cases, download-byte verifier and controller/race write guards. Synthetic evidence only; NOT candidate QA.`);

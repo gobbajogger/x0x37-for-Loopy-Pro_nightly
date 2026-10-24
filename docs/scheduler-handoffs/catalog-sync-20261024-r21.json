@@ -1,0 +1,87 @@
+{
+  "schema": "loopyx0x37-scheduler-handoff/1",
+  "role": "X0X37 Build Catalog Sync",
+  "evidence_revision": "catalog-pr3-r21-unattributed-owner-hardware-proof-failclosed-20261024-r1",
+  "date_utc": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "owned_pr": 3,
+  "consumed_source": {
+    "head": "9a460ee2475989adf8529c04c9683a7dbebf430d",
+    "website_root_tree": "95074f57a244f4dbe5ddd92d93b1635b71ecba4b",
+    "verifier_blob": "dc0178aba74b5d472a42ddce1d26b01d3f66fa5c",
+    "negative_test_blob": "c3bb5b8b4ca141a5933bec1be836e7e1b75b1f47"
+  },
+  "root_cause": "Current catalog has zero independently authenticated owner device reports, but a correctly shaped report_sha256, report_url, controller_sha256 and approval boolean were accepted as owner-model device_verified, and allowed forged public_latest even with empty real evidence.",
+  "red_before": {
+    "original_verifier": "SCOPED V8 SOURCE-EXACT",
+    "baseline": "ACCEPT",
+    "forged_one_model": "ACCEPT (BUG)",
+    "forged_both_models": "ACCEPT (BUG)",
+    "forged_public_latest": "ACCEPT (BUG)",
+    "original_test_body_with_three_added_regressions": "FAIL at second registered scenario: forged-Elite-hardware-proof-is-not-owner-verification wrongly accepted",
+    "exit": "expected nonzero"
+  },
+  "green_after": {
+    "test_command": "functions.exec: fetched original exact Git source; executed complete tests/build-status-negatives.test.mjs with isolated in-memory Node fs/spawn/ESM adapter and patched verify-build-status.mjs",
+    "scope": "SCOPED_TEST_V8_NOT_NATIVE_NODE_OR_CHROMIUM",
+    "exit": 0,
+    "total_scenarios": 194,
+    "accepted_positive_scenarios": 17,
+    "malicious_negative_scenarios_rejected": 177,
+    "registration_result": "PASS",
+    "new_case_labels": [
+      "forged-Elite-hardware-proof-is-not-owner-verification",
+      "forged-both-model-hardware-proofs-are-not-owner-verification",
+      "forged-public-latest-and-both-models-are-not-owner-authorization"
+    ],
+    "revised_prior_fixtures": [
+      "synthetic-Elite-device-report-without-owner-attestation-REJECTED",
+      "synthetic-both-model-production-proof-shape-not-attestation-REJECTED"
+    ]
+  },
+  "scope_change": "Fail-closed for CURRENT unauthenticated, zero-device-proof history only. Future real owner model hardware observations require separately verified exact-source/firmware/controller/observation evidence and a reviewed acceptance change; do not infer hardware PASS from SHA/URL-shaped syntax.",
+  "unchanged": {
+    "status_blob": "abd5b24f860625de296e3a83e29a326ff0013a37",
+    "source_generated_status_byte_parity": true,
+    "history_entries": 115,
+    "historical_dev_generations": 2,
+    "nightly_picker_blob": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "picker_versions": 0,
+    "device_verified": 0,
+    "nightly_site_main": "1a176e156b049f476074b77d7e6d54be03e8c9ad",
+    "nightly_site_pages": "9c5d3b6b0846f89436492851fef89ed3829b7ad7",
+    "firmware_nightly": "58b5b45a2dd90581de7a674c331ca5cbe8a67c7e"
+  },
+  "parallel_firmware_champion": {
+    "pr": 103,
+    "head_observed": "dc4669083218f17f8cfb69069e7f32911a232b52",
+    "full_root": "02cba17c78ab0e0334995f63363c4e8c407ae6a0",
+    "compiled_firmware_subtree": "5c209609b770fd13949230aeb80956594fd6b741",
+    "qa": "PENDING",
+    "build": "PRIVATE BUILD_ONLY FROM PRIOR EXACT COMPILER INPUTS",
+    "installability": "NO_INSTALLABLE_YET"
+  },
+  "not_run": [
+    "native exact full website npm test",
+    "native exact full website npm run build",
+    "responsive Chromium exact site tree",
+    "external lawfully hosted firmware HTTP SHA/byte checks",
+    "current firmware full-root independent QA",
+    "owner hardware"
+  ],
+  "native_diagnostics": {
+    "command": "git ls-remote https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly.git HEAD",
+    "exit_code": 128,
+    "detail": "Could not resolve host: github.com",
+    "command_2": "curl -IL --connect-timeout 5 --max-time 8 https://api.github.com",
+    "exit_code_2": 6,
+    "detail_2": "Could not resolve host: api.github.com",
+    "node": "v22.16.0",
+    "npm": "10.9.2",
+    "chromium": "144.0.7559.96"
+  },
+  "disposition": "SOURCE_COMPLETE_SCOPED_TEST_PASS__READY_FOR_INDEPENDENT_WEBSITE_QA__NOT_APPROVED_NOT_MERGED",
+  "next_owner": "Independent NIGHTLY Website QA to run exact-head npm test/build and responsive browser; sole NIGHTLY Website Main Merger after independent clean review. Firmware Build/QA and sole Pages publisher remain separate.",
+  "forbidden_actions_performed": false
+}

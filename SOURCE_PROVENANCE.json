@@ -3,11 +3,43 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "b4c31daabeaa0219960ef0628a1fd81bfda4e54d",
+    "web/x0x_installer.html": "873ab59db73a44b74a3392cd097b0faa867df67f",
     "web/x0x_breaks.html": "b988c3270ed974639f702900e120297ad0602b60",
-    "web/fm1pkg.js": "ff5e9208d397e7f7a81b33100b705d9028944a52",
+    "web/fm1pkg.js": "3f8c704e4ea8ea780d6deef67a4bb33249f80d3e",
     "web/fm1ota.js": "014f5fa3490f476554a17b08e941bde04c7eff74",
     "web/x0x_breaks.js": "8489f4ca358cf78e3f80181c9d7984bebb4cdeef",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
-  }
+  },
+  "sourcePatches": [
+    {
+      "path": "web/fm1pkg.js",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "bf5b200b2d2c0adbf0ad1c8b94f49b40c34577f5",
+      "sourcePullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/115",
+      "sourceBlob": "3f8c704e4ea8ea780d6deef67a4bb33249f80d3e",
+      "description": "Reject non-erased controller-image trailing bytes before browser package construction"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "1a176e156b049f476074b77d7e6d54be03e8c9ad",
+      "sourceBlob": "ecc861643de8f9377dc1cb34f54d3db6a40aad63",
+      "description": "NIGHTLY catalog-only browser source: no GitHub Releases auto-import, no direct URL for unapproved, wrong-model or insecure packages, exact package product identity"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "ddbd8d89f7c4dfd5afa432dd51e940b6dd428592",
+      "sourceBlob": "0ee4bd958a873116a5c5363a557a7a3bcc5d0c56",
+      "description": "Require exact qualification-bound owner-supplied controller hash and unchanged selection before candidate install"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "33252473b8725fc124cd20d85f780a85c4f6d4a0",
+      "sourceBlob": "873ab59db73a44b74a3392cd097b0faa867df67f",
+      "adaptedFromCommit": "78b38f07dc77f5eb8afdffcc2cd565233db1b6a9",
+      "description": "Combine publisher-approved download admission with mandatory exact owner-supplied controller and post-await selection/revocation verification; no approvals or binaries published. Preserve qualified fallback, single-writer lock during MIDI permission, and explicit partial-restoration status."
+    }
+  ]
 }

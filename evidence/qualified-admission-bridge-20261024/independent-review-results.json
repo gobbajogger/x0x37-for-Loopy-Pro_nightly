@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "node",
+      "/workspace/site-combined-review/installer-write-lock.test.mjs",
+      "/workspace/site-combined-review/index-installer.html"
+    ],
+    "exit": 1,
+    "stage": "before",
+    "log": "/workspace/site-combined-review/installer-write-lock.test.mjs.before.log",
+    "log_sha256": "826887e2053ebd22a99c669de860ccebb16aeb5de65d4206c63452ee04b8eab0",
+    "source_sha256": "74055f0d287cdd7bca5501e7eebd96ca620261dc186aa1079f5bcba11ef4b310"
+  },
+  {
+    "command": [
+      "node",
+      "/workspace/site-combined-review/installer-write-lock.test.mjs",
+      "/workspace/site-qualified-bridge/web/x0x_installer.html"
+    ],
+    "exit": 0,
+    "stage": "after",
+    "log": "/workspace/site-combined-review/installer-write-lock.test.mjs.after.log",
+    "log_sha256": "158513f08d60e2f565a5478174b9313a3373d51f01431ed969dd87df6953443e",
+    "source_sha256": "650534dc041eb4cd39035a8256a0a9e0a2d8ce9ec365217beaadbe8425166e24"
+  },
+  {
+    "command": [
+      "node",
+      "/workspace/site-combined-review/installer-qualified-selection.test.mjs",
+      "/workspace/site-combined-review/index-installer.html"
+    ],
+    "exit": 1,
+    "stage": "before",
+    "log": "/workspace/site-combined-review/installer-qualified-selection.test.mjs.before.log",
+    "log_sha256": "6e63de578db886284813e472f6386478d539423db86fa4001b7f3a357c2e4489",
+    "source_sha256": "74055f0d287cdd7bca5501e7eebd96ca620261dc186aa1079f5bcba11ef4b310"
+  },
+  {
+    "command": [
+      "node",
+      "/workspace/site-combined-review/installer-qualified-selection.test.mjs",
+      "/workspace/site-qualified-bridge/web/x0x_installer.html"
+    ],
+    "exit": 0,
+    "stage": "after",
+    "log": "/workspace/site-combined-review/installer-qualified-selection.test.mjs.after.log",
+    "log_sha256": "0a252051c1252d810c9c27883763a60935ba1864316df4a1aa627ad6e40f6ca4",
+    "source_sha256": "650534dc041eb4cd39035a8256a0a9e0a2d8ce9ec365217beaadbe8425166e24"
+  }
+]

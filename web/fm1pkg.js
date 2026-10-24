@@ -80,6 +80,7 @@ export function ctlProblem(img) {
   if (pkU16(img, 4) !== 2 || pkU16(img, 6) !== 68 || pkU32(img, 20) !== 2) return "another header version or ABI";
   const size = pkU32(img, 12);
   if (size < 68 || size > img.length) return "image size does not fit the file";
+  for (let i = size; i < img.length; i++) if (img[i] !== 0xFF) return "non-erased bytes after the controller image declared size";
   let c = pkCrc32(img, 0, 16);
   c = pkCrc32(new Uint8Array(4), 0, 4, c);
   c = pkCrc32(img, 20, size, c);

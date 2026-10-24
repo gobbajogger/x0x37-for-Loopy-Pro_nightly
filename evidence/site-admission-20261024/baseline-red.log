@@ -1,0 +1,9 @@
+{"case":"revoked model","expected":false,"actual":true}
+{"case":"revoked version","expected":false,"actual":true}
+{"case":"blocked version","expected":false,"actual":true}
+{"case":"withdrawn version","expected":false,"actual":true}
+{"case":"failed model","expected":false,"actual":true}
+{"case":"malformed product","expected":false,"actual":true}
+{"case":"missing product version","expected":false,"actual":true}
+{"case":"invalid URL","expected":false,"actual":true}
+EXPECTED RED: 8/8 unsafe admission cases reproduce

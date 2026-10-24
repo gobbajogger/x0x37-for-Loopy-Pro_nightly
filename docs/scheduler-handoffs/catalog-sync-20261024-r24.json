@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "role": "X0X37 Build Catalog Sync",
+  "evidence_revision": "catalog-pr3-r24-complete-node-suite-fixture-repair-20261024-r1",
+  "date_utc": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "owned_pr": 3,
+  "source_parent_commit": "2bd26db4165d283ace26f765eb6f36b613e73dc4",
+  "source_parent_root_tree": "ef191bbc8478bff0811b510e94d739d863699fca",
+  "parent_node_negative_test_blob": "c08a97a8481820bec6603a100403b0b02388e028",
+  "patched_node_negative_test_blob": "2c392bbb353475f4041579f743e3b61ec9597876",
+  "fault": "The R23 standalone SHA256 history row continuity protection is correct, but the first unedited whole-registered-suite adapter run FAILED at its 52nd scenario: older positive fixture edited locked history[0].evidence_url; two more existing positives edited protected historic row URL and historic DEV build validation_record. These alterations must be rejected under the new immutable history policy.",
+  "red_before": {
+    "scope": "EXACT R23 original Node test / validator executed through V8 with Node fs, child-process spawn, assert, vm, crypto SHA256 adapters in isolated in-memory copy",
+    "source_head": "2bd26db4165d283ace26f765eb6f36b613e73dc4",
+    "registered_cases_passed_before_failure": 51,
+    "first_failure": "approved-GitHub-source-evidence-remains-allowed — historical row tampered at 0",
+    "verdict": "FAIL confirmed, no npm PASS"
+  },
+  "green_after": {
+    "scope": "EXACT R23 immutable validator + only 3 repaired positive fixtures; full original registered Node negative-test source executed with in-memory Node fs/spawn/assert/vm/crypto adapters, unmodified library history and picker content",
+    "sha256_known_answer_abc": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "historic_sha256_row_count": 115,
+    "registered_positive_and_negative_cases_passing": 207,
+    "spawned_validator_cases": 206,
+    "terminal_case": "smc79-hidden-historical-test-failure",
+    "exception": null,
+    "verdict": "SCOPED_V8_FULL_REGISTERED_NEGATIVE_SUITE_PASS__NOT_NATIVE_NODE_OR_BROWSER"
+  },
+  "fixture_changes": [
+    "Existing approved immutable Git source-evidence URL positive now APPENDS a new synthetic noninstallable SOURCE ONLY history row rather than mutating 115 pinned rows",
+    "Existing mutable Git navigation positive now APPENDS synthetic noninstallable SOURCE ONLY history row",
+    "Existing immutable model validation URL positive prepends synthetic FUTURE DEV generation rather than modifying either of two pinned historic DEV model identities"
+  ],
+  "preservation": {
+    "unchanged_validator_blob": "6bbbfdedc606fa73ede5603021f5fccee9f51215",
+    "unchanged_status_source_and_generated_git_blob": "abd5b24f860625de296e3a83e29a326ff0013a37",
+    "unchanged_picker_source_and_generated_git_blob": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "history_sha256_rows": 115,
+    "historic_dev_generations": 2,
+    "installable_nightly_versions": 0
+  },
+  "not_run": [
+    "actual native npm test on immutable website root",
+    "native npm run build",
+    "native desktop/mobile Chromium/browser and installer PR6 union",
+    "independent website QA",
+    "firmware hardware OTA, lawful hosted package GET, controller/recovery and physical device"
+  ],
+  "external_checkout_diagnostic": "Native git ls-remote GitHub DNS exit 128; connected GitHub source/blob/commit/tree available, but no exact native filesystem checkout; no usable delegated Work/Codex execution action in tools",
+  "next_owner": "Independent NIGHTLY Website QA exact new R24 branch root; sole Website Main Merger after independent source QA and PR6 package runner union; sole Pages Publisher for deployment/artifact HTTP."
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "run_utc": "2026-10-23T12:46:13Z",
+  "role": "X0X37 Build Catalog Sync",
+  "outcome": "DELIVERED",
+  "source": {
+    "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+    "tested_commit": "ca94ab912657d47946d94b4a8933bdd4cb173e31",
+    "tested_tree": "a89c3e913a955809b57eb9711bd668beb1ed6fdb",
+    "pr": 3
+  },
+  "summary": "Reconcile fourteen checked Git SHA/tree PR handoffs into Nightly non-installable status metadata; preserve empty picker and unverified native-build attribution.",
+  "outputs": [
+    {
+      "kind": "catalog",
+      "location": "build-status.json",
+      "description": "Two preserved archive generations, sixty-one truthful non-installable checkpoints"
+    },
+    {
+      "kind": "catalog",
+      "location": "docs/build-status.json",
+      "description": "Byte-identical generated status for the read-only build history"
+    },
+    {
+      "kind": "findings",
+      "location": "docs/scheduler-handoffs/catalog-sync-20261023-1246.md",
+      "description": "Producer evidence reconciliation and exact missing distribution gates"
+    },
+    {
+      "kind": "findings",
+      "location": "docs/scheduler-handoffs/catalog-sync-20261023-1246.json",
+      "description": "Git-backed run outcome and audited native versus V8/non-run distinctions"
+    }
+  ],
+  "checks": [
+    {
+      "name": "website-source-validator-V8",
+      "status": "PASS",
+      "command": "GitHub fetched scripts/verify-build-status.mjs executed in V8 with Node fs/vm imports adapted to in-memory file map",
+      "exit_code": 0,
+      "evidence": "11 executed assertions/cases: 1 positive and 10 expected failure cases, all observed",
+      "coverage": "Noninstallable schema/history/physical flag/model/source SHA/safe URL and source-generated parity"
+    },
+    {
+      "name": "github-source-tree-ref",
+      "status": "PASS",
+      "command": "GitHub connected API git/commits/<PR-SHA> for producer PRs 71-84",
+      "exit_code": 0,
+      "evidence": "Exact 14 PR ref/commit/tree identities confirmed before appended history",
+      "coverage": "No inferred merges or new firmware builds"
+    },
+    {
+      "name": "npm-site-build",
+      "status": "NOT_RUN",
+      "command": "npm run build",
+      "evidence": "Complete exact full site checkout unavailable in this GitHub connector filesystem; metadata-only change, no generated UI edits."
+    },
+    {
+      "name": "npm-site-tests",
+      "status": "NOT_RUN",
+      "command": "npm test",
+      "evidence": "Full exact checked-out website tree not on native filesystem; V8 actual validator regression scoped instead."
+    },
+    {
+      "name": "responsive-browser",
+      "status": "NOT_RUN",
+      "command": "chromium --headless",
+      "evidence": "No website UI file changed this cycle, and exact site source not materialized."
+    },
+    {
+      "name": "firmware-packages-rehashed",
+      "status": "NOT_RUN",
+      "command": "sha256sum independently downloaded firmware packages",
+      "evidence": "Producer PR84 reports hashes and native compiler output, but no authorized firmware package bytes in catalog task to rehash."
+    }
+  ],
+  "models": [
+    {
+      "model": "elite",
+      "build_status": "NOT_RUN",
+      "device_status": "DEVICE_NOT_TESTED",
+      "notes": "PR84 producer reports private native current-firmware-subtree compilation; Catalog did not build, receive or independently rehash artifact, and no legal immutable URL."
+    },
+    {
+      "model": "pro",
+      "build_status": "NOT_RUN",
+      "device_status": "DEVICE_NOT_TESTED",
+      "notes": "Same PR84 producer build limits and pending exact-full-root independent model/QA/install/hosting gates."
+    }
+  ],
+  "next": {
+    "owner": "Independent QA",
+    "action": "Validate website PR3 exact head and new source evidence with complete npm/browser checks; then Nightly Main Merger and sole publisher",
+    "gate": "Independent exact-branch QA and zero unauthorised firmware links"
+  },
+  "publication": "SOURCE_ONLY"
+}

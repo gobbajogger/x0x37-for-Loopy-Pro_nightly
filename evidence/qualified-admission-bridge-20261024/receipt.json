@@ -1,0 +1,88 @@
+{
+  "schema": "nightly-qualified-admission-bridge-v1",
+  "tested_source": "7094610e57c1ebf7961d0b7e7c2191fd489cbe89",
+  "tested_root": "6d0161eaedf4ae206192ca091078c21da71c6a84",
+  "parents": {
+    "qualified_renderer": "33252473b8725fc124cd20d85f780a85c4f6d4a0",
+    "site_admission_helper": "8c9a338e05a0069a0fea4ed8de6ae45783a09e86",
+    "catalog_history": "234cd59437137002565b22376b0d2a7a24e8053e"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 0
+    },
+    {
+      "command": "npm test",
+      "exit": 0,
+      "log": "npm-test.log",
+      "coverage": [
+        "source/generated/provenance parity",
+        "controller padding",
+        "116 source admission and verified-download assertions",
+        "76 qualification rejection cases plus HTTP/model/controller/races",
+        "catalog schema and malformed receipts",
+        "119 immutable SHA256 history pins and 9 continuity negatives",
+        "7 pending permission/single-writer/reconnect/restore cases",
+        "6 last-qualified picker cases",
+        "7 evidence/history navigation cases"
+      ]
+    },
+    {
+      "command": "python3 tests/browser-admission-check.py",
+      "exit": 0,
+      "log": "browser.json",
+      "coverage": "12 real Chromium scenarios:320/390/1280 x empty/approved/revoked/unapproved; synthetic in-memory packages/approvals, no Web MIDI"
+    }
+  ],
+  "real_catalog": {
+    "schema": 1,
+    "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "pages": "",
+    "latest": null,
+    "versions": [],
+    "history": []
+  },
+  "real_approvals": {},
+  "history_records": 119,
+  "history_pins": 119,
+  "qualification": "SOURCE ONLY / EXACT FINAL ROOT REVIEW PENDING / NO REAL HOSTED FIRMWARE OR LIVE HTTP ATTESTATION / DEVICE NOT TESTED",
+  "files": {
+    "installer-write-lock.test.mjs.before.log": {
+      "bytes": 613,
+      "sha256": "826887e2053ebd22a99c669de860ccebb16aeb5de65d4206c63452ee04b8eab0"
+    },
+    "independent-review.md": {
+      "bytes": 3516,
+      "sha256": "dcb853cc3b81bb27a725f8e7bfc0842c326a65521ff44ae2ee14039855d1cd12"
+    },
+    "installer-qualified-selection.test.mjs.after.log": {
+      "bytes": 80,
+      "sha256": "0a252051c1252d810c9c27883763a60935ba1864316df4a1aa627ad6e40f6ca4"
+    },
+    "npm-test.log": {
+      "bytes": 10670,
+      "sha256": "64fa57fadf2b575ad95a0871cc51bfaaa76cc0ae7d88e378caba6bd6f43fd777"
+    },
+    "index-installer.html": {
+      "bytes": 70920,
+      "sha256": "74055f0d287cdd7bca5501e7eebd96ca620261dc186aa1079f5bcba11ef4b310"
+    },
+    "installer-write-lock.test.mjs.after.log": {
+      "bytes": 87,
+      "sha256": "158513f08d60e2f565a5478174b9313a3373d51f01431ed969dd87df6953443e"
+    },
+    "browser.json": {
+      "bytes": 1026,
+      "sha256": "5546f60074cf8b1289072da09d834b1339e3fe705f28ee3abc0b1d75e3f419c9"
+    },
+    "installer-qualified-selection.test.mjs.before.log": {
+      "bytes": 733,
+      "sha256": "6e63de578db886284813e472f6386478d539423db86fa4001b7f3a357c2e4489"
+    },
+    "independent-review-results.json": {
+      "bytes": 1953,
+      "sha256": "da707683d64120b941f443301fd032b800cccf993ef3200a59a330af69c40cc0"
+    }
+  }
+}

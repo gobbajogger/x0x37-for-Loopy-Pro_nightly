@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X0X37 Nightly — Build History</title>
+<meta name="description" content="Read-only development build history for X0X37 nightly, including untested and superseded firmware checkpoints.">
+<style>
+:root{color-scheme:dark;font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b0e10;color:#edf4f0}
+*{box-sizing:border-box}body{margin:0}
+main{max-width:980px;margin:0 auto;padding:clamp(20px,6vw,64px) 22px 88px}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+a{color:#d2f99a;text-underline-offset:3px}
+a:focus-visible{outline:3px solid #d2f99a;outline-offset:3px}
+h1{font-size:clamp(36px,7vw,68px);line-height:1.03;letter-spacing:-.05em;margin:30px 0 16px}
+h2{font-size:24px;margin:38px 0 16px}
+h3{font-size:18px;line-height:1.3;margin:0 0 10px}
+p{max-width:760px}.muted{color:#a8b7b2}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;color:#c7f986}
+.notice{border:1px solid #64734d;padding:14px 18px;border-radius:10px;margin:25px 0;background:#1b211a}
+.layout{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:14px}
+.item{min-width:0;border:1px solid #34413e;border-radius:12px;padding:20px;background:#141a1a}
+.model{border-top:1px solid #34413e;margin-top:12px;padding-top:12px}
+code{overflow-wrap:anywhere;color:#c8e4b5;font-size:.82em}
+dt{color:#9eadac;font-size:12px}dd{margin:1px 0 10px;overflow-wrap:anywhere}
+.tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;border:1px solid #617264;border-radius:6px;padding:4px 6px;display:inline-block;margin-bottom:12px;color:#d8e7c9}
+.error{color:#ffb9a6}
+footer{margin-top:45px;border-top:1px solid #34413e;padding-top:20px;font-size:13px;color:#a8b7b2}
+@media(max-width:520px){.item{padding:16px}h2{font-size:21px}}
+</style>
+</head>
+<body>
+<main>
+<nav aria-label="Site"><a href="../">Nightly home</a><a href="../install/">Installer preview</a><a href="../build-status.json">Raw read-only inventory</a></nav>
+<p class="eyebrow">X0X37 / NIGHTLY / FULL BUILD HISTORY</p>
+<h1>Development build log</h1>
+<p class="muted">This history records known X0X37 development builds, source checkpoints, failed attempts, and superseded versions. It is not a firmware download page.</p>
+<div class="notice" role="note" aria-label="Nightly versus production firmware requirements">
+  <p><strong>NIGHTLY — DEV / HARDWARE TEST, DEVICE NOT TESTED:</strong> A candidate may appear in the Nightly installer after exact-source per-model firmware/controller, SHA-256/CRC, sample-slot backup/readback/recovery, independent QA, licensing and immutable HTTP download checks pass. Prior physical-device PASS and separate per-candidate owner approval are not Nightly prerequisites.</p>
+  <p><strong>PRODUCTION — hardware-proven only:</strong> A selectable build requires the owner's attributable matching-model, same-byte physical-device PASS, all automated safeguards and explicit production publication approval. DEV CHECKED and a history record alone prove neither hardware success nor installability. This read-only history never offers firmware download or flashing links.</p>
+</div>
+<p id="status" role="status" aria-live="polite">Loading verified history…</p>
+<h2 id="buildtitle">Built firmware generations</h2>
+<section class="layout" id="builds" aria-labelledby="buildtitle"></section>
+<h2 id="historytitle">Other source and historical checkpoints</h2>
+<section class="layout" id="history" aria-labelledby="historytitle"></section>
+<footer>Source/build evidence may be incomplete. A record in this list is not proof that its firmware is safe to install. Model and checksum details are for identification and audit only.</footer>
+</main>
+<script type="module">
+const message = document.getElementById('status');
+const builds = document.getElementById('builds');
+const history = document.getElementById('history');
+const add = (root, tag, value, className) => {
+  const el = document.createElement(tag);
+  el.textContent = String(value ?? '');
+  if (className) el.className = className;
+  root.appendChild(el);
+  return el;
+};
+const field = (root, label, value) => {
+  const dl = document.createElement('dl');
+  add(dl, 'dt', label);
+  add(dl, 'dd', value);
+  root.appendChild(dl);
+};
+async function render() {
+  const response = await fetch('../build-status.json', {cache:'no-store'});
+  if (!response.ok) throw new Error('History fetch returned HTTP ' + response.status);
+  const data = await response.json();
+  if (!data || data.kind !== 'nightly-read-only-build-history' ||
+      data.installable !== false || !Array.isArray(data.builds) || !Array.isArray(data.history) ||
+      data.builds.some(x => x.installable_from_nightly_status !== false)) {
+    throw new Error('Build history did not pass the read-only schema check');
+  }
+  for (const entry of data.builds) {
+    const card = add(builds, 'article', '', 'item');
+    add(card, 'span', entry.status ?? 'unknown', 'tag');
+    add(card, 'h3', entry.title || entry.id);
+    field(card, 'Build ID', entry.id);
+    field(card, 'Source commit', entry.source_commit);
+    field(card, 'Lifecycle', entry.lifecycle ?? 'unknown');
+    field(card, 'Physical device', entry.hardware_tested ? 'Hardware evidence must be independently checked' : 'NOT TESTED');
+    for (const [model, pkg] of Object.entries(entry.models ?? {})) {
+      const detail = add(card, 'div', '', 'model');
+      add(detail, 'strong', model.toUpperCase() + ' · ' + (pkg.product ?? 'unknown'));
+      field(detail, 'Package SHA-256 (identity only)', pkg.sha256);
+      field(detail, 'Package size, bytes', pkg.size);
+      field(detail, 'Device verified', pkg.device_verified ? 'Check independent evidence before use' : 'NO');
+    }
+  }
+  for (const entry of data.history) {
+    const card = add(history, 'article', '', 'item');
+    add(card, 'span', entry.status ?? 'unknown', 'tag');
+    add(card, 'h3', entry.title || entry.id);
+    field(card, 'Checkpoint', entry.id);
+    if (entry.source_commit) field(card, 'Source commit', entry.source_commit);
+    if (entry.description) add(card, 'p', entry.description, 'muted');
+  }
+  if (!data.builds.length) add(builds, 'p', 'No checked build records currently available.', 'muted');
+  if (!data.history.length) add(history, 'p', 'No other checkpoints currently indexed.', 'muted');
+  message.textContent = data.builds.length + ' build generation(s) and ' + data.history.length + ' other records · Read-only history, no firmware downloads.';
+}
+render().catch(err => {
+  message.classList.add('error');
+  message.textContent = 'Unable to display verified build history: ' + err.message;
+});
+</script>
+</body>
+</html>

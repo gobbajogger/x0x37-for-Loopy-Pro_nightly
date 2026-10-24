@@ -48,3 +48,23 @@ assert.match(read('docs/index.html'), /NIGHTLY/i);
 assert.ok(existsSync(join(root,'docs/manual/index.html')));
 assert.ok(existsSync(join(root,'docs/new/index.html')));
 console.log('PASS: upstream public-blob identity, generated scripts, accessibility, safeguards, empty firmware catalog, site links');
+
+
+// The history page must not confuse Nightly prehardware DEV testing with production promotion.
+const historyPage = read('docs/builds/index.html');
+const notice = historyPage.match(/<div class="notice" role="note"[^>]*>([\s\S]*?)<\/div>/)?.[1];
+assert.ok(notice, 'accessible Nightly/production distribution notice is required');
+assert.match(notice, /NIGHTLY.*DEV \/ HARDWARE TEST, DEVICE NOT TESTED/);
+assert.match(notice, /Prior physical-device PASS and separate per-candidate owner approval are not Nightly prerequisites/);
+assert.match(notice, /exact-source per-model firmware\/controller, SHA-256\/CRC/);
+assert.match(notice, /independent QA, licensing and immutable HTTP download checks/);
+assert.match(notice, /PRODUCTION.*hardware-proven only/);
+assert.match(notice, /matching-model, same-byte physical-device PASS/);
+assert.match(notice, /explicit production publication approval/);
+assert.doesNotMatch(notice, /The public installer will show a build only after matching-model physical-device verification/);
+assert.doesNotMatch(historyPage, /\b(?:href|src)=["'][^"']*\.(?:fwsc|img)(?:[?\#]|["'])/i,
+  'read-only history must never link installable firmware or controller images');
+const historyJs = historyPage.match(/<script type="module">([\s\S]*?)<\/script>/)?.[1];
+assert.ok(historyJs, 'history renderer required');
+new Script(historyJs, {filename:'build-history.js'});
+console.log('PASS: Nightly versus production gates, history read-only and renderer syntax');

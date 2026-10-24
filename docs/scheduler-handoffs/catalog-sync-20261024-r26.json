@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "role": "X0X37 Build Catalog Sync",
+  "date_utc": "2026-10-24",
+  "evidence_revision": "catalog-pr3-r26-new-real-safety-source-appendonly-20261024-r1",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "owned_pr": 3,
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "parent_commit": "2d4134b1922079adfd346361758b3ed86b01e638",
+  "parent_root_tree": "727c5cab036769f2cc631cbe196e630c57719033",
+  "source_status": "SOURCE_ONLY_NONINSTALLABLE_INDEPENDENT_FULL_ROOT_QA_PENDING",
+  "before": {
+    "historical_rows": 117,
+    "historical_generations": 2,
+    "nightly_installable": 0
+  },
+  "after": {
+    "historical_rows": 119,
+    "historical_generations": 2,
+    "nightly_installable": 0
+  },
+  "immutable_receipt_sha256_algorithm": "SHA256(UTF8(JSON.stringify(parsed historical row)))",
+  "new_pinned_rows": [
+    {
+      "id": "smc-pr122-r2-mmc-stop-project-reset-source-20261024",
+      "source_commit": "34a265a60921957a32bec6ccc9ad38c9a765fae3",
+      "source_root": "05a75c9775443eb2849c992d3d92ab7dc4042a39",
+      "firmware_subtree": "62f6e1c9bffc95e57c28d3d579261c2b1f4eab96",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/34a265a60921957a32bec6ccc9ad38c9a765fae3/docs/scheduler-handoffs/smc-mmc-stop-callback-project-reset-20261024-r2.json",
+      "sha256": "94650843a3c24a90755b52447953d319910ca12ed9200f94318255c81e60763b"
+    },
+    {
+      "id": "bugfinder-bf020-pr123-legacy-bd-pan-motion-20261024",
+      "source_commit": "5c592ec44638194842ae32d09471ac55901cbe19",
+      "source_root": "aa281f3300e513791d106f8831f627c8fddb642a",
+      "firmware_subtree": "77146a79a6035e696e2365355362cd953a9c15b0",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/5c592ec44638194842ae32d09471ac55901cbe19/docs/scheduler-handoffs/bugfinder-bf020-bd-pan-motion-20261024.json",
+      "sha256": "b11df151a6bd19773c9267a1ba596d61abaf2b0714a02fc778e29e9498282563"
+    }
+  ],
+  "native_catalog_npm_test": "NOT_RUN",
+  "native_catalog_npm_build": "NOT_RUN",
+  "native_full_current_root_chromium": "NOT_RUN",
+  "scoped_browser": {
+    "site_html_exact_git_blob": "ecad15f48e897d0f0fe87b7df8b060f7067a35cc",
+    "html_unchanged_from_R22": true,
+    "chromium_binary": "/usr/bin/chromium",
+    "command": "python3 -m py_compile r26_history_browser_qa.py; node --check history_inline.mjs; python3 r26_history_browser_qa.py",
+    "observed_exit": [
+      0,
+      0,
+      0
+    ],
+    "cases_passed": 12,
+    "cases_total": 12,
+    "fixture": "synthetic 2+117 NONAUTHENTIC records via page.set_content; NOT full-root npm/real status or hosted site"
+  },
+  "source_integrity": {
+    "status_source_generated_equal": "INTENDED_IDENTICAL_NEW_GIT_BLOB",
+    "picker_unchanged_git_blob": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "all_previous_history_rows_preserved": true
+  },
+  "tracked_negative_tests": {
+    "prior_r25_positions_stabilized": [
+      115,
+      116
+    ],
+    "new_positive": 1,
+    "new_malicious": 10,
+    "registered_source": "tests/build-status-negatives.test.mjs",
+    "native_runner": "PENDING; exact full website checkout blocked in Classic native Linux by DNS: git ls-remote exit128 / curl exit6",
+    "scoped_fixture_rule": "The 119-row fixture blocks deletion/reordering/valid-SHA-shape forgery; not independent full-node PASS"
+  },
+  "different_owner_gates": {
+    "firmware_pr103_current_head": "56c180450393f26859419ce13b479e45cb0c242d",
+    "firmware_QA": "NEEDS_CHANGES_OTA_PHYSICAL_IDENTITY",
+    "website_installer_pr6": "DRAFT_HAS_UNREVIEWED_DOWNLOAD_HREF_NEGATIVES",
+    "package_test_union": "PENDING_OWNED_BY_INDEPENDENT_WEBSITE_QA_AND_SOLE_MAIN_MERGER",
+    "publisher": "SEPARATE_SOLE_NIGHTLY_PAGES_PUBLISHER",
+    "physical_device": "NOT_TESTED",
+    "lawful_host": "NONE",
+    "live_http": "NOT_VERIFIED"
+  },
+  "consumer": "Existing independent NIGHTLY Website QA -> sole NIGHTLY Website Main Merger must preserve union PR3+PR6 test suites -> sole NIGHTLY Pages Publisher only if legal/safety/HTTP gates pass. No protected ref or publication in this producer PR."
+}

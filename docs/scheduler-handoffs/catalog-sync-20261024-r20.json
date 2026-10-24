@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "role": "X0X37 Build Catalog Sync",
+  "evidence_revision": "catalog-pr3-r20-all-115-sha256-locked-history-20261024-r1",
+  "date_utc": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "owned_pr": 3,
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "parent_commit": "d17a16550cea88364af5e14cd2d0652de11f265c",
+  "parent_complete_website_tree": "5f6b96a3bebfc503bcdb7cf246bcef536c739826",
+  "source_status_git_blob_unchanged": "abd5b24f860625de296e3a83e29a326ff0013a37",
+  "generated_status_git_blob_unchanged": "abd5b24f860625de296e3a83e29a326ff0013a37",
+  "empty_source_and_generated_picker_git_blob_unchanged": "01f9ec382878335ea9bb92d0bdf294483111de76",
+  "before": {
+    "baseline_sha256_pinned_rows": 91,
+    "total_history_rows": 115,
+    "unprotected_recent_rows": 24,
+    "attack_index": 108,
+    "attack_id": "integration-pr103-smc58-solo-current-root-20261024-r17",
+    "attack": "replace sole history row source_commit with 40-char f-hex; existing continuity test ACCEPTS",
+    "existing_r19_validator": "SCOPED ACCEPTS SHA-shaped non-special source history mutation"
+  },
+  "after": {
+    "baseline_sha256_pinned_rows": 115,
+    "new_immutable_rows": 24,
+    "sha256_algorithm": "SHA256(UTF8(JSON.stringify(parsed row)))",
+    "specific_recent_source_forgery_rejected": true,
+    "reported_R12_NO_GO_relabel_rejected": true,
+    "recent_pinned_tail_delete_rejected": true,
+    "legitimate_future_append_accepted": true,
+    "permanent_negative_cases": 9
+  },
+  "tests": {
+    "environment": "Connected Classic ECMAScript V8; original Node test body except import/read/crypto/structuredClone/assert adapters; not full native npm",
+    "sha256_empty_and_abc_vectors": "PASS",
+    "old_91_existing_row_hashes": "91/91 MATCH",
+    "prepatch_recent_source_forgery": "ACCEPTED (reproduced defect)",
+    "postpatch_recent_source_forgery": "REJECTED row 108",
+    "postpatch_original_manifest": "PASS 115 pinned / 9 malicious negatives",
+    "postpatch_future_append": "PASS",
+    "r19_validator": "Unchanged original source-exact scoped baseline and five R10 malicious negatives passed earlier",
+    "npm_test": "NOT RUN, shell GitHub DNS / no complete checkout",
+    "npm_run_build": "NOT RUN, shell GitHub DNS / no complete checkout",
+    "chromium_responsive": "NOT RUN"
+  },
+  "current_source_note": {
+    "firmware_pr103_r18_candidate": "dc4669083218f17f8cfb69069e7f32911a232b52",
+    "firmware_pr103_r18_full_root": "02cba17c78ab0e0334995f63363c4e8c407ae6a0",
+    "firmware_compiled_subtree_unchanged": "5c209609b770fd13949230aeb80956594fd6b741",
+    "r14_elite_and_pro": "Private prior BUILD_ONLY; no new compilation or download URL",
+    "status": "QA_PENDING / NOT_INSTALLABLE / DEVICE_UNKNOWN"
+  },
+  "cross_pr_warning": {
+    "nightly_installer_pr6": "ddbd8d89f7c4dfd5afa432dd51e940b6dd428592",
+    "overlap": "package.json test script",
+    "required_integration": "Merge all four Catalog tests and both PR6 controller/download admission tests, and regenerate installer/provenance; never silently lose a suite"
+  },
+  "gates": {
+    "producer": "SCOPED CHECKED",
+    "independent_website_qa": "PENDING",
+    "sole_website_main_merger": "PENDING",
+    "nightly_pages_http": "NOT_VERIFIED",
+    "installable_elite": "NO INSTALLABLE YET",
+    "installable_pro": "NO INSTALLABLE YET",
+    "physical_device": "UNKNOWN"
+  },
+  "next_owner": "Independent NIGHTLY Website QA -> sole NIGHTLY Website Main Merger; only publisher owns Pages. No hardware/firmware wait for noninstallable website source."
+}

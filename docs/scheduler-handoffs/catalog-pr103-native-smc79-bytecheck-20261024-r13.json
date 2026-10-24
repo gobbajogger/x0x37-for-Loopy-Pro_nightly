@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "revision": "catalog-smc79-native-bytes-pr107-dirsync-r13-20261024",
+  "owner": "X0X37 Build Catalog Sync",
+  "build": {
+    "native_compiled_source": "56c5d971b6d1c1864cd0f6153f4399950c223c2d",
+    "native_full_root": "17d947417372bf48e8167cd9a3df970093afe3c1",
+    "new_combined_source": "b7b472fd5cae89ca8af3473a19de8e6594692878",
+    "new_complete_root": "2a2972589f360c064c7fd9ad51d420128ba56744",
+    "compiled_firmware_subtree": "e33e782b7cf24b3a99c9ac9ad6bf07cefee6a439",
+    "compiler_source_inputs_checked_unchanged_by_build_owner": true,
+    "new_root_was_recompiled": false,
+    "actual_native_commands": [
+      {
+        "command": "BOARD=smk37 MODEL=elite X0X_DEV_PADCAL=1 bash build.sh --board smk37",
+        "producer_exit": 0
+      },
+      {
+        "command": "BOARD=smk37 MODEL=pro X0X_DEV_PADCAL=1 bash build.sh --board smk37",
+        "producer_exit": 0
+      },
+      {
+        "command": "CTL_NATIVE=1 CTL_NO_CACHE=1 bash ble/ctl/build_ctl.sh",
+        "producer_exit": 0
+      }
+    ]
+  },
+  "private_archive": {
+    "library_filename": "LoopyX0X37-PR103-20261024-CurrentSMC79-Private-Elite-Pro-Controller-Build.zip",
+    "size": 1209124,
+    "sha256": "2b4ead6559dc003b0394edd99633ce2aa46b838dea9a2635c16261a9fe2913ee",
+    "public_download": null,
+    "artifacts": {
+      "elite": {
+        "product": "SMK-37 Elite_900",
+        "bytes": 651396,
+        "sha256": "d44bf3f50a037c0eac966a46df8da6fee6f069f1eeeb45d2113e3f436aa83113"
+      },
+      "pro": {
+        "product": "SMK-37 Pro_900",
+        "bytes": 651392,
+        "sha256": "c5ce2d30801ac36b69179ac8a2cdd08d2956f57f379baf6885551902642e42e5"
+      },
+      "private_controller": {
+        "bytes": 65492,
+        "sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+        "crc32": "9c07ae67",
+        "redistribution_permitted": false
+      }
+    }
+  },
+  "catalog_private_bytecheck": {
+    "command": "python3 -B /mnt/data/x0x37_catalog_run11/catalog_bytecheck.py",
+    "exit": 0,
+    "checks_pass": 27,
+    "results_file_sha256": "72aa5b6b115a8121aa4989a6f4f26c05679e7d8b6116a3ef5d99ad4b2d704acb",
+    "scope": "SCOPED_ACTUAL_PRIVATE_BYTES_NO_INDEPENDENT_NATIVE_QA"
+  },
+  "budgets": {
+    "pool_free": 8324,
+    "pool_min": 8192,
+    "pool_margin": 132,
+    "controller_free": 44,
+    "ram_free": 492
+  },
+  "historical_mixed_root_host": {
+    "failed_names": [
+      "ble-midi-receive",
+      "smc-reachability",
+      "smc-mapping",
+      "smc-drum-mutes",
+      "smc-clip-visibility"
+    ],
+    "individual_exit_codes": null,
+    "aggregate": "TIMED_OUT_NOT_CURRENT_FULL_ROOT"
+  },
+  "full_root_QA": "PENDING",
+  "lawful_controller_redistribution": false,
+  "external_immutable_host": null,
+  "live_HTTP": "NOT_VERIFIED",
+  "hardware": "UNKNOWN",
+  "no_public_install": true
+}

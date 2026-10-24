@@ -1,0 +1,488 @@
+{
+  "schema": 1,
+  "origin": {
+    "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "history_parent": "9c708dcd9060ae9ff57a33bd8105a03823f65f8c",
+    "scope": "This existing NIGHTLY website history branch, not generic empty-history schema",
+    "digest": "SHA256(UTF8(JSON.stringify(parsed row)))",
+    "note": "Reviewed corrections require explicit lock update and independent QA"
+  },
+  "rows": [
+    {
+      "id": "smc-peek-later",
+      "sha256": "c09ebb52f3b2f472beb3f6310315c3f7b25a19504b76a1600299028635d95190"
+    },
+    {
+      "id": "current-main",
+      "sha256": "55c7fa020b726b1cd4ce91b0f203891131e5a887c700ee7089cac050e3ea5ad8"
+    },
+    {
+      "id": "older-integrated-smc",
+      "sha256": "60ca99acd685f977c12da5af9d10a87413589c6c6cb9315ce12cc85cd612238a"
+    },
+    {
+      "id": "direct-smc-elite",
+      "sha256": "790cf4a46daee9f0ad92c8a4978958f2dec9268d1c9f6d1b6698d276a6df05bf"
+    },
+    {
+      "id": "project-save-stage",
+      "sha256": "3bf1186f4c480e1cb8ea27e64254f675de24318b5cf074bb52fb608c8cb9f20d"
+    },
+    {
+      "id": "xip-failed",
+      "sha256": "3ba565dcc31ec71a0c06604c158e76607507780f10656f2543f4d696c35be8f0"
+    },
+    {
+      "id": "smc-physical-ref",
+      "sha256": "f440b431faf4c1f52b6ec22d23cb4ccff69ca3603fd9c6acd3d530625847a9eb"
+    },
+    {
+      "id": "smc-popup-stage4-repair-pr15",
+      "sha256": "df469ef8edf01a92aa587745846c3b36559cd7874c47df27fa5600bd143e9887"
+    },
+    {
+      "id": "smc-peek-pr19-latest-source",
+      "sha256": "639b2b4e757370759c02bb8b60ef36bf5f8cf2049c762a47691ae0b088318f51"
+    },
+    {
+      "id": "smc-fastmath-pr28-offline-projection",
+      "sha256": "d5e695e7498edaf2b7fecbd2f3fc93d213b04f9e4821efb86c3b617470e50ed0"
+    },
+    {
+      "id": "stage4-pr37-test-failclosed-and-breakgen",
+      "sha256": "5d05efe7dec8cdf7db83f321e27e0ee47dc5192778f9e4fdff53de477107c5a6"
+    },
+    {
+      "id": "dual-smc-pause-mix-lock-pr18",
+      "sha256": "744dc6aec23d84125977d22775ef54bde28c5266749b02a6caf0b30896d8ad82"
+    },
+    {
+      "id": "clock-handover-bf005-pr35",
+      "sha256": "9cd79c6291e8655ba309d52637baf010e14f2ae6587e71f07ff4a05a2015bd13"
+    },
+    {
+      "id": "safe-merge-combined-source-wip-233d",
+      "sha256": "bac71955f7440d2ed2e45e3bc5d5918ef6d1196504f5eba5a0249d95c6ba53f8"
+    },
+    {
+      "id": "smc-user-malformed-data-pr40",
+      "sha256": "4ee75f7a235c2522d9986bca29b51e8f328be9dd10854defac17a15c41ed66a4"
+    },
+    {
+      "id": "seq-internal-clock-owner-pr41",
+      "sha256": "1a656886f0843abb37daa240112d53ee94b17a5e182d91e79671d8e49b2b0409"
+    },
+    {
+      "id": "data-safety-controller-atomic-pr42",
+      "sha256": "2a5f0c77d1e95e1140263f15fd7ba579574722e506d9f06cb14cce61bde8de90"
+    },
+    {
+      "id": "smc-trs-source-guard-pr43",
+      "sha256": "7a7a04a10bf93074f056b3c778ed383b73700669a97b607781afebe2c723ab41"
+    },
+    {
+      "id": "installer-scan-generation-pr44",
+      "sha256": "3e6c2ac413766ca52e3b3a6560acab00c3153718d20f9f07f60566c6bf4e805a"
+    },
+    {
+      "id": "bugfinder-breaks-q16-pr45",
+      "sha256": "82006d5261c42ca43a5b18f31a2cfe55a87be0026784a9b705c3967aaad98445"
+    },
+    {
+      "id": "production-device-proof-picker-pr46",
+      "sha256": "891fc64793eeb60209a005f20f9780eb4eb984a1f5b771ec8722767dcbd91c1d"
+    },
+    {
+      "id": "safe-merge-smc-clock-integration-8557",
+      "sha256": "453b5e2586fc03868d3df3b9b87f4ecff0ae4a2034b05f074e7310a6c60d4614"
+    },
+    {
+      "id": "bugfinder-project-quickcheck-pr47",
+      "sha256": "61f5ec6a51a21738e0a11c7393ce5a7db86a80cf3edcfbd2908501ab2c2e39b1"
+    },
+    {
+      "id": "seq-queued-stop-takeover-pr48",
+      "sha256": "df59313296730b47052b3a204899eba1fd987213ef07d44cdf1e4e35bae77199"
+    },
+    {
+      "id": "data-safety-postreplace-sync-pr49",
+      "sha256": "5cf17d8df12d808ab0c8db5ed53c48ff294d98bb0dd998b78b12c5d32689ccba"
+    },
+    {
+      "id": "smc-ble-mailbox-backpressure-pr50",
+      "sha256": "805b3e6ad3603d27b92f4141e2aeddd1412ffeee8e71ff29b952e27d93de7915"
+    },
+    {
+      "id": "stage4-gen-output-write-pr51",
+      "sha256": "6e7e7794d4955786adf21b8e479267513a5b3d473c2f780963f6aad8de66513e"
+    },
+    {
+      "id": "installer-device-proof-source-pr52",
+      "sha256": "b2e817ff8626fbc2e0b1a36e855d998a7430680a0a8635544b3c067e9cb2c825"
+    },
+    {
+      "id": "safe-merge-8557-mailbox-negative-pr54",
+      "sha256": "7c93f6eb4727fbb85b3ae24a6fb38c5b2214d05bc91460d15a2dd0aefba3b4e1"
+    },
+    {
+      "id": "safe-merge-ble-clock-q16-wip-93af",
+      "sha256": "f3f3ee122282914daba55d1e50cc3e632a10a42e3aff073471f3d2435f0537ba"
+    },
+    {
+      "id": "firmware-version-labels-pr53",
+      "sha256": "26a4ff8123ba542eade764233a08bd6a887d5c415b0a52cdb77e75f8174f1562"
+    },
+    {
+      "id": "seq-32nd-midpoint-pr55",
+      "sha256": "406d37a501dec1238f8a739be075944e629eb606fa1243e077afed167fb5dd0d"
+    },
+    {
+      "id": "data-safety-slot-identity-pr56",
+      "sha256": "ac48c6993357b2aecd77f79e33d3d1e8ffe0cd9a805aa25009e831ce764f3251"
+    },
+    {
+      "id": "bugfinder-808-exp2-pr57",
+      "sha256": "12bf16028955daa304aeedf13b30b72196aa1e3c5bfba7783048a44328da27f1"
+    },
+    {
+      "id": "smc-solo-overflow-pr58",
+      "sha256": "0a14f7fd90cf1dbbe5691f2eb4b2124d348d0ce7fdff113d0a42b0f6e3293d75"
+    },
+    {
+      "id": "installer-local-file-entry-pr59",
+      "sha256": "5d00edf95b78b87467d465aef020bbbfd642d249bf3c9a14391bcb4ca0967234"
+    },
+    {
+      "id": "firmware-nightly-policy-pr60",
+      "sha256": "95990c46f3990a9ae699d136cbf7d1e90e5089d5e332c19b164816099d289a99"
+    },
+    {
+      "id": "safe-merge-seq32-slots-pr61",
+      "sha256": "35e4c0433f58891ee438c8e17280c3707adbc2b1393f07cb8d446b50bc4c552f"
+    },
+    {
+      "id": "hourly-build-93af-pr62",
+      "sha256": "4d608ae028f2a5135bec244049e001fc64963611570a068d40a5a7bf4f6d5629"
+    },
+    {
+      "id": "smc-direct-ble-data7-pr63",
+      "sha256": "892826d4b7fc0509323483218639698e3f98cd0cee4f5ab0e5c6d235a4463169"
+    },
+    {
+      "id": "native-build-probe-historical-pr64",
+      "sha256": "cd1134187c8c695330dba67048b9e9cce852c3a9496eaf307af7acc22d887d16"
+    },
+    {
+      "id": "seq-internal-swing-midpoint-pr65",
+      "sha256": "61a2c319d33fb14f722325a74a76672e81481c9c4d10cb3fc7f56a45e0758243"
+    },
+    {
+      "id": "data-safety-archive-payload-pr66",
+      "sha256": "b70c46a412ed8b6f8a0f3560dbf8941ca423d922b57c2688e732078ccd1c7376"
+    },
+    {
+      "id": "installer-mobile-steps-pr67",
+      "sha256": "8f38e7816a13902187c1c3676b6d59304e31c511680751b96867ccff5f7fda6e"
+    },
+    {
+      "id": "bugfinder-master-limiter-bf012-pr68",
+      "sha256": "58faf064beebf0d68b223d523b9773a8067919c1aa85dd208ef1e3347c9109a2"
+    },
+    {
+      "id": "qa-apc40-pr61-regression-pr69",
+      "sha256": "3b5213be83b4b8dc98f61ea169cb29679a150d2765407d2e4bef30cd4ec14f9a"
+    },
+    {
+      "id": "safe-merge-qa-bf006-pr70",
+      "sha256": "f7aa95ecca56c392cf095c7f3a8ef18f3ad0109ae4e7c1d69b97251340dd27e4"
+    },
+    {
+      "id": "smc-nightly-qa-solo-ble-pr71",
+      "sha256": "5ad3032f55e7a4974d0b3f0f7b55af7633a702861af537e3a1fa2c12473576a5"
+    },
+    {
+      "id": "seq-chain-endpoint-guard-pr72",
+      "sha256": "c10e6560c3bff4934da461ec60b86257fedf93324e411393626ffdef3a3cfa93"
+    },
+    {
+      "id": "smc-mmc-overflow-stop-pr73",
+      "sha256": "3baa8862d92dc5297b76e98f2e842765f5db8c69075c22ad3a5e0e58bc7b02b5"
+    },
+    {
+      "id": "fx-delay-min-tempo-bf013-pr74",
+      "sha256": "69d6149984c25bf488a141e2acf9c4e0695edf5eee378062b11a44106e9745b9"
+    },
+    {
+      "id": "slot-zone-preflight-pr75",
+      "sha256": "9b4db38e98f4f3241305e85d28c882941e0544e1e5f4fed12d841811002feeaa"
+    },
+    {
+      "id": "slot-per-target-readback-pr76",
+      "sha256": "3fcdbb6b4fe3201ddfd0b64a4641d4f421cd0789611fc10ec28d5546e4eac043"
+    },
+    {
+      "id": "installer-midi-retry-rescan-pr77",
+      "sha256": "9691e11613b66f844e1c2a4f4b4ee8debf598cb00c3800ca5e72abe703f74829"
+    },
+    {
+      "id": "scheduler-evidence-contract-pr78",
+      "sha256": "f05390e7e66f3f05090811054031dc9f7ad110de6df16086f5eb3bf260a48706"
+    },
+    {
+      "id": "smc-ble-reconnect-epoch-pr79",
+      "sha256": "76fab681c5c94561103d3f250cbdef1e8449217ac5bea401df1600897158973e"
+    },
+    {
+      "id": "sequencer-invalid-midi-source-pr80",
+      "sha256": "9145115d379eda0dce4bd39833011f60a616b9bf971d5c2f02dcfc866fd7506f"
+    },
+    {
+      "id": "data-safety-atomic-backup-pr81",
+      "sha256": "3fda03f953f628e8b56445e56c14e758746fa10165e662b38902caac07752bc5"
+    },
+    {
+      "id": "bugfinder-panel-map-bf014-pr82",
+      "sha256": "a3c6b1c41ee6d477551ef440796324d3c2de3a24424c85cd75a444031a570a94"
+    },
+    {
+      "id": "installer-local-feedback-pr83",
+      "sha256": "310a10d48a4da67adfda7b6cd85af9a95058d6ff26457d4f952eda0dee94d7f9"
+    },
+    {
+      "id": "native-elite-pro-current-firmware-subtree-pr84",
+      "sha256": "010890fe97980674d6bb4ada70479fa950dd1694531a434b400a4006459851ef"
+    },
+    {
+      "id": "producer-pr85-20261023",
+      "sha256": "2b40ff7f94a900782213d62f6ab359160158ab8eefa4f020757b67368383b987"
+    },
+    {
+      "id": "producer-pr86-20261023",
+      "sha256": "266afb7dce20c91d0d65eed8eaa0f6d639de8b45668beb46611548c33fd8444b"
+    },
+    {
+      "id": "producer-pr87-20261023",
+      "sha256": "569ef66153b7c5c8e3a42788e13045a3a15db35f88ba120f0e4c4e3da9ddc8dc"
+    },
+    {
+      "id": "producer-pr88-20261023",
+      "sha256": "dd9f1926dede6e67daf44544570a8bd475f83aa9691e9708d0b645d4794ead3a"
+    },
+    {
+      "id": "producer-pr89-20261023",
+      "sha256": "b8c6972fb17dc91e0842e545c73712ae1ef395806ca58b06738d7000daae9808"
+    },
+    {
+      "id": "producer-pr90-20261023",
+      "sha256": "6d7a4ed5e7d91b2e5c7fc333499f7114322c0bbb89c2034a95235c53921f3016"
+    },
+    {
+      "id": "producer-pr91-20261023",
+      "sha256": "2522dbf941fee9469d13a3c02de81224aac91179044ad0022298ccd8a5307891"
+    },
+    {
+      "id": "producer-pr92-20261023",
+      "sha256": "d06fbaebbf3a0460dc9095fff49352dfac63163aa3009dba4239c5bc946d8841"
+    },
+    {
+      "id": "producer-pr93-20261023",
+      "sha256": "1b7db7ba07b2142a3d185bb52391559c36154bc1027b09d08e65dcd68341478f"
+    },
+    {
+      "id": "producer-pr94-20261023",
+      "sha256": "d67525c8b94b521aa324b12936a4c6951bae1fac80cd74847ef56754b0154fbb"
+    },
+    {
+      "id": "producer-pr95-20261023",
+      "sha256": "264ca9124c54c325b6d27390b57e338addd08b3c84ada6a7c4d0398ebb7adcfc"
+    },
+    {
+      "id": "producer-pr96-20261023",
+      "sha256": "141d8cf0e46bd9ac2cfc79eeb060bbd4abebd79cc8fd30c2ad3a0bf19eac674e"
+    },
+    {
+      "id": "producer-pr97-20261023",
+      "sha256": "c5f9108fec740337d2e9f0ecd68c52696de6ebb2afebae6f6d2b02586328e1d0"
+    },
+    {
+      "id": "producer-pr98-20261023",
+      "sha256": "18978e152ce0e00130375b253015e052dac691a9c9603f1fd698b8df69ecb10c"
+    },
+    {
+      "id": "producer-pr93-repaired-native-20261024",
+      "sha256": "811fa72e06324afb74dcce7836faabf58e4e0eede68dc0806f9d9a1e7a4bdd05"
+    },
+    {
+      "id": "producer-pr99-20261024",
+      "sha256": "66f48e8862262399398f9e6190daa29c91b3eb898f87973a17a840b9d192f9ba"
+    },
+    {
+      "id": "producer-pr100-20261024",
+      "sha256": "12de5619a20c72fa63b071f985707970e4da8c69bfa7bb16744dacbfee464be7"
+    },
+    {
+      "id": "producer-pr101-20261024",
+      "sha256": "b06d5fd6efc0caa088d3d0950d90106d3355ff927b8dc537c1f5ea5bf7aa97c1"
+    },
+    {
+      "id": "producer-pr102-20261024",
+      "sha256": "d6335931ff4688d5c15076a988f0cc41784d48946193d29e375680c5deff68c1"
+    },
+    {
+      "id": "integration-pr103-303-small-20261024",
+      "sha256": "05aa3356729acf0f4064df1d14914ba68880def62f03bb7eade299716444927d"
+    },
+    {
+      "id": "integration-pr103-model-builds-20261024",
+      "sha256": "827f684503c1d4854c658375f2ab94428ba612c5288ca888028cfe4dfb134a74"
+    },
+    {
+      "id": "data-safety-pr96-restoration-status-20261024",
+      "sha256": "8ea5376e8dd60942512b264a55724fd7686ee51da6a994a270873ee4ee358041"
+    },
+    {
+      "id": "data-safety-pr96-restoration-repaired-20261024",
+      "sha256": "075104f45e51c35786832d9682b3090d4df1e632e15c1b7ee54b30791816b508"
+    },
+    {
+      "id": "integration-pr103-303-data-safety-combined-20261024",
+      "sha256": "50232999869bdc516d4f07e3fc31f7422fa7220ecdb052f53f1d51ac0bb99223"
+    },
+    {
+      "id": "data-safety-pr104-loader-guard-20261024",
+      "sha256": "033c6d0e541ebb4f9fc0896155e2420732bf759a43112dea1486cfab78ed9433"
+    },
+    {
+      "id": "integration-pr103-303-data-safety-loader-20261024",
+      "sha256": "ccdad4edc616650e12a458baeb2fb5ebcccd6aa4cbf0898839467e624e69b09a"
+    },
+    {
+      "id": "data-safety-pr105-restore-matching-finish-ack-20261024",
+      "sha256": "bad6d74f8f6a64ad598e7c08dd8a041bb2337a6075199e9d6494f8ded5454ffb"
+    },
+    {
+      "id": "integration-pr103-restoration-ota-ack-reviewed-source-20261024",
+      "sha256": "eadbb247b3d7f3e84656b83d0ebf78f19d25acea3316452660f2f578a8a56cc5"
+    },
+    {
+      "id": "data-safety-pr106-prewrite-snapshot-20261024",
+      "sha256": "cfb6996b9dbe6b7f9bef8228580021e719cd1777f182e19a8884e7444718797a"
+    },
+    {
+      "id": "integration-pr103-pr106-independent-ble-no-go-20261024",
+      "sha256": "236717a9ad4602ee48bf672110121441ef85016723179c351f5065791ea9c7fd"
+    },
+    {
+      "id": "smc-pr50-sysex-mailbox-repair-source-20261024-r2",
+      "sha256": "d429d757ca535651c0a674f8b3b23bf886b0d1ab3284f63550093f986250af50"
+    },
+    {
+      "id": "data-safety-pr76-per-slot-readback-regression-20261024-r2",
+      "sha256": "52df3f492b4ef09ff79a76c3636657faaadff923c793340db0eb753b8f1e3cce"
+    },
+    {
+      "id": "integration-pr103-smc50-slot76-review-ready-20261024-r6",
+      "sha256": "d2155d76d6a5b9870b0630e6505ebaf95e23792f29092dec2ed1f64955cb7abf"
+    },
+    {
+      "id": "data-safety-pr75-archive-zone-20261024-r12",
+      "sha256": "c3c9bce18b4e72d9751e5b7c4b6f6c0e33dcbe46399f82d8638ccbdb18119015"
+    },
+    {
+      "id": "data-safety-pr49-atomic-controller-output-20261024-r12",
+      "sha256": "ccdc2a3b1f3442aeb18e54377d899e07a4d5ae5b1c37717d639f8fa92ae0ea47"
+    },
+    {
+      "id": "smc-pr79-ble-link-epoch-20261024-r12",
+      "sha256": "49e8fe7e379518e4bfb0ec2f5dd88d7d849f13aa1f935fd8d828458489462420"
+    },
+    {
+      "id": "integration-pr103-archive75-ctl49-smc79-20261024-r7",
+      "sha256": "a68259f3a85547553f7cb99b405cd27c3c4fd8512d5d82920ca631419d61af3b"
+    },
+    {
+      "id": "data-safety-pr107-backup-dirsync-20261024-r13",
+      "sha256": "ae9178227fca0f1179658377280d83ce918b236c975e7d0feaef2c432053b572"
+    },
+    {
+      "id": "integration-pr103-smc79-native-build-20261024-r13",
+      "sha256": "8e91a1d8c7e4c262e3610077519ddfd23bcea560f7001e26403cd9ceb5aa6e78"
+    },
+    {
+      "id": "smc-pr63-ble-payload-data7-20261024-r14",
+      "sha256": "db4568cb1d59d463b108e4ab69f9bf9a53f39a4a95c205e08be891d54fe0dc76"
+    },
+    {
+      "id": "smc-pr73-mmc-stop-overflow-20261024-r14",
+      "sha256": "45ebc74f44a8a9ad771317979c7727aead01e64d123a0ff3e7c34ddcfa5695bf"
+    },
+    {
+      "id": "integration-pr103-smc79-63-73-current-root-20261024-r14",
+      "sha256": "313e4a0c94990a6b92772f0344addf701067c9eb4b2cc0ec4896c23add453bd1"
+    },
+    {
+      "id": "data-safety-pr108-canonical-smp-read-20261024-r15",
+      "sha256": "7c7c76dd70c5618efd4b5298fea47e51ae5d492fcd4f5a7da10e645ed6775f13"
+    },
+    {
+      "id": "integration-pr103-smc40-43-datasafety108-20261024-r15",
+      "sha256": "54f04db6a185357c4491547684e7fc132ff368c802faf87f0ee55939a8a736a4"
+    },
+    {
+      "id": "integration-pr103-r10-native-elite-pro-20261024",
+      "sha256": "c4ea992df419a113a1403236a90632e3dbe6fd6e909c98d7177ac96efd2dd1c8"
+    },
+    {
+      "id": "data-safety-pr109-slot-ack-integrity-20261024",
+      "sha256": "9a72ee90677f5bb6440e9a6bf1c9715f23dd0bb9ac663d5833b82ee7d2955f5b"
+    },
+    {
+      "id": "smc-solo-overflow-pr58-runner-20261024-r17",
+      "sha256": "2572f883adc9255b156a7aa9f6662c74bbaeb27611ce1ef70377b1d7eabf740d"
+    },
+    {
+      "id": "integration-pr103-smc58-solo-current-root-20261024-r17",
+      "sha256": "48fec8010b3580a303fa402930284fddd15cfd6e7fc8cd7cc2c69b4761138320"
+    },
+    {
+      "id": "smc-pr58-early-solo-ack-snapshot-20261024-r18",
+      "sha256": "493aeeaed8d1f8166b678ce93a70dad6a6df68ac7c981071123dacfb8d43034b"
+    },
+    {
+      "id": "integration-pr103-r12-native-solo-no-go-20261024-r18",
+      "sha256": "d844c20f93d5a99a4acc1718d9968d3f48a6000bb4d97602ca2f903e6ba218c9"
+    },
+    {
+      "id": "data-safety-pr110-ctl-echo-non7bit-no-go-20261024-r18",
+      "sha256": "cf721fb8a84219082ceb9966b957681b408e8d5907282abe5bd87f0893010cb7"
+    },
+    {
+      "id": "integration-pr103-r14-native-elite-pro-20261024",
+      "sha256": "5dda9ce786a7838c8786baa475160a6acfa4806172739668f14d838df9a844cc"
+    },
+    {
+      "id": "data-safety-pr110-r2-scoped-qa-20261024",
+      "sha256": "9edfee86dda288ac254297c6bff8afc01b33ff258856415703c2f7e97cd50c9a"
+    },
+    {
+      "id": "integration-pr103-r16-pr110-integrated-current-20261024",
+      "sha256": "df7e90d50fd56951dc130c54bd29ce15f2e38e15d7005d31a85e57dd7a51382f"
+    },
+    {
+      "id": "integration-pr103-r22-current-smc-host-harness-20261024",
+      "sha256": "3d7b43f94b1fcdae18663f4cdb99fcdf91702483566ca1a769cf1d792412d046"
+    },
+    {
+      "id": "producer-pr120-fresh-elite-pro-controller-20261024",
+      "sha256": "badd8a9f9a9eb448fb201ed769ad3798b2da5bbc83e71260f290c128908a3afd"
+    },
+    {
+      "id": "smc-pr122-r2-mmc-stop-project-reset-source-20261024",
+      "sha256": "94650843a3c24a90755b52447953d319910ca12ed9200f94318255c81e60763b"
+    },
+    {
+      "id": "bugfinder-bf020-pr123-legacy-bd-pan-motion-20261024",
+      "sha256": "b11df151a6bd19773c9267a1ba596d61abaf2b0714a02fc778e29e9498282563"
+    }
+  ]
+}

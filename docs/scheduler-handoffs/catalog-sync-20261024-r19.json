@@ -1,0 +1,135 @@
+{
+  "schema": "loopyx0x37-scheduler-handoff/1",
+  "evidence_revision": "catalog-pr3-r19-five-proof-digest-lock-r14-model-qa-r16-integrated-20261024",
+  "utc_date": "2026-10-24",
+  "owner": "X0X37 Build Catalog Sync",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "consumed_web_head": "57b2aee01525e905511f5bae10d5d27cd918efbd",
+  "consumed_web_root": "80173390ff20f6904b14c622d0199441394b5fc3",
+  "consumed_firmware": [
+    {
+      "pr": 103,
+      "head": "32fc37fdaacbdd2e9791723ee0da9a22193cd947",
+      "full_root": "89027dddcc55680d5a218b83e04f0e392ed01283",
+      "compiled_subtree": "5c209609b770fd13949230aeb80956594fd6b741",
+      "producer_revision": "safe-merge-pr103-smc58-early-snapshot-20261024-r14",
+      "builder_revision": "pr103-r14-32fc37f-native-20261024-r1",
+      "independent_byte_rehashes": [
+        "throughput-pr103-r14-independent-private-byte-tree-audit-20261024-r16",
+        "publisher-pr103-r14-exact-private-package-byte-admission-20261024-r1"
+      ],
+      "private_library_zip_sha256": "fd0c763b01d49496362dfb5e6cdef6dcaf0834e1ebfd2c04279c759a9208fcb6",
+      "private_controller_reused_not_recompiled": true,
+      "model_hashes": {
+        "elite": "d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c",
+        "pro": "cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c"
+      },
+      "builder_reported_compiler_exits": {
+        "elite": 0,
+        "pro": 0
+      },
+      "catalog_reran_compiler": false,
+      "stage": "BUILD_SUCCEEDED_UNREVIEWED_QA_PENDING_NONINSTALLABLE"
+    },
+    {
+      "pr": 110,
+      "head": "b5008faa87c2bb897a48f8a37df10b445bb26b77",
+      "full_root": "457e75b7e711f978f100dc99995e90fdd59a628f",
+      "compiled_subtree": "a32c68ba72eb21f77bfeccb1f86954db8823b244",
+      "revision": "data-safety-pr110-controller-address-echo-7bit-20261024-r2",
+      "independent_source_window_qa": "14/14 normal and optimized exit0, py_compile exit0; not full root",
+      "stage": "REVIEWED_IN_SCOPE"
+    },
+    {
+      "pr": 103,
+      "head": "2ac7bfe0f538275ad45a6d9f75e802dcbccd35c7",
+      "full_root": "a44bcbda32e831609faab3fbf9b361a8dc45e24e",
+      "compiled_subtree": "5c209609b770fd13949230aeb80956594fd6b741",
+      "revision": "safe-merge-pr103-r15-fm1-install-executable-20261024-r16",
+      "previous_integrated_sha": "f22d05719eed5283d71c71f3fac94e450150ed3d",
+      "stage": "SOURCE_ONLY_COMBINED_ROOT_QA_PENDING"
+    }
+  ],
+  "fixed_malicious_R10_proof_fields": [
+    "checker_sha256",
+    "log_sha256",
+    "results_sha256",
+    "models.elite.crc32",
+    "models.pro.crc32"
+  ],
+  "history_before": 112,
+  "history_after": 115,
+  "old_history_append_only": true,
+  "prior_build_generations_preserved": 2,
+  "new_ids": [
+    "integration-pr103-r14-native-elite-pro-20261024",
+    "data-safety-pr110-r2-scoped-qa-20261024",
+    "integration-pr103-r16-pr110-integrated-current-20261024"
+  ],
+  "actual_checks": [
+    {
+      "command": "connected GitHub exact commit/tree/PR/sha and R15-R16 changed-file compare",
+      "exit": 0,
+      "scope": "GIT_SOURCE_VERIFIED"
+    },
+    {
+      "command": "Original verify-build-status.mjs with Node import/fs/vm adapted to exact Git-content in-process V8",
+      "exit": 0,
+      "scope": "SCOPED_V8_NOT_NATIVE_NPM",
+      "assertion_invocations": 805309
+    },
+    {
+      "command": "Actual build-status-negatives.test.mjs mutation fixture body with Node filesystem/child spawn adapted to exact Git-content in-process V8",
+      "exit": 0,
+      "scope": "SCOPED_V8_NOT_NATIVE_PROCESS",
+      "positive_tests": 19,
+      "negative_rejections": 172
+    },
+    {
+      "command": "curl -IL --max-time 8 https://api.github.com",
+      "exit": 6,
+      "scope": "NATIVE_DNS_PRECHECK",
+      "reason": "Host could not resolve"
+    }
+  ],
+  "not_run": [
+    "native exact full website npm run build",
+    "native exact full website npm test",
+    "responsive Chromium",
+    "native firmware target build by Catalog",
+    "full combined firmware safety QA",
+    "external lawful immutable HTTP package SHA",
+    "device flash"
+  ],
+  "disposition": "SOURCE_COMPLETE_SCOPED_CHECKED_READY_FOR_INDEPENDENT_WEBSITE_QA_NO_MERGE_NO_PUBLIC_INSTALLABLE",
+  "next_owner_actions": [
+    {
+      "owner": "Independent NIGHTLY Website QA",
+      "action": "Run exact new PR3 combined-tree native npm build/test, malicious fixtures, responsive browser, attest SHA and review."
+    },
+    {
+      "owner": "Sole NIGHTLY Website Main Merger",
+      "action": "Only normal reviewed source-history PR3 integration after independent current-head QA. Empty picker allowed."
+    },
+    {
+      "owner": "Independent Firmware QA",
+      "action": "Full current PR103 R16 root SMC/303/controller/backup/restore/OTA/model/negative safety review."
+    },
+    {
+      "owner": "Hourly Build",
+      "action": "Attest byte-identical all R16 firmware/compiler/controller inputs before reuse of R14 real private model bytes, rebuild if inputs change."
+    },
+    {
+      "owner": "Sole NIGHTLY Pages Publisher",
+      "action": "Wait complete independent prehardware QA/controller/model/backup/integrity/source/license and lawful immutable external hosting/HTTP hash before new owner-installable DEV links."
+    }
+  ],
+  "device_observations": "UNKNOWN",
+  "installable_models": {
+    "elite": false,
+    "pro": false
+  },
+  "protected_refs_written": false,
+  "pages_written": false
+}

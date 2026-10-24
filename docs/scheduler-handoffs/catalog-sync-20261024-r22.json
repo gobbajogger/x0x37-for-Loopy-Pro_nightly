@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "role": "X0X37 Build Catalog Sync",
+  "evidence_revision": "catalog-pr3-r22-historic-dev-sha256-identity-pins-20261024-r1",
+  "date_utc": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "owned_pr": 3,
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "parent_commit": "2d1e33089d11ae83268881ec19ac9ab7b52e8f0d",
+  "parent_complete_website_tree": "dd29f8baec99c7889c74291187dc315fa5526617",
+  "before": {
+    "real_historic_dev_generations": 2,
+    "sha256_pinned_dev_model_identities": 0,
+    "sha256_pinned_history_rows": 115,
+    "attack": "Correctly formed model SHA, positive byte size and source SHA were accepted by validator"
+  },
+  "after": {
+    "real_historic_dev_generations": 2,
+    "sha256_pinned_dev_model_identities": 2,
+    "immutable_digests": {
+      "dev-20261022-1638-e894804": "1c4553362c36f725f50091fefb68416a3a95839b7b7806e9806e5cce2a0bf093",
+      "dev-20261022-1629-116d903": "1d59cd6c55087036cf02012d75bdc5a2aa42624cbfc7e8a5a618beef5e495c63"
+    },
+    "history_rows_preserved": 115,
+    "new_malicious_negative_fixtures": 6,
+    "new_positive_future_fixtures": 2
+  },
+  "tests": {
+    "scope": "Source-exact V8; Node fs/crypto/VM/assert adapters; NOT complete native npm or browser",
+    "R21_before": "6/6 malicious DEV identity forgeries ACCEPTED (RED)",
+    "R22_after": "6/6 same malicious cases REJECTED (GREEN)",
+    "legitimate_future_and_lifecycle": "2/2 ACCEPTED",
+    "R19_checksum_crc_integrity": "5/5 malicious proof SHA/CRC rejected",
+    "duplicate_status_nested_url": "4/4 malicious rejected",
+    "history_SHA256": "115/115 exact rows verified",
+    "source_generated_byte_parity": "PASS installer+sample importer+empty picker",
+    "new_node_test_syntax": "PASS V8 parse (not native Node execution)",
+    "native_npm_test": "NOT RUN - full exact-root checkout absent; container git DNS exit 128",
+    "native_npm_run_build": "NOT RUN - same",
+    "chromium_responsive": "NOT RUN - same"
+  },
+  "unchanged": {
+    "status_blob": "abd5b24f860625de296e3a83e29a326ff0013a37",
+    "picker_blob": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "installable_choices": 0,
+    "firmware_Elite_and_Pro": "PRIVATE BUILD_ONLY / QA_PENDING / NOT_INSTALLABLE"
+  },
+  "preservation": "R21 owner-device/public-proof fail-closed repair preserved; historical R19 R10 checksum+CRC locks and R20 115 history digests preserved",
+  "website_other_PR": {
+    "installer_safety_PR": 6,
+    "last_head": "ddbd8d89f7c4dfd5afa432dd51e940b6dd428592",
+    "reconciliation": "Main Merger must retain BOTH catalog tests and installer model/controller/download admission negatives in package.json"
+  },
+  "parallel_firmware": {
+    "SafeMerge_PR": 103,
+    "last_checked_head": "dc4669083218f17f8cfb69069e7f32911a232b52",
+    "compiler_tree": "5c209609b770fd13949230aeb80956594fd6b741",
+    "QA": "Physical OTA binding NEEDS CHANGES; source site review independent"
+  },
+  "current_gate": {
+    "producer": "SCOPED_CHECKED",
+    "independent_website_QA": "PENDING",
+    "sole_website_main_merge": "PENDING",
+    "pages_HTTP": "NOT_VERIFIED",
+    "physical_device": "UNKNOWN"
+  },
+  "next_owner": "Independent NIGHTLY Website QA on exact PR3 head, then sole Website Main Merger. Only Pages publisher may deploy. No actual firmware URL approved."
+}

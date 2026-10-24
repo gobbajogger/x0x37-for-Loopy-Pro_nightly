@@ -1,0 +1,143 @@
+{
+  "schema": "loopyx0x37-scheduler-handoff/1",
+  "evidence_revision": "catalog-pr3-smc58-reviewed-pr103-r12-build-unsafe-pr110-ctl-20261024-r18",
+  "utc_date": "2026-10-24",
+  "owner": "X0X37 Build Catalog Sync",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "consumed_website": {
+    "head": "0edc2a62309a8af0cda4d33aa23196d441b44ad2",
+    "status_blob": "656d8561afec4336915e1544b99ed132620c12ca",
+    "generated_blob": "656d8561afec4336915e1544b99ed132620c12ca",
+    "pr": 3,
+    "ready_for_independent_review": true
+  },
+  "consumed_firmware": [
+    {
+      "pr": 58,
+      "head": "e0c39288853ae3002caa153ad4a361e6c743755a",
+      "root": "cc1b9ebfa0770905515f61f3e60d14f541fee132",
+      "firmware_subtree": "7ec199e8bd479e713cbda8f0a0ca147aa23d3ab4",
+      "evidence_revision": "smc-pr58-solo-early-snapshot-20261024-r1",
+      "disposition": "SOURCE_READY_SCOPED_QA_REVIEWED_FULL_ROOT_PENDING"
+    },
+    {
+      "pr": 103,
+      "head": "8e8338792ca20508163a2b42b17ae542825da10a",
+      "root": "3609692ed833c5660028d2ed514e255877ca187a",
+      "firmware_subtree": "a32c68ba72eb21f77bfeccb1f86954db8823b244",
+      "build_revision": "hourly-build-pr103-r12-main-library-fresh-native-20261024-r1",
+      "qa_revision": "safe-merge-pr103-r12-solo-timer5-race-confirmed-20261024-r13",
+      "disposition": "ACTUAL_ELITE_PRO_BUILD_ONLY_SUCCEEDED_BUT_EXACT_SOURCE_SOLO_RACE_NO_GO",
+      "builder_reported_artifacts": {
+        "elite": {
+          "sha256": "130aefad7e1ea0714fb936f5cafadb195133edb05ba976e77e7901e9faf820e1",
+          "bytes": 651396,
+          "crc32": "98d430ce",
+          "exit": 0
+        },
+        "pro": {
+          "sha256": "2a8eccf5b7aec9d7c930e02add3e45184777e6eb49ed9d421ef2e475e875e15c",
+          "bytes": 651392,
+          "crc32": "c3b5092a",
+          "exit": 0
+        }
+      },
+      "controller": {
+        "sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+        "reused": true,
+        "joined_R12_unchecked": true
+      },
+      "independent_source_negative": {
+        "tests": 4,
+        "exit_each": 1,
+        "solo_latched": true
+      },
+      "catalog_compiled_or_rehashed": false
+    },
+    {
+      "pr": 110,
+      "head": "9e412020739ded51e0bfba4cabe32cd0fcd91a88",
+      "root": "1095c120dc67e68262c0bde05a059ee226ea321e",
+      "firmware_subtree": "a32c68ba72eb21f77bfeccb1f86954db8823b244",
+      "evidence_revision": "independent-qa-pr110-controller-header-7bit-alias-no-go-20261024-r1",
+      "disposition": "HOST_CONTROLLER_READBACK_HIGHBIT_ALIAS_NO_GO"
+    }
+  ],
+  "history_before": 109,
+  "history_after": 112,
+  "history_original_109_rows_preserved": true,
+  "checks": [
+    {
+      "command": "V8 new Function(read,assert) using GitHub exact scripts/verify-build-status.mjs with Node import/fs and HTML vm tail adapted; exact source/generated JSON and current HTML used",
+      "scope": "SCOPED_V8_NOT_FULL_NPM",
+      "observed_result": "PASS",
+      "full_status_assertions": 7758,
+      "empty_status_assertions": 74,
+      "negative_mutations_rejected": 11,
+      "expected_rejections": [
+        "unexpected-download",
+        "unknown-artifact-url",
+        "picker",
+        "forged-approval",
+        "installable",
+        "duplicate-id",
+        "invalid-status",
+        "wrong-model",
+        "nested-status-object",
+        "short-sha",
+        "unapproved-github-release"
+      ]
+    },
+    {
+      "command": "GitHub remote exact source/generated manifest blob comparison",
+      "observed_result": "PASS",
+      "source_docs_equal": true
+    },
+    {
+      "command": "git ls-remote https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly.git refs/heads/main",
+      "previous_attempt_exit": 128,
+      "scope": "NATIVE_SHELL_DNS_NOT_GITHUB_CONNECTOR",
+      "reason": "Could not resolve host github.com"
+    }
+  ],
+  "not_run": [
+    "native full exact-tree npm run build",
+    "native full exact-tree npm test",
+    "native full exact-tree responsive Chromium",
+    "Catalog target firmware compilation",
+    "lawful external immutable HTTP download/checksum",
+    "physical hardware"
+  ],
+  "disposition": "READ_ONLY_HISTORY_2_BUILDS_PLUS_112_NONINSTALLABLE_EVIDENCE; BOTH MODELS_NO_INSTALLABLE; PR3_SOURCE_READY_QA_PENDING",
+  "next_owner_actions": [
+    {
+      "owner": "Sole firmware Safe Merge",
+      "action": "Integrate independently scoped-reviewed PR58 current repaired SHA into PR103 and independently test complete combined Solo/303/backup/OTA source; no protected merge of failing draft."
+    },
+    {
+      "owner": "Data Safety producer",
+      "action": "Repair ED_CTL_READ high-bit echoed address safety negative in PR110 and submit new checked exact SHA to independent QA."
+    },
+    {
+      "owner": "Hourly Build",
+      "action": "Build exact changed eligible integration compiler input for Elite/Pro and matching private controller without waiting for QA/merge/hosting."
+    },
+    {
+      "owner": "Independent NIGHTLY Website QA",
+      "action": "Run exact PR3 head full npm build/test + malformed/continuity/Chromium parity; review."
+    },
+    {
+      "owner": "Sole NIGHTLY Website Main Merger",
+      "action": "After independent website QA, merge reviewed non-draft PR3 normally; truthful empty picker read-only history is independently mergeable."
+    },
+    {
+      "owner": "Sole NIGHTLY Publisher",
+      "action": "Only publish new per-model picker after complete independent firmware safety, backup/OTA, model/controller/source/license/immutable lawful external host and HTTP SHA; device physical PASS not required NIGHTLY."
+    }
+  ],
+  "device_evidence": "UNKNOWN",
+  "preview_picker": "EMPTY",
+  "publication": "NOT_PERFORMED",
+  "protected_refs_written": false
+}

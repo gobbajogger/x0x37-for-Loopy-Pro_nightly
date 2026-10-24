@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-preview.mjs",
-    "test": "node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs"
+    "test": "node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs && node tests/controller-padding.test.mjs && node tests/installer-download-admission.test.mjs && node tests/qualified-catalog.test.mjs && npm run catalog:check && node tests/build-status-negatives.test.mjs && node tests/build-history-continuity.test.mjs && node tests/installer-write-lock.test.mjs && node tests/installer-qualified-selection.test.mjs && node tests/installer-evidence-links.test.mjs",
+    "prepare:candidate": "node scripts/render-qualified-nightly.mjs",
+    "catalog:check": "node scripts/verify-build-status.mjs"
   }
 }

@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "role": "X0X37 Build Catalog Sync",
+  "evidence_revision": "catalog-pr3-r25-independent-real-private-pr120-byte-hash-plus-pr103-r22-20261024-r1",
+  "date_utc": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "owned_pr": 3,
+  "parent_head": "a5e9cc20c2a0fac4a21fed7fc435474bddc84073",
+  "parent_root_tree": "ca6c496ff4b24a8de19c513934619a6e737a497e",
+  "archive_policy": "No PRIVATE firmware or controller binary in public status, history, site, or PR; 0 downloadable versions.",
+  "history": {
+    "before": 115,
+    "after": 117,
+    "old_rows_SHA256_locked": 115,
+    "new_rows_SHA256_locked": 2,
+    "historic_dev_generations": 2,
+    "installable_candidates": 0
+  },
+  "integration_pr103_r22": {
+    "source_commit": "56c180450393f26859419ce13b479e45cb0c242d",
+    "source_root": "b3cd9031c4ec1693b5a0d1566a51d1c12054d5dd",
+    "firmware_subtree": "5c209609b770fd13949230aeb80956594fd6b741",
+    "stage": "SOURCE_ONLY_SAFETY_NO_GO",
+    "full_native_QA": "PENDING",
+    "current_ota_safety": "NEEDS_CHANGES",
+    "package_publication": "FORBIDDEN"
+  },
+  "pr120_private_byte_audit": {
+    "claim": "ACTUAL_PRIVATE_ZIP_SHA256_AND_THREE_EXTRACTED_MEMBERS_CRC_SHA256_CHECKED_IN_NATIVE_PYTHON__NOT_FIRMWARE_BUILD_OR_FULL_QA",
+    "archive_bytes": 1227915,
+    "archive_sha256": "5870b4e40002058e79239bb4db12e9409c56e59541e10d06bb777d17daf40fc9",
+    "provenance_bytes": 4287,
+    "provenance_sha256": "df40d7e035f451904c28ad53ee9fe09e60623ad6690d9e6ec0552db628bb6f8f",
+    "source_commit": "2d5742ee7c271168b6e78fc24100f9bae79e334d",
+    "source_root_tree": "20b4d99b62473c57a13f1facfde6b214360fff45",
+    "firmware_subtree": "5fe09b05151ebff1af5e5a176374bc1a96cdea58",
+    "ble_tree": "d0479e103e206e0e9649a7c734af8f1f11a718ca",
+    "assets_tree": "0e721b227239d885a77a12ef24d9f001604e3eb3",
+    "source_git_manifest_blob_sha": "0d5404a3aad27e1bda1fe68b6d26fc7e19db8da0",
+    "artifacts": {
+      "elite": {
+        "product": "SMK-37 Elite_900",
+        "bytes": 651396,
+        "sha256": "1a12ecebc5b93efd6e5c0f3cf31a242f9ff8a29a4aa695e3236b74b4c92c55bf",
+        "crc32": "df3c31c5"
+      },
+      "pro": {
+        "product": "SMK-37 Pro_900",
+        "bytes": 651392,
+        "sha256": "fc6f13a50baee5cd09b69f2dcf0ac282afa76735ef2b01a8c68c07f9f27a1a7d",
+        "crc32": "772d61ed"
+      },
+      "private_controller": {
+        "bytes": 65492,
+        "sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+        "crc32": "9c07ae67",
+        "redistribution_permitted": false
+      }
+    },
+    "provenance_kind": "PRIVATE main ChatGPT Library zip and JSON materialized; SHA checked with Python hashlib; native compiled exits only reported by distinct Builder",
+    "builder_evidence_comment": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/120#issuecomment-6383995752",
+    "native_builder_reported": "Fresh pinned Elite+Pro+controller exits 0, 6 GCC/Clang sanitizer host cases and 28/28 malformed/wrong-model negatives",
+    "full_source_scope": "Git blob replay selected build consuming subtrees and helper scripts only, NOT full-root checkout",
+    "independent_site_QA": "PENDING",
+    "independent_firmware_root_QA": "PENDING",
+    "owner_device": "NOT_TESTED",
+    "public_artifact_host": "NONE",
+    "immutable_http": "NOT_VERIFIED",
+    "distribution_approved": false,
+    "private_library_only": true
+  },
+  "tests": {
+    "prior_registered_negative_V8_case_count": 207,
+    "actual_native_exact_root_npm_test": "NOT_RUN",
+    "actual_native_exact_root_npm_build": "NOT_RUN",
+    "actual_native_Chromium": "NOT_RUN",
+    "installer_PR6_test_union": "NOT_RUN",
+    "git_smart_http": "DNS BLOCKED",
+    "new_scoped_V8_cases": [
+      {
+        "name": "RED R24 old validator accepted source-only append then deletion with adjusted count",
+        "verdict": "OLD_ACCEPTED"
+      },
+      {
+        "name": "full R25 baseline 117 read-only receipts",
+        "verdict": "ACCEPT"
+      },
+      {
+        "name": "delete last real native private build",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "delete two new receipts",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "swap new source + real build receipts",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge Elite 64hex SHA",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge Pro 64hex SHA",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge controller 64hex SHA",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge native current root",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge QA passed",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge public HTTP",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "insert firmware download",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge audit ZIP checksum",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge audited controller CRC",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge audit public permission",
+        "verdict": "REJECT"
+      },
+      {
+        "name": "forge audit site QA",
+        "verdict": "REJECT"
+      }
+    ],
+    "scoped_case_count": 16
+  },
+  "consumer": "Independent NIGHTLY Website QA -> sole Website Main Merger with separate PR6 test union -> sole Pages Publisher if qualified. Producer cannot independently approve or publish."
+}

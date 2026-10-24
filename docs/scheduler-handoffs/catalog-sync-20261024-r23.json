@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "role": "X0X37 Build Catalog Sync",
+  "evidence_revision": "catalog-pr3-r23-standalone-appendonly-history-enforcement-20261024-r1",
+  "date_utc": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "owned_pr": 3,
+  "source_parent": "272170a2b44b5345dac46600a6d43349028610e1",
+  "source_parent_root": "3994fc4632b5125e72425b02c569314d044bfb41",
+  "old_verifier_blob": "c612e5efed745763871dd233ef67bd8be0a3da9a",
+  "old_negative_test_blob": "7415f6c98db5ca5d859633f8b941f1e921906b96",
+  "immutable_fixture_blob": "077cce211d0e72dc68a8a53f34ded3f724b1bf8c",
+  "root_cause": "R22 standalone npm run catalog:check checks individual history shapes and counts but omits the separate SHA256-locked 115-row continuity fixture. It accepted trailing history deletion, 40hex source forgery and row reordering. R22 also newly SHA256-pins real historic DEV generations yet carries an obsolete test incorrectly expecting the entire populated catalog to be removable as a valid positive.",
+  "fix": "Enforce same immutable SHA256 history fixture directly in the standalone status validator, copy fixture into private regression temp roots, flip obsolete positive deletion fixture to required rejection, register three true fail-before/pass-after cases and a future noninstallable append positive.",
+  "exact_scoped_execution": {
+    "runtime": "Classic connected JavaScript V8, exact fetched Git source with only Node assert/fs/crypto/vm adapted; SHA256 of UTF8 JSON rows independently recalculated in JS",
+    "sha256_kat": "abc PASS",
+    "pinned_history": 115,
+    "variants": [
+      {
+        "name": "untouched",
+        "red": true,
+        "green": true
+      },
+      {
+        "name": "pinned-tail-delete",
+        "red": true,
+        "green": false
+      },
+      {
+        "name": "pinned-source-SHA-valid-shape-forgery",
+        "red": true,
+        "green": false
+      },
+      {
+        "name": "pinned-row-reorder",
+        "red": true,
+        "green": false
+      },
+      {
+        "name": "valid-append-only",
+        "red": true,
+        "green": true
+      },
+      {
+        "name": "old-build-identity-forgery",
+        "red": false,
+        "green": false
+      },
+      {
+        "name": "forged-public-latest",
+        "red": false,
+        "green": false
+      }
+    ],
+    "verdict": "SOURCE-SCOPED RED/GREEN PASS; NOT NATIVE NODE/npm/Chromium"
+  },
+  "actual_native": {
+    "git_ls_remote": "exit 128: container GitHub DNS unavailable",
+    "npm_test": "NOT RUN exact checkout missing",
+    "npm_build": "NOT RUN exact checkout missing",
+    "chromium": "NOT RUN exact checkout missing"
+  },
+  "unchanged": {
+    "status_blob": "abd5b24f860625de296e3a83e29a326ff0013a37",
+    "generated_status_blob": "abd5b24f860625de296e3a83e29a326ff0013a37",
+    "picker_blob": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "generated_picker_blob": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "history": 115,
+    "historic_dev_generations": 2,
+    "selectable_installer_versions": 0
+  },
+  "evidence_scope": "Public GPL browser/status source, no FW/controller/vendor SDK or hosted link",
+  "review": "Independent NIGHTLY Website QA must run exact-root native npm test/build, responsive browser, PR6 installer union and full integrity review. Only sole NIGHTLY Website Main Merger integrates source, sole Pages Publisher publishes after artifact gates."
+}
