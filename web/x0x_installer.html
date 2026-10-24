@@ -507,6 +507,7 @@ const TEXT = {
     ctlreadfail: "コントローラー画像を読み込めませんでした。もう一度選択してください。",
     ctlok: "ctl.img を確認しました。インストールに含めます。",
     ctlbad: "この ctl.img は使えません: ",
+    ctlmatch: "このビルドで検証された ctl.img を選択してください。",
     noproduct: "このバージョンには選んだ機種のパッケージがありません。",
     releasehint: "GitHub の Releases からも同じファイルを取れます。",
   },
@@ -595,6 +596,7 @@ const TEXT = {
     ctlreadfail: "Could not read that controller image. Choose it again.",
     ctlok: "ctl.img checked: the install includes it.",
     ctlbad: "This ctl.img cannot be used: ",
+    ctlmatch: "Select the exact ctl.img checked for this build.",
     noproduct: "No package for that model in this version.",
     releasehint: "The same files are also on the GitHub Releases page.",
   },
@@ -1074,12 +1076,27 @@ async function run(img, product, opts = {}) {
   $("stockgo").disabled = !stock || !$("stockconfirm").checked;
 }
 
-$("go").addEventListener("click", () => {
+$("go").addEventListener("click", async () => {
   if (!image || !selectedProduct || writing || $("go").disabled) return;
   if (!confirmWrite(selectedProduct)) return;
+  const ver = currentVersion(), pkg = ver && ver.models && ver.models[chosenModel];
+  const selectedImage = image, product = selectedProduct, controller = ctl, serial = loadSerial;
+  $("go").disabled = true;
+  if (pkg && pkg.controller_sha256) {
+    try {
+      if (!controller || await sha256Hex(controller) !== pkg.controller_sha256) {
+        sayK("ctlbad", t("ctlmatch"));
+        updateInstallGate();
+        return;
+      }
+    } catch (e) { sayK("ctlbad", e.message); updateInstallGate(); return; }
+    if (writing || loadSerial !== serial || image !== selectedImage || ctl !== controller || selectedProduct !== product) {
+      updateInstallGate(); return;
+    }
+  }
   let img = image;
   if (ctl) {
-    try { img = insertCtl(image, ctl); } catch (e) { sayK("ctlbad", e.message); return; }
+    try { img = insertCtl(image, ctl); } catch (e) { sayK("ctlbad", e.message); updateInstallGate(); return; }
   }
   $("go").disabled = true;   // sync before the first await in run()
   run(img, selectedProduct, { foreign: false });

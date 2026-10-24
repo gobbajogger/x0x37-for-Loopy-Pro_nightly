@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "date": "2026-10-24",
+  "kind": "qualified-nightly-renderer-repair",
+  "base_commit": "ddbd8d89f7c4dfd5afa432dd51e940b6dd428592",
+  "dependency": "Open website PR6 controller-tail/download guards; this is a stacked source-only change, not an independent main integration.",
+  "problem": "Only renderer rejected every nonempty firmware catalog.",
+  "changes": [
+    "Separate receipt-gated candidate preparation outside repository; empty default preserved",
+    "Source/build/model/budget/controller/QA/license evidence bindings and rejection cases",
+    "Fresh bounded no-redirect HTTPS download size/hash/model checks before output",
+    "Controller exact SHA-256 and asynchronous selection-race guard before run()"
+  ],
+  "checks": {
+    "npm_run_build": "PASS exit 0",
+    "npm_test": "PASS exit 0; existing suites plus 48 candidate-negative cases and four real-handler controller/race cases",
+    "node_syntax": "PASS",
+    "browser": "NOT RUN: no installed Chromium; native Playwright installation downloaded invalid/truncated ZIP, cannot claim responsive/rendered-browser PASS",
+    "download_tests": "Synthetic Response streams exercising actual verifier; no real candidate hosted/downloaded",
+    "firmware": "No firmware or vendor payload in website Git; native model builds are separately recorded in firmware receipt 332975a0c27009c73850110e309fe034264e3e13"
+  },
+  "status": "SOURCE CHECKED / BROWSER QA PENDING / NOT PUBLISHED / NOT INSTALLABLE",
+  "next_owner": "Independent website QA replay full native tests and real browser candidate flow; reconcile PR6; sole Nightly Main Merger then sole Pages publisher only after all gates.",
+  "known_external_gates": [
+    "Firmware OTA endpoint-name repair fails full installer/slot suites; independent resolution required",
+    "Browser OTA/restore still requires target-binding safety review",
+    "Accepted firmware nightly tree, lawful immutable external host and source/license notices",
+    "Written break-generator permission evidence absent from current firmware LICENSING.md",
+    "Independent site review and served HTTP hashes"
+  ],
+  "logs": {
+    "nightly-build.log": {
+      "sha256": "8739eb4a4672a3dbd7cef3a59cb878276cab90d4c48a6dd0cda88cdd9b3a7da7",
+      "bytes": 278
+    },
+    "nightly-tests.log": {
+      "sha256": "b38144ad3efb65f9d199d0ce6045fb9b6710e58281a17fbff32ada51d88084a4",
+      "bytes": 908
+    },
+    "nightly-browser.log": {
+      "sha256": "a5c23cadd642d5dd82acf5b400e890a1fcf1ceb7dc50d27eb0d20e1af3a8a981",
+      "bytes": 1032
+    },
+    "browser-setup.log": {
+      "sha256": "076be7ac326c36d331ee5fc47718b7ee22ec8a9f4c6f4cb4e6aee5216f2a0ed8",
+      "bytes": 5225
+    }
+  }
+}
