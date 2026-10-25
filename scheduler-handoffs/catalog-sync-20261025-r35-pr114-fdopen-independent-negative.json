@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-pr3-r35-pr114-r18-native-extract-independent-fdopen-negative-20261025",
+  "owner": "SOLE browser-only NIGHTLY status/history/catalog SOURCE producer",
+  "user_outcome": "Owners see factual native sample extraction recovery/failure status, without mistaking it for a firmware build, qualified download, browser defect or device PASS.",
+  "source": {
+    "repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "pr": 3,
+    "branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+    "parent_commit": "28ff8b647098e26df53e15ab29d451547b787cc6",
+    "parent_root": "443762ce5e6a0252848589241485685f578e43d8",
+    "base": "315ff5fd8ab811f54a2112b4cbbf6040197d0dcc",
+    "upstream_repo": "gobbajogger/X0X37-for-Loopy-Pro",
+    "upstream_pr": 114,
+    "upstream_source": "8361f45a0becb26426d51a795a9505e675cafd2b",
+    "upstream_root": "577e442f9d8a0a17062a845b8be8cd676a232e2e",
+    "compiled_firmware_tree": "5c209609b770fd13949230aeb80956594fd6b741",
+    "independent_qa_review": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/114#pullrequestreview-5640131582",
+    "upstream_producer_evidence": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/8361f45a0becb26426d51a795a9505e675cafd2b/docs/scheduler-handoffs/data-safety-pr114-r18-postcreate-fstat-rollback-20261025.json"
+  },
+  "catalog": {
+    "previous_immutable_rows": 124,
+    "new_immutable_rows": 125,
+    "record_id": "data-safety-pr114-r18-native-extract-fdopen-needs-changes-20261025",
+    "new_record_sha256": "5d131bd92c9201acb7363d7482c8f87c73cf29e381cc14da9abc2b482ca1cf7e",
+    "historical_dev_generations": 2,
+    "source_picker_count": 0,
+    "history_only": true
+  },
+  "producer_scoped_execution": {
+    "sha256_vectors": "known empty+abc PASS",
+    "old_unchanged_history_rows": "124/124 SHA256 PASS against fetched immutable Git bytes",
+    "new_history_rows": "125/125 SHA256 PASS scoped V8",
+    "negative_mutations": [
+      "delete",
+      "reorder",
+      "fake source",
+      "hide failure",
+      "flashable",
+      "device",
+      "distribution",
+      "download"
+    ],
+    "synthetic_future_append": "PASS immutable original 125 prefix",
+    "native_npm_test": "NOT RUN",
+    "native_npm_build": "NOT RUN",
+    "native_browser": "NOT RUN",
+    "live_https": "NOT VERIFIED",
+    "device": "NOT TESTED"
+  },
+  "upstream_independent_results": {
+    "reported_positive": "python3 -B sample_extract_safety_test.py R18-main.py exit 0 (19/19), optimized same",
+    "reported_failure": "python3 -B independent_extraction_negatives.py R18-main.py exit 1 (5/6), optimized same",
+    "result": "SCOPED REVIEWED fstat cleanup; NEEDS CHANGES os.fdopen FD leak; native full-root and OTA INCOMPLETE",
+    "scope": "Reported by upstream sole independent QA. Catalog did not execute/relabel these checks."
+  },
+  "next": "Existing independent Website QA review exact new PR3 head/root; sole website Main Merger integrates if eligible; separate Pages publisher verifies live bytes. Existing Data Safety PR114 owner fixes fdopen and independent firmware QA reviews.",
+  "guards": [
+    "no protected main/gh-pages writes",
+    "no public firmware/controller/vendor assets",
+    "source picker remains noninstallable",
+    "no self QA/merge",
+    "no hardware operations"
+  ]
+}

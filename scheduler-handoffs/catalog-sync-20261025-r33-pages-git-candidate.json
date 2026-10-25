@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-pr3-r33-pages-git-dev-candidate-observation-20261025",
+  "producer_role": "SOLE NIGHTLY browser-only status/history/catalog SOURCE",
+  "pr": 3,
+  "user_behavior": "Display publisher-controlled Pages Git candidate as truthful immutable read-only checkpoint without creating source firmware downloads or device claims.",
+  "source": {
+    "website_repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "own_prior_head": "c6a5aece5eb72a2c80d28ea54df423fb9656aa34",
+    "own_prior_root": "6e8bc1ccc6e7e32e7ffc36cfd56066b8e75f3702",
+    "website_base": "315ff5fd8ab811f54a2112b4cbbf6040197d0dcc",
+    "firmware_nightly": "54f2ffbc3124f7449a69067dc8215a2d91a2e675",
+    "firmware_root": "3b5cadafba33f4c1b116660bc9d19a27a892337c",
+    "compiler_subtree": "5c209609b770fd13949230aeb80956594fd6b741",
+    "publisher_pages_git": "b7af05f00a91056ca732b21cbe1dc719edbcb585",
+    "publisher_pages_tree": "9e192c467973368c407cf148099e35c6280b2eae",
+    "publisher_versions_blob": "519d9500c57848d5ed103fbd88befb5f43f6d020",
+    "publisher_version": "nightly-54f2ffbc-dev",
+    "publisher_date": "2026-10-24T18:08:58Z",
+    "previously_byte_audited_R14_source": "32fc37fdaacbdd2e9791723ee0da9a22193cd947"
+  },
+  "observed_pages_declaration": {
+    "hardware_tested": false,
+    "versions_count": 1,
+    "model_checks": {
+      "elite": {
+        "product": "SMK-37 Elite_900",
+        "declared_bytes": 651396,
+        "declared_sha256": "d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c",
+        "declared_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+      },
+      "pro": {
+        "product": "SMK-37 Pro_900",
+        "declared_bytes": 651392,
+        "declared_sha256": "cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c",
+        "declared_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+      }
+    }
+  },
+  "actual_checks": {
+    "sha256_known_answers": "4/4 UTF8 V8 PASS",
+    "existing_history": "123/123 SHA-256 PASS",
+    "new_history": "124/124 SHA-256 PASS",
+    "synthetic_negative_mutations": 7,
+    "prior_R14_model_metadata": "2/2 product,size,package SHA256,controller SHA256 matched existing independently byte-audited receipt; no new binary read",
+    "javascript_syntax": "V8 Function parse PASS after stripping ESM imports/import.meta; not Node runtime",
+    "git_shell": "exit 128 Could not resolve host github.com",
+    "npm_test": "NOT RUN",
+    "npm_build": "NOT RUN",
+    "chromium": "NOT RUN",
+    "binary_rehash": "NOT RUN",
+    "live_https": "NOT VERIFIED",
+    "physical_device": "NOT TESTED"
+  },
+  "source_status": {
+    "historical_rows_before": 123,
+    "historical_rows_after": 124,
+    "models_in_source_picker": 0,
+    "archive_models_falsely_requalified": 0,
+    "unchanged_historical_prefix": true
+  },
+  "next": "Existing Independent NIGHTLY Website QA at exact new PR3 SHA/root, then sole Website Main Merger; Pages publisher owns HTTP/deployment separately.",
+  "guard": "No protected refs/direct Pages writes, no firmware URL in source history, no self review/merge/flash/distribution."
+}

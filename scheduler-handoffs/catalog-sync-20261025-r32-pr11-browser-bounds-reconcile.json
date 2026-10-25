@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-pr3-r32-reconcile-main-pr11-browser-bounds-20261025",
+  "producer_role": "sole NIGHTLY status/history/catalog SOURCE",
+  "intended_user_behavior": "123 truthful immutable history records remain viewable, zero installable firmware; new accepted model/local-file preallocation browser guards and both test suites remain intact.",
+  "sources": {
+    "catalog_pr": 3,
+    "catalog_head_before": "6c767fb06c3b1ff8d17baf2a1234324a7fbd0035",
+    "catalog_tree_before": "ccb2835ecc407890124bdac06036230e07093b07",
+    "main_ref": "315ff5fd8ab811f54a2112b4cbbf6040197d0dcc",
+    "main_tree": "60a287591a756a67d3ea705f44c7e4ee3e63889b",
+    "merge_base": "5d1cf4db62f8700da7671b6b44a6c7dea989228c",
+    "main_pr11_merge": "315ff5fd8ab811f54a2112b4cbbf6040197d0dcc",
+    "main_browser_blob": "f0343f9e87a1d0eba548458dfdbd62068d2bbbaa",
+    "catalog_browser_blob": "7f8cc456c299745a89470dcc1cab5b84882f530f"
+  },
+  "change": {
+    "mode": "merge-commit-to-existing-owned-branch-only",
+    "one_three_way_overlap": "tests/browser-admission.py",
+    "added_history_rows": 1,
+    "all_11_nonoverlap_files_sha_pinned": true,
+    "existing_history_append_only": true,
+    "latest_main_source_provenance_preserved": true,
+    "latest_main_browser_local_file_safety_preserved": true,
+    "website_main_and_pages_unchanged": true
+  },
+  "scoped_checks": {
+    "independent_prior_exact_catalog_digest": "123/123 matched",
+    "current_producer_v8": "SHA256 standard vectors 3/3, immutable source 123/123, forged title digest rejection, trailing deletion rejection, generated/source parity, empty picker; all PASS on unchanged existing blob",
+    "merge_static": "exact PR3 browser two-hunk delta reproduced from common base; applied to latest main once; model/local file browser tests retained",
+    "native_git": "git ls-remote exit 128: Could not resolve host: github.com",
+    "npm_test": "NOT RUN on newly merged root",
+    "npm_build": "NOT RUN on newly merged root",
+    "browser_mobile": "NOT RUN on newly merged root",
+    "review": "PENDING exact merged head"
+  },
+  "owners": {
+    "next": "Independent NIGHTLY Website QA, then sole Website Main Merger; sole Pages Publisher separate",
+    "stop": "No website protected branch merge, no Pages or selectable NIGHTLY firmware without separate gates"
+  },
+  "no_firmware_or_controller_bytes": true
+}

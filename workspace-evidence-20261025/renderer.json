@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-10-25T05:58:27.981861+00:00",
+  "accepted_commit": "3862175d5815d2bd505ab04ca1c8e1868761a2e7",
+  "accepted_root": "87819bd7af981f8a7315875233f69ff720bc13ce",
+  "merged_nightly_commit_supplied_by_parent": "93449136baae02c9715ba20edc5c43176786b635",
+  "catalog_commit": "54f2ffbc3124f7449a69067dc8215a2d91a2e675",
+  "catalog_root": "3b5cadafba33f4c1b116660bc9d19a27a892337c",
+  "retrieval": "git archive <pin> firmware tests/host host tools assets into isolated evidence directory; no firmware modifications",
+  "renderer": "Production ui.c/gfx.c framebuffer via host/x0x_host.c png_write. Synthetic default project. No pixel painting, image generation or mock screenshot.",
+  "commands": [
+    {
+      "cwd": "task-28",
+      "command": "SMC_UI_OUT=$PWD/renderer-evidence/raw CC=/usr/bin/clang sh renderer-evidence/source/tests/host/renderer_capture.sh",
+      "exit": 0,
+      "checks": 191,
+      "log": "capture.log"
+    },
+    {
+      "cwd": "task-28",
+      "command": "SMC_UI_OUT=$PWD/renderer-evidence/accepted-generic-raw CC=/usr/bin/clang sh renderer-evidence/source/tests/host/catalog_capture.sh",
+      "exit": 0,
+      "checks": null,
+      "log": "accepted-generic.log"
+    },
+    {
+      "cwd": "task-28",
+      "command": "SMC_UI_OUT=$PWD/renderer-evidence/baseline-raw CC=/usr/bin/clang sh renderer-evidence/baseline-source/tests/host/catalog_capture.sh",
+      "exit": 0,
+      "checks": null,
+      "log": "baseline-capture.log"
+    }
+  ],
+  "blobs": {
+    "firmware/src/app/ui.c": {
+      "3862175d5815d2bd505ab04ca1c8e1868761a2e7": "f16fb25abec5aad055098d674ade75e560f759e0",
+      "54f2ffbc3124f7449a69067dc8215a2d91a2e675": "0c661c870f537348070fd3aaff665ced3bc97cd0"
+    },
+    "firmware/src/gfx.c": {
+      "3862175d5815d2bd505ab04ca1c8e1868761a2e7": "7bd2139116c95d2505d58a27f6c562e715ab9687",
+      "54f2ffbc3124f7449a69067dc8215a2d91a2e675": "7bd2139116c95d2505d58a27f6c562e715ab9687"
+    },
+    "firmware/src/app/smc_mixer.c": {
+      "3862175d5815d2bd505ab04ca1c8e1868761a2e7": "c9a1b3036ef0575ad502ae0ef1ae19644df49daf",
+      "54f2ffbc3124f7449a69067dc8215a2d91a2e675": "deb1fd13416bbbdb6e73ac05d382ef5880664903"
+    },
+    "host/x0x_host.c": {
+      "3862175d5815d2bd505ab04ca1c8e1868761a2e7": "6943ba53dda0fd5c304297b6d9fc1f4ce322f2e1",
+      "54f2ffbc3124f7449a69067dc8215a2d91a2e675": "6943ba53dda0fd5c304297b6d9fc1f4ce322f2e1"
+    },
+    "tests/host/smc_ui_test.c": {
+      "3862175d5815d2bd505ab04ca1c8e1868761a2e7": "3e31ae9b9bb78b8f5f9053d9b2c05c2857d52d08",
+      "54f2ffbc3124f7449a69067dc8215a2d91a2e675": null
+    },
+    "tests/host/smc_ui_test.sh": {
+      "3862175d5815d2bd505ab04ca1c8e1868761a2e7": "d97cc2c28fbb4d1e32e96dad834a9add11fe100b",
+      "54f2ffbc3124f7449a69067dc8215a2d91a2e675": null
+    },
+    "tools/gen_font.py": {
+      "3862175d5815d2bd505ab04ca1c8e1868761a2e7": "b68b07c5938e9571c5590e1e878a1dfcf3446e5d",
+      "54f2ffbc3124f7449a69067dc8215a2d91a2e675": "b68b07c5938e9571c5590e1e878a1dfcf3446e5d"
+    }
+  },
+  "images": [
+    {
+      "file": "renderer-evidence/images/home.png",
+      "width": 240,
+      "height": 240,
+      "sha256": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+      "catalog_applicability": "byte-identical PNG from separately compiled offered source at same synthetic state",
+      "baseline_sha256": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+      "visually_inspected": true
+    },
+    {
+      "file": "renderer-evidence/images/mixer.png",
+      "width": 240,
+      "height": 240,
+      "sha256": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+      "catalog_applicability": "byte-identical PNG from separately compiled offered source at same synthetic state",
+      "baseline_sha256": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+      "visually_inspected": true
+    },
+    {
+      "file": "renderer-evidence/images/effects.png",
+      "width": 240,
+      "height": 240,
+      "sha256": "3b8d1cf63a4539f64469a3ce7207745be4932a97f2690439f4499dc3908786c3",
+      "catalog_applicability": "byte-identical PNG from separately compiled offered source at same synthetic state",
+      "baseline_sha256": "3b8d1cf63a4539f64469a3ce7207745be4932a97f2690439f4499dc3908786c3",
+      "visually_inspected": true
+    },
+    {
+      "file": "renderer-evidence/images/smc-control-preview.png",
+      "width": 240,
+      "height": 240,
+      "sha256": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f",
+      "catalog_applicability": "newer accepted-source preview only; NOT currently offered catalog",
+      "baseline_sha256": null,
+      "visually_inspected": true
+    }
+  ],
+  "limitations": [
+    "Host framebuffer evidence, no GUI/hardware/device/flash test.",
+    "SMC image is newer accepted-source preview only; offered catalog lacks this temporary full-screen UI.",
+    "Generic render equivalence is limited to shown states.",
+    "No Pause lock claim; PR150 outside accepted pin.",
+    "Clip grid/storage are test substitutes, not visible in delivered images.",
+    "No personal media, names or proprietary assets in image content. Font is bundled SIL OFL; internal DSP generation uses pinned GPL repository drum assets and procedural built-in break synthesis."
+  ],
+  "resolved_setup": [
+    "Initial archive omitted fonts, then repository drum-generation inputs. Restored exact pinned assets, reran successfully. No denied/pending/uncertain actions."
+  ],
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+  "file_sha256": {
+    "accepted-generic-raw/effects.png": "3b8d1cf63a4539f64469a3ce7207745be4932a97f2690439f4499dc3908786c3",
+    "accepted-generic-raw/generate.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accepted-generic-raw/home.png": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+    "accepted-generic-raw/mixer.png": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+    "accepted-generic.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "baseline-capture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "baseline-raw/effects.png": "3b8d1cf63a4539f64469a3ce7207745be4932a97f2690439f4499dc3908786c3",
+    "baseline-raw/generate.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "baseline-raw/home.png": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+    "baseline-raw/mixer.png": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+    "baseline-source/tests/host/catalog_capture.c": "fdc2c1d6c37edcb2b3a7bcf2b505861b380dd5554ef8eb2e4c738e7eaf801fe0",
+    "baseline-source/tests/host/catalog_capture.sh": "00894aef15b3d6ac48bbfb2aa9dd9879c1f070403b9edfc9c93e87c2232c18ce",
+    "capture.log": "b25385c914668352d603ceba73bbe94c94292e734af2b3a9b20139eb874482a7",
+    "images/effects.png": "3b8d1cf63a4539f64469a3ce7207745be4932a97f2690439f4499dc3908786c3",
+    "images/home.png": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+    "images/mixer.png": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+    "images/smc-control-preview.png": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f",
+    "raw/01-main-pickup.png": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f",
+    "raw/02-home-restored.png": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+    "raw/03-picked-fader.png": "8710485074ae934a072ee3709e50bb9c76e39dacf000bf130ebc7fc8ef033600",
+    "raw/04-delay-knob.png": "c9977f66c3fc94cd2c1a032c080bb092f8efc7d39de0ff5418703a8e9578a069",
+    "raw/05-clip-grid-smc.png": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f",
+    "raw/06-clip-wait-smc.png": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f",
+    "raw/07-clip-field.png": "b6f0bbc4c6f892f77c62e1d66c145904682d7076fe3a96f75c46870a9cc8019b",
+    "raw/08-mute-action.png": "177d628062f0f46b260ea09b8e7188ad9a33161d7524d0257ce70802951fbaa8",
+    "raw/feature-drum-mixer.png": "f07ecadd3674cb4268fb9170a5a12649c81f17cf9cf9d330307bd73b414b8917",
+    "raw/feature-effects.png": "91248b9b7418763e2eda9aadc9fc604c71704a1b0db9320e449bbec44bf02e0a",
+    "raw/generate.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source/tests/host/catalog_capture.c": "fdc2c1d6c37edcb2b3a7bcf2b505861b380dd5554ef8eb2e4c738e7eaf801fe0",
+    "source/tests/host/catalog_capture.sh": "00894aef15b3d6ac48bbfb2aa9dd9879c1f070403b9edfc9c93e87c2232c18ce",
+    "source/tests/host/renderer_capture.c": "01ea94304f86fcdc9cee9a5b1dbe2791bab6ad347b64d5fa8af704838244bf82",
+    "source/tests/host/renderer_capture.sh": "63db7085c3b041629b8ab713854f6a97391f591b6edc00292abf4d34aa389044",
+    "source/tests/host/smc_ui_test.c": "69a7e360bd18dbcfa991e486d0887e7e76189c63835524aa2713915139629c3b",
+    "source/tests/host/smc_ui_test.sh": "06c32b2070a837d58f56991be27c8443afcb8a1d4261ec99cd27ea2dae9ea41d"
+  }
+}

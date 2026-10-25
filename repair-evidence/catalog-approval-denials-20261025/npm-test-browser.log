@@ -1,0 +1,612 @@
+
+> x0x37-nightly-installer-preview@0.0.0-dev test:browser
+> python3 tests/browser-admission.py && python3 tests/history-response.py
+
+Chromium 154.0.8037.57
+CHECK 1 pro existing public DEV metadata remains admitted without optional hints
+CHECK 2 pro public metadata alone never enables download or install
+CHECK 3 elite existing public DEV metadata remains admitted without optional hints
+CHECK 4 elite public metadata alone never enables download or install
+CHECK 5 pro/version/qualified=false denies before fetch despite dev-checked status
+CHECK 6 pro/version/qualified=null denies before fetch despite dev-checked status
+CHECK 7 pro/version/qualified=0 denies before fetch despite dev-checked status
+CHECK 8 pro/version/qualified=1 denies before fetch despite dev-checked status
+CHECK 9 pro/version/qualified="false" denies before fetch despite dev-checked status
+CHECK 10 pro/version/qualified="true" denies before fetch despite dev-checked status
+CHECK 11 pro/version/qualified=[] denies before fetch despite dev-checked status
+CHECK 12 pro/version/qualified={} denies before fetch despite dev-checked status
+CHECK 13 pro/version/qualified=true preserves verified Blob and acknowledgement gate
+CHECK 14 pro/version/qualified cached download/install denial precedes MIDI
+CHECK 15 pro/version/qualified no page errors
+CHECK 16 pro/version/installable=false denies before fetch despite dev-checked status
+CHECK 17 pro/version/installable=null denies before fetch despite dev-checked status
+CHECK 18 pro/version/installable=0 denies before fetch despite dev-checked status
+CHECK 19 pro/version/installable=1 denies before fetch despite dev-checked status
+CHECK 20 pro/version/installable="false" denies before fetch despite dev-checked status
+CHECK 21 pro/version/installable="true" denies before fetch despite dev-checked status
+CHECK 22 pro/version/installable=[] denies before fetch despite dev-checked status
+CHECK 23 pro/version/installable={} denies before fetch despite dev-checked status
+CHECK 24 pro/version/installable=true preserves verified Blob and acknowledgement gate
+CHECK 25 pro/version/installable cached download/install denial precedes MIDI
+CHECK 26 pro/version/installable no page errors
+CHECK 27 pro/version/qa_pass=false denies before fetch despite dev-checked status
+CHECK 28 pro/version/qa_pass=null denies before fetch despite dev-checked status
+CHECK 29 pro/version/qa_pass=0 denies before fetch despite dev-checked status
+CHECK 30 pro/version/qa_pass=1 denies before fetch despite dev-checked status
+CHECK 31 pro/version/qa_pass="false" denies before fetch despite dev-checked status
+CHECK 32 pro/version/qa_pass="true" denies before fetch despite dev-checked status
+CHECK 33 pro/version/qa_pass=[] denies before fetch despite dev-checked status
+CHECK 34 pro/version/qa_pass={} denies before fetch despite dev-checked status
+CHECK 35 pro/version/qa_pass=true preserves verified Blob and acknowledgement gate
+CHECK 36 pro/version/qa_pass cached download/install denial precedes MIDI
+CHECK 37 pro/version/qa_pass no page errors
+CHECK 38 pro/version/source_licenses_approved=false denies before fetch despite dev-checked status
+CHECK 39 pro/version/source_licenses_approved=null denies before fetch despite dev-checked status
+CHECK 40 pro/version/source_licenses_approved=0 denies before fetch despite dev-checked status
+CHECK 41 pro/version/source_licenses_approved=1 denies before fetch despite dev-checked status
+CHECK 42 pro/version/source_licenses_approved="false" denies before fetch despite dev-checked status
+CHECK 43 pro/version/source_licenses_approved="true" denies before fetch despite dev-checked status
+CHECK 44 pro/version/source_licenses_approved=[] denies before fetch despite dev-checked status
+CHECK 45 pro/version/source_licenses_approved={} denies before fetch despite dev-checked status
+CHECK 46 pro/version/source_licenses_approved=true preserves verified Blob and acknowledgement gate
+CHECK 47 pro/version/source_licenses_approved cached download/install denial precedes MIDI
+CHECK 48 pro/version/source_licenses_approved no page errors
+CHECK 49 pro/version/immutable_http_pass=false denies before fetch despite dev-checked status
+CHECK 50 pro/version/immutable_http_pass=null denies before fetch despite dev-checked status
+CHECK 51 pro/version/immutable_http_pass=0 denies before fetch despite dev-checked status
+CHECK 52 pro/version/immutable_http_pass=1 denies before fetch despite dev-checked status
+CHECK 53 pro/version/immutable_http_pass="false" denies before fetch despite dev-checked status
+CHECK 54 pro/version/immutable_http_pass="true" denies before fetch despite dev-checked status
+CHECK 55 pro/version/immutable_http_pass=[] denies before fetch despite dev-checked status
+CHECK 56 pro/version/immutable_http_pass={} denies before fetch despite dev-checked status
+CHECK 57 pro/version/immutable_http_pass=true preserves verified Blob and acknowledgement gate
+CHECK 58 pro/version/immutable_http_pass cached download/install denial precedes MIDI
+CHECK 59 pro/version/immutable_http_pass no page errors
+CHECK 60 pro/version/backup_integrity_pass=false denies before fetch despite dev-checked status
+CHECK 61 pro/version/backup_integrity_pass=null denies before fetch despite dev-checked status
+CHECK 62 pro/version/backup_integrity_pass=0 denies before fetch despite dev-checked status
+CHECK 63 pro/version/backup_integrity_pass=1 denies before fetch despite dev-checked status
+CHECK 64 pro/version/backup_integrity_pass="false" denies before fetch despite dev-checked status
+CHECK 65 pro/version/backup_integrity_pass="true" denies before fetch despite dev-checked status
+CHECK 66 pro/version/backup_integrity_pass=[] denies before fetch despite dev-checked status
+CHECK 67 pro/version/backup_integrity_pass={} denies before fetch despite dev-checked status
+CHECK 68 pro/version/backup_integrity_pass=true preserves verified Blob and acknowledgement gate
+CHECK 69 pro/version/backup_integrity_pass cached download/install denial precedes MIDI
+CHECK 70 pro/version/backup_integrity_pass no page errors
+CHECK 71 pro/version/model_and_controller_pass=false denies before fetch despite dev-checked status
+CHECK 72 pro/version/model_and_controller_pass=null denies before fetch despite dev-checked status
+CHECK 73 pro/version/model_and_controller_pass=0 denies before fetch despite dev-checked status
+CHECK 74 pro/version/model_and_controller_pass=1 denies before fetch despite dev-checked status
+CHECK 75 pro/version/model_and_controller_pass="false" denies before fetch despite dev-checked status
+CHECK 76 pro/version/model_and_controller_pass="true" denies before fetch despite dev-checked status
+CHECK 77 pro/version/model_and_controller_pass=[] denies before fetch despite dev-checked status
+CHECK 78 pro/version/model_and_controller_pass={} denies before fetch despite dev-checked status
+CHECK 79 pro/version/model_and_controller_pass=true preserves verified Blob and acknowledgement gate
+CHECK 80 pro/version/model_and_controller_pass cached download/install denial precedes MIDI
+CHECK 81 pro/version/model_and_controller_pass no page errors
+CHECK 82 pro/package/qualified=false denies before fetch despite dev-checked status
+CHECK 83 pro/package/qualified=null denies before fetch despite dev-checked status
+CHECK 84 pro/package/qualified=0 denies before fetch despite dev-checked status
+CHECK 85 pro/package/qualified=1 denies before fetch despite dev-checked status
+CHECK 86 pro/package/qualified="false" denies before fetch despite dev-checked status
+CHECK 87 pro/package/qualified="true" denies before fetch despite dev-checked status
+CHECK 88 pro/package/qualified=[] denies before fetch despite dev-checked status
+CHECK 89 pro/package/qualified={} denies before fetch despite dev-checked status
+CHECK 90 pro/package/qualified=true preserves verified Blob and acknowledgement gate
+CHECK 91 pro/package/qualified cached download/install denial precedes MIDI
+CHECK 92 pro/package/qualified no page errors
+CHECK 93 pro/package/installable=false denies before fetch despite dev-checked status
+CHECK 94 pro/package/installable=null denies before fetch despite dev-checked status
+CHECK 95 pro/package/installable=0 denies before fetch despite dev-checked status
+CHECK 96 pro/package/installable=1 denies before fetch despite dev-checked status
+CHECK 97 pro/package/installable="false" denies before fetch despite dev-checked status
+CHECK 98 pro/package/installable="true" denies before fetch despite dev-checked status
+CHECK 99 pro/package/installable=[] denies before fetch despite dev-checked status
+CHECK 100 pro/package/installable={} denies before fetch despite dev-checked status
+CHECK 101 pro/package/installable=true preserves verified Blob and acknowledgement gate
+CHECK 102 pro/package/installable cached download/install denial precedes MIDI
+CHECK 103 pro/package/installable no page errors
+CHECK 104 pro/package/qa_pass=false denies before fetch despite dev-checked status
+CHECK 105 pro/package/qa_pass=null denies before fetch despite dev-checked status
+CHECK 106 pro/package/qa_pass=0 denies before fetch despite dev-checked status
+CHECK 107 pro/package/qa_pass=1 denies before fetch despite dev-checked status
+CHECK 108 pro/package/qa_pass="false" denies before fetch despite dev-checked status
+CHECK 109 pro/package/qa_pass="true" denies before fetch despite dev-checked status
+CHECK 110 pro/package/qa_pass=[] denies before fetch despite dev-checked status
+CHECK 111 pro/package/qa_pass={} denies before fetch despite dev-checked status
+CHECK 112 pro/package/qa_pass=true preserves verified Blob and acknowledgement gate
+CHECK 113 pro/package/qa_pass cached download/install denial precedes MIDI
+CHECK 114 pro/package/qa_pass no page errors
+CHECK 115 pro/package/source_licenses_approved=false denies before fetch despite dev-checked status
+CHECK 116 pro/package/source_licenses_approved=null denies before fetch despite dev-checked status
+CHECK 117 pro/package/source_licenses_approved=0 denies before fetch despite dev-checked status
+CHECK 118 pro/package/source_licenses_approved=1 denies before fetch despite dev-checked status
+CHECK 119 pro/package/source_licenses_approved="false" denies before fetch despite dev-checked status
+CHECK 120 pro/package/source_licenses_approved="true" denies before fetch despite dev-checked status
+CHECK 121 pro/package/source_licenses_approved=[] denies before fetch despite dev-checked status
+CHECK 122 pro/package/source_licenses_approved={} denies before fetch despite dev-checked status
+CHECK 123 pro/package/source_licenses_approved=true preserves verified Blob and acknowledgement gate
+CHECK 124 pro/package/source_licenses_approved cached download/install denial precedes MIDI
+CHECK 125 pro/package/source_licenses_approved no page errors
+CHECK 126 pro/package/immutable_http_pass=false denies before fetch despite dev-checked status
+CHECK 127 pro/package/immutable_http_pass=null denies before fetch despite dev-checked status
+CHECK 128 pro/package/immutable_http_pass=0 denies before fetch despite dev-checked status
+CHECK 129 pro/package/immutable_http_pass=1 denies before fetch despite dev-checked status
+CHECK 130 pro/package/immutable_http_pass="false" denies before fetch despite dev-checked status
+CHECK 131 pro/package/immutable_http_pass="true" denies before fetch despite dev-checked status
+CHECK 132 pro/package/immutable_http_pass=[] denies before fetch despite dev-checked status
+CHECK 133 pro/package/immutable_http_pass={} denies before fetch despite dev-checked status
+CHECK 134 pro/package/immutable_http_pass=true preserves verified Blob and acknowledgement gate
+CHECK 135 pro/package/immutable_http_pass cached download/install denial precedes MIDI
+CHECK 136 pro/package/immutable_http_pass no page errors
+CHECK 137 pro/package/backup_integrity_pass=false denies before fetch despite dev-checked status
+CHECK 138 pro/package/backup_integrity_pass=null denies before fetch despite dev-checked status
+CHECK 139 pro/package/backup_integrity_pass=0 denies before fetch despite dev-checked status
+CHECK 140 pro/package/backup_integrity_pass=1 denies before fetch despite dev-checked status
+CHECK 141 pro/package/backup_integrity_pass="false" denies before fetch despite dev-checked status
+CHECK 142 pro/package/backup_integrity_pass="true" denies before fetch despite dev-checked status
+CHECK 143 pro/package/backup_integrity_pass=[] denies before fetch despite dev-checked status
+CHECK 144 pro/package/backup_integrity_pass={} denies before fetch despite dev-checked status
+CHECK 145 pro/package/backup_integrity_pass=true preserves verified Blob and acknowledgement gate
+CHECK 146 pro/package/backup_integrity_pass cached download/install denial precedes MIDI
+CHECK 147 pro/package/backup_integrity_pass no page errors
+CHECK 148 pro/package/model_and_controller_pass=false denies before fetch despite dev-checked status
+CHECK 149 pro/package/model_and_controller_pass=null denies before fetch despite dev-checked status
+CHECK 150 pro/package/model_and_controller_pass=0 denies before fetch despite dev-checked status
+CHECK 151 pro/package/model_and_controller_pass=1 denies before fetch despite dev-checked status
+CHECK 152 pro/package/model_and_controller_pass="false" denies before fetch despite dev-checked status
+CHECK 153 pro/package/model_and_controller_pass="true" denies before fetch despite dev-checked status
+CHECK 154 pro/package/model_and_controller_pass=[] denies before fetch despite dev-checked status
+CHECK 155 pro/package/model_and_controller_pass={} denies before fetch despite dev-checked status
+CHECK 156 pro/package/model_and_controller_pass=true preserves verified Blob and acknowledgement gate
+CHECK 157 pro/package/model_and_controller_pass cached download/install denial precedes MIDI
+CHECK 158 pro/package/model_and_controller_pass no page errors
+CHECK 159 elite/version/qualified=false denies before fetch despite dev-checked status
+CHECK 160 elite/version/qualified=null denies before fetch despite dev-checked status
+CHECK 161 elite/version/qualified=0 denies before fetch despite dev-checked status
+CHECK 162 elite/version/qualified=1 denies before fetch despite dev-checked status
+CHECK 163 elite/version/qualified="false" denies before fetch despite dev-checked status
+CHECK 164 elite/version/qualified="true" denies before fetch despite dev-checked status
+CHECK 165 elite/version/qualified=[] denies before fetch despite dev-checked status
+CHECK 166 elite/version/qualified={} denies before fetch despite dev-checked status
+CHECK 167 elite/version/qualified=true preserves verified Blob and acknowledgement gate
+CHECK 168 elite/version/qualified cached download/install denial precedes MIDI
+CHECK 169 elite/version/qualified no page errors
+CHECK 170 elite/version/installable=false denies before fetch despite dev-checked status
+CHECK 171 elite/version/installable=null denies before fetch despite dev-checked status
+CHECK 172 elite/version/installable=0 denies before fetch despite dev-checked status
+CHECK 173 elite/version/installable=1 denies before fetch despite dev-checked status
+CHECK 174 elite/version/installable="false" denies before fetch despite dev-checked status
+CHECK 175 elite/version/installable="true" denies before fetch despite dev-checked status
+CHECK 176 elite/version/installable=[] denies before fetch despite dev-checked status
+CHECK 177 elite/version/installable={} denies before fetch despite dev-checked status
+CHECK 178 elite/version/installable=true preserves verified Blob and acknowledgement gate
+CHECK 179 elite/version/installable cached download/install denial precedes MIDI
+CHECK 180 elite/version/installable no page errors
+CHECK 181 elite/version/qa_pass=false denies before fetch despite dev-checked status
+CHECK 182 elite/version/qa_pass=null denies before fetch despite dev-checked status
+CHECK 183 elite/version/qa_pass=0 denies before fetch despite dev-checked status
+CHECK 184 elite/version/qa_pass=1 denies before fetch despite dev-checked status
+CHECK 185 elite/version/qa_pass="false" denies before fetch despite dev-checked status
+CHECK 186 elite/version/qa_pass="true" denies before fetch despite dev-checked status
+CHECK 187 elite/version/qa_pass=[] denies before fetch despite dev-checked status
+CHECK 188 elite/version/qa_pass={} denies before fetch despite dev-checked status
+CHECK 189 elite/version/qa_pass=true preserves verified Blob and acknowledgement gate
+CHECK 190 elite/version/qa_pass cached download/install denial precedes MIDI
+CHECK 191 elite/version/qa_pass no page errors
+CHECK 192 elite/version/source_licenses_approved=false denies before fetch despite dev-checked status
+CHECK 193 elite/version/source_licenses_approved=null denies before fetch despite dev-checked status
+CHECK 194 elite/version/source_licenses_approved=0 denies before fetch despite dev-checked status
+CHECK 195 elite/version/source_licenses_approved=1 denies before fetch despite dev-checked status
+CHECK 196 elite/version/source_licenses_approved="false" denies before fetch despite dev-checked status
+CHECK 197 elite/version/source_licenses_approved="true" denies before fetch despite dev-checked status
+CHECK 198 elite/version/source_licenses_approved=[] denies before fetch despite dev-checked status
+CHECK 199 elite/version/source_licenses_approved={} denies before fetch despite dev-checked status
+CHECK 200 elite/version/source_licenses_approved=true preserves verified Blob and acknowledgement gate
+CHECK 201 elite/version/source_licenses_approved cached download/install denial precedes MIDI
+CHECK 202 elite/version/source_licenses_approved no page errors
+CHECK 203 elite/version/immutable_http_pass=false denies before fetch despite dev-checked status
+CHECK 204 elite/version/immutable_http_pass=null denies before fetch despite dev-checked status
+CHECK 205 elite/version/immutable_http_pass=0 denies before fetch despite dev-checked status
+CHECK 206 elite/version/immutable_http_pass=1 denies before fetch despite dev-checked status
+CHECK 207 elite/version/immutable_http_pass="false" denies before fetch despite dev-checked status
+CHECK 208 elite/version/immutable_http_pass="true" denies before fetch despite dev-checked status
+CHECK 209 elite/version/immutable_http_pass=[] denies before fetch despite dev-checked status
+CHECK 210 elite/version/immutable_http_pass={} denies before fetch despite dev-checked status
+CHECK 211 elite/version/immutable_http_pass=true preserves verified Blob and acknowledgement gate
+CHECK 212 elite/version/immutable_http_pass cached download/install denial precedes MIDI
+CHECK 213 elite/version/immutable_http_pass no page errors
+CHECK 214 elite/version/backup_integrity_pass=false denies before fetch despite dev-checked status
+CHECK 215 elite/version/backup_integrity_pass=null denies before fetch despite dev-checked status
+CHECK 216 elite/version/backup_integrity_pass=0 denies before fetch despite dev-checked status
+CHECK 217 elite/version/backup_integrity_pass=1 denies before fetch despite dev-checked status
+CHECK 218 elite/version/backup_integrity_pass="false" denies before fetch despite dev-checked status
+CHECK 219 elite/version/backup_integrity_pass="true" denies before fetch despite dev-checked status
+CHECK 220 elite/version/backup_integrity_pass=[] denies before fetch despite dev-checked status
+CHECK 221 elite/version/backup_integrity_pass={} denies before fetch despite dev-checked status
+CHECK 222 elite/version/backup_integrity_pass=true preserves verified Blob and acknowledgement gate
+CHECK 223 elite/version/backup_integrity_pass cached download/install denial precedes MIDI
+CHECK 224 elite/version/backup_integrity_pass no page errors
+CHECK 225 elite/version/model_and_controller_pass=false denies before fetch despite dev-checked status
+CHECK 226 elite/version/model_and_controller_pass=null denies before fetch despite dev-checked status
+CHECK 227 elite/version/model_and_controller_pass=0 denies before fetch despite dev-checked status
+CHECK 228 elite/version/model_and_controller_pass=1 denies before fetch despite dev-checked status
+CHECK 229 elite/version/model_and_controller_pass="false" denies before fetch despite dev-checked status
+CHECK 230 elite/version/model_and_controller_pass="true" denies before fetch despite dev-checked status
+CHECK 231 elite/version/model_and_controller_pass=[] denies before fetch despite dev-checked status
+CHECK 232 elite/version/model_and_controller_pass={} denies before fetch despite dev-checked status
+CHECK 233 elite/version/model_and_controller_pass=true preserves verified Blob and acknowledgement gate
+CHECK 234 elite/version/model_and_controller_pass cached download/install denial precedes MIDI
+CHECK 235 elite/version/model_and_controller_pass no page errors
+CHECK 236 elite/package/qualified=false denies before fetch despite dev-checked status
+CHECK 237 elite/package/qualified=null denies before fetch despite dev-checked status
+CHECK 238 elite/package/qualified=0 denies before fetch despite dev-checked status
+CHECK 239 elite/package/qualified=1 denies before fetch despite dev-checked status
+CHECK 240 elite/package/qualified="false" denies before fetch despite dev-checked status
+CHECK 241 elite/package/qualified="true" denies before fetch despite dev-checked status
+CHECK 242 elite/package/qualified=[] denies before fetch despite dev-checked status
+CHECK 243 elite/package/qualified={} denies before fetch despite dev-checked status
+CHECK 244 elite/package/qualified=true preserves verified Blob and acknowledgement gate
+CHECK 245 elite/package/qualified cached download/install denial precedes MIDI
+CHECK 246 elite/package/qualified no page errors
+CHECK 247 elite/package/installable=false denies before fetch despite dev-checked status
+CHECK 248 elite/package/installable=null denies before fetch despite dev-checked status
+CHECK 249 elite/package/installable=0 denies before fetch despite dev-checked status
+CHECK 250 elite/package/installable=1 denies before fetch despite dev-checked status
+CHECK 251 elite/package/installable="false" denies before fetch despite dev-checked status
+CHECK 252 elite/package/installable="true" denies before fetch despite dev-checked status
+CHECK 253 elite/package/installable=[] denies before fetch despite dev-checked status
+CHECK 254 elite/package/installable={} denies before fetch despite dev-checked status
+CHECK 255 elite/package/installable=true preserves verified Blob and acknowledgement gate
+CHECK 256 elite/package/installable cached download/install denial precedes MIDI
+CHECK 257 elite/package/installable no page errors
+CHECK 258 elite/package/qa_pass=false denies before fetch despite dev-checked status
+CHECK 259 elite/package/qa_pass=null denies before fetch despite dev-checked status
+CHECK 260 elite/package/qa_pass=0 denies before fetch despite dev-checked status
+CHECK 261 elite/package/qa_pass=1 denies before fetch despite dev-checked status
+CHECK 262 elite/package/qa_pass="false" denies before fetch despite dev-checked status
+CHECK 263 elite/package/qa_pass="true" denies before fetch despite dev-checked status
+CHECK 264 elite/package/qa_pass=[] denies before fetch despite dev-checked status
+CHECK 265 elite/package/qa_pass={} denies before fetch despite dev-checked status
+CHECK 266 elite/package/qa_pass=true preserves verified Blob and acknowledgement gate
+CHECK 267 elite/package/qa_pass cached download/install denial precedes MIDI
+CHECK 268 elite/package/qa_pass no page errors
+CHECK 269 elite/package/source_licenses_approved=false denies before fetch despite dev-checked status
+CHECK 270 elite/package/source_licenses_approved=null denies before fetch despite dev-checked status
+CHECK 271 elite/package/source_licenses_approved=0 denies before fetch despite dev-checked status
+CHECK 272 elite/package/source_licenses_approved=1 denies before fetch despite dev-checked status
+CHECK 273 elite/package/source_licenses_approved="false" denies before fetch despite dev-checked status
+CHECK 274 elite/package/source_licenses_approved="true" denies before fetch despite dev-checked status
+CHECK 275 elite/package/source_licenses_approved=[] denies before fetch despite dev-checked status
+CHECK 276 elite/package/source_licenses_approved={} denies before fetch despite dev-checked status
+CHECK 277 elite/package/source_licenses_approved=true preserves verified Blob and acknowledgement gate
+CHECK 278 elite/package/source_licenses_approved cached download/install denial precedes MIDI
+CHECK 279 elite/package/source_licenses_approved no page errors
+CHECK 280 elite/package/immutable_http_pass=false denies before fetch despite dev-checked status
+CHECK 281 elite/package/immutable_http_pass=null denies before fetch despite dev-checked status
+CHECK 282 elite/package/immutable_http_pass=0 denies before fetch despite dev-checked status
+CHECK 283 elite/package/immutable_http_pass=1 denies before fetch despite dev-checked status
+CHECK 284 elite/package/immutable_http_pass="false" denies before fetch despite dev-checked status
+CHECK 285 elite/package/immutable_http_pass="true" denies before fetch despite dev-checked status
+CHECK 286 elite/package/immutable_http_pass=[] denies before fetch despite dev-checked status
+CHECK 287 elite/package/immutable_http_pass={} denies before fetch despite dev-checked status
+CHECK 288 elite/package/immutable_http_pass=true preserves verified Blob and acknowledgement gate
+CHECK 289 elite/package/immutable_http_pass cached download/install denial precedes MIDI
+CHECK 290 elite/package/immutable_http_pass no page errors
+CHECK 291 elite/package/backup_integrity_pass=false denies before fetch despite dev-checked status
+CHECK 292 elite/package/backup_integrity_pass=null denies before fetch despite dev-checked status
+CHECK 293 elite/package/backup_integrity_pass=0 denies before fetch despite dev-checked status
+CHECK 294 elite/package/backup_integrity_pass=1 denies before fetch despite dev-checked status
+CHECK 295 elite/package/backup_integrity_pass="false" denies before fetch despite dev-checked status
+CHECK 296 elite/package/backup_integrity_pass="true" denies before fetch despite dev-checked status
+CHECK 297 elite/package/backup_integrity_pass=[] denies before fetch despite dev-checked status
+CHECK 298 elite/package/backup_integrity_pass={} denies before fetch despite dev-checked status
+CHECK 299 elite/package/backup_integrity_pass=true preserves verified Blob and acknowledgement gate
+CHECK 300 elite/package/backup_integrity_pass cached download/install denial precedes MIDI
+CHECK 301 elite/package/backup_integrity_pass no page errors
+CHECK 302 elite/package/model_and_controller_pass=false denies before fetch despite dev-checked status
+CHECK 303 elite/package/model_and_controller_pass=null denies before fetch despite dev-checked status
+CHECK 304 elite/package/model_and_controller_pass=0 denies before fetch despite dev-checked status
+CHECK 305 elite/package/model_and_controller_pass=1 denies before fetch despite dev-checked status
+CHECK 306 elite/package/model_and_controller_pass="false" denies before fetch despite dev-checked status
+CHECK 307 elite/package/model_and_controller_pass="true" denies before fetch despite dev-checked status
+CHECK 308 elite/package/model_and_controller_pass=[] denies before fetch despite dev-checked status
+CHECK 309 elite/package/model_and_controller_pass={} denies before fetch despite dev-checked status
+CHECK 310 elite/package/model_and_controller_pass=true preserves verified Blob and acknowledgement gate
+CHECK 311 elite/package/model_and_controller_pass cached download/install denial precedes MIDI
+CHECK 312 elite/package/model_and_controller_pass no page errors
+CHECK 313 ctl invalid File.size 0 rejects before arrayBuffer
+CHECK 314 ctl invalid File.size -1 rejects before arrayBuffer
+CHECK 315 ctl invalid File.size NaN rejects before arrayBuffer
+CHECK 316 ctl invalid File.size Infinity rejects before arrayBuffer
+CHECK 317 ctl invalid File.size 1.5 rejects before arrayBuffer
+CHECK 318 ctl invalid File.size '1024' rejects before arrayBuffer
+CHECK 319 ctl invalid File.size Number.MAX_SAFE_INTEGER+1 rejects before arrayBuffer
+CHECK 320 ctl invalid File.size 67 rejects before arrayBuffer
+CHECK 321 ctl invalid File.size 65537 rejects before arrayBuffer
+CHECK 322 ctl invalid File.size 1073741824 rejects before arrayBuffer
+CHECK 323 ctl inclusive size boundary 68 reaches bounded read
+CHECK 324 ctl inclusive size boundary 65536 reaches bounded read
+CHECK 325 ctl valid format accepted
+CHECK 326 ctl invalid new selection clears prior state and defeats stale pending read
+CHECK 327 ctl interrupted read can retry valid file
+CHECK 328 stock invalid File.size 0 rejects before arrayBuffer
+CHECK 329 stock invalid File.size -1 rejects before arrayBuffer
+CHECK 330 stock invalid File.size NaN rejects before arrayBuffer
+CHECK 331 stock invalid File.size Infinity rejects before arrayBuffer
+CHECK 332 stock invalid File.size 1.5 rejects before arrayBuffer
+CHECK 333 stock invalid File.size '1024' rejects before arrayBuffer
+CHECK 334 stock invalid File.size Number.MAX_SAFE_INTEGER+1 rejects before arrayBuffer
+CHECK 335 stock invalid File.size 959 rejects before arrayBuffer
+CHECK 336 stock invalid File.size 16777217 rejects before arrayBuffer
+CHECK 337 stock invalid File.size 1073741824 rejects before arrayBuffer
+CHECK 338 stock inclusive size boundary 960 reaches bounded read
+CHECK 339 stock inclusive size boundary 16777216 reaches bounded read
+CHECK 340 stock valid format accepted
+CHECK 341 stock invalid new selection clears prior state and defeats stale pending read
+CHECK 342 stock interrupted read can retry valid file
+CHECK 343 stock drop preallocation guard 1073741824
+CHECK 344 stock drop preallocation guard 1024
+CHECK 345 valid erased controller padding remains accepted at64KiB
+CHECK 346 local file paths have no uncaught page errors
+CHECK 347 unmodified empty page install disabled 320
+CHECK 348 unmodified local file install disabled 320
+CHECK 349 unmodified empty page no download 320
+CHECK 350 unmodified empty responsive page 320
+CHECK 351 unmodified empty page install disabled 390
+CHECK 352 unmodified local file install disabled 390
+CHECK 353 unmodified empty page no download 390
+CHECK 354 unmodified empty responsive page 390
+CHECK 355 unmodified empty page install disabled 1280
+CHECK 356 unmodified local file install disabled 1280
+CHECK 357 unmodified empty page no download 1280
+CHECK 358 unmodified empty responsive page 1280
+CHECK 359 320/en/pro no link before verification
+CHECK 360 320/en/pro verified Blob only
+CHECK 361 320/en/pro product parsed
+CHECK 362 320/en/pro requires DEV acknowledgement
+CHECK 363 320/en/pro ack enables verified install
+CHECK 364 320/en/pro no horizontal overflow
+CHECK 365 320/en/pro downloaded bytes exact
+CHECK 366 320/en/pro no page errors
+CHECK 367 320/en/elite no link before verification
+CHECK 368 320/en/elite stale model response ignored
+CHECK 369 320/en/elite verified Blob only
+CHECK 370 320/en/elite product parsed
+CHECK 371 320/en/elite requires DEV acknowledgement
+CHECK 372 320/en/elite ack enables verified install
+CHECK 373 320/en/elite no horizontal overflow
+CHECK 374 320/en/elite downloaded bytes exact
+CHECK 375 320/en/elite no page errors
+CHECK 376 320/ja/pro no link before verification
+CHECK 377 320/ja/pro verified Blob only
+CHECK 378 320/ja/pro product parsed
+CHECK 379 320/ja/pro requires DEV acknowledgement
+CHECK 380 320/ja/pro ack enables verified install
+CHECK 381 320/ja/pro no horizontal overflow
+CHECK 382 320/ja/pro downloaded bytes exact
+CHECK 383 320/ja/pro no page errors
+CHECK 384 320/ja/elite no link before verification
+CHECK 385 320/ja/elite stale model response ignored
+CHECK 386 320/ja/elite verified Blob only
+CHECK 387 320/ja/elite product parsed
+CHECK 388 320/ja/elite requires DEV acknowledgement
+CHECK 389 320/ja/elite ack enables verified install
+CHECK 390 320/ja/elite no horizontal overflow
+CHECK 391 320/ja/elite downloaded bytes exact
+CHECK 392 320/ja/elite no page errors
+CHECK 393 390/en/pro no link before verification
+CHECK 394 390/en/pro verified Blob only
+CHECK 395 390/en/pro product parsed
+CHECK 396 390/en/pro requires DEV acknowledgement
+CHECK 397 390/en/pro ack enables verified install
+CHECK 398 390/en/pro no horizontal overflow
+CHECK 399 390/en/pro downloaded bytes exact
+CHECK 400 390/en/pro no page errors
+CHECK 401 390/en/elite no link before verification
+CHECK 402 390/en/elite stale model response ignored
+CHECK 403 390/en/elite verified Blob only
+CHECK 404 390/en/elite product parsed
+CHECK 405 390/en/elite requires DEV acknowledgement
+CHECK 406 390/en/elite ack enables verified install
+CHECK 407 390/en/elite no horizontal overflow
+CHECK 408 390/en/elite downloaded bytes exact
+CHECK 409 390/en/elite no page errors
+CHECK 410 390/ja/pro no link before verification
+CHECK 411 390/ja/pro verified Blob only
+CHECK 412 390/ja/pro product parsed
+CHECK 413 390/ja/pro requires DEV acknowledgement
+CHECK 414 390/ja/pro ack enables verified install
+CHECK 415 390/ja/pro no horizontal overflow
+CHECK 416 390/ja/pro downloaded bytes exact
+CHECK 417 390/ja/pro no page errors
+CHECK 418 390/ja/elite no link before verification
+CHECK 419 390/ja/elite stale model response ignored
+CHECK 420 390/ja/elite verified Blob only
+CHECK 421 390/ja/elite product parsed
+CHECK 422 390/ja/elite requires DEV acknowledgement
+CHECK 423 390/ja/elite ack enables verified install
+CHECK 424 390/ja/elite no horizontal overflow
+CHECK 425 390/ja/elite downloaded bytes exact
+CHECK 426 390/ja/elite no page errors
+CHECK 427 1280/en/pro no link before verification
+CHECK 428 1280/en/pro verified Blob only
+CHECK 429 1280/en/pro product parsed
+CHECK 430 1280/en/pro requires DEV acknowledgement
+CHECK 431 1280/en/pro ack enables verified install
+CHECK 432 1280/en/pro no horizontal overflow
+CHECK 433 1280/en/pro downloaded bytes exact
+CHECK 434 1280/en/pro no page errors
+CHECK 435 1280/en/elite no link before verification
+CHECK 436 1280/en/elite stale model response ignored
+CHECK 437 1280/en/elite verified Blob only
+CHECK 438 1280/en/elite product parsed
+CHECK 439 1280/en/elite requires DEV acknowledgement
+CHECK 440 1280/en/elite ack enables verified install
+CHECK 441 1280/en/elite no horizontal overflow
+CHECK 442 1280/en/elite downloaded bytes exact
+CHECK 443 1280/en/elite no page errors
+CHECK 444 1280/ja/pro no link before verification
+CHECK 445 1280/ja/pro verified Blob only
+CHECK 446 1280/ja/pro product parsed
+CHECK 447 1280/ja/pro requires DEV acknowledgement
+CHECK 448 1280/ja/pro ack enables verified install
+CHECK 449 1280/ja/pro no horizontal overflow
+CHECK 450 1280/ja/pro downloaded bytes exact
+CHECK 451 1280/ja/pro no page errors
+CHECK 452 1280/ja/elite no link before verification
+CHECK 453 1280/ja/elite stale model response ignored
+CHECK 454 1280/ja/elite verified Blob only
+CHECK 455 1280/ja/elite product parsed
+CHECK 456 1280/ja/elite requires DEV acknowledgement
+CHECK 457 1280/ja/elite ack enables verified install
+CHECK 458 1280/ja/elite no horizontal overflow
+CHECK 459 1280/ja/elite downloaded bytes exact
+CHECK 460 1280/ja/elite no page errors
+CHECK 461 bad hash rejected
+CHECK 462 missing hash rejected
+CHECK 463 short hash rejected
+CHECK 464 missing controller hash rejected
+CHECK 465 revoked model rejected
+CHECK 466 revoked version rejected
+CHECK 467 blocked rejected
+CHECK 468 withdrawn rejected
+CHECK 469 unqualified rejected
+CHECK 470 failed model rejected
+CHECK 471 product suffix rejected
+CHECK 472 missing version rejected
+CHECK 473 invalid URL rejected
+CHECK 474 wrong model rejected
+CHECK 475 string Release rejected
+CHECK 476 version Release rejected
+CHECK 477 device claim rejected
+CHECK 478 superseded rejected
+CHECK 479 credentials rejected
+CHECK 480 truncated fail closed
+CHECK 481 truncated retry succeeds
+CHECK 482 oversized fail closed
+CHECK 483 oversized retry succeeds
+CHECK 484 wrong bytes fail closed
+CHECK 485 wrong bytes retry succeeds
+CHECK 486 http failure fail closed
+CHECK 487 http failure retry succeeds
+CHECK 488 network interruption fail closed
+CHECK 489 network interruption retry succeeds
+CHECK 490 empty catalog invalidates delayed digest
+CHECK 491 stale failed request cannot overwrite current state
+CHECK 492 in-place byte identity change clears cached admission
+CHECK 493 click-time revocation cancels download
+CHECK 494 model switch invalidates held digest
+CHECK 495 new model verifies after stale digest
+CHECK 496 stale response body rejection ignored
+CHECK 497 malformed actual click cancels download: qa.catalog().versions[0].models=null
+CHECK 498 malformed click clears cached admission without errors: qa.catalog().versions[0].models=null
+CHECK 499 malformed actual click cancels download: qa.catalog().versions={}
+CHECK 500 malformed click clears cached admission without errors: qa.catalog().versions={}
+CHECK 501 malformed actual click cancels download: qa.catalog().versions[0]=null
+CHECK 502 malformed click clears cached admission without errors: qa.catalog().versions[0]=null
+CHECK 503 malformed actual click cancels download: qa.catalog().versions=null
+CHECK 504 malformed click clears cached admission without errors: qa.catalog().versions=null
+CHECK 505 malformed actual click cancels download: qa.catalog().versions[0].models.pro=null
+CHECK 506 malformed click clears cached admission without errors: qa.catalog().versions[0].models.pro=null
+CHECK 507 malformed actual click cancels download: qa.catalog().versions[0].self=qa.catalog().versions[0]
+CHECK 508 malformed click clears cached admission without errors: qa.catalog().versions[0].self=qa.catalog().versions[0]
+CHECK 509 malformed actual click cancels download: Object.defineProperty(qa.catalog(),'versions',{get(){throw Error('malformed versions')}})
+CHECK 510 malformed click clears cached admission without errors: Object.defineProperty(qa.catalog(),'versions',{get(){throw Error('malformed versions')}})
+CHECK 511 malformed actual click cancels download: Object.defineProperty(qa.catalog().versions[0].models,'pro',{get(){throw Error('malformed model')}})
+CHECK 512 malformed click clears cached admission without errors: Object.defineProperty(qa.catalog().versions[0].models,'pro',{get(){throw Error('malformed model')}})
+CHECK 513 malformed actual click cancels download: Object.defineProperty(qa.catalog().versions[0],'status',{get(){throw Error('malformed status')}})
+CHECK 514 malformed click clears cached admission without errors: Object.defineProperty(qa.catalog().versions[0],'status',{get(){throw Error('malformed status')}})
+CHECK 515 pinned history count retained 320
+CHECK 516 pinned history identities and order 320
+CHECK 517 full history and card content wrap 320 {"width": 320, "scrollWidth": 320, "overflow": []}
+CHECK 518 pinned history count retained 375
+CHECK 519 pinned history identities and order 375
+CHECK 520 full history and card content wrap 375 {"width": 375, "scrollWidth": 375, "overflow": []}
+CHECK 521 pinned history count retained 768
+CHECK 522 pinned history identities and order 768
+CHECK 523 full history and card content wrap 768 {"width": 768, "scrollWidth": 768, "overflow": []}
+CHECK 524 pinned history count retained 1280
+CHECK 525 pinned history identities and order 1280
+CHECK 526 full history and card content wrap 1280 {"width": 1280, "scrollWidth": 1280, "overflow": []}
+CHECK 527 bounded stream admission bodyless
+CHECK 528 bounded resource behavior bodyless {"buffers": 0, "pulls": 0, "cancelled": 0}
+CHECK 529 bounded stream admission oversized-stream
+CHECK 530 bounded resource behavior oversized-stream {"buffers": 0, "pulls": 3, "cancelled": 1}
+CHECK 531 bounded stream admission split-valid
+CHECK 532 bounded resource behavior split-valid {"buffers": 0, "pulls": 9, "cancelled": 0}
+CHECK 533 stale in-flight stream cancelled without replacing current model
+CHECK 534 single writer before MIDI grant
+CHECK 535 install target admission grant
+CHECK 536 exact logical image and product grant
+CHECK 537 write lock released grant
+CHECK 538 single writer before MIDI deny
+CHECK 539 install target admission deny
+CHECK 540 write lock released deny
+CHECK 541 install retry deny
+CHECK 542 single writer before MIDI selection-change
+CHECK 543 install target admission selection-change
+CHECK 544 write lock released selection-change
+CHECK 545 single writer before MIDI revoked
+CHECK 546 install target admission revoked
+CHECK 547 write lock released revoked
+CHECK 548 single writer before MIDI interrupt
+CHECK 549 install target admission interrupt
+CHECK 550 exact logical image and product interrupt
+CHECK 551 write lock released interrupt
+CHECK 552 install retry interrupt
+CHECK 553 single writer before MIDI lookup-change
+CHECK 554 install target admission lookup-change
+CHECK 555 write lock released lookup-change
+CHECK 556 stock-first locks both paths
+CHECK 557 stock target preserved
+CHECK 558 stale scan cannot switch model during pending write
+CHECK 559 stale scan permission cannot start device lookup during write
+CHECK 560 controller missing blocks MIDI
+CHECK 561 controller missing retry
+CHECK 562 controller wrong blocks MIDI
+CHECK 563 controller wrong retry
+CHECK 564 controller changed blocks MIDI
+CHECK 565 controller insert-fail blocks MIDI
+{"checks": 565, "failed": 0, "failures": [], "source": "current full generated installer", "device_tested": false}
+Chromium 154.0.8037.57
+{"case": "positive-one-build-320", "pass": true, "state": {"error": false, "builds": 1, "history": 125, "width": 320, "scrollWidth": 320, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "positive-one-build-375", "pass": true, "state": {"error": false, "builds": 1, "history": 125, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "null-history-last", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "null-history-first", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "null-pro-model", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "schema-999", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "forged-device-verified", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "null-build", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "object-history", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "array-models", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "string-model-size", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "object-product", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "bad-model-hash", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "model-physical-claim", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "build-physical-claim", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "build-installable-claim", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "unsupported-build-status", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "object-history-description", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "history-installable-claim", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "history-physical-claim", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "bad-history-source", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "duplicate-history-id", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "actual-two-builds-schema-999", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "network", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "404", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "invalid-json", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "detached-render-error", "pass": true, "state": {"error": true, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "actual-full-history-320", "pass": true, "state": {"error": false, "builds": 2, "history": 125, "width": 320, "scrollWidth": 320, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "actual-full-history-375", "pass": true, "state": {"error": false, "builds": 2, "history": 125, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "actual-full-history-768", "pass": true, "state": {"error": false, "builds": 2, "history": 125, "width": 768, "scrollWidth": 768, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "actual-full-history-1280", "pass": true, "state": {"error": false, "builds": 2, "history": 125, "width": 1280, "scrollWidth": 1280, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "valid-empty-history", "pass": true, "state": {"error": false, "builds": 0, "history": 0, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "valid-future-append", "pass": true, "state": {"error": false, "builds": 2, "history": 126, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"case": "inert-title-text", "pass": true, "state": {"error": false, "builds": 2, "history": 125, "width": 375, "scrollWidth": 375, "overflow": 0, "executed": false, "injectedElements": 0, "forged": false, "downloads": 0}, "page_errors": []}
+{"checks": 34, "passed": 34, "failed": 0}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

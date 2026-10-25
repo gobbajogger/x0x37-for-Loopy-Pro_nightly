@@ -1,0 +1,93 @@
+{
+  "schema": "x0x37-catalog-sync-evidence/v1",
+  "revision": "catalog-pr3-r29-live-source-history-20261024-r1",
+  "role": "sole NIGHTLY browser-only read-only source status/history producer",
+  "repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "own_pr": 3,
+  "own_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "old_head": "9d03fe036220c02b224a91a90c0bb09b66fd29fe",
+  "old_tree": "143513337ccd9d6398cdf409cad0bb70c456cf33",
+  "old_status_git_blob": "c2f163bda6db3b3da65f43496c9888906cf62ad6",
+  "old_history_lock_git_blob": "c812a362f780902bbbab4619922378bb29552de8",
+  "consumed_sources": [
+    {
+      "pr": 103,
+      "commit": "77f77e43ba84b39024183426709f56b0b368394e",
+      "root": "55cfa45acc82e70cdc79aac99fd52828abfbb857",
+      "firmware": "5c209609b770fd13949230aeb80956594fd6b741",
+      "branch": "lane/safe-merge-303-first-nightly-20261024-0138",
+      "source_evidence_blob": null
+    },
+    {
+      "pr": 114,
+      "commit": "9966084af6a18c2d4ae03ebb1688ad38146fa3fc",
+      "root": "cad0ea0721c526f59bac93efcc3531484b456e16",
+      "firmware": "5c209609b770fd13949230aeb80956594fd6b741",
+      "branch": "lane/data-safety-ota-target-identity-20261024-1711",
+      "source_evidence_blob": "2a12c9e72372aa710be15a5c5b79d69692ce858e"
+    },
+    {
+      "pr": 128,
+      "commit": "168869eecaa6a8cc4035c33928293131ada40226",
+      "root": "81bdbb0cfb05b3f0686554e2aba6e2b7054575b7",
+      "firmware": "fa627883e9153ad4538b89e39dcb28ddbea01609",
+      "branch": "lane/bugfinder-bf022-legacy-master-hp-migration-20261024",
+      "source_evidence_blob": "3ffd7d63d97bb74bad0cbfad71bd66d964810440"
+    }
+  ],
+  "counts": {
+    "previous_history": 119,
+    "current_history": 122,
+    "historical_DEV_builds": 2,
+    "selectable_picker": 0
+  },
+  "new_sha256": {
+    "status": "06220bd11a7b8d8b725734f0a5e82c50130d4bb19d55ef08bfd2c52290af9cab",
+    "history_lock": "ede688453793c8a509b3da36f20ccc01dfb053201ef1e66ff36726c80bd0b4dd",
+    "continuity_test": "bd86648bffa793014a355ce7913d2ae13ebf803ba3ad459ebf07ccf9783d8885"
+  },
+  "actual_producer_scoped_tests": {
+    "sha256_vectors": "3/3 PASS",
+    "sha256_historical_prior": "119/119 PASS",
+    "sha256_historical_after": "122/122 PASS",
+    "scoped_real_Git_validator_original_and_after": "PASS via V8 Node API adapters",
+    "scoped_real_Git_history_tests_original_and_after": "PASS via V8 Node API adapters",
+    "mutations": [
+      {
+        "name": "forged PR103 device PASS",
+        "status": "REJECTED"
+      },
+      {
+        "name": "forged PR114 installability",
+        "status": "REJECTED"
+      },
+      {
+        "name": "PR128 source SHA tamper",
+        "status": "REJECTED"
+      },
+      {
+        "name": "trailing row deletion",
+        "status": "REJECTED"
+      },
+      {
+        "name": "old pinned history SHA tamper",
+        "status": "REJECTED"
+      },
+      {
+        "name": "PR128 immutable evidence URL ref tamper",
+        "status": "REJECTED"
+      }
+    ],
+    "native_npm_test": "NOT RUN",
+    "native_npm_build": "NOT RUN",
+    "Chromium_mobile": "NOT RUN",
+    "firmware_hardware": "NOT TESTED"
+  },
+  "website_pr8_active_handoff": {
+    "head": "02a5a05ee0aa9677884aadf1e0bb48e1b31d6cad",
+    "status": "DRAFT_HOLD__REQUIRES_INDEPENDENT_EXACT_R4_QA",
+    "owner": "existing separate installer producer"
+  },
+  "next_owner": "existing independent website QA exact new PR3 and combined scripts/native/browser; later sole website Main Merger and separately Pages publisher",
+  "safety": "SOURCE ONLY; no new firmware/controller/vendor/SDK, artifact URL, installability, independent approval, hardware PASS or protected write"
+}

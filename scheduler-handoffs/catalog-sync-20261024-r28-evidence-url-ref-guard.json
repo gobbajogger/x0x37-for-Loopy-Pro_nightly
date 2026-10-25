@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "role": "X0X37 Build Catalog Sync",
+  "evidence_revision": "catalog-pr3-r28-evidence-url-gitref-path-spoof-20261024-r1",
+  "date_utc": "2026-10-24",
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "pr": 3,
+  "owned_branch": "lane/catalog-nightly-preview-history-reconcile-20261023-1541",
+  "parent_commit": "876adf33d3a96accac3838c21f6f8681d8c1ab39",
+  "parent_root_tree": "114f8e4cfafa88db787ab714ccf611a5f2b8ca02",
+  "source_before_blob": "5309b6a5d9b9fd34a10b447162306ebee648c570",
+  "source_after_blob": "9cd11cf06a1277238d5eafc470ab315177f99264",
+  "registered_tests_before_blob": "9a857e756b44f98986bca6e7e4553523a17cde65",
+  "registered_tests_after_blob": "146c3e1b206a63061179420d68e64a47d90935d0",
+  "source_generated_status_git_blob": "c2f163bda6db3b3da65f43496c9888906cf62ad6",
+  "source_generated_noninstallable_picker_git_blob": "01f9ec382878335ea9bb92d0bdf294483111de76",
+  "history_rows": 119,
+  "immutable_history_sha256_fixture_git_blob": "c812a362f780902bbbab4619922378bb29552de8",
+  "build_generations": 2,
+  "selectable_firmware": 0,
+  "defect": "R27 historical evidence_commit comparison accepted a matching 40-hex SHA anywhere in a nested blob/tree pathname, even when the immutable Git URL ref was a DIFFERENT SHA.",
+  "fix": "Bind evidence_commit exactly to the immutable 40-hex Git reference immediately after commit/tree/blob path prefix, not a later pathname.",
+  "proof": {
+    "scope": "Exact checked full validator body in Classic V8; only fs, assert, native crypto SHA256 receipt lookup and Node vm compiler adapted in memory. 119 original SHA-256 pins were matched against trusted fixture in the map, not rehashed in this executor. NOT native npm, NOT independent QA.",
+    "observed": {
+      "old_baseline": "ACCEPT",
+      "old_corrupt_blob": "INCORRECT_ACCEPT",
+      "old_corrupt_tree": "INCORRECT_ACCEPT",
+      "patched_baseline": "ACCEPT",
+      "patched_corrupt_blob": "REJECT",
+      "patched_corrupt_tree": "REJECT",
+      "patched_valid_blob": "ACCEPT",
+      "patched_valid_tree": "ACCEPT",
+      "patched_valid_commit": "ACCEPT"
+    },
+    "registered_regressions": {
+      "malicious": 2,
+      "legitimate": 3
+    }
+  },
+  "unrun": {
+    "native_npm_test": "NOT RUN: git ls-remote DNS error exit 128 (Could not resolve host github.com), exact native ROOT checkout unavailable",
+    "native_npm_build": "NOT RUN",
+    "full_current_root_desktop_mobile_chromium": "NOT RUN",
+    "independent_website_qa": "PENDING / browser history malformed response NEEDS CHANGES on unmodified PR3 HTML"
+  },
+  "downstream": "Existing independent NIGHTLY Website QA (exact new HEAD) and existing PR8 owned browser-admission R3 fixes then sole NIGHTLY Website Main Merger union PR3+6+8 suites. Sole Pages publisher separately; NO direct main/gh-pages changes.",
+  "safety": "Source-only, history/picker unchanged, zero hosted firmware URLs, no firmware/controller/vendor sources or binaries, no flash or hardware assertions."
+}
