@@ -855,7 +855,7 @@ run('r43-false-QA-REJECT',editR43(2,r=>r.reported_checks.result='FULL INDEPENDEN
 const r44NegativeIds=["bugfinder-bf033-pr159-random-tie-independent-host-20261025","website-main-pr14-pr16-pr17-merged-source-only-20261025"];
 const editR44=(n,fn)=>edit(j=>{const i=137+n,r=j.history[i];assert.equal(r.id,r44NegativeIds[n]);fn(r,j);});
 run('r44-source-only-PASS',edit(j=>{
- assert.equal(j.history.length,139);assert.equal(j.counts.source_or_historical_checkpoints,139);
+ assert.ok(j.history.length>=139);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
  assert.equal(j.builds.length,2);assert.equal(j.installable,false);
  for(let n=0;n<2;n++){const r=j.history[137+n];assert.equal(r.id,r44NegativeIds[n]);
  assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);}
@@ -867,3 +867,13 @@ for(let n=0;n<2;n++){
  run('r44-false-rights-'+n+'-REJECT',editR44(n,r=>r.artifact_distribution_approved=true));
 }
 run('r44-forged-compiler-REJECT',editR44(0,r=>r.firmware_subtree='f'.repeat(40)));
+
+// R46: R44 evidence remains valid when the append-only history grows.
+const r46SafeIds=["firmware-f03-pr178-elite-pro-dev-checked-source-evidence-20261025","nightly-f03-pages-git-bundled-dev-test-candidate-20261025",...["firmware-f04-pr190-bf001-selection-host-dev-checked-20261025","nightly-f04-pages-git-repaired-installer-source-only-20261025"]];
+const r46Mutate=(n,fn)=>edit(j=>{let i=139+n,r=j.history[i];assert.equal(r.id,r46SafeIds[n]);fn(r,j);});
+run('r46-source-history-PASS',edit(j=>{assert.ok(j.history.length>=143);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);assert.equal(j.builds.length,2);assert.equal(j.installable,false);for(let n=0;n<4;n++){let r=j.history[139+n];assert.equal(r.id,r46SafeIds[n]);assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);}}),true);
+for(let n=0;n<4;n++){
+ run('r46-remove-'+n+'-REJECT',r46Mutate(n,(r,j)=>{j.history.splice(139+n,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r46-forged-rights-'+n+'-REJECT',r46Mutate(n,r=>r.artifact_distribution_approved=true));
+ run('r46-forged-package-'+n+'-REJECT',r46Mutate(n,r=>r.reported_package_sha256.elite='a'.repeat(64)));
+}

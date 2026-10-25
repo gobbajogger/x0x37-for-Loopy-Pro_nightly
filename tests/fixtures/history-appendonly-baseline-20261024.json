@@ -571,6 +571,14 @@
     {
       "id": "nightly-f03-pages-git-bundled-dev-test-candidate-20261025",
       "sha256": "2504113dafac781bdf206ae78bd62bb4aeecf46c8aa3e3276244aca27450fd40"
+    },
+    {
+      "id": "firmware-f04-pr190-bf001-selection-host-dev-checked-20261025",
+      "sha256": "9c8671ec40aaf501108a8c3457fa747d72ac665c0330740a5dcb1f4df843d771"
+    },
+    {
+      "id": "nightly-f04-pages-git-repaired-installer-source-only-20261025",
+      "sha256": "5170101923028419aaf804377c2690fd27e46a837b4de4afde9317456c2005c4"
     }
   ]
 }

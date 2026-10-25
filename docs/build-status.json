@@ -4056,6 +4056,86 @@
         "pro": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"
       },
       "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+    },
+    {
+      "id": "firmware-f04-pr190-bf001-selection-host-dev-checked-20261025",
+      "title": "F04 BF-001 newest-local-file-selection host tests and Elite/Pro DEV CHECKED evidence",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "0d79d63485dc6585800a71ef716d095445f5a1fc",
+      "source_commit": "0d79d63485dc6585800a71ef716d095445f5a1fc",
+      "source_tree": "603e2a2b1442a8214cd97b03d32bf57fc158feac",
+      "firmware_subtree": "1b067cadd1e7887415354c4f384a51f93d6437c367574e2cee52b0b44d829479",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "source_time": "2026-10-25T10:32:35Z",
+      "reported_checks": {
+        "origin": "F04 PR190 Stage4 producer evidence pinned at 5cc360a722ece38eaf5c01bd86816780c858253f; Catalog did not repeat firmware builder tests.",
+        "command": "Producer local selection race host regression, two model DEV package validations, X0X_DEV_PADCAL=1 CTL_NO_CACHE=1 and 8324B pool-free threshold check.",
+        "result": "PRODUCER DEV CHECKED ELITE/PRO; SOURCE CHANGED ONLY INSTALLER; FIRMWARE PACKAGE BYTES REPORTED IDENTICAL F03; CATALOG NATIVE/HARDWARE NOT TESTED."
+      },
+      "description": "Expected owner behavior: a late result from an older local-file selection must not overwrite the latest choice. Host tests reported success, but no physical-device or served installer user-experience measurement was made here.",
+      "missing_gate": "Independent model/controller, rollback/backup/restore/OTA/interruption and actual installer negatives, source/rights/notices and delivered byte checks remain separate.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/190",
+      "evidence_commit": "5cc360a722ece38eaf5c01bd86816780c858253f",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/5cc360a722ece38eaf5c01bd86816780c858253f/evidence/f04-stage4/CHECKS.md",
+      "source_identity_note": "Git root 603e2a2b1442a8214cd97b03d32bf57fc158feac, complete reported F04 non-document content tree 1b067cadd1e7887415354c4f384a51f93d6437c367574e2cee52b0b44d829479; BF-001 changes installer source, not firmware application or controller hashes.",
+      "reported_package_sha256": {
+        "elite": "d3b4cac3d7b7be7a72732d4dd00c3120c053dbffc9137ffb7c151a5fd5355f2b",
+        "pro": "0b09605f357cd0accd5c5109dfb61138eb300945ffe05e6ff46942f5c5e076b9"
+      },
+      "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+    },
+    {
+      "id": "nightly-f04-pages-git-repaired-installer-source-only-20261025",
+      "title": "F04 BF-001 repaired Pages Git installer replaces initial stale fingerprint; hardware and live HTTP unverified",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "0d79d63485dc6585800a71ef716d095445f5a1fc",
+      "source_commit": "0d79d63485dc6585800a71ef716d095445f5a1fc",
+      "source_tree": "603e2a2b1442a8214cd97b03d32bf57fc158feac",
+      "firmware_subtree": "1b067cadd1e7887415354c4f384a51f93d6437c367574e2cee52b0b44d829479",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "source_time": "2026-10-25T10:52:16Z",
+      "reported_checks": {
+        "origin": "Initial F04 Pages Git 925bed474307e122232f0cbb4eac477e93c97bc2 reused pre-repair installer closure fingerprint and was rejected by PR192 review; repaired Pages commit 38b5d2a7d6380a4b9fd9ea1ff28d45b53d826569 contains BF-001 marker.",
+        "command": "Catalog read Git Pages manifest blob ab2dce7a252bacdc014f92403e163b27e2478b30 and installer HTML blob 3341f1dc2c52f3ae8e593d84a0b3f89768cfdade and measured rendered HTML SHA-256 3cd34559ee18de416171c0d6c51b914bf9e231f01cea3d98dd3e8b319af80145. Separate 2240be87 installer fingerprint is derived from complete renderer input closure, not final HTML digest.",
+        "result": "REPAIRED GIT PAGES HTML AND F04 MODEL VERSION SEEN; FIRST STALE PUBLISH SUPERSEDED. NOT INDEPENDENTLY VERIFIED LIVE HTTPS SERVED BYTES OR DEVICE PASS."
+      },
+      "description": "Pages Git lists F04 Elite/Pro DEV / HARDWARE TEST with DEVICE NOT TESTED label. The first F04 installer reused an old fingerprint; a repaired Git HTML now includes the newest-file-wins BF-001 handlers. This is Git-source verification, not proof that the browser serves those bytes.",
+      "missing_gate": "Independent Website QA and separate Pages publisher must verify exact served HTTPS bytes plus package/model/controller, negative backup/readback/restore/OTA/interruption checks and lawful distribution source/notices before claiming complete qualification.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/192",
+      "evidence_commit": "ce39a05ceb21c2ad9410e88c6f1b89a5776c9598",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/ce39a05ceb21c2ad9410e88c6f1b89a5776c9598/evidence/f04-stage7/CHECKS.md",
+      "source_identity_note": "Pages first 925bed474307e122232f0cbb4eac477e93c97bc2, repaired 38b5d2a7d6380a4b9fd9ea1ff28d45b53d826569, versions Git blob ab2dce7a252bacdc014f92403e163b27e2478b30, HTML blob 3341f1dc2c52f3ae8e593d84a0b3f89768cfdade, rendered HTML SHA256 3cd34559ee18de416171c0d6c51b914bf9e231f01cea3d98dd3e8b319af80145; independent live/physical evidence absent.",
+      "reported_package_sha256": {
+        "elite": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+        "pro": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"
+      },
+      "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
     }
   ],
   "policy": {
@@ -4066,7 +4146,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 141
+    "source_or_historical_checkpoints": 143
   },
   "versioning": {
     "firmware_product_version": {

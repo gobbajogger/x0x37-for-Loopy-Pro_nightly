@@ -1,0 +1,51 @@
+{
+  "schema": "x0x37-catalog-sync-evidence-v1",
+  "role": "sole NIGHTLY catalog SOURCE producer",
+  "revision": "R46 2026-10-25",
+  "intended_effect": "Latest local file choice wins if an older read completes late; owners should not confuse Pages Git source verification with physical or live HTTP PASS.",
+  "trial_revision": "e2482a5039527195e346925c751ac3e3a333ada9",
+  "skill_sha256": "2dd8889e0843b4bbd9686cb42d3936921d7e23a4dde688bfea9107e1b8a556b3",
+  "checkpoint_helper_sha256": "21fee28e9911dd1164a2c730a926a2b38092f6cbc515dbcfb2e89878076f9beb",
+  "queue_head": "2cbea6e93d571e78774293e8a0dc8524b4a7e27a",
+  "queue_blob": "cd7d81455ef04487d94a6dca4835d6ed5ca9f081",
+  "parent": "c9fd9fbe82d23615be2588625fbe465696dadfa7",
+  "parent_tree": "4bb9138487d61a41fc41305dca678024ec9ff23a",
+  "pages_git_head": "38b5d2a7d6380a4b9fd9ea1ff28d45b53d826569",
+  "pages_versions_blob": "ab2dce7a252bacdc014f92403e163b27e2478b30",
+  "pages_installer_blob": "3341f1dc2c52f3ae8e593d84a0b3f89768cfdade",
+  "pages_html_sha256": "3cd34559ee18de416171c0d6c51b914bf9e231f01cea3d98dd3e8b319af80145",
+  "stage7_installer_source_closure_fingerprint": "2240be8702176544945a4b66171269e958b47259fb275654d2f6ff7125f637ee",
+  "firmware_validated_source": "0d79d63485dc6585800a71ef716d095445f5a1fc",
+  "firmware_content_tree": "1b067cadd1e7887415354c4f384a51f93d6437c367574e2cee52b0b44d829479",
+  "new_rows": [
+    {
+      "id": "firmware-f04-pr190-bf001-selection-host-dev-checked-20261025",
+      "sha256": "9c8671ec40aaf501108a8c3457fa747d72ac665c0330740a5dcb1f4df843d771"
+    },
+    {
+      "id": "nightly-f04-pages-git-repaired-installer-source-only-20261025",
+      "sha256": "5170101923028419aaf804377c2690fd27e46a837b4de4afde9317456c2005c4"
+    }
+  ],
+  "prior_rows": 141,
+  "after_rows": 143,
+  "source_picker_selectable": 0,
+  "pages_dev_versions": 2,
+  "tests": {
+    "sha256_known_answers": "PASS 3",
+    "all_history_sha256": "PASS 143",
+    "mutation_negatives": "PASS 16",
+    "git_BF001_marker": "PASS Git bytes only",
+    "rendered_git_html_digest": "PASS 3cd34559ee18de416171c0d6c51b914bf9e231f01cea3d98dd3e8b319af80145",
+    "r44_exact_count_regression": "FAIL BEFORE: 141 vs expected139; fixed >=139",
+    "permanent_node_tests": "SOURCE MODIFIED, NEW TEST SNIPPETS V8 SYNTAX PASS, NATIVE NOT RUN",
+    "npm_test": "NOT_RUN native GitHub DNS 128",
+    "npm_build": "NOT_RUN native GitHub DNS 128",
+    "chromium": "NOT_RUN",
+    "live_http": "NOT_VERIFIED",
+    "hardware": "NOT_VERIFIED"
+  },
+  "next_owner": "Existing Independent NIGHTLY Website QA verifies current R46 exact root and real negatives; sole Website Main Merger integrates after own gates; separate Pages publisher verifies live served F04 installer and exact model packages.",
+  "rights": "No new selectable source package, no firmware/controller binary public write or license approval.",
+  "outcome": "SOURCE_DELIVERED_INDEPENDENT_WEBSITE_QA_PENDING"
+}

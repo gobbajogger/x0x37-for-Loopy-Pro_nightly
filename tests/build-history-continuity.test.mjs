@@ -344,3 +344,18 @@ for(let n=0;n<2;n++){
 assert.match(original[140].reported_checks.result,/CATALOG DID NOT INDEPENDENTLY FETCH/);
 assert.match(original[139].reported_checks.result,/NOT RERUN BY CATALOG/);
 console.log('PASS R45: 141 immutable history rows; 14 F03 deletion/false-approval/digest negatives');
+
+// R46: F04 installer selection repair is a host/Git Pages observation, NOT a selectable source firmware grant.
+const r46Ids=["firmware-f04-pr190-bf001-selection-host-dev-checked-20261025","nightly-f04-pages-git-repaired-installer-source-only-20261025"];
+const r46HashPairs=[{"elite":"d3b4cac3d7b7be7a72732d4dd00c3120c053dbffc9137ffb7c151a5fd5355f2b","pro":"0b09605f357cd0accd5c5109dfb61138eb300945ffe05e6ff46942f5c5e076b9"},{"elite":"8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278","pro":"d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"}];
+assert.ok(lock.rows.length>=143,'R46 143 immutable SHA digests required');
+for(let n=0;n<2;n++){
+ const i=141+n,r=original[i];assert.equal(r.id,r46Ids[n]);assert.equal(r.source_commit,'0d79d63485dc6585800a71ef716d095445f5a1fc');assert.equal(r.firmware_subtree,'1b067cadd1e7887415354c4f384a51f93d6437c367574e2cee52b0b44d829479');
+ assert.deepEqual(r.models,['elite','pro']);assert.equal(r.status,'validation-evidence-only');
+ for(const k of ['installable','device_verified','artifact_distribution_approved','exact_remote_native_build','artifact_bytes_independently_verified'])assert.equal(r[k],false,k);
+ assert.deepEqual(r.reported_package_sha256,r46HashPairs[n]);assert.equal(r.reported_controller_sha256,'956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a');
+ mustReject('R46 removed '+n,h=>h.splice(i,1));mustReject('R46 false install '+n,h=>h[i].installable=true);mustReject('R46 forged package '+n,h=>h[i].reported_package_sha256.elite='a'.repeat(64));mustReject('R46 forged rights '+n,h=>h[i].artifact_distribution_approved=true);
+}
+assert.match(original[142].reported_checks.result,/NOT INDEPENDENTLY VERIFIED LIVE HTTPS/);
+mustReject('R46 forged live HTTP',h=>h[142].reported_checks.result='DEVICE VERIFIED');
+console.log('PASS R46 143 sealed historical rows; F04 not silently flashable');
