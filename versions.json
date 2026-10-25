@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-b42bcba4-dev",
+  "latest": "nightly-092589b8-dev",
   "versions": [
+    {
+      "version": "nightly-092589b8-dev",
+      "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "092589b84fd455355216cb0de93c4782236f7524",
+      "source_tree": "9382fb1276e320d9f9d290dbad187fa08cdd224c",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "3d107710cde229d7faf3e007ae14e324d7ea5ce209a802642dacf40608b2895e",
+          "size": 651396,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/bb8543371761e75b7a89a422f00f9fe501bb338f/artifacts/nightly/dev-20261025-092589b8/3d107710cde229d7faf3e007ae14e324d7ea5ce209a802642dacf40608b2895e/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "60dc7fda13fdaa3ee456736588e18b2d9e7e50cc34a800504bde678e14ba12d3",
+          "size": 651392,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/bb8543371761e75b7a89a422f00f9fe501bb338f/artifacts/nightly/dev-20261025-092589b8/60dc7fda13fdaa3ee456736588e18b2d9e7e50cc34a800504bde678e14ba12d3/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST — Elite and Pro (F13 LX-73)",
+      "description": "Software-checked DEV firmware from validated source 092589b8 (F13 after BF-012 #308 land + LX-73 Elite/Pro DEV CHECK). Bundled controller. DEVICE NOT TESTED. Stage-4/prerelease blank package hashes 9c1168cf/3a29723e; page serves bundled installable bytes. Content-tree 25ada1f0… / firmware-tree a5ba0804… match DEV CHECKED records. Stage-6 Elite install PASS on Mac; hardware_tested stays false for the nightly page. Production main/Pages unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/tree/ec7b02a291357ce099539898c5ca5969f0fd0752/evidence/f13-stage5/lx73-devcheck"
+    },
     {
       "version": "nightly-b42bcba4-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
