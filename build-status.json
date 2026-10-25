@@ -3719,6 +3719,100 @@
       "evidence_commit": "c2fdf75577baa0945735c44c15ef219f7adfd9f3",
       "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15#issuecomment-6393622448",
       "source_identity_note": "PR15 c2fdf75577baa0945735c44c15ef219f7adfd9f3 root 1123a906173b6aa0065600528840823162fb502d compared to main 10c47659192a32821da171417069ffefdbc05d63; producer source-policy observation, not independent acceptance or live-served browser exploit evidence."
+    },
+    {
+      "id": "bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025",
+      "title": "BF-031 R3 303 RANDOM swing clock-source handoff host-checked, new firmware compiler input; no target build/independent QA",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "lane/bugfinder-bf031-tb3po-direction-bars-20261025",
+      "source_commit": "4b67024e62bfd1b4d5789827334f6bea4f9b4e00",
+      "source_tree": "fe0b13610daeea0f66b14159443bb1a4103269bc",
+      "firmware_subtree": "7165ed8e7a5d4297c19123037cc70c9a4f7a293e",
+      "source_time": "2026-10-25T05:24:42Z",
+      "status": "source-only",
+      "date": "2026-10-25",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Existing BF-031 Bugfinder PR140 R3 producer report at exact remote SHA, committed evidence blob 82e495778f6e7c8cf829272120b845f91278681c; native output not rerun by Catalog.",
+        "command": "Real-linked seq tests producer GCC/Clang x O2/UBSan/ASan+UBSan: R2 before 1437/1472 and early/late callbacks; R3 after 1472/1472 in each of six configurations, prior R1 878/878 and R2 1222/1222. LeakSanitizer disabled.",
+        "result": "PRODUCER SCOPED NATIVE HOST PASS REPORTED; NEW COMPILER INPUT; ELITE/PRO BUILD_ONLY NOT RUN; INDEPENDENT FIRMWARE QA PENDING; NO PACKAGE OR HARDWARE PASS."
+      },
+      "description": "Intended musical result: when 303 RANDOM with swing switches EXTERNAL to INTERNAL clock, the next note uses musical slot timing, not random selected source-step parity. Expected absence of early/late events is supported by producer host tests, not measured hardware.",
+      "missing_gate": "Existing Hourly Build performs NEW private exact-R3 Elite/Pro+controller BUILD_ONLY; independent firmware QA tests timing, sole Safe Merge owns NIGHTLY source. Pages/distribution/browser/physical QA separate.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/140",
+      "evidence_commit": "4b67024e62bfd1b4d5789827334f6bea4f9b4e00",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/4b67024e62bfd1b4d5789827334f6bea4f9b4e00/docs/scheduler-handoffs/bugfinder-pr140-r3-random-clock-source-handoff-20261025.json",
+      "source_identity_note": "Exact R3 firmware tree 7165ed8e7a5d4297c19123037cc70c9a4f7a293e; seq source Git blob 4310d489a01d8503eb07f2d8ce05380c4e4b1f10; test Git blob 4121182749f532eb596560c61f66e2f57319ce22."
+    },
+    {
+      "id": "nightly-pr142-bundled-controller-source-in-firmware-nightly-20261025",
+      "title": "PR142 bundled Bluetooth package tool source reached firmware NIGHTLY through PR144 merge; rights/publication incomplete",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "lane/bundled-nightly-packaging-20261025",
+      "source_commit": "04cb592c47f4b8d5049f5399d7f6f45b50b92c2c",
+      "source_tree": "1799e40dd5026332caf14fb7431dda20f5c960dd",
+      "source_time": "2026-10-25T05:38:20Z",
+      "status": "validation-evidence-only",
+      "date": "2026-10-25",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "PR142 Git source and verified NIGHTLY merge commit 93449136baae02c9715ba20edc5c43176786b635 via PR144; identical package_nightly.py blob 4744f9d2c42bbb6564f64eca596574232be283f8 on source and merge.",
+        "command": "Producer/independent scoped synthetic Elite/Pro join, model/controller hash, layout, CRC and atomic-write negative tests reported PASS; owner-local matched package inspections claimed. Catalog did not inspect private bytes or rerun checks.",
+        "result": "BUNDLED SOURCE REACHABLE ON FIRMWARE NIGHTLY; CONTROLLER RIGHTS/SOURCE/NOTICES UNRESOLVED; NO PUBLIC PACKAGE OR HARDWARE PASS."
+      },
+      "description": "Expected owner experience is one complete matching firmware+Bluetooth image instead of a separate controller picker. This history row proves source integration only, not a real downloadable package or operating hardware.",
+      "missing_gate": "Existing packaging/installer PR16 owner and Independent QA validate actual same-byte packaged firmware, model, recovery and OTA; rights owner resolves notices/source; sole Pages publisher verifies lawful immutable hosting/live bytes before NIGHTLY selection.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/142",
+      "evidence_commit": "04cb592c47f4b8d5049f5399d7f6f45b50b92c2c",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/04cb592c47f4b8d5049f5399d7f6f45b50b92c2c/docs/bundled-nightly-evidence-20261025/owner-local-byte-receipts.json",
+      "source_identity_note": "Actual firmware NIGHTLY merged commit 93449136baae02c9715ba20edc5c43176786b635 root 87819bd7af981f8a7315875233f69ff720bc13ce; package tool blob identical to PR142. No private binaries published."
+    },
+    {
+      "id": "nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025",
+      "title": "PR15 owner allows upstream rather than duplicate website qualification checks, but exact-package prior receipts are not yet bound; source HOLD",
+      "source_repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "source_ref": "cursor/drop-distribution-license-gate",
+      "source_commit": "b26c0838f8d91788fd4c65bddcf66c2df05883b6",
+      "source_tree": "b5fcae0753c80aebeebdd24abbb915c549f59400",
+      "source_time": "2026-10-25T05:14:56Z",
+      "status": "validation-evidence-only",
+      "date": "2026-10-25",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Sole Website Main Merger's owner-intent correction #issuecomment-6393687363; exact PR15 R2 docs HEAD. No Independent Website QA PASS.",
+        "command": "Owner clarifies repeated native-build, redistribution and source procedure can be omitted in renderer when upstream proof belongs to exact candidate source/model/controller/immutable bytes. Evidence linkage was not independently established; false entire-project MIT wording remains disputed by website GPL-3.0-only rules.",
+        "result": "POLICY INTENT CLARIFIED; SAME-BYTE UPSTREAM EVIDENCE LINKAGE NOT ESTABLISHED; PR15 OPEN/HOLD; NO RIGHTS, BROWSER OR HARDWARE APPROVAL."
+      },
+      "description": "Expected benefit is less redundant work while preserving all real build, redistribution and corresponding-source requirements. No verified efficiency gain or qualified download is inferred.",
+      "missing_gate": "Existing PR15 source owner fixes wording/binds prior exact-candidate receipts; independent Website QA rechecks negative missing-proof cases; sole Main Merger and Pages publisher alone integrate/publish eligible bytes.",
+      "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15",
+      "evidence_commit": "b26c0838f8d91788fd4c65bddcf66c2df05883b6",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15#issuecomment-6393687363",
+      "source_identity_note": "Docs R2 source root b5fcae0753c80aebeebdd24abbb915c549f59400; owner-intent comment originally pinned PR15 c2fdf75577baa0945735c44c15ef219f7adfd9f3. No accepted installer release."
     }
   ],
   "policy": {
@@ -3729,7 +3823,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 131
+    "source_or_historical_checkpoints": 134
   },
   "versioning": {
     "firmware_product_version": {

@@ -531,6 +531,18 @@
     {
       "id": "nightly-pr15-qualification-gate-removal-policy-hold-20261025",
       "sha256": "ccdb34cabe3a603cfabcf66fa45a52d8f2a488fbb7aa73b722d7702884b9ca2e"
+    },
+    {
+      "id": "bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025",
+      "sha256": "a770983cb84ae9b318100b6202b5f56c443c331a4e339a0a445fab2c56d5bca1"
+    },
+    {
+      "id": "nightly-pr142-bundled-controller-source-in-firmware-nightly-20261025",
+      "sha256": "e13e4d6249da44457f5e94689504b23b641f135707ed565773445ecd085aa4ea"
+    },
+    {
+      "id": "nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025",
+      "sha256": "94e99eeb5b90b261231c455c9f7b8aa669aadb8dee5317377d0c05575ab6153f"
     }
   ]
 }

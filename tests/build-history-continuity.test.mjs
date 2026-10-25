@@ -241,3 +241,28 @@ mustReject('R41 safety HOLD false QA approval',r=>r[130].reported_checks.result=
 mustReject('R41 safety HOLD false distribution',r=>r[130].artifact_distribution_approved=true);
 mustReject('R41 safety HOLD false install',r=>r[130].installable=true);
 console.log('PASS R41: 131 SHA-256 seals and permanent source-only / negative policy evidence; native npm still required');
+
+
+// R42: exact musical clock repair, bundled source integration and upstream-proof clarification are noninstallable.
+const r42Pins=[
+ ['bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025','4b67024e62bfd1b4d5789827334f6bea4f9b4e00'],
+ ['nightly-pr142-bundled-controller-source-in-firmware-nightly-20261025','04cb592c47f4b8d5049f5399d7f6f45b50b92c2c'],
+ ['nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025','b26c0838f8d91788fd4c65bddcf66c2df05883b6']
+];
+assert.ok(lock.rows.length>=134,'R42 134 immutable SHA256 rows required');
+for(let n=0;n<r42Pins.length;n++){
+ const i=131+n, r=original[i];assert.equal(r.id,r42Pins[n][0]);assert.equal(r.source_commit,r42Pins[n][1]);
+ assert.deepEqual(r.models,[]);assert.equal(r.installable,false);assert.equal(r.device_verified,false);
+ assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);
+ assert.equal(r.artifact_bytes_independently_verified,false);
+ mustReject('R42 deletion '+n,rows=>rows.splice(i,1));
+ mustReject('R42 source forgery '+n,rows=>rows[i].source_commit='f'.repeat(40));
+ mustReject('R42 false publication '+n,rows=>rows[i].installable=true);
+ mustReject('R42 false rights '+n,rows=>rows[i].artifact_distribution_approved=true);
+}
+assert.equal(original[131].firmware_subtree,'7165ed8e7a5d4297c19123037cc70c9a4f7a293e');
+assert.match(original[131].reported_checks.result,/INDEPENDENT FIRMWARE QA PENDING/);
+assert.match(original[132].reported_checks.result,/RIGHTS\/SOURCE\/NOTICES UNRESOLVED/);
+assert.match(original[133].reported_checks.result,/SAME-BYTE UPSTREAM EVIDENCE LINKAGE NOT ESTABLISHED/);
+mustReject('R42 compiler mismatch',rows=>rows[131].firmware_subtree='f'.repeat(40));
+console.log('PASS R42: 134 immutable noninstallable development history receipts');

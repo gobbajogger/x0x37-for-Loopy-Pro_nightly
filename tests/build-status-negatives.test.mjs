@@ -797,7 +797,7 @@ run('r40-fabricated-rights-REJECT',editR40(row=>row.artifact_distribution_approv
 const editR41Swing=fn=>edit(j=>{const r=j.history[129];assert.equal(r.id,'bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025');fn(r,j);});
 const editR41Policy=fn=>edit(j=>{const r=j.history[130];assert.equal(r.id,'nightly-pr15-qualification-gate-removal-policy-hold-20261025');fn(r,j);});
 run('r41-two-events-nonflashable-PASS',edit(j=>{
- assert.equal(j.history.length,131);assert.equal(j.counts.source_or_historical_checkpoints,131);
+ assert.ok(j.history.length>=131);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
  assert.equal(j.builds.length,2);assert.equal(j.installable,false);
  for(const r of j.history.slice(129)){assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);}
 }),true);
@@ -809,3 +809,23 @@ run('r41-safety-HOLD-delete-REJECT',editR41Policy((r,j)=>{j.history.splice(130,1
 run('r41-safety-HOLD-relabel-REJECT',editR41Policy(r=>r.reported_checks.result='FULL PASS'));
 run('r41-safety-HOLD-distribution-forgery-REJECT',editR41Policy(r=>r.artifact_distribution_approved=true));
 run('r41-safety-HOLD-download-forgery-REJECT',editR41Policy(r=>r.installable=true));
+
+
+// R42 real source-only receipts fail closed against deleted records or forged installability.
+const r42Ids=['bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025','nightly-pr142-bundled-controller-source-in-firmware-nightly-20261025','nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025'];
+const editR42=(n,fn)=>edit(j=>{let r=j.history[131+n];assert.equal(r.id,r42Ids[n]);fn(r,j);});
+run('r42-noninstallable-three-source-receipts-PASS',edit(j=>{
+ assert.ok(j.history.length>=134);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(let i=0;i<3;i++){const r=j.history[131+i];assert.equal(r.id,r42Ids[i]);
+ assert.deepEqual(r.models,[]);assert.equal(r.installable,false);assert.equal(r.device_verified,false);
+ assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);}
+}),true);
+for(let i=0;i<3;i++){
+ run('r42-deleted-'+i+'-REJECT',editR42(i,(r,j)=>{j.history.splice(131+i,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r42-forged-source-'+i+'-REJECT',editR42(i,r=>r.source_commit='f'.repeat(40)));
+ run('r42-false-install-'+i+'-REJECT',editR42(i,r=>r.installable=true));
+ run('r42-false-rights-'+i+'-REJECT',editR42(i,r=>r.artifact_distribution_approved=true));
+}
+run('r42-forged-compiler-REJECT',editR42(0,r=>r.firmware_subtree='f'.repeat(40)));
+run('r42-forged-upstream-PASS-REJECT',editR42(2,r=>r.reported_checks.result='FULL INDEPENDENT QA PASS'));
