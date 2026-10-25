@@ -3,13 +3,13 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "987818546dfc94b7d5fa285ef760c7af921361ad",
+    "web/x0x_installer.html": "61e13b6d969c8145482a083026e803dfd4d16f6a",
     "web/x0x_breaks.html": "2b123e974cbde09b3e710357c3c041ebe2c80d41",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
     "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
-    "web/x0x_projects.html": "f0d614e342940a3d261e42f35c2dc3bcedd4a993",
+    "web/x0x_projects.html": "4630a73d8e715e4aba9869599a7a271519f693f8",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
     "web/test_projects.mjs": "6e3f65e584f0873c0af7bb21539ed3355d49c365",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
@@ -173,6 +173,12 @@
       "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
       "sourceCommit": "08d3164a265123cb4c84e5104642fd93257d63d7",
       "description": "GPL-3.0-only Projects v1 protocol and safety tests reused; page adapted for task workspace and explicit project reset scope. Protocol unchanged except provenance. Existing website sample transport retained."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "e8ffcf04f7eb39c15cdbaa6d646a53aedf2ff07a",
+      "description": "Installer density and concise presentation; visible setup steps after Closer look, no operational script changes. Embedded project layout compacted with warnings retained."
     }
   ]
 }

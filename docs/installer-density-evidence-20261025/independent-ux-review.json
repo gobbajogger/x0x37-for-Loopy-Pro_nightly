@@ -1,0 +1,445 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "check": "320 no overflow",
+      "pass": true
+    },
+    {
+      "check": "320 first three tasks visible with 44px targets",
+      "pass": true
+    },
+    {
+      "check": "320 no tiny top setup replacement link",
+      "pass": true
+    },
+    {
+      "check": "320 all setup steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "320 closer look before setup",
+      "pass": true
+    },
+    {
+      "check": "320 responsive setup columns",
+      "pass": true
+    },
+    {
+      "check": "320 material install warning visible",
+      "pass": true
+    },
+    {
+      "check": "320 SMC preview limitation visible",
+      "pass": true
+    },
+    {
+      "check": "320 feature/setup body minimum 13px",
+      "pass": true
+    },
+    {
+      "check": "320 shared closer look and setup visible on projects",
+      "pass": true
+    },
+    {
+      "check": "320 keyboard task switch",
+      "pass": true
+    },
+    {
+      "check": "320 reset remains disabled disconnected",
+      "pass": true
+    },
+    {
+      "check": "320 autosave warning retained",
+      "pass": true
+    },
+    {
+      "check": "320 project action 44px",
+      "pass": true
+    },
+    {
+      "check": "320 generic hero removed on projects",
+      "pass": true
+    },
+    {
+      "check": "320 project task heading visible",
+      "pass": true
+    },
+    {
+      "check": "320 inspection before destructive keyboard actions",
+      "pass": true
+    },
+    {
+      "check": "320 visible keyboard focus on primary connection",
+      "pass": true
+    },
+    {
+      "check": "320 valid synthetic file inspected offline",
+      "pass": true
+    },
+    {
+      "check": "320 offline inspection cannot prepare device writes",
+      "pass": true
+    },
+    {
+      "check": "320 malformed file has visible error and write refusal",
+      "pass": true
+    },
+    {
+      "check": "320 shared closer look and setup visible on samples",
+      "pass": true
+    },
+    {
+      "check": "320 generic hero removed on samples",
+      "pass": true
+    },
+    {
+      "check": "320 sample selected state exposed",
+      "pass": true
+    },
+    {
+      "check": "390 no overflow",
+      "pass": true
+    },
+    {
+      "check": "390 first three tasks visible with 44px targets",
+      "pass": true
+    },
+    {
+      "check": "390 no tiny top setup replacement link",
+      "pass": true
+    },
+    {
+      "check": "390 all setup steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "390 closer look before setup",
+      "pass": true
+    },
+    {
+      "check": "390 responsive setup columns",
+      "pass": true
+    },
+    {
+      "check": "390 material install warning visible",
+      "pass": true
+    },
+    {
+      "check": "390 SMC preview limitation visible",
+      "pass": true
+    },
+    {
+      "check": "390 feature/setup body minimum 13px",
+      "pass": true
+    },
+    {
+      "check": "390 shared closer look and setup visible on projects",
+      "pass": true
+    },
+    {
+      "check": "390 keyboard task switch",
+      "pass": true
+    },
+    {
+      "check": "390 reset remains disabled disconnected",
+      "pass": true
+    },
+    {
+      "check": "390 autosave warning retained",
+      "pass": true
+    },
+    {
+      "check": "390 project action 44px",
+      "pass": true
+    },
+    {
+      "check": "390 generic hero removed on projects",
+      "pass": true
+    },
+    {
+      "check": "390 project task heading visible",
+      "pass": true
+    },
+    {
+      "check": "390 inspection before destructive keyboard actions",
+      "pass": true
+    },
+    {
+      "check": "390 visible keyboard focus on primary connection",
+      "pass": true
+    },
+    {
+      "check": "390 valid synthetic file inspected offline",
+      "pass": true
+    },
+    {
+      "check": "390 offline inspection cannot prepare device writes",
+      "pass": true
+    },
+    {
+      "check": "390 malformed file has visible error and write refusal",
+      "pass": true
+    },
+    {
+      "check": "390 shared closer look and setup visible on samples",
+      "pass": true
+    },
+    {
+      "check": "390 generic hero removed on samples",
+      "pass": true
+    },
+    {
+      "check": "390 sample selected state exposed",
+      "pass": true
+    },
+    {
+      "check": "768 no overflow",
+      "pass": true
+    },
+    {
+      "check": "768 first three tasks visible with 44px targets",
+      "pass": true
+    },
+    {
+      "check": "768 no tiny top setup replacement link",
+      "pass": true
+    },
+    {
+      "check": "768 all setup steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "768 closer look before setup",
+      "pass": true
+    },
+    {
+      "check": "768 responsive setup columns",
+      "pass": true
+    },
+    {
+      "check": "768 material install warning visible",
+      "pass": true
+    },
+    {
+      "check": "768 SMC preview limitation visible",
+      "pass": true
+    },
+    {
+      "check": "768 feature/setup body minimum 13px",
+      "pass": true
+    },
+    {
+      "check": "768 shared closer look and setup visible on projects",
+      "pass": true
+    },
+    {
+      "check": "768 keyboard task switch",
+      "pass": true
+    },
+    {
+      "check": "768 reset remains disabled disconnected",
+      "pass": true
+    },
+    {
+      "check": "768 autosave warning retained",
+      "pass": true
+    },
+    {
+      "check": "768 project action 44px",
+      "pass": true
+    },
+    {
+      "check": "768 generic hero removed on projects",
+      "pass": true
+    },
+    {
+      "check": "768 project task heading visible",
+      "pass": true
+    },
+    {
+      "check": "768 inspection before destructive keyboard actions",
+      "pass": true
+    },
+    {
+      "check": "768 visible keyboard focus on primary connection",
+      "pass": true
+    },
+    {
+      "check": "768 valid synthetic file inspected offline",
+      "pass": true
+    },
+    {
+      "check": "768 offline inspection cannot prepare device writes",
+      "pass": true
+    },
+    {
+      "check": "768 malformed file has visible error and write refusal",
+      "pass": true
+    },
+    {
+      "check": "768 200 percent CSS zoom no outer overflow",
+      "pass": true
+    },
+    {
+      "check": "768 shared closer look and setup visible on samples",
+      "pass": true
+    },
+    {
+      "check": "768 generic hero removed on samples",
+      "pass": true
+    },
+    {
+      "check": "768 sample selected state exposed",
+      "pass": true
+    },
+    {
+      "check": "1280 no overflow",
+      "pass": true
+    },
+    {
+      "check": "1280 first three tasks visible with 44px targets",
+      "pass": true
+    },
+    {
+      "check": "1280 no tiny top setup replacement link",
+      "pass": true
+    },
+    {
+      "check": "1280 all setup steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "1280 closer look before setup",
+      "pass": true
+    },
+    {
+      "check": "1280 responsive setup columns",
+      "pass": true
+    },
+    {
+      "check": "1280 material install warning visible",
+      "pass": true
+    },
+    {
+      "check": "1280 SMC preview limitation visible",
+      "pass": true
+    },
+    {
+      "check": "1280 feature/setup body minimum 13px",
+      "pass": true
+    },
+    {
+      "check": "1280 shared closer look and setup visible on projects",
+      "pass": true
+    },
+    {
+      "check": "1280 keyboard task switch",
+      "pass": true
+    },
+    {
+      "check": "1280 reset remains disabled disconnected",
+      "pass": true
+    },
+    {
+      "check": "1280 autosave warning retained",
+      "pass": true
+    },
+    {
+      "check": "1280 project action 44px",
+      "pass": true
+    },
+    {
+      "check": "1280 generic hero removed on projects",
+      "pass": true
+    },
+    {
+      "check": "1280 project task heading visible",
+      "pass": true
+    },
+    {
+      "check": "1280 inspection before destructive keyboard actions",
+      "pass": true
+    },
+    {
+      "check": "1280 visible keyboard focus on primary connection",
+      "pass": true
+    },
+    {
+      "check": "1280 valid synthetic file inspected offline",
+      "pass": true
+    },
+    {
+      "check": "1280 offline inspection cannot prepare device writes",
+      "pass": true
+    },
+    {
+      "check": "1280 malformed file has visible error and write refusal",
+      "pass": true
+    },
+    {
+      "check": "1280 200 percent CSS zoom no outer overflow",
+      "pass": true
+    },
+    {
+      "check": "1280 shared closer look and setup visible on samples",
+      "pass": true
+    },
+    {
+      "check": "1280 generic hero removed on samples",
+      "pass": true
+    },
+    {
+      "check": "1280 sample selected state exposed",
+      "pass": true
+    },
+    {
+      "check": "web/x0x_installer.html scripts identical after exact known normal-projects presentation string removal",
+      "pass": true
+    },
+    {
+      "check": "web/x0x_projects.html operational scripts byte identical",
+      "pass": true
+    }
+  ],
+  "source_sha256": {
+    "web/x0x_installer.html": "98e2e0ecadfbf6d8caf52208e755718c8532e723b441c07e9cdb7c8fbd4f2000",
+    "web/x0x_projects.html": "355c79b6f22f4d9091611fc96d3fdf9fe18fc617e7ae6398a5139f5586c9be96"
+  },
+  "limitations": [
+    "Headless synthetic UI review only; no device, MIDI, GUI, deployment or runtime performance evidence.",
+    "200% CSS zoom passes at 768/1280px. Supplemental phone CSS zoom at 320/390px overflows at effective 160/195px, below the 320px tested reflow floor. CSS zoom is an approximation, not a native browser zoom claim."
+  ],
+  "observations": [
+    "The lower setup section is fully visible and follows Closer look. Three tasks remain together at top.",
+    "Compact feature rows and unboxed project sections reduce decorative whitespace while essential warnings remain visible.",
+    "Final desktop/mobile project screenshots inspected: connection and offline inspection lead, reset scope remains at its action, generic hero is absent, and shared Closer look precedes fully visible setup.",
+    "Valid project-only synthetic file inspected offline at each viewport; corrupt file exposed an error and retained write refusal.",
+    "Keyboard focus outline visible on primary connection control. Active task targets are 44px at all four widths."
+  ],
+  "supplemental_stress_checks": [
+    {
+      "check": "320 200 percent CSS zoom no outer overflow",
+      "pass": false
+    },
+    {
+      "check": "390 200 percent CSS zoom no outer overflow",
+      "pass": false
+    }
+  ],
+  "screenshots": {
+    "after-firmware-1280.png": "c5541fa2f2f4bed073e1fcd30dd71390bddc2de827dc331b2e72819b14826e1d",
+    "after-firmware-390.png": "efea414e95e5d282e872598851eddb024b4a6b8dfa652c5339368b5f76810107",
+    "after-projects-1280.png": "58ac861264d83b4ae14391997d4f6e9599b323be3f66b42a3c8badd0c60deb8c",
+    "after-projects-390.png": "4f8d5da5c0681c6380587c16d91447972e1bc42f6768304ddd37f3f719bd78f3",
+    "after-samples-1280.png": "43f88f15e2c2ecb3e816b823dbeb40878e329ebcd79110b4b5f31bf946cd153d",
+    "after-samples-390.png": "78f15c618bac824fb63ba1ae921c61b22eebe831dec4ac47b2973c4320be617a"
+  },
+  "acceptance_scope": "Actual 320/390/768/1280 CSS viewport layouts; supplemental 200% CSS zoom at desktop/tablet. No acceptance claim below 320 effective CSS px.",
+  "final_copy_delta": {
+    "verified": true,
+    "change": "Only normal projects workspace-message literal emptied; all other installer script bytes identical to PR20. Project scripts remain fully byte-identical. Busy/error assignments unchanged.",
+    "normalized_literal": "\"Transfer a whole project, including its song. Reset project keeps sample slots.\"",
+    "reviewed_utc": "2026-10-25T11:25:52.563725+00:00"
+  }
+}
