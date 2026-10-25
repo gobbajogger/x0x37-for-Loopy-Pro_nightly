@@ -1,0 +1,35 @@
+{
+  "base_commit": "63664686825feb883b33aad25d35404be73d376b",
+  "branch": "feature/installer-owner-ux-20261025",
+  "checks": {
+    "native_build": "PASS",
+    "npm_test": "PASS",
+    "presentation": 106,
+    "responsive_cross_route": 120,
+    "workspace_safety": 29,
+    "project_workspace": 63,
+    "independent_dom_a11y": 149
+  },
+  "previews": {
+    "final-projects-390.png": {
+      "sha256": "61e70d34f7a379f3002461cfa0fdbce71b6d65a29bbf7d6beceb386ced24500a"
+    },
+    "final-samples-1280.png": {
+      "sha256": "e665443ce4d562675d36e9aef1c943797943a9db1e4ae19e8b6d04be3c8848e1"
+    },
+    "final-projects-1280.png": {
+      "sha256": "7080409b2e533a739ca5ca9cbe961c08af1749b55c38431bf78c6609de2e8421"
+    },
+    "final-samples-390.png": {
+      "sha256": "d2fbee98af89d87d1d127cccab9402e255a6e2df18ac2a51620582112d5b2d5c"
+    },
+    "final-firmware-390.png": {
+      "sha256": "bf9ee2755a7fb2d09514472a78da13704750114356fa9298971ad3add037eb1d"
+    },
+    "final-firmware-1280.png": {
+      "sha256": "f5d7406bdfe788f452362088a6541e0453445a3ae1603b4e198a89fcd42df807"
+    }
+  },
+  "limits": "No device operations, package downloads, qualification, merge, deployment or binary publication. Review-only output disables MIDI and downloads; source admission guards remain authoritative.",
+  "review_html_sha256": "502f94a9d9ce52bd7e4000c90ae718365eabe56a49bdcfd7a4cb6aafd87d6201"
+}

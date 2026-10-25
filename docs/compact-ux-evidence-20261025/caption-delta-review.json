@@ -1,0 +1,94 @@
+{
+  "source": "1975a0295aab39c616e249f6ac435282db430544",
+  "reviewer": "/root/caption_delta_review",
+  "delta_base": "ae59015e379b3355c4103d0dd7df52a1b30d35b3",
+  "outcome": "PASS",
+  "actual_delta": [
+    "English caption labels use readable names",
+    "versionOptionCaption changes displayed text only; exact option values retained",
+    "Exact build identifier added inside optional build provenance"
+  ],
+  "independent_checks": {
+    "presentation-browser.py": {
+      "checks": 106,
+      "exit": 0
+    },
+    "density-browser.py": {
+      "checks": 120,
+      "exit": 0
+    },
+    "caption-preview-check.py": {
+      "exit": 0,
+      "result": {
+        "checks": [
+          "exact option values match catalog",
+          "readable captions distinct",
+          "latest selected by exact unchanged identifier",
+          "raw identifiers absent from captions",
+          "390 exact version/model changes preserve selection and disabled preview",
+          "1280 exact version/model changes preserve selection and disabled preview",
+          "zero HTTP requests"
+        ],
+        "options": [
+          {
+            "value": "nightly-1325f5d3-dev",
+            "label": "Latest development build"
+          },
+          {
+            "value": "nightly-54f2ffbc-dev",
+            "label": "Development build 2"
+          }
+        ],
+        "requests": [
+          "file:///Users/mac/Documents/Codex/2026-10-25/task-1ecbbbbb-6a96-411a-90fa-a4620040772f/review/installer-preview.html"
+        ]
+      }
+    },
+    "preview-safety.py": {
+      "exit": 0,
+      "result": {
+        "preview": "PASS",
+        "viewports": [
+          390,
+          1280
+        ],
+        "routes": 3,
+        "all_frames_no_fetch_no_MIDI": true,
+        "action_controls_disabled": true,
+        "network_requests": [
+          "file:///Users/mac/Documents/Codex/2026-10-25/task-1ecbbbbb-6a96-411a-90fa-a4620040772f/review/installer-preview.html"
+        ]
+      }
+    }
+  },
+  "pixel_review": {
+    "viewed": [
+      "final-firmware-390.png",
+      "final-firmware-1280.png"
+    ],
+    "findings": "Readable Latest development build caption fits both sizes. Default visible page contains no raw build identifier, no new wrapping/overflow/overlap/clipping. Model selection, warning and consent remain at action; Closer look then visible Setup retained."
+  },
+  "source_blobs": {
+    "web/x0x_installer.html": "71310c52cb5e00e485c69dc24fd2dc48fb7953da",
+    "web/x0x_breaks.html": "0adc032d95dca24499c80ed4debdf6356a02f7b4",
+    "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0"
+  },
+  "artifact_sha256": {
+    "previews/final-firmware-390.png": "a78e1002108a12dd6bcb561d46e52462f7092a9472f36256dbabb6c7cee2e7ad",
+    "previews/final-firmware-1280.png": "7e5c206f2dcc30c09318704b088e1283f7d601c46364e3388fae32cd2e73b8a7",
+    "review/installer-preview.html": "8f6678a1445614ffda4c370411b0eb81846128b27e001746e152b05eb20fb97d"
+  },
+  "reused_evidence": {
+    "tested_source": "5ff1a5ce7d05c4e85cb01307556158be9992bc65",
+    "negative_admission_checks": 677,
+    "bundled_controller_checks": 61,
+    "workspace_checks": 29,
+    "project_checks": 63,
+    "basis": "Inspected source delta changes captions and provenance text only. Option values, selected version/model identity, load/integrity/consent/write guards, MIDI and project/sample operation modules unchanged. Native suite rerun by coordinator on final source; presentation/density and focused selection/safety independently rerun here."
+  },
+  "limits": [
+    "Synthetic read-only browser checks; no GUI or hardware mutation",
+    "No public deployment or hardware qualification",
+    "Missing detector executable remains reported in prior independent review; no installation/hooks"
+  ]
+}

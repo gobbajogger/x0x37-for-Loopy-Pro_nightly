@@ -1,0 +1,80 @@
+{
+  "role": "independent functional/data-safety reviewer",
+  "result": "PASS",
+  "source_base": "570253d35c84748bba82ddd616b9c17af8d7da58",
+  "reused_firmware_source": "08d3164a265123cb4c84e5104642fd93257d63d7",
+  "file_sha256": {
+    "web/x0x_installer.html": "2e9c32db442c17d1d8998195eef85c58b3d89174b7e2589bd403f64cec5f56d7",
+    "web/x0x_projects.html": "93da82152217f25ca063a65b1a572cb7d4cc39457ffe497e56c123b99fb060c7",
+    "web/x0x_projects.js": "3e274220d037ccfea1858eefc1e02fa172722d10130e51eb3b2c339a739ddcea",
+    "web/test_projects.mjs": "efd841f4c444d015518e9c059705e57050e2c7c8ac8e3762c9e80aaecb4cd4a9",
+    "web/test_projects_page.mjs": "519538a2ef72fd5e7499123ccd5c0cb326ec67ce8a67811c663d20af421b453e",
+    "scripts/build-preview.mjs": "3e46fbdf47b7b1c55eeacc35e51ecbe4db3a3fc23512520c7c7864730b5362bd",
+    "scripts/render-qualified-nightly.mjs": "fdd818f55446aea1f96475425f8aa752202604376d734dc4582f2a030f29fefd",
+    "docs/install/index.html": "abdc7dfd14e6db9b7777d3b6ac26fce9d8961267dbe3b5444f68c0039e58c453",
+    "docs/projects/index.html": "99585c9364b7fb34aa3d0f833037644e573354eae8929458fa9e2166297f5533"
+  },
+  "tests": [
+    {
+      "command": "node web/test_projects.mjs",
+      "result": "PASS",
+      "tests": 29,
+      "log": "/tmp/song-safety-protocol.log"
+    },
+    {
+      "command": "node web/test_projects_page.mjs",
+      "result": "PASS",
+      "tests": 13,
+      "log": "/tmp/song-safety-page.log"
+    },
+    {
+      "command": "node scripts/build-preview.mjs --check",
+      "result": "PASS"
+    },
+    {
+      "command": "node tests/qualified-catalog.test.mjs",
+      "result": "PASS",
+      "rejection_cases": 333,
+      "log": "/tmp/song-safety-qualified.log"
+    },
+    {
+      "command": "headless project-workspace-browser.py with actual wording + hashchange wait",
+      "result": "PASS",
+      "checks": 63,
+      "log": "/tmp/song-safety-browser.log"
+    }
+  ],
+  "findings": [
+    {
+      "id": "SAFE-01",
+      "severity": "minor",
+      "finding": "Empty file chooser change discarded selected/prepared state",
+      "status": "FIXED",
+      "fix": "onchange now returns before clearing state when empty; focused regression passes"
+    },
+    {
+      "id": "TEST-01",
+      "severity": "test-only",
+      "finding": "Browser literal phrase differed and state asserted before hashchange event",
+      "status": "REPORTED",
+      "fix": "Root updating test wording and async wait; independent execution with corrections passes"
+    }
+  ],
+  "reviewed_invariants": [
+    "Project protocol unchanged except provenance; no second storage format",
+    "Whole-project transfer/reset scope and autosave overwrite confirmation explicit",
+    "Unsupported identity/protocol/schema/length/capacity rejected; no destructive fallback",
+    "Corrupt/truncated/version/CRC/semantic validation before sample mutation",
+    "Project-only import never sends sample write commands",
+    "Portable full-header images readback and verified recovery/rollback hold preserved",
+    "Workspace switch blocked while busy; project MIDI listener detached and fresh device preview required",
+    "Reset confirmed op73 has no sample-write invocation",
+    "Active catalog/package/controller guards unchanged; qualification binds project assets/generator"
+  ],
+  "limitations": [
+    "Synthetic protocol mocks and headless browser only; no device/MIDI or power-loss/hardware proof",
+    "PR171 legacy arrangement Load repair not included",
+    "Model compatibility uses existing identity/protocol/project schema and destination slot capacities; no new model metadata invented"
+  ],
+  "remaining_blockers": []
+}

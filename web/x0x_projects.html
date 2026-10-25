@@ -1,0 +1,347 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-only
+     Reused from gobbajogger/X0X37-for-Loopy-Pro at
+     08d3164a265123cb4c84e5104642fd93257d63d7, web/x0x_projects.html.
+     Adapted for the NIGHTLY task workspace; see docs/PROJECT_FILES.md. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X0X songs &amp; projects</title>
+<style>
+  :root { color-scheme: light dark; --bg: #f5f5f3; --card: #fff; --ink: #212321; --muted: #62685f; --line: #d7dbd2; --accent: #8a4b04; --error: #a32720; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141612; --card: #1e211a; --ink: #e9ede4; --muted: #b1b9a9; --line: #3c4435; --accent: #efad58; --error: #ffaaa2; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, sans-serif; }
+  main { max-width: 800px; margin: auto; padding: 36px 20px 64px; }
+  a { color: var(--accent); }
+  nav { display: flex; gap: 20px; font-size: .9rem; margin-bottom: 20px; }
+  h1 { margin: 0; font-size: 2rem; line-height: 1.2; }
+  h2 { font-size: 1.15rem; margin: 0 0 8px; }
+  h3 { font-size: 1rem; margin: 16px 0 6px; }
+  p { margin: 8px 0 16px; }
+  section { padding: 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); margin-top: 18px; }
+  .small, .muted { color: var(--muted); font-size: .88rem; }
+  .bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+  button, input, select { font: inherit; }
+  button { border: 1px solid var(--ink); padding: 8px 14px; background: var(--ink); color: var(--bg); border-radius: 5px; cursor: pointer; }
+  button.quiet { background: transparent; color: var(--ink); border-color: var(--line); }
+  button:disabled { opacity: .45; cursor: default; }
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  input[type=text], select { color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px; width: 100%; }
+  input[type=file] { max-width: 100%; }
+  label { display: block; }
+  label.check { display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; }
+  input[type=checkbox] { margin-top: 6px; }
+  .ports { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  #status { white-space: pre-wrap; overflow-wrap: anywhere; padding: 12px 0 0; min-height: 2.5rem; margin: 0; }
+  #status.error { color: var(--error); }
+  #progress { display: block; width: 100%; height: 8px; margin-top: 12px; accent-color: var(--accent); }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; text-align: left; font-size: .85rem; border-collapse: collapse; margin: 10px 0; }
+  th, td { border-bottom: 1px solid var(--line); padding: 9px 7px; vertical-align: top; }
+  th:first-child, td:first-child { padding-left: 0; }
+  .collision { color: var(--accent); font-weight: 600; }
+  #preview { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 4px; }
+  #backup-note { margin-top: 14px; }
+  .embedded { --bg:#17181b; --card:#202227; --ink:#f5f3ed; --muted:#b4b2ad; --line:#41434a; --accent:#efb25d; color-scheme:dark; }
+  .embedded main { max-width:100%; padding:8px 0 20px; }
+  .embedded nav { display:none; }
+  [hidden] { display: none !important; }
+  @media (max-width: 500px) { main { padding-inline: 14px; } section { padding: 16px; } .ports { grid-template-columns: 1fr; } }
+
+  /* Density only: keep warnings and all actions in their original reading order. */
+  p { margin:6px 0 10px; }
+  section { padding:16px; margin-top:12px; }
+  button { min-height:44px; }
+  .embedded { --bg:#0b0e10; --card:#14191c; --ink:#eff3ef; --muted:#a1ada9; --line:#343e3a; }
+  .embedded main { padding:0 0 12px; }
+  .embedded h1 { font-size:1.5rem; }
+  .embedded section { border:0; border-top:1px solid var(--line); border-radius:0; padding:14px 0; background:transparent; margin-top:8px; }
+  @media(min-width:900px) {
+   .embedded main { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:24px; }
+   .embedded main>h1,.embedded main>p,.embedded main>nav,.embedded section[aria-labelledby="connection-title"],.embedded section[aria-labelledby="keyboard-title"] { grid-column:1/-1; }
+   .embedded section { min-width:0; }
+  }
+
+  .embedded #find,.embedded #connect{background:#ccfc76;color:#121c0b;border-color:#ccfc76;font-weight:650}
+  .embedded section[aria-labelledby="connection-title"]{grid-column:auto}
+  .embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}
+  .embedded #status{font-size:.88rem;color:var(--muted)}
+  p{max-width:72ch}.embedded section[aria-labelledby="export-title"]{grid-column:1/-1}.embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}.check{min-height:44px}button,a,input,select{touch-action:manipulation}
+details>summary{min-height:44px;align-content:center;font-size:14px;color:var(--muted);cursor:pointer}details p{margin:8px 0 12px}
+</style>
+</head>
+<body>
+<main>
+  <nav aria-label="X0X"><a href="../install/#firmware">Install firmware</a><a href="../install/#samples">Import samples</a></nav>
+  <h1>Songs &amp; projects</h1>
+  <p class="small">Move your whole live project—song arrangement, patterns and sounds—to or from a file. Include samples for a portable copy.</p>
+  <section aria-labelledby="connection-title">
+    <h2 id="connection-title">Connect your keyboard</h2>
+    <p class="small">Connect by USB with X0X running. Stop playback, recording and performance mode; close other editors.</p>
+    <button id="find">Find USB MIDI keyboard</button>
+    <div id="ports" hidden>
+      <div class="ports">
+        <label>MIDI input<select id="midi-input"></select></label>
+        <label>MIDI output<select id="midi-output"></select></label>
+      </div>
+      <div class="bar"><button id="connect">Connect selected ports</button><span id="identity" class="small">Not connected</span></div>
+    </div>
+    <p id="status" role="status" aria-live="polite">Not connected.</p>
+    <progress id="progress" max="1" hidden aria-label="Project transfer progress"></progress>
+  </section>
+
+  <section aria-labelledby="import-title">
+    <h2 id="import-title">Inspect or import a project</h2>
+    <label for="file" class="small">Choose an .x0xproject file</label>
+    <input id="file" type="file" accept=".x0xproject">
+    <p id="file-info" class="small">Inspect a file offline, or connect to prepare an import.</p>
+    <button id="prepare" class="quiet" disabled>Prepare import</button>
+    <div id="preview" hidden>
+      <h3 id="preview-title"></h3>
+      <p id="preview-summary" class="small"></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">Slot</th><th scope="col">On keyboard</th><th scope="col">In project</th><th scope="col">Action</th></tr></thead>
+        <tbody id="slot-rows"></tbody>
+      </table></div>
+      <p id="backup-note" class="small"></p>
+      <button id="backup" class="quiet">Download recovery backup</button>
+      <label id="backup-confirm" class="check" hidden><input id="backup-saved" type="checkbox" disabled><span>I saved the recovery backup and can use it to restore this keyboard.</span></label>
+      <div class="bar"><button id="import" disabled>Import project</button><button id="cancel" class="quiet">Cancel preview</button></div>
+      <p class="small">Import replaces the live project and the sample slots shown above. Save on keyboard stores it immediately; autosave also applies.</p><details><summary>Details: import checks</summary><p class="small">The firmware validates the project before sample changes, verifies the written samples, then adopts the project.</p></details>
+    </div>
+    <div id="recovery" hidden>
+      <p class="small">The recovery backup from the interrupted import is still available, even if you close its preview or choose another file.</p>
+      <button id="recover-backup" class="quiet">Download interrupted import’s recovery backup</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="export-title">
+    <h2 id="export-title">Export a project</h2>
+    <label for="name" class="small">Project name</label>
+    <input id="name" type="text" maxlength="80" value="My X0X project" autocomplete="off">
+    <label class="check"><input id="portable" type="checkbox" checked><span>Include original samples <span class="small">— recommended for moving a project or keeping a complete backup.</span></span></label>
+    <details><summary>Details: project files</summary><p class="small">Portable files retain original sample bytes, playback rates and slot order. Without samples, a file imports only when every sample slot already matches.</p></details>
+    <button id="export" disabled>Export project + samples</button>
+  </section>
+  <section aria-labelledby="keyboard-title">
+    <h2 id="keyboard-title">On the keyboard</h2>
+    <p class="small">Load replaces the live project. Reset clears the song, patterns, sounds and project settings; samples stay. Reset turns autosave on and may overwrite the saved project. Export first to keep your work.</p>
+    <div class="bar">
+      <button id="save" disabled>Save on keyboard</button>
+      <button id="load" class="quiet" disabled>Load saved project</button>
+      <button id="reset" class="quiet" disabled>Reset project · keep samples</button>
+    </div>
+    <details><summary>Details: reset &amp; recovery</summary><p class="small">Reset also clears motion and stops playback and recording; device role settings stay in place. Arrangement-only clear is unavailable in this browser. To clear only the arrangement, use SONG → CLEAR SONG on the keyboard, keeping patterns, sounds, settings and samples.</p><p class="small">Keep USB connected during transfers. After a sample-transfer failure, the page attempts to restore the previous samples and reports the result. Keep the recovery file for reconnecting.</p></details>
+  </section>
+
+
+
+
+
+</main>
+<script type="module">
+import { PROJECT_MAX_FILE, ProjectDevice, ProjectMidiLink, readProjectFile, makeProjectFile, readProjectSnapshot, prepareProjectImport, applyProjectImport } from "./x0x_projects.js";
+
+const $ = (id) => document.getElementById(id);
+let midi = null, link = null, device = null, selected = null, prepared = null, busy = false, downloaded = false, previewStale = false;
+let recoveryBytes = null, recoveryName = "";
+let workspaceActive = typeof location === "undefined" || !new URLSearchParams(location.search).has("embedded");
+const say = (text, error = false) => { $("status").textContent = text; $("status").classList.toggle("error", error); };
+const human = (n) => `${(n / 1024).toFixed(1)} KiB`;
+const stamp = () => new Date().toISOString().replace(/[-:]/g, "").slice(0, 15).replace("T", "-");
+const filename = (name) => name.trim().replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 70) || "x0x-project";
+function download(data, name) {
+  const url = URL.createObjectURL(new Blob([data], { type: "application/octet-stream" })), a = document.createElement("a");
+  a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+function controls() {
+  for (const id of ["save", "load", "reset", "export"]) $(id).disabled = busy || !workspaceActive || !device || device.mode !== 0;
+  for (const id of ["find", "connect", "midi-input", "midi-output", "file", "name", "portable"]) $(id).disabled = busy || !workspaceActive;
+  $("prepare").disabled = busy || !workspaceActive || !device || !selected;
+  $("import").disabled = busy || !workspaceActive || !device || !prepared || previewStale || prepared.plan.collisions.length > 0 && (!downloaded || !$("backup-saved").checked);
+  $("backup").disabled = busy || !prepared;
+  $("recover-backup").disabled = busy || !recoveryBytes;
+  $("backup-saved").disabled = busy || !downloaded;
+  $("cancel").disabled = busy;
+  $("export").textContent = $("portable").checked ? "Export project + samples" : "Export project only";
+  $("prepare").textContent = device?.mode === 3 ? "Prepare recovery" : "Prepare import";
+  $("import").textContent = prepared?.recovery ? "Restore recovery project" : "Import project";
+}
+function clearPreview() {
+  prepared = null; downloaded = false; previewStale = false; $("preview").hidden = true; $("backup-saved").checked = false; controls();
+}
+async function run(message, action) {
+  if (busy || !workspaceActive) return;
+  busy = true; controls(); say(message); $("progress").hidden = false; $("progress").removeAttribute("value");
+  try { await action(); }
+  catch (e) { say(e.message, true); }
+  finally { busy = false; $("progress").hidden = true; controls(); }
+}
+function progress(k, n, all) {
+  if (all) $("progress").value = Math.min(1, n / all);
+  $("progress").setAttribute("aria-label", `Reading or writing sample slot ${k + 1}`);
+}
+async function connectSelected() {
+  if (!workspaceActive) return;
+  if (link) link.close();
+  device = null; clearPreview(); $("identity").textContent = "Not connected";
+  const input = midi.inputs.get($("midi-input").value), output = midi.outputs.get($("midi-output").value);
+  if (!input || !output) throw new Error("Choose the keyboard’s MIDI input and output ports.");
+  link = new ProjectMidiLink(input, output);
+  const next = new ProjectDevice(link);
+  try {
+    const info = await next.connect(); device = next; $("identity").textContent = info.identity;
+    say(info.recovery ? `Connected to ${info.identity}. The keyboard is holding audio and controls after an interrupted sample transfer. Choose a portable recovery backup, then prepare recovery.` :
+      `Connected to ${info.identity}. Ready for projects.`);
+  } catch (e) { link.close(); link = null; $("identity").textContent = "Projects unavailable on this connection"; throw e; }
+}
+$("find").onclick = () => run("Finding USB MIDI ports…", async () => {
+  if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable in this browser. Open this page in Chrome or Edge over HTTPS or localhost.");
+  midi = await navigator.requestMIDIAccess({ sysex: true });
+  midi.onstatechange = () => {
+    if (link && (link.input.state === "disconnected" || link.output.state === "disconnected")) {
+      link.close(); link = null; device = null; previewStale = !!prepared;
+      $("identity").textContent = "Disconnected";
+      say("USB disconnected. Reconnect and prepare a new preview before importing. Keep any recovery backup.", true); controls();
+    }
+  };
+  const inputs = [...midi.inputs.values()].filter((p) => p.state !== "disconnected"), outputs = [...midi.outputs.values()].filter((p) => p.state !== "disconnected");
+  for (const [id, ports] of [["midi-input", inputs], ["midi-output", outputs]]) {
+    $(id).replaceChildren();
+    for (const port of ports) { const option = document.createElement("option"); option.value = port.id; option.textContent = port.name || port.id; $(id).append(option); }
+  }
+  $("ports").hidden = false;
+  if (!inputs.length || !outputs.length) throw new Error("No MIDI input/output pair was found. Connect the keyboard by USB, then find ports again.");
+  const known = inputs.filter((i) => /x0x|smk-37|mke-p37|fm-1|felucca/i.test(i.name) && outputs.some((o) => o.name === i.name));
+  if (inputs.length === 1 && outputs.length === 1 || known.length === 1) {
+    const input = known.length === 1 ? known[0] : inputs[0], output = outputs.find((o) => o.name === input.name) || outputs[0];
+    $("midi-input").value = input.id; $("midi-output").value = output.id; await connectSelected();
+  } else say("Choose the keyboard’s MIDI input and output, then connect the selected ports.");
+});
+$("connect").onclick = () => run("Checking the keyboard and project protocol…", connectSelected);
+$("portable").onchange = controls;
+$("save").onclick = () => run("Saving the live project on the keyboard…", async () => {
+  await device.save(); clearPreview(); say("Project saved on the keyboard. Sample slots are unchanged.");
+});
+$("load").onclick = () => {
+  if (busy || !workspaceActive || !device || $("load").disabled) return;
+  if (!window.confirm("Replace the live project with the keyboard’s saved project? Unsaved project changes will be lost. Uploaded samples stay in place.")) return;
+  run("Loading the saved project…", async () => { await device.load(true); clearPreview(); say("Saved project loaded. Sample slots are unchanged."); });
+};
+$("reset").onclick = () => {
+  if (busy || !workspaceActive || !device || $("reset").disabled) return;
+  if (!window.confirm("Reset the WHOLE live project, including song, patterns, sounds, motion and project settings? Uploaded samples and device role settings stay in place. Playback and recording stop. Autosave turns ON and may overwrite the saved project. Export first to keep your current project.")) return;
+  run("Resetting the live project…", async () => { await device.reset(true); clearPreview(); say("Live project reset. Sample slots are unchanged. Autosave is now ON and may overwrite the saved project."); });
+};
+$("export").onclick = () => run("Reading the project and original sample slots…", async () => {
+  const name = $("name").value.trim(), portable = $("portable").checked;
+  if (!name) throw new Error("Enter a project name before exporting.");
+  const snapshot = await readProjectSnapshot(device, progress), file = await makeProjectFile(snapshot.project, snapshot, { name, portable });
+  await readProjectFile(file, device.projectLength);
+  download(file, `${filename(name)}${portable ? "" : "-project-only"}.x0xproject`);
+  say(`${portable ? "Portable project" : "Project-only file"} exported and verified (${human(file.length)}). Original samples were read without changes.`);
+});
+$("file").onchange = () => {
+  if (busy || !workspaceActive || !$("file").files[0]) return;
+  return run("Checking the project file…", async () => {
+  clearPreview(); selected = null; const file = $("file").files[0];
+  $("file-info").textContent = "Choose an .x0xproject file.";
+  if (file.size > PROJECT_MAX_FILE) throw new Error("This file is too large to be an X0X project bundle.");
+  selected = await readProjectFile(new Uint8Array(await file.arrayBuffer()));
+  const n = selected.meta.slots.filter((s) => !s.empty).length;
+  $("file-info").textContent = `${selected.meta.name} · ${selected.portable ? "Project + original samples" : "Project only"} · ${n} populated sample slots · ${human(file.size)}`;
+  say(device ? "File checked. Prepare import to compare it with the keyboard." : "File checked. Connect the keyboard to prepare import.");
+  });
+};
+const slotText = (s) => s.unknown ? "Interrupted transfer" : s.empty ? "Empty" : `${s.name || "Unnamed"} · ${s.zones} zone${s.zones === 1 ? "" : "s"}`;
+$("prepare").onclick = () => run("Reading the current project and preparing its recovery backup…", async () => {
+  previewStale = !!prepared;
+  const next = await prepareProjectImport(device, selected.bytes, { progress });
+  clearPreview(); prepared = next;
+  $("preview-title").textContent = `${prepared.recovery ? "Recover" : "Import"} “${prepared.file.meta.name}”`;
+  const changes = prepared.plan.changes.length, collisions = prepared.plan.collisions.length;
+  $("preview-summary").textContent = prepared.recovery ? `Recovery restores all ${changes} sample slots from this file before adopting its project. Audio and controls stay held while samples are written and verified.` :
+    changes ? `${changes} sample slot${changes === 1 ? "" : "s"} will change. Slot order stays fixed so the project plays the correct samples.` : "Every sample slot already matches. Import will leave all sample slots unchanged.";
+  $("slot-rows").replaceChildren();
+  prepared.file.meta.slots.forEach((want, k) => {
+    const change = prepared.plan.changes.find((c) => c.k === k), have = change?.from || want, row = document.createElement("tr");
+    const action = change ? { fill: "Fill empty slot", replace: "Replace existing samples", restore: "Restore exact slot image", clear: "Clear slot to preserve sample numbering" }[change.action] : "Keep exact bytes";
+    for (const text of [`${k + 1}`, slotText(have), slotText(want), action]) { const cell = document.createElement("td"); cell.textContent = text; row.append(cell); }
+    if (change && !have.empty) row.className = "collision";
+    $("slot-rows").append(row);
+  });
+  $("backup-note").textContent = prepared.recovery ? "The selected portable file is the recovery source. Its full sample images have been checked; partial destination images are not used to create another backup." :
+    collisions ? `This import replaces or clears ${collisions} occupied slot${collisions === 1 ? "" : "s"}. Download the verified recovery backup, then confirm that you saved it.` : "A verified recovery backup of the current project and all its samples is ready to download.";
+  $("backup").hidden = !!prepared.recovery;
+  $("backup-confirm").hidden = !collisions;
+  $("preview").hidden = false;
+  say(prepared.recovery ? "Recovery preview ready. Confirm restoring the selected portable file to continue." : "Import preview ready. The live project and samples have not changed.");
+});
+$("backup").onclick = () => {
+  if (!prepared?.backupBytes || busy) return;
+  download(prepared.backupBytes, `x0x-before-import-${stamp()}.x0xproject`); downloaded = true; controls();
+  say("Recovery backup download started. Check that the file is saved before confirming sample replacement.");
+};
+$("backup-saved").onchange = controls;
+$("recover-backup").onclick = () => { if (recoveryBytes && !busy) download(recoveryBytes, recoveryName); };
+$("cancel").onclick = () => {
+  const failed = previewStale; clearPreview();
+  say(failed ? "Import preview closed. Its recovery backup remains available." : "Import preview cancelled. The keyboard has not changed.");
+};
+$("import").onclick = () => {
+  if (!prepared || busy || $("import").disabled) return;
+  const change = prepared.plan.changes.length;
+  const confirmText = prepared.recovery ? `Restore all ${change} sample slots and the live project from “${prepared.file.meta.name}”? This replaces the interrupted transfer’s slot contents with the exact images in this portable file.` :
+    `Replace the live project with “${prepared.file.meta.name}”? Unsaved project changes will be lost. ${change ? `${change} sample slot(s) will be written exactly as shown in the preview.` : "All sample slots will stay unchanged."}`;
+  if (!window.confirm(confirmText)) return;
+  run("Validating and importing the project. Keep USB connected…", async () => {
+    try {
+      const result = await applyProjectImport(device, prepared, { confirmed: true, backupSaved: downloaded && $("backup-saved").checked, progress });
+      clearPreview(); say(`${result.recovered ? "Recovery complete." : "Project imported."} ${result.changedSlots.length ? `Verified original sample bytes in ${result.changedSlots.length} changed slot(s).` : "Sample slots are unchanged."} Use Save on keyboard to store it immediately.`);
+    } catch (e) {
+      // Keep the recovery download available after a failed transfer; require a new preview for another import.
+      recoveryBytes = (prepared.backupBytes || prepared.file.bytes).slice(); recoveryName = `x0x-interrupted-import-${stamp()}.x0xproject`;
+      $("recovery").hidden = false;
+      previewStale = true;
+      $("preview-summary").textContent = "Import stopped. The recovery download is still available. Prepare a new import before trying again.";
+      throw e;
+    }
+  });
+};
+function invalidateWorkspace() {
+  if (busy) return false;
+  if (link) link.close(); link = null; device = null;
+  clearPreview(); $("identity").textContent = "Not connected";
+  say("Prepared file and export options are retained. Reconnect and prepare a fresh preview before importing.");
+  return true;
+}
+window.projectWorkspace = {
+  busy: () => busy,
+  activate: (active) => {
+    if (busy) return false;
+    if (workspaceActive !== active) {
+      if (!active) invalidateWorkspace();
+      workspaceActive = active; controls();
+    }
+    return true;
+  },
+  invalidate: invalidateWorkspace
+};
+if (typeof location !== "undefined" && new URLSearchParams(location.search).has("embedded")) {
+  document.documentElement.classList.add("embedded");
+  const fitWorkspace = () => {
+    if (parent === window) return;
+    const frame = parent.document.getElementById("project-frame");
+    if (frame) frame.style.height = Math.ceil(document.querySelector("main").getBoundingClientRect().height + 8) + "px";
+  };
+  new ResizeObserver(fitWorkspace).observe(document.querySelector("main"));
+}
+controls();
+</script>
+</body>
+</html>

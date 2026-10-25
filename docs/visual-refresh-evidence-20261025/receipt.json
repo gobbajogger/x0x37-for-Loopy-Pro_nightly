@@ -1,0 +1,47 @@
+{
+  "stage": "source-only visual refresh",
+  "base_commit": "e60bd9fa1fe05f740ded6280604583b6afad7264",
+  "pages_observed": "9577aa1bffe494a0040e04e273a9015342ccba37",
+  "purpose": "Keep firmware/sample actions easy to find while replacing dominant low-resolution renders with crisp honest UI illustrations.",
+  "operation_scripts_unchanged_sha256": {
+    "web/x0x_installer.html": "83b1e5e5f15bb5b933e330e428cf5d730ce236247f02632fe811176cc565159e",
+    "web/x0x_breaks.html": "5e6ac5d7e3007ab66b4d65efdf8ca703805ec08c5e12d2600c229f40177323d9"
+  },
+  "preserved": "model/package/backup/readback guards, locking, sample drafts/files, deep links and keyboard navigation; catalog and firmware metadata untouched",
+  "validation": {
+    "build": "PASS",
+    "npm_test": "PASS",
+    "browser_regression": {
+      "admission": 677,
+      "history": 34,
+      "bundled": 61,
+      "workspace": 29,
+      "failed": 0
+    },
+    "presentation": {
+      "checks": 42,
+      "failed": 0
+    },
+    "published_catalog_fixture": {
+      "checks": 26,
+      "failed": 0
+    }
+  },
+  "independent_review": "design_review PASS; scripts and every operation control attribute/ID unchanged; illustration accuracy and desktop/mobile/sample previews inspected; keyboard-return test strengthened per independent review and targeted rerun PASS",
+  "previews": [
+    {
+      "filename": "workspace-desktop.png",
+      "library_file_id": "libfile_04eef186d14c8191b035f53e1411974d",
+      "file_id": "file_00000000603c82308ba50d4dfb6effd0",
+      "sha256": "1c14dd326ce0ac31a5942062e562fbf6f266d09de9927797e1902c9e165edc5d"
+    },
+    {
+      "filename": "workspace-mobile.png",
+      "library_file_id": "libfile_25127444413c81918c344dc5b7884407",
+      "file_id": "file_00000000e04c8230add4a58f2a225732",
+      "sha256": "0cdd8b125efa3147905caecf1709c0aea2c82414ed4b99f522e948c12d4b7fcb"
+    }
+  ],
+  "rollout": "Parent handles reviewed source integration and qualified static generation/publication; no deployment or binaries in this task.",
+  "limitations": "Host/browser simulations only, no hardware claim. Source preview retains empty catalog; populated preview uses unchanged already-public catalog fixture."
+}

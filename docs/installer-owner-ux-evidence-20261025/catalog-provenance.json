@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-25T12:00:16.856093+00:00",
+  "live_url": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/versions.json",
+  "github_ref": "gh-pages",
+  "github_path": "versions.json",
+  "github_blob_sha": "4a8c597b2a0a99a1b262994ddf313a555c0340d0",
+  "live_sha256": "5e607c866bd579b9d6163ab50f3c8285375c9535423061b0de587a2327a31e60",
+  "github_sha256": "5e607c866bd579b9d6163ab50f3c8285375c9535423061b0de587a2327a31e60",
+  "byte_equal": true,
+  "latest": "nightly-ab90f47c-dev",
+  "versions": [
+    "nightly-ab90f47c-dev",
+    "nightly-54f2ffbc-dev"
+  ],
+  "models": {
+    "nightly-ab90f47c-dev": [
+      "elite",
+      "pro"
+    ],
+    "nightly-54f2ffbc-dev": [
+      "elite",
+      "pro"
+    ]
+  },
+  "finding": "Source-preview fixture deliberately empty; runtime uses embedded catalog and does not fetch versions.json. Verified published data has two entries. Never change source preview catalog or qualification state for design preview.",
+  "scope": "Catalog text only; no package binary fetch, qualification change, deployment, publication or device operations."
+}

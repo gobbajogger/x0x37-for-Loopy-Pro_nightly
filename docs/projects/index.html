@@ -1,0 +1,1555 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-only
+     Reused from gobbajogger/X0X37-for-Loopy-Pro at
+     08d3164a265123cb4c84e5104642fd93257d63d7, web/x0x_projects.html.
+     Adapted for the NIGHTLY task workspace; see docs/PROJECT_FILES.md. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X0X songs &amp; projects</title>
+<style>
+  :root { color-scheme: light dark; --bg: #f5f5f3; --card: #fff; --ink: #212321; --muted: #62685f; --line: #d7dbd2; --accent: #8a4b04; --error: #a32720; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141612; --card: #1e211a; --ink: #e9ede4; --muted: #b1b9a9; --line: #3c4435; --accent: #efad58; --error: #ffaaa2; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, sans-serif; }
+  main { max-width: 800px; margin: auto; padding: 36px 20px 64px; }
+  a { color: var(--accent); }
+  nav { display: flex; gap: 20px; font-size: .9rem; margin-bottom: 20px; }
+  h1 { margin: 0; font-size: 2rem; line-height: 1.2; }
+  h2 { font-size: 1.15rem; margin: 0 0 8px; }
+  h3 { font-size: 1rem; margin: 16px 0 6px; }
+  p { margin: 8px 0 16px; }
+  section { padding: 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); margin-top: 18px; }
+  .small, .muted { color: var(--muted); font-size: .88rem; }
+  .bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+  button, input, select { font: inherit; }
+  button { border: 1px solid var(--ink); padding: 8px 14px; background: var(--ink); color: var(--bg); border-radius: 5px; cursor: pointer; }
+  button.quiet { background: transparent; color: var(--ink); border-color: var(--line); }
+  button:disabled { opacity: .45; cursor: default; }
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  input[type=text], select { color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px; width: 100%; }
+  input[type=file] { max-width: 100%; }
+  label { display: block; }
+  label.check { display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; }
+  input[type=checkbox] { margin-top: 6px; }
+  .ports { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  #status { white-space: pre-wrap; overflow-wrap: anywhere; padding: 12px 0 0; min-height: 2.5rem; margin: 0; }
+  #status.error { color: var(--error); }
+  #progress { display: block; width: 100%; height: 8px; margin-top: 12px; accent-color: var(--accent); }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; text-align: left; font-size: .85rem; border-collapse: collapse; margin: 10px 0; }
+  th, td { border-bottom: 1px solid var(--line); padding: 9px 7px; vertical-align: top; }
+  th:first-child, td:first-child { padding-left: 0; }
+  .collision { color: var(--accent); font-weight: 600; }
+  #preview { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 4px; }
+  #backup-note { margin-top: 14px; }
+  .embedded { --bg:#17181b; --card:#202227; --ink:#f5f3ed; --muted:#b4b2ad; --line:#41434a; --accent:#efb25d; color-scheme:dark; }
+  .embedded main { max-width:100%; padding:8px 0 20px; }
+  .embedded nav { display:none; }
+  [hidden] { display: none !important; }
+  @media (max-width: 500px) { main { padding-inline: 14px; } section { padding: 16px; } .ports { grid-template-columns: 1fr; } }
+
+  /* Density only: keep warnings and all actions in their original reading order. */
+  p { margin:6px 0 10px; }
+  section { padding:16px; margin-top:12px; }
+  button { min-height:44px; }
+  .embedded { --bg:#0b0e10; --card:#14191c; --ink:#eff3ef; --muted:#a1ada9; --line:#343e3a; }
+  .embedded main { padding:0 0 12px; }
+  .embedded h1 { font-size:1.5rem; }
+  .embedded section { border:0; border-top:1px solid var(--line); border-radius:0; padding:14px 0; background:transparent; margin-top:8px; }
+  @media(min-width:900px) {
+   .embedded main { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:24px; }
+   .embedded main>h1,.embedded main>p,.embedded main>nav,.embedded section[aria-labelledby="connection-title"],.embedded section[aria-labelledby="keyboard-title"] { grid-column:1/-1; }
+   .embedded section { min-width:0; }
+  }
+
+  .embedded #find,.embedded #connect{background:#ccfc76;color:#121c0b;border-color:#ccfc76;font-weight:650}
+  .embedded section[aria-labelledby="connection-title"]{grid-column:auto}
+  .embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}
+  .embedded #status{font-size:.88rem;color:var(--muted)}
+  p{max-width:72ch}.embedded section[aria-labelledby="export-title"]{grid-column:1/-1}.embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}.check{min-height:44px}button,a,input,select{touch-action:manipulation}
+details>summary{min-height:44px;align-content:center;font-size:14px;color:var(--muted);cursor:pointer}details p{margin:8px 0 12px}
+</style>
+</head>
+<body>
+<main>
+  <nav aria-label="X0X"><a href="../install/#firmware">Install firmware</a><a href="../install/#samples">Import samples</a></nav>
+  <h1>Songs &amp; projects</h1>
+  <p class="small">Move your whole live project—song arrangement, patterns and sounds—to or from a file. Include samples for a portable copy.</p>
+  <section aria-labelledby="connection-title">
+    <h2 id="connection-title">Connect your keyboard</h2>
+    <p class="small">Connect by USB with X0X running. Stop playback, recording and performance mode; close other editors.</p>
+    <button id="find">Find USB MIDI keyboard</button>
+    <div id="ports" hidden>
+      <div class="ports">
+        <label>MIDI input<select id="midi-input"></select></label>
+        <label>MIDI output<select id="midi-output"></select></label>
+      </div>
+      <div class="bar"><button id="connect">Connect selected ports</button><span id="identity" class="small">Not connected</span></div>
+    </div>
+    <p id="status" role="status" aria-live="polite">Not connected.</p>
+    <progress id="progress" max="1" hidden aria-label="Project transfer progress"></progress>
+  </section>
+
+  <section aria-labelledby="import-title">
+    <h2 id="import-title">Inspect or import a project</h2>
+    <label for="file" class="small">Choose an .x0xproject file</label>
+    <input id="file" type="file" accept=".x0xproject">
+    <p id="file-info" class="small">Inspect a file offline, or connect to prepare an import.</p>
+    <button id="prepare" class="quiet" disabled>Prepare import</button>
+    <div id="preview" hidden>
+      <h3 id="preview-title"></h3>
+      <p id="preview-summary" class="small"></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">Slot</th><th scope="col">On keyboard</th><th scope="col">In project</th><th scope="col">Action</th></tr></thead>
+        <tbody id="slot-rows"></tbody>
+      </table></div>
+      <p id="backup-note" class="small"></p>
+      <button id="backup" class="quiet">Download recovery backup</button>
+      <label id="backup-confirm" class="check" hidden><input id="backup-saved" type="checkbox" disabled><span>I saved the recovery backup and can use it to restore this keyboard.</span></label>
+      <div class="bar"><button id="import" disabled>Import project</button><button id="cancel" class="quiet">Cancel preview</button></div>
+      <p class="small">Import replaces the live project and the sample slots shown above. Save on keyboard stores it immediately; autosave also applies.</p><details><summary>Details: import checks</summary><p class="small">The firmware validates the project before sample changes, verifies the written samples, then adopts the project.</p></details>
+    </div>
+    <div id="recovery" hidden>
+      <p class="small">The recovery backup from the interrupted import is still available, even if you close its preview or choose another file.</p>
+      <button id="recover-backup" class="quiet">Download interrupted import’s recovery backup</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="export-title">
+    <h2 id="export-title">Export a project</h2>
+    <label for="name" class="small">Project name</label>
+    <input id="name" type="text" maxlength="80" value="My X0X project" autocomplete="off">
+    <label class="check"><input id="portable" type="checkbox" checked><span>Include original samples <span class="small">— recommended for moving a project or keeping a complete backup.</span></span></label>
+    <details><summary>Details: project files</summary><p class="small">Portable files retain original sample bytes, playback rates and slot order. Without samples, a file imports only when every sample slot already matches.</p></details>
+    <button id="export" disabled>Export project + samples</button>
+  </section>
+  <section aria-labelledby="keyboard-title">
+    <h2 id="keyboard-title">On the keyboard</h2>
+    <p class="small">Load replaces the live project. Reset clears the song, patterns, sounds and project settings; samples stay. Reset turns autosave on and may overwrite the saved project. Export first to keep your work.</p>
+    <div class="bar">
+      <button id="save" disabled>Save on keyboard</button>
+      <button id="load" class="quiet" disabled>Load saved project</button>
+      <button id="reset" class="quiet" disabled>Reset project · keep samples</button>
+    </div>
+    <details><summary>Details: reset &amp; recovery</summary><p class="small">Reset also clears motion and stops playback and recording; device role settings stay in place. Arrangement-only clear is unavailable in this browser. To clear only the arrangement, use SONG → CLEAR SONG on the keyboard, keeping patterns, sounds, settings and samples.</p><p class="small">Keep USB connected during transfers. After a sample-transfer failure, the page attempts to restore the previous samples and reports the result. Keep the recovery file for reconnecting.</p></details>
+  </section>
+
+
+
+
+
+</main>
+<script type="module">
+// SPDX-License-Identifier: GPL-3.0-only
+// X0X break loops in the browser: tools/upload_breaks.py and its helpers (tools/sampleio.py,
+// Felucca's encoder; tools/import_breaks.py's bar guess) as plain functions, so the page
+// (web/x0x_breaks.html) builds the same slot images the command line does, byte for byte
+// (web/test_breaks.mjs checks it against upload_breaks.py --dry-run).
+//
+// The float arithmetic follows sampleio.py's order of operations: keep it when touching these.
+
+const SLOT_SIZE = 0x14000, SLOT_DATA_OFF = 512, SLOT_ZONES = 16;
+const SLOT_HDR_LEN = 32 + SLOT_ZONES * 28;
+const SLOT_MAX_DATA = SLOT_SIZE - SLOT_DATA_OFF;
+const ROOT_BASE = 36;              // loop i is zone root 36 + i: the slot sorts its zones by root
+const RATE = 44100, RATE_HALF = 22050;   // 44.1 kHz by default; 22.05 kHz only when asked for
+const DRY_SLOT_KB = [80, 120, 44]; // upload_breaks.py --dry-run's default layout: the SMK-37's slots (KiB)
+
+const IMA_STEP = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 19, 21, 23, 25, 28, 31, 34, 37, 41, 45, 50, 55, 60, 66, 73, 80, 88,
+  97, 107, 118, 130, 143, 157, 173, 190, 209, 230, 253, 279, 307, 337, 371, 408, 449, 494, 544, 598, 658,
+  724, 796, 876, 963, 1060, 1166, 1282, 1411, 1552, 1707, 1878, 2066, 2272, 2499, 2749, 3024, 3327, 3660,
+  4026, 4428, 4871, 5358, 5894, 6484, 7132, 7845, 8630, 9493, 10442, 11487, 12635, 13899, 15289, 16818,
+  18500, 20350, 22385, 24623, 27086, 29794, 32767];
+const IMA_IDX = [-1, -1, -1, -1, 2, 4, 6, 8];
+
+// import_breaks.bars_of: the bar count (1, 2 or 4) that puts the loop's tempo nearest 120 inside 80-180
+function barsOf(seconds) {
+  let best = null;
+  for (const b of [1, 2, 4]) {
+    const bpm = b * 240.0 / seconds;
+    if (bpm >= 80 && bpm <= 180 && (best === null || Math.abs(bpm - 120) < Math.abs(best[1] - 120))) best = [b, bpm];
+  }
+  return best || [1, 240.0 / seconds];
+}
+
+// sampleio.resample: a moving average over the ratio, then linear interpolation
+function resample(x, sr, to) {
+  if (sr === to) return x;
+  if (sr > to) {
+    const k = Math.max(1, Math.round(sr / to));
+    if (k === 2) {
+      const y = new Array(x.length);
+      for (let i = 0; i + 1 < x.length; i++) y[i] = (x[i] + x[i + 1]) / 2;
+      if (x.length) y[x.length - 1] = x[x.length - 1] / 2;
+      x = y;
+    } else if (k > 1) {
+      const y = new Array(x.length);
+      for (let i = 0; i < x.length; i++) {
+        let acc = x[i];                           // reduce(add, x[i:i + k]): left to right
+        for (let j = i + 1; j < i + k && j < x.length; j++) acc += x[j];
+        y[i] = acc / k;
+      }
+      x = y;
+    }
+  }
+  const step = sr / to, out = [], last = x.length - 1;
+  let p = 0.0;
+  while (p < last) {
+    const i = Math.trunc(p), f = p - i;
+    out.push(x[i] * (1 - f) + x[i + 1] * f);
+    p += step;
+  }
+  return out;
+}
+
+function peak(x, floor = 1e-9) {
+  let m = floor;
+  for (const v of x) { const a = Math.abs(v); if (a > m) m = a; }
+  return m;
+}
+
+// sampleio.to_int16: peak normalised to 30000
+function toInt16(x) {
+  const pk = peak(x), out = new Int16Array(x.length);
+  for (let i = 0; i < x.length; i++) out[i] = Math.max(-32768, Math.min(32767, Math.trunc(x[i] / pk * 30000)));
+  return out;
+}
+
+// sampleio.trim_silence: cut the silence at both ends (floor 0.001 = -60 dBFS), keep 1 ms before the
+// sound, keep 5 ms after it and fade that tail to 0
+function trimSilence(x, sr, floor = 0.001, preMs = 1, fadeMs = 5) {
+  let first = -1, last = -1;
+  for (let i = 0; i < x.length; i++) if (Math.abs(x[i]) > floor) { if (first < 0) first = i; last = i; }
+  if (first < 0) return x;
+  const pre = Math.floor(sr * preMs / 1000), nf = Math.floor(sr * fadeMs / 1000);
+  const y = x.slice(Math.max(0, first - pre), Math.min(x.length, last + 1 + nf)), m = Math.min(nf, y.length);
+  for (let j = 0; j < m; j++) { const k = y.length - m + j; y[k] = y[k] * ((m - 1 - j) / m); }
+  return y;
+}
+
+// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
+function cut(x, sr, bars, rate = RATE, trim = false) {
+  if (trim) x = trimSilence(x, sr);
+  if (bars) {
+    const n = barsOf(x.length / sr)[0];
+    x = x.slice(0, Math.round(x.length / n));
+  }
+  const y = resample(x, sr, rate);
+  const pk = peak(y);
+  return toInt16(y.map((v) => v * (0.95 / pk)));
+}
+
+// sampleio.ima_encode: 4-bit IMA ADPCM, low nibble first, from predictor 0 / index 0
+function imaEncode(s) {
+  let pred = 0, idx = 0;
+  const out = new Uint8Array((s.length + 1) >> 1);
+  for (let n = 0; n < s.length; n++) {
+    const step = IMA_STEP[idx];
+    let diff = s[n] - pred, code = 0;
+    if (diff < 0) { code = 8; diff = -diff; }
+    let vd = step >> 3;
+    if (diff >= step) { code |= 4; diff -= step; vd += step; }
+    if (diff >= step >> 1) { code |= 2; diff -= step >> 1; vd += step >> 1; }
+    if (diff >= step >> 2) { code |= 1; vd += step >> 2; }
+    pred = code & 8 ? pred - vd : pred + vd;
+    if (pred > 32767) pred = 32767; else if (pred < -32768) pred = -32768;
+    idx += IMA_IDX[code & 7];
+    if (idx < 0) idx = 0; else if (idx > 88) idx = 88;
+    out[n >> 1] |= n & 1 ? code << 4 : code;
+  }
+  return out;
+}
+
+// the reverse, for drawing a slot read back from the FM-1: nibbles -> int16, from predictor 0 / index 0
+function imaDecode(b, n) {
+  let pred = 0, idx = 0;
+  const out = new Int16Array(n);
+  for (let i = 0; i < n; i++) {
+    const code = (b[i >> 1] >> (i & 1 ? 4 : 0)) & 15, step = IMA_STEP[idx];
+    let vd = step >> 3;
+    if (code & 4) vd += step;
+    if (code & 2) vd += step >> 1;
+    if (code & 1) vd += step >> 2;
+    pred = code & 8 ? pred - vd : pred + vd;
+    if (pred > 32767) pred = 32767; else if (pred < -32768) pred = -32768;
+    idx += IMA_IDX[code & 7];
+    if (idx < 0) idx = 0; else if (idx > 88) idx = 88;
+    out[i] = pred;
+  }
+  return out;
+}
+
+// a slot header (userSlot's layout) -> {nz, name, dataLen, zones: [{off, n, rate}]}, or null if not a slot
+function parseSlot(hdr) {
+  const v = new DataView(hdr.buffer || hdr, hdr.byteOffset || 0, hdr.byteLength);
+  if (hdr.byteLength < SLOT_HDR_LEN || v.getUint32(0, true) !== 0x504D5346) return null;
+  const nz = hdr[6], zones = [];
+  let name = "";
+  for (let i = 8; i < 16 && hdr[i]; i++) name += String.fromCharCode(hdr[i]);
+  for (let i = 0; i < nz && i < SLOT_ZONES; i++)
+    zones.push({ off: v.getUint32(32 + i * 28, true), n: v.getUint32(32 + i * 28 + 4, true),
+      rate: Math.round(v.getUint32(32 + i * 28 + 16, true) * 44100 / 65536) });
+  return { nz, name, dataLen: v.getUint32(16, true), zones };
+}
+
+let CRC_T = null;
+function crc32(b) {                    // zlib.crc32
+  if (!CRC_T) {
+    CRC_T = new Uint32Array(256);
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1;
+      CRC_T[n] = c >>> 0;
+    }
+  }
+  let c = 0xFFFFFFFF;
+  for (let i = 0; i < b.length; i++) c = CRC_T[(c ^ b[i]) & 0xFF] ^ (c >>> 8);
+  return (c ^ 0xFFFFFFFF) >>> 0;
+}
+
+function keySplit(roots) {
+  const n = roots.length;
+  return roots.map((r, j) => [j === 0 ? 0 : ((roots[j - 1] + r) >> 1) + 1, j === n - 1 ? 127 : (r + roots[j + 1]) >> 1]);
+}
+
+// sampleio.user_slot for loops at `rate` (each its own zone, roots ROOT_BASE + i): -> {hdr, data}
+function userSlot(name, loops, rate = RATE, slotSize = SLOT_SIZE) {
+  return userSlotRaw(name, loops.map((s) => ({ adpcm: imaEncode(s), n: s.length, rate })), slotSize);
+}
+
+// the same from loops already encoded ({adpcm, n, rate}: the break page keeps a loop read back as it is,
+// at its own rate)
+function userSlotRaw(name, parts, slotSize = SLOT_SIZE) {
+  const total = parts.reduce((a, p) => a + p.adpcm.length, 0), max = slotSize - SLOT_DATA_OFF;
+  if (total > max) throw new Error(`too long: ${total} B of ADPCM, a slot holds ${max} B`);
+  if (parts.length < 1 || parts.length > SLOT_ZONES) throw new Error(`1..${SLOT_ZONES} loops per slot`);
+  const data = new Uint8Array(total);
+  const zs = [];
+  let off = 0;
+  parts.forEach((p, i) => {
+    data.set(p.adpcm, off);
+    zs.push({ off, n: p.n, root: ROOT_BASE + i, q16: Math.round(p.rate / 44100 * 65536) });
+    off += p.adpcm.length;
+  });
+  const split = keySplit(zs.map((z) => z.root));
+  const hdr = new Uint8Array(SLOT_HDR_LEN), v = new DataView(hdr.buffer);
+  v.setUint32(0, 0x504D5346, true);
+  v.setUint16(4, 1, true);
+  hdr[6] = zs.length;
+  const nm = name.toUpperCase().replace(/[^\x20-\x7E]/g, "").slice(0, 8);
+  for (let i = 0; i < nm.length; i++) hdr[8 + i] = nm.charCodeAt(i);
+  v.setUint32(16, data.length, true);
+  v.setUint32(20, crc32(data), true);
+  zs.forEach((z, i) => {
+    const o = 32 + i * 28;
+    v.setUint32(o, z.off, true);
+    v.setUint32(o + 4, z.n, true);
+    v.setUint32(o + 8, 0, true);               // loop start
+    v.setUint32(o + 12, z.n - 1, true);        // loop end
+    v.setUint32(o + 16, z.q16, true);
+    v.setInt16(o + 20, z.root * 16, true);
+    v.setInt16(o + 22, 0, true);               // predictor and index at the loop start: from 0
+    hdr[o + 24] = 0;
+    hdr[o + 25] = split[i][0];
+    hdr[o + 26] = split[i][1];
+  });
+  return { hdr, data };
+}
+
+// upload_breaks.pack: loops [{label, s}] in order into at most nslots slots; cap: ADPCM bytes a slot, one
+// number or one per slot -> {slots: one list per slot (empty ones included, none after the last used one),
+// skipped}. A loop goes into the current slot if it fits, else into the next slot that can take it.
+function pack(loops, nslots, cap = SLOT_MAX_DATA) {
+  const caps = Array.isArray(cap) ? cap : new Array(nslots).fill(cap);
+  const slots = Array.from({ length: nslots }, () => []), skipped = [];
+  let cur = 0, used = 0;
+  for (const l of loops) {
+    const need = (l.s.length + 1) >> 1;
+    let j = cur;
+    while (j < nslots && !((j === cur ? used : 0) + need <= caps[j] && slots[j].length < SLOT_ZONES)) j++;
+    if (j >= nslots) { skipped.push(l.label); continue; }
+    if (j !== cur) { cur = j; used = 0; }
+    slots[cur].push(l);
+    used += need;
+  }
+  while (slots.length && !slots[slots.length - 1].length) slots.pop();
+  return { slots, skipped };
+}
+
+// fm1_sample_upload.pack7: groups of up to 7 bytes, each preceded by their top bits (7 to 8: the slot
+// commands' packing; fm1ota.js's pack7 is the update protocol's bit stream, another thing)
+function pack78(b) {
+  const out = [];
+  for (let i = 0; i < b.length; i += 7) {
+    const g = b.slice(i, i + 7);
+    let m = 0;
+    g.forEach((x, j) => { m |= ((x >> 7) & 1) << j; });
+    out.push(m);
+    for (const x of g) out.push(x & 0x7F);
+  }
+  return out;
+}
+
+// a 16-bit / 24-bit / float WAV -> {rate, x: mono floats} (sampleio.read_any_wav; the page decodes
+// other formats with the browser's decoder)
+function readWav(buf) {
+  const d = new DataView(buf.buffer || buf, buf.byteOffset || 0, buf.byteLength);
+  const tag4 = (o) => String.fromCharCode(d.getUint8(o), d.getUint8(o + 1), d.getUint8(o + 2), d.getUint8(o + 3));
+  if (d.byteLength < 12 || tag4(0) !== "RIFF" || tag4(8) !== "WAVE") throw new Error("not a WAV file");
+  const ch = {};
+  for (let i = 12; i + 8 <= d.byteLength;) {
+    const id = tag4(i), n = d.getUint32(i + 4, true);
+    if (!(id in ch)) ch[id] = [i + 8, n];
+    i += 8 + n + (n & 1);
+  }
+  if (!ch["fmt "]) throw new Error("WAV without a fmt chunk");
+  const fo = ch["fmt "][0];
+  let tag = d.getUint16(fo, true);
+  const nch = d.getUint16(fo + 2, true), sr = d.getUint32(fo + 4, true), bits = d.getUint16(fo + 14, true);
+  if (tag === 0xFFFE) tag = d.getUint16(fo + 24, true);
+  const bps = bits >> 3;
+  if ((tag !== 1 && tag !== 3) || !bps || !nch) throw new Error(`unsupported WAV (tag ${tag}, ${bits} bit)`);
+  const [o, n] = ch.data || [0, 0];
+  const frame = bps * nch, nfr = Math.floor(Math.min(n, d.byteLength - o) / frame);
+  const val = (p) => {
+    if (tag === 3) return bps === 4 ? d.getFloat32(p, true) : d.getFloat64(p, true);
+    if (bps === 2) return d.getInt16(p, true) / 32768;
+    if (bps === 3) return ((d.getUint8(p) << 8 | d.getUint8(p + 1) << 16 | d.getUint8(p + 2) << 24) >> 0) / 2147483648;
+    if (bps === 4) return d.getInt32(p, true) / 2147483648;
+    return (d.getUint8(p) - 128) / 128;
+  };
+  const x = new Array(nfr);
+  for (let f = 0; f < nfr; f++) {
+    const p = o + f * frame;
+    if (nch === 1) x[f] = val(p);
+    else if (nch === 2) x[f] = (val(p) + val(p + bps)) / 2;
+    else { let acc = 0.0; for (let c = 0; c < nch; c++) acc += val(p + c * bps); x[f] = acc / nch; }
+  }
+  return { rate: sr, x };
+}
+
+// ---- slot backup and restore: tools/x0x_slots.py's .x0xslots archive, byte for byte ----------
+// "X0XSLOTS", u16 version 1, u16 0, u32 L, L bytes of JSON, the slot images, u32 CRC-32 of all before.
+// An image is a slot from its start: the 512-byte header area, then the ADPCM data.
+
+const SLOT_HDR_AREA = 512;
+const ARCH_MAGIC = "X0XSLOTS";
+
+// a slot name as text: printable ASCII kept, anything else "?" (x0x_slots.ascii_name)
+function asciiName(b) {
+  let s = "";
+  for (const c of b) s += c >= 32 && c < 127 ? String.fromCharCode(c) : "?";
+  return s;
+}
+
+// SMP_INFO reply (the bytes after the command) -> {count, size, ext, slots: [{nz, name, kb, size, off, used}]}
+// (x0x_slots.parse_info). size: the reply's one size (KiB, 7 bits: the smallest slot). Per slot size, flash
+// offset (null if unknown) and used KiB come from X0X's extension ('X', 1, then per slot offset and size in
+// 4 KiB sectors and used KiB, 14 bits each); without it every slot has the one size.
+function parseInfo(r) {
+  if (r.length < 2) throw new Error("short SMP_INFO reply");
+  const count = r[0], size = r[1] * 1024, slots = [];
+  let i = 2;
+  for (let k = 0; k < count; k++) {
+    const nz = r[i], j = r.indexOf(0, i + 1);
+    slots.push({ nz, name: asciiName(r.slice(i + 1, j)), kb: r[j + 1], size, off: null, used: r[j + 1] });
+    i = j + 2;
+  }
+  const ext = r.length >= i + 2 + 6 * count && r[i] === 0x58 && r[i + 1] === 1;
+  if (ext)
+    slots.forEach((sl, k) => {
+      const v = [0, 1, 2].map((m) => r[i + 2 + 6 * k + 2 * m] | r[i + 3 + 6 * k + 2 * m] << 7);
+      Object.assign(sl, { off: v[0] * 0x1000, size: v[1] * 0x1000, used: v[2] });
+    });
+  return { count, size, ext, slots };
+}
+
+// a slot's first 480 bytes -> {nz, name, dataLen, crc, zones: [{off, n, rate}]} or null (x0x_slots.parse_header)
+function parseHeader(b) {
+  if (b.length < SLOT_HDR_LEN) return null;
+  const v = new DataView(b.buffer, b.byteOffset, b.byteLength);
+  const nz = b[6];
+  if (v.getUint32(0, true) !== 0x504D5346 || v.getUint16(4, true) !== 1 || nz < 1 || nz > 16) return null;
+  let e = 8;
+  while (e < 16 && b[e]) e++;
+  const zones = [];
+  for (let z = 0; z < nz; z++) {
+    const o = 32 + z * 28, q16 = v.getUint32(o + 16, true);
+    zones.push({ off: v.getUint32(o, true), n: v.getUint32(o + 4, true), rate: Number((BigInt(q16) * 44100n + 32768n) >> 16n) });
+  }
+  return { nz, name: asciiName(b.subarray(8, e)), dataLen: v.getUint32(16, true), crc: v.getUint32(20, true), zones };
+}
+
+// layout: parseInfo(); images: per slot, Uint8Array or null -> the archive (x0x_slots.make_archive)
+function makeArchive(layout, images, created) {
+  const entries = [], blobs = [];
+  let off = 0;
+  images.forEach((img, k) => {
+    const sl = layout.slots[k] || {};
+    const e = { slot: k + 1, size: sl.size ?? layout.size, empty: img === null };
+    if (sl.off !== null && sl.off !== undefined) e.flash = sl.off;
+    if (img !== null) {
+      const h = parseHeader(img);
+      Object.assign(e, { name: h.name, zones: h.nz, samples: h.zones.map((z) => z.n), rates: h.zones.map((z) => z.rate),
+        data_len: h.dataLen, data_crc32: h.crc, offset: off, length: img.length, crc32: crc32(img) });
+      blobs.push(img);
+      off += img.length;
+    }
+    entries.push(e);
+  });
+  const meta = { format: "x0xslots", version: 1, created, count: layout.count, size: layout.size, slots: entries };
+  const js = new TextEncoder().encode(JSON.stringify(meta));
+  const out = new Uint8Array(16 + js.length + off + 4), v = new DataView(out.buffer);
+  for (let i = 0; i < 8; i++) out[i] = ARCH_MAGIC.charCodeAt(i);
+  v.setUint16(8, 1, true);
+  v.setUint16(10, 0, true);
+  v.setUint32(12, js.length, true);
+  out.set(js, 16);
+  let p = 16 + js.length;
+  for (const b of blobs) { out.set(b, p); p += b.length; }
+  v.setUint32(p, crc32(out.subarray(0, p)), true);
+  return out;
+}
+
+// archive bytes -> {meta, images}; throws on any damage (x0x_slots.read_archive)
+function readArchive(b) {
+  const bad = (m) => { throw new Error(m); };
+  if (b.length < 20 || String.fromCharCode(...b.subarray(0, 8)) !== ARCH_MAGIC) bad("This is not an .x0xslots backup.");
+  const v = new DataView(b.buffer, b.byteOffset, b.byteLength);
+  if (v.getUint32(b.length - 4, true) !== crc32(b.subarray(0, b.length - 4))) bad("The backup file is damaged (CRC).");
+  if (v.getUint16(8, true) !== 1) bad("This backup has a newer format.");
+  const n = v.getUint32(12, true), meta = JSON.parse(new TextDecoder().decode(b.subarray(16, 16 + n)));
+  const base = 16 + n, images = [];
+  for (const e of meta.slots) {
+    if (e.empty) { images.push(null); continue; }
+    const img = b.slice(base + e.offset, base + e.offset + e.length), h = parseHeader(img);
+    if (img.length !== e.length || crc32(img) !== e.crc32) bad(`Slot ${e.slot} in the backup is damaged.`);
+    if (!h || img.length !== SLOT_HDR_AREA + h.dataLen || crc32(img.subarray(SLOT_HDR_AREA)) !== h.crc)
+      bad(`Slot ${e.slot} in the backup is not a valid slot.`);
+    images.push(img);
+  }
+  return { meta, images };
+}
+
+// a slot's size on a device with this layout (per slot with X0X's SMP_INFO extension)
+const slotSize = (layout, k) => (layout.slots[k] && layout.slots[k].size) || layout.size;
+
+// which archive slots go where on a device with this layout -> {todo: [{k, img}], skipped: [text]}
+function planRestore(layout, images) {
+  const todo = [], skipped = [];
+  images.forEach((img, k) => {
+    if (k >= layout.count) skipped.push(`slot ${k + 1}: this device has ${layout.count} slots`);
+    else if (img !== null && img.length > slotSize(layout, k)) skipped.push(`slot ${k + 1}: too large for this device's slot ${k + 1}`);
+    else todo.push({ k, img });
+  });
+  return { todo, skipped };
+}
+
+// ---- an install that changes the slot map (tools/x0x_slots.py and tools/fm1_install.py, the same rules) ----
+// A slot keeps its data over an install when the new firmware has a slot at the same flash offset that is
+// large enough: no install writes the slots. The others are saved first and written back after.
+const LEGACY_BASE = { smk: 0xC2000, fm1: 0xA0000 };   // X0X before the SMP_INFO extension: equal slots
+const SLOTMAP_MAGIC = "X0X-SLOTMAP-1\0\0\0", LOADER_MARK = "FELUCCA-LOADER-1";
+
+function findBytes(b, text) {
+  const t = [...text].map((c) => c.charCodeAt(0));
+  outer: for (let i = b.indexOf(t[0]); i >= 0 && i + t.length <= b.length; i = b.indexOf(t[0], i + 1)) {
+    for (let j = 1; j < t.length; j++) if (b[i + j] !== t[j]) continue outer;
+    return i;
+  }
+  return -1;
+}
+
+// [{off, size}] per slot of a parseInfo() layout (x0x_slots.flash_map)
+function flashMap(layout, board = "smk") {
+  if (layout.ext) return layout.slots.map((sl) => ({ off: sl.off, size: sl.size }));
+  return layout.slots.map((_, k) => ({ off: LEGACY_BASE[board] + k * layout.size, size: layout.size }));
+}
+
+// the slot map of a package's logical image (fm1pkg_make.slotmap_of): its slot map record; for an older X0X
+// (Felucca loader, no record) the equal 80 KiB slots of that time; [] for any other package (stock firmware)
+function packageSlotMap(image, board = "smk") {
+  const i = findBytes(image, SLOTMAP_MAGIC);
+  if (i >= 0 && i + 24 <= image.length) {
+    const v = new DataView(image.buffer, image.byteOffset, image.byteLength), n = v.getUint32(i + 16, true);
+    const end = i + 20 + 8 * n;
+    if (n <= 16 && end + 4 <= image.length && v.getUint32(end, true) === crc32(image.subarray(i, end))) {
+      const m = [];
+      for (let k = 0; k < n; k++) m.push({ off: v.getUint32(i + 20 + 8 * k, true), size: v.getUint32(i + 24 + 8 * k, true) });
+      return m;
+    }
+  }
+  if (findBytes(image, LOADER_MARK) < 0) return [];
+  return Array.from({ length: board === "smk" ? 2 : 3 }, (_, k) => ({ off: LEGACY_BASE[board] + k * 0x14000, size: 0x14000 }));
+}
+
+// slot indexes that hold samples and that the new map does not keep (x0x_slots.at_risk)
+function atRisk(layout, oldMap, newMap) {
+  const risk = [];
+  layout.slots.forEach((sl, k) => {
+    if (!sl.nz) return;
+    const off = oldMap[k].off, need = SLOT_HDR_AREA + sl.used * 1024;
+    if (!newMap.some((m) => m.off === off && m.size >= need)) risk.push(k);
+  });
+  return risk;
+}
+
+// -> {todo: [{k: old slot, j: new slot}], skipped: [text]} (x0x_slots.plan_migration): a slot at risk goes back
+// to the slot with its number if it fits there, else to the first other slot that is empty, not kept and large enough
+function planMigration(images, risk, oldMap, newLayout, newMap) {
+  const kept = new Set();
+  newMap.forEach((m, j) => oldMap.forEach((o, k) => { if (images[k] !== null && !risk.includes(k) && o.off === m.off) kept.add(j); }));
+  const taken = new Set(kept), todo = [], skipped = [];
+  for (const k of risk) {
+    const img = images[k], order = (k < newMap.length ? [k] : []).concat(newMap.map((_, j) => j).filter((j) => j !== k));
+    const j = order.find((j) => !taken.has(j) && img.length <= newMap[j].size && !newLayout.slots[j].nz);
+    if (j === undefined) skipped.push(`slot ${k + 1} (${img.length} B): no free slot of that size on the new firmware`);
+    else { todo.push({ k, j }); taken.add(j); }
+  }
+  return { todo, skipped };
+}
+
+// ---- the slot commands over a link with send / read / drain (fm1ota.js's Link): SysEx F0 7D 46 4C cmd .. F7 ----
+const ED = [0xF0, 0x7D, 0x46, 0x4C];
+
+function unpack78(a) {
+  const out = [];
+  for (let i = 0; i < a.length;) {
+    const m = a[i++];
+    for (let j = 0; j < 7 && i < a.length; j++) out.push(a[i++] | ((m >> j) & 1) << 7);
+  }
+  return new Uint8Array(out);
+}
+
+// one command -> the reply's bytes after the command; a lost frame is sent again (every slot command is safe to repeat)
+async function slotReq(link, cmd, args, ms = 3000, tries = 3) {
+  for (let t = 0; t < tries; t++) {
+    link.drain();
+    if (!link.send([...ED, cmd, ...args, 0xF7])) throw new Error("The USB connection was lost.");
+    const end = Date.now() + ms;
+    while (Date.now() < end) {
+      const p = await link.read(end - Date.now());
+      if (!p) break;
+      if (p.length > 5 && p[1] === ED[1] && p[2] === ED[2] && p[3] === ED[3] && p[4] === cmd) return p.slice(5, p.length - 1);
+    }
+  }
+  throw new Error(`The keyboard did not answer (slot command ${cmd}).`);
+}
+
+async function readSlotLayout(link, ms = 3000, tries = 3) { return parseInfo(await slotReq(link, 15, [], ms, tries)); }
+
+async function readSlotBytes(link, k, off, n, onPart) {
+  const out = new Uint8Array(n);
+  for (let at = 0; at < n;) {
+    const want = Math.min(224, n - at), adr = off + at;
+    const b = unpack78((await slotReq(link, 16, [k, adr & 0x7F, (adr >> 7) & 0x7F, (adr >> 14) & 0x7F, (want + 1) >> 1])).slice(4));
+    if (!b.length) throw new Error(`slot ${k + 1}: no data`);
+    out.set(b.subarray(0, Math.min(b.length, n - at)), at);
+    at += Math.min(b.length, n - at);
+    if (onPart) onPart(at, n);
+  }
+  return out;
+}
+
+// slot k as an image (the 512-byte header area, then the data), or null if it is empty. Reads only.
+async function readSlotImage(link, k, nz, onPart) {
+  if (!nz) return null;
+  const area = await readSlotBytes(link, k, 0, SLOT_HDR_AREA), h = parseHeader(area.subarray(0, SLOT_HDR_LEN));
+  if (!h) return null;
+  const data = await readSlotBytes(link, k, SLOT_HDR_AREA, h.dataLen, onPart);
+  if (crc32(data) !== h.crc) throw new Error(`slot ${k + 1}: the data read back does not match its CRC`);
+  const img = new Uint8Array(SLOT_HDR_AREA + data.length);
+  img.set(area);
+  img.set(data, SLOT_HDR_AREA);
+  return img;
+}
+
+// every slot -> {layout, images} (x0x_slots.backup): SMP_INFO and SMP_READ only
+async function backupSlots(link, onPart) {
+  const layout = await readSlotLayout(link), images = [];
+  for (let k = 0; k < layout.count; k++)
+    images.push(await readSlotImage(link, k, layout.slots[k].nz, onPart && ((d, n) => onPart(k, d, n))));
+  return { layout, images };
+}
+
+// erase slot k and write the image (null: erase only); throws on a device error (x0x_slots.write_slot)
+async function writeSlotImage(link, k, img, onPart) {
+  if (!img) {
+    if ((await slotReq(link, 14, [k], 30000))[1]) throw new Error(`slot ${k + 1}: erase failed`);
+    return;
+  }
+  if ((await slotReq(link, 11, [k], 10000))[1]) throw new Error(`slot ${k + 1}: begin (erase) failed`);
+  const data = img.subarray(SLOT_HDR_AREA);
+  for (let off = 0; off < data.length; off += 256) {
+    const adr = SLOT_HDR_AREA + off;
+    const r = await slotReq(link, 12, [k, adr & 0x7F, (adr >> 7) & 0x7F, (adr >> 14) & 0x7F, ...pack78(data.subarray(off, off + 256))]);
+    if (r[4]) throw new Error(`slot ${k + 1}: write at 0x${adr.toString(16)} failed (${r[4]})`);
+    if (onPart) onPart(Math.min(off + 256, data.length), data.length);
+  }
+  const e = await slotReq(link, 13, [k, ...pack78(img.subarray(0, SLOT_HDR_LEN))], 5000);
+  if (e[1]) throw new Error(`slot ${k + 1}: the keyboard refused the header (${e[1]})`);
+}
+
+// write images[k] into new slot j for each {k, j}, then read each back and compare (x0x_slots.restore_mapped)
+async function restoreMapped(link, todo, images, onPart) {
+  for (const { k, j } of todo) await writeSlotImage(link, j, images[k], onPart && ((d, n) => onPart(j, d, n)));
+  const after = await readSlotLayout(link);
+  for (const { k, j } of todo) {
+    const got = await readSlotImage(link, j, after.slots[j].nz);
+    if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]))
+      throw new Error(`slot ${j + 1}: read back differs from the backup of slot ${k + 1}`);
+  }
+}
+
+// an archive file name for now: x0x-slots-before-install-YYYYMMDD-HHMMSS.x0xslots, and its "created" text
+function archiveStamp(t = new Date()) {
+  const p = (v) => String(v).padStart(2, "0");
+  const created = `${t.getFullYear()}-${p(t.getMonth() + 1)}-${p(t.getDate())}T${p(t.getHours())}:${p(t.getMinutes())}:${p(t.getSeconds())}`;
+  return { created, name: `x0x-slots-before-install-${created.replace(/[-:]/g, "").replace("T", "-")}.x0xslots` };
+}
+
+// The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
+// hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) (the download), progress(f),
+// sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
+// 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
+//    save it. 2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
+// Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
+// -> {product, move: null or {risk, todo, skipped, name}}
+async function installKeepingSlots(up, image, product, board, hooks) {
+  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true }, hooks);
+  const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
+  let move = null;
+  const dev = await up.find((id) => !/^ota-/i.test(id.model));
+  if (dev && !h.sameKeyboard(dev.id.model, product.split("_")[0])) dev.link.close();   // install() refuses it
+  else if (dev) {
+    up.bind(dev);
+    try {
+      let layout;
+      try { layout = await readSlotLayout(dev.link, 1000, 2); }
+      catch (e) {
+        const stock = dev.id.text === "FM-1_015" || (dev.id.version === 16 && /^(SMK-37[ +].*|MKE-P37|STARRYKEY-37.*)$/i.test(dev.id.model));
+        if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
+        else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
+      }
+      if (layout && layout.slots.some((sl) => sl.nz)) {
+        const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
+        const risk = atRisk(layout, oldMap, newMap);
+        if (risk.length) {
+          h.say("slotsave", risk.map((k) => k + 1).join(", "));
+          let saved;
+          try {
+            saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
+          } catch (e) { throw fail("slotbackup", e.message); }
+          const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
+          readArchive(file);                                  // what was saved reads back
+          h.save(file, st.name);
+          move = { risk, oldMap, newMap, images: saved.images, name: st.name, todo: [], skipped: [] };
+        }
+      }
+    } finally { dev.link.close(); }
+  }
+  const ran = await up.install(image, product, h.step);
+  if (!move || !move.newMap.length) return { product: ran, move };
+  h.say("slotback");
+  const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);
+  if (!back) throw fail("slots", "the keyboard did not answer after the install", move.name);
+  try {
+    up.bind(back);
+    const layout = await readSlotLayout(back.link);
+    const plan = planMigration(move.images, move.risk, move.oldMap, layout, flashMap(layout, board));
+    move.todo = plan.todo;
+    move.skipped = plan.skipped;
+    const total = plan.todo.length || 1;
+    await restoreMapped(back.link, plan.todo, move.images, (j, d, n) => h.progress(d / n / total));
+  } catch (e) {
+    throw fail("slots", e.message, move.name);
+  } finally { back.link.close(); }
+  return { product: ran, move };
+}
+
+// SPDX-License-Identifier: GPL-3.0-only
+// Reused from gobbajogger/X0X37-for-Loopy-Pro 08d3164a265123cb4c84e5104642fd93257d63d7, web/x0x_projects.js.
+// X0X projects: an exact project snapshot and the original sample slot images.
+// No audio decoder, encoder, resampler or slot remapping is used by this module.
+
+const PROJECT_OP = Object.freeze({ QUERY: 64, EXPORT: 65, READ: 66, IMPORT: 67, WRITE: 68,
+  COMMIT: 69, ABORT: 70, SAVE: 71, LOAD: 72, RESET: 73, VALIDATE: 74 });
+const PROJECT_MAX_FILE = 4 * 1024 * 1024;
+const PROJECT_MAGIC = "X0XPROJ\0", PROJECT_META_MAX = 16384, PROJECT_HEADER = 32;
+const PROJECT_ED = [0xF0, 0x7D, 0x46, 0x4C], PROJECT_CONFIRM = [0x58, 0x30];
+const PROJECT_ERRORS = ["", "Unsupported arguments or project version.", "Stop playback, recording and performance mode first.",
+  "The project transfer offset is incorrect.", "The project checksum did not match.", "The project contains invalid settings or patterns.",
+  "This project does not fit the keyboard.", "The keyboard could not access project storage.", "Confirmation is required."];
+const fail = (message, code = "invalid") => Object.assign(new Error(message), { code });
+const bytes = (b) => b instanceof Uint8Array ? b : new Uint8Array(b);
+const view = (b) => new DataView(b.buffer, b.byteOffset, b.byteLength);
+const integer = (v, lo, hi) => Number.isSafeInteger(v) && v >= lo && v <= hi;
+const u21 = (n) => [n & 127, (n >>> 7) & 127, (n >>> 14) & 127];
+const get21 = (a, at = 0) => a[at] | a[at + 1] << 7 | a[at + 2] << 14;
+const hex256 = (s) => typeof s === "string" && /^[0-9a-f]{64}$/.test(s);
+const keys = (o, required) => o && typeof o === "object" && !Array.isArray(o) &&
+  Object.keys(o).length === required.length && required.every((k) => Object.hasOwn(o, k));
+
+function sameBytes(a, b) {
+  if (a === null || b === null) return a === b;
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+  return true;
+}
+
+async function sha256(b) {
+  if (!globalThis.crypto?.subtle) throw fail("Secure file verification is unavailable. Open this page over HTTPS or localhost.", "crypto");
+  const digest = new Uint8Array(await globalThis.crypto.subtle.digest("SHA-256", b));
+  return Array.from(digest, (v) => v.toString(16).padStart(2, "0")).join("");
+}
+
+// The inner file is firmware's canonical persistent project schema, not a sample archive.
+function parseProject(b, expectedLength = null) {
+  b = bytes(b);
+  if (b.length < PROJECT_HEADER || b.length > 0x1FFFFF) throw fail("Invalid project file size.");
+  const v = view(b);
+  if (v.getUint32(0, true) !== 0x50583058) throw fail("The project header is missing.");
+  if (v.getUint32(4, true) !== 1 || v.getUint32(16, true) !== 1 || v.getUint32(20, true) !== 3 ||
+      v.getUint32(24, true) !== 4 || v.getUint32(28, true) !== 0)
+    throw fail("This project uses an incompatible file, project, pattern or sound version.", "version");
+  if (v.getUint32(8, true) !== b.length - PROJECT_HEADER) throw fail("The project payload length is incorrect.");
+  if (expectedLength !== null && b.length !== expectedLength) throw fail("The project size does not match this firmware.", "version");
+  if (v.getUint32(12, true) !== crc32(b.subarray(PROJECT_HEADER))) throw fail("The project payload is damaged (CRC).");
+  return { length: b.length, payloadLength: b.length - PROJECT_HEADER, fileVersion: 1, projectVersion: 1,
+    patternVersion: 3, soundRevision: 4 };
+}
+
+function validateSlotImage(img, capacity) {
+  if (img === null) return null;
+  if (!(img instanceof Uint8Array) || !integer(capacity, 512, PROJECT_MAX_FILE) || img.length > capacity)
+    throw fail("A sample image exceeds its slot capacity.", "capacity");
+  const h = parseHeader(img);
+  if (!h || img.length !== 512 + h.dataLen || crc32(img.subarray(512)) !== h.crc)
+    throw fail("A sample image has an invalid header, length or data CRC.");
+  const v = view(img);
+  for (let z = 0; z < h.nz; z++) {
+    const o = 32 + 28 * z, off = v.getUint32(o, true), n = v.getUint32(o + 4, true), rate = v.getUint32(o + 16, true);
+    if (off > h.dataLen || n > capacity * 2 || off + Math.ceil(n / 2) > h.dataLen || img[o + 24] > 88 || !rate || rate > 4 * 65536)
+      throw fail(`Sample zone ${z + 1} is outside its image or has invalid playback settings.`);
+  }
+  return h;
+}
+
+function validateLayout(layout) {
+  if (!layout || !integer(layout.count, 1, 16) || !Array.isArray(layout.slots) || layout.slots.length !== layout.count ||
+      !integer(layout.size, 512, PROJECT_MAX_FILE)) throw fail("Invalid sample slot layout.");
+  let end = 0;
+  const regions = [];
+  for (let k = 0; k < layout.count; k++) {
+    const s = layout.slots[k], size = slotSize(layout, k);
+    if (!integer(size, 512, PROJECT_MAX_FILE) || !integer(s.nz, 0, 16)) throw fail("Invalid sample slot capacity or zone count.");
+    end += size;
+    if (s.off !== null && s.off !== undefined) {
+      if (!integer(s.off, 0, 0xFFFFFFFF - size)) throw fail("Invalid sample slot address.");
+      if (regions.some(([a, b]) => s.off < b && a < s.off + size)) throw fail("Sample slot ranges overlap.");
+      regions.push([s.off, s.off + size]);
+    }
+  }
+  if (end > PROJECT_MAX_FILE) throw fail("The sample slot layout is too large.");
+}
+
+async function manifestOf(layout, images) {
+  validateLayout(layout);
+  if (!Array.isArray(images) || images.length !== layout.count) throw fail("The sample snapshot is incomplete.");
+  const out = [];
+  for (let k = 0; k < images.length; k++) {
+    const img = images[k], h = validateSlotImage(img, slotSize(layout, k));
+    const e = { slot: k + 1, size: slotSize(layout, k), empty: img === null };
+    if (h) Object.assign(e, { length: img.length, crc32: crc32(img), sha256: await sha256(img), name: h.name,
+      zones: h.nz, samples: h.zones.map((z) => z.n), rates: h.zones.map((z) => z.rate) });
+    out.push(e);
+  }
+  return out;
+}
+
+function validateManifest(slots) {
+  if (!Array.isArray(slots) || !integer(slots.length, 1, 16)) throw fail("The sample reference manifest is missing.");
+  let capacity = 0;
+  slots.forEach((e, k) => {
+    const fields = ["slot", "size", "empty"];
+    if (e?.empty === false) fields.push("length", "crc32", "sha256", "name", "zones", "samples", "rates");
+    if (!keys(e, fields) || e.slot !== k + 1 || typeof e.empty !== "boolean" || !integer(e.size, 512, PROJECT_MAX_FILE))
+      throw fail("The sample manifest has missing, duplicated, reordered or invalid slots.");
+    capacity += e.size;
+    if (!e.empty && (!integer(e.length, 512, e.size) || !integer(e.crc32, 0, 0xFFFFFFFF) || !hex256(e.sha256) ||
+        typeof e.name !== "string" || e.name.length > 8 || !integer(e.zones, 1, 16) ||
+        !Array.isArray(e.samples) || !Array.isArray(e.rates) || e.samples.length !== e.zones || e.rates.length !== e.zones ||
+        e.samples.some((n) => !integer(n, 0, e.size * 2)) || e.rates.some((n) => !integer(n, 1, 176400))))
+      throw fail(`The identity of sample slot ${k + 1} is invalid.`);
+  });
+  if (capacity > PROJECT_MAX_FILE) throw fail("The sample manifest is too large.");
+}
+
+function sameIdentity(a, b) {
+  return a.slot === b.slot && a.empty === b.empty && (a.empty || a.length === b.length && a.crc32 === b.crc32 &&
+    a.sha256 === b.sha256 && a.name === b.name && a.zones === b.zones &&
+    JSON.stringify(a.samples) === JSON.stringify(b.samples) && JSON.stringify(a.rates) === JSON.stringify(b.rates));
+}
+
+function strictArchive(b, manifest) {
+  if (b.length < 20 || b.length > PROJECT_MAX_FILE || view(b).getUint16(10, true) !== 0) throw fail("Invalid sample archive header.");
+  const n = view(b).getUint32(12, true);
+  if (n > PROJECT_META_MAX || 16 + n + 4 > b.length) throw fail("Invalid sample archive metadata size.");
+  let meta;
+  try { meta = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(b.subarray(16, 16 + n))); }
+  catch { throw fail("The sample archive metadata is damaged."); }
+  if (!meta || meta.format !== "x0xslots" || meta.version !== 1 || meta.count !== manifest.length ||
+      !Array.isArray(meta.slots) || meta.slots.length !== manifest.length || !integer(meta.size, 512, PROJECT_MAX_FILE))
+    throw fail("The sample archive schema does not match the project manifest.");
+  let off = 0;
+  meta.slots.forEach((e, k) => {
+    const m = manifest[k];
+    if (!e || e.slot !== k + 1 || e.empty !== m.empty || e.size !== m.size) throw fail("The archive has duplicated or mismatched sample entries.");
+    if (e.empty) {
+      if (Object.hasOwn(e, "offset") || Object.hasOwn(e, "length")) throw fail("An empty sample slot has a data range.");
+    } else {
+      if (e.offset !== off || e.length !== m.length || e.crc32 !== m.crc32 || e.name !== m.name || e.zones !== m.zones ||
+          JSON.stringify(e.samples) !== JSON.stringify(m.samples) || JSON.stringify(e.rates) !== JSON.stringify(m.rates))
+        throw fail("The archive has overlapping, missing or mismatched sample ranges.");
+      off += e.length;
+    }
+  });
+  if (16 + n + off + 4 !== b.length) throw fail("The sample archive has missing or unreferenced bytes.");
+  const parsed = readArchive(b);
+  parsed.images.forEach((img, k) => {
+    const h = validateSlotImage(img, manifest[k].size), e = meta.slots[k];
+    if (h && (e.data_len !== h.dataLen || e.data_crc32 !== h.crc || e.name !== h.name || e.zones !== h.nz ||
+        JSON.stringify(e.samples) !== JSON.stringify(h.zones.map((z) => z.n)) ||
+        JSON.stringify(e.rates) !== JSON.stringify(h.zones.map((z) => z.rate))))
+      throw fail("Sample metadata does not match its original header.");
+  });
+  return parsed;
+}
+
+async function makeProjectFile(project, snapshot, { name = "Untitled project", portable = true, created = new Date().toISOString() } = {}) {
+  project = bytes(project);
+  parseProject(project);
+  if (typeof name !== "string" || !name.trim() || name.length > 80 || typeof created !== "string" || created.length > 40 || !Number.isFinite(Date.parse(created)))
+    throw fail("Give this project a name of 1–80 characters and a valid creation date.");
+  const slots = await manifestOf(snapshot.layout, snapshot.images);
+  const archive = portable ? makeArchive(snapshot.layout, snapshot.images, created) : null;
+  const meta = { format: "x0xproject", version: 1, name: name.trim(), created,
+    project: { offset: 0, length: project.length, crc32: crc32(project) }, slots,
+    archive: archive ? { offset: project.length, length: archive.length, crc32: crc32(archive) } : null };
+  const json = new TextEncoder().encode(JSON.stringify(meta));
+  const out = new Uint8Array(16 + json.length + project.length + (archive?.length || 0) + 4), v = view(out);
+  if (json.length > PROJECT_META_MAX || out.length > PROJECT_MAX_FILE) throw fail("The project bundle is too large.");
+  out.set(new TextEncoder().encode(PROJECT_MAGIC));
+  v.setUint16(8, 1, true); v.setUint16(10, portable ? 1 : 0, true); v.setUint32(12, json.length, true);
+  out.set(json, 16); out.set(project, 16 + json.length);
+  if (archive) out.set(archive, 16 + json.length + project.length);
+  v.setUint32(out.length - 4, crc32(out.subarray(0, -4)), true);
+  return out;
+}
+
+async function readProjectFile(input, expectedLength = null) {
+  const b = bytes(input);
+  if (b.length < 20 || b.length > PROJECT_MAX_FILE || new TextDecoder().decode(b.subarray(0, 8)) !== PROJECT_MAGIC)
+    throw fail("Choose an .x0xproject file exported by the Projects page. Raw project files have no sample reference manifest.");
+  const v = view(b), flags = v.getUint16(10, true), n = v.getUint32(12, true);
+  if (v.getUint16(8, true) !== 1 || flags > 1) throw fail("This bundle uses an unsupported version or flags.", "version");
+  if (n > PROJECT_META_MAX || 16 + n + 4 > b.length) throw fail("Invalid project metadata size.");
+  if (v.getUint32(b.length - 4, true) !== crc32(b.subarray(0, -4))) throw fail("The project file is damaged (CRC).");
+  let meta;
+  try { meta = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(b.subarray(16, 16 + n))); }
+  catch { throw fail("The project metadata is damaged."); }
+  if (!keys(meta, ["format", "version", "name", "created", "project", "slots", "archive"]) || meta.format !== "x0xproject" || meta.version !== 1 ||
+      typeof meta.name !== "string" || !meta.name.trim() || meta.name.length > 80 || typeof meta.created !== "string" ||
+      meta.created.length > 40 || !Number.isFinite(Date.parse(meta.created))) throw fail("Invalid project metadata schema.");
+  validateManifest(meta.slots);
+  const component = (e, offset) => {
+    if (!keys(e, ["offset", "length", "crc32"]) || e.offset !== offset || !integer(e.length, 1, PROJECT_MAX_FILE) ||
+        !integer(e.crc32, 0, 0xFFFFFFFF) || 16 + n + offset + e.length > b.length - 4)
+      throw fail("The project has missing, duplicated or overlapping component ranges.");
+    const part = b.slice(16 + n + offset, 16 + n + offset + e.length);
+    if (crc32(part) !== e.crc32) throw fail("A project component is damaged (CRC).");
+    return part;
+  };
+  const project = component(meta.project, 0);
+  parseProject(project, expectedLength);
+  let archive = null, images = null, used = project.length;
+  if (flags === 1) {
+    archive = component(meta.archive, used); used += archive.length;
+    images = strictArchive(archive, meta.slots).images;
+    for (let k = 0; k < images.length; k++) if (images[k] && await sha256(images[k]) !== meta.slots[k].sha256)
+      throw fail(`Sample slot ${k + 1} does not match its SHA-256 identity.`);
+  } else if (meta.archive !== null) throw fail("A project-only file contains a sample archive entry.");
+  if (16 + n + used + 4 !== b.length) throw fail("The project file has unreferenced or missing bytes.");
+  return { meta, project, archive, images, portable: flags === 1, bytes: b.slice() };
+}
+
+async function planProjectImport(file, snapshot) {
+  validateManifest(file.meta.slots);
+  const current = await manifestOf(snapshot.layout, snapshot.images);
+  if (current.length !== file.meta.slots.length) throw fail("The source and destination have different sample slot counts. Slot order must stay exact.", "capacity");
+  const changes = [], collisions = [], unchanged = [];
+  for (let k = 0; k < current.length; k++) {
+    const want = file.meta.slots[k], have = current[k];
+    if (sameIdentity(want, have)) { unchanged.push(k); continue; }
+    if (!file.portable) throw fail(`Sample slot ${k + 1} differs from this project’s reference manifest. Import the portable bundle or restore its exact samples first.`, "samples");
+    if (!want.empty && want.length > slotSize(snapshot.layout, k)) throw fail(`Sample slot ${k + 1} does not fit its destination. Sample slots cannot be remapped.`, "capacity");
+    if (!want.empty) validateSlotImage(file.images[k], slotSize(snapshot.layout, k));
+    const change = { k, from: have, to: want, action: want.empty ? "clear" : have.empty ? "fill" : "replace" };
+    changes.push(change);
+    if (!have.empty) collisions.push(change);
+  }
+  return { changes, collisions, unchanged };
+}
+
+// A single request is outstanding at a time. Only reads, ABORT and replay-safe project
+// WRITE chunks can retry; erase, sample writes, adoption and persistence never retry blindly.
+class ProjectDevice {
+  constructor(link, { timeout = 3000, now = () => Date.now() } = {}) {
+    this.link = link; this.timeout = timeout; this.now = now; this.identity = null;
+    this.projectLength = null; this.active = false; this.mode = 0; this.lastProject = 0;
+  }
+  async request(cmd, args, { tries = 1, timeout = this.timeout, accept = () => true } = {}) {
+    if (cmd !== 1 && !this.identity) throw fail("Connect to an identified X0X keyboard first.", "identity");
+    if (cmd !== 9 && this.active && this.now() - this.lastProject > 4000) await this.query();
+    for (let attempt = 0; attempt < tries; attempt++) {
+      this.link.drain();
+      if (!this.link.send([...PROJECT_ED, cmd, ...args, 0xF7])) throw fail("The USB MIDI connection was lost.", "connection");
+      const deadline = this.now() + timeout;
+      while (this.now() < deadline) {
+        const p = await this.link.read(Math.max(1, deadline - this.now()));
+        if (!p) break;
+        if (p.length < 6 || p[0] !== 0xF0 || p.at(-1) !== 0xF7 || p[1] !== 0x7D || p[2] !== 0x46 || p[3] !== 0x4C || p[4] !== cmd) continue;
+        const r = Array.from(p).slice(5, -1);
+        if (r.some((n) => !integer(n, 0, 127))) throw fail("The keyboard returned malformed MIDI data.", "protocol");
+        if (!accept(r)) continue;
+        return r;
+      }
+    }
+    throw fail(`The keyboard did not acknowledge command ${cmd}. Check USB and reconnect.`, "timeout");
+  }
+  async command(op, args = [], { length = 2, offset = null, tries = 1, timeout = this.timeout } = {}) {
+    const r = await this.request(9, [op, ...args], { tries, timeout, accept: (r) => {
+      if (r[0] !== op) return false;
+      if (r.length < 2 || r[1] > 8 || r[1] && r.length !== 2 || !r[1] && r.length !== length)
+        throw fail(`Malformed project reply for operation ${op}.`, "protocol");
+      if (!r[1] && offset !== null && get21(r, 2) !== offset) return false;
+      return true;
+    } });
+    this.lastProject = this.now();
+    if (r[1]) throw Object.assign(fail(PROJECT_ERRORS[r[1]], `device-${r[1]}`), { rc: r[1] });
+    return r;
+  }
+  async connect() {
+    this.identity = null; this.mode = 0; this.active = false; this.projectLength = null;
+    const r = await this.request(1, [], { tries: 2 }), z = r.indexOf(0);
+    const id = z >= 0 ? String.fromCharCode(...r.slice(0, z)) : "";
+    if (!/^X0X [\x20-\x7e]{1,20}$/.test(id)) throw fail("This MIDI port is not running X0X. No project commands were sent.", "identity");
+    this.identity = id;
+    try { await this.query({ allowRecovery: true }); }
+    catch (e) {
+      this.identity = null;
+      if (e.code === "busy") throw e;
+      throw fail(`This X0X firmware does not provide the supported project protocol. ${e.message}`, "unsupported");
+    }
+    return { identity: id, projectLength: this.projectLength, recovery: this.mode === 3 };
+  }
+  async query({ acceptModeChange = false, allowRecovery = false } = {}) {
+    const r = await this.command(PROJECT_OP.QUERY, [], { length: 7, tries: 2 });
+    if (r[2] !== 1 || !integer(get21(r, 3), PROJECT_HEADER, 0x1FFFFF) || !integer(r[6], 0, 3)) throw fail("Unsupported project protocol version or file size.", "version");
+    if (acceptModeChange || allowRecovery && r[6] === 3) { this.mode = r[6]; this.active = this.mode !== 0; }
+    if (r[6] !== this.mode) throw fail(this.active ? "The project transfer expired or changed. Sample writes have stopped." :
+      "Another project transfer is active. Close the other editor and reconnect after it finishes.", this.active ? "expired" : "busy");
+    const size = get21(r, 3);
+    if (this.projectLength !== null && this.projectLength !== size) throw fail("The connected firmware changed. Reconnect before continuing.", "version");
+    this.projectLength = size;
+    return size;
+  }
+  async abort() {
+    try {
+      await this.command(PROJECT_OP.ABORT, [], { tries: 2 });
+      this.active = false; this.mode = 0;
+    } catch (e) {
+      if (e.rc === 2) {
+        this.active = true; this.mode = 3;
+        e.code = "recovery";
+        e.message = "The keyboard is holding audio and controls because sample recovery is incomplete. Reconnect and restore the portable recovery backup.";
+      }
+      throw e;
+    }
+  }
+  async exportStart() {
+    await this.query();
+    if (this.mode !== 0) throw fail("Finish sample recovery before exporting a project.", "recovery");
+    // BEGIN can have succeeded even when its reply is lost, so the caller must ABORT in finally.
+    this.active = true; this.mode = 1;
+    const r = await this.command(PROJECT_OP.EXPORT, [], { length: 5 });
+    if (get21(r, 2) !== this.projectLength) throw fail("The exported project size changed.", "protocol");
+    const b = new Uint8Array(this.projectLength);
+    for (let off = 0; off < b.length;) {
+      const n = Math.min(224, b.length - off), packed = n + Math.ceil(n / 7);
+      const r = await this.command(PROJECT_OP.READ, [...u21(off), n & 127, n >> 7], { length: 5 + packed, offset: off, tries: 2 });
+      const chunk = unpack78(r.slice(5));
+      if (chunk.length !== n || !sameBytes(Uint8Array.from(pack78(chunk)), Uint8Array.from(r.slice(5)))) throw fail("Noncanonical project transfer data.", "protocol");
+      b.set(chunk, off); off += n;
+    }
+    parseProject(b, this.projectLength);
+    return b;
+  }
+  async stage(project, onProgress = () => {}) {
+    parseProject(project, await this.query());
+    this.active = true; this.mode = 2;
+    await this.command(PROJECT_OP.IMPORT, u21(project.length));
+    for (let off = 0; off < project.length;) {
+      const n = Math.min(224, project.length - off);
+      await this.command(PROJECT_OP.WRITE, [...u21(off), ...pack78(project.subarray(off, off + n))],
+        { length: 5, offset: off + n, tries: 2 });
+      off += n; onProgress(off / project.length);
+    }
+  }
+  async validate() { await this.command(PROJECT_OP.VALIDATE); }
+  async commit() { await this.command(PROJECT_OP.COMMIT, PROJECT_CONFIRM); this.active = false; this.mode = 0; }
+  async save() { await this.command(PROJECT_OP.SAVE, [], { timeout: Math.max(10000, this.timeout) }); }
+  async load(confirmed) {
+    if (confirmed !== true) throw fail("Confirm replacing the live project before loading the saved project.", "confirmation");
+    await this.command(PROJECT_OP.LOAD, PROJECT_CONFIRM, { timeout: Math.max(10000, this.timeout) });
+  }
+  async reset(confirmed) {
+    if (confirmed !== true) throw fail("Confirm resetting the live project first.", "confirmation");
+    await this.command(PROJECT_OP.RESET, PROJECT_CONFIRM);
+  }
+  async layout() {
+    const r = await this.request(15, [], { tries: 2 });
+    if (r.length < 2 || !integer(r[0], 1, 16) || r[1] === 0) throw fail("Invalid SMP_INFO reply.", "protocol");
+    let p = 2;
+    for (let k = 0; k < r[0]; k++) {
+      const end = r.indexOf(0, p + 1);
+      if (p >= r.length || r[p] > 16 || end < p + 1 || end > p + 9 || end + 1 >= r.length) throw fail("Malformed sample slot description.", "protocol");
+      p = end + 2;
+    }
+    if (r.length !== p && (r.length !== p + 2 + 6 * r[0] || r[p] !== 0x58 || r[p + 1] !== 1))
+      throw fail("Unsupported sample layout extension.", "protocol");
+    const layout = parseInfo(r); validateLayout(layout); return layout;
+  }
+  async readSlotBytes(k, off, count, capacity, progress = () => {}) {
+    const out = new Uint8Array(count);
+    for (let at = 0; at < count;) {
+      const n = Math.min(224, count - at), addr = off + at, wire = Math.min((n + 1) & ~1, capacity - addr);
+      const r = await this.request(16, [k, ...u21(addr), (n + 1) >> 1], { tries: 2, accept: (r) => {
+        if (r[0] !== k || r.length < 4 || get21(r, 1) !== addr) return false;
+        if (r.length !== 4 + wire + Math.ceil(wire / 7)) throw fail("Short or oversized sample read reply.", "protocol");
+        return true;
+      } });
+      const chunk = unpack78(r.slice(4));
+      if (chunk.length !== wire || !sameBytes(Uint8Array.from(pack78(chunk)), Uint8Array.from(r.slice(4)))) throw fail("Malformed sample read data.", "protocol");
+      out.set(chunk.subarray(0, n), at); at += n; progress(at, count);
+    }
+    return out;
+  }
+  async readSlot(k, layout, progress) {
+    if (!layout.slots[k].nz) return null;
+    const size = slotSize(layout, k), head = await this.readSlotBytes(k, 0, 512, size), h = parseHeader(head);
+    if (!h || h.nz !== layout.slots[k].nz || h.dataLen > size - 512) throw fail(`Sample slot ${k + 1} has an invalid or changing header.`);
+    const data = await this.readSlotBytes(k, 512, h.dataLen, size, progress), image = new Uint8Array(512 + data.length);
+    image.set(head); image.set(data, 512); validateSlotImage(image, size); return image;
+  }
+  async snapshotSlots(progress = () => {}) {
+    const layout = await this.layout(), images = [];
+    for (let k = 0; k < layout.count; k++) images.push(await this.readSlot(k, layout, (n, all) => progress(k, n, all)));
+    const after = await this.layout();
+    if (JSON.stringify(layout) !== JSON.stringify(after)) throw fail("The sample layout changed while being read. Try again.", "changed");
+    return { layout, images };
+  }
+  async writeSlot(k, image, capacity, progress = () => {}) {
+    validateSlotImage(image, capacity);
+    const slotReply = async (cmd, args, timeout) => {
+      const r = await this.request(cmd, [k, ...args], { timeout: Math.max(timeout, this.timeout), accept: (r) => {
+        if (r[0] !== k) return false;
+        if (r.length !== 2) throw fail("Malformed sample write reply.", "protocol");
+        return true;
+      } });
+      if (r[1]) throw fail(`Sample slot ${k + 1}: command ${cmd} failed (${r[1]}).`, "sample-write");
+    };
+    if (image === null) { await slotReply(14, [], 30000); return; }
+    await slotReply(11, [], 10000);
+    const data = image.subarray(512);
+    for (let at = 0; at < data.length; at += 256) {
+      const addr = 512 + at, r = await this.request(12, [k, ...u21(addr), ...pack78(data.subarray(at, at + 256))], { accept: (r) => {
+        if (r[0] !== k || r.length < 4 || get21(r, 1) !== addr) return false;
+        if (r.length !== 5) throw fail("Malformed sample data acknowledgement.", "protocol");
+        return true;
+      } });
+      if (r[4]) throw fail(`Sample slot ${k + 1}: write at ${addr} failed (${r[4]}).`, "sample-write");
+      progress(Math.min(at + 256, data.length), data.length);
+    }
+    // Protocol v1 firmware accepts all 512 bytes; legacy uploaders may still send 480.
+    await slotReply(13, pack78(image.subarray(0, 512)), 5000);
+  }
+}
+
+async function readProjectSnapshot(device, progress = () => {}) {
+  if (device.mode !== 0) throw fail("Finish the active transfer or restore the portable recovery backup before exporting.", "recovery");
+  let primary = null;
+  try {
+    const project = await device.exportStart(), first = await device.snapshotSlots(progress), second = await device.snapshotSlots(progress);
+    if (JSON.stringify(first.layout) !== JSON.stringify(second.layout) || first.images.some((img, k) => !sameBytes(img, second.images[k])))
+      throw fail("Sample contents changed during export. Stop other sample transfers and try again.", "changed");
+    return { project, ...first };
+  } catch (e) { primary = e; throw e; }
+  finally {
+    try { if (device.active) await device.abort(); }
+    catch (e) {
+      if (!primary) throw e;
+      primary.message += ` Transfer cleanup also failed: ${e.message}`;
+    }
+  }
+}
+
+async function prepareProjectImport(device, input, { progress = () => {} } = {}) {
+  const file = await readProjectFile(input, await device.query());
+  if (device.mode === 3) {
+    if (!file.portable) throw fail("Recovery requires a portable project with its original samples. A project-only file cannot repair partial sample slots.", "recovery");
+    const layout = await device.layout();
+    validateRecoveryLayout(file, layout);
+    const changes = file.meta.slots.map((to, k) => ({ k, to, from: { slot: k + 1, empty: null, unknown: true }, action: to.empty ? "clear" : "restore" }));
+    return { file, recovery: true, layout, plan: { changes, collisions: [], unchanged: [] }, backupBytes: null };
+  }
+  const before = await readProjectSnapshot(device, progress);
+  const plan = await planProjectImport(file, before);
+  const backupBytes = await makeProjectFile(before.project, before, { name: "Before project import", portable: true });
+  const backup = await readProjectFile(backupBytes, device.projectLength);
+  if (!sameBytes(backup.project, before.project) || before.images.some((img, k) => !sameBytes(img, backup.images[k])))
+    throw fail("The recovery backup did not verify.", "backup");
+  return { file, before, plan, backupBytes };
+}
+
+function validateRecoveryLayout(file, layout) {
+  validateLayout(layout);
+  if (!file.portable || file.meta.slots.length !== layout.count) throw fail("The recovery file must include every sample slot in the destination layout.", "capacity");
+  file.images.forEach((img, k) => validateSlotImage(img, slotSize(layout, k)));
+}
+
+async function verifyImages(device, wanted, progress) {
+  const got = await device.snapshotSlots(progress);
+  if (got.images.length !== wanted.length || wanted.some((img, k) => !sameBytes(img, got.images[k])))
+    throw fail("Sample readback differs from the original bytes. The new project was not adopted.", "readback");
+}
+
+// Preparation is read-only. Applying needs an explicit live-project confirmation and,
+// for occupied-slot collisions, a user-acknowledged, verified downloadable backup.
+async function applyProjectImport(device, prepared, { confirmed = false, backupSaved = false, progress = () => {} } = {}) {
+  if (confirmed !== true) throw fail("Confirm replacing the live project before importing.", "confirmation");
+  const file = await readProjectFile(prepared.file.bytes, await device.query());
+  if (prepared.recovery) return applyRecoveryImport(device, file, prepared.layout, progress);
+  const backup = await readProjectFile(prepared.backupBytes, device.projectLength);
+  if (!backup.portable) throw fail("A complete portable recovery backup is required.", "backup");
+  const plan = await planProjectImport(file, prepared.before);
+  if (plan.collisions.length && backupSaved !== true) throw fail("Download the verified recovery backup and confirm it is saved before replacing existing samples.", "backup");
+  if (!sameBytes(backup.project, prepared.before.project) || prepared.before.images.some((img, k) => !sameBytes(img, backup.images[k])))
+    throw fail("The recovery backup no longer matches the prepared keyboard snapshot.", "backup");
+  const fresh = await readProjectSnapshot(device, progress);
+  if (!sameBytes(fresh.project, backup.project) || fresh.images.some((img, k) => !sameBytes(img, backup.images[k])) ||
+      JSON.stringify(fresh.layout) !== JSON.stringify(prepared.before.layout))
+    throw fail("The keyboard changed since the import preview. Prepare the import again.", "changed");
+  const touched = [];
+  let commitAttempted = false, succeeded = false, error = null;
+  try {
+    await device.stage(file.project);
+    await device.validate(); // Firmware checks semantic validity and pattern capacity before any sample mutation.
+    for (const { k } of plan.changes) {
+      touched.push(k); // Include a write whose acknowledgement is lost.
+      await device.writeSlot(k, file.images[k], slotSize(fresh.layout, k), (n, all) => progress(k, n, all));
+    }
+    if (file.portable) await verifyImages(device, file.images, progress);
+    else await planProjectImport(file, await device.snapshotSlots(progress));
+    commitAttempted = true;
+    await device.commit();
+    succeeded = true;
+    return { changedSlots: plan.changes.map((s) => s.k + 1), skippedSlots: plan.unchanged.map((k) => k + 1) };
+  } catch (e) {
+    error = e;
+    if (touched.length || commitAttempted) {
+      try {
+        // Keep the current import hold throughout rollback. Recovery mode can restart
+        // staging without releasing that hold. Idle after an uncertain COMMIT means
+        // the previous live project must also be restored under a new import hold.
+        await device.query({ acceptModeChange: true });
+        const restoreProject = commitAttempted && device.mode === 0;
+        if (device.mode === 0 || device.mode === 3) await device.stage(backup.project);
+        else if (device.mode !== 2) throw fail("Another export is active; sample recovery could not acquire its hold.", "busy");
+        await device.validate();
+        for (const k of touched.slice().reverse()) await device.writeSlot(k, backup.images[k], slotSize(fresh.layout, k));
+        await verifyImages(device, backup.images, progress);
+        if (restoreProject) await device.commit();
+        e.rollback = "verified";
+        e.message += " The previous samples and live project were restored and verified.";
+      } catch (rollbackError) {
+        e.rollback = "failed";
+        e.message += ` Recovery could not finish: ${rollbackError.message} Reconnect and import the recovery backup from this preview before playing.`;
+      }
+    }
+    throw e;
+  } finally {
+    if (!succeeded) {
+      try { await device.abort(); }
+      catch (cleanup) { if (error) error.message += ` Transfer cleanup failed: ${cleanup.message}`; else throw cleanup; }
+    }
+  }
+}
+
+// Mode 3 can outlive the original browser connection. The supplied portable file is
+// the recovery source; partial destination images are never read or backed up first.
+async function applyRecoveryImport(device, file, originalLayout, progress) {
+  if (device.mode !== 3) throw fail("The recovery state changed. Reconnect and prepare the file again.", "changed");
+  const layout = await device.layout();
+  const capacities = (x) => x.slots.map((s, k) => [s.off, slotSize(x, k)]);
+  if (JSON.stringify(capacities(layout)) !== JSON.stringify(capacities(originalLayout))) throw fail("The recovery slot layout changed. Prepare recovery again.", "changed");
+  validateRecoveryLayout(file, layout);
+  try {
+    await device.stage(file.project);
+    await device.validate();
+    for (let k = 0; k < file.images.length; k++)
+      await device.writeSlot(k, file.images[k], slotSize(layout, k), (n, all) => progress(k, n, all));
+    await verifyImages(device, file.images, progress);
+    await device.commit();
+    return { recovered: true, changedSlots: file.images.map((_, k) => k + 1), skippedSlots: [] };
+  } catch (e) {
+    e.recoveryRequired = true;
+    e.message += " Recovery did not finish. Keep the portable recovery file and reconnect to resume.";
+    try { await device.abort(); }
+    catch (cleanup) { e.message += ` ${cleanup.message}`; }
+    throw e;
+  }
+}
+
+// Minimal Web MIDI adapter. Device methods above also run against the host-test mock.
+class ProjectMidiLink {
+  constructor(input, output) {
+    this.input = input; this.output = output; this.queue = []; this.pending = null;
+    this.listener = (event) => {
+      const d = event.data;
+      if (d.length < 6 || d[0] !== 0xF0 || d.at(-1) !== 0xF7 || d[1] !== 0x7D || d[2] !== 0x46 || d[3] !== 0x4C) return;
+      if (this.pending) { const p = this.pending; this.pending = null; clearTimeout(p.timer); p.resolve(Array.from(event.data)); }
+      else { if (this.queue.length === 64) this.queue.shift(); this.queue.push(Array.from(event.data)); }
+    };
+    input.addEventListener("midimessage", this.listener);
+  }
+  drain() { this.queue.length = 0; }
+  send(frame) { try { if (this.output.state === "disconnected") return false; this.output.send(frame); return true; } catch { return false; } }
+  read(ms) {
+    if (this.queue.length) return Promise.resolve(this.queue.shift());
+    return new Promise((resolve) => {
+      const timer = setTimeout(() => { this.pending = null; resolve(null); }, ms);
+      this.pending = { resolve, timer };
+    });
+  }
+  close() {
+    this.input.removeEventListener("midimessage", this.listener);
+    if (this.pending) { clearTimeout(this.pending.timer); this.pending.resolve(null); this.pending = null; }
+    this.queue.length = 0;
+  }
+}
+
+
+const $ = (id) => document.getElementById(id);
+let midi = null, link = null, device = null, selected = null, prepared = null, busy = false, downloaded = false, previewStale = false;
+let recoveryBytes = null, recoveryName = "";
+let workspaceActive = typeof location === "undefined" || !new URLSearchParams(location.search).has("embedded");
+const say = (text, error = false) => { $("status").textContent = text; $("status").classList.toggle("error", error); };
+const human = (n) => `${(n / 1024).toFixed(1)} KiB`;
+const stamp = () => new Date().toISOString().replace(/[-:]/g, "").slice(0, 15).replace("T", "-");
+const filename = (name) => name.trim().replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 70) || "x0x-project";
+function download(data, name) {
+  const url = URL.createObjectURL(new Blob([data], { type: "application/octet-stream" })), a = document.createElement("a");
+  a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+function controls() {
+  for (const id of ["save", "load", "reset", "export"]) $(id).disabled = busy || !workspaceActive || !device || device.mode !== 0;
+  for (const id of ["find", "connect", "midi-input", "midi-output", "file", "name", "portable"]) $(id).disabled = busy || !workspaceActive;
+  $("prepare").disabled = busy || !workspaceActive || !device || !selected;
+  $("import").disabled = busy || !workspaceActive || !device || !prepared || previewStale || prepared.plan.collisions.length > 0 && (!downloaded || !$("backup-saved").checked);
+  $("backup").disabled = busy || !prepared;
+  $("recover-backup").disabled = busy || !recoveryBytes;
+  $("backup-saved").disabled = busy || !downloaded;
+  $("cancel").disabled = busy;
+  $("export").textContent = $("portable").checked ? "Export project + samples" : "Export project only";
+  $("prepare").textContent = device?.mode === 3 ? "Prepare recovery" : "Prepare import";
+  $("import").textContent = prepared?.recovery ? "Restore recovery project" : "Import project";
+}
+function clearPreview() {
+  prepared = null; downloaded = false; previewStale = false; $("preview").hidden = true; $("backup-saved").checked = false; controls();
+}
+async function run(message, action) {
+  if (busy || !workspaceActive) return;
+  busy = true; controls(); say(message); $("progress").hidden = false; $("progress").removeAttribute("value");
+  try { await action(); }
+  catch (e) { say(e.message, true); }
+  finally { busy = false; $("progress").hidden = true; controls(); }
+}
+function progress(k, n, all) {
+  if (all) $("progress").value = Math.min(1, n / all);
+  $("progress").setAttribute("aria-label", `Reading or writing sample slot ${k + 1}`);
+}
+async function connectSelected() {
+  if (!workspaceActive) return;
+  if (link) link.close();
+  device = null; clearPreview(); $("identity").textContent = "Not connected";
+  const input = midi.inputs.get($("midi-input").value), output = midi.outputs.get($("midi-output").value);
+  if (!input || !output) throw new Error("Choose the keyboard’s MIDI input and output ports.");
+  link = new ProjectMidiLink(input, output);
+  const next = new ProjectDevice(link);
+  try {
+    const info = await next.connect(); device = next; $("identity").textContent = info.identity;
+    say(info.recovery ? `Connected to ${info.identity}. The keyboard is holding audio and controls after an interrupted sample transfer. Choose a portable recovery backup, then prepare recovery.` :
+      `Connected to ${info.identity}. Ready for projects.`);
+  } catch (e) { link.close(); link = null; $("identity").textContent = "Projects unavailable on this connection"; throw e; }
+}
+$("find").onclick = () => run("Finding USB MIDI ports…", async () => {
+  if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable in this browser. Open this page in Chrome or Edge over HTTPS or localhost.");
+  midi = await navigator.requestMIDIAccess({ sysex: true });
+  midi.onstatechange = () => {
+    if (link && (link.input.state === "disconnected" || link.output.state === "disconnected")) {
+      link.close(); link = null; device = null; previewStale = !!prepared;
+      $("identity").textContent = "Disconnected";
+      say("USB disconnected. Reconnect and prepare a new preview before importing. Keep any recovery backup.", true); controls();
+    }
+  };
+  const inputs = [...midi.inputs.values()].filter((p) => p.state !== "disconnected"), outputs = [...midi.outputs.values()].filter((p) => p.state !== "disconnected");
+  for (const [id, ports] of [["midi-input", inputs], ["midi-output", outputs]]) {
+    $(id).replaceChildren();
+    for (const port of ports) { const option = document.createElement("option"); option.value = port.id; option.textContent = port.name || port.id; $(id).append(option); }
+  }
+  $("ports").hidden = false;
+  if (!inputs.length || !outputs.length) throw new Error("No MIDI input/output pair was found. Connect the keyboard by USB, then find ports again.");
+  const known = inputs.filter((i) => /x0x|smk-37|mke-p37|fm-1|felucca/i.test(i.name) && outputs.some((o) => o.name === i.name));
+  if (inputs.length === 1 && outputs.length === 1 || known.length === 1) {
+    const input = known.length === 1 ? known[0] : inputs[0], output = outputs.find((o) => o.name === input.name) || outputs[0];
+    $("midi-input").value = input.id; $("midi-output").value = output.id; await connectSelected();
+  } else say("Choose the keyboard’s MIDI input and output, then connect the selected ports.");
+});
+$("connect").onclick = () => run("Checking the keyboard and project protocol…", connectSelected);
+$("portable").onchange = controls;
+$("save").onclick = () => run("Saving the live project on the keyboard…", async () => {
+  await device.save(); clearPreview(); say("Project saved on the keyboard. Sample slots are unchanged.");
+});
+$("load").onclick = () => {
+  if (busy || !workspaceActive || !device || $("load").disabled) return;
+  if (!window.confirm("Replace the live project with the keyboard’s saved project? Unsaved project changes will be lost. Uploaded samples stay in place.")) return;
+  run("Loading the saved project…", async () => { await device.load(true); clearPreview(); say("Saved project loaded. Sample slots are unchanged."); });
+};
+$("reset").onclick = () => {
+  if (busy || !workspaceActive || !device || $("reset").disabled) return;
+  if (!window.confirm("Reset the WHOLE live project, including song, patterns, sounds, motion and project settings? Uploaded samples and device role settings stay in place. Playback and recording stop. Autosave turns ON and may overwrite the saved project. Export first to keep your current project.")) return;
+  run("Resetting the live project…", async () => { await device.reset(true); clearPreview(); say("Live project reset. Sample slots are unchanged. Autosave is now ON and may overwrite the saved project."); });
+};
+$("export").onclick = () => run("Reading the project and original sample slots…", async () => {
+  const name = $("name").value.trim(), portable = $("portable").checked;
+  if (!name) throw new Error("Enter a project name before exporting.");
+  const snapshot = await readProjectSnapshot(device, progress), file = await makeProjectFile(snapshot.project, snapshot, { name, portable });
+  await readProjectFile(file, device.projectLength);
+  download(file, `${filename(name)}${portable ? "" : "-project-only"}.x0xproject`);
+  say(`${portable ? "Portable project" : "Project-only file"} exported and verified (${human(file.length)}). Original samples were read without changes.`);
+});
+$("file").onchange = () => {
+  if (busy || !workspaceActive || !$("file").files[0]) return;
+  return run("Checking the project file…", async () => {
+  clearPreview(); selected = null; const file = $("file").files[0];
+  $("file-info").textContent = "Choose an .x0xproject file.";
+  if (file.size > PROJECT_MAX_FILE) throw new Error("This file is too large to be an X0X project bundle.");
+  selected = await readProjectFile(new Uint8Array(await file.arrayBuffer()));
+  const n = selected.meta.slots.filter((s) => !s.empty).length;
+  $("file-info").textContent = `${selected.meta.name} · ${selected.portable ? "Project + original samples" : "Project only"} · ${n} populated sample slots · ${human(file.size)}`;
+  say(device ? "File checked. Prepare import to compare it with the keyboard." : "File checked. Connect the keyboard to prepare import.");
+  });
+};
+const slotText = (s) => s.unknown ? "Interrupted transfer" : s.empty ? "Empty" : `${s.name || "Unnamed"} · ${s.zones} zone${s.zones === 1 ? "" : "s"}`;
+$("prepare").onclick = () => run("Reading the current project and preparing its recovery backup…", async () => {
+  previewStale = !!prepared;
+  const next = await prepareProjectImport(device, selected.bytes, { progress });
+  clearPreview(); prepared = next;
+  $("preview-title").textContent = `${prepared.recovery ? "Recover" : "Import"} “${prepared.file.meta.name}”`;
+  const changes = prepared.plan.changes.length, collisions = prepared.plan.collisions.length;
+  $("preview-summary").textContent = prepared.recovery ? `Recovery restores all ${changes} sample slots from this file before adopting its project. Audio and controls stay held while samples are written and verified.` :
+    changes ? `${changes} sample slot${changes === 1 ? "" : "s"} will change. Slot order stays fixed so the project plays the correct samples.` : "Every sample slot already matches. Import will leave all sample slots unchanged.";
+  $("slot-rows").replaceChildren();
+  prepared.file.meta.slots.forEach((want, k) => {
+    const change = prepared.plan.changes.find((c) => c.k === k), have = change?.from || want, row = document.createElement("tr");
+    const action = change ? { fill: "Fill empty slot", replace: "Replace existing samples", restore: "Restore exact slot image", clear: "Clear slot to preserve sample numbering" }[change.action] : "Keep exact bytes";
+    for (const text of [`${k + 1}`, slotText(have), slotText(want), action]) { const cell = document.createElement("td"); cell.textContent = text; row.append(cell); }
+    if (change && !have.empty) row.className = "collision";
+    $("slot-rows").append(row);
+  });
+  $("backup-note").textContent = prepared.recovery ? "The selected portable file is the recovery source. Its full sample images have been checked; partial destination images are not used to create another backup." :
+    collisions ? `This import replaces or clears ${collisions} occupied slot${collisions === 1 ? "" : "s"}. Download the verified recovery backup, then confirm that you saved it.` : "A verified recovery backup of the current project and all its samples is ready to download.";
+  $("backup").hidden = !!prepared.recovery;
+  $("backup-confirm").hidden = !collisions;
+  $("preview").hidden = false;
+  say(prepared.recovery ? "Recovery preview ready. Confirm restoring the selected portable file to continue." : "Import preview ready. The live project and samples have not changed.");
+});
+$("backup").onclick = () => {
+  if (!prepared?.backupBytes || busy) return;
+  download(prepared.backupBytes, `x0x-before-import-${stamp()}.x0xproject`); downloaded = true; controls();
+  say("Recovery backup download started. Check that the file is saved before confirming sample replacement.");
+};
+$("backup-saved").onchange = controls;
+$("recover-backup").onclick = () => { if (recoveryBytes && !busy) download(recoveryBytes, recoveryName); };
+$("cancel").onclick = () => {
+  const failed = previewStale; clearPreview();
+  say(failed ? "Import preview closed. Its recovery backup remains available." : "Import preview cancelled. The keyboard has not changed.");
+};
+$("import").onclick = () => {
+  if (!prepared || busy || $("import").disabled) return;
+  const change = prepared.plan.changes.length;
+  const confirmText = prepared.recovery ? `Restore all ${change} sample slots and the live project from “${prepared.file.meta.name}”? This replaces the interrupted transfer’s slot contents with the exact images in this portable file.` :
+    `Replace the live project with “${prepared.file.meta.name}”? Unsaved project changes will be lost. ${change ? `${change} sample slot(s) will be written exactly as shown in the preview.` : "All sample slots will stay unchanged."}`;
+  if (!window.confirm(confirmText)) return;
+  run("Validating and importing the project. Keep USB connected…", async () => {
+    try {
+      const result = await applyProjectImport(device, prepared, { confirmed: true, backupSaved: downloaded && $("backup-saved").checked, progress });
+      clearPreview(); say(`${result.recovered ? "Recovery complete." : "Project imported."} ${result.changedSlots.length ? `Verified original sample bytes in ${result.changedSlots.length} changed slot(s).` : "Sample slots are unchanged."} Use Save on keyboard to store it immediately.`);
+    } catch (e) {
+      // Keep the recovery download available after a failed transfer; require a new preview for another import.
+      recoveryBytes = (prepared.backupBytes || prepared.file.bytes).slice(); recoveryName = `x0x-interrupted-import-${stamp()}.x0xproject`;
+      $("recovery").hidden = false;
+      previewStale = true;
+      $("preview-summary").textContent = "Import stopped. The recovery download is still available. Prepare a new import before trying again.";
+      throw e;
+    }
+  });
+};
+function invalidateWorkspace() {
+  if (busy) return false;
+  if (link) link.close(); link = null; device = null;
+  clearPreview(); $("identity").textContent = "Not connected";
+  say("Prepared file and export options are retained. Reconnect and prepare a fresh preview before importing.");
+  return true;
+}
+window.projectWorkspace = {
+  busy: () => busy,
+  activate: (active) => {
+    if (busy) return false;
+    if (workspaceActive !== active) {
+      if (!active) invalidateWorkspace();
+      workspaceActive = active; controls();
+    }
+    return true;
+  },
+  invalidate: invalidateWorkspace
+};
+if (typeof location !== "undefined" && new URLSearchParams(location.search).has("embedded")) {
+  document.documentElement.classList.add("embedded");
+  const fitWorkspace = () => {
+    if (parent === window) return;
+    const frame = parent.document.getElementById("project-frame");
+    if (frame) frame.style.height = Math.ceil(document.querySelector("main").getBoundingClientRect().height + 8) + "px";
+  };
+  new ResizeObserver(fitWorkspace).observe(document.querySelector("main"));
+}
+controls();
+</script>
+</body>
+</html>

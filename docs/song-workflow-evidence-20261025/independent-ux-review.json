@@ -1,0 +1,282 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "label": "320 top install/sample tasks",
+      "pass": true
+    },
+    {
+      "label": "320 projects entry first viewport",
+      "pass": true
+    },
+    {
+      "label": "320 installer no overflow",
+      "pass": true
+    },
+    {
+      "label": "320 one panel visible",
+      "pass": true
+    },
+    {
+      "label": "320 project no overflow",
+      "pass": true
+    },
+    {
+      "label": "320 embedded no duplicate navigation",
+      "pass": true
+    },
+    {
+      "label": "320 writes denied without connection",
+      "pass": true
+    },
+    {
+      "label": "320 whole-project/reset scope explicit",
+      "pass": true
+    },
+    {
+      "label": "320 autosave risk explained",
+      "pass": true
+    },
+    {
+      "label": "320 corrupt file cannot import",
+      "pass": true
+    },
+    {
+      "label": "320 transfer blocks task switch",
+      "pass": true
+    },
+    {
+      "label": "320 projects relinquishes ownership",
+      "pass": true
+    },
+    {
+      "label": "320 dirty name/options retained",
+      "pass": true
+    },
+    {
+      "label": "320 chosen file retained",
+      "pass": true
+    },
+    {
+      "label": "320 back/forward restores project task",
+      "pass": true
+    },
+    {
+      "label": "390 top install/sample tasks",
+      "pass": true
+    },
+    {
+      "label": "390 projects entry first viewport",
+      "pass": true
+    },
+    {
+      "label": "390 installer no overflow",
+      "pass": true
+    },
+    {
+      "label": "390 one panel visible",
+      "pass": true
+    },
+    {
+      "label": "390 project no overflow",
+      "pass": true
+    },
+    {
+      "label": "390 embedded no duplicate navigation",
+      "pass": true
+    },
+    {
+      "label": "390 writes denied without connection",
+      "pass": true
+    },
+    {
+      "label": "390 whole-project/reset scope explicit",
+      "pass": true
+    },
+    {
+      "label": "390 autosave risk explained",
+      "pass": true
+    },
+    {
+      "label": "390 corrupt file cannot import",
+      "pass": true
+    },
+    {
+      "label": "390 transfer blocks task switch",
+      "pass": true
+    },
+    {
+      "label": "390 projects relinquishes ownership",
+      "pass": true
+    },
+    {
+      "label": "390 dirty name/options retained",
+      "pass": true
+    },
+    {
+      "label": "390 chosen file retained",
+      "pass": true
+    },
+    {
+      "label": "390 back/forward restores project task",
+      "pass": true
+    },
+    {
+      "label": "768 top install/sample tasks",
+      "pass": true
+    },
+    {
+      "label": "768 projects entry first viewport",
+      "pass": true
+    },
+    {
+      "label": "768 installer no overflow",
+      "pass": true
+    },
+    {
+      "label": "768 one panel visible",
+      "pass": true
+    },
+    {
+      "label": "768 project no overflow",
+      "pass": true
+    },
+    {
+      "label": "768 embedded no duplicate navigation",
+      "pass": true
+    },
+    {
+      "label": "768 writes denied without connection",
+      "pass": true
+    },
+    {
+      "label": "768 whole-project/reset scope explicit",
+      "pass": true
+    },
+    {
+      "label": "768 autosave risk explained",
+      "pass": true
+    },
+    {
+      "label": "768 corrupt file cannot import",
+      "pass": true
+    },
+    {
+      "label": "768 transfer blocks task switch",
+      "pass": true
+    },
+    {
+      "label": "768 projects relinquishes ownership",
+      "pass": true
+    },
+    {
+      "label": "768 dirty name/options retained",
+      "pass": true
+    },
+    {
+      "label": "768 chosen file retained",
+      "pass": true
+    },
+    {
+      "label": "768 back/forward restores project task",
+      "pass": true
+    },
+    {
+      "label": "1280 top install/sample tasks",
+      "pass": true
+    },
+    {
+      "label": "1280 projects entry first viewport",
+      "pass": true
+    },
+    {
+      "label": "1280 installer no overflow",
+      "pass": true
+    },
+    {
+      "label": "1280 one panel visible",
+      "pass": true
+    },
+    {
+      "label": "1280 project no overflow",
+      "pass": true
+    },
+    {
+      "label": "1280 embedded no duplicate navigation",
+      "pass": true
+    },
+    {
+      "label": "1280 writes denied without connection",
+      "pass": true
+    },
+    {
+      "label": "1280 whole-project/reset scope explicit",
+      "pass": true
+    },
+    {
+      "label": "1280 autosave risk explained",
+      "pass": true
+    },
+    {
+      "label": "1280 corrupt file cannot import",
+      "pass": true
+    },
+    {
+      "label": "1280 transfer blocks task switch",
+      "pass": true
+    },
+    {
+      "label": "1280 projects relinquishes ownership",
+      "pass": true
+    },
+    {
+      "label": "1280 dirty name/options retained",
+      "pass": true
+    },
+    {
+      "label": "1280 chosen file retained",
+      "pass": true
+    },
+    {
+      "label": "1280 back/forward restores project task",
+      "pass": true
+    },
+    {
+      "label": "standalone projects route renders",
+      "pass": true
+    },
+    {
+      "label": "standalone navigation available",
+      "pass": true
+    },
+    {
+      "label": "no JavaScript errors",
+      "pass": true
+    }
+  ],
+  "browser_errors": [],
+  "screenshots": [
+    "<task-workspace>/previews/song-project-workspace-390.png",
+    "<task-workspace>/previews/song-project-workspace-1280.png"
+  ],
+  "sha256": {
+    "web/x0x_installer.html": "2e9c32db442c17d1d8998195eef85c58b3d89174b7e2589bd403f64cec5f56d7",
+    "web/x0x_projects.html": "93da82152217f25ca063a65b1a572cb7d4cc39457ffe497e56c123b99fb060c7",
+    "web/x0x_projects.js": "3e274220d037ccfea1858eefc1e02fa172722d10130e51eb3b2c339a739ddcea",
+    "scripts/build-preview.mjs": "3e46fbdf47b7b1c55eeacc35e51ecbe4db3a3fc23512520c7c7864730b5362bd",
+    "scripts/render-qualified-nightly.mjs": "fdd818f55446aea1f96475425f8aa752202604376d734dc4582f2a030f29fefd",
+    "docs/install/index.html": "abdc7dfd14e6db9b7777d3b6ac26fce9d8961267dbe3b5444f68c0039e58c453",
+    "docs/projects/index.html": "99585c9364b7fb34aa3d0f833037644e573354eae8929458fa9e2166297f5533"
+  },
+  "limit": "Headless actual UI with synthetic busy probe; no device/MIDI/flash or deployed proof.",
+  "visual_review": "PASS: inspected both default screenshots; no clipped controls, top tasks visible, reset scope/sample retention and autosave warning readable.",
+  "regressions": {
+    "presentation_checks": 106,
+    "workspace_checks": 29,
+    "failures": 0
+  },
+  "screenshot_sha256": {
+    "<task-workspace>/previews/song-project-workspace-390.png": "60b8abf644a42b1dbe512fb3cb6ffb5f5c544ac0f59117ddc53c6f7e09c747b6",
+    "<task-workspace>/previews/song-project-workspace-1280.png": "dcacb74832696f4e544fb4d1b1e5516ad7e0ad0babd168385344d332ab2f7280"
+  }
+}

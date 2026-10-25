@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-preview.mjs",
-    "test": "node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs && node tests/controller-padding.test.mjs && node tests/bundled-controller.test.mjs && node tests/installer-download-admission.test.mjs && node tests/qualified-catalog.test.mjs && npm run catalog:check && node tests/build-status-negatives.test.mjs && node tests/build-history-continuity.test.mjs && node tests/installer-write-boundaries.test.mjs",
+    "test": "node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs && node tests/controller-padding.test.mjs && node tests/bundled-controller.test.mjs && node tests/installer-download-admission.test.mjs && node tests/qualified-catalog.test.mjs && npm run catalog:check && node tests/build-status-negatives.test.mjs && node tests/build-history-continuity.test.mjs && node tests/installer-write-boundaries.test.mjs && node web/test_projects.mjs && node web/test_projects_page.mjs",
     "prepare:candidate": "node scripts/render-qualified-nightly.mjs",
     "catalog:check": "node scripts/verify-build-status.mjs",
-    "test:browser": "python3 tests/browser-admission.py && python3 tests/history-response.py && python3 tests/bundled-browser.py && python3 tests/workspace-browser.py"
+    "test:browser": "python3 tests/browser-admission.py && python3 tests/history-response.py && python3 tests/bundled-browser.py && python3 tests/workspace-browser.py && python3 tests/presentation-browser.py && python3 tests/project-workspace-browser.py"
   }
 }

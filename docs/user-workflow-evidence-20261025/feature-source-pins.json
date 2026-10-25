@@ -1,0 +1,42 @@
+[
+  {
+    "path": "README.md",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "ebd73f067fa4f6b745cff7bcafa4585aaec0e481"
+  },
+  {
+    "path": "SMK37.md",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "0d5e9125f92c77c84c15dee1f04ea6617fd7458a"
+  },
+  {
+    "path": "APC40_IMPLEMENTATION.md",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "9250510d1f55ddbef85ac4a734627c4c1f4f24a3"
+  },
+  {
+    "path": "firmware/src/app/ui.c",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "0c661c870f537348070fd3aaff665ced3bc97cd0"
+  },
+  {
+    "path": "firmware/src/app/smc_mixer.c",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "b89e5c12062a3dc3459eeb660d205f607273aab6"
+  },
+  {
+    "path": "firmware/src/app/main_fm1.c",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "87c7177cf94a8e994e423f2e544190e9ac85f6d5"
+  },
+  {
+    "path": "docs/manual.html",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "c336a6061d93ce2299e9b1edec5f0b8b82f6782e"
+  },
+  {
+    "path": "ble/README.md",
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "blob": "ab1dc95b5eee7f78a0e34609beb60ae4c960724e"
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "tested_source": "5ff1a5ce7d05c4e85cb01307556158be9992bc65",
+  "base_source": "08b7e2a9ff01bfcfe4edb439ad43302af8c8ad8d",
+  "commands": [
+    "npm run build",
+    "npm test",
+    "python tests/browser-admission.py",
+    "python tests/bundled-browser.py",
+    "python tests/presentation-browser.py",
+    "python tests/workspace-browser.py",
+    "python tests/density-browser.py",
+    "python tests/project-workspace-browser.py"
+  ],
+  "source_blobs": {
+    "web/x0x_installer.html": "44fadbc7b65c572fc44ea0f33d7d9ff2015188cb",
+    "web/x0x_breaks.html": "0adc032d95dca24499c80ed4debdf6356a02f7b4",
+    "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0"
+  },
+  "evidence_sha256": {
+    "independent-density.log": "374be8e7e3e3537f3eb9b8dd3251b37a7ff178a2a5a1b7d18f4811c4634f4faa",
+    "final-pixel-verification.md": "2354699ec5cf8b6678f0eb4b14dc2476140378d9a8142ee06dfbcf57da514df5",
+    "independent-bundled.log": "91e1428582fa28227bbdc617cd9c1e2c5565cfe5dac152a57375c66069abf152",
+    "independent-native.log": "3281d5e694d122870944f504b68b5da5dbcb07ff13cda736459bb958948b4568",
+    "independent-admission.log": "a71a5e1724dc7d560e8281d4418a6535c994473915c10dadc4dd59f1eb86bae2",
+    "independent-functional-review.json": "c84b64d0f10d38c1f5b4e71d1a12421609febb56d28942e5c075ddf6ef16d89b",
+    "independent-presentation.log": "c6df4363e10246de19f4cc3029d5c96b9cb8222701c31584f4ea8214a5dc7af7",
+    "independent-workspace.log": "859c1111b979e36233736ff430c08395da21464ef7ad814c2be3560047362d3b",
+    "design-review.md": "a7b22defde2697dfbf9a2b6830dff95a65cc7549f94340ed69f4c5f9c0ce65ca",
+    "independent-projects.log": "0fc99167516e410730ea3dbce630306001f1addba0b5b1b592b86b62a50b570f"
+  },
+  "preview": {
+    "catalog_url": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/versions.json",
+    "catalog_sha256": "ed1fdf6c0f7dd97823eaf25aa1f96e52752390c8b0ebb3f34075641aca602958",
+    "catalog_latest": "nightly-1325f5d3-dev",
+    "html_sha256": "79467378acd4a3d3e4cba5befd516c542678e75fe76671bc66df3451e7437a05",
+    "device_access": "disabled",
+    "downloads": "disabled",
+    "network_requests": 0
+  },
+  "limits": [
+    "No hardware mutation or hardware qualification",
+    "No public publication or protected merge",
+    "Preview snapshot and preview-only disabling remain outside repository",
+    "Impeccable executable missing; plain-text guidelines and independent headless/manual review used"
+  ],
+  "final_source": "1975a0295aab39c616e249f6ac435282db430544",
+  "delta_report": "caption-delta-review.json",
+  "final_preview_sha256": "8f6678a1445614ffda4c370411b0eb81846128b27e001746e152b05eb20fb97d"
+}

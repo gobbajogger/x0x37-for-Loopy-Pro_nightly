@@ -1,0 +1,338 @@
+{
+  "reviewer": "independent review_user_flow agent",
+  "outcome": "PASS_SCOPED_TASK_FIRST_CONTENT_FLOW_AND_CURRENT_CATALOG",
+  "source_blob": "2f82c0cfd5e8b1caef7f511a95f4570c6e340ab1",
+  "source_sha256": "71bf07d87378670ab478a43d333a047d53afca1e0e42af28d26af69ddbda2f0b",
+  "generated_html_blob": "2ebdefba5d2206be3637d97f51ec20869d51012a",
+  "base_commit": "160b905cbf3c985d5c554f66dbe4418c22e06825",
+  "source_stable_after_browser_checks": true,
+  "generated_preview_parity": "PASS",
+  "catalog_sha256": "1b6dca6cf076d282788b5ff6e7abd4eb376f8b5844f7e899aa283e1f5288be45",
+  "latest_version": "nightly-4ee8f377-dev",
+  "latest_source": "4ee8f37714b0892f2c70d157fda9328da393e987",
+  "broad_browser_checks": [
+    {
+      "check": "1280: both task routes before product introduction",
+      "pass": true
+    },
+    {
+      "check": "1280: both task routes in first viewport",
+      "pass": true
+    },
+    {
+      "check": "1280: install link resolves to real form target",
+      "pass": true
+    },
+    {
+      "check": "1280: optional setup guide follows install",
+      "pass": true
+    },
+    {
+      "check": "1280: three setups and grouped feature inventory",
+      "pass": true
+    },
+    {
+      "check": "1280: detailed setup and capabilities optional initially",
+      "pass": true
+    },
+    {
+      "check": "1280: no overflow",
+      "pass": true
+    },
+    {
+      "check": "1280: concise musical product explanation",
+      "pass": true
+    },
+    {
+      "check": "1280: device before build",
+      "pass": true
+    },
+    {
+      "check": "1280: install before visuals",
+      "pass": true
+    },
+    {
+      "check": "1280: invalid bytes cannot enable install",
+      "pass": true
+    },
+    {
+      "check": "1280: source hashes optional",
+      "pass": true
+    },
+    {
+      "check": "1280: latest live catalog selected",
+      "pass": true
+    },
+    {
+      "check": "1280: experimental warning/consent visible",
+      "pass": true
+    },
+    {
+      "check": "1280: sample backup and USB warning at action",
+      "pass": true
+    },
+    {
+      "check": "1280: keyboard sample route changes one panel",
+      "pass": true
+    },
+    {
+      "check": "1280: install route restores actual form",
+      "pass": true
+    },
+    {
+      "check": "1280: archive deep link",
+      "pass": true
+    },
+    {
+      "check": "390: both task routes before product introduction",
+      "pass": true
+    },
+    {
+      "check": "390: both task routes in first viewport",
+      "pass": true
+    },
+    {
+      "check": "390: install link resolves to real form target",
+      "pass": true
+    },
+    {
+      "check": "390: optional setup guide follows install",
+      "pass": true
+    },
+    {
+      "check": "390: three setups and grouped feature inventory",
+      "pass": true
+    },
+    {
+      "check": "390: detailed setup and capabilities optional initially",
+      "pass": true
+    },
+    {
+      "check": "390: no overflow",
+      "pass": true
+    },
+    {
+      "check": "390: concise musical product explanation",
+      "pass": true
+    },
+    {
+      "check": "390: device before build",
+      "pass": true
+    },
+    {
+      "check": "390: install before visuals",
+      "pass": true
+    },
+    {
+      "check": "390: invalid bytes cannot enable install",
+      "pass": true
+    },
+    {
+      "check": "390: source hashes optional",
+      "pass": true
+    },
+    {
+      "check": "390: latest live catalog selected",
+      "pass": true
+    },
+    {
+      "check": "390: experimental warning/consent visible",
+      "pass": true
+    },
+    {
+      "check": "390: sample backup and USB warning at action",
+      "pass": true
+    },
+    {
+      "check": "390: keyboard sample route changes one panel",
+      "pass": true
+    },
+    {
+      "check": "390: install route restores actual form",
+      "pass": true
+    },
+    {
+      "check": "390: archive deep link",
+      "pass": true
+    },
+    {
+      "check": "320: both task routes before product introduction",
+      "pass": true
+    },
+    {
+      "check": "320: both task routes in first viewport",
+      "pass": true
+    },
+    {
+      "check": "320: install link resolves to real form target",
+      "pass": true
+    },
+    {
+      "check": "320: optional setup guide follows install",
+      "pass": true
+    },
+    {
+      "check": "320: three setups and grouped feature inventory",
+      "pass": true
+    },
+    {
+      "check": "320: detailed setup and capabilities optional initially",
+      "pass": true
+    },
+    {
+      "check": "320: no overflow",
+      "pass": true
+    },
+    {
+      "check": "320: concise musical product explanation",
+      "pass": true
+    },
+    {
+      "check": "320: device before build",
+      "pass": true
+    },
+    {
+      "check": "320: install before visuals",
+      "pass": true
+    },
+    {
+      "check": "320: invalid bytes cannot enable install",
+      "pass": true
+    },
+    {
+      "check": "320: source hashes optional",
+      "pass": true
+    },
+    {
+      "check": "320: latest live catalog selected",
+      "pass": true
+    },
+    {
+      "check": "320: experimental warning/consent visible",
+      "pass": true
+    },
+    {
+      "check": "320: sample backup and USB warning at action",
+      "pass": true
+    },
+    {
+      "check": "320: keyboard sample route changes one panel",
+      "pass": true
+    },
+    {
+      "check": "320: install route restores actual form",
+      "pass": true
+    },
+    {
+      "check": "320: archive deep link",
+      "pass": true
+    },
+    {
+      "check": "no script errors",
+      "pass": true
+    }
+  ],
+  "narrow_final_markup_checks": [
+    {
+      "check": "1280: no overflow after roadmap links",
+      "pass": true
+    },
+    {
+      "check": "1280: real existing GitHub Issues routes",
+      "pass": true
+    },
+    {
+      "check": "1280: no false release promise or static voting",
+      "pass": true
+    },
+    {
+      "check": "1280: requests secondary to tools and workflow",
+      "pass": true
+    },
+    {
+      "check": "390: no overflow after roadmap links",
+      "pass": true
+    },
+    {
+      "check": "390: real existing GitHub Issues routes",
+      "pass": true
+    },
+    {
+      "check": "390: no false release promise or static voting",
+      "pass": true
+    },
+    {
+      "check": "390: requests secondary to tools and workflow",
+      "pass": true
+    },
+    {
+      "check": "320: no overflow after roadmap links",
+      "pass": true
+    },
+    {
+      "check": "320: real existing GitHub Issues routes",
+      "pass": true
+    },
+    {
+      "check": "320: no false release promise or static voting",
+      "pass": true
+    },
+    {
+      "check": "320: requests secondary to tools and workflow",
+      "pass": true
+    }
+  ],
+  "total_checks": 67,
+  "failures": 0,
+  "unchanged_inputs": [
+    "preview-catalog.json",
+    "docs/versions.json",
+    "web/x0x_breaks.html",
+    "web/x0x_breaks.js",
+    "web/fm1ota.js",
+    "web/fm1pkg.js",
+    "control opening-tag multiset"
+  ],
+  "script_diff_scope": [
+    "EN/JA consent wording",
+    "default workspace informational message; busy guards and routing unchanged"
+  ],
+  "source_claim_validation": {
+    "ref": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "remote_read_blobs": {
+      "README.md": "ebd73f067fa4f6b745cff7bcafa4585aaec0e481",
+      "SMK37.md": "0d5e9125f92c77c84c15dee1f04ea6617fd7458a",
+      "APC40_IMPLEMENTATION.md": "9250510d1f55ddbef85ac4a734627c4c1f4f24a3",
+      "ble/README.md": "ab1dc95b5eee7f78a0e34609beb60ae4c960724e",
+      "docs/manual.html": "c336a6061d93ce2299e9b1edec5f0b8b82f6782e",
+      "firmware/src/app/ui.c": "0c661c870f537348070fd3aaff665ced3bc97cd0",
+      "firmware/src/app/main_fm1.c": "87c7177cf94a8e994e423f2e544190e9ac85f6d5",
+      "firmware/src/app/smc_mixer.c": "b89e5c12062a3dc3459eeb660d205f607273aab6"
+    },
+    "disposition": "Feature/connection claims supported in current downloadable source. Newer PR168 controller UI explicitly source-only preview; no new hardware verification claim."
+  },
+  "visual_findings": [],
+  "findings_repaired": [
+    "Install/import task routes moved before introduction and visible at all checked widths",
+    "Real #firmware form target added",
+    "Stale below references removed after section reordering"
+  ],
+  "observations": [
+    "Actual install write button follows model/build/safety consent and requires scrolling, while both task routes are immediately visible before product explanation.",
+    "GitHub Issues links use existing server-side issues/reactions, with no simulated voting or promised delivery."
+  ],
+  "limitations": [
+    "Final task64 drum-name/Pause-lock render remains pending and was not accepted; current vector explicitly b8794f9 source preview",
+    "No device/hardware/GUI/external write/publication/integration proof",
+    "Invalid package responses used to verify refusal; no real firmware bytes fetched"
+  ],
+  "action_position_px_prior_to_final_caption_links": {
+    "1280x900": 931.515625,
+    "390x844": 1031.34375,
+    "320x900": 1153.765625
+  },
+  "artifacts": [
+    "/tmp/task67-independent-review/review.json",
+    "/tmp/task67-independent-review/final-narrow.json"
+  ]
+}

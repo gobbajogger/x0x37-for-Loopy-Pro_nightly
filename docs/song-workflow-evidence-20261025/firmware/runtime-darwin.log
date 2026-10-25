@@ -1,0 +1,3 @@
+project_update_guard: held restart, BEGIN/COMMIT update discard and idle updates ok
+project_runtime: reset, load, cancel, invalid, transfer, save and sample preservation ok
+project_smc_runtime: reset drops all queued routes; lock/abort/solo/pickup state ok

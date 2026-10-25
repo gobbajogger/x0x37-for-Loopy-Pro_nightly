@@ -1,0 +1,149 @@
+[
+  {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/installer-review.html",
+    "file_id": "file_00000000e5508230aa98b4308545d1ba",
+    "library_file_id": "libfile_795571f84c108191819636ecb9a62f81",
+    "file_name": "installer-review.html",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+    "mime_type": "text/html",
+    "library_artifact_type": "other",
+    "file_size_bytes": 1313848,
+    "external_connectors_accessed": false
+  },
+  {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/final-firmware-1280.png",
+    "file_id": "file_00000000322481fdb6e49610e29dc83f",
+    "library_file_id": "libfile_b3c10b843aec8191916a125bcac35e67",
+    "file_name": "final-firmware-1280.png",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+    "mime_type": "image/png",
+    "library_artifact_type": "image",
+    "file_size_bytes": 299642,
+    "external_connectors_accessed": false
+  },
+  {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/final-firmware-390.png",
+    "file_id": "file_00000000434482308b9fc521af5ded47",
+    "library_file_id": "libfile_9d9329cbad388191ae67ab19bff3834f",
+    "file_name": "final-firmware-390.png",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+    "mime_type": "image/png",
+    "library_artifact_type": "image",
+    "file_size_bytes": 291464,
+    "external_connectors_accessed": false
+  },
+  {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/final-samples-1280.png",
+    "file_id": "file_000000006624820e84b0e37a2d2aeaa3",
+    "library_file_id": "libfile_88e8ec118dc88191b33cbbd0a7cddaa8",
+    "file_name": "final-samples-1280.png",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+    "mime_type": "image/png",
+    "library_artifact_type": "image",
+    "file_size_bytes": 261860,
+    "external_connectors_accessed": false
+  },
+  {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/final-samples-390.png",
+    "file_id": "file_0000000021208230828c945fdee859bb",
+    "library_file_id": "libfile_93887f3ad3c88191ba36677c7b08bd98",
+    "file_name": "final-samples-390.png",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+    "mime_type": "image/png",
+    "library_artifact_type": "image",
+    "file_size_bytes": 254416,
+    "external_connectors_accessed": false
+  },
+  {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/final-projects-1280.png",
+    "file_id": "file_000000006cb081fd83b7af2b624499b6",
+    "library_file_id": "libfile_7e99c174d9d481918e1fae891566f05f",
+    "file_name": "final-projects-1280.png",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+    "mime_type": "image/png",
+    "library_artifact_type": "image",
+    "file_size_bytes": 378207,
+    "external_connectors_accessed": false
+  },
+  {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/final-projects-390.png",
+    "file_id": "file_00000000fe4081f8b1133499b9a2c971",
+    "library_file_id": "libfile_40358b742bf48191923d059dfe0bdb10",
+    "file_name": "final-projects-390.png",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+    "mime_type": "image/png",
+    "library_artifact_type": "image",
+    "file_size_bytes": 359584,
+    "external_connectors_accessed": false
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "stage": "Final PR19 source-only presentation revision",
+  "base": "ae7a77233ec0adb97ffeba4171df182e3bf1f6e9",
+  "html_blob": "e2ffa579bf8b2b4c72655eb7649eece753b2b7af",
+  "installer_fingerprint": "71a0e5db0b673defdd98640dcbd45ed59ac8b4b652bb26e5b9a171c9d67533b5",
+  "catalog": {
+    "published_ref": "4b3c5994eabd14aa1a1a575b2211800a478112b4",
+    "sha256": "06e614365f1e58ebdc78f3efffb04c338805f5720d1801ce44db06b61d0732dd",
+    "latest": "nightly-a03cfab3-dev",
+    "source_commit": "a03cfab3a423ab5c65a6546afd4993fe51754ee7",
+    "source_tree": "85e159c5365b14c48e9f3df7d2089e8f2eb560d4",
+    "prior_latest": "nightly-4ee8f377-dev",
+    "packages_controller_and_urls_equal_to_prior": true,
+    "published_and_live_bytes_equal": true,
+    "models": {
+      "elite": {
+        "product": "SMK-37 Elite_900",
+        "sha256": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+        "size": 651396,
+        "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+        "controller_strategy": "bundled",
+        "controller_size": 65492,
+        "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f917b636ba00d7dbef18fd00d1f0af15299a0a24/artifacts/nightly/dev-20261025-4ee8f377/8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278/x0x37-elite-dev.fwsc"
+      },
+      "pro": {
+        "product": "SMK-37 Pro_900",
+        "sha256": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb",
+        "size": 651392,
+        "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+        "controller_strategy": "bundled",
+        "controller_size": 65492,
+        "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f917b636ba00d7dbef18fd00d1f0af15299a0a24/artifacts/nightly/dev-20261025-4ee8f377/d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb/x0x37-pro-dev.fwsc"
+      }
+    }
+  },
+  "smc_preview": {
+    "source": "65a0588ed636e8db6b35bdea4991e8990f476ff2",
+    "native_png_sha256": "0a2f3c58743c07fdad5e5320fd9efbd899d5035282585d94ec4d161a01ef60aa",
+    "vector_sha256": "df9c985974a91c205f7d7c8c37fe98abf9ebaea4580c19f117270a7a67108774",
+    "scope": "Production draw commands and Barlow outlines; native240x240 geometry; 909 SEQ bank1. Synthetic host state, not hardware proof. Source failed firmware link108B over; not offered/validated firmware."
+  },
+  "checks": {
+    "build": "PASS",
+    "npm_test": "PASS",
+    "presentation": 106,
+    "workspace": 29,
+    "current_catalog": 30,
+    "operation_scripts_byte_equal_to_base": true,
+    "catalog_and_shipping_libraries_unchanged": true,
+    "reused_evidence": "Unchanged operation closure: prior admission677/history34/bundled61 tests and original user-workflow evidence retained. Affected layout/navigation and invalid-package checks rerun.",
+    "independent_initial": 59,
+    "independent_f03_delta": 5
+  },
+  "previews": [
+    {
+      "file_name": "installer-final-desktop.png",
+      "library_file_id": "libfile_c089672bf3848191861b679b8e2b8f19",
+      "file_id": "file_000000008ad481fd9dc9d2b09fe55553",
+      "version": 1,
+      "sha256": "0eb18796fa7432863f56370651af7991b4968e54ff722fc9209c4e751524d4ad"
+    },
+    {
+      "file_name": "installer-final-mobile.png",
+      "library_file_id": "libfile_833be62182508191828a897e1be5581c",
+      "file_id": "file_00000000341081fdb71a59b6ca94049e",
+      "version": 1,
+      "sha256": "7df3b6c1a0c1d555deef56cb5308c51792adbe6e9231d446f04afa29d572e985"
+    }
+  ],
+  "publication": "NOT PERFORMED. Sole publisher must obtain current catalog and qualified receipts, rebind installer_sha256 to final installer_fingerprint, run unchanged qualified renderer outside repo, independently check prepared output and deploy/read back served bytes. Never publish empty docs/versions.json.",
+  "independent_review_sha256": "30ecd9aba4d34f107121e76909fc851e9a52c5df6c738a2f71bccfa00f5af00f"
+}

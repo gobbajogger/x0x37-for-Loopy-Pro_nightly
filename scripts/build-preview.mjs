@@ -23,9 +23,14 @@ let installer = replaceOnce(read('web/x0x_installer.html'), '/*LIB*/', installer
 installer = replaceOnce(installer, '/*CATALOG*/', JSON.stringify(catalog), 'installer');
 const sampleImporter = replaceOnce(read('web/x0x_breaks.html'), '/*LIB*/',
   stripModule(read('web/x0x_breaks.js')), 'sample importer');
+const projects = read('web/x0x_projects.html').replace(
+  /^import .* from "\.\/x0x_projects.js";$/m, '/*LIB*/');
+const projectPage = replaceOnce(projects, '/*LIB*/',
+  ['web/x0x_breaks.js', 'web/x0x_projects.js'].map(name => stripModule(read(name))).join('\n'), 'projects');
 const outputs = {
   'docs/install/index.html': installer,
   'docs/breaks/index.html': sampleImporter,
+  'docs/projects/index.html': projectPage,
   'docs/versions.json': JSON.stringify(catalog, null, 2) + '\n',
 };
 const check = process.argv.includes('--check');
@@ -38,4 +43,4 @@ for (const [path, content] of Object.entries(outputs)) {
     writeFileSync(fullPath, content);
   }
 }
-console.log(`${check ? 'CHECK' : 'BUILD'} PASS — self-contained nightly installer, samples and empty catalog; no firmware files`);
+console.log(`${check ? 'CHECK' : 'BUILD'} PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files`);

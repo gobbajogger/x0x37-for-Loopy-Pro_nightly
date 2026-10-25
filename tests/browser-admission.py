@@ -400,6 +400,8 @@ async def main():
     await p.evaluate('installDone()')
    await p.close()
   p,e=await ready(browser);await p.evaluate('qa.installMocks()');await p.locator('#devagree').check()
+  # The optional local-package UI is collapsed by default; open it as a user would.
+  await p.locator('.stock-options > summary').click()
   await p.locator('#stockgo').click();await p.evaluate("$('go').dispatchEvent(new MouseEvent('click'));$('stockgo').dispatchEvent(new MouseEvent('click'))")
   check(await p.evaluate('permissions===1 && qa.state().writing'),'stock-first locks both paths')
   await p.evaluate('midiGrant()');await p.wait_for_timeout(30)
