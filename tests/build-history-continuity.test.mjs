@@ -186,3 +186,25 @@ mustReject('R39 download fabricated',rows=>rows[r39Index].installable=true);
 mustReject('R39 device PASS fabricated',rows=>rows[r39Index].device_verified=true);
 mustReject('R39 rights grant fabricated',rows=>rows[r39Index].artifact_distribution_approved=true);
 console.log('PASS: ' + lock.rows.length + ' SHA256-pinned historical records with R39 continuity negatives; safe append');
+
+
+// R40 BF-031: musical sequencer source evidence is not an independently built/qualified firmware package.
+const r40Id='bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025';
+const r40Index=original.findIndex(x=>x.id===r40Id);
+assert.equal(r40Index,128,'R40 appended after immutable 128-row history');
+const r40=original[r40Index];
+assert.equal(r40.source_commit,'a964401ec29028ab488a7586d8b54d0e24ea58ce');
+assert.equal(r40.source_tree,'2a3c78247b6164d43f995e640d98b71aae933498');
+assert.equal(r40.firmware_subtree,'7f35a88270c7a4c0e782d7711cfd7110fc162a23');
+assert.equal(r40.status,'source-only');assert.deepEqual(r40.models,[]);
+assert.equal(r40.installable,false);assert.equal(r40.device_verified,false);
+assert.equal(r40.artifact_distribution_approved,false);assert.equal(r40.exact_remote_native_build,false);
+assert.match(r40.reported_checks.result,/INDEPENDENT FIRMWARE QA PENDING/);
+mustReject('R40 BF031 source removed',rows=>rows.splice(r40Index,1));
+mustReject('R40 BF031 root forged',rows=>rows[r40Index].source_tree='f'.repeat(40));
+mustReject('R40 BF031 source forged',rows=>rows[r40Index].source_commit='f'.repeat(40));
+mustReject('R40 fake independent QA',rows=>rows[r40Index].reported_checks.result='INDEPENDENT FULL ROOT PASS');
+mustReject('R40 fake device PASS',rows=>rows[r40Index].device_verified=true);
+mustReject('R40 fake firmware download',rows=>rows[r40Index].installable=true);
+mustReject('R40 fake firmware BUILD_ONLY',rows=>rows[r40Index].exact_remote_native_build=true);
+console.log('PASS: R40 pinned source-only BF031 and negative evidence checks; full native root still required');

@@ -3625,6 +3625,37 @@
       "description": "R2 source/generated installer now refuse any present device_verified/hardware_tested value other than literal false at version or package scope, preserve absent/false DEV behavior, and deny stale cached admission in scoped tests. This is a proposed unmerged browser-source correction, not currently served installation evidence or a new firmware build. Old R1 negative remains unmodified historical evidence.",
       "missing_gate": "Existing sole Website Main Merger verifies combined-root and full native/browser acceptance before reviewed integration. Sole Pages publisher separately qualifies lawful package/controller/model/hash/CRC/backup/restore/OTA and immutable hosting with live HTTPS bytes; physical owner PASS plus separate approval remains required for production.",
       "source_identity_note": "Website PR14 source HEAD 593c0fc3c18200fd887373bff4602bfd322f0d54 and root e1255056dff9ebdcb2d1836e6e139dfa506f8995. Formal independent R2 scoped review 5641199985 dated 2026-10-25T02:39:15Z. Existing PR9 browser OTA unit-continuity findings remain separately owned."
+    },
+    {
+      "id": "bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025",
+      "title": "BF-031 PR140 makes TB-3PO reverse/random bar cycles deterministic; producer host tests PASS, independent QA and firmware build pending",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "lane/bugfinder-bf031-tb3po-direction-bars-20261025",
+      "source_commit": "a964401ec29028ab488a7586d8b54d0e24ea58ce",
+      "source_tree": "2a3c78247b6164d43f995e640d98b71aae933498",
+      "firmware_subtree": "7f35a88270c7a4c0e782d7711cfd7110fc162a23",
+      "source_time": "2026-10-25T03:34:42Z",
+      "date": "2026-10-25",
+      "status": "source-only",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Hourly Bugfinder BF-031 producer source and native host receipt on PR140; Catalog independently checked remote source SHA, root/tree and receipt blob, not its local test execution.",
+        "command": "Producer reports GCC and Clang O2/UBSan/ASan+UBSan original source compiled, 761/878 behavior assertions exit 1; repaired source 878/878 exit 0 in six variants. Additional 35,000-operation MIDI/transport stress runs exit 0. Native full firmware runner, actual Elite/Pro target BUILD_ONLY and Independent QA NOT RUN.",
+        "result": "PRODUCER SCOPED NATIVE HOST PASS REPORTED; SOURCE ONLY, UNMERGED; INDEPENDENT FIRMWARE QA PENDING; TARGET BUILD_ONLY PENDING; NO BROWSER/FIRMWARE PACKAGE/HARDWARE PASS."
+      },
+      "description": "For musical sequencing, AUTO MUTATE and probability cycles must advance once per complete 303 logical pass in REVERSE/RANDOM. Source guards fix double/random bar counting while keeping FORWARD/PINGPONG, MIDI/note paths and track struct size unchanged according to producer tests. This report adds no selectable package, rights approval, host link or physical-device validation.",
+      "missing_gate": "Existing Hourly Build compiles actual per-model Elite/Pro+controller BUILD_ONLY from this exact compiler subtree; Independent firmware QA checks real reverse/random stepping and source; sole Safe Merge owns integration. Website QA/sole Pages publisher retain their separate safety, legal and HTTPS gates.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/140",
+      "evidence_commit": "a964401ec29028ab488a7586d8b54d0e24ea58ce",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/a964401ec29028ab488a7586d8b54d0e24ea58ce/docs/scheduler-handoffs/bugfinder-bf031-tb3po-logical-bars-20261025-r1.json"
     }
   ],
   "policy": {
@@ -3635,7 +3666,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 128
+    "source_or_historical_checkpoints": 129
   },
   "versioning": {
     "firmware_product_version": {

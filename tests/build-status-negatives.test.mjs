@@ -769,3 +769,25 @@ run('r39-false-download-REJECT',editR39(row=>{row.installable=true;}));
 run('r39-false-device-PASS-REJECT',editR39(row=>{row.device_verified=true;}));
 run('r39-false-rights-PASS-REJECT',editR39(row=>{row.artifact_distribution_approved=true;}));
 run('r39-false-served-bytes-REJECT',editR39(row=>{row.artifact_bytes_independently_verified=true;}));
+
+
+// R40: source-only musical-sequencer BF031 progress is never a selectable firmware version.
+const r40Id='bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025';
+const editR40=fn=>edit(j=>{const row=j.history[128];assert.equal(row.id,r40Id);fn(row,j);});
+run('r40-BF031-source-only-and-no-flash',editR40((row,j)=>{
+ assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(row.source_commit,'a964401ec29028ab488a7586d8b54d0e24ea58ce');
+ assert.equal(row.source_tree,'2a3c78247b6164d43f995e640d98b71aae933498');
+ assert.equal(row.firmware_subtree,'7f35a88270c7a4c0e782d7711cfd7110fc162a23');
+ assert.equal(row.status,'source-only');assert.deepEqual(row.models,[]);
+ assert.equal(row.installable,false);assert.equal(row.device_verified,false);
+ assert.equal(row.artifact_distribution_approved,false);assert.equal(row.exact_remote_native_build,false);
+ assert.match(row.reported_checks.result,/INDEPENDENT FIRMWARE QA PENDING/);
+}),true);
+run('r40-delete-source-history-REJECT',editR40((row,j)=>{j.history.splice(128,1);j.counts.source_or_historical_checkpoints--;}));
+run('r40-forged-source-root-REJECT',editR40(row=>row.source_tree='f'.repeat(40)));
+run('r40-forged-source-commit-REJECT',editR40(row=>row.source_commit='f'.repeat(40)));
+run('r40-fabricated-build-REJECT',editR40(row=>row.exact_remote_native_build=true));
+run('r40-fabricated-hardware-REJECT',editR40(row=>row.device_verified=true));
+run('r40-fabricated-download-REJECT',editR40(row=>row.installable=true));
+run('r40-fabricated-rights-REJECT',editR40(row=>row.artifact_distribution_approved=true));

@@ -519,6 +519,10 @@
     {
       "id": "nightly-browser-pr14-r2-hardware-facts-independent-scoped-review-20261025",
       "sha256": "8adaa02c9b987a17e007fd46cd5988da2fe25971b6771ff190406e6988b66d34"
+    },
+    {
+      "id": "bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025",
+      "sha256": "d8553f2ff25689a1707fe64bf077adc52229f000e88724c64ab0aee457301db8"
     }
   ]
 }
