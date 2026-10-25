@@ -511,6 +511,10 @@
     {
       "id": "nightly-pages-git-unqualified-dev-admission-20261025",
       "sha256": "b1458754c2149689c0dc0da709174bf23e2877ef57d885f327efbfbec2514097"
+    },
+    {
+      "id": "nightly-browser-pr14-catalog-approval-denials-source-20261025",
+      "sha256": "b4505f5ad7ce6a84d3c20409945be87729e39eee2a28b40765cafd4d8f78124c"
     }
   ]
 }

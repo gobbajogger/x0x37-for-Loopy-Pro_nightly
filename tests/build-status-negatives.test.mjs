@@ -684,7 +684,7 @@ run('r33-fake-distribution-approval-REJECT',editR33(row=>{row.artifact_distribut
 const r35Id='data-safety-pr114-r18-native-extract-fdopen-needs-changes-20261025';
 const editR35=fn=>edit(j=>{const row=j.history[124];assert.equal(row.id,r35Id);fn(row,j);});
 run('r35-native-independent-qa-failure-safely-recorded',editR35((row,j)=>{
-  assert.equal(j.counts.source_or_historical_checkpoints,125);
+  assert.ok(j.counts.source_or_historical_checkpoints >= 125);
   assert.equal(row.status,'source-only');
   assert.equal(row.installable,false);
   assert.equal(row.device_verified,false);
@@ -706,7 +706,7 @@ run('r35-history-tail-deleted-REJECT',editR35((row,j)=>{j.history.splice(124,1);
 const r36Id='nightly-pages-git-unqualified-dev-admission-20261025';
 const editR36=fn=>edit(j=>{const row=j.history[125];assert.equal(row.id,r36Id);fn(row,j);});
 run('r36-pages-unqualified-source-warning-retained',editR36((row,j)=>{
-  assert.equal(j.counts.source_or_historical_checkpoints,126);
+  assert.ok(j.counts.source_or_historical_checkpoints >= 126);
   assert.equal(row.status,'validation-evidence-only');
   assert.equal(row.source_commit,'b7af05f00a91056ca732b21cbe1dc719edbcb585');
   assert.equal(row.source_tree,'9e192c467973368c407cf148099e35c6280b2eae');
@@ -723,3 +723,26 @@ run('r36-fake-device-PASS-REJECT',editR36(row=>{row.device_verified=true;}));
 run('r36-fake-distribution-grant-REJECT',editR36(row=>{row.artifact_distribution_approved=true;}));
 run('r36-fake-verified-package-bytes-REJECT',editR36(row=>{row.artifact_bytes_independently_verified=true;}));
 run('r36-pages-commit-forged-REJECT',editR36(row=>{row.source_commit='f'.repeat(40);}));
+
+// R37: source-only proposed catalog approval repair is not independent firmware/Pages acceptance.
+const r37Id='nightly-browser-pr14-catalog-approval-denials-source-20261025';
+const editR37=fn=>edit(j=>{const row=j.history[126];assert.equal(row.id,r37Id);fn(row,j);});
+run('r37-source-only-proposed-repair',editR37((row,j)=>{
+ assert.equal(j.counts.source_or_historical_checkpoints,127);
+ assert.equal(row.source_commit,'7515d147e4817248dece608c73fd7fb171e996f2');
+ assert.equal(row.source_tree,'7db90a3810f790d3b939b4cdc34a768ff6e9200a');
+ assert.equal(row.status,'source-only');
+ assert.equal(row.installable,false);
+ assert.equal(row.device_verified,false);
+ assert.equal(row.artifact_distribution_approved,false);
+ assert.equal(row.artifact_bytes_independently_verified,false);
+ assert.match(row.reported_checks.result,/INDEPENDENT WEBSITE QA PENDING/);
+}),true);
+run('r37-tail-deletion-REJECT',editR37((row,j)=>{j.history.splice(126,1);j.counts.source_or_historical_checkpoints--;}));
+run('r37-forged-source-REJECT',editR37(row=>row.source_commit='f'.repeat(40)));
+run('r37-forged-root-REJECT',editR37(row=>row.source_tree='f'.repeat(40)));
+run('r37-fabricated-site-QA-PASS-REJECT',editR37(row=>row.reported_checks.result='INDEPENDENT WEBSITE QA PASS'));
+run('r37-forged-download-REJECT',editR37(row=>row.installable=true));
+run('r37-forged-hardware-PASS-REJECT',editR37(row=>row.device_verified=true));
+run('r37-forged-rights-PASS-REJECT',editR37(row=>row.artifact_distribution_approved=true));
+run('r37-forged-verified-bytes-REJECT',editR37(row=>row.artifact_bytes_independently_verified=true));

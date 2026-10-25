@@ -3564,6 +3564,37 @@
       "description": "Historical source-only Pages Git finding: the existing DEV candidate catalog contains Elite/Pro metadata but the Pages browser installer is not proven to require compiled per-model qualified approvals before offering it. The reporter exercised actual source windows with forged failing QA/rights/host/backup fields; test exit zero characterized unsafe behavior rather than validating firmware flash safety. Preserve the prior 125 facts; do not equate this with a native CLI defect, newly built binary, verified hosting or owner hardware test.",
       "missing_gate": "Existing PR9 website installer-source owner must close catalog-admission and tested negative cases, independent Website QA must review full-root source, and sole Website Main Merger/Pages publisher must separately integrate, qualify immutable host/live TLS bytes and verify served installer. No firmware/controller publication or automatic physical flash by Catalog Sync.",
       "source_identity_note": "Pinned website gh-pages Git b7af05f00a91056ca732b21cbe1dc719edbcb585, full root 9e192c467973368c407cf148099e35c6280b2eae; installer HTML blob b196967941a698b6908e0a322b8586833ec60c28; versions.json blob 519d9500c57848d5ed103fbd88befb5f43f6d020. Source URL and independent failure details linked separately in docs/scheduler-handoffs/catalog-sync-20261025-r36-pages-unsafe-admission.json and preexisting PR9 R36 comment; no publicly served bytes rehashed."
+    },
+    {
+      "id": "nightly-browser-pr14-catalog-approval-denials-source-20261025",
+      "title": "Website PR14 proposes explicit failure/malformed DEV approval-hint denials; final independent site QA pending",
+      "source_ref": "lane/catalog-approval-denials-20261025",
+      "source_commit": "7515d147e4817248dece608c73fd7fb171e996f2",
+      "source_tree": "7db90a3810f790d3b939b4cdc34a768ff6e9200a",
+      "source_time": "2026-10-25T00:23:54Z",
+      "date": "2026-10-25",
+      "status": "source-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Existing website producer's PR14 exact Git HEAD/tree and committed source evidence; bounded independent developer review on proposal is not separate Independent Website QA.",
+        "command": "Producer reports npm run build, npm test, npm run test:browser all exit 0; whole-page Chromium RED (216 unsafe metadata admissions against accepted main) / GREEN for both models and version/package scopes; bounded reviewer independently reran npm test and approval browser checks. Catalog exact-root native suite NOT RUN: GitHub DNS checkout exit 128.",
+        "result": "PRODUCER SCOPED PASS; bounded developer scoped review PASS; INDEPENDENT WEBSITE QA PENDING; PR14 UNMERGED; Pages currently served bytes NOT REVERIFIED; hardware NOT TESTED."
+      },
+      "description": "PR14 proposes fail-closed rejection of explicit false or malformed qa_pass, source_licenses_approved, immutable_http_pass, backup_integrity_pass and model_and_controller_pass at either package/version scope. Missing optional hints retain the existing qualified Elite/Pro DEV candidate, but hints alone never confer renderer acceptance. This records a source proposal, not served HTML, a new firmware build, a lawful download or any physical OTA result.",
+      "missing_gate": "Independent NIGHTLY Website QA tests exact PR14 source and PR13 full website root; sole Main Merger separately integrates approved work; sole Pages publisher verifies qualifying prehardware rights, safety, immutable host and live bytes. Catalog must never grant installability.",
+      "evidence_commit": "7515d147e4817248dece608c73fd7fb171e996f2",
+      "source_identity_note": "Website Git PR14 HEAD 7515d147e4817248dece608c73fd7fb171e996f2 ROOT 7db90a3810f790d3b939b4cdc34a768ff6e9200a; bounded reviewer evidence docs/repair-evidence/catalog-approval-denials-20261025; separate PR9 source producer, PR12 Pages staging and PR13 Catalog owners retained."
     }
   ],
   "policy": {
@@ -3574,7 +3605,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 126
+    "source_or_historical_checkpoints": 127
   },
   "versioning": {
     "firmware_product_version": {

@@ -145,4 +145,23 @@ mustReject('R36 falsely qualified for download',rows=>{rows[r36Index].installabl
 mustReject('R36 forged hardware PASS',rows=>{rows[r36Index].device_verified=true;});
 mustReject('R36 fake verified server bytes',rows=>{rows[r36Index].artifact_bytes_independently_verified=true;});
 
-console.log('PASS: ' + lock.rows.length + ' SHA256-pinned historical records; 23 malicious continuity negatives; safe append');
+
+// R37 immutable website source-only repair proposal; never a firmware or browser safety acceptance.
+const r37Id='nightly-browser-pr14-catalog-approval-denials-source-20261025',r37Index=original.findIndex(x=>x.id===r37Id);
+assert.equal(r37Index,126);
+const r37=original[r37Index];
+assert.equal(r37.source_commit,'7515d147e4817248dece608c73fd7fb171e996f2');
+assert.equal(r37.source_tree,'7db90a3810f790d3b939b4cdc34a768ff6e9200a');
+assert.equal(r37.status,'source-only');
+assert.deepEqual(r37.models,['elite','pro']);
+assert.equal(r37.installable,false);
+assert.equal(r37.device_verified,false);
+assert.equal(r37.artifact_distribution_approved,false);
+assert.equal(r37.artifact_bytes_independently_verified,false);
+assert.match(r37.reported_checks.result,/INDEPENDENT WEBSITE QA PENDING/);
+mustReject('R37 report deleted',rows=>rows.splice(r37Index,1));
+mustReject('R37 SHA forged',rows=>{rows[r37Index].source_commit='f'.repeat(40)});
+mustReject('R37 root forged',rows=>{rows[r37Index].source_tree='f'.repeat(40)});
+mustReject('R37 download fabricated',rows=>{rows[r37Index].installable=true});
+mustReject('R37 device PASS fabricated',rows=>{rows[r37Index].device_verified=true});
+console.log('PASS: ' + lock.rows.length + ' SHA256-pinned historical records with R37 continuity negatives; safe append');
