@@ -37,7 +37,7 @@ for (const id of ['version', 'models', 'go', 'devagree', 'stockfile',
   'stockconfirm', 'stockgo', 'ctlfile', 'status', 'connbtn', 'bar', 'log']) {
   assert.ok(ids.includes(id), `installer lost control: ${id}`);
 }
-for (const guard of ['stockLoadSerial', 'ctlLoadSerial', 'installKeepingSlots',
+for (const guard of ['stockLoadSerial', 'ctlLoadSerial', 'scanSerial', 'installKeepingSlots',
   'sha256Hex', 'confirmWrite', 'sameKeyboard', 'updateInstallGate']) {
   assert.ok(inst.includes(guard), `missing critical safety guard: ${guard}`);
 }
