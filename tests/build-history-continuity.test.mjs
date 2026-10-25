@@ -359,3 +359,17 @@ for(let n=0;n<2;n++){
 assert.match(original[142].reported_checks.result,/NOT INDEPENDENTLY VERIFIED LIVE HTTPS/);
 mustReject('R46 forged live HTTP',h=>h[142].reported_checks.result='DEVICE VERIFIED');
 console.log('PASS R46 143 sealed historical rows; F04 not silently flashable');
+
+// R47: F05 BF-002 planner+Pages historical records must never grant source-picker admission.
+const r47Ids=["firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025","nightly-f05-pages-git-bf002-device-not-tested-20261025"];
+const r47Pairs=[{"elite":"d3b4cac3d7b7be7a72732d4dd00c3120c053dbffc9137ffb7c151a5fd5355f2b","pro":"0b09605f357cd0accd5c5109dfb61138eb300945ffe05e6ff46942f5c5e076b9"},{"elite":"8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278","pro":"d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"}];
+assert.ok(lock.rows.length>=145,'R47 145 immutable digests required');
+for(let n=0;n<2;n++){
+ const i=143+n,r=original[i];assert.equal(r.id,r47Ids[n]);assert.equal(r.source_commit,'ab90f47ccad0f213114d6a98c1bc6179be2ebb35');assert.equal(r.firmware_subtree,'0ee03318a0b64a1e535b36fad284558529ff7e3f95ff069efed86bbcf308518c');
+ assert.deepEqual(r.models,['elite','pro']);assert.equal(r.status,'validation-evidence-only');
+ for(const k of ['installable','device_verified','artifact_distribution_approved','exact_remote_native_build','artifact_bytes_independently_verified'])assert.equal(r[k],false,k);
+ assert.deepEqual(r.reported_package_sha256,r47Pairs[n]);assert.equal(r.reported_controller_sha256,'956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a');
+ mustReject('R47 removed '+n,h=>h.splice(i,1));mustReject('R47 false install '+n,h=>h[i].installable=true);mustReject('R47 false rights '+n,h=>h[i].artifact_distribution_approved=true);mustReject('R47 false hardware '+n,h=>h[i].device_verified=true);mustReject('R47 forged source '+n,h=>h[i].source_commit='f'.repeat(40));mustReject('R47 forged controller '+n,h=>h[i].reported_controller_sha256='f'.repeat(64));
+}
+assert.match(original[144].reported_checks.result,/DID NOT INDEPENDENTLY FETCH SERVED HTTPS/);
+console.log('PASS R47 145 immutable historical rows; F05 source nonflashable');

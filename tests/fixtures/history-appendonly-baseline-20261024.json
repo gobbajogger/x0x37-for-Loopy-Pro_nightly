@@ -579,6 +579,14 @@
     {
       "id": "nightly-f04-pages-git-repaired-installer-source-only-20261025",
       "sha256": "5170101923028419aaf804377c2690fd27e46a837b4de4afde9317456c2005c4"
+    },
+    {
+      "id": "firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025",
+      "sha256": "90663ce58457ee0bba3ebc3515e591ea3dc68c73786256b13c95b4b1805cd31c"
+    },
+    {
+      "id": "nightly-f05-pages-git-bf002-device-not-tested-20261025",
+      "sha256": "f35dbd6113e8058e5346b93e4c7bc5b4c1a0877094ae7a17fec86c45c1a82a8a"
     }
   ]
 }

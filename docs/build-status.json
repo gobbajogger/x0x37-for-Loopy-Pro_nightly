@@ -4136,6 +4136,86 @@
         "pro": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"
       },
       "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+    },
+    {
+      "id": "firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025",
+      "title": "F05 BF-002 project companion quickcheck routes: reported host PASS and Elite/Pro DEV CHECKED",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "ab90f47ccad0f213114d6a98c1bc6179be2ebb35",
+      "source_commit": "ab90f47ccad0f213114d6a98c1bc6179be2ebb35",
+      "source_tree": "50c381c528cae9692deff4a712071f7dc6acb020",
+      "firmware_subtree": "0ee03318a0b64a1e535b36fad284558529ff7e3f95ff069efed86bbcf308518c",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "source_time": "2026-10-25T11:16:13Z",
+      "reported_checks": {
+        "origin": "Firmware PR195/197/198 locally executed planner, project suite and model validation. Catalog read pinned Stage-4 source evidence; no build or browser/device test rerun.",
+        "command": "python3 -m unittest tests.host.test_quickcheck_plan -v; X0X_TESTS='projects-web projects-page' bash tests/run_tests.sh; dev_validate.py verify elite/pro; X0X_DEV_PADCAL=1 CTL_NO_CACHE=1",
+        "result": "UPSTREAM LOCAL HOST 11 TESTS, PROJECT WEB/PAGE SUITES AND DEV CHECKED ELITE/PRO REPORTED PASS; pool_free 8324>=8192; CATALOG INDEPENDENT REEXECUTION NOT RUN; DEVICE NOT TESTED."
+      },
+      "description": "Expected musician benefit: edits to project modules and shared breaks helper select both project import/export regression suites, catching errors missed by prior scoped quickchecks. Upstream reports test success; no installed firmware, audio behavior or user experience improvement was measured by Catalog.",
+      "missing_gate": "F05 firmware nightly fast-forward refused because of divergence; no protected firmware merge inferred. Physical-device, independent exact bytes, legal distribution and live installer acceptance stay with assigned owners.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/198",
+      "evidence_commit": "c4445ca44d442f01ac44b4e8517e88cc6ee0cd94",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/c4445ca44d442f01ac44b4e8517e88cc6ee0cd94/evidence/f05-stage4/CHECKS.md",
+      "source_identity_note": "F05 validated full Git tree 50c381c528cae9692deff4a712071f7dc6acb020 and reported complete non-document content tree 0ee03318a0b64a1e535b36fad284558529ff7e3f95ff069efed86bbcf308518c; firmware/ble unchanged versus F04. Blank Stage-4 packages differ from bundled Pages package. Controller reuse remains attributed local closure proof, not independently re-established by Catalog.",
+      "reported_package_sha256": {
+        "elite": "d3b4cac3d7b7be7a72732d4dd00c3120c053dbffc9137ffb7c151a5fd5355f2b",
+        "pro": "0b09605f357cd0accd5c5109dfb61138eb300945ffe05e6ff46942f5c5e076b9"
+      },
+      "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+    },
+    {
+      "id": "nightly-f05-pages-git-bf002-device-not-tested-20261025",
+      "title": "F05 BF-002 Pages Git lists DEV/HARDWARE TEST Elite/Pro with bundled controller; no physical PASS",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "ab90f47ccad0f213114d6a98c1bc6179be2ebb35",
+      "source_commit": "ab90f47ccad0f213114d6a98c1bc6179be2ebb35",
+      "source_tree": "50c381c528cae9692deff4a712071f7dc6acb020",
+      "firmware_subtree": "0ee03318a0b64a1e535b36fad284558529ff7e3f95ff069efed86bbcf308518c",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "source_time": "2026-10-25T11:36:41Z",
+      "reported_checks": {
+        "origin": "Merged firmware PR204 Stage-7 CHECKS and live-verify.log; Catalog separately fetched current Pages Git head and versions blob; local independent QA remains attributed to PR198 review copy.",
+        "command": "Upstream local nightly npm test, BF-001 race regression, prepare:candidate refetch, independent local Elite/Pro review, Stage-7 LIVE_PAGE_MATCH.",
+        "result": "UPSTREAM PUBLISHER REPORTS LIVE_PAGE_MATCH and HTTP/HASH package checks; CATALOG VERIFIED GIT PAGES VERSION AND MODEL HASHES ONLY, DID NOT INDEPENDENTLY FETCH SERVED HTTPS BYTES; HARDWARE NOT TESTED."
+      },
+      "description": "Expected owner experience: NIGHTLY shows F05 DEV/HARDWARE TEST for both models, clearly labeled DEVICE NOT TESTED, with correct bundled controller. F05 changes quickcheck planner routing rather than sound/firmware bytes. Pages Git confirms version listing; owner installation and physical reliability remain unmeasured.",
+      "missing_gate": "Firmware nightly remained divergent and refused non-fast-forward, not merged. Independent model-specific package/backup/readback/restore/OTA/interruption, live served-byte and distribution/licensing gates remain external; no new source picker download admitted.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/204",
+      "evidence_commit": "45b4dc0f5e8513d3295d177f30e276c43fe950ca",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/45b4dc0f5e8513d3295d177f30e276c43fe950ca/evidence/f05-stage7/live-verify.log",
+      "source_identity_note": "Website gh-pages@e10823e38ec9e56f5ec381822b1597f7364a95d9, versions.json Git blob 4a8c597b2a0a99a1b262994ddf313a555c0340d0, latest nightly-ab90f47c-dev. Stage-7 local report confirms BF-001 selection race retained. F05 stage-5 merge refused; do not imply firmware nightly integrated.",
+      "reported_package_sha256": {
+        "elite": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+        "pro": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"
+      },
+      "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
     }
   ],
   "policy": {
@@ -4146,7 +4226,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 143
+    "source_or_historical_checkpoints": 145
   },
   "versioning": {
     "firmware_product_version": {
