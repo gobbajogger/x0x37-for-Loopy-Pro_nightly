@@ -1,0 +1,21 @@
+{
+  "operation": "replace_library_file",
+  "status": "succeeded",
+  "path": "/installer-review.html",
+  "file_id": "file_000000003fb481f8861903e36ac06bb8",
+  "library_file_id": "libfile_795571f84c108191819636ecb9a62f81",
+  "file_name": "installer-review.html",
+  "current_version_number": 1,
+  "restored_from_version_number": null,
+  "xattrs": [
+    {
+      "name": "user.library-file-version",
+      "value": "1"
+    }
+  ],
+  "directory_id": "libdir_a9f6d9b7a5b48191ae01f7490b369e02",
+  "mime_type": "text/html",
+  "library_artifact_type": "other",
+  "file_size_bytes": 1313832,
+  "external_connectors_accessed": false
+}

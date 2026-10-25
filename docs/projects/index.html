@@ -70,6 +70,7 @@
   .embedded section[aria-labelledby="connection-title"]{grid-column:auto}
   .embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}
   .embedded #status{font-size:.88rem;color:var(--muted)}
+  p{max-width:72ch}.embedded section[aria-labelledby="export-title"]{grid-column:1/-1}.embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}.check{min-height:44px}button,a,input,select{touch-action:manipulation}
 </style>
 </head>
 <body>
@@ -96,8 +97,7 @@
     <h2 id="import-title">Inspect or import a project</h2>
     <label for="file" class="small">Choose an .x0xproject file</label>
     <input id="file" type="file" accept=".x0xproject">
-    <p class="small">Choose a file to inspect offline. Connect to prepare an import.</p>
-    <p id="file-info" class="small">The file is checked before the keyboard is changed.</p>
+    <p id="file-info" class="small">Inspect a file offline. Connect to prepare an import; the file is checked before any changes.</p>
     <button id="prepare" class="quiet" disabled>Prepare import</button>
     <div id="preview" hidden>
       <h3 id="preview-title"></h3>
@@ -118,6 +118,14 @@
     </div>
   </section>
 
+  <section aria-labelledby="export-title">
+    <h2 id="export-title">Export a project</h2>
+    <label for="name" class="small">Project name</label>
+    <input id="name" type="text" maxlength="80" value="My X0X project" autocomplete="off">
+    <label class="check"><input id="portable" type="checkbox" checked><span>Include original samples <span class="small">— recommended for moving a project or keeping a complete backup.</span></span></label>
+    <p class="small">Samples retain their original encoded bytes, playback rates and slot order. A project-only file contains sample identities and imports only when every slot already matches.</p>
+    <button id="export" disabled>Export project + samples</button>
+  </section>
   <section aria-labelledby="keyboard-title">
     <h2 id="keyboard-title">On the keyboard</h2>
     <p class="small">Save stores the whole live project. Load replaces it with the saved project. Reset clears the song, sequencers, sounds, motion and project settings to defaults. Uploaded samples and device role settings stay in place. Reset stops playback and recording and turns autosave ON, so the saved project may also be overwritten; export first if you want to keep it.</p>
@@ -129,14 +137,7 @@
     <p class="small">To clear only the arrangement, use SONG → CLEAR SONG on the keyboard. That keeps patterns, sounds, settings and samples. Arrangement-only clear is unavailable in this browser; Reset project has the broader scope described above.</p>
   </section>
 
-  <section aria-labelledby="export-title">
-    <h2 id="export-title">Export a project</h2>
-    <label for="name" class="small">Project name</label>
-    <input id="name" type="text" maxlength="80" value="My X0X project" autocomplete="off">
-    <label class="check"><input id="portable" type="checkbox" checked><span>Include original samples <span class="small">— recommended for moving a project or keeping a complete backup.</span></span></label>
-    <p class="small">Samples retain their original encoded bytes, playback rates and slot order. A project-only file contains sample identities and imports only when every slot already matches.</p>
-    <button id="export" disabled>Export project + samples</button>
-  </section>
+
 
 
   <p class="small">Keep USB connected until the operation finishes. If a sample transfer fails, the page attempts to restore the previous samples and reports the result. The recovery file is also usable after reconnecting.</p>

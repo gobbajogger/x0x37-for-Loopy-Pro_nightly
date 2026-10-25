@@ -3,13 +3,13 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "61e13b6d969c8145482a083026e803dfd4d16f6a",
-    "web/x0x_breaks.html": "2b123e974cbde09b3e710357c3c041ebe2c80d41",
+    "web/x0x_installer.html": "d053d27c27c9c46388de1495a10ccc42da83b544",
+    "web/x0x_breaks.html": "3e0fea09bf6e2d4ddfed97efa9280c545535db05",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
     "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
-    "web/x0x_projects.html": "4630a73d8e715e4aba9869599a7a271519f693f8",
+    "web/x0x_projects.html": "379a523776441eea0732b49aa7bdd6f7ed1520db",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
     "web/test_projects.mjs": "6e3f65e584f0873c0af7bb21539ed3355d49c365",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
@@ -179,6 +179,11 @@
       "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
       "sourceBaseCommit": "e8ffcf04f7eb39c15cdbaa6d646a53aedf2ff07a",
       "description": "Installer density and concise presentation; visible setup steps after Closer look, no operational script changes. Embedded project layout compacted with warnings retained."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceBaseCommit": "63664686825feb883b33aad25d35404be73d376b",
+      "description": "Owner UX correction: inline safety, optional provenance, visible Setup, concise task guidance; operational guards retained."
     }
   ]
 }
