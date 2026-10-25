@@ -3,7 +3,7 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "5f9e4d14db9b9df423746a169119f4deaedd3448",
+    "web/x0x_installer.html": "2f82c0cfd5e8b1caef7f511a95f4570c6e340ab1",
     "web/x0x_breaks.html": "2b123e974cbde09b3e710357c3c041ebe2c80d41",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
@@ -137,6 +137,13 @@
       "sourceBaseCommit": "c778be046753101e1fab0c7004c479a07f3e00ff",
       "resultBlob": "5f9e4d14db9b9df423746a169119f4deaedd3448",
       "description": "Replace approximate wide illustrations with native square production draw-command vectors and exact Barlow outlines; explicit public DEV and historical SMC version context, pending redesign reference gap; operations unchanged"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "160b905cbf3c985d5c554f66dbe4418c22e06825",
+      "resultBlob": "2f82c0cfd5e8b1caef7f511a95f4570c6e340ab1",
+      "description": "User-first top Install / Import samples paths, standalone / SMC / Loopy workflow guide, optional provenance and truthful source-preview captions; PR168 b8794f9 native-square SMC vector; operation logic unchanged, three informational strings edited"
     }
   ]
 }

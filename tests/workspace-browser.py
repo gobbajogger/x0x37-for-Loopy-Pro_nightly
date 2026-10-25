@@ -72,7 +72,7 @@ async def main():
   check(await child.evaluate('requests===1'),'repeated connect coalesces while permission pending')
   await child.evaluate('releaseConnect()');await child.wait_for_function('!probe.state().busy')
   check('simulated permission rejection' in await child.locator('#status').inner_text(),'permission failure shown and retry enabled')
-  await page.locator('#firmware-tab').click();await page.locator('#stockfile').set_input_files({'name':'bad.fwsc','mimeType':'application/octet-stream','buffer':b'x'*1000})
+  await page.locator('#firmware-tab').click();await page.locator('.stock-options > summary').click();await page.locator('#stockfile').set_input_files({'name':'bad.fwsc','mimeType':'application/octet-stream','buffer':b'x'*1000})
   check(await page.locator('#stockgo').is_disabled(),'malformed local package denied')
   await page.locator('#stockfile').set_input_files([]);check(await page.locator('#stockgo').is_disabled(),'cancelled firmware file chooser stays denied')
   await page.reload();await page.wait_for_function('document.getElementById("sample-frame").contentWindow.sampleWorkspace')
