@@ -1,0 +1,299 @@
+{
+  "status": "PASS",
+  "reviewer": "independent visual_review agent",
+  "source_base": "ae7a77233ec0adb97ffeba4171df182e3bf1f6e9",
+  "reviewed_html_blob": "e2ffa579bf8b2b4c72655eb7649eece753b2b7af",
+  "source_sha256": "3046db05c21e2c9af6e7ac63855153b3440002f433895b159418168c8b1c23d1",
+  "generated_html_sha256": "b5efaa22ecb2e548151c55dd6069d96dffd37105d538ad6234aa0cb7610db439",
+  "catalog_sha256": "06e614365f1e58ebdc78f3efffb04c338805f5720d1801ce44db06b61d0732dd",
+  "source_preview": "65a0588ed636e8db6b35bdea4991e8990f476ff2",
+  "vector_sha256": "df9c985974a91c205f7d7c8c37fe98abf9ebaea4580c19f117270a7a67108774",
+  "raster_sha256": "0a2f3c58743c07fdad5e5320fd9efbd899d5035282585d94ec4d161a01ef60aa",
+  "previews": {
+    "installer-final-desktop.png": "0eb18796fa7432863f56370651af7991b4968e54ff722fc9209c4e751524d4ad",
+    "installer-final-mobile.png": "7df3b6c1a0c1d555deef56cb5308c51792adbe6e9231d446f04afa29d572e985",
+    "installer-final-closer-look.png": "0bf2cdc2e8b7909f3de61bd1813828a0561b19683ef6a25966b9347b3ba53412",
+    "smc-vector-closeup.png": "1798cae8060828763c27d642bcbacccb6a9056cfa00f3f528773780ef7f942a8"
+  },
+  "checks": [
+    {
+      "name": "all installer script blocks byte-identical to recovery base",
+      "pass": true
+    },
+    {
+      "name": "unchanged scripts",
+      "pass": true
+    },
+    {
+      "name": "unchanged web/fm1pkg.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged web/fm1ota.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged web/x0x_breaks.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged web/x0x_breaks.html",
+      "pass": true
+    },
+    {
+      "name": "unchanged docs/versions.json",
+      "pass": true
+    },
+    {
+      "name": "unchanged preview-catalog.json",
+      "pass": true
+    },
+    {
+      "name": "fixture uses actual unchanged current catalog",
+      "pass": true
+    },
+    {
+      "name": "original SMC raster exact native reference",
+      "pass": true
+    },
+    {
+      "name": "320 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "320 top task visible Install firmware",
+      "pass": true
+    },
+    {
+      "name": "320 top task visible Import samples",
+      "pass": true
+    },
+    {
+      "name": "320 action then closer look then integration",
+      "pass": true
+    },
+    {
+      "name": "320 correct downloadable catalog latest",
+      "pass": true
+    },
+    {
+      "name": "320 visible newer SMC source-preview limitation",
+      "pass": true
+    },
+    {
+      "name": "320 optional technical details collapsed",
+      "pass": true
+    },
+    {
+      "name": "320 standalone SMC Loopy guidance preserved",
+      "pass": true
+    },
+    {
+      "name": "320 no install while download held",
+      "pass": true
+    },
+    {
+      "name": "320 top import task opens actual sample panel",
+      "pass": true
+    },
+    {
+      "name": "320 sample send denied before device read",
+      "pass": true
+    },
+    {
+      "name": "320 return to firmware works",
+      "pass": true
+    },
+    {
+      "name": "390 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 top task visible Install firmware",
+      "pass": true
+    },
+    {
+      "name": "390 top task visible Import samples",
+      "pass": true
+    },
+    {
+      "name": "390 action then closer look then integration",
+      "pass": true
+    },
+    {
+      "name": "390 correct downloadable catalog latest",
+      "pass": true
+    },
+    {
+      "name": "390 visible newer SMC source-preview limitation",
+      "pass": true
+    },
+    {
+      "name": "390 optional technical details collapsed",
+      "pass": true
+    },
+    {
+      "name": "390 standalone SMC Loopy guidance preserved",
+      "pass": true
+    },
+    {
+      "name": "390 no install while download held",
+      "pass": true
+    },
+    {
+      "name": "390 top import task opens actual sample panel",
+      "pass": true
+    },
+    {
+      "name": "390 sample send denied before device read",
+      "pass": true
+    },
+    {
+      "name": "390 return to firmware works",
+      "pass": true
+    },
+    {
+      "name": "768 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 top task visible Install firmware",
+      "pass": true
+    },
+    {
+      "name": "768 top task visible Import samples",
+      "pass": true
+    },
+    {
+      "name": "768 action then closer look then integration",
+      "pass": true
+    },
+    {
+      "name": "768 correct downloadable catalog latest",
+      "pass": true
+    },
+    {
+      "name": "768 visible newer SMC source-preview limitation",
+      "pass": true
+    },
+    {
+      "name": "768 optional technical details collapsed",
+      "pass": true
+    },
+    {
+      "name": "768 standalone SMC Loopy guidance preserved",
+      "pass": true
+    },
+    {
+      "name": "768 no install while download held",
+      "pass": true
+    },
+    {
+      "name": "768 top import task opens actual sample panel",
+      "pass": true
+    },
+    {
+      "name": "768 sample send denied before device read",
+      "pass": true
+    },
+    {
+      "name": "768 return to firmware works",
+      "pass": true
+    },
+    {
+      "name": "1280 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1280 top task visible Install firmware",
+      "pass": true
+    },
+    {
+      "name": "1280 top task visible Import samples",
+      "pass": true
+    },
+    {
+      "name": "1280 action then closer look then integration",
+      "pass": true
+    },
+    {
+      "name": "1280 correct downloadable catalog latest",
+      "pass": true
+    },
+    {
+      "name": "1280 visible newer SMC source-preview limitation",
+      "pass": true
+    },
+    {
+      "name": "1280 optional technical details collapsed",
+      "pass": true
+    },
+    {
+      "name": "1280 standalone SMC Loopy guidance preserved",
+      "pass": true
+    },
+    {
+      "name": "1280 no install while download held",
+      "pass": true
+    },
+    {
+      "name": "1280 top import task opens actual sample panel",
+      "pass": true
+    },
+    {
+      "name": "1280 sample send denied before device read",
+      "pass": true
+    },
+    {
+      "name": "1280 return to firmware works",
+      "pass": true
+    },
+    {
+      "name": "no actual generated page JavaScript errors",
+      "pass": true
+    }
+  ],
+  "visual_review": {
+    "inspected_pixels": [
+      "installer-final-desktop.png",
+      "installer-final-mobile.png",
+      "installer-final-closer-look.png",
+      "smc-vector-closeup.png",
+      "task64/native-previews/22-909-seq-bank1-names.png"
+    ],
+    "findings": [],
+    "observations": [
+      "Desktop/mobile actual catalog previews retain top task navigation, action before Closer look, then integration guide. No clipped or overlapping content observed.",
+      "SMC vector matches native 909 bank1 drum abbreviations BD SD LT MT HT RS CP CH, selected BD, PAN/R1 feedback, lane values and M/S/R rows. Smooth outlines differ appropriately from raster antialiasing.",
+      "Source preview is visibly separate from offered builds; optional reference explicitly records failed size limit by108 bytes and no downloadable/validated firmware claim.",
+      "Roadmap only links existing GitHub Issues/new issue and reactions; no vote automation promised."
+    ]
+  },
+  "limitations": [
+    "Headless browser with held package downloads, no firmware bytes or device I/O.",
+    "Synthetic native host UI reference, no physical LCD behavior or firmware validation."
+  ],
+  "initial_review_catalog_sha256": "1b6dca6cf076d282788b5ff6e7abd4eb376f8b5844f7e899aa283e1f5288be45",
+  "initial_review_previews": {
+    "installer-final-desktop.png": "7e02a60e7b3833b1c8e656f5a1a5c32b68828544bc278d159da3f2e9bc5e5f34",
+    "installer-final-mobile.png": "664699bd6724a33b026b993123a74161947f6ec8b5b90ef8ed7c6ceb7f366c23",
+    "installer-final-closer-look.png": "0bf2cdc2e8b7909f3de61bd1813828a0561b19683ef6a25966b9347b3ba53412",
+    "smc-vector-closeup.png": "1798cae8060828763c27d642bcbacccb6a9056cfa00f3f528773780ef7f942a8"
+  },
+  "catalog_delta_review": {
+    "status": "PASS",
+    "published_ref": "4b3c5994eabd14aa1a1a575b2211800a478112b4",
+    "latest": "nightly-a03cfab3-dev",
+    "source": "a03cfab3a423ab5c65a6546afd4993fe51754ee7",
+    "catalog_sha256": "06e614365f1e58ebdc78f3efffb04c338805f5720d1801ce44db06b61d0732dd",
+    "checks": 5,
+    "findings": [],
+    "observations": [
+      "Inspected regenerated desktop and mobile actual-catalog preview pixels; both show nightly-a03cfab3-dev.",
+      "Initial F02 and final F03 latest model dictionaries are byte-for-byte JSON-equivalent, preserving product, package hash/URL/size, controller hash/strategy/size for Elite and Pro.",
+      "Fixture versions.json equals supplied final live catalog bytes; generated installer contains F03 catalog and unchanged HTML source blob e2ffa579bf8b2b4c72655eb7649eece753b2b7af.",
+      "Install/import remain at top, Closer look second and integration third; no visual delta beyond latest catalog label.",
+      "59 earlier independent checks remain scoped evidence at original F02 fixture; bounded5 checks cover the changed catalog/previews without claiming redundant reruns."
+    ]
+  }
+}

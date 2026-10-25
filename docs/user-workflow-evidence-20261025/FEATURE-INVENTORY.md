@@ -1,6 +1,6 @@
 # Musician-facing capability inventory
 
-Claims are grounded in downloadable source `4ee8f37714b0892f2c70d157fda9328da393e987`; exact Git blobs are listed in feature-source-pins.json. The SMC illustration has its separate, explicit preview pin.
+Claims are grounded in the firmware first published from `4ee8f37714b0892f2c70d157fda9328da393e987`; exact Git blobs are listed in feature-source-pins.json. The current F03 catalog attributes the same package/controller bytes and URLs to source `a03cfab3a423ab5c65a6546afd4993fe51754ee7` (`nightly-a03cfab3-dev`), an installer-only repair; no firmware capability delta is implied. The SMC illustration has its separate, explicit preview pin.
 
 | Activity | Functions presented | Why useful |
 | --- | --- | --- |

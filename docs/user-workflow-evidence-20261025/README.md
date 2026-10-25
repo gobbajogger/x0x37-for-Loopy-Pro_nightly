@@ -1,5 +1,7 @@
 # Installer workflow revision
 
+Historical evidence for ae7a772. The final source revision, current catalog reconciliation, SMC reference and Library previews supersede the pending notes below; see [final source evidence](../final-source-evidence-20261025/README.md).
+
 Both Install firmware and Import samples appear at the page top before the product introduction. The install route has a real `#firmware` target. Device selection, available version, consent, install status and recovery remain the existing implementation. Model naming help and source/hash/build evidence are optional disclosures. Experimental status, matching-model guidance, sample backup and first-install data replacement remain at the action.
 
 The short introduction explains standalone music-making. Expandable setup guidance separates standalone, SMC and Loopy Pro. Capabilities are grouped by the musician's activity; see FEATURE-INVENTORY.md. The existing GitHub Issues tracker is enabled, Discussions disabled: optional request links use native GitHub reactions. The page implements no vote storage, account system or new service.
