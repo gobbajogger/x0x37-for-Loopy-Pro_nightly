@@ -3813,6 +3813,103 @@
       "evidence_commit": "b26c0838f8d91788fd4c65bddcf66c2df05883b6",
       "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15#issuecomment-6393687363",
       "source_identity_note": "Docs R2 source root b5fcae0753c80aebeebdd24abbb915c549f59400; owner-intent comment originally pinned PR15 c2fdf75577baa0945735c44c15ef219f7adfd9f3. No accepted installer release."
+    },
+    {
+      "id": "bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025",
+      "title": "BF032 303 TB-3PO mutation preserves separately programmed ACCENT when orphan SLIDE is cleared (source-only)",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "lane/bugfinder-bf032-tb3po-accent-20261025-1616",
+      "source_commit": "d92f9735eb61eecc6dae30d510c0b56ab587ab00",
+      "source_tree": "edb53879916d7a91305f2cf78227a544746ab4bb",
+      "firmware_subtree": "50fe0ba0433291b93f8798a93bffd74c7173886f",
+      "source_time": "2026-10-25T06:24:53Z",
+      "status": "source-only",
+      "models": [],
+      "reported_checks": {
+        "origin": "Existing BF032 producer PR152 real-C host test evidence. Catalog inspected Git identities; did not rerun C or target builds.",
+        "command": "Producer GCC14.2/Clang17 × optimized, UBSan, ASan+UBSan: six intentional original RED runs and six corrected GREEN runs, 8711 assertions each.",
+        "result": "PRODUCER RED/GREEN HOST PASS REPORTED; INDEPENDENT FIRMWARE QA PENDING; NEW ELITE/PRO BUILD_ONLY PENDING; DEVICE NOT TESTED."
+      },
+      "description": "Intended musical behavior: OCT- mutation clears an invalid 303 slide while retaining independently selected ACCENT, pitch, gate and velocity. No measured hardware/audio improvement or downloaded firmware claimed.",
+      "missing_gate": "Existing firmware Hourly Build obtains new exact-input Elite/Pro/controller BUILD_ONLY; Independent Firmware QA and sole firmware integrator retain testing/merging. Physical OTA/package rights separately pending.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/152",
+      "evidence_commit": "d92f9735eb61eecc6dae30d510c0b56ab587ab00",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/d92f9735eb61eecc6dae30d510c0b56ab587ab00/docs/scheduler-handoffs/bugfinder-bf032-tb3po-accent-20261025.json",
+      "source_identity_note": "Parent firmware NIGHTLY 93449136baae02c9715ba20edc5c43176786b635; changed compiler tree 50fe0ba0433291b93f8798a93bffd74c7173886f; production blob fa5b0809e272a8565391764001bad67c9f22ba85.",
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false
+    },
+    {
+      "id": "nightly-installer-pr16-bundled-bluetooth-verifier-draft-20261025",
+      "title": "PR16 draft source verifies matched Bluetooth controller inside bundled Elite/Pro firmware package; preserves legacy local choice",
+      "source_repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "source_ref": "lane/bundled-nightly-installer-20261025",
+      "source_commit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
+      "source_tree": "7600043f26378ff575e22bc8a8ee245e4a044d35",
+      "source_time": "2026-10-25T04:55:41Z",
+      "status": "source-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "reported_checks": {
+        "origin": "PR16 producer and scoped review receipts, not rerun by Catalog.",
+        "command": "Producer full npm build/test/browser exit 0 with 677 installer +34 history +61 new bundled synthetic browser checks, wrong-model/CRC/size/hash/legacy path negatives.",
+        "result": "DRAFT DEPENDS ON PR14; PRODUCER-SCOPED BROWSER/NEGATIVE PASS REPORTED; ACTUAL RIGHTS/HTTPS/MATCHED DEVICE TESTING PENDING."
+      },
+      "description": "Expected installer behavior: one qualified matching package includes embedded Bluetooth controller and fails closed on corrupt/missing/wrong-model controller before download/MIDI. No selectable package was added.",
+      "missing_gate": "Existing PR14 then PR16 Independent Website QA, sole Main Merger, and separate sole Pages publisher must verify complete source, backup/OTA negatives, rights and hosted exact bytes before selectable NIGHTLY.",
+      "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/16",
+      "evidence_commit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/tree/cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8/docs/bundled-nightly-evidence-20261025",
+      "source_identity_note": "Draft HEAD root 7600043f26378ff575e22bc8a8ee245e4a044d35, stacked base PR14 593c0fc3c18200fd887373bff4602bfd322f0d54; source preview remains empty.",
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false
+    },
+    {
+      "id": "nightly-workspace-pr17-firmware-samples-unified-draft-20261025",
+      "title": "PR17 draft firmware/sample workspace retains drafts and explicit guarded device-write actions; source not published",
+      "source_repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "source_ref": "lane/firmware-samples-experience-20261025",
+      "source_commit": "7d920217b32edb7e3c93fae222a1c69a0025696f",
+      "source_tree": "b615bc8dc25136a47b0052bcd44a466e1cd713df",
+      "source_time": "2026-10-25T06:09:52Z",
+      "status": "source-only",
+      "models": [],
+      "reported_checks": {
+        "origin": "PR17 producer and attached source/design reviews; Catalog independently checked Git identity, not full browser execution.",
+        "command": "Producer reports npm build/test, 801 browser assertions (29 workspace), 191 renderer checks, WAV parser and mocked MIDI exclusion/boundary negatives.",
+        "result": "SOURCE-ONLY UI DRAFT; PRODUCER REPORTED CHECKS, INDEPENDENT WEBSITE CURRENT-HEAD QA PENDING; NO LIVE HTTP OR HARDWARE VERIFIED."
+      },
+      "description": "Expected owner experience: understandable firmware and sample tasks in one workspace, retention of unsent drafts, exclusion of competing MIDI writes, explicit Send/Install. No measured UX improvement or connected-device safety inferred.",
+      "missing_gate": "PR17 stacks on unmerged PR16/PR14; Independent Website QA checks exact combined source and headless tests, sole Main Merger owns integration, Pages publisher owns live HTML/assets and lawful package qualification.",
+      "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/17",
+      "evidence_commit": "7d920217b32edb7e3c93fae222a1c69a0025696f",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/tree/7d920217b32edb7e3c93fae222a1c69a0025696f/docs/workspace-evidence-20261025",
+      "source_identity_note": "PR17 root b615bc8dc25136a47b0052bcd44a466e1cd713df, stacked on PR16 cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8 and PR14 593c0fc3c18200fd887373bff4602bfd322f0d54.",
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false
     }
   ],
   "policy": {
@@ -3823,7 +3920,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 134
+    "source_or_historical_checkpoints": 137
   },
   "versioning": {
     "firmware_product_version": {

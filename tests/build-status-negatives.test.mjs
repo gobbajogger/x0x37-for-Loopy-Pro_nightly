@@ -829,3 +829,23 @@ for(let i=0;i<3;i++){
 }
 run('r42-forged-compiler-REJECT',editR42(0,r=>r.firmware_subtree='f'.repeat(40)));
 run('r42-forged-upstream-PASS-REJECT',editR42(2,r=>r.reported_checks.result='FULL INDEPENDENT QA PASS'));
+
+
+// R43: the new proposals may never become flashable merely through history metadata.
+const r43Ids=["bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025","nightly-installer-pr16-bundled-bluetooth-verifier-draft-20261025","nightly-workspace-pr17-firmware-samples-unified-draft-20261025"];
+const editR43=(n,fn)=>edit(j=>{let r=j.history[134+n];assert.equal(r.id,r43Ids[n]);fn(r,j);});
+run('r43-safe-noninstallable-history-PASS',edit(j=>{
+ assert.ok(j.history.length>=137);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(let n=0;n<3;n++){let r=j.history[134+n];assert.equal(r.id,r43Ids[n]);
+ assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);}
+}),true);
+for(let n=0;n<3;n++){
+ run('r43-delete-'+n+'-REJECT',editR43(n,(r,j)=>{j.history.splice(134+n,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r43-forged-source-'+n+'-REJECT',editR43(n,r=>r.source_commit='f'.repeat(40)));
+ run('r43-false-download-'+n+'-REJECT',editR43(n,r=>r.installable=true));
+ run('r43-false-rights-'+n+'-REJECT',editR43(n,r=>r.artifact_distribution_approved=true));
+}
+run('r43-forged-compiler-REJECT',editR43(0,r=>r.firmware_subtree='f'.repeat(40)));
+run('r43-forged-models-REJECT',editR43(1,r=>r.models=['pro','elite']));
+run('r43-false-QA-REJECT',editR43(2,r=>r.reported_checks.result='FULL INDEPENDENT QA PASS'));

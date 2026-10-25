@@ -543,6 +543,18 @@
     {
       "id": "nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025",
       "sha256": "94e99eeb5b90b261231c455c9f7b8aa669aadb8dee5317377d0c05575ab6153f"
+    },
+    {
+      "id": "bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025",
+      "sha256": "fadc9c44b31832d868b3eccf769701913553796b438c4fe8ad745198abcf0b59"
+    },
+    {
+      "id": "nightly-installer-pr16-bundled-bluetooth-verifier-draft-20261025",
+      "sha256": "665ac1f85665850e1c658962358190772bedec57c47c4a857764f0239d73feab"
+    },
+    {
+      "id": "nightly-workspace-pr17-firmware-samples-unified-draft-20261025",
+      "sha256": "0a129efeae2f5f54f1ae8d3d8685fdcfe5f931eab439786d0ba9f61e3d23ed55"
     }
   ]
 }

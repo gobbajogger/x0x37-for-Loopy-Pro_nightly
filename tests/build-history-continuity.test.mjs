@@ -266,3 +266,25 @@ assert.match(original[132].reported_checks.result,/RIGHTS\/SOURCE\/NOTICES UNRES
 assert.match(original[133].reported_checks.result,/SAME-BYTE UPSTREAM EVIDENCE LINKAGE NOT ESTABLISHED/);
 mustReject('R42 compiler mismatch',rows=>rows[131].firmware_subtree='f'.repeat(40));
 console.log('PASS R42: 134 immutable noninstallable development history receipts');
+
+
+// R43: three exact source observations are immutable and never authorize installation.
+const r43Pins=[["bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025","d92f9735eb61eecc6dae30d510c0b56ab587ab00","edb53879916d7a91305f2cf78227a544746ab4bb"],["nightly-installer-pr16-bundled-bluetooth-verifier-draft-20261025","cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8","7600043f26378ff575e22bc8a8ee245e4a044d35"],["nightly-workspace-pr17-firmware-samples-unified-draft-20261025","7d920217b32edb7e3c93fae222a1c69a0025696f","b615bc8dc25136a47b0052bcd44a466e1cd713df"]];
+assert.ok(lock.rows.length>=137,'R43 137 SHA256-pinned records required');
+for(let n=0;n<r43Pins.length;n++){
+ const i=134+n,r=original[i];assert.equal(r.id,r43Pins[n][0]);
+ assert.equal(r.source_commit,r43Pins[n][1]);assert.equal(r.source_tree,r43Pins[n][2]);
+ assert.equal(r.status,'source-only');assert.equal(r.installable,false);assert.equal(r.device_verified,false);
+ assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);
+ assert.equal(r.artifact_bytes_independently_verified,false);
+ mustReject('R43 deleted '+n,h=>h.splice(i,1));
+ mustReject('R43 source forgery '+n,h=>h[i].source_commit='f'.repeat(40));
+ mustReject('R43 false install '+n,h=>h[i].installable=true);
+ mustReject('R43 false rights '+n,h=>h[i].artifact_distribution_approved=true);
+}
+assert.equal(original[134].firmware_subtree,'50fe0ba0433291b93f8798a93bffd74c7173886f');
+assert.deepEqual(original[135].models,['elite','pro']);assert.deepEqual(original[136].models,[]);
+mustReject('R43 forged compiler',h=>h[134].firmware_subtree='f'.repeat(40));
+mustReject('R43 wrong model',h=>h[135].models=['pro','elite']);
+mustReject('R43 false QA',h=>h[136].reported_checks.result='FULL INDEPENDENT QA PASS');
+console.log('PASS R43: 137 SHA256-pinned nonflashable historical events');
