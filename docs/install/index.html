@@ -1802,7 +1802,7 @@ const TEXT = {
   en: {
     navinstaller: "Installer", navmanual: "Manual", navsamples: "Samples",
     controlleroptional: "Required for legacy packages / SMC Bluetooth", ctlchoose: "Controller image (.img)",
-    verlatest: "latest DEV", verolder: "older DEV", verdev: "DEV", verrelease: "release", verunverified: "unverified",
+    verlatest: "Latest development build", verolder: "Earlier development build", verdev: "Development build", verrelease: "Release", verunverified: "Unverified",
     eyebrow: "DEVICE SOFTWARE / WEB MIDI", journey1: "Connect keyboard", journey2: "Select firmware", journey3: "Review and install",
     stage1: "Step 01 / Connection", stage2: "Step 02 / Firmware", stage3: "Step 03 / Install",
     pickheading: "Choose your build", versionlabel: "Firmware version", modelheading: "Choose your keyboard model",
@@ -2195,7 +2195,7 @@ function renderBuildInfo(v,p) {
   if(v.hardware_tested!==true) b.append(buildBadge(t("hardwareuntested"),"important"));
   if(v.lifecycle==="superseded") b.append(buildBadge(t("superseded"),"blocked"));
   $("buildsummary").textContent=v.description||v.title||"";
-  $("buildprovenance").textContent="Source: "+(v.source_commit||"unknown")+
+  $("buildprovenance").textContent="Build: "+v.version+" · Source: "+(v.source_commit||"unknown")+
     " · "+(v.built_at||"undated")+" · SHA-256: "+(p.sha256||"not recorded");
   const link=$("buildevidence");link.hidden=!v.evidence_url;
   if(v.evidence_url)link.href=v.evidence_url;else link.removeAttribute("href");
@@ -2333,7 +2333,7 @@ function versionOptionCaption(v) {
   const kind = v.status === "dev-checked"
     ? (v.lifecycle === "superseded" ? "verolder" : (v.version === catalogLive.latest ? "verlatest" : "verdev"))
     : (v.status === "release-checked" ? "verrelease" : "verunverified");
-  return v.version + " · " + t(kind);
+  return t(kind) + (kind === "verlatest" ? "" : " " + (versions().indexOf(v) + 1));
 }
 function refreshVersionLabels() {
   const byVersion = new Map(versions().map((v) => [v.version, v]));
