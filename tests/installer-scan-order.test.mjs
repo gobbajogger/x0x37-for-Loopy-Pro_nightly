@@ -9,14 +9,14 @@ const path = process.argv[2] || new URL('../web/x0x_installer.html', import.meta
 const source = readFileSync(path, 'utf8');
 assert.match(source, /let scanSerial = 0;/,
   'production installer must own the scan generation counter');
-const start = source.indexOf('async function scanWorkspaceDevice() {');
+const start = source.indexOf('async function scanWorkspaceDevice(');
 assert.ok(start >= 0, 'production scanWorkspaceDevice function missing');
 const end = source.indexOf('\n}', start);
 assert.ok(end > start, 'production scanWorkspaceDevice end missing');
 const code = source.slice(start, end + 2);
-assert.match(code, /async function scanWorkspaceDevice\(\) \{/);
+assert.match(code, /async function scanWorkspaceDevice\(allowPostWrite = false\) \{/);
 assert.match(code, /const requestId = \+\+scanSerial;/);
-assert.match(code, /requestId !== scanSerial/);
+assert.match(code, /isCurrent|requestId !== scanSerial/);
 
 function setup() {
   const state = { connected: false, leds: [], changes: [], selected: [], requests: [], closed: [], lookups: [] };

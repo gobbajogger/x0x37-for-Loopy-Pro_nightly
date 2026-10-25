@@ -3,7 +3,7 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "71310c52cb5e00e485c69dc24fd2dc48fb7953da",
+    "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
     "web/x0x_breaks.html": "0adc032d95dca24499c80ed4debdf6356a02f7b4",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
@@ -211,6 +211,13 @@
       "sourceBaseCommit": "ae59015e379b3355c4103d0dd7df52a1b30d35b3",
       "resultBlob": "71310c52cb5e00e485c69dc24fd2dc48fb7953da",
       "description": "Readable version captions; exact build identifier retained in optional Details; option values and operation predicates unchanged."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "4cebbb0d7b579ddb7e5c68ffc80986620231a695",
+      "resultBlob": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
+      "description": "Port remaining PR#9 admission-bridge behaviors onto current main: post-write scan under write lock, revoked-latest picker continuity, HTTPS-only evidence links, explicit partial slot restore status. Compact UX and license-gate retirement retained."
     }
   ]
 }
