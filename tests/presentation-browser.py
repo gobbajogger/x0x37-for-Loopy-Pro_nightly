@@ -35,6 +35,8 @@ async def main():
    check(await child.locator('#send').is_disabled(),'sample send denied before device read')
    check(await child.evaluate('document.documentElement.scrollWidth<=innerWidth'),'sample panel fits viewport')
    await page.locator('#firmware-tab').focus();await page.keyboard.press('Enter')
+   await page.wait_for_function('document.getElementById("firmware-tab").getAttribute("aria-current")=="page"')
+   check(await page.locator('#firmware-panel').is_visible() and await page.locator('#samples-panel').is_hidden(),'keyboard return displays firmware task')
    check(await page.locator('#go').is_disabled(),'keyboard return cannot enable install')
   await page.goto(f'http://127.0.0.1:{server.server_port}/install/#buildarchive')
   check(await page.locator('#buildarchive').evaluate('(e)=>e.open'),'archive deep link preserved')

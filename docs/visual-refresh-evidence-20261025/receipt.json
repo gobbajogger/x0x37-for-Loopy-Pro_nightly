@@ -19,7 +19,7 @@
       "failed": 0
     },
     "presentation": {
-      "checks": 38,
+      "checks": 42,
       "failed": 0
     },
     "published_catalog_fixture": {
@@ -27,7 +27,7 @@
       "failed": 0
     }
   },
-  "independent_review": "design_review PASS; scripts and every operation control attribute/ID unchanged; illustration accuracy and desktop/mobile/sample previews inspected",
+  "independent_review": "design_review PASS; scripts and every operation control attribute/ID unchanged; illustration accuracy and desktop/mobile/sample previews inspected; keyboard-return test strengthened per independent review and targeted rerun PASS",
   "previews": [
     {
       "filename": "workspace-desktop.png",

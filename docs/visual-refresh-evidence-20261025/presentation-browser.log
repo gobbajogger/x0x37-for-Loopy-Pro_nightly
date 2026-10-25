@@ -6,6 +6,7 @@ PASS original raster references secondary by default
 PASS keyboard switches task and current state
 PASS sample send denied before device read
 PASS sample panel fits viewport
+PASS keyboard return displays firmware task
 PASS keyboard return cannot enable install
 PASS 390px no page overflow
 PASS all illustrations have accessible names
@@ -15,6 +16,7 @@ PASS original raster references secondary by default
 PASS keyboard switches task and current state
 PASS sample send denied before device read
 PASS sample panel fits viewport
+PASS keyboard return displays firmware task
 PASS keyboard return cannot enable install
 PASS 768px no page overflow
 PASS all illustrations have accessible names
@@ -24,6 +26,7 @@ PASS original raster references secondary by default
 PASS keyboard switches task and current state
 PASS sample send denied before device read
 PASS sample panel fits viewport
+PASS keyboard return displays firmware task
 PASS keyboard return cannot enable install
 PASS 1280px no page overflow
 PASS all illustrations have accessible names
@@ -33,7 +36,8 @@ PASS original raster references secondary by default
 PASS keyboard switches task and current state
 PASS sample send denied before device read
 PASS sample panel fits viewport
+PASS keyboard return displays firmware task
 PASS keyboard return cannot enable install
 PASS archive deep link preserved
 PASS no script errors
-38 presentation checks PASS
+42 presentation checks PASS
