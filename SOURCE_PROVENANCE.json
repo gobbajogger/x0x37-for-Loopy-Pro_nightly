@@ -9,7 +9,7 @@
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
     "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
-    "web/x0x_projects.html": "8235732ac9b1fb891b11d027fcfdc2b2a7333ef8",
+    "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
     "web/test_projects.mjs": "6e3f65e584f0873c0af7bb21539ed3355d49c365",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
@@ -203,7 +203,7 @@
       "path": "web/x0x_projects.html",
       "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
       "sourceBaseCommit": "08b7e2a9ff01bfcfe4edb439ad43302af8c8ad8d",
-      "resultBlob": "8235732ac9b1fb891b11d027fcfdc2b2a7333ef8",
+      "resultBlob": "57f93e754d08e77b6197835c92f208c1775832a0",
       "description": "Compact task presentation: progressive technical details, concise action notices, visible setup and faithful enlarged artwork; operation safeguards and catalogs unchanged"
     }
   ]
