@@ -1,0 +1,46 @@
+{
+  "schema": "x0x37-catalog-sync-evidence-v1",
+  "role": "sole NIGHTLY catalog source producer",
+  "revision": "R44 2026-10-25",
+  "reason": "Reflect BF033 independent scoped musical behavior proof and merged website SOURCE without conflating either with installable bytes.",
+  "base_commit": "de1e9608de78154b529800828262b3a28d6eb4bc",
+  "base_tree": "b5d932e769d7f70d049611238431fac7cd8c14f3",
+  "workflow_trial": "e2482a5039527195e346925c751ac3e3a333ada9",
+  "skill_sha256": "2dd8889e0843b4bbd9686cb42d3936921d7e23a4dde688bfea9107e1b8a556b3",
+  "history_before": 137,
+  "history_after": 139,
+  "new_rows": [
+    {
+      "id": "bugfinder-bf033-pr159-random-tie-independent-host-20261025",
+      "index": 137,
+      "source": "28fbcf78b8930da6f1535268501cdb7c0a66b6b3",
+      "root": "be3f140a3244662fc74bd7f7a68c4b1b8c200478",
+      "sha256": "93dc47587cb9670a7b1a2025b75d255e70316dcbd8590d407156770c61ab6652",
+      "installable": false
+    },
+    {
+      "id": "website-main-pr14-pr16-pr17-merged-source-only-20261025",
+      "index": 138,
+      "source": "ffe3329c21f29e4b4f5b971a51d3d6ff40af8172",
+      "root": "b615bc8dc25136a47b0052bcd44a466e1cd713df",
+      "sha256": "52488fb54e11268711c1ea08731adb66190e2c5a8ad90a39fa7cda0e562c7196",
+      "installable": false
+    }
+  ],
+  "checks": {
+    "sha256_known_vectors": 3,
+    "digests_before": 137,
+    "digests_after": 139,
+    "negative_mutations_rejected": 12
+  },
+  "registered_Node_tests": "COMMITTED_NOT_RUN",
+  "npm_test": "NOT_RUN_NATIVE_DNS",
+  "npm_build": "NOT_RUN_NATIVE_DNS",
+  "browser": "NOT_RUN_NATIVE_DNS",
+  "independent_website_QA": "PENDING_R44",
+  "source_picker_selectable": 0,
+  "dev_generations_preserved": 2,
+  "live_bytes": "NOT_VERIFIED",
+  "hardware": "NOT_OPERATED",
+  "next_owner": "Existing Independent Website QA, sole Website Main Merger, then separate Pages publisher; existing firmware Build/QA/Integrator own PR159."
+}

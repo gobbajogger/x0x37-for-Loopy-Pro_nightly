@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-r37-pr14-approval-denials-source-only-20261025-r2",
+  "owner": "sole Catalog Sync source producer; existing PR13",
+  "intended_behavior": "Clear truthful record of proposed catalog approval denial fix, while existing qualified candidate remains separate and no new source package is selectable.",
+  "catalog_before": {
+    "repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "pr": 13,
+    "head": "d750fa3619cb47bc4996ef810086839ff64e8081",
+    "root": "ea86022f335eb242b76cb85288e29ade29e3e964",
+    "old_history": 126
+  },
+  "producer": {
+    "source_pr": 14,
+    "head": "7515d147e4817248dece608c73fd7fb171e996f2",
+    "root": "7db90a3810f790d3b939b4cdc34a768ff6e9200a",
+    "source_only": true,
+    "independent_site_QA": "PENDING",
+    "merged": false,
+    "git_author_time": "2026-10-25T00:21:23Z"
+  },
+  "record": {
+    "id": "nightly-browser-pr14-catalog-approval-denials-source-20261025",
+    "sha256": "2ba850119d4ea7716c645eb29035eda409e5443076c9ad2d09948e3e97a69707",
+    "row_count": 127,
+    "old_immutable_rows_unchanged": 126,
+    "firmware_picker_package_count": 0
+  },
+  "tests": [
+    {
+      "name": "3 SHA256 known vectors and 126 existing + 127 new row digests",
+      "state": "PASS_V8"
+    },
+    {
+      "name": "deletion/forged commit/root/fake independent QA/download/device/rights/live bytes",
+      "state": "PASS_SCOPED_NEGATIVES",
+      "expect": "locked history must reject all"
+    },
+    {
+      "name": "old R35/R36 exact count assertions",
+      "state": "FAIL_BEFORE_REPAIRED_IN_SOURCE",
+      "observed": "R35 expects 125, existing R36 catalog has 126; R36 expects 126, R37 has 127",
+      "fix": "minimum history count in older positive assertions; digest lock enforces all 127"
+    },
+    {
+      "name": "new permanent Node R37 positive and negatives",
+      "state": "SOURCE_COMMITTED_NOT_EXECUTED"
+    },
+    {
+      "name": "npm test, npm run build, npm run test:browser, current Chromium",
+      "state": "NOT_RUN",
+      "reason": "native github.com DNS failure: git ls-remote exit 128; no current exact root checkout"
+    },
+    {
+      "name": "live HTTPS firmware/controller, physical device",
+      "state": "NOT_RUN",
+      "reason": "separate publisher and hardware owners"
+    }
+  ],
+  "permissions": "No firmware private data, no protected main or gh-pages, no publication, no self-approval.",
+  "next_owner": "Existing Independent NIGHTLY Website QA, then sole Website Main Merger and separately sole Pages publisher.",
+  "tooling": "Installed skills list empty; no subagent dispatch action exposed; no fabricated delegation.",
+  "rectification": {
+    "reason": "Correct source_time from verified PR14 Git commit.author.date, not Codex review completion timestamp; no change to PR14 source, verification status, or first 126 immutable history rows",
+    "previous_unreviewed_history_commit": "d0a1eba4db4bdd12b785510deae5e60385162997"
+  }
+}

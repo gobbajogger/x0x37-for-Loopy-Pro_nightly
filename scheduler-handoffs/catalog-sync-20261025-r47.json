@@ -1,0 +1,59 @@
+{
+  "schema": "x0x37-catalog-sync-evidence-v1",
+  "role": "sole NIGHTLY catalog SOURCE producer",
+  "revision": "R47 2026-10-25",
+  "musician_reason": "Project companion module edits previously missed scoped project suites, and the newer F05 nightly listing needs truthful, nonflashable history.",
+  "expected_effect": "project changes select project web/page checks; owner sees a DEV/HARDWARE TEST F05 candidate without implying physical verification",
+  "trial_revision": "e2482a5039527195e346925c751ac3e3a333ada9",
+  "skill_sha256": "2dd8889e0843b4bbd9686cb42d3936921d7e23a4dde688bfea9107e1b8a556b3",
+  "checkpoint_helper_sha256": "21fee28e9911dd1164a2c730a926a2b38092f6cbc515dbcfb2e89878076f9beb",
+  "queue_head": "2cbea6e93d571e78774293e8a0dc8524b4a7e27a",
+  "queue_blob": "cd7d81455ef04487d94a6dca4835d6ed5ca9f081",
+  "previous_head": "bd1e7badd936c6bc1cb2fbe5dec834af8ece53a2",
+  "previous_tree": "36cb3acacc6c106462ec2f1976750212f87005c4",
+  "pages_git_head": "e10823e38ec9e56f5ec381822b1597f7364a95d9",
+  "pages_versions_blob": "4a8c597b2a0a99a1b262994ddf313a555c0340d0",
+  "validated_source": "ab90f47ccad0f213114d6a98c1bc6179be2ebb35",
+  "full_git_tree": "50c381c528cae9692deff4a712071f7dc6acb020",
+  "reported_non_doc_closure": "0ee03318a0b64a1e535b36fad284558529ff7e3f95ff069efed86bbcf308518c",
+  "blank_packages": {
+    "elite": "d3b4cac3d7b7be7a72732d4dd00c3120c053dbffc9137ffb7c151a5fd5355f2b",
+    "pro": "0b09605f357cd0accd5c5109dfb61138eb300945ffe05e6ff46942f5c5e076b9"
+  },
+  "bundled_pages_packages": {
+    "elite": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+    "pro": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"
+  },
+  "controller_digest": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+  "stage4_pr": 198,
+  "stage7_pr": 204,
+  "firmware_nightly_merge": "FF_REFUSED, latest observed separate firmware ref 08d3164a265123cb4c84e5104642fd93257d63d7; no merge claimed",
+  "prior_rows": 143,
+  "after_rows": 145,
+  "new_rows": [
+    {
+      "id": "firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025",
+      "sha256": "90663ce58457ee0bba3ebc3515e591ea3dc68c73786256b13c95b4b1805cd31c"
+    },
+    {
+      "id": "nightly-f05-pages-git-bf002-device-not-tested-20261025",
+      "sha256": "f35dbd6113e8058e5346b93e4c7bc5b4c1a0877094ae7a17fec86c45c1a82a8a"
+    }
+  ],
+  "source_picker_selectable": 0,
+  "scoped_checks": {
+    "sha256_known_answers": "PASS 3 in connected V8",
+    "existing_history": "PASS 143 immutable digests",
+    "new_history": "PASS 145 immutable digests",
+    "mutation_negatives": "PASS 14 local integrity rejections",
+    "permanent_node_tests": "SOURCE UPDATED; NATIVE NODE NOT RUN",
+    "native_npm_test": "NOT_RUN due native GitHub DNS failure exit 128",
+    "native_npm_build": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "live_https": "NOT_INDEPENDENTLY_VERIFIED",
+    "hardware": "NOT_TESTED"
+  },
+  "rights": "No new source downloads or binary publication; MIT/GPL and model/package licensing gates independent",
+  "independent_website_qa": "PENDING exact R47 combined-root",
+  "next_owner": "Existing Independent NIGHTLY Website QA reviews exact R47; sole Website Main Merger integrates after current-root checks; sole Pages publisher owns live package qualification."
+}

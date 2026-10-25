@@ -1,0 +1,71 @@
+{
+  "schema": "x0x37-catalog-sync-evidence-v1",
+  "role": "sole NIGHTLY website catalog SOURCE producer",
+  "revision": "R43 2026-10-25",
+  "purpose": "Read-only truthful progress on BF032 accent and PR16/PR17 installer UI proposals; do not imply installed or playable hardware.",
+  "base_commit": "ae9bb4d35c7c78e7d13cada582f2ae64aacfb1b5",
+  "base_tree": "c35ed5954b534bd0cfd3c7d5fc0e1b3fd8b0aa86",
+  "prior_history_rows": 134,
+  "history_rows": 137,
+  "new_rows": [
+    {
+      "index": 134,
+      "id": "bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025",
+      "commit": "d92f9735eb61eecc6dae30d510c0b56ab587ab00",
+      "root": "edb53879916d7a91305f2cf78227a544746ab4bb",
+      "compiler": "50fe0ba0433291b93f8798a93bffd74c7173886f",
+      "sha256": "fadc9c44b31832d868b3eccf769701913553796b438c4fe8ad745198abcf0b59",
+      "installable": false
+    },
+    {
+      "index": 135,
+      "id": "nightly-installer-pr16-bundled-bluetooth-verifier-draft-20261025",
+      "commit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
+      "root": "7600043f26378ff575e22bc8a8ee245e4a044d35",
+      "compiler": null,
+      "sha256": "665ac1f85665850e1c658962358190772bedec57c47c4a857764f0239d73feab",
+      "installable": false
+    },
+    {
+      "index": 136,
+      "id": "nightly-workspace-pr17-firmware-samples-unified-draft-20261025",
+      "commit": "7d920217b32edb7e3c93fae222a1c69a0025696f",
+      "root": "b615bc8dc25136a47b0052bcd44a466e1cd713df",
+      "compiler": null,
+      "sha256": "0a129efeae2f5f54f1ae8d3d8685fdcfe5f931eab439786d0ba9f61e3d23ed55",
+      "installable": false
+    }
+  ],
+  "known_answer_sha256": 3,
+  "scoped_exact_data_rows_verified": 137,
+  "fail_before": "exact R42 has 0 of 3 proposed R43 IDs",
+  "pass_after": "all 137 historical rows lock; 15 adversarial data mutations rejected",
+  "negative_stimuli": [
+    "deletion0",
+    "source0",
+    "download0",
+    "rights0",
+    "deletion1",
+    "source1",
+    "download1",
+    "rights1",
+    "deletion2",
+    "source2",
+    "download2",
+    "rights2",
+    "compiler",
+    "model",
+    "QA"
+  ],
+  "existing_dev_generations": 2,
+  "source_picker_selectable": 0,
+  "new_Node_regressions": "SOURCE COMMITTED, NOT EXECUTED",
+  "native_npm_test": "NOT RUN (git checkout DNS exit 128)",
+  "native_npm_build": "NOT RUN (git checkout DNS exit 128)",
+  "browser": "NOT RUN (git checkout DNS exit 128)",
+  "independent_QA": "PENDING exact R43 SHA",
+  "distribution_and_live_bytes": "NOT QUALIFIED",
+  "hardware": "NOT OPERATED",
+  "next_consumers": "Existing Independent Website QA, sole Website Main Merger, sole Pages publisher; installer PR16/17 owners and firmware BF032 Build/QA owners remain distinct.",
+  "restrictions": "No GitHub Actions testing, no protected branch, binary, flash, or false PASS."
+}

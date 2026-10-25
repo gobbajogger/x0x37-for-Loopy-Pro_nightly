@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-r39-pr14-r2-independent-scoped-review-20261025",
+  "owner": "sole Catalog Sync, existing owned PR13",
+  "intended_end_user_behavior": "Record scoped safe-browser-DEV admission repair without claiming it is installable, hosted or hardware-approved",
+  "catalog_input": {
+    "sha": "c9b594d7c0d3a13794930c956611924438b763d9",
+    "root": "fa21f15adffaf6dce9c73fc39d128bf3fa44edcb",
+    "status_blob": "ec878683d9cf3dfaf77544fd0d3e3ff6ed892d47",
+    "history_rows": 127
+  },
+  "pr14_input": {
+    "sha": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+    "root": "e1255056dff9ebdcb2d1836e6e139dfa506f8995",
+    "independent_review": 5641199985,
+    "review_date": "2026-10-25T02:39:15Z",
+    "review_result": "SCOPED REVIEWED; entire site incomplete"
+  },
+  "new_row": {
+    "id": "nightly-browser-pr14-r2-hardware-facts-independent-scoped-review-20261025",
+    "sha256": "8adaa02c9b987a17e007fd46cd5988da2fe25971b6771ff190406e6988b66d34",
+    "index": 127,
+    "total": 128,
+    "old_unchanged": 127,
+    "existing_DEV_generations": 2,
+    "selectable_source_packages": 0
+  },
+  "checks": [
+    {
+      "name": "3 SHA known-answer vectors and 127 prior + 128 new history digests",
+      "state": "PASS_V8"
+    },
+    {
+      "name": "8 deletion/forgery/approval negative mutations",
+      "state": "PASS_V8"
+    },
+    {
+      "name": "R37 old exact 127-count fixture after valid append",
+      "state": "FAIL_BEFORE_STATIC; fixed to allow append"
+    },
+    {
+      "name": "permanent Node tests for R39",
+      "state": "COMMITTED_NOT_RUN"
+    },
+    {
+      "name": "native npm test, npm run build, npm run test:browser and full Chromium",
+      "state": "NOT_RUN; native git ls-remote DNS exit 128"
+    },
+    {
+      "name": "independent PR14 Node and V8 source checks",
+      "state": "ATTRIBUTED_TO_INDEPENDENT_REVIEW; not rerun by Catalog"
+    },
+    {
+      "name": "live HTTPS package/controller bytes, rights and owner hardware",
+      "state": "NOT_VERIFIED"
+    }
+  ],
+  "next_owner": "Existing Independent NIGHTLY Website QA on new PR13 SHA/root, then sole Website Main Merger; separate Pages publisher owns live-byte release",
+  "permissions": "No main/gh-pages write, publication, firmware binaries or hardware",
+  "tool_coverage": "Installed skills list empty; no subagent execution action exposed; GitHub and Library read plus website AGENTS/gate available"
+}

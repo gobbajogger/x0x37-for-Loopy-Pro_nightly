@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-r36-pages-git-unsafe-admission-source-only-20261025-r1",
+  "owner": "Existing SOLE browser-only NIGHTLY status/history/catalog SOURCE producer (successor after merged PR3, no competing website installer owner)",
+  "intended_user_outcome": "Owners can distinguish unsafe Pages Git source catalog admission reported by Installer Improvements from a real published qualified download, with all 125 prior history rows immutable and NO firmware selectable from website source.",
+  "website": {
+    "repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "base_main": "10c47659192a32821da171417069ffefdbc05d63",
+    "base_root": "a2845ebf94c7c55e972254075f324441c2f82e38",
+    "previous_merged_source_pr": 3,
+    "working_branch": "lane/catalog-postmerge-r36-pages-admission-20261025",
+    "changed_scope": "source-only status/lock/permanent negatives"
+  },
+  "observed_pages": {
+    "repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "git_head": "b7af05f00a91056ca732b21cbe1dc719edbcb585",
+    "tree": "9e192c467973368c407cf148099e35c6280b2eae",
+    "installer_blob": "b196967941a698b6908e0a322b8586833ec60c28",
+    "versions_blob": "519d9500c57848d5ed103fbd88befb5f43f6d020",
+    "state": "existing selectable-looking DEV catalog metadata, does NOT independently verify served bytes, lawful distribution or physical QA"
+  },
+  "prior_owner_findings": {
+    "producer_receipt": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/9#issuecomment-6390929194",
+    "producer_scope": "Pages Git exact source-window admission characterization, independently reviewed source gates pending",
+    "reported_native": "native Node v22.16.0, 20/20 characterization expectations exit 0 including 10 unsafe admissions",
+    "reported_browser": "Chromium 72/72 characterization expectations exit 0 including 36 unsafe admissions; NOT safety PASS",
+    "producer_owns": "Existing qualified-installer PR9, not Catalog Sync"
+  },
+  "catalog": {
+    "prior_history_rows": 125,
+    "new_history_rows": 126,
+    "source_digest_algorithm": "SHA256(UTF8(JSON.stringify(parsed row)))",
+    "prior_digest_verified": 125,
+    "new_row_id": "nightly-pages-git-unqualified-dev-admission-20261025",
+    "new_row_sha256": "b1458754c2149689c0dc0da709174bf23e2877ef57d885f327efbfbec2514097",
+    "history_prefix_unchanged": true,
+    "model_list": [
+      "elite",
+      "pro"
+    ],
+    "installable_source_picker_count": 0,
+    "firmware_controller_bytes_added": 0
+  },
+  "producer_execution": [
+    {
+      "action": "GitHub live ref + exact file fetch",
+      "result": "PASS",
+      "detail": "read current website main/pages refs, PR3 merged and PR9 active owner, status/docs/lock/tests/package and Pages catalog"
+    },
+    {
+      "action": "Independent V8 known-answer SHA256 empty/abc/hello + 125 existing rows + 126th digest",
+      "result": "PASS",
+      "detail": "125/125 prefix digest verified; 126/126 including new record; no old status rewrite"
+    },
+    {
+      "action": "V8 fixture mutation rejection",
+      "result": "PASS",
+      "detail": "7 negative cases (deletion, forged commit/tree, fabricated eligibility/device/bytes and false PASS)"
+    },
+    {
+      "action": "Native exact-root npm test",
+      "result": "NOT_RUN",
+      "reason": "native GitHub checkout unavailable: git ls-remote exit 128 DNS Could not resolve host github.com; full native 149-file checkout unavailable in this stage"
+    },
+    {
+      "action": "Native exact-root npm run build",
+      "result": "NOT_RUN",
+      "reason": "native checkout unavailable; no hosted CI substitution"
+    },
+    {
+      "action": "Native exact-root npm run test:browser / Chromium",
+      "result": "NOT_RUN",
+      "reason": "native checkout unavailable; prior full-root R35 QA does not approve changed test source"
+    },
+    {
+      "action": "Actual served HTTPS, binaries, owner hardware",
+      "result": "NOT_RUN",
+      "reason": "outside Catalog SOURCE ownership; Pages/firmware qualify separately"
+    }
+  ],
+  "next": {
+    "role": "Existing Independent NIGHTLY Website QA",
+    "action": "review exact successor draft head/root, execute the registered Node/npm/build/browser negative suites, confirm 125-row unchanged prefix, installer safety guard unchanged and no selectable source package; then existing sole Website Main Merger evaluates source merge; existing sole Pages publisher separately owns live TLS served-byte gate",
+    "conditions": "No self-approval/merge/Pages/ref protected updates, private assets, fabricated availability or hardware PASS"
+  }
+}

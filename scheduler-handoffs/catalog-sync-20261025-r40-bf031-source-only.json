@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-r40-bf031-pr140-source-only-20261025",
+  "owner": "sole existing Catalog Sync PR13",
+  "intended_end_user_behavior": "Inform musicians that reverse/random TB-3PO mutation timing received a host-tested source repair without presenting it as downloadable firmware",
+  "catalog_parent": "9d27e7846022970ebd802d1881a40c7ed02dad31",
+  "catalog_parent_root": "eeb8c3aadfbcb4e008ba5bf7c64a23363e5bb501",
+  "source_repo": "gobbajogger/X0X37-for-Loopy-Pro",
+  "source_pr": 140,
+  "source_sha": "a964401ec29028ab488a7586d8b54d0e24ea58ce",
+  "source_root": "2a3c78247b6164d43f995e640d98b71aae933498",
+  "source_compiler_subtree": "7f35a88270c7a4c0e782d7711cfd7110fc162a23",
+  "source_receipt_blob": "3247a45792677c5275299860ac1da3ec379c7c2f",
+  "history_index": 128,
+  "history_length": 129,
+  "row_id": "bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025",
+  "row_sha256": "d8553f2ff25689a1707fe64bf077adc52229f000e88724c64ab0aee457301db8",
+  "previous_rows_sha256_verified": 128,
+  "previous_rows_unchanged": true,
+  "models_built_this_run": [],
+  "selectable_source_packages": 0,
+  "checks": [
+    {
+      "name": "SHA-256 known-answer vectors and 128 predecessor + new row digest",
+      "result": "PASS_V8"
+    },
+    {
+      "name": "8 corrupted/deleted/forged-grant history mutations",
+      "result": "EXPECTED_REJECTIONS_PASS_V8"
+    },
+    {
+      "name": "permanent Node continuity and negative test source",
+      "result": "STAGED_NOT_RUN"
+    },
+    {
+      "name": "npm test, npm run build, npm run test:browser, full Chromium",
+      "result": "NOT_RUN_LOCAL_DNS_GITHUB"
+    },
+    {
+      "name": "source PR140 producer native GCC/Clang source tests",
+      "result": "REPORTED_FROM_PRODUCER_NOT_RERUN"
+    },
+    {
+      "name": "independent firmware QA, per-model BUILD_ONLY, browser/HTTPS bytes/hardware",
+      "result": "PENDING_NOT_VERIFIED"
+    }
+  ],
+  "next_owner": "Existing Independent NIGHTLY Website QA for exact PR13 R40; sole Website Main Merger for reviewed normal integration; existing firmware Hourly Build and Independent QA for PR140; sole Pages publisher controls live artifacts",
+  "restrictions": "History-only status; no source installer or package picker change, no firmware/controller binary, no main/gh-pages direct writes"
+}
