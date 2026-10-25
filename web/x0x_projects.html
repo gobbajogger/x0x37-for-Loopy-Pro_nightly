@@ -71,16 +71,17 @@
   .embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}
   .embedded #status{font-size:.88rem;color:var(--muted)}
   p{max-width:72ch}.embedded section[aria-labelledby="export-title"]{grid-column:1/-1}.embedded section[aria-labelledby="keyboard-title"]{grid-column:1/-1}.check{min-height:44px}button,a,input,select{touch-action:manipulation}
+details>summary{min-height:44px;align-content:center;font-size:14px;color:var(--muted);cursor:pointer}details p{margin:8px 0 12px}
 </style>
 </head>
 <body>
 <main>
   <nav aria-label="X0X"><a href="../install/#firmware">Install firmware</a><a href="../install/#samples">Import samples</a></nav>
   <h1>Songs &amp; projects</h1>
-  <p class="small">Transfer the whole live project: arrangement, patterns, sounds, motion and settings. Portable files include samples. Device actions require compatible firmware, checked on connection.</p>
+  <p class="small">Move your song, patterns and sounds between the keyboard and a project file. Include samples for a portable copy.</p>
   <section aria-labelledby="connection-title">
     <h2 id="connection-title">Connect your keyboard</h2>
-    <p class="small">Connect by USB with X0X running. Stop playback, recording and performance mode before working with projects. Close other editors during transfers.</p>
+    <p class="small">Connect by USB with X0X running. Stop playback, recording and performance mode; close other editors.</p>
     <button id="find">Find USB MIDI keyboard</button>
     <div id="ports" hidden>
       <div class="ports">
@@ -89,7 +90,7 @@
       </div>
       <div class="bar"><button id="connect">Connect selected ports</button><span id="identity" class="small">Not connected</span></div>
     </div>
-    <p id="status" role="status" aria-live="polite">Connect to save, load, reset or export a project. You can inspect a project file before connecting.</p>
+    <p id="status" role="status" aria-live="polite">Not connected.</p>
     <progress id="progress" max="1" hidden aria-label="Project transfer progress"></progress>
   </section>
 
@@ -97,7 +98,7 @@
     <h2 id="import-title">Inspect or import a project</h2>
     <label for="file" class="small">Choose an .x0xproject file</label>
     <input id="file" type="file" accept=".x0xproject">
-    <p id="file-info" class="small">Inspect a file offline. Connect to prepare an import; the file is checked before any changes.</p>
+    <p id="file-info" class="small">Inspect a file offline, or connect to prepare an import.</p>
     <button id="prepare" class="quiet" disabled>Prepare import</button>
     <div id="preview" hidden>
       <h3 id="preview-title"></h3>
@@ -110,7 +111,7 @@
       <button id="backup" class="quiet">Download recovery backup</button>
       <label id="backup-confirm" class="check" hidden><input id="backup-saved" type="checkbox" disabled><span>I saved the recovery backup and can use it to restore this keyboard.</span></label>
       <div class="bar"><button id="import" disabled>Import project</button><button id="cancel" class="quiet">Cancel preview</button></div>
-      <p class="small">Import replaces the live project. The firmware validates it before sample changes, verifies the samples after writing, then adopts the project. Use Save on keyboard to store it immediately; the keyboard’s autosave setting also applies.</p>
+      <p class="small">Import replaces the live project and the sample slots shown above. Save on keyboard stores it immediately; autosave also applies.</p><details><summary>Details: import checks</summary><p class="small">The firmware validates the project before sample changes, verifies the written samples, then adopts the project.</p></details>
     </div>
     <div id="recovery" hidden>
       <p class="small">The recovery backup from the interrupted import is still available, even if you close its preview or choose another file.</p>
@@ -123,24 +124,24 @@
     <label for="name" class="small">Project name</label>
     <input id="name" type="text" maxlength="80" value="My X0X project" autocomplete="off">
     <label class="check"><input id="portable" type="checkbox" checked><span>Include original samples <span class="small">— recommended for moving a project or keeping a complete backup.</span></span></label>
-    <p class="small">Samples retain their original encoded bytes, playback rates and slot order. A project-only file contains sample identities and imports only when every slot already matches.</p>
+    <details><summary>Details: project files</summary><p class="small">Portable files retain original sample bytes, playback rates and slot order. Without samples, a file imports only when every sample slot already matches.</p></details>
     <button id="export" disabled>Export project + samples</button>
   </section>
   <section aria-labelledby="keyboard-title">
     <h2 id="keyboard-title">On the keyboard</h2>
-    <p class="small">Save stores the whole live project. Load replaces it with the saved project. Reset clears the song, sequencers, sounds, motion and project settings to defaults. Uploaded samples and device role settings stay in place. Reset stops playback and recording and turns autosave ON, so the saved project may also be overwritten; export first if you want to keep it.</p>
+    <p class="small">Load replaces the live project. Reset clears the song, patterns, sounds and project settings; samples stay. Reset turns autosave on and may overwrite the saved project. Export first to keep your work.</p>
     <div class="bar">
       <button id="save" disabled>Save on keyboard</button>
       <button id="load" class="quiet" disabled>Load saved project</button>
       <button id="reset" class="quiet" disabled>Reset project · keep samples</button>
     </div>
-    <p class="small">To clear only the arrangement, use SONG → CLEAR SONG on the keyboard. That keeps patterns, sounds, settings and samples. Arrangement-only clear is unavailable in this browser; Reset project has the broader scope described above.</p>
+    <details><summary>Details: reset &amp; recovery</summary><p class="small">Reset also clears motion and stops playback and recording; device role settings stay in place. Arrangement-only clear is unavailable in this browser. To clear only the arrangement, use SONG → CLEAR SONG on the keyboard, keeping patterns, sounds, settings and samples.</p><p class="small">Keep USB connected during transfers. After a sample-transfer failure, the page attempts to restore the previous samples and reports the result. Keep the recovery file for reconnecting.</p></details>
   </section>
 
 
 
 
-  <p class="small">Keep USB connected until the operation finishes. If a sample transfer fails, the page attempts to restore the previous samples and reports the result. The recovery file is also usable after reconnecting.</p>
+
 </main>
 <script type="module">
 import { PROJECT_MAX_FILE, ProjectDevice, ProjectMidiLink, readProjectFile, makeProjectFile, readProjectSnapshot, prepareProjectImport, applyProjectImport } from "./x0x_projects.js";

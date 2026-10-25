@@ -79,13 +79,14 @@
   @media(max-width:530px){ main,.embedded main { padding:22px 16px; } h1 { font-size:26px; }.loop,.embedded .loop { grid-template-columns:3.5em minmax(0,1fr); gap:8px; }.loop .acts { grid-column:2; } }
   .embedded main{padding:0 0 16px;background:#0b0e10}.embedded{--bg:#0b0e10}p{max-width:76ch}h1{font-size:24px;margin-bottom:8px}.bar{padding:10px 0}.sample-warning{font-size:14px;color:var(--dim);margin:12px 0 0}.sample-help>summary{min-height:44px;align-content:center;color:var(--dim)}label{min-height:44px}button,a,input,summary{touch-action:manipulation}
   .embedded p{font-weight:400}.embedded main>p:last-child{display:none}
+.empty{padding:14px 0}.embedded .empty{padding:14px 0}
 </style>
 </head>
 <body>
 <main>
   <a class="home" href="../">X0X</a>
   <h1>Import samples</h1>
-  <p>Connect your SMK-37 or FM-1 by USB with X0X running. Use Chrome or Edge. Read the slots, then add or replace loops.</p>
+  <p>Connect your keyboard by USB with X0X running. Use Chrome or Edge to add or replace loops.</p>
 
   <div class="bar">
     <button id="connect">Connect</button>
@@ -106,7 +107,7 @@
   <div class="full"><div id="fill"></div></div>
   <p id="room"></p>
 
-  <p class="sample-warning">Back up important slots first. Send writes the prepared slots, including removals. Restore replaces slots from a backup after confirmation.</p>
+  <p class="sample-warning">Back up important slots first. Send replaces changed slots and applies removals; Restore replaces slots from your backup.</p>
   <div class="bar">
     <button id="send" disabled>Send samples to device</button>
     <button class="quiet" id="discard" hidden>Discard changes</button>
@@ -118,7 +119,7 @@
   <div class="bar" style="margin-top:24px">
     <button class="quiet" id="backup" disabled>Back up all slots</button>
     <button class="quiet" id="restore" disabled>Restore a backup</button>
-    <span class="small">A backup is a file with every slot as it is on the device. Restore writes it back.</span>
+    
   </div>
 
   <details class="sample-help"><summary>Loop playback &amp; file tips</summary><p class="small">Your loops appear as BR1, BR2 and so on, after the built-in loops. Choose BREAK → EDIT, then turn LOOP A or LOOP B.</p>
