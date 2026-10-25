@@ -57,6 +57,26 @@
   .embedded button { border-radius:8px; min-height:44px; }
   .embedded button:focus-visible, .embedded input:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
   .embedded .loop { grid-template-columns:4em minmax(0,1fr) auto; }
+
+  /* Shared control-desk presentation; no change to sample state or writes. */
+  :root { --bg:#0b0e10; --fg:#eff3ef; --dim:#a1ada9; --rule:#343e3a; --wave:#77847f; --accent:#ccfc76; color-scheme:dark; }
+  * { box-sizing:border-box; }
+  main { max-width:960px; padding:32px 24px; }
+  h1 { font-size:30px; letter-spacing:-.035em; line-height:1.2; }
+  p { font-size:14px; }
+  button { min-height:44px; padding:10px 16px; border-radius:8px; background:var(--accent); color:#121c0b; font-weight:650; }
+  button.quiet { background:#1b2225; color:var(--fg); }
+  button.link { min-height:36px; background:none; color:var(--dim); font-weight:500; }
+  button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  button:disabled { opacity:.46; }
+  .bar { gap:12px; padding:16px 0; margin-bottom:4px; }
+  #list { border:1px solid var(--rule); border-radius:10px; padding:0 16px; background:#101719; }
+  .empty { border:0; padding:28px 0; }
+  .full { height:6px; border-radius:4px; overflow:hidden; }
+  label { font-size:13px; }
+  input[type=checkbox] { width:18px; height:18px; accent-color:var(--accent); }
+  .loop .acts { flex-wrap:wrap; }
+  @media(max-width:530px){ main,.embedded main { padding:22px 16px; } h1 { font-size:26px; }.loop,.embedded .loop { grid-template-columns:3.5em minmax(0,1fr); gap:8px; }.loop .acts { grid-column:2; } }
 </style>
 </head>
 <body>

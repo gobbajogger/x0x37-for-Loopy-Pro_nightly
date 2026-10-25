@@ -1,0 +1,11 @@
+# Visual refresh source handoff
+
+Purpose: make the existing installer/sample workspace easier to scan and more polished without changing tested device operations. The task chooser precedes compact code-native HOME/MIX/SMC illustrations. SMC stays visibly marked newer-source preview, not in offered builds. Original low-resolution renders remain only as small optional references. Sample controls use the same restrained palette and larger readable guidance.
+
+Base: `e60bd9fa1fe05f740ded6280604583b6afad7264` (current main refreshed before editing; includes already merged PR15). This PR changes presentation only. Both entire operation scripts, every control ID/attribute, catalog and package data remain unchanged. No protected branches, hosting, binaries, SDK files or device operations.
+
+Validation: build and native Node suite PASS; existing browser suite 801/801 PASS (677 admission +34 history +61 bundled +29 workspace); new presentation checks 38/38 PASS; unchanged published two-model populated fixture 26/26 PASS. Independent source/design review PASS. Desktop, mobile and sample views inspected programmatically. Run focused new checks with `python3 tests/presentation-browser.py` in the existing Playwright environment. All tests executed in the agent environment, no Actions dispatch.
+
+Library early check-in images: desktop `libfile_04eef186d14c8191b035f53e1411974d` (`file_00000000603c82308ba50d4dfb6effd0`), mobile `libfile_25127444413c81918c344dc5b7884407` (`file_00000000e04c8230add4a58f2a225732`). No publication attempted. Parent direct notification returned thread not found; IDs provided in commentary and final handoff.
+
+Parent owns final source integration and rollout. Use the existing qualified renderer with the unchanged public two-model catalog; source-only build deliberately keeps the preview catalog empty. Rebind installer qualification to this changed presentation fingerprint with appropriate output review, retain exact firmware URLs/hashes and DEVICE NOT TESTED labels, and verify generated/live bytes through the existing publisher. Do not copy empty source preview over the live catalog. No new hardware/firmware tests are needed solely for this presentation delta; reuse valid unchanged evidence.
