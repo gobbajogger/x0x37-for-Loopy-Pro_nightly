@@ -1,0 +1,8 @@
+In file included from tests/host/project_save_preflight_test.c:5:
+tests/host/../../firmware/src/app/project.c:22:25: error: argument to 'section' attribute is not valid for this target: mach-o section specifier requires a segment and section separated by a comma
+   22 | project_t project_stage X0X_POOL;
+      |                         ^
+tests/host/../../firmware/src/app/plat.h:16:41: note: expanded from macro 'X0X_POOL'
+   16 | #define X0X_POOL __attribute__((section(".pool")))
+      |                                         ^
+1 error generated.

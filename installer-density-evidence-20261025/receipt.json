@@ -1,0 +1,214 @@
+{
+  "base": "e8ffcf04f7eb39c15cdbaa6d646a53aedf2ff07a",
+  "scope": "Source-only presentation, no deployment/catalog/operational MIDI changes. Only installer script difference is removal of the redundant normal project status sentence; busy/error messages and state transitions preserved.",
+  "measurements": {
+    "before": [
+      {
+        "width": 320,
+        "task": "firmware",
+        "height": 4729,
+        "header": 347.765625,
+        "features": 1385.296875,
+        "overflow": false,
+        "words": 608
+      },
+      {
+        "width": 320,
+        "task": "projects",
+        "height": 3002,
+        "header": 347.765625,
+        "features": 0,
+        "overflow": false,
+        "words": 172
+      },
+      {
+        "width": 390,
+        "task": "firmware",
+        "height": 3784,
+        "header": 328.265625,
+        "features": 649.671875,
+        "overflow": false,
+        "words": 608
+      },
+      {
+        "width": 390,
+        "task": "projects",
+        "height": 2742,
+        "header": 328.265625,
+        "features": 0,
+        "overflow": false,
+        "words": 172
+      },
+      {
+        "width": 768,
+        "task": "firmware",
+        "height": 2810,
+        "header": 309.546875,
+        "features": 575.1875,
+        "overflow": false,
+        "words": 612
+      },
+      {
+        "width": 768,
+        "task": "projects",
+        "height": 2071,
+        "header": 309.546875,
+        "features": 0,
+        "overflow": false,
+        "words": 172
+      },
+      {
+        "width": 1280,
+        "task": "firmware",
+        "height": 2779,
+        "header": 298.890625,
+        "features": 589.71875,
+        "overflow": false,
+        "words": 612
+      },
+      {
+        "width": 1280,
+        "task": "projects",
+        "height": 1929,
+        "header": 298.890625,
+        "features": 0,
+        "overflow": false,
+        "words": 172
+      }
+    ],
+    "after": [
+      {
+        "width": 320,
+        "task": "firmware",
+        "height": 3756,
+        "header": 255.953125,
+        "features": 513.828125,
+        "overflow": false,
+        "words": 644
+      },
+      {
+        "width": 320,
+        "task": "samples",
+        "height": 4211,
+        "header": 146,
+        "features": 513.828125,
+        "overflow": false,
+        "words": 467
+      },
+      {
+        "width": 320,
+        "task": "projects",
+        "height": 4419,
+        "header": 146,
+        "features": 513.828125,
+        "overflow": false,
+        "words": 461
+      },
+      {
+        "width": 390,
+        "task": "firmware",
+        "height": 3531,
+        "header": 234.953125,
+        "features": 497.328125,
+        "overflow": false,
+        "words": 644
+      },
+      {
+        "width": 390,
+        "task": "samples",
+        "height": 3850,
+        "header": 146,
+        "features": 497.328125,
+        "overflow": false,
+        "words": 467
+      },
+      {
+        "width": 390,
+        "task": "projects",
+        "height": 4025,
+        "header": 146,
+        "features": 497.328125,
+        "overflow": false,
+        "words": 461
+      },
+      {
+        "width": 768,
+        "task": "firmware",
+        "height": 2373,
+        "header": 196.953125,
+        "features": 510.140625,
+        "overflow": false,
+        "words": 644
+      },
+      {
+        "width": 768,
+        "task": "samples",
+        "height": 2744,
+        "header": 102,
+        "features": 510.140625,
+        "overflow": false,
+        "words": 467
+      },
+      {
+        "width": 768,
+        "task": "projects",
+        "height": 2893,
+        "header": 102,
+        "features": 510.140625,
+        "overflow": false,
+        "words": 461
+      },
+      {
+        "width": 1280,
+        "task": "firmware",
+        "height": 1941,
+        "header": 175.953125,
+        "features": 266.890625,
+        "overflow": false,
+        "words": 644
+      },
+      {
+        "width": 1280,
+        "task": "samples",
+        "height": 2251,
+        "header": 102,
+        "features": 266.890625,
+        "overflow": false,
+        "words": 467
+      },
+      {
+        "width": 1280,
+        "task": "projects",
+        "height": 2329,
+        "header": 102,
+        "features": 266.890625,
+        "overflow": false,
+        "words": 461
+      }
+    ]
+  },
+  "screenshots": {
+    "before-projects-390.png": "60b8abf644a42b1dbe512fb3cb6ffb5f5c544ac0f59117ddc53c6f7e09c747b6",
+    "after-firmware-390.png": "efea414e95e5d282e872598851eddb024b4a6b8dfa652c5339368b5f76810107",
+    "after-projects-1280.png": "58ac861264d83b4ae14391997d4f6e9599b323be3f66b42a3c8badd0c60deb8c",
+    "song-project-workspace-390.png": "4f8d5da5c0681c6380587c16d91447972e1bc42f6768304ddd37f3f719bd78f3",
+    "song-project-workspace-1280.png": "58ac861264d83b4ae14391997d4f6e9599b323be3f66b42a3c8badd0c60deb8c",
+    "before-projects-1280.png": "dcacb74832696f4e544fb4d1b1e5516ad7e0ad0babd168385344d332ab2f7280",
+    "after-firmware-1280.png": "c5541fa2f2f4bed073e1fcd30dd71390bddc2de827dc331b2e72819b14826e1d",
+    "before-firmware-390.png": "500c8df6b4e4e7370124b943dc18a6573230cdc6d4f2a8af30e4b7b87232bb5f",
+    "before-firmware-1280.png": "669527ec339489999a1809c21dd1f4cab8868ba710c0c27c055f561913021ab4",
+    "after-samples-390.png": "78f15c618bac824fb63ba1ae921c61b22eebe831dec4ac47b2973c4320be617a",
+    "after-projects-390.png": "4f8d5da5c0681c6380587c16d91447972e1bc42f6768304ddd37f3f719bd78f3",
+    "after-samples-1280.png": "43f88f15e2c2ecb3e816b823dbeb40878e329ebcd79110b4b5f31bf946cd153d"
+  },
+  "checks": {
+    "native_build": "PASS",
+    "npm_test": "PASS",
+    "density_cross_route": 120,
+    "presentation": 106,
+    "project_workspace": 63,
+    "workspace_safety": 29
+  },
+  "limits": "Headless actual pages and synthetic inputs only. No GUI/device/deployment/hardware or runtime performance proof. Total project-page height is not comparable because shared Closer look/setup was previously hidden on that route.",
+  "preview_delivery": "Private local previews retained; Library prepare_uploads unavailable before transfer, no Library IDs created."
+}

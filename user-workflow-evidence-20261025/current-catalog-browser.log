@@ -1,0 +1,34 @@
+['nightly-54f2ffbc-dev · DEV', 'nightly-4ee8f377-dev · latest DEV']
+LATEST AVAILABLE DEV
+DEV CHECKED
+HARDWARE UNTESTED
+PASS root enters unified installer
+PASS exact current catalog versions, including latest and retained build
+PASS only supported Elite/Pro model choices
+PASS device-unproven badge visible
+PASS current bundled build needs no separate controller file
+PASS invalid/truncated download cannot install or expose link
+PASS elite selection requests its unchanged exact package URL
+PASS elite provenance shows matching exact SHA
+PASS elite consent cannot bypass invalid bytes
+PASS pro selection requests its unchanged exact package URL
+PASS pro provenance shows matching exact SHA
+PASS pro consent cannot bypass invalid bytes
+PASS technical provenance collapsed without hiding risk
+PASS latest downloadable version follows current catalog
+PASS preview source differs explicitly from downloadable version
+PASS install action above explanatory screens
+PASS SMC render label clearly newer-source preview
+PASS 320px firmware no overflow
+PASS 320px sample navigation retains explicit device-read prerequisite
+PASS 320px embedded sample no overflow
+PASS 390px firmware no overflow
+PASS 390px sample navigation retains explicit device-read prerequisite
+PASS 390px embedded sample no overflow
+PASS 1280px firmware no overflow
+PASS 1280px sample navigation retains explicit device-read prerequisite
+PASS 1280px embedded sample no overflow
+PASS legacy buildarchive anchor opens archive
+PASS breaks/ standalone route remains usable
+PASS builds/ standalone route remains usable
+PASS no actual generated page JavaScript errors

@@ -1,0 +1,13 @@
+# Owner installer UX correction
+
+Based on reviewed PR21 commit `63664686825feb883b33aad25d35404be73d376b`, on a fresh isolated branch. PR18 workspace and deployment branch untouched.
+
+Install firmware, Import samples and Songs & projects remain the top tasks. The safety sidebar is replaced with a readable inline installation warning and backup link. Recovery, history, capabilities and exact screen provenance remain available in disclosures. Samples opens with its connection action and keeps write/removal/restore warnings beside Send. Export comes before destructive project actions; reset scope and autosave warnings remain visible. Sharp square vector illustrations are unchanged. Closer look then visible Setup appears on every task, with standalone, SMC and Loopy instructions. The newer SMC screen is plainly labeled Upcoming UI / not in offered builds.
+
+The rejected empty picker was caused by the deliberate source-preview empty catalog, not a discovered live-catalog runtime defect. The empty state is now shown once with a working published-installer link. `preview-catalog.json` and publication state are unchanged. The design review HTML uses the verified live catalog (two actual Elite/Pro nightlies), outside repository outputs, with package downloads and MIDI access disabled. Its disabled controller verification is explicitly labeled. No qualification record was invented. See catalog-provenance.json for the exact HTTP/GitHub match.
+
+Independent design reviewer inspected actual task96 after images and all three revised desktop/mobile routes, raised sample containment/dead-height and misleading review-status regressions, and verified their repairs. Independent DOM/a11y assessment covers four widths and three routes. See reports and receipt.json. Source operational changes are limited to display strings and clearing redundant status narration; MIDI/sample/project protocols, admission, compatibility, state retention and destructive confirmations remain intact. Project script is byte-identical.
+
+Guidance read as plain text: Impeccable 4.7.0 SKILL, Operate, critique, distill and craft-floor, plus Vercel web-interface guidelines. No Impeccable runtime, hooks, binary detector, overlay or new dependency installed. Two independent bounded reviewers were used. Questions skipped because the implementation brief and delegation were explicit.
+
+Library single-file delivery succeeded for interactive HTML plus six desktop/mobile PNG previews. Exact IDs are in library-delivery.json. Screenshots remain in private Library, not the public source repository. No merge/deploy/public binaries or hardware operation occurred.

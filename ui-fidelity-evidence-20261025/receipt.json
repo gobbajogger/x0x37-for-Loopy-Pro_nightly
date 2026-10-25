@@ -1,0 +1,79 @@
+{
+  "stage": "PR18 faithful native-layout correction; source-only, review-ready",
+  "base_commit": "c778be046753101e1fab0c7004c479a07f3e00ff",
+  "base_tree": "37da7a066701781ff9e1f4e78e86d234e60a4bc3",
+  "reviewed_html_blob": "5f9e4d14db9b9df423746a169119f4deaedd3448",
+  "public_dev_source": "54f2ffbc3124f7449a69067dc8215a2d91a2e675",
+  "historical_smc_source": "3862175d5815d2bd505ab04ca1c8e1868761a2e7",
+  "smc_reference_gap": "Pending redesign output unavailable; explicitly historical image not offered firmware.",
+  "validation": {
+    "build": "PASS",
+    "npm_test": "PASS",
+    "presentation": {
+      "checks": 66,
+      "failed": 0
+    },
+    "workspace_browser": {
+      "checks": 29,
+      "failed": 0
+    },
+    "populated_catalog": {
+      "checks": 26,
+      "failed": 0
+    },
+    "reused_exact_operation_inputs": {
+      "admission": 677,
+      "history": 34,
+      "bundled": 61,
+      "failed": 0
+    }
+  },
+  "independent_review": "PASS: independent-review.json binds source blob, exact unchanged operation inputs and screenshot hashes",
+  "previews": [
+    {
+      "status": "succeeded",
+      "path": "/pr18-ui-faithful-desktop.png",
+      "file_id": "file_000000000ff08230b6d33fe762c94b7a",
+      "library_file_id": "libfile_2c8ffa4e605c8191952323d1d811e597",
+      "file_name": "pr18-ui-faithful-desktop.png",
+      "current_version_number": 0,
+      "mime_type": "image/png",
+      "library_artifact_type": "image",
+      "file_size_bytes": 203770,
+      "local_path": "/Users/mac/Documents/Codex/2026-10-25/task-52/pr18-ui-faithful-desktop.png",
+      "sha256": "fd295009ba882e73d984d56cf47d81496964255e14284b4de1fdea9dfd1c796a"
+    },
+    {
+      "status": "succeeded",
+      "path": "/pr18-ui-faithful-mobile.png",
+      "file_id": "file_0000000034c881fdaadb95d968aa3df6",
+      "library_file_id": "libfile_e45d2e3d0bb481919844588dbdb2bbc6",
+      "file_name": "pr18-ui-faithful-mobile.png",
+      "current_version_number": 0,
+      "mime_type": "image/png",
+      "library_artifact_type": "image",
+      "file_size_bytes": 167801,
+      "local_path": "/Users/mac/Documents/Codex/2026-10-25/task-52/pr18-ui-faithful-mobile.png",
+      "sha256": "5647c84bdbd3a4c35fd462e0ea33ae9eb257662eb4353061f377a468e3d96920"
+    },
+    {
+      "status": "succeeded",
+      "path": "/pr18-ui-faithful-closeup.png",
+      "file_id": "file_00000000f9c481fd8b87733c69be2c21",
+      "library_file_id": "libfile_d0e0111abca48191a75364ea4ab7b765",
+      "file_name": "pr18-ui-faithful-closeup.png",
+      "current_version_number": 0,
+      "mime_type": "image/png",
+      "library_artifact_type": "image",
+      "file_size_bytes": 113699,
+      "local_path": "/Users/mac/Documents/Codex/2026-10-25/task-52/pr18-ui-faithful-closeup.png",
+      "sha256": "d3b01a5ab757dd0de1ab7daffffb122f355ef86db21bc2fa53906d4ad1905def"
+    }
+  ],
+  "deployment": "NOT PERFORMED; parent owns owner check-in, qualified fingerprint binding and rollout",
+  "blockers": [],
+  "limitations": [
+    "Synthetic shown states; smooth outlines differ from quantized device antialiasing; not byte-identical pixels or hardware proof.",
+    "Source preview empty catalog; local screenshot fixture uses unchanged public catalog; never publish empty source preview over live catalog."
+  ]
+}

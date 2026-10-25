@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-6df0f81f-dev",
+  "latest": "nightly-8a74ff52-dev",
   "versions": [
+    {
+      "version": "nightly-8a74ff52-dev",
+      "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "8a74ff52cba842c3f2d8365600286f94e6bccdf0",
+      "source_tree": "33d6950b0a378525f2a8b592672275625893239f",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "d7767bebf1413b5d6fb918ba3893335a7b9fae86078ce895aa3b72df48bedb93",
+          "size": 651396,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/82622c1f9561bd23bbf785c165d66e11e68820ca/artifacts/nightly/dev-20261025-8a74ff52/d7767bebf1413b5d6fb918ba3893335a7b9fae86078ce895aa3b72df48bedb93/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "b0cecbcff42589cdc71231a16098b7cfc8301a8562aba25362d552b3dcdc5fa0",
+          "size": 651392,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/82622c1f9561bd23bbf785c165d66e11e68820ca/artifacts/nightly/dev-20261025-8a74ff52/b0cecbcff42589cdc71231a16098b7cfc8301a8562aba25362d552b3dcdc5fa0/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST — Elite and Pro (F08)",
+      "description": "Software-checked DEV firmware from validated source 8a74ff52 (F08 BF-004 ownership-gated Note Off / BREAK). Bundled controller. DEVICE NOT TESTED. Stage-4 blank package hashes aab3cd8e/066e2b1a; page serves bundled installable bytes. Content-tree 1a1e7a22… matches DEV CHECKED records. Package digests differ from F07 because firmware tree changed (581d1cb2…). Installer fingerprint uses current nightly main receipt (8caf8724…); FP-001 dual-digest and BF-001 selection regressions still PASS. Supersedes nightly-6df0f81f-dev in the flashable picker.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/232"
+    },
     {
       "version": "nightly-6df0f81f-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
@@ -33,7 +65,7 @@
         }
       },
       "title": "DEV / HARDWARE TEST — Elite and Pro (F07)",
-      "description": "Software-checked DEV firmware from validated source 6df0f81f (F07 FP-001 installer dual-digest reconciliation). Bundled controller. DEVICE NOT TESTED. Stage-4 blank package hashes d3b4cac3/0b09605f; page serves bundled installable bytes. Content-tree 69ccb3d7… matches DEV CHECKED records. Package digests match prior F06/F05/F04 publish (firmware application bytes unchanged vs audited tip 1325f5d3 / tree b02108f7…). Installer fingerprint uses current nightly main receipt (8caf8724…); FP-001 dual-digest and BF-001 selection regressions still PASS. Supersedes nightly-1325f5d3-dev in the flashable picker (same package SHA-256 keys).",
+      "description": "Software-checked DEV firmware from validated source 6df0f81f (F07 FP-001). Bundled controller. DEVICE NOT TESTED. Retained after F08 latest promotion.",
       "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/222"
     },
     {

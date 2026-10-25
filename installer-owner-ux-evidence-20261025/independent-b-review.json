@@ -1,0 +1,609 @@
+{
+  "method": "Independent B: rendered DOM/accessibility/source comparison; no Impeccable executable or overlay per owner restriction",
+  "checks": [
+    {
+      "check": "320/firmware no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "320/firmware shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "320/firmware closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "320/firmware firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/firmware samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/firmware projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/firmware active route semantic",
+      "pass": true
+    },
+    {
+      "check": "320/firmware steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "320/firmware raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "320/firmware upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "320/firmware visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "320/samples no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "320/samples shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "320/samples closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "320/samples firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/samples samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/samples projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/samples active route semantic",
+      "pass": true
+    },
+    {
+      "check": "320/samples steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "320/samples raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "320/samples upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "320/samples visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "320/samples frame reflow",
+      "pass": true
+    },
+    {
+      "check": "320/samples enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "320/projects no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "320/projects shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "320/projects closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "320/projects firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/projects samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/projects projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "320/projects active route semantic",
+      "pass": true
+    },
+    {
+      "check": "320/projects steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "320/projects raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "320/projects upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "320/projects visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "320/projects frame reflow",
+      "pass": true
+    },
+    {
+      "check": "320/projects enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "390/firmware no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "390/firmware shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "390/firmware closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "390/firmware firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/firmware samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/firmware projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/firmware active route semantic",
+      "pass": true
+    },
+    {
+      "check": "390/firmware steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "390/firmware raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "390/firmware upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "390/firmware visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "390/samples no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "390/samples shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "390/samples closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "390/samples firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/samples samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/samples projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/samples active route semantic",
+      "pass": true
+    },
+    {
+      "check": "390/samples steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "390/samples raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "390/samples upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "390/samples visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "390/samples frame reflow",
+      "pass": true
+    },
+    {
+      "check": "390/samples enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "390/projects no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "390/projects shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "390/projects closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "390/projects firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/projects samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/projects projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "390/projects active route semantic",
+      "pass": true
+    },
+    {
+      "check": "390/projects steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "390/projects raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "390/projects upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "390/projects visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "390/projects frame reflow",
+      "pass": true
+    },
+    {
+      "check": "390/projects enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "768/firmware no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "768/firmware shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "768/firmware closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "768/firmware firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/firmware samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/firmware projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/firmware active route semantic",
+      "pass": true
+    },
+    {
+      "check": "768/firmware steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "768/firmware raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "768/firmware upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "768/firmware visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "768/samples no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "768/samples shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "768/samples closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "768/samples firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/samples samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/samples projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/samples active route semantic",
+      "pass": true
+    },
+    {
+      "check": "768/samples steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "768/samples raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "768/samples upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "768/samples visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "768/samples frame reflow",
+      "pass": true
+    },
+    {
+      "check": "768/samples enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "768/projects no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "768/projects shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "768/projects closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "768/projects firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/projects samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/projects projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "768/projects active route semantic",
+      "pass": true
+    },
+    {
+      "check": "768/projects steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "768/projects raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "768/projects upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "768/projects visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "768/projects frame reflow",
+      "pass": true
+    },
+    {
+      "check": "768/projects enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware active route semantic",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "1280/firmware visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "1280/samples no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "1280/samples shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "1280/samples closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "1280/samples firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/samples samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/samples projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/samples active route semantic",
+      "pass": true
+    },
+    {
+      "check": "1280/samples steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "1280/samples raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "1280/samples upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "1280/samples visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "1280/samples frame reflow",
+      "pass": true
+    },
+    {
+      "check": "1280/samples enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "1280/projects no outer horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "1280/projects shared closer look/setup visible",
+      "pass": true
+    },
+    {
+      "check": "1280/projects closer look precedes setup",
+      "pass": true
+    },
+    {
+      "check": "1280/projects firmware top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/projects samples top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/projects projects top touch target",
+      "pass": true
+    },
+    {
+      "check": "1280/projects active route semantic",
+      "pass": true
+    },
+    {
+      "check": "1280/projects steps visible without disclosure",
+      "pass": true
+    },
+    {
+      "check": "1280/projects raw feature hashes absent",
+      "pass": true
+    },
+    {
+      "check": "1280/projects upcoming honest label",
+      "pass": true
+    },
+    {
+      "check": "1280/projects visible keyboard focus",
+      "pass": true
+    },
+    {
+      "check": "1280/projects frame reflow",
+      "pass": true
+    },
+    {
+      "check": "1280/projects enabled frame buttons >=44px",
+      "pass": true
+    },
+    {
+      "check": "no browser script errors",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "script_diffs": {
+    "web/x0x_installer.html": "--- base\n+++ candidate\n@@ -125,7 +125,7 @@\n     ctlbundlebad: \"Bundled Bluetooth controller is missing, damaged or does not match this build.\",\n     evidencelink: \"Development validation record\", archiveheading: \"Build history\", archiveintro: \"SHA-verified builds are separated from source-only checkpoints, unavailable archives and failed builds. A source commit alone is not flashable firmware.\",\n     choosebuild: \"Select this build\", otherbuilds: \"Other checkpoints \u2014 not available for installation\", unapproved: \"No model-specific development/release validation for this package. Automatic installation is disabled.\",\n-    title: \"Firmware & samples.\",\n+    title: \"Install firmware\",\n     intro: \"Firmware for SMK-37 and FM-1. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.\",\n     warn: \"Do not unplug the USB cable while writing.\",\n     install: \"Install firmware\", other: \"\u65e5\u672c\u8a9e\", connect: \"Connect USB\",\n@@ -142,7 +142,7 @@\n     bricklink: \"recovering an FM-1 that won't start (manual)\",\n     beta: \"This is a beta and may be unstable. The author accepts no responsibility if your device is damaged or misbehaves because of this custom firmware. Use it at your own risk.\",\n     back: \"To move to stock or another custom firmware, drop its .fwsc below, or use M-VAVE's M-UPGRADE.\",\n-    noversion: \"No published packages on this site yet. Drop any .fwsc below to upgrade, downgrade, restore stock, or switch to another custom build.\",\n+    noversion: \"No packages are included in this source preview. Open the published NIGHTLY installer for available builds, or choose a local package below.\",\n     stockh: \"Any .fwsc (stock, other custom, or a local build)\",\n     stockwhy: \"Upgrade, downgrade, switch to another custom firmware, or return to stock the same way. Packages keep the keyboard's model name; calibration and pairing are never touched. If sample slots would be lost, they are saved to a .x0xslots file first.\",\n     stock1: \"For stock, get the official .fwsc for your model:\",\n@@ -657,7 +657,7 @@\n     image = null; selectedProduct = null;\n     $(\"go\").disabled = true;\n     $(\"pkgmeta\").textContent = \"\";\n-    say(t(\"noversion\"));\n+    say(\"\");\n     // Still show SMK stock links when the catalog is empty.\n     $(\"stock\").hidden = false;\n     $(\"stocklinks\").textContent = \"\";\n@@ -934,7 +934,7 @@\n     $(name + \"-tab\").toggleAttribute(\"aria-current\", task === name);\n     if (task === name) $(name + \"-tab\").setAttribute(\"aria-current\", \"page\");\n   }\n-  $(\"workspace-message\").textContent = task === \"samples\" ? \"Read slots first, prepare your samples, then send when ready.\" : task === \"projects\" ? \"\" : \"\";\n+  $(\"workspace-message\").textContent = \"\";\n   if (location.hash === \"#buildarchive\") $(\"buildarchive\").open = true;\n }\n window.addEventListener(\"hashchange\", navigateWorkspace);\n",
+    "web/x0x_projects.html": "",
+    "web/x0x_breaks.html": "--- base\n+++ candidate\n@@ -23,7 +23,7 @@\n   const list = $(\"list\");\n   list.textContent = \"\";\n   if (!readOk)\n-    list.innerHTML = `<div class=\"empty\">${link ? \"Reading\u2026\" : \"Connect to see the loops on the FM-1.\"}</div>`;\n+    list.innerHTML = `<div class=\"empty\">${link ? \"Reading\u2026\" : \"Connect to read your keyboard\u2019s sample slots.\"}</div>`;\n   else if (!loops.length)\n     list.innerHTML = '<div class=\"empty\">No loops yet. Add some below.</div>';\n   loops.forEach((l, i) => {\n"
+  },
+  "errors": [],
+  "limits": "Headless Chromium, blocked external network and device access. No hardware, qualification, deployment, or performance claim. Human pixel reviewer separate."
+}

@@ -1,0 +1,31 @@
+{
+  "source": "5ff1a5ce7d05c4e85cb01307556158be9992bc65",
+  "base": "08b7e2a9ff01bfcfe4edb439ad43302af8c8ad8d",
+  "environment": {
+    "node": "24.14.1",
+    "npm": "11.11.0",
+    "python": "3.9 Playwright /tmp/task15-testenv/bin/python",
+    "browser": "Chromium148.0.7778.96 headless"
+  },
+  "passed": {
+    "npm test": "exit0",
+    "presentation-browser.py": 106,
+    "workspace-browser.py": 29,
+    "bundled-browser.py": 61,
+    "density-browser.py": 120,
+    "project-workspace-browser.py": 63,
+    "build-preview --check": "PASS",
+    "preview-safety.py": "PASS phone/desktop three routes all frames fetch/MIDI reject/action controls disabled zero HTTP requests",
+    "browser-admission.py": 677,
+    "browser-admission_exit": 0
+  },
+  "review": {
+    "safeguards": "No operation handler/predicate changes. Model/hash/controller admission, consent, first-install warning and busy navigation retained.",
+    "fixed": "Whole-project intro restored explicit whole live project + arrangement scope after independent phrase regression.",
+    "impeccable_detector": "Actual attempt missing .agents/skills/impeccable/scripts/impeccable; no installer/hooks run."
+  },
+  "limits": [
+    "Synthetic connected/disconnected/error paths; no device mutation or hardware validation",
+    "Pixel design acceptance owned independently by design reviewer"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "stage": "Source-only installer user workflow revision; no merge or deployment",
+  "recovery_base": "160b905cbf3c985d5c554f66dbe4418c22e06825",
+  "original_pr18_head": "c778be046753101e1fab0c7004c479a07f3e00ff",
+  "original_frozen_patch_sha256": "66205166afc4769a58fdd6664720521230b0192f75255321d2115c78e9f76490",
+  "reviewed_html_blob": "2f82c0cfd5e8b1caef7f511a95f4570c6e340ab1",
+  "live_catalog": {
+    "published_ref": "364c55092b8a40fcb683c3008074c508a6d75bb4",
+    "sha256": "1b6dca6cf076d282788b5ff6e7abd4eb376f8b5844f7e899aa283e1f5288be45",
+    "latest": "nightly-4ee8f377-dev",
+    "latest_source": "4ee8f37714b0892f2c70d157fda9328da393e987",
+    "git_and_live_bytes_equal": true,
+    "source_preview_empty_catalog_unchanged": true
+  },
+  "native_smc_reference": {
+    "source": "b8794f9f10b0be68bf21579d43d4a6fef6cd4d72",
+    "png_sha256": "62fa9d109253140a425469c3d0d375f9c5180ce47666df77c06c0f96d128d835",
+    "vector_sha256": "cec812ad0d5eb7174291ac91bc646e1eda0abc6d3b0154af3cae0ca6b96f260a",
+    "method": "Isolated draw-command capture; original Barlow outlines; native240x240 geometry. Host synthetic state, no hardware proof."
+  },
+  "tests": {
+    "npm_test": "PASS",
+    "presentation": 98,
+    "workspace_browser": 29,
+    "current_catalog_browser": 30,
+    "independent_browser": 67,
+    "scope": "Actual generated pages; package bytes held or intentionally invalid, simulated MIDI boundaries, no device. Final copy-only/roadmap delta checked independently."
+  },
+  "previews": [
+    {
+      "file_name": "installer-workflow-desktop.png",
+      "library_file_id": "libfile_a08b6082be10819196fa3b5c9eaefda8",
+      "file_id": "file_000000003ab081fdab69317270766f72",
+      "current_version_number": 0,
+      "sha256": "2ecace779dc4d6015ed7d19c32dd37aa9dc871e31e8ffa3539f579c780ef08c0"
+    },
+    {
+      "file_name": "installer-workflow-mobile.png",
+      "library_file_id": "libfile_d5922ea65f5c81919ded230a85995c4f",
+      "file_id": "file_00000000ad888230b7a743dfebe99d86",
+      "current_version_number": 0,
+      "sha256": "ef3be5ec117efc651225cd0e4855709b84bbeb6d664da7359d3f526f2fed7994"
+    }
+  ],
+  "remaining_dependencies": [
+    "Final task64 drum-label/Pause-lock source commit and native render receipt are pending; remote PR168 still b8794f9 at observation. Current preview explicitly says these later edits are not shown.",
+    "Parent chooses one candidate: original PR18 or recovery PR19; never merge both.",
+    "Separate publisher must rebind final presentation fingerprint through unchanged qualified renderer with latest current catalog; do not deploy empty source catalog."
+  ],
+  "roadmap": {
+    "has_issues": true,
+    "has_discussions": false,
+    "implementation": "Links to existing Issues and GitHub reactions only; no new storage, authentication or permission changes."
+  }
+}

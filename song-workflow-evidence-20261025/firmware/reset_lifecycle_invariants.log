@@ -1,0 +1,2 @@
+project_runtime: reset, load, cancel, invalid, transfer, save and sample preservation ok
+extended reset external-clock/record/autosave/reboot invariants: ok
