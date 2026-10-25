@@ -3595,6 +3595,36 @@
       "missing_gate": "Independent NIGHTLY Website QA tests exact PR14 source and PR13 full website root; sole Main Merger separately integrates approved work; sole Pages publisher verifies qualifying prehardware rights, safety, immutable host and live bytes. Catalog must never grant installability.",
       "evidence_commit": "7515d147e4817248dece608c73fd7fb171e996f2",
       "source_identity_note": "Website Git PR14 HEAD 7515d147e4817248dece608c73fd7fb171e996f2 ROOT 7db90a3810f790d3b939b4cdc34a768ff6e9200a; bounded reviewer evidence docs/repair-evidence/catalog-approval-denials-20261025; separate PR9 source producer, PR12 Pages staging and PR13 Catalog owners retained."
+    },
+    {
+      "id": "nightly-browser-pr14-r2-hardware-facts-independent-scoped-review-20261025",
+      "title": "PR14 R2 repairs malformed DEV hardware-fact admission; independent scoped QA reviewed, complete website QA incomplete",
+      "source_ref": "lane/catalog-approval-denials-20261025",
+      "source_commit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+      "source_tree": "e1255056dff9ebdcb2d1836e6e139dfa506f8995",
+      "source_time": "2026-10-25T01:45:53Z",
+      "date": "2026-10-25",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Formal Independent NIGHTLY Website QA PR14 review 5641199985 at exact R2 SHA; earlier review 5640953891 NEEDS CHANGES on R1 only. Catalog producer did not run current full-root Node/browser tests.",
+        "command": "Independent Node v22.16.0 node /mnt/data/loopyx0x37_pr14_qa_20261025.js EXIT 0, 532 checks (110 expected admissions/422 denials); independently sourced V8 520 assertions and 216 cached-gate scenarios; R1's 56 malformed metadata admissions rejected in R2 source predicates. Native exact-root npm test/build/test:browser and full Chromium NOT RUN by independent QA due git ls-remote DNS exit 128.",
+        "result": "INDEPENDENT QA SCOPED REVIEWED for DEV hardware-fact source repair; FULL WEBSITE/BROWSER QA INCOMPLETE. Producer reports full-site green, but that is not independent full-root acceptance. No live HTTPS binary bytes, lawfully hosted artifacts, OTA hardware, or distribution PASS was verified."
+      },
+      "description": "R2 source/generated installer now refuse any present device_verified/hardware_tested value other than literal false at version or package scope, preserve absent/false DEV behavior, and deny stale cached admission in scoped tests. This is a proposed unmerged browser-source correction, not currently served installation evidence or a new firmware build. Old R1 negative remains unmodified historical evidence.",
+      "missing_gate": "Existing sole Website Main Merger verifies combined-root and full native/browser acceptance before reviewed integration. Sole Pages publisher separately qualifies lawful package/controller/model/hash/CRC/backup/restore/OTA and immutable hosting with live HTTPS bytes; physical owner PASS plus separate approval remains required for production.",
+      "source_identity_note": "Website PR14 source HEAD 593c0fc3c18200fd887373bff4602bfd322f0d54 and root e1255056dff9ebdcb2d1836e6e139dfa506f8995. Formal independent R2 scoped review 5641199985 dated 2026-10-25T02:39:15Z. Existing PR9 browser OTA unit-continuity findings remain separately owned."
     }
   ],
   "policy": {
@@ -3605,7 +3635,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 127
+    "source_or_historical_checkpoints": 128
   },
   "versioning": {
     "firmware_product_version": {

@@ -164,4 +164,25 @@ mustReject('R37 SHA forged',rows=>{rows[r37Index].source_commit='f'.repeat(40)})
 mustReject('R37 root forged',rows=>{rows[r37Index].source_tree='f'.repeat(40)});
 mustReject('R37 download fabricated',rows=>{rows[r37Index].installable=true});
 mustReject('R37 device PASS fabricated',rows=>{rows[r37Index].device_verified=true});
-console.log('PASS: ' + lock.rows.length + ' SHA256-pinned historical records with R37 continuity negatives; safe append');
+// R39: independently scoped website source review remains not installable.
+const r39Id='nightly-browser-pr14-r2-hardware-facts-independent-scoped-review-20261025';
+assert.ok(lock.rows.length>=128,'128 history rows must be pinned');
+const r39Index=original.findIndex(x=>x.id===r39Id);
+assert.equal(r39Index,127,'R39 appended last');
+const r39=original[r39Index];
+assert.equal(r39.source_commit,'593c0fc3c18200fd887373bff4602bfd322f0d54');
+assert.equal(r39.source_tree,'e1255056dff9ebdcb2d1836e6e139dfa506f8995');
+assert.equal(r39.status,'validation-evidence-only');
+assert.deepEqual(r39.models,['elite','pro']);
+assert.equal(r39.installable,false);assert.equal(r39.device_verified,false);
+assert.equal(r39.artifact_distribution_approved,false);assert.equal(r39.artifact_bytes_independently_verified,false);
+assert.match(r39.reported_checks.result,/INDEPENDENT QA SCOPED REVIEWED/);
+assert.ok(r39.reported_checks.result.includes('FULL WEBSITE/BROWSER QA INCOMPLETE'));
+mustReject('R39 QA event deleted',rows=>rows.splice(r39Index,1));
+mustReject('R39 source SHA forged',rows=>rows[r39Index].source_commit='f'.repeat(40));
+mustReject('R39 source tree forged',rows=>rows[r39Index].source_tree='f'.repeat(40));
+mustReject('R39 QA scope forged',rows=>rows[r39Index].reported_checks.result='FULL SITE PASS');
+mustReject('R39 download fabricated',rows=>rows[r39Index].installable=true);
+mustReject('R39 device PASS fabricated',rows=>rows[r39Index].device_verified=true);
+mustReject('R39 rights grant fabricated',rows=>rows[r39Index].artifact_distribution_approved=true);
+console.log('PASS: ' + lock.rows.length + ' SHA256-pinned historical records with R39 continuity negatives; safe append');

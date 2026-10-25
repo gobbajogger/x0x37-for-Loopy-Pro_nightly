@@ -728,7 +728,7 @@ run('r36-pages-commit-forged-REJECT',editR36(row=>{row.source_commit='f'.repeat(
 const r37Id='nightly-browser-pr14-catalog-approval-denials-source-20261025';
 const editR37=fn=>edit(j=>{const row=j.history[126];assert.equal(row.id,r37Id);fn(row,j);});
 run('r37-source-only-proposed-repair',editR37((row,j)=>{
- assert.equal(j.counts.source_or_historical_checkpoints,127);
+ assert.ok(j.counts.source_or_historical_checkpoints >= 127);
  assert.equal(row.source_commit,'7515d147e4817248dece608c73fd7fb171e996f2');
  assert.equal(row.source_tree,'7db90a3810f790d3b939b4cdc34a768ff6e9200a');
  assert.equal(row.status,'source-only');
@@ -746,3 +746,26 @@ run('r37-forged-download-REJECT',editR37(row=>row.installable=true));
 run('r37-forged-hardware-PASS-REJECT',editR37(row=>row.device_verified=true));
 run('r37-forged-rights-PASS-REJECT',editR37(row=>row.artifact_distribution_approved=true));
 run('r37-forged-verified-bytes-REJECT',editR37(row=>row.artifact_bytes_independently_verified=true));
+
+// R39: source-specific independent QA is not full-root installer or firmware approval.
+const r39Id='nightly-browser-pr14-r2-hardware-facts-independent-scoped-review-20261025';
+const editR39=fn=>edit(j=>{const row=j.history[127];assert.equal(row.id,r39Id);fn(row,j);});
+run('r39-independent-scope-and-no-flash',editR39((row,j)=>{
+ assert.ok(j.counts.source_or_historical_checkpoints>=128);
+ assert.equal(row.source_commit,'593c0fc3c18200fd887373bff4602bfd322f0d54');
+ assert.equal(row.source_tree,'e1255056dff9ebdcb2d1836e6e139dfa506f8995');
+ assert.equal(row.status,'validation-evidence-only');
+ assert.deepEqual(row.models,['elite','pro']);
+ assert.equal(row.installable,false);assert.equal(row.device_verified,false);
+ assert.equal(row.artifact_distribution_approved,false);assert.equal(row.artifact_bytes_independently_verified,false);
+ assert.match(row.reported_checks.result,/INDEPENDENT QA SCOPED REVIEWED/);
+ assert.ok(row.reported_checks.result.includes('FULL WEBSITE/BROWSER QA INCOMPLETE'));
+}),true);
+run('r39-history-deleted-REJECT',editR39((row,j)=>{j.history.splice(127,1);j.counts.source_or_historical_checkpoints--;}));
+run('r39-false-full-QA-REJECT',editR39(row=>{row.reported_checks.result='FULL WEBSITE PASS';}));
+run('r39-forged-source-REJECT',editR39(row=>{row.source_commit='f'.repeat(40);}));
+run('r39-forged-root-REJECT',editR39(row=>{row.source_tree='f'.repeat(40);}));
+run('r39-false-download-REJECT',editR39(row=>{row.installable=true;}));
+run('r39-false-device-PASS-REJECT',editR39(row=>{row.device_verified=true;}));
+run('r39-false-rights-PASS-REJECT',editR39(row=>{row.artifact_distribution_approved=true;}));
+run('r39-false-served-bytes-REJECT',editR39(row=>{row.artifact_bytes_independently_verified=true;}));
