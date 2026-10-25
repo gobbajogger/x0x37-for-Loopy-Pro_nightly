@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-af494784-dev",
+  "latest": "nightly-4f96b0d9-dev",
   "versions": [
+    {
+      "version": "nightly-4f96b0d9-dev",
+      "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "4f96b0d9f5f11f700ea3fc935800b8714e11f35d",
+      "source_tree": "7b35932d5f0adbceeb35111f2136855aa54ebc9b",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "4841110a274e2212d56abf9234cf0d921b45d915d1ff25fad0727e52edb7d18a",
+          "size": 651396,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/02f4f4f48408db96e01b143d5410b7fb00a5a70a/artifacts/nightly/dev-20261025-4f96b0d9/4841110a274e2212d56abf9234cf0d921b45d915d1ff25fad0727e52edb7d18a/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "b35d587557d9f1d4c72b2c81bc944a1dd129bee625e98ae35f06fe7f653fc720",
+          "size": 651392,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/02f4f4f48408db96e01b143d5410b7fb00a5a70a/artifacts/nightly/dev-20261025-4f96b0d9/b35d587557d9f1d4c72b2c81bc944a1dd129bee625e98ae35f06fe7f653fc720/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST — Elite and Pro (F11)",
+      "description": "Software-checked DEV firmware from validated source 4f96b0d9 (F11 BF-007 legacy BD PAN motion migration order). Bundled controller. DEVICE NOT TESTED. Stage-4 blank package hashes 829bb6da/d2186cb0; page serves bundled installable bytes. Content-tree f27c89e1… / firmware-tree 5b1a21f0… match DEV CHECKED records. Firmware nightly remains diverged (FF refused at stage 5); publish authenticates 4f96b0d9. Installer fingerprint uses current nightly main receipt; FP-001 dual-digest and BF-001–BF-007 host regressions still PASS.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/264"
+    },
     {
       "version": "nightly-af494784-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
