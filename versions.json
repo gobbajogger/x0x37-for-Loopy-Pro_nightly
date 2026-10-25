@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-092589b8-dev",
+  "latest": "nightly-b48cd800-dev",
   "versions": [
+    {
+      "version": "nightly-b48cd800-dev",
+      "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "b48cd8002a6d4d509010e04b8a8f1cfcbbdee64a",
+      "source_tree": "16b3caf29fc3548c290ce97afaed9f44214c1ab5",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "81aaf361cb11717ad0bcee325453e361064506e4d6720781e8eb8ffcc1dadae2",
+          "size": 651396,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/646631f5a8b534a483f2fe484054440ea03c8228/artifacts/nightly/dev-20261025-b48cd800/81aaf361cb11717ad0bcee325453e361064506e4d6720781e8eb8ffcc1dadae2/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "e0ac6b68e117ac42eac97944430d1a7ed2cacfba38336676096fa8a09f57319a",
+          "size": 651392,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/646631f5a8b534a483f2fe484054440ea03c8228/artifacts/nightly/dev-20261025-b48cd800/e0ac6b68e117ac42eac97944430d1a7ed2cacfba38336676096fa8a09f57319a/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST — Elite and Pro (F14 tip)",
+      "description": "Software-checked DEV firmware from validated source b48cd800 (F14 tip packages; BF-013 already on nightly). Bundled controller. DEVICE NOT TESTED. Stage-4/prerelease blank package hashes 4dc49bad/3f3b5c00; page serves bundled installable bytes. Content-tree 4eef581e… / firmware-tree 1924e2cf… match DEV CHECKED records. Supersedes nightly-092589b8-dev (LX-73). Does not publish 07773682 (RAM fail) or #322/656d70e9 packages. Stage-6 Elite install PASS on Mac; hardware_tested stays false for the nightly page. Production main/Pages unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/tree/aae7a287456948eead257e894e2c910b44126403/evidence/f14-tip-packages"
+    },
     {
       "version": "nightly-092589b8-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
