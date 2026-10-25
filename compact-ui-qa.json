@@ -1,0 +1,886 @@
+{
+  "outcome": "PASS",
+  "source": "ee1ba86ecc4fae4ec2bfec27927b1d60b3f6fdcf",
+  "runtime": "1975a0295aab39c616e249f6ac435282db430544",
+  "base_pages": "d6a237c43cb6830d8cf0cb51e567181821630a28",
+  "checks": [
+    {
+      "label": "current catalog exact bytes retained",
+      "pass": true
+    },
+    {
+      "label": "published F07 catalog unchanged",
+      "pass": true
+    },
+    {
+      "label": "embedded current catalog exact semantic equality",
+      "pass": true
+    },
+    {
+      "label": "install local links/assets resolve",
+      "pass": true,
+      "details": []
+    },
+    {
+      "label": "breaks local links/assets resolve",
+      "pass": true,
+      "details": []
+    },
+    {
+      "label": "projects local links/assets resolve",
+      "pass": true,
+      "details": []
+    },
+    {
+      "label": "web/fm1pkg.js unchanged operation closure matches live predecessor",
+      "pass": true
+    },
+    {
+      "label": "web/fm1ota.js unchanged operation closure matches live predecessor",
+      "pass": true
+    },
+    {
+      "label": "web/x0x_breaks.js unchanged operation closure matches live predecessor",
+      "pass": true
+    },
+    {
+      "label": "320 exact F07 default selection",
+      "pass": true
+    },
+    {
+      "label": "320 readable captions retain exact version values",
+      "pass": true
+    },
+    {
+      "label": "320 consent gate denies initial install",
+      "pass": true
+    },
+    {
+      "label": "320 truthful disconnected status",
+      "pass": true
+    },
+    {
+      "label": "320 upcoming SMC is explicitly not offered",
+      "pass": true
+    },
+    {
+      "label": "320 firmware selected task visible",
+      "pass": true
+    },
+    {
+      "label": "320 firmware page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "320 firmware Setup visible",
+      "pass": true
+    },
+    {
+      "label": "320 firmware firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 firmware samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 firmware projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 samples selected task visible",
+      "pass": true
+    },
+    {
+      "label": "320 samples page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "320 samples Setup visible",
+      "pass": true
+    },
+    {
+      "label": "320 samples firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 samples samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 samples projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 samples write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "320 projects selected task visible",
+      "pass": true
+    },
+    {
+      "label": "320 projects page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "320 projects Setup visible",
+      "pass": true
+    },
+    {
+      "label": "320 projects firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 projects samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 projects projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "320 projects write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "320 exact nightly-6df0f81f-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-6df0f81f-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-6df0f81f-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "320 exact nightly-6df0f81f-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-6df0f81f-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-6df0f81f-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "320 exact nightly-54f2ffbc-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-54f2ffbc-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-54f2ffbc-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "320 exact nightly-54f2ffbc-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-54f2ffbc-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "320 nightly-54f2ffbc-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "390 exact F07 default selection",
+      "pass": true
+    },
+    {
+      "label": "390 readable captions retain exact version values",
+      "pass": true
+    },
+    {
+      "label": "390 consent gate denies initial install",
+      "pass": true
+    },
+    {
+      "label": "390 truthful disconnected status",
+      "pass": true
+    },
+    {
+      "label": "390 upcoming SMC is explicitly not offered",
+      "pass": true
+    },
+    {
+      "label": "390 firmware selected task visible",
+      "pass": true
+    },
+    {
+      "label": "390 firmware page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "390 firmware Setup visible",
+      "pass": true
+    },
+    {
+      "label": "390 firmware firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 firmware samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 firmware projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 samples selected task visible",
+      "pass": true
+    },
+    {
+      "label": "390 samples page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "390 samples Setup visible",
+      "pass": true
+    },
+    {
+      "label": "390 samples firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 samples samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 samples projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 samples write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "390 projects selected task visible",
+      "pass": true
+    },
+    {
+      "label": "390 projects page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "390 projects Setup visible",
+      "pass": true
+    },
+    {
+      "label": "390 projects firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 projects samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 projects projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "390 projects write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "390 exact nightly-6df0f81f-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-6df0f81f-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-6df0f81f-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "390 exact nightly-6df0f81f-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-6df0f81f-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-6df0f81f-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "390 exact nightly-54f2ffbc-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-54f2ffbc-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-54f2ffbc-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "390 exact nightly-54f2ffbc-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-54f2ffbc-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "390 nightly-54f2ffbc-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "768 exact F07 default selection",
+      "pass": true
+    },
+    {
+      "label": "768 readable captions retain exact version values",
+      "pass": true
+    },
+    {
+      "label": "768 consent gate denies initial install",
+      "pass": true
+    },
+    {
+      "label": "768 truthful disconnected status",
+      "pass": true
+    },
+    {
+      "label": "768 upcoming SMC is explicitly not offered",
+      "pass": true
+    },
+    {
+      "label": "768 firmware selected task visible",
+      "pass": true
+    },
+    {
+      "label": "768 firmware page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "768 firmware Setup visible",
+      "pass": true
+    },
+    {
+      "label": "768 firmware firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 firmware samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 firmware projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 samples selected task visible",
+      "pass": true
+    },
+    {
+      "label": "768 samples page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "768 samples Setup visible",
+      "pass": true
+    },
+    {
+      "label": "768 samples firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 samples samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 samples projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 samples write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "768 projects selected task visible",
+      "pass": true
+    },
+    {
+      "label": "768 projects page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "768 projects Setup visible",
+      "pass": true
+    },
+    {
+      "label": "768 projects firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 projects samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 projects projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "768 projects write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "768 exact nightly-6df0f81f-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-6df0f81f-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-6df0f81f-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "768 exact nightly-6df0f81f-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-6df0f81f-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-6df0f81f-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "768 exact nightly-54f2ffbc-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-54f2ffbc-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-54f2ffbc-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "768 exact nightly-54f2ffbc-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-54f2ffbc-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "768 nightly-54f2ffbc-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "1280 exact F07 default selection",
+      "pass": true
+    },
+    {
+      "label": "1280 readable captions retain exact version values",
+      "pass": true
+    },
+    {
+      "label": "1280 consent gate denies initial install",
+      "pass": true
+    },
+    {
+      "label": "1280 truthful disconnected status",
+      "pass": true
+    },
+    {
+      "label": "1280 upcoming SMC is explicitly not offered",
+      "pass": true
+    },
+    {
+      "label": "1280 firmware selected task visible",
+      "pass": true
+    },
+    {
+      "label": "1280 firmware page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "1280 firmware Setup visible",
+      "pass": true
+    },
+    {
+      "label": "1280 firmware firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 firmware samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 firmware projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 samples selected task visible",
+      "pass": true
+    },
+    {
+      "label": "1280 samples page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "1280 samples Setup visible",
+      "pass": true
+    },
+    {
+      "label": "1280 samples firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 samples samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 samples projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 samples write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "1280 projects selected task visible",
+      "pass": true
+    },
+    {
+      "label": "1280 projects page no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "1280 projects Setup visible",
+      "pass": true
+    },
+    {
+      "label": "1280 projects firmware-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 projects samples-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 projects projects-tab tap target",
+      "pass": true
+    },
+    {
+      "label": "1280 projects write denied without device read",
+      "pass": true
+    },
+    {
+      "label": "1280 exact nightly-6df0f81f-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-6df0f81f-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-6df0f81f-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "1280 exact nightly-6df0f81f-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-6df0f81f-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-6df0f81f-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "1280 exact nightly-54f2ffbc-dev/elite selection",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-54f2ffbc-dev/elite exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-54f2ffbc-dev/elite change resets consent",
+      "pass": true
+    },
+    {
+      "label": "1280 exact nightly-54f2ffbc-dev/pro selection",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-54f2ffbc-dev/pro exact detail/hash binding",
+      "pass": true
+    },
+    {
+      "label": "1280 nightly-54f2ffbc-dev/pro change resets consent",
+      "pass": true
+    },
+    {
+      "label": "verified latest package plus consent enables guarded confirmation",
+      "pass": true
+    },
+    {
+      "label": "cancelled install confirmation requests no MIDI",
+      "pass": true
+    },
+    {
+      "label": "Elite bytes returned for Pro selection denied before download/install",
+      "pass": true
+    },
+    {
+      "label": "standalone breaks has no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "standalone projects has no horizontal overflow",
+      "pass": true
+    },
+    {
+      "label": "no JavaScript errors",
+      "pass": true,
+      "details": []
+    },
+    {
+      "label": "no failed local HTTP links/assets",
+      "pass": true,
+      "details": []
+    },
+    {
+      "label": "no physical MIDI/device API invocation",
+      "pass": true
+    }
+  ],
+  "check_count": 165,
+  "sha256": {
+    "qualified-nightly-repair-evidence.json": "972723d2e257b5d3feea0c74969de1cb2803bd7954403b6e833b9c07912607ba",
+    "index.html": "1555cd1ba3540bc60995a8dc9ac76ed55b897d90cf238c56339bf06bb5725fdb",
+    "build-status.json": "18e14011a253f64ad479cbf882735ec436875a871e1c75e2ea4652601561937e",
+    "versions.json": "eada7400f052f0e6475546b1642a7ab7f2a7ea373a34a2188a50b6e86ba088ee",
+    "browser-admission-repair.md": "a00750f969dd9be0a4ec73c260fbd7954177fa2a400383c4779c4e34db261abf",
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qualified-nightly-candidate.md": "ce595eccd3c3022f32411d8d2eef54b12ea8ecd9daf9d1631812943ef8cf7f08",
+    "nightly-first-development-gate.md": "a401fc0f9b78726667f898fbcc11d0ed49002e02e8c2f06cb1581ea811dbd2ff",
+    "qualified-nightly-candidate.ru.md": "a333b91bd0db236d08635e84d62679a1d8047dc19304b6ac8ba68a2735c0f3d8",
+    "browser-admission-repair.ru.md": "de24949808d6f7b2c578d71a358e16e4a2b877a72d2dfeca0bf19943c717ea20",
+    "breaks/index.html": "92b4f178ebd60f36a5904670d94a3a02cdadcfc56a7a882e6ea8ad46714e7139",
+    "install/index.html": "a2d860c03766da71a3abb272467a5002b232b94a6846987051e72f9acd0ba4cc",
+    "bundled-nightly-evidence-20261025/independent-review.json": "f862be85c1f408ce75b9ef99b56acb1b4c1b2854e1b7f1dd4b876975117191e5",
+    "bundled-nightly-evidence-20261025/README.md": "66284dd0984ac287dd75782f5bd205e45ae1c482accb19de1c059630e60b0f95",
+    "bundled-nightly-evidence-20261025/validation.json": "de61ae191b1a4acd16ea6c83a1058e74189e2ead4aaaee7545ba16b88992fbc5",
+    "repair-evidence/npm-test.log": "077605e08ff9f7504fa4f6d836da461f3d4d0aaf56798f112f4c32e604cceab1",
+    "repair-evidence/chromium.log": "f0c6e636ac25585a2bb0a805fe6bdfb5df570800e5dac6aa22f547f08d539576",
+    "repair-evidence/chromium-race-before.log": "b37eac1fe49b960787695b876190f5f626306808c80eaf1b7538724d1957c95e",
+    "repair-evidence/npm-build.log": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+    "repair-evidence/chromium-before.log": "30ba4a290d0bbfd59fe1b71c117135c3c1ac369f8c7ede7321282ceaebf05d76",
+    "repair-evidence/qualification-before.log": "35bf2166b6aef8410b536425a067d06465274acdb694d7126d266fe7e2411678",
+    "repair-evidence/receipt.json": "70b76d8825cbf0f4ede80ab7d0854f87853c8631d6a99e6cef2d466cc8418d41",
+    "repair-evidence/pr14-hardware-facts-20261025/independent-review.md": "bc26fc02db5bbd5ff705b21e77bd8f7ed2cc774bcc22a50c2fbef2383142a8ab",
+    "repair-evidence/pr14-hardware-facts-20261025/README.md": "df816452d97948423d1f7c479b203be5e66e3d66f357c9b6f83043da347f3384",
+    "repair-evidence/pr14-hardware-facts-20261025/validation.json": "4f64fad37cfaadbffe0bc1609dd5182dd79898d1e5f8869240d6a3b33d90c790",
+    "repair-evidence/pr14-hardware-facts-20261025/manifest.json": "c32f579fe0070e643095852d269219bf2f5d038b6bafe5d2664d5a6e0a4f728a",
+    "repair-evidence/r6/run-consolidated.py": "46fb20669778691de73b650d3d690aacbacdc34b5edbcb7e2c5262448c74ee6b",
+    "repair-evidence/r6/npm-test.log": "810412758f7acc6ccfeb598b0a42b4eb4bec7b73c283a974aa805abd379d755f",
+    "repair-evidence/r6/consolidated-commands.json": "9eaabc6d2dc3166aa23668a6f617554dbe053e0ca52f368f62d1d9d17abe0c19",
+    "repair-evidence/r6/qualified-green.log": "252129774147fe8744fddc5176815c2db0717907df8b7bbc84fb231cc6290bf3",
+    "repair-evidence/r6/qualified-red.log": "a1dbdd84dfb0f90f157b1600d41b4a1937e21a78f0d7121aa6e56a4dfc745b93",
+    "repair-evidence/r6/README.md": "0ab6e2b34880fd795858ef810148c0f3cec94ac029de3d0f85955a3ed5c46147",
+    "repair-evidence/r6/npm-build.log": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+    "repair-evidence/r6/default-browser.log": "9f307c7e5bf3d320e4d714d44c61c69cfdc4f15b6d88776e413080a51b3e7141",
+    "repair-evidence/r6/receipt.json": "88cbb270de3773927fcc2a788b2406b89450a9086ab0411a35b2732d85ce7d83",
+    "repair-evidence/local-file-bounds/browser-green.log": "37371819cdafafa941bdda414fc31def15008997a08332bf5243aff768c8588b",
+    "repair-evidence/local-file-bounds/npm-test.log": "b7777e379cd18e039dbce14ce343ca1bec9880a6e20334f6f186b172ec49ff81",
+    "repair-evidence/local-file-bounds/focused-commands.json": "f855b71cbdf14e758a14be041e654fad055d3ac6c0413cb57bbc3c6033cc39f4",
+    "repair-evidence/local-file-bounds/browser-red.log": "7ca79c92adda9ed03adc107c8760d09b873fd74cf7a0863000f71dab7cf47071",
+    "repair-evidence/local-file-bounds/provenance-final.log": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337",
+    "repair-evidence/local-file-bounds/README.md": "e54739c8c7e7d45a13ebc0cc8533fd1d78e542e4994279cfa4f1816ca5fe0e8c",
+    "repair-evidence/local-file-bounds/npm-build.log": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+    "repair-evidence/local-file-bounds/receipt.json": "8032aebd5547dec1fe02ff305b40c9b872d9c76245c81eb1be623972cb78bd24",
+    "repair-evidence/catalog-approval-denials-20261025/npm-test.log": "2e7be6971c4472ed3f11ae2525bb1336a534901a57dff35afd348df866b64ef1",
+    "repair-evidence/catalog-approval-denials-20261025/independent-review.md": "b3ff4bc3aff702d4f8dd6bee3df0105bd34ee08d6142bf7f4af47848cb4a43d7",
+    "repair-evidence/catalog-approval-denials-20261025/approval-after.log": "34d121f98111ce4e2ec779d918eccad4cdf6a86c987784735d4e61f9c2262ec6",
+    "repair-evidence/catalog-approval-denials-20261025/README.md": "6e91028e9bf8b569feb064a0f69b8b63728315c94d3610db10a2c3a13f03e5cd",
+    "repair-evidence/catalog-approval-denials-20261025/approval-before.log": "33f32307ebad18465fbb7935d8c34f5b24118c08a7f2f18725e1a6d40fdc7742",
+    "repair-evidence/catalog-approval-denials-20261025/npm-test-browser.log": "8993d8b9086a56413aa139e15564ea4c41db1f905ff2be4254076bdb87681f4a",
+    "repair-evidence/catalog-approval-denials-20261025/manifest.json": "d09072be33c870675c083a939e449b60193b6de56dcd597417b76afdea5cf9ea",
+    "repair-evidence/r3/npm-test-after-build.log": "0f4f3708aeebe90c9bf513d2ad7a6ebf5994f73c5aef22ad85c0a79797e39dd7",
+    "repair-evidence/r3/npm-test-before-build.log": "2654012705502fd10bc41c35fdcf8af7410dfd6e72744154c6d00c5fbf6ce88b",
+    "repair-evidence/r3/independent-history-after.log": "6b5458edc90f8919c848d7138cc298c025489c13c51dfa544f51572a3b96efe9",
+    "repair-evidence/r3/chromium.log": "0920a874b0776433cb192a5c54c185b36ec22b7754f0a4bf3eb94b2ccf8f6266",
+    "repair-evidence/r3/history-before.log": "927727b9c2668a64a4127cf4b862d066d646804d9b3b4e836cefc16f463ecfa8",
+    "repair-evidence/r3/README.md": "747ef672c0763bf39fa217f2d2c756e142677d6ed4e6a33a174041f7c2a052c6",
+    "repair-evidence/r3/npm-build.log": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+    "repair-evidence/r3/receipt.json": "c81a92d242dbdaa5111dccbfc12367ab4aec3fb51e50f08bdfa8a5c9d735b107",
+    "repair-evidence/r4/independent-focused.log": "4f99b0f6e8b454eaedfa57bcd0c32a30c31663ae03244a80795e41ca6aefb410",
+    "repair-evidence/r4/f7-focused-after.log": "f9c2a4ee844f310fcb887206005ea3114590e7d8e1be864381a93e1186050c87",
+    "repair-evidence/r4/dependency-before.log": "92a24643e17794f448a337647d7d56a26902ed354d6090458ce236bd1fe96f33",
+    "repair-evidence/r4/consolidated.log": "e3c1dfbc06b2bf35ece95a2e418891639e81632319cbe6237ead3b06c1ab0ae7",
+    "repair-evidence/r4/npm-test.log": "1f0548e054c1597b2782201b9de90c12ac646c5dd01a395468c2d9e05a459d59",
+    "repair-evidence/r4/independent-expanded.log": "d409637f4d1e0861754d3a1925100555db91fc40fb72dfeed5095353ed0abf81",
+    "repair-evidence/r4/consolidated-commands.json": "34ad4c7e0b0b18498faf6cec28b022ea0b9d70ad53b5c7bfdcb5d7789514a97e",
+    "repair-evidence/r4/f7-focused-before.log": "6a169a872d0b0eb600eba5bda9d9c40691fd228f35eb5749fdc7b13477d3df92",
+    "repair-evidence/r4/f7-native-after.log": "03e4ec09f7dd302547df5e1001153be60c093b097d4a080f22915e535e11bf32",
+    "repair-evidence/r4/output-path-before.log": "cc3fa32038d10bd6a01620f3ac3b52a772f476f670c006f8ff2e0c62ed4dcd91",
+    "repair-evidence/r4/backup-boundary-compatible.log": "a0feba612311a9eb91de042a65000671d57d552094e4d2f28f6bfea6b7a09b0b",
+    "repair-evidence/r4/README.md": "152934da94d819ea95f669f63a3e3aa2b7232005bc2410ab47efceb401f133a0",
+    "repair-evidence/r4/write-boundary-before.log": "46fd1cc63928a26d4ad779b962a51193daff43dded64c823c548ca0a7de309cc",
+    "repair-evidence/r4/dependency-after.log": "efd345266de5eddf8f2b8cd6696c70c561fddf41e52b1f2ae6c95e95fbeb8b9d",
+    "repair-evidence/r4/write-binding-after.log": "48c571ba7071425f9db773574e9cea3c5b12b5f443e8097d3baf7769ebfa596a",
+    "repair-evidence/r4/write-boundary-after.log": "eb7deb2b4f08a08ca67cc632f619382a38f712d1a58b107a58f71a3e8ed221ff",
+    "repair-evidence/r4/write-binding-before.log": "cba7261a7f7037dd940b237805b01d342c70e48eed4ad0a8c04d634bf081e8cb",
+    "repair-evidence/r4/npm-build.log": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+    "repair-evidence/r4/release-route-helper-receipt.json": "91f40b6d1282a2b9928aed28dc1989a7b6cd24ae003451c2ea5d65180cfb72fa",
+    "repair-evidence/r4/independent-history.log": "b43afa819d4f6d2ee1a6471aed371cbfbf276f81e21892678a7ef8c70a108d65",
+    "repair-evidence/r4/default-browser.log": "9f307c7e5bf3d320e4d714d44c61c69cfdc4f15b6d88776e413080a51b3e7141",
+    "repair-evidence/r4/f7-native-before.log": "ea1960c9a2e71f622d59bf88209ddcdbbd89babb2bc67faf917f58dd5767ec4b",
+    "repair-evidence/r4/independent-history-extension.log": "bfb9e55bee979dcfa3f0c5807c26080612b0067a10d69ac7e1c6ba3f376c4b6f",
+    "repair-evidence/r4/release-capability.json": "097aca38124f9fb5b19e45eddeb4ca372a2d6328ea7b54d6f8769b3850858cc4",
+    "repair-evidence/r4/receipt.json": "f58486fde593478b274eabc76bcdeb37b6488ecfa6b9e165fe27848cc9113654",
+    "repair-evidence/r5/final-matrix-extension-results.json": "d017dbdeaa5a653699ddf607eda50b8c95e1032fb9f98b6c216e45ddc0df0f23",
+    "repair-evidence/r5/run-consolidated.py": "dc8cd0b48596143cbd62633c88358b1f1abc3c4faf3534770b5b34c32fd49eed",
+    "repair-evidence/r5/npm-test.log": "68eeb7ad21cd3dd4de6955b60e0b127b07fa58e1858c54087588f0857d489e71",
+    "repair-evidence/r5/final-matrix-green.log": "891f9609479f110a7994a607299fe0fadc2abf9214dd672252f32b4691a94496",
+    "repair-evidence/r5/consolidated-commands.json": "65bb9c88467664b0ccf8beae6677f5a3711a95232a73219b09bc8ee2fec78be4",
+    "repair-evidence/r5/status-red.log": "ecf9a704052e8945ab71bb51c28d9c1cccc11a92fa0f050c28b2e6e42af5ecb8",
+    "repair-evidence/r5/README.md": "0ffb8ea3a03bf2650550ce158baeceb53026c408bd0b65b804abd1098b9573be",
+    "repair-evidence/r5/final_matrix_extension.py": "6ecb7e10ee9b0a8b3975fc54d4d9438c6b72c8148289f9d96c228fde8fa0b7ef",
+    "repair-evidence/r5/npm-build.log": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+    "repair-evidence/r5/final-matrix-red.log": "0a982417f873ff2aecf7af10b126bfd28f3ac175110eff275de3d82a92839047",
+    "repair-evidence/r5/default-browser.log": "9f307c7e5bf3d320e4d714d44c61c69cfdc4f15b6d88776e413080a51b3e7141",
+    "repair-evidence/r5/receipt.json": "9202972b090d65f3e22a6d711b54629f37297ed32b7d053b351550f0297ee329",
+    "repair-evidence/r2/backup-boundary-after.log": "a0feba612311a9eb91de042a65000671d57d552094e4d2f28f6bfea6b7a09b0b",
+    "repair-evidence/r2/npm-test-after-build.log": "0f4f3708aeebe90c9bf513d2ad7a6ebf5994f73c5aef22ad85c0a79797e39dd7",
+    "repair-evidence/r2/npm-test-before-build.log": "0f4f3708aeebe90c9bf513d2ad7a6ebf5994f73c5aef22ad85c0a79797e39dd7",
+    "repair-evidence/r2/focused_after.py": "7aba163ee17ac7c304d0bad78080b9f42b1cc6db2f85a12c7f8ad49b9797f2f0",
+    "repair-evidence/r2/chromium.log": "24099742456a23a93f6181899ad98542fa76295f7a84e694d02dc55de8652ec4",
+    "repair-evidence/r2/focused-before.log": "224929b2974864e18d7cdf35fd2f0643c7e3380fb9cda75d80e6c412a408c667",
+    "repair-evidence/r2/expanded-after.log": "d409637f4d1e0861754d3a1925100555db91fc40fb72dfeed5095353ed0abf81",
+    "repair-evidence/r2/focused-after.log": "46e0979878f15c6952ce565a2ee881afa247529a2c38c734a9259219f2e84e7c",
+    "repair-evidence/r2/README.md": "616832da79d298e1a4de8e92ec635e7db24a936c333d72e9bd4629cb92c60c2f",
+    "repair-evidence/r2/expanded-before.log": "ae8106eb735f8635b294d6a6cb16fd3b0ffea6e059b16f444490607b6923b6bb",
+    "repair-evidence/r2/npm-build.log": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+    "repair-evidence/r2/receipt.json": "e97358cf86a5d09ac38ee3695a41719f4a9979248435379540a3c922562cb62a",
+    "projects/index.html": "151d554033fb4fd33f3e0f83440a8494e06226f257e66ab94ff86a94f9809d78",
+    "builds/index.html": "9d302edf07c11a1da5c422557d31c797af9f7a4e3e55f80c9d85176b16013e5b",
+    "scheduler-handoffs/catalog-sync-20261024.json": "9905150ed9bace60f61f654b20cc154e381aa2dfa5ec6c17943103304977ec42",
+    "scheduler-handoffs/catalog-sync-20261024-r24.json": "8507669f25a4ca28c0d4810f3dff33d5ddcd9cf7ba701d3a8ae192405e56f6ea",
+    "scheduler-handoffs/catalog-sync-20261023-1346.md": "f3c3224b8f591f63fe6852b0d72f36e79ed0776c7573891dce7dbbad9c496f6e",
+    "scheduler-handoffs/catalog-pr103-native-smc79-bytecheck-20261024-r13.json": "fc0741155b40b616188493d8db232ec0c0c216114e9ef30721716202af322932",
+    "scheduler-handoffs/catalog-sync-20261024-r16.md": "40fa4b5dd224faa34a1f377168068a8474dd4339d9c5f8d90a7d71401e72baf7",
+    "scheduler-handoffs/catalog-sync-20261023-1246.md": "c91f5d777bec6beda2b96ee12a9e19eb7943570186b55c349eddb497a97c26fc",
+    "scheduler-handoffs/catalog-sync-20261024-r25.json": "96923f30a38154c74121979ab0de46868d25fc244b8cf9d0c928e0610a383e3f",
+    "scheduler-handoffs/catalog-sync-20261025-r35-pr114-fdopen-independent-negative.json": "227f18571f1f6c948681a4fd0984f97d6a7828df884768e7d5ed903be3848614",
+    "scheduler-handoffs/catalog-sync-20261024-r22.json": "7396ca5cdb5cf0c7c164237cff5ecb3ac7fba980d9df1cc82db4d12fc700ab0b",
+    "scheduler-handoffs/catalog-sync-20261023-1346.json": "963ea7671beb52b1162b96946f4a7d921967cb684597bf9d131926c8b6daf849",
+    "scheduler-handoffs/catalog-sync-20261024-r18.json": "5d7ae1360ec3c8b87d0ca6dae9d2c98614b76afe301594680e39f8a9a529206a",
+    "scheduler-handoffs/catalog-sync-20261024.md": "52b54930949bf3737536f36aa114ed5e5fecd86c7d23bc5ac7cb961ab7233aa0",
+    "scheduler-handoffs/catalog-sync-20261024-r19.json": "630597845d428ab8f743cfad3721366c6965b55b8c88c235cefcc04738a329fb",
+    "scheduler-handoffs/catalog-sync-20261024-r28-evidence-url-ref-guard.json": "a1d2d245f1a894cc9535656ac6c1fdc303f0684a3a79c4b4a314efb23206f57c",
+    "scheduler-handoffs/catalog-sync-20261024-r23.json": "de2dea0faa580d0a3e19dc9070b258ce0c848daca87bd0c92c66fa068dd988fb",
+    "scheduler-handoffs/catalog-sync-20261025-r31-main-reconciliation.json": "8d0ad04449d1970939b8414f63d207f34eae864e2cd8ee417d0dcde4b863a230",
+    "scheduler-handoffs/catalog-sync-20261025-r30-firmware-nightly-merged.json": "d5689bbce72be4997fa782a71f7f96ca94a3a7e8a7704a91b1b35b508ede3b3e",
+    "scheduler-handoffs/catalog-sync-20261024-r20.json": "d075a0fb631c7a8cc9e0396a6b01bca1245e8a6bec0fbacff42a45a2e8d3e413",
+    "scheduler-handoffs/catalog-sync-20261025-r33-pages-git-candidate.json": "3b2b28988f5a32224384fa839308b9e18a9dcd2ad1c78201203948ebe911e028",
+    "scheduler-handoffs/catalog-sync-20261024-r21.json": "0bb3730271cf88ba744413b27f007421f88cb8daba5ec3357707fa5cf3e96bb5",
+    "scheduler-handoffs/catalog-sync-20261024-r17.json": "9ee4bff15feebcae3551e5b0ad9e0bc8ecfc69f2a56a4285877969d54b721af6",
+    "scheduler-handoffs/catalog-sync-20261023-1246.json": "c304b7219d44e14d7d3d03053d67c06b092f4864e1ef25596a46e3e6f696124d",
+    "scheduler-handoffs/catalog-sync-20261024-r26.json": "c51ee70627a81d373b9fe5c76e41348aebb83d10c84789294abf0ce7a020eaa9",
+    "scheduler-handoffs/catalog-sync-20261024-r29-live-status.json": "39490769e53998e111be36ea97915c297ff63771937a9f301157fc888f0a81bf",
+    "scheduler-handoffs/catalog-sync-20261025-r32-pr11-browser-bounds-reconcile.json": "e93c40797688aad2d083f4b141cdc008bd6ce8649fa604f41577cdccca879222",
+    "scheduler-handoffs/catalog-sync-20261024-r27-evidence-commit-guard.json": "9e8ea6d4fa0929955c6412603653750a9df01027a303bd11b5fbfd4f243eaafb",
+    "scheduler-handoffs/nightly-controller-padding-source-20261024.json": "e086d99c4d2faa6b011c60407543508701028528c68ac755f39e3ca37974fc7a",
+    "scheduler-handoffs/nightly-release-download-source-20261024.json": "98575bd3a4b12fa3c1224697e39e7285e5466c6bd4485fda7dfb97b5d97ee01b",
+    "manual/index.html": "0f424a49162b884b7e790cef43a1efcfd22b9c2e57a43113aa519e70aaf839af",
+    "new/index.html": "6d0993668150bd216cbf2d72083c780e300ae349b45e50192ddd728551c7b466",
+    "workspace-evidence-20261025/final-renderer-review.json": "c243d723eb54ee7f1b58a60aff16c90a5a0f3c86036b2b3dca4511c2300df987",
+    "workspace-evidence-20261025/workspace-review.json": "69a81384f37634688f8133d39749b40ee78cbc2ba00b2e2e9fd9c49a42d39502",
+    "workspace-evidence-20261025/renderer_capture.c": "01ea94304f86fcdc9cee9a5b1dbe2791bab6ad347b64d5fa8af704838244bf82",
+    "workspace-evidence-20261025/renderer.json": "9052a31c94b6b32d3fc428779b5fcd7c04336b8a33e27e93cc047fd3d8f0d52d",
+    "workspace-evidence-20261025/catalog_capture.sh": "00894aef15b3d6ac48bbfb2aa9dd9879c1f070403b9edfc9c93e87c2232c18ce",
+    "workspace-evidence-20261025/renderer-capture.log": "b25385c914668352d603ceba73bbe94c94292e734af2b3a9b20139eb874482a7",
+    "workspace-evidence-20261025/node-tests.log": "2efbb7ea3fd0d00f25ad06838b01d8d0f3fd5046b873613d74fff49acde350c2",
+    "workspace-evidence-20261025/validation.json": "4a535dda3ad7a977d30d01541e4792efa70a6fa8f135debe34f90e9845788b2f",
+    "workspace-evidence-20261025/final-visual-review.json": "0d0e795b506f6fabfbd073b86a2793a61d0c3c55e056235d16e887e8ccb7f05f",
+    "workspace-evidence-20261025/catalog_capture.c": "fdc2c1d6c37edcb2b3a7bcf2b505861b380dd5554ef8eb2e4c738e7eaf801fe0",
+    "workspace-evidence-20261025/renderer_capture.sh": "63db7085c3b041629b8ab713854f6a97391f591b6edc00292abf4d34aa389044",
+    "workspace-evidence-20261025/renderer.md": "47d96319123fdc4fe40afc823f823144b7e9400ac7f962d9c4d44d1648b7544d",
+    "workspace-evidence-20261025/HANDOFF.md": "13581e28f47d16e49444cb460e3710c96668ff8deb87ddac6020a74c065a61c8",
+    "workspace-evidence-20261025/browser-tests.log": "8bbdd1510fced82fdf50781709a5ff1adef9060db80b82c569f7b9741c9d17d7",
+    "assets/firmware-ui/smc-historical.svg": "61779a88a3c16f8d85cc034197087c58ec0782aba107f15965297fde254c6b6b",
+    "assets/firmware-ui/smc.png": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f",
+    "assets/firmware-ui/home.svg": "b478f2c18def0b7fc6a43470785af2656add7ee3700360b8a630803e3025cced",
+    "assets/firmware-ui/smc-pr168.svg": "df9c985974a91c205f7d7c8c37fe98abf9ebaea4580c19f117270a7a67108774",
+    "assets/firmware-ui/Barlow-OFL.txt": "10b0e6bb43166a50fbe7cde2895bd7f703738a5da843acb5c97c95dc9ea26817",
+    "assets/firmware-ui/smc-pr168.png": "0a2f3c58743c07fdad5e5320fd9efbd899d5035282585d94ec4d161a01ef60aa",
+    "assets/firmware-ui/home.png": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+    "assets/firmware-ui/mixer.png": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+    "assets/firmware-ui/mixer.svg": "c955b6f38f8518b2e8d0bc2a1769b1f3c8823299b759b5380e1710f57a5e8e1d"
+  },
+  "downloads": [
+    {
+      "version": "nightly-6df0f81f-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f917b636ba00d7dbef18fd00d1f0af15299a0a24/artifacts/nightly/dev-20261025-4ee8f377/8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278/x0x37-elite-dev.fwsc",
+      "bytes": 651396,
+      "sha256": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+      "PASS": true
+    },
+    {
+      "version": "nightly-6df0f81f-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f917b636ba00d7dbef18fd00d1f0af15299a0a24/artifacts/nightly/dev-20261025-4ee8f377/d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb/x0x37-pro-dev.fwsc",
+      "bytes": 651392,
+      "sha256": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb",
+      "PASS": true
+    },
+    {
+      "version": "nightly-54f2ffbc-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/172d99d6d417d72bbd8f473ec1c66d5994c3d0c3/artifacts/nightly/dev-20261024-dc466908/d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c/x0x37-elite-dev.fwsc",
+      "bytes": 651396,
+      "sha256": "d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c",
+      "PASS": true
+    },
+    {
+      "version": "nightly-54f2ffbc-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/172d99d6d417d72bbd8f473ec1c66d5994c3d0c3/artifacts/nightly/dev-20261024-dc466908/cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c/x0x37-pro-dev.fwsc",
+      "bytes": 651392,
+      "sha256": "cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c",
+      "PASS": true
+    }
+  ],
+  "limits": "Headless current candidate output with exact independently fetched package bytes fulfilled to browser; no device access or hardware PASS; live postdeployment verification owned by publisher.",
+  "existing_candidate_checks": {
+    "density": {
+      "count": 120,
+      "exit": 0,
+      "log_sha256": "374be8e7e3e3537f3eb9b8dd3251b37a7ff178a2a5a1b7d18f4811c4634f4faa"
+    },
+    "presentation": {
+      "count": 106,
+      "exit": 0,
+      "log_sha256": "c6df4363e10246de19f4cc3029d5c96b9cb8222701c31584f4ea8214a5dc7af7"
+    }
+  },
+  "pixel_review": "390px screenshot independently viewed; compact top task routes, readable exact model choices, one firmware warning/consent, legacy controller requirement, SMC upcoming limitation, Closer look and Setup render without clipping."
+}

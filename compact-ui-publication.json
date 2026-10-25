@@ -1,0 +1,32 @@
+{
+  "source": "ee1ba86ecc4fae4ec2bfec27927b1d60b3f6fdcf",
+  "runtime": "1975a0295aab39c616e249f6ac435282db430544",
+  "base": "d6a237c43cb6830d8cf0cb51e567181821630a28",
+  "catalog_sha256": "eada7400f052f0e6475546b1642a7ab7f2a7ea373a34a2188a50b6e86ba088ee",
+  "latest": "nightly-6df0f81f-dev",
+  "installer_sha256": "a2d860c03766da71a3abb272467a5002b232b94a6846987051e72f9acd0ba4cc",
+  "installer_fingerprint": "4d29566e14c3f252bf52047676e993367e3d155aa1a94a45157ec07d77e47dc8",
+  "unchanged_published_operation_closure": {
+    "fm1pkg.js": "045ca65c6ca7b91f46b881a0c499553f6539283e441fbd9c07d565594d69306b",
+    "fm1ota.js": "84579e7a104acbe7cad8a79507e7324d14e21801c1a3b79ce6eb12176b29e849",
+    "x0x_breaks.js": "3302a994cef703a8be152bb93ebbad224b865bcff561cb4603ce926dce361dca"
+  },
+  "embedded_catalog_exact": true,
+  "qualification_reuse": "UI-only presentation; current catalog/packages/controller/native build receipts and matching exact operation modules unchanged. Independent current-catalog output QA required; no new firmware admission.",
+  "scope": "Owner-approved compact installer presentation only; firmware/catalog bytes preserved",
+  "source_merge": "4f787bf651e71f3c875f2082a4950ee7f9b0d415",
+  "files": {
+    "install/index.html": "a2d860c03766da71a3abb272467a5002b232b94a6846987051e72f9acd0ba4cc",
+    "breaks/index.html": "92b4f178ebd60f36a5904670d94a3a02cdadcfc56a7a882e6ea8ad46714e7139",
+    "projects/index.html": "151d554033fb4fd33f3e0f83440a8494e06226f257e66ab94ff86a94f9809d78",
+    "assets/firmware-ui/smc-historical.svg": "61779a88a3c16f8d85cc034197087c58ec0782aba107f15965297fde254c6b6b",
+    "assets/firmware-ui/smc.png": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f",
+    "assets/firmware-ui/home.svg": "b478f2c18def0b7fc6a43470785af2656add7ee3700360b8a630803e3025cced",
+    "assets/firmware-ui/smc-pr168.svg": "df9c985974a91c205f7d7c8c37fe98abf9ebaea4580c19f117270a7a67108774",
+    "assets/firmware-ui/Barlow-OFL.txt": "10b0e6bb43166a50fbe7cde2895bd7f703738a5da843acb5c97c95dc9ea26817",
+    "assets/firmware-ui/smc-pr168.png": "0a2f3c58743c07fdad5e5320fd9efbd899d5035282585d94ec4d161a01ef60aa",
+    "assets/firmware-ui/home.png": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+    "assets/firmware-ui/mixer.png": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+    "assets/firmware-ui/mixer.svg": "c955b6f38f8518b2e8d0bc2a1769b1f3c8823299b759b5380e1710f57a5e8e1d"
+  }
+}
