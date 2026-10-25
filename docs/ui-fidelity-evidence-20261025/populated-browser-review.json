@@ -1,0 +1,112 @@
+{
+  "checks": [
+    {
+      "name": "root enters unified installer",
+      "pass": true
+    },
+    {
+      "name": "only existing DEV selection",
+      "pass": true
+    },
+    {
+      "name": "only supported Elite/Pro model choices",
+      "pass": true
+    },
+    {
+      "name": "device-unproven badge visible",
+      "pass": true
+    },
+    {
+      "name": "legacy owner-supplied controller input retained",
+      "pass": true
+    },
+    {
+      "name": "invalid/truncated download cannot install or expose link",
+      "pass": true
+    },
+    {
+      "name": "elite selection requests its unchanged exact package URL",
+      "pass": true
+    },
+    {
+      "name": "elite provenance shows matching exact SHA",
+      "pass": true
+    },
+    {
+      "name": "elite consent cannot bypass invalid bytes",
+      "pass": true
+    },
+    {
+      "name": "pro selection requests its unchanged exact package URL",
+      "pass": true
+    },
+    {
+      "name": "pro provenance shows matching exact SHA",
+      "pass": true
+    },
+    {
+      "name": "pro consent cannot bypass invalid bytes",
+      "pass": true
+    },
+    {
+      "name": "SMC render label clearly newer-source preview",
+      "pass": true
+    },
+    {
+      "name": "320px firmware no overflow",
+      "pass": true
+    },
+    {
+      "name": "320px sample navigation retains explicit device-read prerequisite",
+      "pass": true
+    },
+    {
+      "name": "320px embedded sample no overflow",
+      "pass": true
+    },
+    {
+      "name": "390px firmware no overflow",
+      "pass": true
+    },
+    {
+      "name": "390px sample navigation retains explicit device-read prerequisite",
+      "pass": true
+    },
+    {
+      "name": "390px embedded sample no overflow",
+      "pass": true
+    },
+    {
+      "name": "1280px firmware no overflow",
+      "pass": true
+    },
+    {
+      "name": "1280px sample navigation retains explicit device-read prerequisite",
+      "pass": true
+    },
+    {
+      "name": "1280px embedded sample no overflow",
+      "pass": true
+    },
+    {
+      "name": "legacy buildarchive anchor opens archive",
+      "pass": true
+    },
+    {
+      "name": "breaks/ standalone route remains usable",
+      "pass": true
+    },
+    {
+      "name": "builds/ standalone route remains usable",
+      "pass": true
+    },
+    {
+      "name": "no actual generated page JavaScript errors",
+      "pass": true
+    }
+  ],
+  "total": 26,
+  "failures": [],
+  "package_response": "intentionally invalid/truncated to verify fail closed; no real package bytes or hardware used",
+  "html": "actual exact populated candidate, unmodified"
+}

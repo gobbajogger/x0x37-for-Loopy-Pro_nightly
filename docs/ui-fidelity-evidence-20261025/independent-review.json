@@ -1,0 +1,74 @@
+{
+  "review": "PASS",
+  "reviewer": "independent bounded fidelity_review agent",
+  "base_commit": "c778be046753101e1fab0c7004c479a07f3e00ff",
+  "reviewed_source_blob": "5f9e4d14db9b9df423746a169119f4deaedd3448",
+  "scope": "Firmware screen fidelity, source reconstruction method, responsive images and unchanged installer operations; no GUI/device/flash",
+  "visual_review": {
+    "reference_images": "docs/assets/firmware-ui/{home,mixer,smc}.png",
+    "desktop": "1280x1250 preview inspected: complete square vectors, clear public vs historical version captions, task navigation preserved, no visible layout issues",
+    "mobile": "390x1650 preview inspected: square vectors preserved in side-by-side cards, captions and historical SMC disclaimer visible, no horizontal clipping",
+    "closeup": "Three source-traced smooth vector screens inspected against native references: labels, colors, geometry and shown states faithful",
+    "home": "P1/125 header; bank2 pads and 17/21/25/29 labels;909/808/303A/303B/BRK lanes;TEMPO125bpm,SWING50%,FILTER OFF,PUMP0.0dB;footer preserved",
+    "mix": "Five part faders and GR meter;COMP0dB/PUMP0.0dB/AUDIO LOAD0%;PARTS909;LEVEL-5dB/PAN C/REV0%/DLY0%;footer preserved",
+    "smc": "Historical F1 pickup amber selection;F1-F8 labels/values/level bars;909 LEVEL -5dB;PICKUP MOVE FADER UP;rest timeout footer preserved",
+    "limitations": "Original layout/state/color/metrics preserved; smooth paths necessarily differ from native raster antialiasing, and do not claim byte-identical pixels. Synthetic state only, no hardware proof."
+  },
+  "provenance_review": {
+    "method": "Inspected trace-renderer.py and vectorize.py against production gfx.c/ui.c/gen_font.py: captures production draw primitives without changing layout/state/metrics; uses original Barlow font outlines and per-glyph traced advances; no raster upscaling",
+    "public_context": "HOME/MIX label54f2ffbc matches prior native equivalence evidence and parent reverified public catalog; no offered-source SMC claim",
+    "reference_gap": "SMC3862175d explicitly historical newer-source preview, not offered firmware or output of pending redesign; final redesign reference unavailable",
+    "svg": "Three inline240x240 vectors, no image/text/foreignObject nodes;686 total page IDs unique and original non-SVG IDs retained"
+  },
+  "operation_invariants": {
+    "web/x0x_installer.html": {
+      "script_body_sha256": [
+        "2560c3e7ebbf154146e90d3bd86eb555377ab88b658a33de3914c9f55328c7de"
+      ],
+      "script_bodies_identical_to_base": true,
+      "control_opening_tags_identical_to_base": true,
+      "control_count": 10,
+      "non_svg_ids_identical_to_base": true
+    },
+    "web/x0x_breaks.html": {
+      "script_body_sha256": [
+        "13982ab005e2355a6a7a7b406522e79d914901def919597fac6b7e10eec31a4a"
+      ],
+      "script_bodies_identical_to_base": true,
+      "control_opening_tags_identical_to_base": true,
+      "control_count": 13,
+      "non_svg_ids_identical_to_base": true
+    }
+  },
+  "unchanged_input_sha256": {
+    "preview-catalog.json": "d8c572c8186d72be91f907783cf0f2abe304b024a4ceaa5e1d57a4bae9f56f68",
+    "docs/versions.json": "d8c572c8186d72be91f907783cf0f2abe304b024a4ceaa5e1d57a4bae9f56f68",
+    "web/fm1pkg.js": "62db90246d022d3d7e7e0bf7d57ba6614db02576d91bc4aaa2d0373928391b68",
+    "web/fm1ota.js": "caf0b39a6aba739340e04af4b4605ae231268f34d6324089bdc07a3f7410661d",
+    "web/x0x_breaks.js": "f12448a5cf35aacc0d58a585a0ee81e0cbcb46ad40795c881c3a5db2f82b4012",
+    "web/x0x_breaks.html": "630f9571655e9f0369506a59504fea06a1778e7056779090bb049ff313f073a7",
+    "scripts/render-qualified-nightly.mjs": "c9c6471e8020af0956488177040aafb4e0e388fc7c9686886a6bc3cfab89502c",
+    "tests/browser-admission.py": "145a795f96b5c79e725b8dfe6b1437d3d8749fc3060de9200ae848164a3c3f65",
+    "tests/history-response.py": "c63943a552255f919fe24567b8571fcd0a8fe9a0cb8a7ff06b0609efb5e8e6f7",
+    "tests/bundled-browser.py": "3a6b463af1194cffc6008f2148a79d8a4df79066f83b13f706f6b67ade73131f"
+  },
+  "checks_reviewed": {
+    "npm_test": "PASS latest log after source provenance update",
+    "presentation": "66 PASS",
+    "workspace_browser": "29 checks,0failures",
+    "populated_browser": "26 checks,0failures",
+    "reused_suite": {
+      "admission": 677,
+      "history": 34,
+      "bundled": 61,
+      "rationale": "Exact test files, operation script bodies, package/MIDI/sample libraries, catalog data and relevant control markup identical to baseline; change isolated to SVG/CSS/reference captions. New responsive66 and fresh workspace29/populated26 cover changed presentation."
+    }
+  },
+  "preview_sha256": {
+    "pr18-ui-faithful-desktop.png": "fd295009ba882e73d984d56cf47d81496964255e14284b4de1fdea9dfd1c796a",
+    "pr18-ui-faithful-mobile.png": "5647c84bdbd3a4c35fd462e0ea33ae9eb257662eb4353061f377a468e3d96920",
+    "pr18-ui-faithful-closeup.png": "d3b01a5ab757dd0de1ab7daffffb122f355ef86db21bc2fa53906d4ad1905def"
+  },
+  "findings": [],
+  "remaining_blockers": []
+}
