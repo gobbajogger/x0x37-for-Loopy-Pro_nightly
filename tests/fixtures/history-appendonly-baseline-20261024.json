@@ -523,6 +523,14 @@
     {
       "id": "bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025",
       "sha256": "d8553f2ff25689a1707fe64bf077adc52229f000e88724c64ab0aee457301db8"
+    },
+    {
+      "id": "bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025",
+      "sha256": "4a56280e3a43af4df0d43664153eb531d39df839db6b2f7db866438938c13a32"
+    },
+    {
+      "id": "nightly-pr15-qualification-gate-removal-policy-hold-20261025",
+      "sha256": "ccdb34cabe3a603cfabcf66fa45a52d8f2a488fbb7aa73b722d7702884b9ca2e"
     }
   ]
 }

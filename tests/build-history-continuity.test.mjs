@@ -208,3 +208,36 @@ mustReject('R40 fake device PASS',rows=>rows[r40Index].device_verified=true);
 mustReject('R40 fake firmware download',rows=>rows[r40Index].installable=true);
 mustReject('R40 fake firmware BUILD_ONLY',rows=>rows[r40Index].exact_remote_native_build=true);
 console.log('PASS: R40 pinned source-only BF031 and negative evidence checks; full native root still required');
+
+
+// R41: BF031 R2 uses musical slot parity, not accidental random source-step parity.
+const r41SwingId='bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025',r41SwingIndex=original.findIndex(r=>r.id===r41SwingId);
+assert.equal(r41SwingIndex,129);const r41Swing=original[r41SwingIndex];
+assert.equal(r41Swing.source_commit,'a4bb338f0e456381675409fef75709155916e265');
+assert.equal(r41Swing.source_tree,'a5ffdb29d990c8d093cf691baa481d727f5c290e');
+assert.equal(r41Swing.firmware_subtree,'f83d9e624ea54618dada87427c8f7954fca28aa6');
+assert.equal(r41Swing.status,'source-only');assert.deepEqual(r41Swing.models,[]);
+assert.equal(r41Swing.installable,false);assert.equal(r41Swing.device_verified,false);
+assert.equal(r41Swing.exact_remote_native_build,false);
+assert.match(r41Swing.reported_checks.result,/INDEPENDENT FIRMWARE QA PENDING/);
+mustReject('R41 swing deleted',r=>r.splice(129,1));
+mustReject('R41 swing source changed',r=>r[129].source_commit='f'.repeat(40));
+mustReject('R41 swing compiler source changed',r=>r[129].firmware_subtree='f'.repeat(40));
+mustReject('R41 swing fabricated build',r=>r[129].exact_remote_native_build=true);
+mustReject('R41 swing fake hardware',r=>r[129].device_verified=true);
+mustReject('R41 swing fake installable',r=>r[129].installable=true);
+
+// R41: removed native-build/licensing gates are a source POLICY HOLD, not approved firmware.
+const r41PolicyId='nightly-pr15-qualification-gate-removal-policy-hold-20261025',r41PolicyIndex=original.findIndex(r=>r.id===r41PolicyId);
+assert.equal(r41PolicyIndex,130);const r41Policy=original[r41PolicyIndex];
+assert.equal(r41Policy.source_commit,'c2fdf75577baa0945735c44c15ef219f7adfd9f3');assert.equal(r41Policy.source_tree,'1123a906173b6aa0065600528840823162fb502d');
+assert.equal(r41Policy.status,'validation-evidence-only');assert.deepEqual(r41Policy.models,[]);
+assert.equal(r41Policy.installable,false);assert.equal(r41Policy.artifact_distribution_approved,false);
+assert.equal(r41Policy.exact_remote_native_build,false);
+assert.match(r41Policy.reported_checks.result,/SOURCE POLICY CONTRADICTION OBSERVED/);
+mustReject('R41 safety HOLD removed',r=>r.splice(130,1));
+mustReject('R41 safety HOLD forged',r=>r[130].source_commit='f'.repeat(40));
+mustReject('R41 safety HOLD false QA approval',r=>r[130].reported_checks.result='FULL PASS');
+mustReject('R41 safety HOLD false distribution',r=>r[130].artifact_distribution_approved=true);
+mustReject('R41 safety HOLD false install',r=>r[130].installable=true);
+console.log('PASS R41: 131 SHA-256 seals and permanent source-only / negative policy evidence; native npm still required');

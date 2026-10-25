@@ -791,3 +791,21 @@ run('r40-fabricated-build-REJECT',editR40(row=>row.exact_remote_native_build=tru
 run('r40-fabricated-hardware-REJECT',editR40(row=>row.device_verified=true));
 run('r40-fabricated-download-REJECT',editR40(row=>row.installable=true));
 run('r40-fabricated-rights-REJECT',editR40(row=>row.artifact_distribution_approved=true));
+
+
+// R41: truthful status does not make either upstream event installable.
+const editR41Swing=fn=>edit(j=>{const r=j.history[129];assert.equal(r.id,'bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025');fn(r,j);});
+const editR41Policy=fn=>edit(j=>{const r=j.history[130];assert.equal(r.id,'nightly-pr15-qualification-gate-removal-policy-hold-20261025');fn(r,j);});
+run('r41-two-events-nonflashable-PASS',edit(j=>{
+ assert.equal(j.history.length,131);assert.equal(j.counts.source_or_historical_checkpoints,131);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(const r of j.history.slice(129)){assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);}
+}),true);
+run('r41-swing-delete-REJECT',editR41Swing((r,j)=>{j.history.splice(129,1);j.counts.source_or_historical_checkpoints--;}));
+run('r41-swing-source-SHA-forgery-REJECT',editR41Swing(r=>r.source_commit='f'.repeat(40)));
+run('r41-swing-target-build-forgery-REJECT',editR41Swing(r=>r.exact_remote_native_build=true));
+run('r41-swing-download-forgery-REJECT',editR41Swing(r=>r.installable=true));
+run('r41-safety-HOLD-delete-REJECT',editR41Policy((r,j)=>{j.history.splice(130,1);j.counts.source_or_historical_checkpoints--;}));
+run('r41-safety-HOLD-relabel-REJECT',editR41Policy(r=>r.reported_checks.result='FULL PASS'));
+run('r41-safety-HOLD-distribution-forgery-REJECT',editR41Policy(r=>r.artifact_distribution_approved=true));
+run('r41-safety-HOLD-download-forgery-REJECT',editR41Policy(r=>r.installable=true));

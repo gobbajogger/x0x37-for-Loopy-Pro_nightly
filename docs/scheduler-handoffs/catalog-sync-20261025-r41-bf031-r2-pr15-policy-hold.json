@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "evidence_revision": "catalog-r41-pr140-r2-random-swing-pr15-policy-hold-20261025",
+  "owner": "sole existing Catalog Sync PR13",
+  "intended_end_user_behavior": "Preserve musician-facing 303 RANDOM swing source-progress and truthful website-qualification HOLD without allowing source-only history to become a download.",
+  "parent_commit": "10130c0fd0f8d836acc0d391fd2eb10da2599044",
+  "parent_root": "b15b76d23bce69145b034ece21e271f4e6dd4e43",
+  "history_before": 129,
+  "history_after": 131,
+  "previous_rows_unchanged": true,
+  "preexisting_builds": 2,
+  "selectable_source_firmware": 0,
+  "upstream": [
+    {
+      "repo": "gobbajogger/X0X37-for-Loopy-Pro",
+      "pr": 140,
+      "head": "a4bb338f0e456381675409fef75709155916e265",
+      "root": "a5ffdb29d990c8d093cf691baa481d727f5c290e",
+      "compiler": "f83d9e624ea54618dada87427c8f7954fca28aa6",
+      "evidence_blob": "2cc78389bdf124d29f03773d72b6ee8fb7bbd7da",
+      "status": "PRODUCER_NATIVE_SCOPED; BUILD_ONLY_PENDING; QA_PENDING"
+    },
+    {
+      "repo": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "pr": 15,
+      "head": "c2fdf75577baa0945735c44c15ef219f7adfd9f3",
+      "root": "1123a906173b6aa0065600528840823162fb502d",
+      "policy_warning": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15#issuecomment-6393622448",
+      "status": "SOURCE_POLICY_CONTRADICTION; HOLD_FOR_INDEPENDENT_QA"
+    }
+  ],
+  "rows": [
+    {
+      "index": 129,
+      "id": "bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025",
+      "sha256": "4a56280e3a43af4df0d43664153eb531d39df839db6b2f7db866438938c13a32"
+    },
+    {
+      "index": 130,
+      "id": "nightly-pr15-qualification-gate-removal-policy-hold-20261025",
+      "sha256": "ccdb34cabe3a603cfabcf66fa45a52d8f2a488fbb7aa73b722d7702884b9ca2e"
+    }
+  ],
+  "checks": [
+    {
+      "name": "SHA256 known-answer empty/abc/hello and prior 129 row digest parity",
+      "result": "PASS_V8"
+    },
+    {
+      "name": "all 131 rows pinned",
+      "result": "PASS_V8_131_OF_131"
+    },
+    {
+      "name": "10 mutation/deletion/false grant cases",
+      "result": "PASS_V8_EXPECTED_REJECTIONS_10"
+    },
+    {
+      "name": "new registered Node continuity/negatives",
+      "result": "SOURCE_SYNTAX_PREFLIGHT_ONLY_NOT_EXECUTED"
+    },
+    {
+      "name": "npm test/npm run build/npm run test:browser/full Chromium",
+      "result": "NOT_RUN_LOCAL_GITHUB_DNS_EXIT128"
+    },
+    {
+      "name": "live HTTPS binary/controller/license/OTA/physical",
+      "result": "NOT_VERIFIED"
+    }
+  ],
+  "next_owner": "Existing independent NIGHTLY Website QA exact R41; sole Website Main Merger reviewed source decision; firmware hourly Build/independent QA for PR140; PR15 installer owner + independent QA; sole Pages publisher for HTTPS/package delivery",
+  "restrictions": "No new task, firmware/controller private bytes, flash, protected main/gh-pages write, automatic website publication or false qualification."
+}

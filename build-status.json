@@ -3656,6 +3656,69 @@
       "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/140",
       "evidence_commit": "a964401ec29028ab488a7586d8b54d0e24ea58ce",
       "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/a964401ec29028ab488a7586d8b54d0e24ea58ce/docs/scheduler-handoffs/bugfinder-bf031-tb3po-logical-bars-20261025-r1.json"
+    },
+    {
+      "id": "bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025",
+      "title": "BF-031 R2: 303 RANDOM swing follows elapsed musical slots, not random source indices; BUILD_ONLY and independent QA pending",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "lane/bugfinder-bf031-tb3po-direction-bars-20261025",
+      "source_commit": "a4bb338f0e456381675409fef75709155916e265",
+      "source_tree": "a5ffdb29d990c8d093cf691baa481d727f5c290e",
+      "firmware_subtree": "f83d9e624ea54618dada87427c8f7954fca28aa6",
+      "source_time": "2026-10-25T04:24:18Z",
+      "date": "2026-10-25",
+      "status": "source-only",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "PR140 existing Bugfinder R2 producer source and host receipt; Catalog checked exact remote Git, not native test execution.",
+        "command": "Producer reports GCC14.2/Clang17 x optimized/UBSan/ASan+UBSan native seq_start/seq_advance/seq_ext_clock: before 980/1222 (242 expected failures) and after 1222/1222 in six variants, with prior R1 logical bar suite 878/878; real INTERNAL/EXTERNAL clock paths exercised by producer.",
+        "result": "PRODUCER SCOPED HOST PASS REPORTED; ELITE/PRO R2 TARGET BUILD_ONLY PENDING; INDEPENDENT FIRMWARE QA PENDING; NO FIRMWARE PACKAGE, BROWSER OTA OR HARDWARE PASS."
+      },
+      "description": "303 RANDOM swing should alternate by actual musical time slots independently of randomly chosen source pattern steps, including external MIDI clock; producer reports FORWARD/no-swing and R1 pass-count regression preserved. Exact R2 compiler subtree supersedes R1 for new builds. This historical report never grants a firmware download.",
+      "missing_gate": "Existing Hourly Build privately produces exact-R2 Elite/Pro matched BUILD_ONLY; existing firmware Independent QA reviews source/real clock paths; Safe Merge owns integration; independent website QA and sole Pages publisher control installer legal/hash/restore/OTA/live-byte gates.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/140",
+      "evidence_commit": "a4bb338f0e456381675409fef75709155916e265",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/a4bb338f0e456381675409fef75709155916e265/docs/scheduler-handoffs/bugfinder-pr140-r2-random-temporal-swing-20261025.json",
+      "source_identity_note": "Commit a4bb338f0e456381675409fef75709155916e265 root a5ffdb29d990c8d093cf691baa481d727f5c290e compiler f83d9e624ea54618dada87427c8f7954fca28aa6 receipt Git blob 2cc78389bdf124d29f03773d72b6ee8fb7bbd7da; preceding R1 entry at 128 immutable."
+    },
+    {
+      "id": "nightly-pr15-qualification-gate-removal-policy-hold-20261025",
+      "title": "Website PR15 proposed native-build/licensing/source-gate removal conflicts with accepted NIGHTLY policy: HOLD independent review",
+      "source_repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "source_ref": "cursor/drop-distribution-license-gate",
+      "source_commit": "c2fdf75577baa0945735c44c15ef219f7adfd9f3",
+      "source_tree": "1123a906173b6aa0065600528840823162fb502d",
+      "source_time": "2026-10-25T04:44:34Z",
+      "date": "2026-10-25",
+      "status": "validation-evidence-only",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Catalog read-only exact-Git PR15 source/diff analysis against accepted main AGENTS.md and docs/nightly-first-development-gate.md; NOT a formal Independent Website QA review.",
+        "command": "PR15 R1 five-file patch removes native-build/distribution-license/corresponding-source from mandatory qualification checks, permits absent/null native-build, removes corresponding_source/notices check and modifies synthetic tests to accept relaxed gates; no native/browser replay here.",
+        "result": "SOURCE POLICY CONTRADICTION OBSERVED; PR15 UNMERGED/HOLD FOR INDEPENDENT WEBSITE QA AND SOLE MAIN MERGER; NO LIVE BROWSER UNSAFE DOWNLOAD OR PHYSICAL OTA OBSERVED."
+      },
+      "description": "Current accepted nightly AGENTS and owner prehardware requirements mandate exact-model native source build and compatible lawful distribution/source evidence. The PR's proposed relaxed admissibility is unapproved and not an installable firmware event; public MIT/GPL source does not automatically authorize proprietary package/controller distribution.",
+      "missing_gate": "PR15 installer-source owner and Independent Website QA must preserve or explicitly resolve missing native-build and lawful distribution checks with authorized updated requirements, including negative receipt tests; sole Main Merger decides on independently reviewed code. Catalog retains no merge/publication authority.",
+      "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15",
+      "evidence_commit": "c2fdf75577baa0945735c44c15ef219f7adfd9f3",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15#issuecomment-6393622448",
+      "source_identity_note": "PR15 c2fdf75577baa0945735c44c15ef219f7adfd9f3 root 1123a906173b6aa0065600528840823162fb502d compared to main 10c47659192a32821da171417069ffefdbc05d63; producer source-policy observation, not independent acceptance or live-served browser exploit evidence."
     }
   ],
   "policy": {
@@ -3666,7 +3729,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 129
+    "source_or_historical_checkpoints": 131
   },
   "versioning": {
     "firmware_product_version": {
