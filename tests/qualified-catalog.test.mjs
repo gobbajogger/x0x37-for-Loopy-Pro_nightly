@@ -40,6 +40,39 @@ const reject = mutate => {
   negatives++;
 };
 validateCatalog(catalog, qualification);
+// Optional catalog hints are denials, not independent qualification receipts.
+// Both models use exact matching synthetic metadata; no fixture is a real approval.
+const approvals = ['qualified', 'installable', 'qa_pass', 'source_licenses_approved',
+  'immutable_http_pass', 'backup_integrity_pass', 'model_and_controller_pass'];
+for (const model of ['pro', 'elite']) {
+  const c = structuredClone(catalog), q = structuredClone(qualification);
+  const p = c.versions[0].models.pro, r = q.packages[digest];
+  if (model === 'elite') {
+    p.product = r.product = 'SMK-37 Elite_900';
+    c.versions[0].models = { elite: p };
+  }
+  validateCatalog(c, q); // Existing qualified metadata needs no optional hints.
+  for (const target of [c.versions[0], p]) for (const field of approvals) {
+    target[field] = true;
+    validateCatalog(c, q);
+    assert.ok(renderInstaller(c).includes(`"${field}":true`), 'public projection retains optional hint');
+    for (const value of [false, null, 0, 1, 'false', 'true', [], {}, undefined]) {
+      target[field] = value;
+      assert.throws(() => validateCatalog(c, q), /NOT INSTALLABLE/,
+        `${model}/${field}: supplied non-true hint must deny despite checked status and PASS receipts`);
+      negatives++;
+    }
+    delete target[field];
+  }
+  for (const target of [c.versions[0], p]) for (const field of approvals) target[field] = true;
+  r.gates['independent-qa'].status = 'FAIL';
+  assert.throws(() => validateCatalog(c, q), /independent-qa is not PASS/,
+    'all true client hints cannot override a failed independent receipt');
+  r.gates['independent-qa'].status = 'PASS';
+  delete q.packages[digest];
+  assert.throws(() => validateCatalog(c, q), /qualification must match/,
+    'all true client hints cannot replace a missing exact-package receipt');
+}
 for (const gate of requiredGates) {
   reject((c, q, r) => r.gates[gate].status = 'PENDING');
   reject((c, q, r) => delete r.gates[gate].evidence_url);

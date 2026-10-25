@@ -28,9 +28,12 @@ function httpsUrl(value) {
   } catch { return false; }
 }
 
+// Optional catalog hints can deny a candidate, never replace independent receipts.
+const approvalKeys = ['qualified', 'installable', 'qa_pass', 'source_licenses_approved',
+  'immutable_http_pass', 'backup_integrity_pass', 'model_and_controller_pass'];
 function denied(record) {
   return !record || ['revoked', 'blocked', 'withdrawn'].some(k => record[k] !== undefined && record[k] !== false) ||
-    record.qualified === false || record.installable === false ||
+    approvalKeys.some(k => Object.hasOwn(record, k) && record[k] !== true) ||
     (record.fromRelease !== undefined && record.fromRelease !== false) ||
     record.device_verified === true || record.hardware_tested === true ||
     (record.lifecycle !== undefined && record.lifecycle !== 'current');
@@ -40,9 +43,9 @@ function denied(record) {
 const catalogKeys = ['schema', 'repo', 'pages', 'latest', 'versions', 'history'];
 const versionKeys = ['version', 'label', 'status', 'config', 'hardware_tested', 'source_commit', 'source_tree',
   'models', 'title', 'description', 'built_at', 'evidence_url', 'lifecycle', 'revoked', 'blocked', 'withdrawn',
-  'qualified', 'installable', 'fromRelease', 'device_verified'];
+  ...approvalKeys, 'fromRelease', 'device_verified'];
 const packageKeys = ['product', 'sha256', 'size', 'controller_sha256', 'pkg', 'status', 'lifecycle',
-  'revoked', 'blocked', 'withdrawn', 'qualified', 'installable', 'fromRelease', 'device_verified', 'hardware_tested'];
+  'revoked', 'blocked', 'withdrawn', ...approvalKeys, 'fromRelease', 'device_verified', 'hardware_tested'];
 const record = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 function checkInputFields(catalog, qualification, need) {
   const fields = (value, allowed, where) => {
@@ -55,7 +58,7 @@ function checkInputFields(catalog, qualification, need) {
       need(typeof value[name] === 'string', `${where}/${name}: text required`);
   };
   const flags = (value, where) => {
-    for (const name of ['revoked', 'blocked', 'withdrawn', 'qualified', 'installable', 'fromRelease', 'device_verified', 'hardware_tested'])
+    for (const name of ['revoked', 'blocked', 'withdrawn', ...approvalKeys, 'fromRelease', 'device_verified', 'hardware_tested'])
       if (value[name] !== undefined) need(typeof value[name] === 'boolean', `${where}/${name}: boolean required`);
   };
   if (fields(catalog, catalogKeys, 'catalog')) {

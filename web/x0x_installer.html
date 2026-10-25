@@ -764,12 +764,15 @@ function modelKeyForProduct(product) {
   return {"SMK-37 Pro_900":"pro", "SMK-37 Elite_900":"elite"}[product] || null;
 }
 // Revocation is monotonic: any explicit denial wins over a checked status.
+// Optional approval hints must be true when present. They are not qualification
+// receipts; the publisher's preparation path still checks those independently.
 function catalogDenied(record) {
   return !record || ["revoked", "blocked", "withdrawn"].some(k =>
     record[k] !== undefined && record[k] !== false) ||
-    record.qualified === false || record.installable === false ||
+    ["qualified", "installable", "qa_pass", "source_licenses_approved", "immutable_http_pass",
+      "backup_integrity_pass", "model_and_controller_pass"].some(k => Object.hasOwn(record, k) && record[k] !== true) ||
     (record.fromRelease !== undefined && record.fromRelease !== false) ||
-    record.device_verified === true || record.hardware_tested === true ||
+    ["device_verified", "hardware_tested"].some(k => Object.hasOwn(record, k) && record[k] !== false) ||
     (record.lifecycle !== undefined && record.lifecycle !== "current");
 }
 function selectionIdentity(v, p) {
