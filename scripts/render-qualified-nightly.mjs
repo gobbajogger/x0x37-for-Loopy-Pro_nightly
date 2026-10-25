@@ -25,7 +25,7 @@ export const requiredGates = ['package-integrity', 'model-controller',
 const gateNames = ['native-build', ...requiredGates, ...retiredLicenseGates];
 
 export function installerFingerprint() {
-  return sha256(JSON.stringify([...inputs, 'web/x0x_breaks.html', 'scripts/render-qualified-nightly.mjs', 'scripts/legacy-controller-packages.json']
+  return sha256(JSON.stringify([...inputs, 'web/x0x_breaks.html', 'web/x0x_projects.html', 'web/x0x_projects.js', 'scripts/build-preview.mjs', 'scripts/render-qualified-nightly.mjs', 'scripts/legacy-controller-packages.json']
     .map(p => [p, sha256(readFileSync(join(root, p)))])));
 }
 

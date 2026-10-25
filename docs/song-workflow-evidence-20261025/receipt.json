@@ -1,0 +1,42 @@
+{
+  "state": "DELIVERED; independent safety and UX PASS; Library preview delivery blocked",
+  "requests": [
+    "LX-REQ-037",
+    "LX-REQ-001"
+  ],
+  "deferred": "LX-REQ-038 community sharing: no implementation",
+  "website_base": "570253d35c84748bba82ddd616b9c17af8d7da58",
+  "firmware_source": "08d3164a265123cb4c84e5104642fd93257d63d7",
+  "file_sha256": {
+    "web/x0x_installer.html": "2e9c32db442c17d1d8998195eef85c58b3d89174b7e2589bd403f64cec5f56d7",
+    "web/x0x_projects.html": "93da82152217f25ca063a65b1a572cb7d4cc39457ffe497e56c123b99fb060c7",
+    "web/x0x_projects.js": "3e274220d037ccfea1858eefc1e02fa172722d10130e51eb3b2c339a739ddcea",
+    "web/test_projects.mjs": "efd841f4c444d015518e9c059705e57050e2c7c8ac8e3762c9e80aaecb4cd4a9",
+    "web/test_projects_page.mjs": "519538a2ef72fd5e7499123ccd5c0cb326ec67ce8a67811c663d20af421b453e",
+    "scripts/build-preview.mjs": "3e46fbdf47b7b1c55eeacc35e51ecbe4db3a3fc23512520c7c7864730b5362bd",
+    "scripts/render-qualified-nightly.mjs": "fdd818f55446aea1f96475425f8aa752202604376d734dc4582f2a030f29fefd",
+    "docs/install/index.html": "abdc7dfd14e6db9b7777d3b6ac26fce9d8961267dbe3b5444f68c0039e58c453",
+    "docs/projects/index.html": "99585c9364b7fb34aa3d0f833037644e573354eae8929458fa9e2166297f5533",
+    "tests/project-workspace-browser.py": "5b17486a080e271bc25763ba760c7883193cb0bc83613d7a50da5de2416bfafe",
+    "tests/browser-admission.py": "b89cca7d2e51e47e00c8012e0b11664a1b3c6a98fb6e6b039e4c010c7e5d7d9a"
+  },
+  "previews": [
+    {
+      "name": "song-project-workspace-1280.png",
+      "sha256": "dcacb74832696f4e544fb4d1b1e5516ad7e0ad0babd168385344d332ab2f7280",
+      "library_id": null,
+      "state": "LOCAL_ONLY"
+    },
+    {
+      "name": "song-project-workspace-390.png",
+      "sha256": "60b8abf644a42b1dbe512fb3cb6ffb5f5c544ac0f59117ddc53c6f7e09c747b6",
+      "library_id": null,
+      "state": "LOCAL_ONLY"
+    }
+  ],
+  "limits": [
+    "No device/owner project/GUI/firmware modifications/merge/public deployment",
+    "No Library IDs created: official upload helper reported prepare_uploads unavailable before transfer",
+    "PR171 repair is not included by this website or in firmware source pin"
+  ]
+}

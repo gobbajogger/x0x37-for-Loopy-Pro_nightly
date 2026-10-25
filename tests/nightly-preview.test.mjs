@@ -24,7 +24,7 @@ assert.equal(catalog.latest, null);
 assert.equal(existsSync(join(root, 'docs/firmware')), false, 'hosted firmware directory must be absent');
 const inst = read('docs/install/index.html');
 const breaks = read('docs/breaks/index.html');
-for (const [name, html] of [['installer',inst], ['sample importer',breaks]]) {
+for (const [name, html] of [['installer',inst], ['sample importer',breaks], ['projects',read('docs/projects/index.html')]]) {
   assert.doesNotMatch(html, /\/\*LIB\*\/|\/\*CATALOG\*\//, `${name} must be compiled`);
   const js = html.match(/<script type="module">([\s\S]*?)<\/script>/)?.[1];
   assert.ok(js, `${name} module is missing`);
