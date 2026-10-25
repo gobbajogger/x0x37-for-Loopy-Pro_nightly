@@ -2,16 +2,16 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-a03cfab3-dev",
+  "latest": "nightly-0d79d634-dev",
   "versions": [
     {
-      "version": "nightly-a03cfab3-dev",
+      "version": "nightly-0d79d634-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
       "status": "dev-checked",
       "config": "dev",
       "hardware_tested": false,
-      "source_commit": "a03cfab3a423ab5c65a6546afd4993fe51754ee7",
-      "source_tree": "85e159c5365b14c48e9f3df7d2089e8f2eb560d4",
+      "source_commit": "0d79d63485dc6585800a71ef716d095445f5a1fc",
+      "source_tree": "603e2a2b1442a8214cd97b03d32bf57fc158feac",
       "models": {
         "elite": {
           "product": "SMK-37 Elite_900",
@@ -32,9 +32,9 @@
           "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f917b636ba00d7dbef18fd00d1f0af15299a0a24/artifacts/nightly/dev-20261025-4ee8f377/d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb/x0x37-pro-dev.fwsc"
         }
       },
-      "title": "DEV / HARDWARE TEST — Elite and Pro (F03)",
-      "description": "Software-checked DEV firmware from validated source a03cfab3 (F03). Bundled controller. DEVICE NOT TESTED. Stage-4 blank package hashes d3b4cac3/0b09605f; page serves bundled installable bytes. Content-tree 1755a2dd… matches DEV CHECKED records. Package digests match prior F02 publish (installer-only repair; firmware unchanged); catalog latest attributes those bytes to a03cfab3 and supersedes nightly-4ee8f377-dev.",
-      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/178"
+      "title": "DEV / HARDWARE TEST — Elite and Pro (F04)",
+      "description": "Software-checked DEV firmware from validated source 0d79d634 (F04 BF-001). Bundled controller. DEVICE NOT TESTED. Stage-4 blank package hashes d3b4cac3/0b09605f; page serves bundled installable bytes. Content-tree 1b067cad… matches DEV CHECKED records. Package digests match prior F03 publish (installer-only BF-001 repair; firmware application bytes unchanged); catalog latest attributes those bytes to 0d79d634 and supersedes nightly-a03cfab3-dev.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/190"
     },
     {
       "version": "nightly-54f2ffbc-dev",
