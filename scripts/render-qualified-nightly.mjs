@@ -11,7 +11,7 @@ const legacyControllers = JSON.parse(readFileSync(join(root, 'scripts/legacy-con
 const sha256 = b => createHash('sha256').update(b).digest('hex');
 const hex40 = s => typeof s === 'string' && /^[a-f0-9]{40}$/.test(s);
 const hex64 = s => typeof s === 'string' && /^[a-f0-9]{64}$/.test(s);
-const inputs = ['web/x0x_installer.html', 'web/fm1pkg.js', 'web/fm1ota.js', 'web/x0x_breaks.js'];
+const inputs = ['web/x0x_installer.html', 'web/fm1pkg.js', 'web/fm1ota.js', 'web/x0x_breaks.js', 'web/x0x_breaks.html'];
 export const requiredGates = ['native-build', 'package-integrity', 'model-controller',
   'memory-flash', 'host-regressions', 'backup-restore-readback', 'interruption-recovery',
   'ota-target-binding', 'independent-qa', 'distribution-license', 'corresponding-source'];

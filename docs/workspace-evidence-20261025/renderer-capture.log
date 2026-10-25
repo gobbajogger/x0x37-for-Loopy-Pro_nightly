@@ -1,0 +1,8 @@
+PASS restore: eight views preserve complete navigation state and exact framebuffer
+PASS activity: pickup, live values, repeated controls, exact boundary and wrap
+PASS feedback: existing header message and local knob readout survive temporary UI
+PASS navigation: physical buttons, encoder, key and SMC navigation cancel
+PASS overlays: confirmation blocks input; menu/help state survives activity and timeout
+PASS clip: grid/waiting framebuffer restores; actual extracted CK turn shows full field UI
+PASS actions/reset: mute+Solo, inactive strips, init/project lock/reset
+smc_ui: PASS (191 checks)

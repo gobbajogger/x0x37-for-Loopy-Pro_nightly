@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Install · X0X</title>
+<title>Firmware & samples · X0X37 NIGHTLY</title>
 <style>
 /* X0X37 / firmware control desk. Source-only skin: no flashing logic. */
 :root {
@@ -75,7 +75,7 @@ h1, h2, h3 { margin: 0; }
 .head-nav a[aria-current="page"]::after { content:""; display: block; background: var(--accent); height: 2px; margin-top: 3px; }
 .lang { background: transparent; border: 1px solid var(--rule); border-radius: 6px; color: var(--fg); padding: 8px 12px; min-height: 38px; font: 700 11px var(--mono); letter-spacing: .02em; }
 .lang:hover { border-color: var(--accent); }
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) 335px; align-items: center; gap: 28px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 28px; }
 .eyebrow, .step-kicker { font: 700 11px/1.5 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
 .eyebrow { margin: 0 0 13px; }
 h1 { font-size: clamp(46px, 5.8vw, 74px); letter-spacing: -.07em; line-height: .98; font-weight: 800; margin: 0 0 19px; }
@@ -258,6 +258,8 @@ progress::-moz-progress-bar { background: var(--accent); }
   .archive-panel { padding: 17px 18px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .led.busy { animation: none; } * { transition: none !important; } }
+
+[hidden]{display:none!important}.workspace-nav{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.workspace-nav a{padding:12px 18px;border:1px solid var(--rule);border-radius:8px;color:var(--fg);text-decoration:none}.workspace-nav a[aria-current]{background:var(--accent);color:var(--bg)}.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}.feature-grid figure{margin:0;padding:16px;border:1px solid var(--rule);border-radius:12px;background:var(--soft)}.feature-grid img{width:100%;height:auto;image-rendering:pixelated}.feature-grid h3{font-size:16px;margin:12px 0 6px}.feature-grid p{font-size:13px;line-height:1.6}.feature-grid figcaption{font-size:11px;color:var(--dim)}#sample-frame{width:100%;border:0;min-height:780px}#workspace-message{color:var(--dim)}@media(max-width:700px){.feature-grid{grid-template-columns:1fr}.feature-grid img{max-width:400px}}
 </style>
 </head>
 <body>
@@ -266,31 +268,35 @@ progress::-moz-progress-bar { background: var(--accent); }
     <div class="header-top">
       <a class="home" href="../" aria-label="X0X37 home">X0X37</a>
       <nav class="head-nav" aria-label="Site navigation">
-        <a href="./" aria-current="page" data-t="navinstaller">Installer</a>
         <a href="../manual/" data-t="navmanual">Manual</a>
-        <a href="../breaks/" data-t="navsamples">Samples</a>
       </nav>
       <button class="lang" id="lang" type="button"></button>
     </div>
     <div class="hero">
       <div class="hero-copy">
         <p class="eyebrow" data-t="eyebrow">Device software / Web MIDI</p>
-        <h1 data-t="title">Install X0X.</h1>
+        <h1 data-t="title">Firmware & samples.</h1>
         <p class="lead" data-t="intro"></p>
       </div>
-      <div class="device-visual" aria-hidden="true">
-        <div class="device-top"><b>X0X / 37</b><span>SMK SERIES</span></div>
-        <div class="device-screen"><strong>X0X_37</strong><small>909 / 808<br>303 / MIDI</small></div>
-        <div class="device-pads"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="device-bottom"><span>16 STEP PERFORMANCE</span><span>USB / MIDI</span></div>
-      </div>
+
     </div>
-    <ol class="journey" aria-label="Install workflow">
-      <li><span class="stepnum">01</span><span data-t="journey1">Connect keyboard</span></li>
-      <li><span class="stepnum">02</span><span data-t="journey2">Select firmware</span></li>
-      <li><span class="stepnum">03</span><span data-t="journey3">Review and install</span></li>
-    </ol>
   </header>
+  <section aria-labelledby="features-title">
+    <p class="eyebrow">PLAY / SHAPE / CONTROL</p><h2 id="features-title">Explore the firmware.</h2>
+    <p>Drums, bass and break loops on your keyboard, with MIDI control for your setup.</p>
+    <div class="feature-grid">
+      <figure><img src="../assets/firmware-ui/home.png" width="240" height="240" alt="Actual X0X firmware home screen showing instrument parts"><h3>A performance overview</h3><p>See the instrument parts together on the firmware screen.</p><figcaption>Real firmware UI render · shared HOME screen</figcaption></figure>
+      <figure><img src="../assets/firmware-ui/mixer.png" width="240" height="240" alt="Actual X0X firmware drum mixer screen"><h3>Shape your drum mix</h3><p>Adjust the drum voices from the mixer screen.</p><figcaption>Real firmware UI render · shared MIX screen</figcaption></figure>
+      <figure><img src="../assets/firmware-ui/smc.png" width="240" height="240" alt="Actual X0X firmware SMC control screen"><h3>A dedicated control view</h3><p>The newer SMC screen gives controls their own view and returns to your previous instrument screen.</p><figcaption>Real firmware UI render · newer source preview</figcaption></figure>
+    </div>
+    <p class="small">Rendered from accepted firmware source <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/tree/93449136baae02c9715ba20edc5c43176786b635">93449136</a>. These are firmware renders, not device photographs. HOME and MIX also reproduce exactly on the older published 54f2ffbc DEV source. The dedicated SMC view is a newer-source preview only. This source-only preview offers no builds; screens and features may differ in older builds. Selecting a build or viewing an image applies nothing to your device.</p>
+  </section>
+  <nav class="workspace-nav" aria-label="Choose a task"><a href="#firmware" id="firmware-tab" aria-current="page">Install firmware</a><a href="#samples" id="samples-tab">Import samples / backup</a><a href="#buildarchive">Build history</a></nav>
+  <p id="workspace-message" role="status" aria-live="polite"></p>
+  <p class="small">Device operations require a USB data cable, HTTPS (or localhost), and Web MIDI with SysEx permission. Use desktop Chrome or Edge. Safari and iOS browsers do not provide the required Web MIDI access. You can still browse this page without a device.</p>
+  <section id="samples-panel" aria-label="Sample workspace" hidden><iframe id="sample-frame" title="Import break loops, back up or restore sample slots" src="../breaks/?embedded=1" allow="midi"></iframe><p class="small">If the sample panel does not load, <a href="../breaks/">open the standalone sample tools</a>. Prepared changes remain in the current panel while it stays open.</p></section>
+  <div id="firmware-panel">
+  <p class="small">Firmware installation changes the device software. SMK-37 Elite and Pro need their matching package; FM-1 support depends on the selected package. A supported model alone does not mean an installable build exists. DEV / HARDWARE TEST means DEVICE NOT TESTED.</p>
   <div class="install-layout">
     <div class="install-primary">
       <div class="connect" id="connectbar" role="region" aria-label="Keyboard connection">
@@ -357,7 +363,7 @@ progress::-moz-progress-bar { background: var(--accent); }
           <li data-t="guide2">Export your important samples first. Automatic slot backup runs when needed, but a separate copy is safer.</li>
           <li data-t="guide3">Keep USB connected until the installation finishes.</li>
         </ol>
-        <a href="../breaks/" data-t="guidebackup">Backup and restore samples</a>
+        <a href="#samples" data-t="guidebackup">Backup and restore samples</a>
         <p class="small" data-t="direct"></p>
       </section>
       <section class="panel sidebar-card">
@@ -380,7 +386,7 @@ progress::-moz-progress-bar { background: var(--accent); }
     <div id="buildhistory"></div>
   </details>
   <nav class="resource-links" aria-label="Other resources">
-    <a href="../breaks/" data-t="breaks">Sample importer: your own break loops</a>
+    <a href="#samples" data-t="breaks">Sample importer: your own break loops</a>
     <a href="../manual/" data-t="manual">The manual</a>
     <a href="../new/" data-t="whatsnew">What's new</a>
     <a id="download" href="#" data-t="download">Download this package</a>
@@ -405,6 +411,7 @@ progress::-moz-progress-bar { background: var(--accent); }
     <p><button id="stockgo" disabled data-t="stockinstall"></button></p>
   </section>
 
+  </div><!-- firmware-panel -->
   <div class="site-footer">
   <p class="small" id="recovery"><span data-t="brick"></span>
     <a href="../manual/#recovering-an-fm-1-that-won-t-start" style="color:inherit" data-t="bricklink"></a></p>
@@ -542,7 +549,7 @@ const TEXT = {
     ctlbundlebad: "Bundled Bluetooth controller is missing, damaged or does not match this build.",
     evidencelink: "Development validation record", archiveheading: "Build history", archiveintro: "SHA-verified builds are separated from source-only checkpoints, unavailable archives and failed builds. A source commit alone is not flashable firmware.",
     choosebuild: "Select this build", otherbuilds: "Other checkpoints — not available for installation", unapproved: "No model-specific development/release validation for this package. Automatic installation is disabled.",
-    title: "Install X0X.",
+    title: "Firmware & samples.",
     intro: "Firmware for SMK-37 and FM-1. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.",
     warn: "Do not unplug the USB cable while writing.",
     install: "Install firmware", other: "日本語", connect: "Connect USB",
@@ -578,7 +585,7 @@ const TEXT = {
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
     confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, they are saved to a file first. Keep USB connected until Done.",
-    nomidi: "This browser cannot do it. Open the page in Chrome or Edge.", loadfail: "Could not load: ",
+    nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
     error: "Error: ",
@@ -640,6 +647,7 @@ let image = null, selectedProduct = null, ctl = null, stock = null;
 let chosenModel = null;
 let loadSerial = 0;
 let scanSerial = 0;
+let workspaceActive = true, workspaceScanning = 0;
 let verifiedDownload = null;
 let bundledFailure = false;
 function discardVerifiedDownload() {
@@ -698,13 +706,17 @@ async function midiAccess() {
     const now = ports();
     if (now === midiAccess.ports) return;
     midiAccess.ports = now;
-    if (!writing) { clearTimeout(midiAccess.t); midiAccess.t = setTimeout(scan, 800); }
+    if (!writing && workspaceActive) { clearTimeout(midiAccess.t); midiAccess.t = setTimeout(scan, 800); }
   };
   return midi;
 }
 
 async function scan() {
-  if (writing) return;
+  if (writing || !workspaceActive) return;
+  workspaceScanning++;
+  try { return await scanWorkspaceDevice(); } finally { workspaceScanning--; }
+}
+async function scanWorkspaceDevice() {
   const requestId = ++scanSerial;
   led("busy");
   $("conn").textContent = t("looking");
@@ -1196,7 +1208,8 @@ drop.addEventListener("drop", async (e) => {
 });
 
 async function run(img, product, opts = {}) {
-  if (writing) return;
+  if (writing || !workspaceActive) return;
+  getSampleWorkspace()?.invalidate();
   writing = true;
   scanSerial++;
   ctlLoadSerial++; stockLoadSerial++;
@@ -1311,6 +1324,34 @@ $("stockgo").addEventListener("click", () => {
   $("stockgo").disabled = true;
   run(stock.image, stock.product, { foreign: true });
 });
+
+
+function getSampleWorkspace() {
+  try { return $("sample-frame").contentWindow.sampleWorkspace; } catch { return null; }
+}
+function navigateWorkspace() {
+  const samples = location.hash === "#samples";
+  const child = getSampleWorkspace();
+  if (writing || workspaceScanning || child?.busy()) {
+    $("workspace-message").textContent = "An operation is in progress. Keep this page open; switch tasks when it finishes.";
+    history.replaceState(null, "", workspaceActive ? "#firmware" : "#samples");
+    return;
+  }
+  workspaceActive = !samples;
+  clearTimeout(midiAccess.t);
+  child?.activate(samples);
+  $("firmware-panel").hidden = samples;
+  $("samples-panel").hidden = !samples;
+  $("firmware-tab").toggleAttribute("aria-current", !samples);
+  $("samples-tab").toggleAttribute("aria-current", samples);
+  if (!samples) $("firmware-tab").setAttribute("aria-current", "page");
+  else $("samples-tab").setAttribute("aria-current", "page");
+  $("workspace-message").textContent = samples ? "Sample workspace: read slots first, prepare changes, then explicitly send. Firmware is not installed here." : "Firmware workspace: choose a matching build and review before installing.";
+  if (location.hash === "#buildarchive") $("buildarchive").open = true;
+}
+window.addEventListener("hashchange", navigateWorkspace);
+$("sample-frame").addEventListener("load", navigateWorkspace);
+navigateWorkspace();
 
 (async () => {
   if (typeof location !== "undefined" && location.hash === "#buildarchive") $("buildarchive").open = true;
