@@ -563,6 +563,14 @@
     {
       "id": "website-main-pr14-pr16-pr17-merged-source-only-20261025",
       "sha256": "52488fb54e11268711c1ea08731adb66190e2c5a8ad90a39fa7cda0e562c7196"
+    },
+    {
+      "id": "firmware-f03-pr178-elite-pro-dev-checked-source-evidence-20261025",
+      "sha256": "93febe1d1ca428484d547b2e338b83f4dfd8a81dab3dfea6524d674973ed9ec6"
+    },
+    {
+      "id": "nightly-f03-pages-git-bundled-dev-test-candidate-20261025",
+      "sha256": "2504113dafac781bdf206ae78bd62bb4aeecf46c8aa3e3276244aca27450fd40"
     }
   ]
 }

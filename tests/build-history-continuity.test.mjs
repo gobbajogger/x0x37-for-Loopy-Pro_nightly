@@ -305,3 +305,42 @@ for(let n=0;n<2;n++){
 assert.equal(original[137].firmware_subtree,'75a7a40cb8b0fb647e7143b889309b485bb59fcd');
 assert.equal(original[138].source_tree,'b615bc8dc25136a47b0052bcd44a466e1cd713df');
 mustReject('R44 false compiler tree',h=>h[137].firmware_subtree='f'.repeat(40));
+
+// R45: F03 firmware builder and Pages evidence are historical receipts, not new source-picker admission.
+// The regression deliberately fails against R44 (which has 139 rows).
+const r45Ids = [
+  'firmware-f03-pr178-elite-pro-dev-checked-source-evidence-20261025',
+  'nightly-f03-pages-git-bundled-dev-test-candidate-20261025',
+];
+const r45Packages = [
+  ['d3b4cac3d7b7be7a72732d4dd00c3120c053dbffc9137ffb7c151a5fd5355f2b','0b09605f357cd0accd5c5109dfb61138eb300945ffe05e6ff46942f5c5e076b9'],
+  ['8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278','d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb'],
+];
+assert.ok(lock.rows.length >= 141, 'R45 must SHA256-pin F03 source and Pages history');
+for(let n=0;n<2;n++){
+  const i=139+n, row=original[i];
+  assert.equal(row.id,r45Ids[n], 'F03 row appended, not reordered');
+  assert.equal(row.source_commit,'a03cfab3a423ab5c65a6546afd4993fe51754ee7');
+  assert.equal(row.source_tree,'85e159c5365b14c48e9f3df7d2089e8f2eb560d4');
+  assert.equal(row.firmware_subtree,'1755a2dd6d8b79e7405ab58919cc4d60a69ca11a4ae6601030b0f5de963f170e');
+  assert.deepEqual(row.models,['elite','pro']);
+  assert.equal(row.status,'validation-evidence-only');
+  assert.equal(row.installable,false,'historical status cannot admit firmware');
+  assert.equal(row.device_verified,false,'no physical device verification');
+  assert.equal(row.artifact_distribution_approved,false,'no Catalog rights promotion');
+  assert.equal(row.exact_remote_native_build,false,'producer evidence is not Catalog rerun');
+  assert.equal(row.artifact_bytes_independently_verified,false,'Catalog did not live-fetch binary');
+  assert.equal(row.reported_package_sha256.elite,r45Packages[n][0]);
+  assert.equal(row.reported_package_sha256.pro,r45Packages[n][1]);
+  assert.equal(row.reported_controller_sha256,'956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a');
+  mustReject('R45 F03 row removed '+n,h=>h.splice(i,1));
+  mustReject('R45 F03 source forged '+n,h=>h[i].source_commit='f'.repeat(40));
+  mustReject('R45 F03 model swapped '+n,h=>h[i].models=['pro','elite']);
+  mustReject('R45 F03 fake download '+n,h=>h[i].installable=true);
+  mustReject('R45 F03 fake device '+n,h=>h[i].device_verified=true);
+  mustReject('R45 F03 fake distribution '+n,h=>h[i].artifact_distribution_approved=true);
+  mustReject('R45 F03 package digest forged '+n,h=>h[i].reported_package_sha256.elite='a'.repeat(64));
+}
+assert.match(original[140].reported_checks.result,/CATALOG DID NOT INDEPENDENTLY FETCH/);
+assert.match(original[139].reported_checks.result,/NOT RERUN BY CATALOG/);
+console.log('PASS R45: 141 immutable history rows; 14 F03 deletion/false-approval/digest negatives');

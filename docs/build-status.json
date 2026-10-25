@@ -3976,6 +3976,86 @@
       "evidence_commit": "ffe3329c21f29e4b4f5b971a51d3d6ff40af8172",
       "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/commit/ffe3329c21f29e4b4f5b971a51d3d6ff40af8172",
       "source_identity_note": "Verified website main complete root b615bc8dc25136a47b0052bcd44a466e1cd713df; gh-pages unchanged."
+    },
+    {
+      "id": "firmware-f03-pr178-elite-pro-dev-checked-source-evidence-20261025",
+      "title": "F03 fail-closed sample-slot probe: producer DEV CHECKED Elite/Pro blank packages, no device PASS",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "a03cfab3a423ab5c65a6546afd4993fe51754ee7",
+      "source_commit": "a03cfab3a423ab5c65a6546afd4993fe51754ee7",
+      "source_tree": "85e159c5365b14c48e9f3df7d2089e8f2eb560d4",
+      "firmware_subtree": "1755a2dd6d8b79e7405ab58919cc4d60a69ca11a4ae6601030b0f5de963f170e",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "source_time": "2026-10-25T09:51:45Z",
+      "reported_checks": {
+        "origin": "Firmware PR178 Stage-4 build and native/web F03 regression records at d4d083c89ec6e35a8eb4d0d48d8474b41e51314e. Catalog inspected source and records, did not build or flash.",
+        "command": "Producer's exact F03 slot_probe/backup/controller/web guard regression suite and Stage-4 DEV package validation; X0X_DEV_PADCAL=1, CTL_NO_CACHE=1, two target models, pool free 8324B versus 8192B minimum.",
+        "result": "UPSTREAM PRODUCER DEV CHECKED ELITE AND PRO; SCOPED BUILD RECEIPTS SEEN; NOT RERUN BY CATALOG; DEVICE NOT TESTED."
+      },
+      "description": "Expected musician effect: failed sample-slot layout detection stops installation instead of risking silently incorrect sample restoration. F03 producer recorded matched Elite/Pro development build outputs; no real device installation or measured reliability improvement is claimed by Catalog.",
+      "missing_gate": "Independent exact package/backup/restore/OTA/interruption, distribution rights, current installer and physical-device qualifications belong to their separate owners. Build receipt is not an installer admission.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/178",
+      "evidence_commit": "d4d083c89ec6e35a8eb4d0d48d8474b41e51314e",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/d4d083c89ec6e35a8eb4d0d48d8474b41e51314e/evidence/f03-stage4/elite/record.json",
+      "source_identity_note": "Stage-4 non-document compiled input/content tree 1755a2dd6d8b79e7405ab58919cc4d60a69ca11a4ae6601030b0f5de963f170e; Git validated source tree 85e159c5365b14c48e9f3df7d2089e8f2eb560d4. Blank Stage-4 packages differ from bundled Pages package identities.",
+      "reported_package_sha256": {
+        "elite": "d3b4cac3d7b7be7a72732d4dd00c3120c053dbffc9137ffb7c151a5fd5355f2b",
+        "pro": "0b09605f357cd0accd5c5109dfb61138eb300945ffe05e6ff46942f5c5e076b9"
+      },
+      "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+    },
+    {
+      "id": "nightly-f03-pages-git-bundled-dev-test-candidate-20261025",
+      "title": "NIGHTLY Pages Git offers F03 DEV/HARDWARE TEST Elite/Pro bundled candidates; DEVICE NOT TESTED",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "a03cfab3a423ab5c65a6546afd4993fe51754ee7",
+      "source_commit": "a03cfab3a423ab5c65a6546afd4993fe51754ee7",
+      "source_tree": "85e159c5365b14c48e9f3df7d2089e8f2eb560d4",
+      "firmware_subtree": "1755a2dd6d8b79e7405ab58919cc4d60a69ca11a4ae6601030b0f5de963f170e",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "source_time": "2026-10-25T10:06:05Z",
+      "reported_checks": {
+        "origin": "Merged firmware PR181 Stage-7 source and live-verify.log; Catalog independently read Pages Git versions.json at exact gh-pages 4b3c5994eabd14aa1a1a575b2211800a478112b4.",
+        "command": "Publisher reports install HTTP 200, latest nightly-a03cfab3-dev, source a03cfab3, bundled controller and refetched model package size/SHA-256 matches.",
+        "result": "PAGES GIT CATALOG AND ATTRIBUTED PRODUCER HTTP/HASH MATCH REPORT VERIFIED AS SOURCE EVIDENCE; CATALOG DID NOT INDEPENDENTLY FETCH SERVED HTTPS FIRMWARE BYTES; NO HARDWARE PASS."
+      },
+      "description": "Musicians should now find F03 under DEV / HARDWARE TEST — DEVICE NOT TESTED, with separately labeled Elite and Pro, a bundled matching Bluetooth controller, and a fail-closed sample-slot layout check. Pages Git carries this version; real-device result and user experience were not measured in this Catalog stage. This history row itself provides no download or flash authorization.",
+      "missing_gate": "Sole Pages publisher retains live-byte/rights/package qualifications and any required rechecks; physical owner operation remains untested. Website Catalog source preview remains noninstallable; never copy Pages URLs into source-only history.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/181",
+      "evidence_commit": "5830fbf0160730b506c8c6bf38a77547190426b1",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/5830fbf0160730b506c8c6bf38a77547190426b1/evidence/f03-stage7/live-verify.log",
+      "source_identity_note": "Verified Git Pages ref 4b3c5994eabd14aa1a1a575b2211800a478112b4; versions.json blob 7f60ed804de55349bdbbb1392c36b65d9b4d192; latest nightly-a03cfab3-dev, prior nightly-54f2ffbc-dev retained; producer live re-fetch SHA matches bundled packages. Firmware nightly tip 08d3164a265123cb4c84e5104642fd93257d63d7 is distinct from published F03 source.",
+      "reported_package_sha256": {
+        "elite": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+        "pro": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"
+      },
+      "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
     }
   ],
   "policy": {
@@ -3986,7 +4066,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 139
+    "source_or_historical_checkpoints": 141
   },
   "versioning": {
     "firmware_product_version": {
