@@ -783,6 +783,8 @@ PASS model change during embedded hash refuses stale install before MIDI
 PASS empty preview cannot install
 PASS no invented connection
 PASS one action panel visible
+PASS embedded panel has no duplicate home control
+PASS embedded sample panel matches workspace theme
 PASS samples require real read before writing
 PASS real WAV parsing stages one loop
 PASS file replace retains count
@@ -801,7 +803,10 @@ PASS permission failure shown and retry enabled
 PASS malformed local package denied
 PASS cancelled firmware file chooser stays denied
 PASS 320px no horizontal overflow
+PASS 320px sample panel has no horizontal overflow
 PASS 390px no horizontal overflow
+PASS 390px sample panel has no horizontal overflow
 PASS 1280px no horizontal overflow
+PASS 1280px sample panel has no horizontal overflow
 PASS no page script errors: []
-{"checks": 24, "failures": []}
+{"checks": 29, "failures": []}

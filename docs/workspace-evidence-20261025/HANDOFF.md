@@ -36,7 +36,7 @@ entry, firmware/controller byte or installability approval is added here.
 - Keep both tool contexts mounted, with one visible task panel. This preserves
   firmware selections and sample drafts across hash navigation/back/forward.
   Same-origin sample isolation retains actual parser/bounds/render/restore code
-  and avoids duplicate conflicting IDs/styles. Standalone `/breaks/`, `/builds/`,
+  and avoids duplicate conflicting IDs/styles. Embedded theme and content-height fitting keep the sample controls visually consistent and fully reachable. Standalone `/breaks/`, `/builds/`,
   `/install/#buildarchive` still work; root deliberately enters `/install/`.
 - Exclude task switching while scans, writes, reads or decoding run. Inactive
   installer does not auto-scan; sample MIDI callback detaches/restores at task
@@ -64,7 +64,7 @@ use actual generated pages, real synthetic WAV parsing and mocked MIDI boundarie
 no hardware, GUI/computer-use or GitHub Actions is involved. The focused suite
 covers replace/cancel, hash/back/forward, preserved drafts, pending decode exclusion,
 permission retry/repeated clicks, malformed firmware and backup refusal, stale
-sample refusal, and 320/390/1280px layouts. Independent review additionally checks
+sample refusal, and 320/390/1280px layouts. Final suite: 801 Chromium checks, including 29 workspace checks. Independent review additionally checks
 removal-only reread cancellation and exact MIDI callback detach/restore identity.
 
 Serve `docs/` with a local HTTP server and open `/install/` for manual owner review.
