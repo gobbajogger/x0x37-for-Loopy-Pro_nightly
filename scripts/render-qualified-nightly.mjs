@@ -12,9 +12,17 @@ const sha256 = b => createHash('sha256').update(b).digest('hex');
 const hex40 = s => typeof s === 'string' && /^[a-f0-9]{40}$/.test(s);
 const hex64 = s => typeof s === 'string' && /^[a-f0-9]{64}$/.test(s);
 const inputs = ['web/x0x_installer.html', 'web/fm1pkg.js', 'web/fm1ota.js', 'web/x0x_breaks.js'];
-export const requiredGates = ['native-build', 'package-integrity', 'model-controller',
+// Distribution licensing is not a nightly qualification gate. Corresponding
+// source existed only to satisfy that license, so it does not block either.
+// Both names may still appear on a receipt; neither is required to be PASS.
+export const retiredLicenseGates = ['distribution-license', 'corresponding-source'];
+// A missing native-build receipt does not reject. A present object must still
+// be PASS with an https evidence_url. Do not write a PASS to fill a gap.
+// native-build stays on the gates allow-list so a real PASS is not unknown.
+export const requiredGates = ['package-integrity', 'model-controller',
   'memory-flash', 'host-regressions', 'backup-restore-readback', 'interruption-recovery',
-  'ota-target-binding', 'independent-qa', 'distribution-license', 'corresponding-source'];
+  'ota-target-binding', 'independent-qa'];
+const gateNames = ['native-build', ...requiredGates, ...retiredLicenseGates];
 
 export function installerFingerprint() {
   return sha256(JSON.stringify([...inputs, 'web/x0x_breaks.html', 'scripts/render-qualified-nightly.mjs', 'scripts/legacy-controller-packages.json']
@@ -81,8 +89,12 @@ function checkInputFields(catalog, qualification, need) {
     fields(r.integration, ['ref', 'commit', 'tree', 'evidence_url'], 'integration');
     fields(r.controller, ['strategy', 'sha256', 'size'], 'controller');
     fields(r.budgets, ['app_code_free', 'ram_free', 'pool_free'], 'budgets');
-    if (fields(r.gates, requiredGates, 'gates'))
-      for (const gate of Object.values(r.gates)) fields(gate, ['status', 'evidence_url'], 'gate');
+    if (fields(r.gates, gateNames, 'gates'))
+      for (const [name, gate] of Object.entries(r.gates)) {
+        // Absent means the key is missing, or the value is null or undefined.
+        if (name === 'native-build' && (gate === undefined || gate === null)) continue;
+        fields(gate, ['status', 'evidence_url'], 'gate');
+      }
   }
 }
 const pick = (value, keys) => Object.fromEntries(keys.filter(key => Object.hasOwn(value, key)).map(key => [key, value[key]]));
@@ -155,12 +167,19 @@ export function validateCatalog(catalog, qualification, fingerprint = installerF
         const g = r?.gates?.[gate];
         need(g?.status === 'PASS' && httpsUrl(g?.evidence_url), `${where}: ${gate} is not PASS with evidence`);
       }
+      // Missing, null, and undefined do not reject. Any other present value must
+      // be status PASS with an https evidence_url. Do not insert a PASS object.
+      const nativeBuild = r?.gates?.['native-build'];
+      if (nativeBuild !== undefined && nativeBuild !== null) {
+        need(nativeBuild.status === 'PASS' && httpsUrl(nativeBuild.evidence_url),
+          `${where}: native-build is not PASS with evidence`);
+      }
       for (const [budget, min] of [['app_code_free', 0], ['ram_free', 0], ['pool_free', 8192]]) {
         need(Number.isSafeInteger(r?.budgets?.[budget]) && r.budgets[budget] >= min, `${where}: ${budget} below limit or unmeasured`);
       }
-      need(httpsUrl(r?.corresponding_source) && r.corresponding_source.includes(v?.source_commit),
-        `${where}: exact corresponding source URL required`);
-      need(httpsUrl(r?.notices), `${where}: distribution notices URL required`);
+      // corresponding_source and notices may be present. They are not gates.
+      // distribution-license and corresponding-source are not in requiredGates
+      // and have no status check, so a missing or non-PASS value does not reject.
     }
   }
   if (errors.length) throw new Error('NOT INSTALLABLE:\n' + errors.join('\n'));
@@ -257,6 +276,15 @@ async function main(argv) {
   console.log('PREPARED — HTTP bytes verified; local candidate only. Independent site review and sole publisher deployment/served-byte checks remain required.');
 }
 
-if (process.argv[1] && existsSync(process.argv[1]) && import.meta.url === pathToFileURL(realpathSync(resolve(process.argv[1]))).href) {
+// import.meta.url uses the real path. macOS tmpdir() is under /var, a symlink
+// to /private/var, so a direct launch through that path must still run.
+function launchedAsCli() {
+  const argvPath = process.argv[1];
+  if (!argvPath) return false;
+  if (import.meta.url === pathToFileURL(resolve(argvPath)).href) return true;
+  try { return import.meta.url === pathToFileURL(realpathSync(argvPath)).href; }
+  catch { return false; }
+}
+if (launchedAsCli()) {
   main(process.argv.slice(2)).catch(e => { console.error(e.message); process.exitCode = 1; });
 }

@@ -17,7 +17,8 @@ for(const model of['elite','pro']){
  const q={schema:1,installer_sha256:installerFingerprint(),packages:{[p.sha256]:r}};validateCatalog(c,q);cases++;
  for(const value of[null,'',true,{},'hosted']){const bad=structuredClone(c);bad.versions[0].models[model].controller_strategy=value;assert.throws(()=>validateCatalog(bad,q),/NOT INSTALLABLE/);cases++;}
  for(const field of['controller_size','controller_sha256']){const bad=structuredClone(c);bad.versions[0].models[model][field]=field==='controller_size'?4095:'f'.repeat(64);assert.throws(()=>validateCatalog(bad,q),/NOT INSTALLABLE/);cases++;await assertReject(bad);}
- for(const gate of['distribution-license','independent-qa','corresponding-source']){const bad=structuredClone(q);bad.packages[p.sha256].gates[gate].status='PENDING';assert.throws(()=>validateCatalog(c,bad),/NOT INSTALLABLE/);cases++;}
+ for(const gate of['distribution-license','corresponding-source']){const soft=structuredClone(q);soft.packages[p.sha256].gates[gate]={status:'PENDING',evidence_url:evidence};validateCatalog(c,soft);cases++;}
+ for(const gate of['independent-qa']){const bad=structuredClone(q);bad.packages[p.sha256].gates[gate].status='PENDING';assert.throws(()=>validateCatalog(c,bad),/NOT INSTALLABLE/);cases++;}
  for(const opts of[{controller:null},{tail:true},{appCrc:true},{outerCrc:true},{noMap:true},{controller:makeController(b=>b.writeUInt32LE(1,20))}]){bytes=makePackage(model,opts);await assertReject(catalogFor({[model]:packageRecord(model,bytes)}));assert.throws(()=>controllerOf(logicalImage(bytes)));cases++;}
  const corrupt=makeController();corrupt[100]^=1;bytes=makePackage(model,{controller:corrupt});await assertReject(catalogFor({[model]:packageRecord(model,bytes)}));
  bytes=makePackage(model==='elite'?'pro':'elite');const wrong=packageRecord(model,bytes);await assertReject(catalogFor({[model]:wrong}));

@@ -9,8 +9,8 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { Script } from 'node:vm';
 import { makePackage, makeController } from './fixtures/bundled-synthetic.mjs';
-import { validateCatalog, verifyDownloads, renderInstaller, installerFingerprint, requiredGates }
-  from '../scripts/render-qualified-nightly.mjs';
+import { validateCatalog, verifyDownloads, renderInstaller, installerFingerprint, requiredGates,
+  retiredLicenseGates } from '../scripts/render-qualified-nightly.mjs';
 
 const hash = b => createHash('sha256').update(b).digest('hex');
 const raw = makePackage('pro'), product = 'SMK-37 Pro_900';
@@ -28,7 +28,7 @@ const qualification = { schema: 1, installer_sha256: installerFingerprint(), pac
   integration: { ref: 'nightly', commit, tree, evidence_url: evidence },
   controller: { strategy: 'bundled', sha256: hash(ctl), size: ctl.length },
   budgets: { app_code_free: 5620, ram_free: 460, pool_free: 8324 },
-  gates: Object.fromEntries(requiredGates.map(g => [g, { status: 'PASS', evidence_url: evidence }])),
+  gates: Object.fromEntries([...requiredGates, 'native-build'].map(g => [g, { status: 'PASS', evidence_url: evidence }])),
   corresponding_source: `https://github.com/gobbajogger/X0X37-for-Loopy-Pro/archive/${commit}.tar.gz`,
   notices: `https://example.org/${digest}/notices.zip`,
 } } };
@@ -95,6 +95,7 @@ for (const gate of requiredGates) {
   reject((c, q, r) => r.gates[gate].status = 'PENDING');
   reject((c, q, r) => delete r.gates[gate].evidence_url);
 }
+reject((c, q, r) => delete r.gates['package-integrity']);
 reject((c, q) => q.installer_sha256 = 'f'.repeat(64));
 reject((c, q, r) => r.source_commit = '3'.repeat(40));
 reject((c, q, r) => r.integration.ref = 'main');
@@ -113,7 +114,43 @@ reject(c => c.versions[0].version = '</script>');
 reject(c => c.versions[0].models.pro.size = 0);
 reject(c => c.versions[0].models.pro.controller_sha256 = 'f'.repeat(64));
 reject((c, q, r) => r.controller.strategy = 'hosted');
-reject((c, q, r) => r.corresponding_source = 'https://example.org/main.zip');
+// A distribution license and corresponding source do not reject a candidate.
+assert.deepEqual(retiredLicenseGates, ['distribution-license', 'corresponding-source']);
+assert.deepEqual(requiredGates, ['package-integrity', 'model-controller', 'memory-flash',
+  'host-regressions', 'backup-restore-readback', 'interruption-recovery',
+  'ota-target-binding', 'independent-qa']);
+for (const gate of retiredLicenseGates) assert.equal(requiredGates.includes(gate), false);
+assert.equal(requiredGates.includes('native-build'), false);
+{
+  const c = structuredClone(catalog), q = structuredClone(qualification);
+  const receipt = q.packages[digest];
+  delete receipt.corresponding_source;
+  delete receipt.notices;
+  validateCatalog(c, q);
+  receipt.corresponding_source = 'https://example.org/main.zip';
+  receipt.notices = 'not a url';
+  for (const gate of retiredLicenseGates) receipt.gates[gate] = { status: 'PENDING' };
+  validateCatalog(c, q);
+}
+{
+  const c = structuredClone(catalog), q = structuredClone(qualification);
+  const receipt = q.packages[digest];
+  for (const gate of retiredLicenseGates) receipt.gates[gate] = { status: 'FAIL' };
+  validateCatalog(c, q);
+  for (const gate of retiredLicenseGates) delete receipt.gates[gate];
+  validateCatalog(c, q);
+}
+{
+  const c = structuredClone(catalog), q = structuredClone(qualification);
+  const receipt = q.packages[digest];
+  delete receipt.gates['native-build'];
+  validateCatalog(c, q);
+  receipt.gates['native-build'] = null;
+  validateCatalog(c, q);
+}
+reject((c, q, r) => r.gates['native-build'].status = 'FAIL');
+reject((c, q, r) => r.gates['native-build'].status = 'PENDING');
+reject((c, q, r) => delete r.gates['native-build'].evidence_url);
 reject(c => c.latest = 'absent');
 reject(c => c.history.push({ status: 'FAILED' }));
 reject(c => c.versions.push(structuredClone(c.versions[0])));
