@@ -555,6 +555,14 @@
     {
       "id": "nightly-workspace-pr17-firmware-samples-unified-draft-20261025",
       "sha256": "0a129efeae2f5f54f1ae8d3d8685fdcfe5f931eab439786d0ba9f61e3d23ed55"
+    },
+    {
+      "id": "bugfinder-bf033-pr159-random-tie-independent-host-20261025",
+      "sha256": "93dc47587cb9670a7b1a2025b75d255e70316dcbd8590d407156770c61ab6652"
+    },
+    {
+      "id": "website-main-pr14-pr16-pr17-merged-source-only-20261025",
+      "sha256": "52488fb54e11268711c1ea08731adb66190e2c5a8ad90a39fa7cda0e562c7196"
     }
   ]
 }

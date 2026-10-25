@@ -3910,6 +3910,72 @@
       "exact_remote_native_build": false,
       "artifact_bytes_independently_verified": false,
       "build_target_tests_independently_reexecuted": false
+    },
+    {
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "id": "bugfinder-bf033-pr159-random-tie-independent-host-20261025",
+      "title": "BF033 RANDOM 303 TIE follows actual selected next step (independent host QA only)",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "lane/bugfinder-bf033-random-tie-preview-20261025",
+      "source_commit": "28fbcf78b8930da6f1535268501cdb7c0a66b6b3",
+      "source_tree": "be3f140a3244662fc74bd7f7a68c4b1b8c200478",
+      "firmware_subtree": "75a7a40cb8b0fb647e7143b889309b485bb59fcd",
+      "source_time": "2026-10-25T07:23:06Z",
+      "status": "source-only",
+      "models": [],
+      "reported_checks": {
+        "origin": "Independent firmware QA exact PR159 HEAD verified Git source/tree and production seq blobs. Catalog did not rerun host tests.",
+        "command": "Six GCC14/Clang17 optimized/UBSan/ASan+UBSan source-linked compile+run variants PASS, 15,224 cases / 197,912 assertions each; original control run fails 34,254 comparisons.",
+        "result": "INDEPENDENT SCOPED HOST PASS; FULL CURRENT ROOT, ELITE/PRO BUILD_ONLY, COMBINED PRS, PACKAGE AND PHYSICAL TESTS NOT RUN."
+      },
+      "description": "Expected musician behavior: RANDOM 303 NOTE sustains only when its actual upcoming selected step is TIE; RNG preview does not consume the committed choice and FORWARD note-off behavior remains stable. Real-source host observations support this scope, not measured hardware audio.",
+      "missing_gate": "Existing firmware Builder and Independent QA validate combined PR139/140/159 compiler/controller inputs, packages, models and safety; sole integrator handles applicable source merge. Distribution and physical QA remain separate.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/159",
+      "evidence_commit": "28fbcf78b8930da6f1535268501cdb7c0a66b6b3",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/159",
+      "source_identity_note": "PR159 root be3f140a3244662fc74bd7f7a68c4b1b8c200478, compiled subtree 75a7a40cb8b0fb647e7143b889309b485bb59fcd; device not tested."
+    },
+    {
+      "date": "2026-10-25",
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "id": "website-main-pr14-pr16-pr17-merged-source-only-20261025",
+      "title": "Website main integrates approval hardening, bundled Bluetooth path and unified firmware/sample workspace, not live Pages",
+      "source_repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "source_ref": "main",
+      "source_commit": "ffe3329c21f29e4b4f5b971a51d3d6ff40af8172",
+      "source_tree": "b615bc8dc25136a47b0052bcd44a466e1cd713df",
+      "source_time": "2026-10-25T07:43:44Z",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "reported_checks": {
+        "origin": "Actual merged PR14 bd42ce2b7a829ef319619fb40d01b60a3797f14d, PR16 890bbbae42c9124a3def8f06f7bb1414beac584a and PR17 ffe3329c21f29e4b4f5b971a51d3d6ff40af8172.",
+        "command": "Git merge/tree and empty website SOURCE picker independently read; prior reported browser checks are not rerun as current full-root acceptance.",
+        "result": "WEBSITE MAIN SOURCE MERGE VERIFIED; NOT LIVE PAGES; COMBINED ROOT, RIGHTS/OTA/HTTP GATES NOT COMPLETE."
+      },
+      "description": "Expected user benefit: clearer firmware/sample workflows and verified controller-bundle admission. Actual main source merge is observed; no new served site, measured ease-of-use improvement, or firmware flash acceptance claimed.",
+      "missing_gate": "Existing independent Website QA validates combined browser/admission/backup/restore/OTA negatives; sole Pages publisher separately validates rights, immutable hosting and live hashes before exposure.",
+      "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/17",
+      "evidence_commit": "ffe3329c21f29e4b4f5b971a51d3d6ff40af8172",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/commit/ffe3329c21f29e4b4f5b971a51d3d6ff40af8172",
+      "source_identity_note": "Verified website main complete root b615bc8dc25136a47b0052bcd44a466e1cd713df; gh-pages unchanged."
     }
   ],
   "policy": {
@@ -3920,7 +3986,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 137
+    "source_or_historical_checkpoints": 139
   },
   "versioning": {
     "firmware_product_version": {

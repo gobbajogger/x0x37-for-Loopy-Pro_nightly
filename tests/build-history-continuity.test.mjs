@@ -288,3 +288,20 @@ mustReject('R43 forged compiler',h=>h[134].firmware_subtree='f'.repeat(40));
 mustReject('R43 wrong model',h=>h[135].models=['pro','elite']);
 mustReject('R43 false QA',h=>h[136].reported_checks.result='FULL INDEPENDENT QA PASS');
 console.log('PASS R43: 137 SHA256-pinned nonflashable historical events');
+
+
+// R44: immutable source-only host QA and website integration records, never install admission.
+const r44SourceIds=["bugfinder-bf033-pr159-random-tie-independent-host-20261025","website-main-pr14-pr16-pr17-merged-source-only-20261025"];
+assert.ok(lock.rows.length>=139,'R44 139 SHA-256 history seals required');
+for(let n=0;n<2;n++){
+ const i=137+n,r=original[i];assert.equal(r.id,r44SourceIds[n]);
+ assert.equal(r.installable,false);assert.equal(r.device_verified,false);
+ assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);
+ mustReject('R44 deleted '+n,h=>h.splice(i,1));
+ mustReject('R44 forged SHA '+n,h=>h[i].source_commit='f'.repeat(40));
+ mustReject('R44 false download '+n,h=>h[i].installable=true);
+ mustReject('R44 false rights '+n,h=>h[i].artifact_distribution_approved=true);
+}
+assert.equal(original[137].firmware_subtree,'75a7a40cb8b0fb647e7143b889309b485bb59fcd');
+assert.equal(original[138].source_tree,'b615bc8dc25136a47b0052bcd44a466e1cd713df');
+mustReject('R44 false compiler tree',h=>h[137].firmware_subtree='f'.repeat(40));
