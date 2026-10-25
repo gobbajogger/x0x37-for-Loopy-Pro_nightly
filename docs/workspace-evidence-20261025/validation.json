@@ -1,0 +1,49 @@
+{
+  "implementation_commit": "844c04a1a74df04a44301b22dcd1bae0187bc7db",
+  "implementation_root": "a551ee48aa9d8d5dec7e8340ef0671590492833d",
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 0
+    },
+    {
+      "command": "npm test",
+      "exit": 0,
+      "log_sha256": "2efbb7ea3fd0d00f25ad06838b01d8d0f3fd5046b873613d74fff49acde350c2"
+    },
+    {
+      "command": "PLAYWRIGHT_BROWSERS_PATH=/private/tmp/task15-browsers PATH=/private/tmp/task15-testenv/bin:$PATH npm run test:browser",
+      "exit": 0,
+      "log_sha256": "19290a56498f5c32831e88e62cc3b16b6eabcc0f08677e420668415e52073b2c",
+      "groups": {
+        "installer": 677,
+        "history": 34,
+        "bundled": 61,
+        "workspace": 24
+      },
+      "total": 796
+    }
+  ],
+  "renderer_checks": 191,
+  "live_catalog": {
+    "url": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/versions.json",
+    "sha256": "3fee246257f8298da135835d2e6e5ab4be3c4b5e0d84b403d343fdf76d0f1a49",
+    "equals_pages_git_catalog": true,
+    "latest": "nightly-54f2ffbc-dev",
+    "offered_models": [
+      "elite",
+      "pro"
+    ],
+    "fetched_utc_date": "2026-10-25",
+    "firmware_download_bytes_fetched": false
+  },
+  "headless_previews": {
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/sample-workspace-390.png": "bbba800bf87fe4d0ffe9df6175864e8fa97f0b334e4b624d4e424d340080f994",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/workspace-1280.png": "6e0151d43eb49e35e3cf25b4dacd75ddcc55a05965aa68dd785c0c37b0a95d20",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/sample-workspace-1280.png": "84c89f38cf1c30e8964c2c74c4adb055654f28c0f2bd1ca3af170a9c1c5f58aa",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/workspace-390.png": "d29bd13ca17f85db4b459f22769b12bd6f50742dabd26e2d572d94975d8521a6",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/workspace-320.png": "10f9d7e83ebe352c4db6f46182bacbdb9a2e3974e34e76e95b7a848d5d0fb3ae"
+  },
+  "delivery_state": "SOURCE_READY; no merge, deploy, hardware action or binary publication",
+  "settings": "New bounded subagents requested MEDIUM effort; STANDARD tier selector unavailable."
+}

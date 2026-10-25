@@ -1,0 +1,46 @@
+{
+  "scope": "Independent final qualified-renderer correction review; no repository edits",
+  "commit": "844c04a1a74df04a44301b22dcd1bae0187bc7db",
+  "tree": "a551ee48aa9d8d5dec7e8340ef0671590492833d",
+  "disposition": "PASS; no blocking findings in bounded correction",
+  "fingerprint": "beb7e484f22278a6210a7b5fa09098f95413d301cbea76afb01128e894e5dad2",
+  "checks": [
+    "Fingerprint explicitly includes sample HTML and changes for changed sample bytes",
+    "Qualified render equals checked preview for empty catalog",
+    "Exactly one document and one syntactically valid installer module",
+    "Standalone sample module parses",
+    "Public firmware PNG hashes and 240x240 dimensions match renderer evidence",
+    "Installer and sample source blobs unchanged from prior independent review"
+  ],
+  "source_blobs": {
+    "web/x0x_installer.html": "8f14f5873d0efbfaf838c021f9f893af1493450c",
+    "web/x0x_breaks.html": "a73619d60cda8498c3f69f6575634e1bff62d925"
+  },
+  "assets": {
+    "docs/assets/firmware-ui/home.png": "bed528235341197ab8cbb0640eef46cdce53ad74e6eb232d809414d410199ee5",
+    "docs/assets/firmware-ui/mixer.png": "1768d2ba62beeb4dee6a2bc412134fd928f7fe2524ac7cf8eb55a3fcb563a627",
+    "docs/assets/firmware-ui/smc.png": "dba686ffcd4b586927ee07497fe72058cfb0ddd18cdabbfc79288e43b878e98f"
+  },
+  "limitations": [
+    "Synthetic qualification checks do not constitute firmware candidate approval",
+    "Full browser suite owned by parent; no hardware, network, deployment or GUI action"
+  ],
+  "source_mutations": false,
+  "remaining_blockers": [],
+  "commands": [
+    {
+      "command": "npm test",
+      "result": "PASS exit 0; includes build-preview --check, qualified renderer with 336 rejection cases and download verifier, catalog/history and 41 write-boundary cases"
+    },
+    {
+      "command": "git diff --check HEAD^ HEAD",
+      "result": "PASS"
+    },
+    {
+      "command": "independent in-memory fingerprint/render/sample/PNG checks",
+      "result": "PASS"
+    }
+  ],
+  "final_git_status": "",
+  "final_head": "844c04a1a74df04a44301b22dcd1bae0187bc7db"
+}
