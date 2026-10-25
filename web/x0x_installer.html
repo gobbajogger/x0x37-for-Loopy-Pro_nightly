@@ -672,6 +672,7 @@ const TEXT = {
     slotsaved: "スロットを保存しました（ダウンロード）: ",
     slotback: "スロットを書き戻しています",
     slotsdone: "完了。スロットを書き戻して確認しました。",
+    slotspartial: "インストールは完了しましたが、復元できなかったサンプルがあります。ダウンロードした .x0xslots バックアップを確認し、容量を空けてブレークループの「Restore」で復元してください。未復元: ",
     slotskip: " 書き戻せなかったスロット（入りきらない）: ",
     slotstock: "完了。純正ファームウェアには X0X のスロットがありません。サンプルは次のファイルにあります（X0X を入れ直した後にブレークループのページの「Restore」で戻せます）: ",
     slots: "インストールは終わりましたが、スロットを書き戻せませんでした。ブレークループのページの「Restore」か tools/x0x_slots.py restore で、このファイルから戻してください: ",
@@ -766,6 +767,7 @@ const TEXT = {
     slotsaved: "Slots saved (downloaded): ",
     slotback: "Writing the slots back",
     slotsdone: "Done. The slots were written back and checked.",
+    slotspartial: "Installed, but some samples were NOT restored. Check the downloaded .x0xslots backup and use Restore on the break loops page after making room. Not restored: ",
     slotskip: " Not written back (no room): ",
     slotstock: "Done. The stock firmware has no X0X slots. Your samples are in this file (after you install X0X again, restore it with Restore on the break loops page): ",
     slots: "Installed, but the slots were not written back. Restore them from this file with Restore on the break loops page, or with tools/x0x_slots.py restore: ",
@@ -874,28 +876,29 @@ async function midiAccess() {
   return midi;
 }
 
-async function scan() {
-  if (writing || !workspaceActive) return;
+async function scan(allowPostWrite = false) {
+  if ((writing && !allowPostWrite) || !workspaceActive) return;
   workspaceScanning++;
-  try { return await scanWorkspaceDevice(); } finally { workspaceScanning--; }
+  try { return await scanWorkspaceDevice(allowPostWrite); } finally { workspaceScanning--; }
 }
-async function scanWorkspaceDevice() {
+async function scanWorkspaceDevice(allowPostWrite = false) {
   const requestId = ++scanSerial;
+  const isCurrent = () => requestId === scanSerial && (!writing || allowPostWrite);
   led("busy");
   $("conn").textContent = t("looking");
   try {
     const access = await midiAccess();
-    if (requestId !== scanSerial || writing) return;
+    if (!isCurrent()) return;
     const up = new Updater(access, () => {});
     // Prefer a running app; if only the update loader is present, resume from there.
     let dev = await up.find((id) => !/^ota-/i.test(id.model));
-    if (requestId !== scanSerial || writing) { dev?.link.close(); return; }
+    if (!isCurrent()) { dev?.link.close(); return; }
     let inOta = false;
     if (!dev) {
       dev = await up.find((id) => /^ota-/i.test(id.model));
       inOta = !!dev;
     }
-    if (requestId !== scanSerial || writing) { dev?.link.close(); return; }
+    if (!isCurrent()) { dev?.link.close(); return; }
     if (!dev) {
       lastId = null;
       setConnected(false, t("notfound"));
@@ -908,10 +911,11 @@ async function scanWorkspaceDevice() {
       : `${dev.id.text}${dev.name ? " · " + dev.name : ""}`;
     setConnected(true, detail);
     if (inOta) led("busy");
-    suggestModel(bare);
+    // Post-write reconnect must not reload model/package and hide restoration results.
+    if (!allowPostWrite) suggestModel(bare);
     dev.link.close();
   } catch (e) {
-    if (requestId !== scanSerial || writing) return;
+    if (!isCurrent()) return;
     lastId = null;
     setConnected(false, (e && e.message) || t("error"));
   }
@@ -962,8 +966,14 @@ function selectionIdentity(v, p) {
 }
 
 function availableModels(ver) {
-  if (!ver || !ver.models) return [];
-  return MODEL_KEYS.filter((k) => ver.models[k]);
+  // Picker and model radios only offer non-denied, currently checked packages.
+  if (!ver || !ver.models || catalogDenied(ver) ||
+      (ver.status !== undefined && ver.status !== "dev-checked")) return [];
+  return MODEL_KEYS.filter((k) => {
+    const p = ver.models[k];
+    return p && !catalogDenied(p) &&
+      (p.status === undefined || p.status === "dev-checked");
+  });
 }
 function suggestModel(deviceModel) {
   const ver = currentVersion();
@@ -1072,6 +1082,13 @@ function updateInstallGate() {
 function buildBadge(txt,kind) {
   const x = document.createElement("span"); x.className="build-badge"+(kind?" "+kind:""); x.textContent=txt;return x;
 }
+function evidenceUrl(value) {
+  if (typeof value !== "string") return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && !url.username && !url.password ? url.href : null;
+  } catch (_) { return null; }
+}
 function renderBuildInfo(v,p) {
   $("builddetail").hidden=false;
   $("ble").hidden = bundledController(p);
@@ -1084,8 +1101,8 @@ function renderBuildInfo(v,p) {
   $("buildsummary").textContent=v.description||v.title||"";
   $("buildprovenance").textContent="Build: "+v.version+" · Source: "+(v.source_commit||"unknown")+
     " · "+(v.built_at||"undated")+" · SHA-256: "+(p.sha256||"not recorded");
-  const link=$("buildevidence");link.hidden=!v.evidence_url;
-  if(v.evidence_url)link.href=v.evidence_url;else link.removeAttribute("href");
+  const link=$("buildevidence"), evidence=evidenceUrl(v.evidence_url);link.hidden=!evidence;
+  if(evidence)link.href=evidence;else link.removeAttribute("href");
   $("devagreewrap").hidden=v.status!=="dev-checked";
   updateInstallGate();
 }
@@ -1104,7 +1121,7 @@ function renderBuildHistory() {
     const m=document.createElement("p");m.className="meta";
     m.textContent=(v.built_at||"")+" · "+(v.source_commit||"")+" · Models: "+Object.keys(v.models||{}).join(", ");
     el.append(m);
-    if(["dev-checked","release-checked"].includes(v.status)){
+    if(availableModels(v).length){
       const btn=document.createElement("button");btn.type="button";btn.textContent=t("choosebuild");
       btn.addEventListener("click",()=>{$("version").value=v.version;refreshModelUi();loadSelectedPackage();$("pick").scrollIntoView({block:"start"});});
       el.append(btn);
@@ -1118,7 +1135,8 @@ function renderBuildHistory() {
     const m=document.createElement("p");m.className="meta";
     m.textContent=(b.status||"unknown").toUpperCase().replace(/-/g," ")+" · "+(b.source_commit||"")+" · "+(b.models||[]).join(", ");el.append(m);
     const p=document.createElement("p");p.textContent=b.description||"";el.append(p);
-    if(b.url){const a=document.createElement("a");a.href=b.url;a.rel="noopener noreferrer";a.target="_blank";a.textContent="Source / evidence";el.append(a);}
+    const evidence=evidenceUrl(b.url);
+    if(evidence){const a=document.createElement("a");a.href=evidence;a.rel="noopener noreferrer";a.target="_blank";a.textContent="Source / evidence";el.append(a);}
     box.append(el);
   }
 }
@@ -1235,7 +1253,8 @@ function fillVersions() {
   const sel = $("version");
   const cur = sel.value;
   sel.innerHTML = "";
-  const list = versions();
+  // Only offer versions that still have at least one non-denied model package.
+  const list = versions().filter((v) => availableModels(v).length);
   $("noversion").hidden = list.length > 0;
   $("versionrow").hidden = list.length === 0;
   $("modeldetails").hidden = list.length === 0;
@@ -1248,6 +1267,7 @@ function fillVersions() {
     // Still show SMK stock links when the catalog is empty.
     $("stock").hidden = false;
     $("stocklinks").textContent = "";
+    renderBuildHistory();
     return;
   }
   for (const v of list) {
@@ -1256,8 +1276,9 @@ function fillVersions() {
     o.textContent = versionOptionCaption(v); // Full safety badges remain visible below the picker.
     sel.append(o);
   }
-  const prefer = cur && list.some((v) => v.version === cur) ? cur
-    : (catalogLive.latest || (list[0] && list[0].version));
+  // Prefer current selection, else latest only when it remains eligible, else first eligible.
+  const prefer = list.some((v) => v.version === cur) ? cur
+    : list.some((v) => v.version === catalogLive.latest) ? catalogLive.latest : list[0].version;
   if (prefer) sel.value = prefer;
   refreshModelUi();
   loadSelectedPackage();
@@ -1430,10 +1451,12 @@ async function run(img, product, opts = {}) {
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);
       else if (r.move) {
         $("bar").value = 100;
-        sayK("slotsdone", r.move.skipped.length ? t("slotskip") + r.move.skipped.join("; ") + ` (${r.move.name})` : "");
+        if (r.move.skipped.length) {
+          sayK("slotspartial", r.move.skipped.join("; ") + ` (${r.move.name})`);
+        } else sayK("slotsdone");
       }
     }
-    await scan();
+    await scan(true);
   } catch (e) {
     // Stock / other custom firmware often reports a different identity string than the package marker.
     if (foreign && e && e.code === "mismatch") { $("bar").value = 100; sayK("stockdone"); }
