@@ -24,9 +24,15 @@ actual installer HTML/libraries and candidate renderer. Changed installer code
 invalidates the receipt. Each package receipt repeats `source_commit`,
 `source_tree`, `product`, `size` and `url`; identifies accepted firmware
 `integration` (`ref: nightly`, commit, identical tree, evidence_url); records
-`controller` (`strategy: owner-supplied`, sha256, size); and records measured
+`controller` (`strategy: bundled`, sha256, size); and records measured
 `budgets` (`app_code_free`, `ram_free`, `pool_free`). Pool free must be at least
-8192 bytes. Controller bytes are never copied into the site.
+8192 bytes. New candidates require package fields `controller_strategy: bundled`,
+`controller_size` (exact declared image bytes), and `controller_sha256`. The receipt's
+strategy, size and hash must match. The two exact existing public legacy packages are
+pinned in `scripts/legacy-controller-packages.json`; only those old identities may retain
+`owner-supplied` controller receipts. This is continuity, not qualification of new blank
+packages. The legacy pin file is part of the installer fingerprint.
+No firmware/controller bytes are copied into the site source.
 
 Every gate exported by `requiredGates` needs a PASS and an immutable review/log
 `evidence_url`: real native build, package integrity, model/controller,
@@ -42,10 +48,15 @@ oversized data, and checks actual size, SHA-256 and package model before creatin
 any output. It retains the static site's navigation, renders the catalog into
 the installer using an explicit public catalog projection. The full qualification
 file remains a private input and is not emitted as qualification.json. Unknown
-fields at each schema level are rejected before output. It never downloads or publishes a
-controller. The browser reads remote packages through the existing bounded stream path;
-responses without a reader are refused before allocation. It requires the exact checked local controller hash and
-rejects a changed selection while the asynchronous hash is calculated.
+fields at each schema level are rejected before output. It publishes no artifact. For bundled packages, both preparation and the browser decrypt
+and verify the actual embedded controller: exact SMK layout, installed-file and nested app
+CRCs, ABI/header, controller CRC, erased 64 KiB slot padding, declared size and SHA-256.
+The browser offers its verified Blob only after those checks, hides the separate controller
+input, and rechecks before installation. It sends the verified combined bytes unchanged.
+Missing or mismatched controller bytes fail clearly. Existing legacy packages still require
+the exact checked local controller hash; missing input blocks installation. Both paths retain
+selection/race, DEV consent, model, backup/restore and OTA safeguards. Responses without a
+reader are refused before allocation. No catalog or live site changes occur here.
 
 Next, independent site QA must inspect the generated site and qualified package
 flows in a browser. The sole publisher reconciles the live Pages history,

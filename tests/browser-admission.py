@@ -3,6 +3,7 @@
 No candidate, firmware, controller, external artifact or hardware is published.
 Run --source /path/to/before-installer.html for the identical RED assertions.
 """
+import os
 import argparse, asyncio, hashlib, json, re, subprocess, threading
 from pathlib import Path
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
@@ -220,7 +221,7 @@ async def local_files(browser):
 
 async def main():
  async with async_playwright() as pw:
-  browser=await pw.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+  browser=await pw.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE', '/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None),args=['--no-sandbox'])
   print('Chromium',browser.version,flush=True)
   if args.approval_only or not (args.race_only or args.local_files_only):
    await catalog_approvals(browser)

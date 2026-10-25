@@ -3,6 +3,7 @@
 The five named mutations reproduce independent QA evidence 809965b4ddc4e2363e7344227adcf1b93f68005b.
 Run --source /path/to/before-history.html to replay RED against the old page.
 """
+import os
 import argparse, asyncio, copy, json, threading
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -62,7 +63,7 @@ async def case(browser, name, payload, width=375, negative=True, transport='json
     await page.close()
 async def main():
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
+        browser = await pw.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE', '/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None), args=['--no-sandbox'])
         print('Chromium '+browser.version, flush=True)
         base = copy.deepcopy(DATA)
         base['builds'] = base['builds'][:1]  # Same positive cardinality as independent evidence.

@@ -3,9 +3,9 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "4b44f7514cc424faa0c4afd4690d163550236674",
+    "web/x0x_installer.html": "ec789eb37603218f698dd7f8d2dcdc2a71c1e8ae",
     "web/x0x_breaks.html": "b988c3270ed974639f702900e120297ad0602b60",
-    "web/fm1pkg.js": "3f8c704e4ea8ea780d6deef67a4bb33249f80d3e",
+    "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
     "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
@@ -90,6 +90,20 @@
       "sourceBaseCommit": "7515d147e4817248dece608c73fd7fb171e996f2",
       "description": "Optional DEV hardware facts must be literal false when supplied; absent facts remain optional and true remains denied at version/package scope",
       "resultBlob": "4b44f7514cc424faa0c4afd4690d163550236674"
+    },
+    {
+      "path": "web/fm1pkg.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+      "description": "Validate embedded bundled NIGHTLY controller identity/layout/CRCs/hash; retain exact legacy local-controller path and PR14 admission protections",
+      "resultBlob": "4b3152e695512c288a0244b0474fd140392ad4f5"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+      "description": "Validate embedded bundled NIGHTLY controller identity/layout/CRCs/hash; retain exact legacy local-controller path and PR14 admission protections",
+      "resultBlob": "ec789eb37603218f698dd7f8d2dcdc2a71c1e8ae"
     }
   ]
 }

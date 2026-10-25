@@ -1,0 +1,24 @@
+{
+  "base_commit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+  "scope": "independent packaging/installer acceptance-boundary review; synthetic tests and private-input read-only check; no hardware/publication",
+  "source_blobs": {
+    "web/x0x_installer.html": "ec789eb37603218f698dd7f8d2dcdc2a71c1e8ae",
+    "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
+    "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
+    "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
+    "scripts/render-qualified-nightly.mjs": "b8f0a0532f97152dc144d9df4359b6d0906d0456",
+    "scripts/legacy-controller-packages.json": "2bbedb8adf9885b2823f89beb3d6251b8ccade28",
+    "tests/bundled-browser.py": "ff5a99c56da5e0ee3177187716fd0b6c459dc14b",
+    "tests/bundled-controller.test.mjs": "15b3d5cabdc809b00a06938fd85fe658c2d57a36",
+    "tests/fixtures/bundled-synthetic.mjs": "84c12879e3b3be2f10f8df971e732c8f5b3978d4",
+    "docs/install/index.html": "a0eb3e9c9c1ee268deb2a51826b0481d93ad585d",
+    "SOURCE_PROVENANCE.json": "d3b5249b4ae6e337383781a0a48348ec6673f7a6"
+  },
+  "tests": {
+    "npm test": "exit0",
+    "bundled-browser.py": "exit0;61checks,0failures",
+    "independent_parser_and_renderer": "Elite/Pro positive and CRC/hash/size/blank negatives passed",
+    "actual_blank_Elite": "missing-controller refusal verified"
+  },
+  "browser_log_sha256": "91e1428582fa28227bbdc617cd9c1e2c5565cfe5dac152a57375c66069abf152"
+}

@@ -327,11 +327,11 @@ progress::-moz-progress-bar { background: var(--accent); }
       <p class="small" id="buildsummary"></p>
       <p class="meta" id="buildprovenance"></p>
       <p class="small"><a id="buildevidence" href="#" rel="noopener noreferrer" target="_blank" data-t="evidencelink">Build evidence</a></p>
-      <p class="small" data-t="ctrlwarning">Direct SMC Bluetooth requires a separately built ctl.img; it is not bundled.</p>
+      <p class="small" id="controllerstatus"></p>
       <label id="devagreewrap" hidden><input type="checkbox" id="devagree"> <span data-t="devagree">I understand this is hardware-untested development firmware; I must verify the exact model and make a backup before flashing.</span></label>
     </div>
     <section id="ble" hidden>
-      <div class="step-kicker" data-t="controlleroptional">Optional / SMC Bluetooth</div>
+      <div class="step-kicker" data-t="controlleroptional">Required for legacy packages / SMC Bluetooth</div>
       <p class="small" data-t="blewhy"></p>
       <p class="small"><label class="field"><span data-t="ctlchoose">Controller image (.img)</span><input type="file" id="ctlfile" accept=".img"></label></p>
     </section>
@@ -424,7 +424,7 @@ const STOCK_SHA256_FM1 = "db1642b2b6fa5c2cccb11ffd13878068bb28601678d3644049f99d
 const TEXT = {
   ja: {
     navinstaller: "インストール", navmanual: "マニュアル", navsamples: "サンプル",
-    controlleroptional: "任意 / SMC Bluetooth", ctlchoose: "コントローラー画像 (.img)",
+    controlleroptional: "旧パッケージでは必須 / SMC Bluetooth", ctlchoose: "コントローラー画像 (.img)",
     verlatest: "最新 DEV", verolder: "旧 DEV", verdev: "DEV", verrelease: "リリース", verunverified: "未検証",
     eyebrow: "デバイスファームウェア / Web MIDI", journey1: "機器を接続", journey2: "ファームウェアを選択", journey3: "確認して書き込む",
     stage1: "手順 01 / 接続", stage2: "手順 02 / ファームウェア", stage3: "手順 03 / インストール",
@@ -442,7 +442,10 @@ const TEXT = {
     hintbusy: "書き込み中です。USB を抜かず、ページを閉じないでください。",
     latestdev: "最新の利用可能な DEV", devchecked: "DEV CHECKED", hardwareuntested: "実機未テスト", superseded: "旧ビルド・非推奨",
     devagree: "実機未テストの開発版であることを理解し、機種ID・サンプルのバックアップ・ローカル検証を確認します。",
-    ctrlwarning: "SMC Bluetoothには別途ビルドした ctl.img が必要です。上で選択してください。付属していません。",
+    ctrlwarning: "この旧パッケージのインストールには、一致するローカル ctl.img が必要です。",
+    ctlbundlepending: "パッケージに一致する Bluetooth コントローラーを確認しています…",
+    ctlbundled: "この一体型 NIGHTLY には Bluetooth が含まれます。別のコントローラーファイルは不要です。",
+    ctlbundlebad: "内蔵 Bluetooth コントローラーがないか、破損しているか、このビルドと一致しません。",
     evidencelink: "開発検証記録", archiveheading: "ビルド履歴", archiveintro: "SHA確認済みビルドとソースのみの状態・未入手アーカイブ・失敗ビルドを区別します。コミットだけではインストールできません。",
     choosebuild: "このビルドを選ぶ", otherbuilds: "その他のチェックポイント (インストール不可)", unapproved: "このパッケージには機種別検証記録がないため、自動インストールできません。",
     title: "X0X をインストール",
@@ -504,7 +507,7 @@ const TEXT = {
     slots: "インストールは終わりましたが、スロットを書き戻せませんでした。ブレークループのページの「Restore」か tools/x0x_slots.py restore で、このファイルから戻してください: ",
     slotbackup: "スロットを保存できなかったため、何も書き込んでいません。先にブレークループのページでバックアップしてください。 ",
     license: "GPL-3.0、無保証。ソース:",
-    blewhy: "Bluetooth MIDI を使うには、自分のコンピュータで ble/ctl/build_ctl.sh を実行して作った ctl.img をここで選んでください。選ばなければ Bluetooth なしでインストールします。",
+    blewhy: "この旧パッケージには、ble/ctl/build_ctl.sh で作成した一致する ctl.img が必要です。選択するまでインストールできません。検証済みの一体型 NIGHTLY には Bluetooth が含まれ、別ファイルは不要です。",
     ctlreading: "コントローラー画像を読み込み、確認しています…",
     ctlreadfail: "コントローラー画像を読み込めませんでした。もう一度選択してください。",
     ctlok: "ctl.img を確認しました。インストールに含めます。",
@@ -515,7 +518,7 @@ const TEXT = {
   },
   en: {
     navinstaller: "Installer", navmanual: "Manual", navsamples: "Samples",
-    controlleroptional: "Optional / SMC Bluetooth", ctlchoose: "Controller image (.img)",
+    controlleroptional: "Required for legacy packages / SMC Bluetooth", ctlchoose: "Controller image (.img)",
     verlatest: "latest DEV", verolder: "older DEV", verdev: "DEV", verrelease: "release", verunverified: "unverified",
     eyebrow: "DEVICE SOFTWARE / WEB MIDI", journey1: "Connect keyboard", journey2: "Select firmware", journey3: "Review and install",
     stage1: "Step 01 / Connection", stage2: "Step 02 / Firmware", stage3: "Step 03 / Install",
@@ -533,7 +536,10 @@ const TEXT = {
     hintbusy: "Writing is in progress. Keep USB connected and this page open.",
     latestdev: "LATEST AVAILABLE DEV", devchecked: "DEV CHECKED", hardwareuntested: "HARDWARE UNTESTED", superseded: "SUPERSEDED",
     devagree: "I understand this is hardware-untested development firmware. I must verify the exact model, back up samples and use guarded local validation.",
-    ctrlwarning: "Direct SMC Bluetooth requires a separately built ctl.img (select it above). The controller image is not bundled.",
+    ctrlwarning: "This legacy package requires the matching local ctl.img before installation.",
+    ctlbundlepending: "Checking this package for its matching included Bluetooth controller…",
+    ctlbundled: "Bluetooth is included in this complete NIGHTLY package. No separate controller file is needed.",
+    ctlbundlebad: "Bundled Bluetooth controller is missing, damaged or does not match this build.",
     evidencelink: "Development validation record", archiveheading: "Build history", archiveintro: "SHA-verified builds are separated from source-only checkpoints, unavailable archives and failed builds. A source commit alone is not flashable firmware.",
     choosebuild: "Select this build", otherbuilds: "Other checkpoints — not available for installation", unapproved: "No model-specific development/release validation for this package. Automatic installation is disabled.",
     title: "Install X0X.",
@@ -595,7 +601,7 @@ const TEXT = {
     slots: "Installed, but the slots were not written back. Restore them from this file with Restore on the break loops page, or with tools/x0x_slots.py restore: ",
     slotbackup: "The slots could not be saved, so nothing was installed. Back them up on the break loops page first. ",
     license: "GPL-3.0, no warranty. Source:",
-    blewhy: "For Bluetooth MIDI, select the ctl.img that ble/ctl/build_ctl.sh made on your own computer. Without it, X0X installs without Bluetooth. Select it again for each update.",
+    blewhy: "This legacy package requires the exact matching ctl.img built on your computer with ble/ctl/build_ctl.sh. Installation is blocked until it is supplied. Qualified bundled NIGHTLY packages include Bluetooth and need no separate file.",
     ctlreading: "Reading and checking the controller image…",
     ctlreadfail: "Could not read that controller image. Choose it again.",
     ctlok: "ctl.img checked: the install includes it.",
@@ -635,9 +641,10 @@ let chosenModel = null;
 let loadSerial = 0;
 let scanSerial = 0;
 let verifiedDownload = null;
+let bundledFailure = false;
 function discardVerifiedDownload() {
   const previous = verifiedDownload;
-  verifiedDownload = null;
+  verifiedDownload = null; bundledFailure = false;
   image = null; selectedProduct = null;
   const link = $("download");
   link.removeAttribute("href");
@@ -816,7 +823,7 @@ function refreshModelUi() {
     box.append(lab);
   }
   $("modeldetails").hidden = avail.length <= 1 && avail[0] === "fm1";
-  $("ble").hidden = !avail.some((k) => k !== "fm1");
+  $("ble").hidden = !avail.some((k) => k !== "fm1") || ver.models[chosenModel]?.controller_strategy === "bundled";
   $("recovery").hidden = !avail.includes("fm1") || avail.some((k) => k !== "fm1");
   // Stock section always useful for SMK; for FM-1-only catalogs keep the SHA check path.
   $("stock").hidden = false;
@@ -840,6 +847,12 @@ function refreshMeta() {
   } else discardVerifiedDownload();
   renderBuildInfo(ver, pkg);
 }
+function bundledController(p) { return p?.controller_strategy === "bundled"; }
+async function verifyBundledController(logical, p) {
+  const embedded = controllerOf(logical);
+  if (embedded.length !== p.controller_size || await sha256Hex(embedded) !== p.controller_sha256)
+    throw new Error(t("ctlbundlebad"));
+}
 function isCatalogChecked(v,p) {
   try {
     if (!isRecord(v) || !isRecord(p) || catalogDenied(v) || catalogDenied(p) || v.status !== "dev-checked" ||
@@ -848,6 +861,8 @@ function isCatalogChecked(v,p) {
         modelKeyForProduct(p.product) !== chosenModel ||
         !/^[0-9a-f]{64}$/.test(p.sha256 || "") ||
         !/^[0-9a-f]{64}$/.test(p.controller_sha256 || "") ||
+        (Object.hasOwn(p, "controller_strategy") && !["bundled", "owner-supplied"].includes(p.controller_strategy)) ||
+        (bundledController(p) && (!Number.isSafeInteger(p.controller_size) || p.controller_size < 68 || p.controller_size > 65536)) ||
         !Number.isSafeInteger(p.size) || p.size <= 960 || p.size > 2097152) return false;
     const u = new URL(p.pkg);
     return u.protocol === "https:" && !u.username && !u.password && !u.search && !u.hash &&
@@ -884,6 +899,8 @@ function buildBadge(txt,kind) {
 }
 function renderBuildInfo(v,p) {
   $("builddetail").hidden=false;
+  $("ble").hidden = bundledController(p);
+  $("controllerstatus").textContent = t(bundledController(p) ? (bundledFailure ? "ctlbundlebad" : hasVerifiedNightlySelection(v,p) ? "ctlbundled" : "ctlbundlepending") : "ctrlwarning");
   const b=$("buildbadges");b.replaceChildren();
   if(v.version===catalogLive.latest && v.status==="dev-checked") b.append(buildBadge(t("latestdev"),"important"));
   if(v.status==="dev-checked") b.append(buildBadge(t("devchecked")));
@@ -1007,7 +1024,13 @@ async function loadSelectedPackage() {
     if (hex !== pkg.sha256) { sayK("badpkg"); return; }
     const product = productOf(raw);
     if (product !== pkg.product) { sayK("badpkg"); return; }
-    image = logicalImage(raw);
+    const logical = logicalImage(raw);
+    if (bundledController(pkg)) {
+      try { await verifyBundledController(logical, pkg); }
+      catch (e) { if (isLatest()) { bundledFailure = true; renderBuildInfo(ver,pkg); sayK("ctlbundlebad", " " + e.message); } return; }
+      if (!isLatest()) return;
+    }
+    image = logical;
     selectedProduct = product;
     // Never hand out the unverified remote URL: this Blob contains the bytes
     // already checked against the immutable package digest and model identity.
@@ -1253,7 +1276,14 @@ $("go").addEventListener("click", async () => {
   const { version: ver, pkg } = currentSelection();
   const selectedImage = image, product = selectedProduct, controller = ctl, serial = loadSerial;
   $("go").disabled = true;
-  if (pkg && pkg.controller_sha256) {
+  const bundled = bundledController(pkg);
+  if (bundled) {
+    try { await verifyBundledController(selectedImage, pkg); }
+    catch (e) { sayK("ctlbundlebad", " " + e.message); updateInstallGate(); return; }
+    if (writing || loadSerial !== serial || image !== selectedImage || selectedProduct !== product || !hasCurrentVerifiedSelection()) {
+      updateInstallGate(); return;
+    }
+  } else if (pkg && pkg.controller_sha256) {
     try {
       if (!controller || await sha256Hex(controller) !== pkg.controller_sha256) {
         sayK("ctlbad", t("ctlmatch"));
@@ -1266,12 +1296,13 @@ $("go").addEventListener("click", async () => {
     }
   }
   let img = image;
-  if (ctl) {
+  if (!bundled && ctl) {
     try { img = insertCtl(image, ctl); } catch (e) { sayK("ctlbad", e.message); updateInstallGate(); return; }
   }
+  if (!$("devagree").checked) { updateInstallGate(); return; }
   $("go").disabled = true;   // sync before the first await in run()
   run(img, selectedProduct, { foreign: false, admitted: () => loadSerial === serial &&
-    image === selectedImage && ctl === controller && $("devagree").checked &&
+    image === selectedImage && (bundled || ctl === controller) && $("devagree").checked &&
     hasCurrentVerifiedSelection() });
 });
 $("stockgo").addEventListener("click", () => {

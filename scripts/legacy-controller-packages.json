@@ -1,0 +1,21 @@
+{
+  "source_commit": "54f2ffbc3124f7449a69067dc8215a2d91a2e675",
+  "source_tree": "3b5cadafba33f4c1b116660bc9d19a27a892337c",
+  "controller_size": 65492,
+  "models": {
+    "elite": {
+      "product": "SMK-37 Elite_900",
+      "sha256": "d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c",
+      "size": 651396,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/172d99d6d417d72bbd8f473ec1c66d5994c3d0c3/artifacts/nightly/dev-20261024-dc466908/d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c/x0x37-elite-dev.fwsc"
+    },
+    "pro": {
+      "product": "SMK-37 Pro_900",
+      "sha256": "cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c",
+      "size": 651392,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/172d99d6d417d72bbd8f473ec1c66d5994c3d0c3/artifacts/nightly/dev-20261024-dc466908/cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c/x0x37-pro-dev.fwsc"
+    }
+  }
+}

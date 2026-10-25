@@ -8,17 +8,17 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { Script } from 'node:vm';
+import { makePackage, makeController } from './fixtures/bundled-synthetic.mjs';
 import { validateCatalog, verifyDownloads, renderInstaller, installerFingerprint, requiredGates }
   from '../scripts/render-qualified-nightly.mjs';
 
 const hash = b => createHash('sha256').update(b).digest('hex');
-const raw = Buffer.alloc(1024, 0x7d), product = 'SMK-37 Pro_900';
-for (let i = 0; i < product.length; i++) raw[i * 48 + 47] = (product.charCodeAt(i) + i + 1) & 255;
-const digest = hash(raw), ctl = new Uint8Array([1, 2, 3]);
+const raw = makePackage('pro'), product = 'SMK-37 Pro_900';
+const digest = hash(raw), ctl = makeController();
 const evidence = 'https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/103';
 const commit = '1'.repeat(40), tree = '2'.repeat(40);
 const pkg = { product, sha256: digest, size: raw.length,
-  controller_sha256: hash(ctl), pkg: `https://example.org/${digest}/pro.fwsc` };
+  controller_strategy: 'bundled', controller_size: ctl.length, controller_sha256: hash(ctl), pkg: `https://example.org/${digest}/pro.fwsc` };
 const catalog = { schema: 1, latest: 'synthetic-test', history: [], versions: [{
   version: 'synthetic-test', label: 'DEV / HARDWARE TEST — DEVICE NOT TESTED',
   status: 'dev-checked', config: 'dev', hardware_tested: false,
@@ -26,7 +26,7 @@ const catalog = { schema: 1, latest: 'synthetic-test', history: [], versions: [{
 const qualification = { schema: 1, installer_sha256: installerFingerprint(), packages: { [digest]: {
   source_commit: commit, source_tree: tree, size: raw.length, product, url: pkg.pkg,
   integration: { ref: 'nightly', commit, tree, evidence_url: evidence },
-  controller: { strategy: 'owner-supplied', sha256: hash(ctl), size: 68 },
+  controller: { strategy: 'bundled', sha256: hash(ctl), size: ctl.length },
   budgets: { app_code_free: 5620, ram_free: 460, pool_free: 8324 },
   gates: Object.fromEntries(requiredGates.map(g => [g, { status: 'PASS', evidence_url: evidence }])),
   corresponding_source: `https://github.com/gobbajogger/X0X37-for-Loopy-Pro/archive/${commit}.tar.gz`,
@@ -40,6 +40,24 @@ const reject = mutate => {
   negatives++;
 };
 validateCatalog(catalog, qualification);
+// Only the exact live legacy identities are grandfathered; new blank/local-controller records cannot qualify.
+{
+  const legacy = JSON.parse(readFileSync(new URL('./fixtures/published-dev-catalog-b7af05f.json', import.meta.url)));
+  const q = {schema:1, installer_sha256:installerFingerprint(), packages:{}};
+  for (const p of Object.values(legacy.versions[0].models)) q.packages[p.sha256] = {
+    ...structuredClone(qualification.packages[digest]), source_commit:legacy.versions[0].source_commit,
+    source_tree:legacy.versions[0].source_tree, product:p.product, size:p.size, url:p.pkg,
+    integration:{ref:'nightly',commit:legacy.versions[0].source_commit,tree:legacy.versions[0].source_tree,evidence_url:evidence},
+    controller:{strategy:'owner-supplied',sha256:p.controller_sha256,size:65492}
+  };
+  for (const r of Object.values(q.packages)) r.corresponding_source = 'https://example.org/'+r.source_commit+'/source.tar.gz';
+  validateCatalog(legacy,q);
+  for(const field of ['sha256','pkg','product','size']) {
+    const bad=structuredClone(legacy),p=bad.versions[0].models.pro;
+    p[field] = field === 'size' ? p[field]+1 : p[field]+'x';
+    assert.throws(()=>validateCatalog(bad,q),/NOT INSTALLABLE/);
+  }
+}
 // Optional catalog hints are denials, not independent qualification receipts.
 // Both models use exact matching synthetic metadata; no fixture is a real approval.
 const approvals = ['qualified', 'installable', 'qa_pass', 'source_licenses_approved',

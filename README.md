@@ -9,7 +9,7 @@ This is the **development-preview repository** for the X0X37 web firmware instal
 - Dark, instrument-inspired interface with a prominent USB connection action and three clear steps.
 - Keyboard model selection stays visible, reducing mistaken model choice.
 - More readable firmware version labels, safety badges, and backup/recovery information.
-- The local firmware and optional controller-image pickers keep the latest file selection authoritative and require fresh confirmation.
+- The stock firmware and required legacy controller-image pickers keep the latest file selection authoritative and require fresh confirmation.
 - English/Japanese labels and keyboard-accessible status and controls.
 
 The visual design is inspired by the *interaction patterns*, not the code or assets, of [Meshtastic Flasher](https://flasher.meshtastic.org/), [WLED Installer](https://install.wled.me/) and [qFlipper](https://docs.flipper.net/zero/basics/firmware-update).
@@ -46,3 +46,10 @@ Do not force-push, publish stable firmware, publish new GitHub Pages, or flash a
 ## License
 
 GPL-3.0-only. Full corresponding source for this *preview* is in `web/` and the build script; sources for the underlying project are linked above. Retain attribution and GPL terms when redistributing modifications.
+
+New qualified NIGHTLY packages use one complete firmware file with matching Bluetooth
+included. The installer verifies embedded bytes before offering download/install and hides
+the separate controller field for that path. Existing published blank-slot packages retain
+their exact local `ctl.img` requirement until reviewed combined artifacts are legally
+qualified, hosted and published. This source change does not change the live catalog.
+See [candidate preparation](docs/qualified-nightly-candidate.md).

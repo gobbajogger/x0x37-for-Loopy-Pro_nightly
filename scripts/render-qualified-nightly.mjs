@@ -4,9 +4,10 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, cpSync, rmSync, rea
 import { join, resolve, relative, dirname, basename, sep, isAbsolute } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
-import { productOf } from '../web/fm1pkg.js';
+import { productOf, logicalImage, controllerOf } from '../web/fm1pkg.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
+const legacyControllers = JSON.parse(readFileSync(join(root, 'scripts/legacy-controller-packages.json'), 'utf8'));
 const sha256 = b => createHash('sha256').update(b).digest('hex');
 const hex40 = s => typeof s === 'string' && /^[a-f0-9]{40}$/.test(s);
 const hex64 = s => typeof s === 'string' && /^[a-f0-9]{64}$/.test(s);
@@ -16,7 +17,7 @@ export const requiredGates = ['native-build', 'package-integrity', 'model-contro
   'ota-target-binding', 'independent-qa', 'distribution-license', 'corresponding-source'];
 
 export function installerFingerprint() {
-  return sha256(JSON.stringify([...inputs, 'scripts/render-qualified-nightly.mjs']
+  return sha256(JSON.stringify([...inputs, 'scripts/render-qualified-nightly.mjs', 'scripts/legacy-controller-packages.json']
     .map(p => [p, sha256(readFileSync(join(root, p)))])));
 }
 
@@ -44,7 +45,7 @@ const catalogKeys = ['schema', 'repo', 'pages', 'latest', 'versions', 'history']
 const versionKeys = ['version', 'label', 'status', 'config', 'hardware_tested', 'source_commit', 'source_tree',
   'models', 'title', 'description', 'built_at', 'evidence_url', 'lifecycle', 'revoked', 'blocked', 'withdrawn',
   ...approvalKeys, 'fromRelease', 'device_verified'];
-const packageKeys = ['product', 'sha256', 'size', 'controller_sha256', 'pkg', 'status', 'lifecycle',
+const packageKeys = ['product', 'sha256', 'size', 'controller_sha256', 'controller_strategy', 'controller_size', 'pkg', 'status', 'lifecycle',
   'revoked', 'blocked', 'withdrawn', ...approvalKeys, 'fromRelease', 'device_verified', 'hardware_tested'];
 const record = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 function checkInputFields(catalog, qualification, need) {
@@ -138,10 +139,18 @@ export function validateCatalog(catalog, qualification, fingerprint = installerF
       need(r?.integration?.ref === 'nightly' && hex40(r?.integration?.commit) &&
         r.integration.tree === v?.source_tree && httpsUrl(r?.integration?.evidence_url),
         `${where}: accepted firmware nightly tree receipt required`);
-      need(r?.controller?.strategy === 'owner-supplied' && hex64(r?.controller?.sha256) &&
+      const strategy = Object.hasOwn(p, 'controller_strategy') ? p.controller_strategy : 'owner-supplied';
+      need(['owner-supplied', 'bundled'].includes(strategy) && r?.controller?.strategy === strategy && hex64(r?.controller?.sha256) &&
         p?.controller_sha256 === r?.controller?.sha256 &&
         Number.isSafeInteger(r?.controller?.size) && r.controller.size >= 68 && r.controller.size <= 65536,
-        `${where}: matching checked owner-supplied controller required; never host ctl.img`);
+        `${where}: matching checked controller strategy/hash/size required`);
+      if (strategy === 'bundled') need(p?.controller_size === r?.controller?.size,
+        `${where}: exact bundled controller size required`);
+      else need(v.source_commit === legacyControllers.source_commit && v.source_tree === legacyControllers.source_tree &&
+        Object.entries(legacyControllers.models[key] || {}).length > 0 &&
+        Object.entries(legacyControllers.models[key] || {}).every(([field,value]) => p[field] === value) &&
+        r?.controller?.size === legacyControllers.controller_size,
+        `${where}: new NIGHTLY candidates must bundle Bluetooth; only pinned existing legacy packages may require a local controller`);
       for (const gate of requiredGates) {
         const g = r?.gates?.[gate];
         need(g?.status === 'PASS' && httpsUrl(g?.evidence_url), `${where}: ${gate} is not PASS with evidence`);
@@ -173,6 +182,11 @@ export async function verifyDownloads(catalog, fetcher = fetch) {
     const raw = Buffer.concat(chunks);
     if (size !== p.size || sha256(raw) !== p.sha256 || productOf(raw) !== p.product) {
       throw new Error(`download bytes/hash/model mismatch: ${p.product}`);
+    }
+    if (p.controller_strategy === 'bundled') {
+      const embedded = controllerOf(logicalImage(raw));
+      if (embedded.length !== p.controller_size || sha256(embedded) !== p.controller_sha256)
+        throw new Error(`bundled controller bytes/hash/size mismatch: ${p.product}`);
     }
   }
 }
@@ -243,6 +257,6 @@ async function main(argv) {
   console.log('PREPARED — HTTP bytes verified; local candidate only. Independent site review and sole publisher deployment/served-byte checks remain required.');
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+if (process.argv[1] && existsSync(process.argv[1]) && import.meta.url === pathToFileURL(realpathSync(resolve(process.argv[1]))).href) {
   main(process.argv.slice(2)).catch(e => { console.error(e.message); process.exitCode = 1; });
 }
