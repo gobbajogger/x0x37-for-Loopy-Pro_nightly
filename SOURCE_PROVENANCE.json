@@ -4,7 +4,7 @@
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
     "web/x0x_installer.html": "8f14f5873d0efbfaf838c021f9f893af1493450c",
-    "web/x0x_breaks.html": "a73619d60cda8498c3f69f6575634e1bff62d925",
+    "web/x0x_breaks.html": "9641a7677921200d8e2afd8f499ba3275a626cc1",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
     "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
@@ -115,7 +115,7 @@
       "path": "web/x0x_breaks.html",
       "sourceBaseCommit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
       "description": "Combined firmware/sample workspace with persistent isolated tool context, task-specific state, MIDI operation exclusion and truthful renderer showcase",
-      "resultBlob": "a73619d60cda8498c3f69f6575634e1bff62d925"
+      "resultBlob": "9641a7677921200d8e2afd8f499ba3275a626cc1"
     }
   ]
 }

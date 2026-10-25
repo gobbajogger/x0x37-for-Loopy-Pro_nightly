@@ -50,6 +50,13 @@
   .home { display: inline-block; font-weight: 700; letter-spacing: .03em; color: var(--dim); text-decoration: none; margin: 0 0 12px; }
   .home:hover, .home:focus-visible { color: var(--accent); }
   input[type=file] { display: none; }
+
+  [hidden] { display: none !important; }
+  :root.embedded { --bg:#14191c; --fg:#eff3ef; --dim:#a1ada9; --rule:#343e3a; --wave:#77847f; --accent:#ccfc76; color-scheme:dark; }
+  .embedded main { max-width:none; padding:24px; box-sizing:border-box; }
+  .embedded button { border-radius:8px; min-height:44px; }
+  .embedded button:focus-visible, .embedded input:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .embedded .loop { grid-template-columns:4em minmax(0,1fr) auto; }
 </style>
 </head>
 <body>
@@ -1130,7 +1137,13 @@ window.sampleWorkspace = {
 };
 if (new URLSearchParams(location.search).has("embedded")) {
   document.querySelector(".home").hidden = true;
-  document.querySelector("main").style.padding = "12px";
+  document.documentElement.classList.add("embedded");
+  const fitWorkspace = () => {
+    if (parent === window) return;
+    const frame = parent.document.getElementById("sample-frame");
+    if (frame) frame.style.height = Math.ceil(document.querySelector("main").getBoundingClientRect().height + 8) + "px";
+  };
+  new ResizeObserver(fitWorkspace).observe(document.querySelector("main"));
   sampleActive = false;
 }
 render();

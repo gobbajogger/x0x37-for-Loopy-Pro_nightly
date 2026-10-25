@@ -33,6 +33,8 @@ async def main():
   check('Not connected' in await page.locator('#conn').inner_text(),'no invented connection')
   await page.locator('#samples-tab').click();await child.wait_for_function('probe.state().active')
   check(await page.locator('#firmware-panel').is_hidden(),'one action panel visible')
+  check(await child.locator('.home').is_hidden(),'embedded panel has no duplicate home control')
+  check(await child.evaluate('getComputedStyle(document.body).backgroundColor==="rgb(20, 25, 28)"'),'embedded sample panel matches workspace theme')
   check(await child.locator('#send').is_disabled(),'samples require real read before writing')
   await child.evaluate('probe.seed()')
   await child.locator('#files').set_input_files({'name':'loop-a.wav','mimeType':'audio/wav','buffer':wav(8820)})
@@ -77,6 +79,9 @@ async def main():
   for width in [320,390,1280]:
    await page.set_viewport_size({'width':width,'height':900});await page.screenshot(path=str(ROOT.parent/f'workspace-{width}.png'),full_page=True)
    check(await page.evaluate('document.documentElement.scrollWidth<=innerWidth'),f'{width}px no horizontal overflow')
+   await page.locator('#samples-tab').click()
+   check(await page.frames[1].evaluate('document.documentElement.scrollWidth<=innerWidth'),f'{width}px sample panel has no horizontal overflow')
+   await page.locator('#firmware-tab').click()
   check(not errors,'no page script errors: '+str(errors))
   await browser.close()
  srv.shutdown();print(json.dumps({'checks':len(checks),'failures':[x for x,v in checks if not v]}));assert all(v for _,v in checks)
