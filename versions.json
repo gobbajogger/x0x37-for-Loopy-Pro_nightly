@@ -33,7 +33,7 @@
         }
       },
       "title": "DEV / HARDWARE TEST — Elite and Pro (F04)",
-      "description": "Software-checked DEV firmware from validated source 0d79d634 (F04 BF-001). Bundled controller. DEVICE NOT TESTED. Stage-4 blank package hashes d3b4cac3/0b09605f; page serves bundled installable bytes. Content-tree 1b067cad… matches DEV CHECKED records. Package digests match prior F03 publish (installer-only BF-001 repair; firmware application bytes unchanged); catalog latest attributes those bytes to 0d79d634 and supersedes nightly-a03cfab3-dev.",
+      "description": "Software-checked DEV firmware from validated source 0d79d634 (F04 BF-001). Bundled controller. DEVICE NOT TESTED. Stage-4 blank package hashes d3b4cac3/0b09605f; page serves bundled installable bytes. Content-tree 1b067cad… matches DEV CHECKED records. Package digests match prior F03 publish (firmware application bytes unchanged). Installer fingerprint updated for BF-001 selection-generation handlers (d11b74fc); supersedes prior F04 publish that reused the F02/F03 installer digest.",
       "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/190"
     },
     {
