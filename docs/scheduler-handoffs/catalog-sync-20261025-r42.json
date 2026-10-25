@@ -1,0 +1,50 @@
+{
+  "schema": "x0x37-catalog-sync-evidence-v1",
+  "role": "sole NIGHTLY website catalog SOURCE producer",
+  "revision": "R42 2026-10-25",
+  "base_commit": "ec7390110299c3ac5a094d20a8ec31de0385b2f6",
+  "base_tree": "4efc3324ec46bcab60c3d423502909f85193a6e2",
+  "intended_user_experience": "Transparent development history for 303 RANDOM clock phase, bundled Bluetooth package preparation and upstream proof policy without false firmware or hardware approval.",
+  "previous_rows": 131,
+  "new_rows": [
+    {
+      "index": 131,
+      "id": "bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025",
+      "source_commit": "4b67024e62bfd1b4d5789827334f6bea4f9b4e00",
+      "root_tree": "fe0b13610daeea0f66b14159443bb1a4103269bc",
+      "sha256": "a770983cb84ae9b318100b6202b5f56c443c331a4e339a0a445fab2c56d5bca1",
+      "installable": false
+    },
+    {
+      "index": 132,
+      "id": "nightly-pr142-bundled-controller-source-in-firmware-nightly-20261025",
+      "source_commit": "04cb592c47f4b8d5049f5399d7f6f45b50b92c2c",
+      "root_tree": "1799e40dd5026332caf14fb7431dda20f5c960dd",
+      "sha256": "e13e4d6249da44457f5e94689504b23b641f135707ed565773445ecd085aa4ea",
+      "installable": false
+    },
+    {
+      "index": 133,
+      "id": "nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025",
+      "source_commit": "b26c0838f8d91788fd4c65bddcf66c2df05883b6",
+      "root_tree": "b5fcae0753c80aebeebdd24abbb915c549f59400",
+      "sha256": "94e99eeb5b90b261231c455c9f7b8aa669aadb8dee5317377d0c05575ab6153f",
+      "installable": false
+    }
+  ],
+  "immutable_sha256_checks": "134/134",
+  "two_historical_dev_generations_unchanged": true,
+  "source_picker_selectable_packages": 0,
+  "scoped_sha256_known_answers": [
+    "",
+    "abc"
+  ],
+  "scoped_mutation_rejections": 10,
+  "full_npm_test": "NOT RUN: native GitHub checkout DNS exit 128",
+  "full_npm_build": "NOT RUN: native GitHub checkout DNS exit 128",
+  "full_browser": "NOT RUN: native GitHub checkout DNS exit 128",
+  "new_permanent_Node_regressions": "SOURCE COMMITTED; NOT EXECUTED",
+  "independent_website_QA": "PENDING exact R42",
+  "next": "Existing Independent Website QA, sole Website Main Merger; sole Pages publisher retains live HTML/HTTPS and lawful package byte checks",
+  "restrictions": "No protected ref update, hardware, release, private firmware, controller images or Download HREF"
+}

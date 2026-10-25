@@ -52,17 +52,29 @@ assert.equal(catalog.counts.source_or_historical_checkpoints, catalog.history.le
    for(const key of Object.keys(value)) assert.ok(names.has(key),at+': forbidden field '+key);
  };
  const officialRepo='https://github.com/gobbajogger/X0X37-for-Loopy-Pro';
+ // NIGHTLY browser-source history may truthfully cite this public repo for
+ // website/installer Git receipts. Firmware/upstream catalog.source stays on
+ // the production repository below.
+ const nightlyRepo='https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly';
+ const approvedRepos=new Set([officialRepo, nightlyRepo]);
+ const repoBase=(value)=>{
+   for(const base of approvedRepos){
+     if(value===base || value.startsWith(base+'/')) return base;
+   }
+   return null;
+ };
  // Navigational history may link to a moving PR/branch; actual evidence of
  // test, build or physical PASS must identify immutable Git source bytes.
  const navigationURL=(value,at)=>{
    assert.equal(typeof value,'string',at+': source URL must be a string');
-   assert.ok(value.startsWith(officialRepo+'/'),at+': untrusted source');
-   const tail=value.slice(officialRepo.length+1);
+   const base=repoBase(value);
+   assert.ok(base,at+': untrusted source');
+   const tail=value.slice(base.length+1);
    const valid=(
      /^pull\/[0-9]+$/.test(tail) ||
      /^commit\/[a-f0-9]{40}$/.test(tail) ||
      /^tree\/[A-Za-z0-9._/-]+$/.test(tail) ||
-     /^blob\/[A-Za-z0-9._/-]+\.(?:md|json)$/.test(tail)
+     /^blob\/[A-Za-z0-9._/-]+\.(?:md|json|log)$/.test(tail)
    );
    assert.ok(valid,at+': unapproved source navigation route');
    assert.ok(!tail.split('/').includes('..') && !tail.includes('%') &&
@@ -70,11 +82,12 @@ assert.equal(catalog.counts.source_or_historical_checkpoints, catalog.history.le
  };
  const evidenceURL=(value,at)=>{
    navigationURL(value,at);
-   const tail=value.slice(officialRepo.length+1);
+   const base=repoBase(value);
+   const tail=value.slice(base.length+1);
    assert.ok(
      /^commit\/[a-f0-9]{40}$/.test(tail) ||
      /^tree\/[a-f0-9]{40}(?:\/[A-Za-z0-9._/-]+)?$/.test(tail) ||
-     /^blob\/[a-f0-9]{40}\/[A-Za-z0-9._/-]+\.(?:md|json)$/.test(tail),
+     /^blob\/[a-f0-9]{40}\/[A-Za-z0-9._/-]+\.(?:md|json|log)$/.test(tail),
      at+': immutable Git commit SHA is required for evidence');
  };
 
@@ -95,7 +108,7 @@ assert.equal(catalog.counts.source_or_historical_checkpoints, catalog.history.le
      }
      if(typeof child==='string'&&/https?:\/\//i.test(child)){
        assert.ok(evidenceKeys.has(key)||repoKeys.has(key),path+': unapproved URL value');
-       if(repoKeys.has(key))assert.equal(child,officialRepo,path+': unapproved source repo');
+       if(repoKeys.has(key))assert.ok(approvedRepos.has(child),path+': unapproved source repo');
        else (key==='url'?navigationURL:evidenceURL)(child,path);
      }
      checkNestedLinks(child,path);
@@ -131,7 +144,7 @@ assert.match(catalog.source.commit,/^[a-f0-9]{40}$/,'source commit requires pinn
      }
    }
  }
- const approvedHistoryFields='id title source_repo source_ref source_commit source_tree source_time date status models firmware_product_version build_id installable device_verified reported_checks description missing_gate url evidence_commit evidence_url handoff_source source_identity_note reported_package_sha256 reported_offline_artifacts offline_source exact_remote_native_build artifact_distribution_approved firmware_subtree producer_reported_artifacts artifact_bytes_independently_verified build_target_tests_independently_reexecuted build_pipeline failed_build';
+ const approvedHistoryFields='id title source_repo source_ref source_commit source_tree source_time date status models firmware_product_version build_id installable device_verified reported_checks description missing_gate url evidence_commit evidence_url handoff_source source_identity_note reported_package_sha256 reported_controller_sha256 reported_offline_artifacts offline_source exact_remote_native_build artifact_distribution_approved firmware_subtree producer_reported_artifacts artifact_bytes_independently_verified build_target_tests_independently_reexecuted build_pipeline failed_build';
  for(const item of catalog.history){
    shape(item,approvedHistoryFields,'history');
    // Authentic separately byte-audited R14 native models: BUILD_ONLY, not QA/hosting.
@@ -187,13 +200,13 @@ assert.match(catalog.source.commit,/^[a-f0-9]{40}$/,'source commit requires pinn
        'history '+field+' must be nonempty text');
    }
 
-   if(item.source_repo!==undefined)assert.equal(item.source_repo,officialRepo,'historical source repo');
+   if(item.source_repo!==undefined)assert.ok(approvedRepos.has(item.source_repo),'historical source repo');
     if(item.evidence_commit!==undefined){
       assert.match(item.evidence_commit,/^[a-f0-9]{40}$/,'historical evidence_commit must be a pinned Git SHA');
       if(item.evidence_url!=null){
         // Match the Git commit immediately after /commit/, /tree/ or /blob/.
         // The same SHA elsewhere in a pathname cannot authenticate the link.
-        const evidenceGitRoute=item.evidence_url.slice(officialRepo.length+1);
+        const evidenceGitRoute=item.evidence_url.slice(repoBase(item.evidence_url).length+1);
         const pinnedRef=/^(?:commit|tree|blob)\/([a-f0-9]{40})(?:\/|$)/.exec(evidenceGitRoute);
         assert.equal(pinnedRef?.[1],item.evidence_commit,
           'historical evidence_commit must equal the immutable Git URL reference SHA');
@@ -524,7 +537,8 @@ for (const item of catalog.history) {
   assert.ok(historicalStatuses.has(item.status), 'unverified or invalid history status ' + item.status);
   assert.match(item.source_commit, /^[a-f0-9]{40}$/, 'history requires immutable source SHA');
   if (item.source_tree !== undefined) assert.match(item.source_tree, /^[a-f0-9]{40}$/);
-  if (item.firmware_subtree !== undefined) assert.match(item.firmware_subtree,/^[a-f0-9]{40}$/,'firmware subtree must be exact Git tree SHA');
+  // Older rows pin a 40-char Git tree; F03+ content-addressed receipts may pin a 64-char digest.
+  if (item.firmware_subtree !== undefined) assert.match(item.firmware_subtree,/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/,'firmware subtree must be exact Git tree SHA or content digest');
   if (item.status === 'build-succeeded-unreviewed') {
     const x = item.build_pipeline;
     assert.ok(x && typeof x === 'object');

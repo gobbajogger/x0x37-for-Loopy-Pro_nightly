@@ -507,6 +507,86 @@
     {
       "id": "data-safety-pr114-r18-native-extract-fdopen-needs-changes-20261025",
       "sha256": "5d131bd92c9201acb7363d7482c8f87c73cf29e381cc14da9abc2b482ca1cf7e"
+    },
+    {
+      "id": "nightly-pages-git-unqualified-dev-admission-20261025",
+      "sha256": "b1458754c2149689c0dc0da709174bf23e2877ef57d885f327efbfbec2514097"
+    },
+    {
+      "id": "nightly-browser-pr14-catalog-approval-denials-source-20261025",
+      "sha256": "2ba850119d4ea7716c645eb29035eda409e5443076c9ad2d09948e3e97a69707"
+    },
+    {
+      "id": "nightly-browser-pr14-r2-hardware-facts-independent-scoped-review-20261025",
+      "sha256": "8adaa02c9b987a17e007fd46cd5988da2fe25971b6771ff190406e6988b66d34"
+    },
+    {
+      "id": "bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025",
+      "sha256": "d8553f2ff25689a1707fe64bf077adc52229f000e88724c64ab0aee457301db8"
+    },
+    {
+      "id": "bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025",
+      "sha256": "4a56280e3a43af4df0d43664153eb531d39df839db6b2f7db866438938c13a32"
+    },
+    {
+      "id": "nightly-pr15-qualification-gate-removal-policy-hold-20261025",
+      "sha256": "c550f2c7a69e8557b10b5c8ffa648bb115c59258a5e34b8057db89b108ac7f73"
+    },
+    {
+      "id": "bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025",
+      "sha256": "a770983cb84ae9b318100b6202b5f56c443c331a4e339a0a445fab2c56d5bca1"
+    },
+    {
+      "id": "nightly-pr142-bundled-controller-source-in-firmware-nightly-20261025",
+      "sha256": "e13e4d6249da44457f5e94689504b23b641f135707ed565773445ecd085aa4ea"
+    },
+    {
+      "id": "nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025",
+      "sha256": "39f5463dbea19144795021078e2aef3cfbf3d8f08fdf0fcad2ba46994d02286d"
+    },
+    {
+      "id": "bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025",
+      "sha256": "fadc9c44b31832d868b3eccf769701913553796b438c4fe8ad745198abcf0b59"
+    },
+    {
+      "id": "nightly-installer-pr16-bundled-bluetooth-verifier-draft-20261025",
+      "sha256": "665ac1f85665850e1c658962358190772bedec57c47c4a857764f0239d73feab"
+    },
+    {
+      "id": "nightly-workspace-pr17-firmware-samples-unified-draft-20261025",
+      "sha256": "0a129efeae2f5f54f1ae8d3d8685fdcfe5f931eab439786d0ba9f61e3d23ed55"
+    },
+    {
+      "id": "bugfinder-bf033-pr159-random-tie-independent-host-20261025",
+      "sha256": "ff22448f01efd27855b6e4b0e43e43f1f34d171597037b21e23df969cdf00563"
+    },
+    {
+      "id": "website-main-pr14-pr16-pr17-merged-source-only-20261025",
+      "sha256": "52488fb54e11268711c1ea08731adb66190e2c5a8ad90a39fa7cda0e562c7196"
+    },
+    {
+      "id": "firmware-f03-pr178-elite-pro-dev-checked-source-evidence-20261025",
+      "sha256": "93febe1d1ca428484d547b2e338b83f4dfd8a81dab3dfea6524d674973ed9ec6"
+    },
+    {
+      "id": "nightly-f03-pages-git-bundled-dev-test-candidate-20261025",
+      "sha256": "2504113dafac781bdf206ae78bd62bb4aeecf46c8aa3e3276244aca27450fd40"
+    },
+    {
+      "id": "firmware-f04-pr190-bf001-selection-host-dev-checked-20261025",
+      "sha256": "9c8671ec40aaf501108a8c3457fa747d72ac665c0330740a5dcb1f4df843d771"
+    },
+    {
+      "id": "nightly-f04-pages-git-repaired-installer-source-only-20261025",
+      "sha256": "5170101923028419aaf804377c2690fd27e46a837b4de4afde9317456c2005c4"
+    },
+    {
+      "id": "firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025",
+      "sha256": "90663ce58457ee0bba3ebc3515e591ea3dc68c73786256b13c95b4b1805cd31c"
+    },
+    {
+      "id": "nightly-f05-pages-git-bf002-device-not-tested-20261025",
+      "sha256": "f35dbd6113e8058e5346b93e4c7bc5b4c1a0877094ae7a17fec86c45c1a82a8a"
     }
   ]
 }

@@ -684,7 +684,7 @@ run('r33-fake-distribution-approval-REJECT',editR33(row=>{row.artifact_distribut
 const r35Id='data-safety-pr114-r18-native-extract-fdopen-needs-changes-20261025';
 const editR35=fn=>edit(j=>{const row=j.history[124];assert.equal(row.id,r35Id);fn(row,j);});
 run('r35-native-independent-qa-failure-safely-recorded',editR35((row,j)=>{
-  assert.equal(j.counts.source_or_historical_checkpoints,125);
+  assert.ok(j.counts.source_or_historical_checkpoints >= 125);
   assert.equal(row.status,'source-only');
   assert.equal(row.installable,false);
   assert.equal(row.device_verified,false);
@@ -700,3 +700,193 @@ run('r35-false-distribution-approval-REJECT',editR35(row=>row.artifact_distribut
 run('r35-artifact-link-smuggling-REJECT',editR35(row=>row.pkg='https://invalid.example/fw.fwsc'));
 run('r35-status-forged-success-REJECT',editR35(row=>row.status='dev-checked'));
 run('r35-history-tail-deleted-REJECT',editR35((row,j)=>{j.history.splice(124,1);j.counts.source_or_historical_checkpoints--;}));
+
+ 
+// R36: a reporter-characterized unsafe Pages Git catalog must remain nonflashable evidence.
+const r36Id='nightly-pages-git-unqualified-dev-admission-20261025';
+const editR36=fn=>edit(j=>{const row=j.history[125];assert.equal(row.id,r36Id);fn(row,j);});
+run('r36-pages-unqualified-source-warning-retained',editR36((row,j)=>{
+  assert.ok(j.counts.source_or_historical_checkpoints >= 126);
+  assert.equal(row.status,'validation-evidence-only');
+  assert.equal(row.source_commit,'b7af05f00a91056ca732b21cbe1dc719edbcb585');
+  assert.equal(row.source_tree,'9e192c467973368c407cf148099e35c6280b2eae');
+  assert.equal(row.installable,false);
+  assert.equal(row.device_verified,false);
+  assert.equal(row.artifact_distribution_approved,false);
+  assert.equal(row.artifact_bytes_independently_verified,false);
+  assert.match(row.reported_checks.result,/UNSAFE CATALOG ADMISSION OBSERVED/);
+}),true);
+run('r36-unsafe-admission-history-deleted-REJECT',editR36((row,j)=>{j.history.splice(125,1);j.counts.source_or_historical_checkpoints--;}));
+run('r36-unsafe-admission-relabeled-to-PASS-REJECT',editR36(row=>{row.reported_checks.result='PASS';}));
+run('r36-fake-download-grant-REJECT',editR36(row=>{row.installable=true;}));
+run('r36-fake-device-PASS-REJECT',editR36(row=>{row.device_verified=true;}));
+run('r36-fake-distribution-grant-REJECT',editR36(row=>{row.artifact_distribution_approved=true;}));
+run('r36-fake-verified-package-bytes-REJECT',editR36(row=>{row.artifact_bytes_independently_verified=true;}));
+run('r36-pages-commit-forged-REJECT',editR36(row=>{row.source_commit='f'.repeat(40);}));
+
+// R37: source-only proposed catalog approval repair is not independent firmware/Pages acceptance.
+const r37Id='nightly-browser-pr14-catalog-approval-denials-source-20261025';
+const editR37=fn=>edit(j=>{const row=j.history[126];assert.equal(row.id,r37Id);fn(row,j);});
+run('r37-source-only-proposed-repair',editR37((row,j)=>{
+ assert.ok(j.counts.source_or_historical_checkpoints >= 127);
+ assert.equal(row.source_commit,'7515d147e4817248dece608c73fd7fb171e996f2');
+ assert.equal(row.source_tree,'7db90a3810f790d3b939b4cdc34a768ff6e9200a');
+ assert.equal(row.status,'source-only');
+ assert.equal(row.installable,false);
+ assert.equal(row.device_verified,false);
+ assert.equal(row.artifact_distribution_approved,false);
+ assert.equal(row.artifact_bytes_independently_verified,false);
+ assert.match(row.reported_checks.result,/INDEPENDENT WEBSITE QA PENDING/);
+}),true);
+run('r37-tail-deletion-REJECT',editR37((row,j)=>{j.history.splice(126,1);j.counts.source_or_historical_checkpoints--;}));
+run('r37-forged-source-REJECT',editR37(row=>row.source_commit='f'.repeat(40)));
+run('r37-forged-root-REJECT',editR37(row=>row.source_tree='f'.repeat(40)));
+run('r37-fabricated-site-QA-PASS-REJECT',editR37(row=>row.reported_checks.result='INDEPENDENT WEBSITE QA PASS'));
+run('r37-forged-download-REJECT',editR37(row=>row.installable=true));
+run('r37-forged-hardware-PASS-REJECT',editR37(row=>row.device_verified=true));
+run('r37-forged-rights-PASS-REJECT',editR37(row=>row.artifact_distribution_approved=true));
+run('r37-forged-verified-bytes-REJECT',editR37(row=>row.artifact_bytes_independently_verified=true));
+
+// R39: source-specific independent QA is not full-root installer or firmware approval.
+const r39Id='nightly-browser-pr14-r2-hardware-facts-independent-scoped-review-20261025';
+const editR39=fn=>edit(j=>{const row=j.history[127];assert.equal(row.id,r39Id);fn(row,j);});
+run('r39-independent-scope-and-no-flash',editR39((row,j)=>{
+ assert.ok(j.counts.source_or_historical_checkpoints>=128);
+ assert.equal(row.source_commit,'593c0fc3c18200fd887373bff4602bfd322f0d54');
+ assert.equal(row.source_tree,'e1255056dff9ebdcb2d1836e6e139dfa506f8995');
+ assert.equal(row.status,'validation-evidence-only');
+ assert.deepEqual(row.models,['elite','pro']);
+ assert.equal(row.installable,false);assert.equal(row.device_verified,false);
+ assert.equal(row.artifact_distribution_approved,false);assert.equal(row.artifact_bytes_independently_verified,false);
+ assert.match(row.reported_checks.result,/INDEPENDENT QA SCOPED REVIEWED/);
+ assert.ok(row.reported_checks.result.includes('FULL WEBSITE/BROWSER QA INCOMPLETE'));
+}),true);
+run('r39-history-deleted-REJECT',editR39((row,j)=>{j.history.splice(127,1);j.counts.source_or_historical_checkpoints--;}));
+run('r39-false-full-QA-REJECT',editR39(row=>{row.reported_checks.result='FULL WEBSITE PASS';}));
+run('r39-forged-source-REJECT',editR39(row=>{row.source_commit='f'.repeat(40);}));
+run('r39-forged-root-REJECT',editR39(row=>{row.source_tree='f'.repeat(40);}));
+run('r39-false-download-REJECT',editR39(row=>{row.installable=true;}));
+run('r39-false-device-PASS-REJECT',editR39(row=>{row.device_verified=true;}));
+run('r39-false-rights-PASS-REJECT',editR39(row=>{row.artifact_distribution_approved=true;}));
+run('r39-false-served-bytes-REJECT',editR39(row=>{row.artifact_bytes_independently_verified=true;}));
+
+
+// R40: source-only musical-sequencer BF031 progress is never a selectable firmware version.
+const r40Id='bugfinder-bf031-pr140-tb3po-logical-bars-source-20261025';
+const editR40=fn=>edit(j=>{const row=j.history[128];assert.equal(row.id,r40Id);fn(row,j);});
+run('r40-BF031-source-only-and-no-flash',editR40((row,j)=>{
+ assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(row.source_commit,'a964401ec29028ab488a7586d8b54d0e24ea58ce');
+ assert.equal(row.source_tree,'2a3c78247b6164d43f995e640d98b71aae933498');
+ assert.equal(row.firmware_subtree,'7f35a88270c7a4c0e782d7711cfd7110fc162a23');
+ assert.equal(row.status,'source-only');assert.deepEqual(row.models,[]);
+ assert.equal(row.installable,false);assert.equal(row.device_verified,false);
+ assert.equal(row.artifact_distribution_approved,false);assert.equal(row.exact_remote_native_build,false);
+ assert.match(row.reported_checks.result,/INDEPENDENT FIRMWARE QA PENDING/);
+}),true);
+run('r40-delete-source-history-REJECT',editR40((row,j)=>{j.history.splice(128,1);j.counts.source_or_historical_checkpoints--;}));
+run('r40-forged-source-root-REJECT',editR40(row=>row.source_tree='f'.repeat(40)));
+run('r40-forged-source-commit-REJECT',editR40(row=>row.source_commit='f'.repeat(40)));
+run('r40-fabricated-build-REJECT',editR40(row=>row.exact_remote_native_build=true));
+run('r40-fabricated-hardware-REJECT',editR40(row=>row.device_verified=true));
+run('r40-fabricated-download-REJECT',editR40(row=>row.installable=true));
+run('r40-fabricated-rights-REJECT',editR40(row=>row.artifact_distribution_approved=true));
+
+
+// R41: truthful status does not make either upstream event installable.
+const editR41Swing=fn=>edit(j=>{const r=j.history[129];assert.equal(r.id,'bugfinder-bf031-pr140-r2-random-temporal-swing-source-20261025');fn(r,j);});
+const editR41Policy=fn=>edit(j=>{const r=j.history[130];assert.equal(r.id,'nightly-pr15-qualification-gate-removal-policy-hold-20261025');fn(r,j);});
+run('r41-two-events-nonflashable-PASS',edit(j=>{
+ assert.ok(j.history.length>=131);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(const r of j.history.slice(129)){assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);}
+}),true);
+run('r41-swing-delete-REJECT',editR41Swing((r,j)=>{j.history.splice(129,1);j.counts.source_or_historical_checkpoints--;}));
+run('r41-swing-source-SHA-forgery-REJECT',editR41Swing(r=>r.source_commit='f'.repeat(40)));
+run('r41-swing-target-build-forgery-REJECT',editR41Swing(r=>r.exact_remote_native_build=true));
+run('r41-swing-download-forgery-REJECT',editR41Swing(r=>r.installable=true));
+run('r41-safety-HOLD-delete-REJECT',editR41Policy((r,j)=>{j.history.splice(130,1);j.counts.source_or_historical_checkpoints--;}));
+run('r41-safety-HOLD-relabel-REJECT',editR41Policy(r=>r.reported_checks.result='FULL PASS'));
+run('r41-safety-HOLD-distribution-forgery-REJECT',editR41Policy(r=>r.artifact_distribution_approved=true));
+run('r41-safety-HOLD-download-forgery-REJECT',editR41Policy(r=>r.installable=true));
+
+
+// R42 real source-only receipts fail closed against deleted records or forged installability.
+const r42Ids=['bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025','nightly-pr142-bundled-controller-source-in-firmware-nightly-20261025','nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025'];
+const editR42=(n,fn)=>edit(j=>{let r=j.history[131+n];assert.equal(r.id,r42Ids[n]);fn(r,j);});
+run('r42-noninstallable-three-source-receipts-PASS',edit(j=>{
+ assert.ok(j.history.length>=134);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(let i=0;i<3;i++){const r=j.history[131+i];assert.equal(r.id,r42Ids[i]);
+ assert.deepEqual(r.models,[]);assert.equal(r.installable,false);assert.equal(r.device_verified,false);
+ assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);}
+}),true);
+for(let i=0;i<3;i++){
+ run('r42-deleted-'+i+'-REJECT',editR42(i,(r,j)=>{j.history.splice(131+i,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r42-forged-source-'+i+'-REJECT',editR42(i,r=>r.source_commit='f'.repeat(40)));
+ run('r42-false-install-'+i+'-REJECT',editR42(i,r=>r.installable=true));
+ run('r42-false-rights-'+i+'-REJECT',editR42(i,r=>r.artifact_distribution_approved=true));
+}
+run('r42-forged-compiler-REJECT',editR42(0,r=>r.firmware_subtree='f'.repeat(40)));
+run('r42-forged-upstream-PASS-REJECT',editR42(2,r=>r.reported_checks.result='FULL INDEPENDENT QA PASS'));
+
+
+// R43: the new proposals may never become flashable merely through history metadata.
+const r43Ids=["bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025","nightly-installer-pr16-bundled-bluetooth-verifier-draft-20261025","nightly-workspace-pr17-firmware-samples-unified-draft-20261025"];
+const editR43=(n,fn)=>edit(j=>{let r=j.history[134+n];assert.equal(r.id,r43Ids[n]);fn(r,j);});
+run('r43-safe-noninstallable-history-PASS',edit(j=>{
+ assert.ok(j.history.length>=137);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(let n=0;n<3;n++){let r=j.history[134+n];assert.equal(r.id,r43Ids[n]);
+ assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);assert.equal(r.exact_remote_native_build,false);}
+}),true);
+for(let n=0;n<3;n++){
+ run('r43-delete-'+n+'-REJECT',editR43(n,(r,j)=>{j.history.splice(134+n,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r43-forged-source-'+n+'-REJECT',editR43(n,r=>r.source_commit='f'.repeat(40)));
+ run('r43-false-download-'+n+'-REJECT',editR43(n,r=>r.installable=true));
+ run('r43-false-rights-'+n+'-REJECT',editR43(n,r=>r.artifact_distribution_approved=true));
+}
+run('r43-forged-compiler-REJECT',editR43(0,r=>r.firmware_subtree='f'.repeat(40)));
+run('r43-forged-models-REJECT',editR43(1,r=>r.models=['pro','elite']));
+run('r43-false-QA-REJECT',editR43(2,r=>r.reported_checks.result='FULL INDEPENDENT QA PASS'));
+
+
+// R44 source integrations and firmware host QA never qualify firmware packages.
+const r44NegativeIds=["bugfinder-bf033-pr159-random-tie-independent-host-20261025","website-main-pr14-pr16-pr17-merged-source-only-20261025"];
+const editR44=(n,fn)=>edit(j=>{const i=137+n,r=j.history[i];assert.equal(r.id,r44NegativeIds[n]);fn(r,j);});
+run('r44-source-only-PASS',edit(j=>{
+ assert.ok(j.history.length>=139);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(let n=0;n<2;n++){const r=j.history[137+n];assert.equal(r.id,r44NegativeIds[n]);
+ assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);}
+}),true);
+for(let n=0;n<2;n++){
+ run('r44-deleted-'+n+'-REJECT',editR44(n,(r,j)=>{j.history.splice(137+n,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r44-forged-source-'+n+'-REJECT',editR44(n,r=>r.source_commit='f'.repeat(40)));
+ run('r44-false-install-'+n+'-REJECT',editR44(n,r=>r.installable=true));
+ run('r44-false-rights-'+n+'-REJECT',editR44(n,r=>r.artifact_distribution_approved=true));
+}
+run('r44-forged-compiler-REJECT',editR44(0,r=>r.firmware_subtree='f'.repeat(40)));
+
+// R46: R44 evidence remains valid when the append-only history grows.
+const r46SafeIds=["firmware-f03-pr178-elite-pro-dev-checked-source-evidence-20261025","nightly-f03-pages-git-bundled-dev-test-candidate-20261025",...["firmware-f04-pr190-bf001-selection-host-dev-checked-20261025","nightly-f04-pages-git-repaired-installer-source-only-20261025"]];
+const r46Mutate=(n,fn)=>edit(j=>{let i=139+n,r=j.history[i];assert.equal(r.id,r46SafeIds[n]);fn(r,j);});
+run('r46-source-history-PASS',edit(j=>{assert.ok(j.history.length>=143);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);assert.equal(j.builds.length,2);assert.equal(j.installable,false);for(let n=0;n<4;n++){let r=j.history[139+n];assert.equal(r.id,r46SafeIds[n]);assert.equal(r.installable,false);assert.equal(r.device_verified,false);assert.equal(r.artifact_distribution_approved,false);}}),true);
+for(let n=0;n<4;n++){
+ run('r46-remove-'+n+'-REJECT',r46Mutate(n,(r,j)=>{j.history.splice(139+n,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r46-forged-rights-'+n+'-REJECT',r46Mutate(n,r=>r.artifact_distribution_approved=true));
+ run('r46-forged-package-'+n+'-REJECT',r46Mutate(n,r=>r.reported_package_sha256.elite='a'.repeat(64)));
+}
+
+// R47 F05: evidence-only history must reject deletions, forged source and false download/device/rights grants.
+const r47SafeIds=["firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025","nightly-f05-pages-git-bf002-device-not-tested-20261025"];
+const r47Mutate=(n,fn)=>edit(j=>{const i=143+n,r=j.history[i];assert.equal(r.id,r47SafeIds[n]);fn(r,j);});
+run('r47-source-history-PASS',edit(j=>{assert.equal(j.history.length,145);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);assert.equal(j.builds.length,2);assert.equal(j.installable,false);for(let n=0;n<2;n++){const r=j.history[143+n];assert.equal(r.id,r47SafeIds[n]);for(const k of ['installable','device_verified','artifact_distribution_approved'])assert.equal(r[k],false);}}),true);
+for(let n=0;n<2;n++){
+ run('r47-remove-'+n+'-REJECT',r47Mutate(n,(r,j)=>{j.history.splice(143+n,1);j.counts.source_or_historical_checkpoints--;}));
+ run('r47-false-install-'+n+'-REJECT',r47Mutate(n,r=>r.installable=true));
+ run('r47-false-device-'+n+'-REJECT',r47Mutate(n,r=>r.device_verified=true));
+ run('r47-false-rights-'+n+'-REJECT',r47Mutate(n,r=>r.artifact_distribution_approved=true));
+ run('r47-forged-source-'+n+'-REJECT',r47Mutate(n,r=>r.source_commit='f'.repeat(40)));
+ run('r47-forged-package-'+n+'-REJECT',r47Mutate(n,r=>r.reported_package_sha256.elite='f'.repeat(64)));
+}
