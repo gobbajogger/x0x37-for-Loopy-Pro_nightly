@@ -24,9 +24,15 @@ actual installer HTML/libraries and candidate renderer. Changed installer code
 invalidates the receipt. Each package receipt repeats `source_commit`,
 `source_tree`, `product`, `size` and `url`; identifies accepted firmware
 `integration` (`ref: nightly`, commit, identical tree, evidence_url); records
-`controller` (`strategy: owner-supplied`, sha256, size); and records measured
+`controller` (`strategy: bundled`, sha256, size); and records measured
 `budgets` (`app_code_free`, `ram_free`, `pool_free`). Pool free must be at least
-8192 bytes. Controller bytes are never copied into the site.
+8192 bytes. New candidates require package fields `controller_strategy: bundled`,
+`controller_size` (exact declared image bytes), and `controller_sha256`. The receipt's
+strategy, size and hash must match. The two exact existing public legacy packages are
+pinned in `scripts/legacy-controller-packages.json`; only those old identities may retain
+`owner-supplied` controller receipts. This is continuity, not qualification of new blank
+packages. The legacy pin file is part of the installer fingerprint.
+No firmware/controller bytes are copied into the site source.
 
 Every gate exported by `requiredGates` needs a PASS and an immutable review/log
 `evidence_url`. What remains is `package-integrity`, `model-controller`,
@@ -42,13 +48,13 @@ native-build receipt or for either retired gate.
 
 **Owner decision, 2026-10-25.** This gate removal is an owner decision and is not an accidental loss of protection.
 
-**Reason:** The project is MIT. There is no distribution license to qualify. Corresponding source existed only to satisfy that license. A missing native-build receipt is not a reason to stop work.
+**Reason:** Owner policy waives distribution-license, corresponding-source, and missing native-build receipts as nightly qualification blockers. That is a standing channel decision, not a claim that the repository is MIT (see LICENSE). Corresponding source existed only to satisfy a distribution license. A missing native-build receipt is not a reason to stop work.
 
 **Purpose:** Stop a nightly candidate from being blocked by those three paperwork checks.
 
 **End user:** Someone installing a nightly can be offered a DEV / HARDWARE TEST build without a distribution-license receipt, a corresponding-source receipt, or a native-build receipt. A package whose hash does not match, or a build that actually failed, is still not offered. The page stays labeled device not tested. Production main and production GitHub Pages do not change. This pull request does not itself update the live installer.
 
-Distribution license: the project is MIT. There is no distribution license to qualify. Removing that gate is not a regression.
+Distribution license: owner policy waives the distribution-license receipt as a nightly qualification gate. Removing that gate is not a regression, and does not invent an MIT license for this repository.
 
 Corresponding source and distribution notices: that check existed only to satisfy a distribution license. It does not block a nightly. Existing copyright notices stay. Removing the block is not a regression.
 
@@ -63,10 +69,15 @@ oversized data, and checks actual size, SHA-256 and package model before creatin
 any output. It retains the static site's navigation, renders the catalog into
 the installer using an explicit public catalog projection. The full qualification
 file remains a private input and is not emitted as qualification.json. Unknown
-fields at each schema level are rejected before output. It never downloads or publishes a
-controller. The browser reads remote packages through the existing bounded stream path;
-responses without a reader are refused before allocation. It requires the exact checked local controller hash and
-rejects a changed selection while the asynchronous hash is calculated.
+fields at each schema level are rejected before output. It publishes no artifact. For bundled packages, both preparation and the browser decrypt
+and verify the actual embedded controller: exact SMK layout, installed-file and nested app
+CRCs, ABI/header, controller CRC, erased 64 KiB slot padding, declared size and SHA-256.
+The browser offers its verified Blob only after those checks, hides the separate controller
+input, and rechecks before installation. It sends the verified combined bytes unchanged.
+Missing or mismatched controller bytes fail clearly. Existing legacy packages still require
+the exact checked local controller hash; missing input blocks installation. Both paths retain
+selection/race, DEV consent, model, backup/restore and OTA safeguards. Responses without a
+reader are refused before allocation. No catalog or live site changes occur here.
 
 Next, independent site QA must inspect the generated site and qualified package
 flows in a browser. The sole publisher reconciles the live Pages history,

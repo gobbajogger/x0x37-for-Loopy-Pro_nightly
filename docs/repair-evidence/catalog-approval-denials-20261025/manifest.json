@@ -1,0 +1,42 @@
+{
+  "repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+  "base_commit": "10c47659192a32821da171417069ffefdbc05d63",
+  "base_root": "a2845ebf94c7c55e972254075f324441c2f82e38",
+  "checked_source_tree": "2506ad142b6910dd389df7453b9ed9f7b6500357",
+  "checked_source_diff_sha256": "840d07c2eef3edeb74145606f446a76df52bef8a1a9a3345db1c94e51815b97d",
+  "source_blobs": {
+    "SOURCE_PROVENANCE.json": "3b3121a8ff184de972bf72ffdb4de745782dad74",
+    "docs/install/index.html": "87db73ab8bcf6db7c408aab2decda3cdf2d85876",
+    "scripts/render-qualified-nightly.mjs": "23fabdcd9c4a2872aa00fc463c8a86f60c107226",
+    "tests/browser-admission.py": "8bb133b392c3a85385c0b38f44637aad9c4bed01",
+    "tests/fixtures/published-dev-catalog-b7af05f.json": "519d9500c57848d5ed103fbd88befb5f43f6d020",
+    "tests/qualified-catalog.test.mjs": "ed06121bf767cc3b25b02388d07b49d6f35a9960",
+    "web/x0x_installer.html": "468eb2583cb69f350b07bfba105042f1de6511fd"
+  },
+  "logs": {
+    "approval-before.log": {
+      "sha256": "33f32307ebad18465fbb7935d8c34f5b24118c08a7f2f18725e1a6d40fdc7742",
+      "bytes": 65043
+    },
+    "approval-after.log": {
+      "sha256": "34d121f98111ce4e2ec779d918eccad4cdf6a86c987784735d4e61f9c2262ec6",
+      "bytes": 27622
+    },
+    "npm-test.log": {
+      "sha256": "2e7be6971c4472ed3f11ae2525bb1336a534901a57dff35afd348df866b64ef1",
+      "bytes": 14418
+    },
+    "npm-test-browser.log": {
+      "sha256": "8993d8b9086a56413aa139e15564ea4c41db1f905ff2be4254076bdb87681f4a",
+      "bytes": 49702
+    }
+  },
+  "expected_red_exit": 1,
+  "all_repaired_commands_exit": 0,
+  "scope": "source-only catalog approval denial; no package qualification or hardware claim",
+  "next_owners": [
+    "existing Independent Website QA",
+    "existing Website Main Merger"
+  ],
+  "publication_owner": "existing sole Pages publisher"
+}

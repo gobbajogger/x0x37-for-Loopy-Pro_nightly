@@ -1,0 +1,29 @@
+{
+  "scope": "source and acceptance tests; synthetic mocked MIDI; no device or public distribution claim",
+  "runs": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log_sha256": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a"
+    },
+    {
+      "command": "npm test",
+      "exit": 0,
+      "log_sha256": "2efbb7ea3fd0d00f25ad06838b01d8d0f3fd5046b873613d74fff49acde350c2"
+    },
+    {
+      "command": "npm run test:browser",
+      "exit": 0,
+      "log_sha256": "ce14c38636f87eddfb03309275f8f9e561eb187f0d7cb186f68261474cae8f2a"
+    }
+  ],
+  "browser_checks": {
+    "existing_installer": 677,
+    "history": 34,
+    "bundled": 61
+  },
+  "bundled_node_assertions": 62,
+  "legacy_admission_cases": 58,
+  "qualification_negatives": 336,
+  "shipping_write_boundary_cases": 41
+}

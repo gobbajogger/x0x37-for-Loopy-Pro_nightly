@@ -1,0 +1,65 @@
+{
+  "review": "Independent read-only final embedded sample visual and behavior delta review",
+  "reviewer": "final_visual_review (fresh independent agent; MEDIUM requested, selector unavailable per delegation)",
+  "commit": "65d4fd77dae36446897e0cb3c7e4a0f7056a3674",
+  "tree": "e07a860d4bfdaaa04f1707a7fb2885d7f74d4766",
+  "disposition": "PASS",
+  "findings": [],
+  "scope": [
+    "Latest commit iframe dark theme and focus CSS",
+    "Hidden duplicate Home control",
+    "ResizeObserver parent iframe height adjustment",
+    "Focused workspace behavioral regression"
+  ],
+  "checks": [
+    {
+      "command": "git diff --check HEAD^ HEAD",
+      "result": "PASS"
+    },
+    {
+      "command": "PLAYWRIGHT_BROWSERS_PATH=/private/tmp/task15-browsers /private/tmp/task15-testenv/bin/python tests/workspace-browser.py",
+      "result": "PASS 29/29; no page script errors"
+    },
+    {
+      "command": "PLAYWRIGHT_BROWSERS_PATH=/private/tmp/task15-browsers /private/tmp/task15-testenv/bin/python /tmp/final-iframe-review.py",
+      "result": "PASS independent dynamic growth, shrink and tab return at 320,390,1280px",
+      "measurements": [
+        {
+          "width": 320,
+          "baseline": 1610,
+          "grown": 2810
+        },
+        {
+          "width": 390,
+          "baseline": 1305,
+          "grown": 2505
+        },
+        {
+          "width": 1280,
+          "baseline": 783,
+          "grown": 1983
+        }
+      ]
+    }
+  ],
+  "visual_inspection": [
+    "sample-workspace-390.png",
+    "sample-workspace-1280.png",
+    "review-evidence/final-samples-320.png"
+  ],
+  "notes": [
+    "First supplementary resize run used an insufficient viewport-settling condition and timed out waiting for equality to a stale pre-resize height. Corrected harness waits for frame height to equal the current child main height plus 8 (respecting 780px minimum); rerun passed all widths. No site code changed.",
+    "Parent concurrently updated evidence documents only; reviewed source remains at pinned commit."
+  ],
+  "limitations": [
+    "Headless Chromium localhost only; simulated MIDI boundaries; no hardware/device validation, GUI, upload, publish or merge.",
+    "Earlier workspace and renderer reviews accepted separately; this receipt reviews latest delta."
+  ],
+  "source_mutations": false,
+  "remaining_blockers": [],
+  "source_sha256": {
+    "web/x0x_breaks.html": "0d98a93be313e6ba94bdd2d0b149848c23ab7d6a4bb873f0e6e93269e6351494",
+    "docs/breaks/index.html": "3be23bb8da29c7b19d41400819d92f02ea71306cea5108c259e7e942dc26c804",
+    "tests/workspace-browser.py": "07eb0ad53d64d603533fa714d1ab852bd8c4b9c778a42541744188c95ed3f64f"
+  }
+}

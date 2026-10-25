@@ -1,0 +1,55 @@
+{
+  "implementation_commit": "65d4fd77dae36446897e0cb3c7e4a0f7056a3674",
+  "implementation_root": "e07a860d4bfdaaa04f1707a7fb2885d7f74d4766",
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 0
+    },
+    {
+      "command": "npm test",
+      "exit": 0,
+      "log_sha256": "2efbb7ea3fd0d00f25ad06838b01d8d0f3fd5046b873613d74fff49acde350c2"
+    },
+    {
+      "command": "PLAYWRIGHT_BROWSERS_PATH=/private/tmp/task15-browsers PATH=/private/tmp/task15-testenv/bin:$PATH npm run test:browser",
+      "exit": 0,
+      "log_sha256": "8bbdd1510fced82fdf50781709a5ff1adef9060db80b82c569f7b9741c9d17d7",
+      "groups": {
+        "installer": 677,
+        "history": 34,
+        "bundled": 61,
+        "workspace": 29
+      },
+      "total": 801
+    }
+  ],
+  "renderer_checks": 191,
+  "live_catalog": {
+    "url": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/versions.json",
+    "sha256": "3fee246257f8298da135835d2e6e5ab4be3c4b5e0d84b403d343fdf76d0f1a49",
+    "equals_pages_git_catalog": true,
+    "latest": "nightly-54f2ffbc-dev",
+    "offered_models": [
+      "elite",
+      "pro"
+    ],
+    "fetched_utc_date": "2026-10-25",
+    "firmware_download_bytes_fetched": false
+  },
+  "headless_previews": {
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/sample-workspace-390.png": "a2a33ec8465bf54dfe5e007c45bcddc450450afda6652e8b9eca3913f2c78922",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/workspace-1280.png": "c92f21b8a20dffefb7644fb6754ec431fcb1e5b47501c895c0e952462601905e",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/sample-workspace-1280.png": "9aea0a93cb7f89be97c26e9b397fee20a11d6c19b0d76ce53b6c19b1734ce295",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/workspace-390.png": "121491035d14fdcb27d4acf0f8f5c885386fb6ccdae1f872fb80cbf093822506",
+    "/Users/mac/Documents/Codex/2026-10-25/task-28/workspace-320.png": "10f9d7e83ebe352c4db6f46182bacbdb9a2e3974e34e76e95b7a848d5d0fb3ae"
+  },
+  "delivery_state": "SOURCE_READY; no merge, deploy, hardware action or binary publication",
+  "settings": "New bounded subagents requested MEDIUM effort; STANDARD tier selector unavailable.",
+  "independent_review_receipts": [
+    "workspace-review.json",
+    "final-renderer-review.json",
+    "final-visual-review.json"
+  ],
+  "review_reuse": "Initial workspace review at730fefc plus renderer fix review at844c04a and final embedded visual/dynamic fit review at65d4fd7. Subsequent delivery commit changes only evidence docs/logs."
+}

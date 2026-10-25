@@ -1,0 +1,63 @@
+{
+  "environment": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "chromium": "154.0.8037.57"
+  },
+  "runs": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "rawLogSHA256": "88bad3ecc31fc6bb86faef09e74cdd4f2f7e8c4a070ab60a55eba5bd6537483a",
+      "rawWorkspaceLog": "/tmp/pr14-hardware-flags-evidence/build.log",
+      "summaries": []
+    },
+    {
+      "command": "npm test",
+      "exit": 0,
+      "rawLogSHA256": "2e7be6971c4472ed3f11ae2525bb1336a534901a57dff35afd348df866b64ef1",
+      "rawWorkspaceLog": "/tmp/pr14-hardware-flags-evidence/npm-test.log",
+      "summaries": []
+    },
+    {
+      "command": "python3 tests/browser-admission.py --approval-only --source /tmp/pr14-before-hardware-flags.html",
+      "exit": 1,
+      "rawLogSHA256": "556adf2d609b3705d4c9ea845ff6b77f1bea6f1028a18d4a30c829bc532d430a",
+      "rawWorkspaceLog": "/tmp/pr14-hardware-flags-evidence/before.log",
+      "summaries": [
+        {
+          "checks": 424,
+          "failed": 56,
+          "scope": "complete generated page catalog hints and existing public metadata; external fetch/MIDI mocked",
+          "source": "/tmp/pr14-before-hardware-flags.html",
+          "failureExamples": [
+            "pro/version/device_verified=null denies before fetch",
+            "pro/version/device_verified=0 denies before fetch"
+          ],
+          "failureListSHA256": "50c6b46d1baf5738923c0487142ba7d51bd78a73502dd6e9deac7f90c4dd71c6"
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser",
+      "exit": 0,
+      "rawLogSHA256": "5b728b7d9f8a7d62746acd0937cc5c33c5bc9832108afe88003635a8225684a8",
+      "rawWorkspaceLog": "/tmp/pr14-hardware-flags-evidence/browser.log",
+      "summaries": [
+        {
+          "checks": 677,
+          "failed": 0,
+          "source": "current full generated installer",
+          "device_tested": false,
+          "failureExamples": [],
+          "failureListSHA256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "checks": 34,
+          "passed": 34,
+          "failed": 0
+        }
+      ]
+    }
+  ]
+}

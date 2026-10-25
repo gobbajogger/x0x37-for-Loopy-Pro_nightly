@@ -50,19 +50,27 @@
   .home { display: inline-block; font-weight: 700; letter-spacing: .03em; color: var(--dim); text-decoration: none; margin: 0 0 12px; }
   .home:hover, .home:focus-visible { color: var(--accent); }
   input[type=file] { display: none; }
+
+  [hidden] { display: none !important; }
+  :root.embedded { --bg:#14191c; --fg:#eff3ef; --dim:#a1ada9; --rule:#343e3a; --wave:#77847f; --accent:#ccfc76; color-scheme:dark; }
+  .embedded main { max-width:none; padding:24px; box-sizing:border-box; }
+  .embedded button { border-radius:8px; min-height:44px; }
+  .embedded button:focus-visible, .embedded input:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .embedded .loop { grid-template-columns:4em minmax(0,1fr) auto; }
 </style>
 </head>
 <body>
 <main>
   <a class="home" href="../">X0X</a>
-  <h1>Break loops</h1>
+  <h1>Import break loops</h1>
+  <p>Read your device slots first, then add or replace audio. Waveforms show prepared changes only. <strong>Send samples to device</strong> writes the planned sample slots, including removals; it does not install firmware. Back up important slots first. Restore replaces slots from a backup after confirmation.</p>
   <p>Your own loops for X0X's BREAK part. They appear on the device as BR1, BR2 and so on, after X0X's own
     loops, when you turn LOOP A or LOOP B (BREAK, then EDIT).</p>
   <p class="small">Connect the SMK-37 or FM-1 by USB with X0X running, and use Chrome or Edge.</p>
 
   <div class="bar">
     <button id="connect">Connect</button>
-    <span id="status"></span>
+    <span id="status" role="status" aria-live="polite"></span>
   </div>
 
   <div id="list"><div class="empty">Connect to see the loops on the FM-1.</div></div>
@@ -80,7 +88,7 @@
   <p id="room"></p>
 
   <div class="bar">
-    <button id="send" disabled>Send to the device</button>
+    <button id="send" disabled>Send samples to device</button>
     <button class="quiet" id="discard" hidden>Discard changes</button>
   </div>
   <progress id="progress" max="100" value="0" hidden></progress>
@@ -107,6 +115,7 @@ const $ = (id) => document.getElementById(id);
 const HDR = [0x7D, 0x46, 0x4C];
 const KB = (b) => `${(b / 1024).toFixed(0)} KB`;
 let link = null, busy = false, readOk = false;
+let sampleActive = true, savedMidiHandler = null;
 // the device's slots (SMP_INFO): their count and sizes (one size each with X0X's extension, e.g. 80, 120 and
 // 44 KB on the SMK-37); nothing here assumes 2 or 3 slots of 80 KB
 let lay = { count: 0, size: SLOT_SIZE, slots: [] };
@@ -230,7 +239,8 @@ async function decode(file) {
 const newRate = () => ($("half").checked ? RATE_HALF : RATE);
 
 async function addFiles(list, at = -1) {
-  if (busy || !readOk || !list.length) return;
+  if (busy || !sampleActive || !readOk || !list.length) return;
+  busy = true; render();
   const got = [], bad = [];
   for (const f of at >= 0 ? list.slice(0, 1) : list) {
     try {
@@ -240,6 +250,7 @@ async function addFiles(list, at = -1) {
       got.push({ adpcm: null, n: s.length, s, rate, file: f.name, isNew: true, srcRate, x });
     } catch (_) { bad.push(f.name); }
   }
+  busy = false;
   say(bad.length ? `Couldn't read ${bad.join(", ")}.` : "");
   if (at >= 0 && got.length) loops[at] = got[0];
   else loops.push(...got);
@@ -271,8 +282,13 @@ class Link {
 }
 
 async function connect() {
-  if (!navigator.requestMIDIAccess) throw new Error("This browser can't talk to MIDI devices. Use Chrome or Edge.");
+  if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost and allow MIDI / SysEx. Safari and iOS browsers are unsupported.");
   const midi = await navigator.requestMIDIAccess({ sysex: true });
+  midi.onstatechange = () => {
+    if (link && (link.input.state === "disconnected" || link.output.state === "disconnected")) {
+      readOk = false; render(); say("Device disconnected. Prepared loops are retained. Reconnect and read slots again before sending.");
+    }
+  };
   const outs = [...midi.outputs.values()];
   for (const input of midi.inputs.values()) {
     if (input.state === "disconnected" || !/x0x|felucca/i.test(input.name || "")) continue;
@@ -371,6 +387,7 @@ async function writeImage(k, img, onPart) {
 }
 
 async function run(fn) {
+  if (busy || !sampleActive) return;
   busy = true;
   render();
   try { await fn(); } catch (e) { say(e.message || String(e)); }
@@ -379,6 +396,7 @@ async function run(fn) {
 }
 
 async function readFromDevice() {
+  if ((loops.some(l => l.isNew) || (packLoops() && changedSlots(packLoops()).length)) && !confirm("Read device slots again and discard prepared sample changes?")) return;
   say("Connecting…");
   readOk = false;
   link = await connect();
@@ -479,6 +497,29 @@ $("bars").onchange = $("trim").onchange = $("half").onchange = () => {   // the 
     }
   render();
 };
+window.sampleWorkspace = {
+  busy: () => busy,
+  activate: active => {
+    if (sampleActive === active) return;
+    sampleActive = active;
+    if (link) {
+      if (!active) { savedMidiHandler = link.input.onmidimessage; link.input.onmidimessage = null; }
+      else if (savedMidiHandler) { link.input.onmidimessage = savedMidiHandler; savedMidiHandler = null; }
+    }
+  },
+  invalidate: () => { readOk = false; render(); say("Firmware operation started. Prepared loops are retained, but read device slots again before sending; reading replaces the draft after confirmation."); }
+};
+if (new URLSearchParams(location.search).has("embedded")) {
+  document.querySelector(".home").hidden = true;
+  document.documentElement.classList.add("embedded");
+  const fitWorkspace = () => {
+    if (parent === window) return;
+    const frame = parent.document.getElementById("sample-frame");
+    if (frame) frame.style.height = Math.ceil(document.querySelector("main").getBoundingClientRect().height + 8) + "px";
+  };
+  new ResizeObserver(fitWorkspace).observe(document.querySelector("main"));
+  sampleActive = false;
+}
 render();
 </script>
 </body>

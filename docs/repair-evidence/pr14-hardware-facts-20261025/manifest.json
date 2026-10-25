@@ -1,0 +1,30 @@
+{
+  "baselineHead": "7515d147e4817248dece608c73fd7fb171e996f2",
+  "baselineRoot": "7db90a3810f790d3b939b4cdc34a768ff6e9200a",
+  "candidateRootWithoutEvidence": "0cd10dd54c4eed96d5f038746dee79fdf99705c2",
+  "candidatePatchSHA256": "8279d5bd1097d852176d68ad43e1a133ca24ad8ebd5dd3f492670cee33dbb45c",
+  "unchangedGitBlobs": {
+    "web/fm1pkg.js": "3f8c704e4ea8ea780d6deef67a4bb33249f80d3e",
+    "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
+    "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
+    "scripts/render-qualified-nightly.mjs": "23fabdcd9c4a2872aa00fc463c8a86f60c107226",
+    "package.json": "0f45de3c521a9410e768c3930fc18599a67f9074",
+    "preview-catalog.json": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "docs/versions.json": "01f9ec382878335ea9bb92d0bdf294483111de76",
+    "build-status.json": "50f53d7e155975b7dc188dbf5c0cac075a87c1d7",
+    "docs/build-status.json": "50f53d7e155975b7dc188dbf5c0cac075a87c1d7",
+    "docs/builds/index.html": "9cef7ba2a1ffc9894ddb02f5fc657827854c97e6",
+    "tests/fixtures/history-appendonly-baseline-20261024.json": "61d328c58af7ebd8f9fb07df8e0fc4243deb0059",
+    "tests/fixtures/published-dev-catalog-b7af05f.json": "519d9500c57848d5ed103fbd88befb5f43f6d020",
+    "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
+  },
+  "historyRecords": 125,
+  "previewCatalog": {
+    "schema": 1,
+    "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "pages": "",
+    "latest": null,
+    "versions": [],
+    "history": []
+  }
+}

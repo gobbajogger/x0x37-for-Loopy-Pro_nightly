@@ -8,7 +8,7 @@ assert.doesNotMatch(source,/mergeGitHubReleases|api\.github\.com\/repos\//);
 const span=(a,b)=>source.slice(source.indexOf(a),source.indexOf(b,source.indexOf(a)));
 const context={chosenModel:'pro', URL};
 new Script(span('function isRecord','function availableModels')+'\n'+
-  span('function isCatalogChecked','function hasVerifiedNightlySelection')+'\nthis.admit=isCatalogChecked;').runInNewContext(context);
+  span('function bundledController','function hasVerifiedNightlySelection')+'\nthis.admit=isCatalogChecked;').runInNewContext(context);
 const good={product:'SMK-37 Pro_900',sha256:'a'.repeat(64),controller_sha256:'b'.repeat(64),size:1024,pkg:`https://example.org/${'a'.repeat(64)}/test.fwsc`};
 const make=()=>({status:'dev-checked',version:'synthetic',models:{pro:{...good}}});
 let count=0;

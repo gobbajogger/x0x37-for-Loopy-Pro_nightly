@@ -18,13 +18,13 @@ firmware nightly, модель, размер и SHA-256 пакета, измер
 
 **Owner decision, 2026-10-25.** This gate removal is an owner decision and is not an accidental loss of protection.
 
-**Reason:** The project is MIT. There is no distribution license to qualify. Corresponding source existed only to satisfy that license. A missing native-build receipt is not a reason to stop work.
+**Reason:** Owner policy waives distribution-license, corresponding-source, and missing native-build receipts as nightly qualification blockers. That is a standing channel decision, not a claim that the repository is MIT (see LICENSE). Corresponding source existed only to satisfy a distribution license. A missing native-build receipt is not a reason to stop work.
 
 **Purpose:** Stop a nightly candidate from being blocked by those three paperwork checks.
 
 **End user:** Someone installing a nightly can be offered a DEV / HARDWARE TEST build without a distribution-license receipt, a corresponding-source receipt, or a native-build receipt. A package whose hash does not match, or a build that actually failed, is still not offered. The page stays labeled device not tested. Production main and production GitHub Pages do not change. This pull request does not itself update the live installer.
 
-Distribution license: the project is MIT. There is no distribution license to qualify. Removing that gate is not a regression.
+Distribution license: owner policy waives the distribution-license receipt as a nightly qualification gate. Removing that gate is not a regression, and does not invent an MIT license for this repository.
 
 Corresponding source and distribution notices: that check existed only to satisfy a distribution license. It does not block a nightly. Existing copyright notices stay. Removing the block is not a regression.
 

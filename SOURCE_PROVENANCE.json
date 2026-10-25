@@ -3,9 +3,9 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "e34761acfb6687a424269f132f89dedb4eb20875",
-    "web/x0x_breaks.html": "b988c3270ed974639f702900e120297ad0602b60",
-    "web/fm1pkg.js": "3f8c704e4ea8ea780d6deef67a4bb33249f80d3e",
+    "web/x0x_installer.html": "8f14f5873d0efbfaf838c021f9f893af1493450c",
+    "web/x0x_breaks.html": "9641a7677921200d8e2afd8f499ba3275a626cc1",
+    "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
     "web/x0x_breaks.js": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
@@ -76,6 +76,46 @@
       "sourceBaseCommit": "5d1cf4db62f8700da7671b6b44a6c7dea989228c",
       "description": "Adapt existing safe-integer/preallocation local File guard: controller68..65536 matches ctlProblem; stock960..16MiB matches product header/resource cap; retain serial invalidation, cleanup and format checks",
       "resultBlob": "e34761acfb6687a424269f132f89dedb4eb20875"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "10c47659192a32821da171417069ffefdbc05d63",
+      "description": "Optional catalog approval hints are deny-only: explicit false or malformed values at version/package scope refuse admission; independent renderer receipts and verified-byte/model/install guards retained",
+      "resultBlob": "468eb2583cb69f350b07bfba105042f1de6511fd"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "7515d147e4817248dece608c73fd7fb171e996f2",
+      "description": "Optional DEV hardware facts must be literal false when supplied; absent facts remain optional and true remains denied at version/package scope",
+      "resultBlob": "4b44f7514cc424faa0c4afd4690d163550236674"
+    },
+    {
+      "path": "web/fm1pkg.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+      "description": "Validate embedded bundled NIGHTLY controller identity/layout/CRCs/hash; retain exact legacy local-controller path and PR14 admission protections",
+      "resultBlob": "4b3152e695512c288a0244b0474fd140392ad4f5"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+      "description": "Validate embedded bundled NIGHTLY controller identity/layout/CRCs/hash; retain exact legacy local-controller path and PR14 admission protections",
+      "resultBlob": "ec789eb37603218f698dd7f8d2dcdc2a71c1e8ae"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceBaseCommit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
+      "description": "Combined firmware/sample workspace with persistent isolated tool context, task-specific state, MIDI operation exclusion and truthful renderer showcase",
+      "resultBlob": "8f14f5873d0efbfaf838c021f9f893af1493450c"
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceBaseCommit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
+      "description": "Combined firmware/sample workspace with persistent isolated tool context, task-specific state, MIDI operation exclusion and truthful renderer showcase",
+      "resultBlob": "9641a7677921200d8e2afd8f499ba3275a626cc1"
     }
   ]
 }

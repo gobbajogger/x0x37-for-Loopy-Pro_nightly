@@ -107,16 +107,33 @@ function pkHasSlotMap(d) {
 export const CTL_NO_BLOCK = "the app code of this package goes into the Bluetooth block (flash 0x8B000-0x9AFFF). "
   + "It is an X0X from before the block. It takes no controller image (install it without one)";
 
-// the logical image (logicalImage) with ctl in the Bluetooth block; throws on anything unexpected
-export function insertCtl(logical, ctl) {
-  if (ctl && ctlProblem(ctl)) throw new Error("ctl.img: " + ctlProblem(ctl));
+// Shared decoder for insertion and read-only bundled-controller admission.
+// Strict admission checks the complete installed files and nested app CRCs.
+function pkOpenController(logical, strict = false) {
   const lg = new Uint8Array(logical);
+  if (strict && lg.length < 0x40) throw new Error("package too short");
   const hdr = lg.slice(0, 0x40);
   pkEnc(hdr, 0, 0x40);
   if (pkCrc16(hdr, 2, 0x40) !== pkU16(hdr, 0)) throw new Error("package header CRC");
   const count = pkU16(hdr, 8);
+  if (strict && (count !== 2 || pkU32(hdr, 4) !== lg.length)) throw new Error("NIGHTLY package length/file layout");
+  if (strict && (count < 1 || count > 8 || 0x40 + 0x50 * count > lg.length)) throw new Error("package file list bounds");
   const lst = lg.slice(0x40, 0x40 + 0x50 * count);
   if (pkCrc16(lst) !== pkU16(hdr, 2)) throw new Error("package file list CRC");
+  let priorEnd = 0x40 + 0x50 * count;
+  if (strict) for (let j = 0; j < count; j++) {
+    const entry = lst.slice(j * 0x50, (j + 1) * 0x50);
+    pkEnc(entry, 0, 0x50);
+    const off = pkU32(entry, 8), size = pkU32(entry, 12), type = pkU16(entry, 0);
+    if (type !== (j === 0 ? 0 : 100) || !pkStarts(entry, 0x40, j === 0 ? "flash.bin\0" : "ota.bin\0"))
+      throw new Error("NIGHTLY package file identity");
+    if (type === 100 && !new TextDecoder().decode(lg.subarray(off, off + size)).includes("FELUCCA-LOADER-1"))
+      throw new Error("NIGHTLY package has no Felucca update loader");
+    if (size === 0 || off < priorEnd || off + size > lg.length) throw new Error("package file bounds");
+    if ((type === 0 || type === 100) && pkCrc16(lg, off, off + size) !== pkU16(entry, 4))
+      throw new Error("package file CRC");
+    priorEnd = off + size;
+  }
   let i = 0, e = null;
   for (; i < count; i++) {
     e = lst.slice(i * 0x50, (i + 1) * 0x50);
@@ -127,26 +144,58 @@ export function insertCtl(logical, ctl) {
   const off = pkU32(e, 8), size = pkU32(e, 12);
   const flash = lg.subarray(off, off + size);
   if (pkCrc16(flash) !== pkU16(e, 4)) throw new Error("flash.bin CRC");
+  if (strict && flash.length !== 0x9D000) throw new Error("flash head bounds");
   const isd = flash.slice(64, 96);
   pkEnc(isd, 0, 32);
   if (!pkStarts(isd, 16, "isd_config.ini")) throw new Error("no isd_config.ini in the flash head");
+  if (strict && (pkU32(isd, 8) < 32 || pkU32(isd, 4) < 0xA0 ||
+      pkU32(isd, 4) + pkU32(isd, 8) > 0x4000)) throw new Error("chip key bounds");
   const key = pkChipKey(flash.subarray(pkU32(isd, 4), pkU32(isd, 4) + 32));
   const head = flash.slice(0x4000, 0x4020);
   pkSfc(head, 0, 32, key);
   const blk = pkU32(head, 8);
   if (pkU32(head, 4) !== 0x02000120 || !pkStarts(head, 16, "app_area_head")) throw new Error("no app area head");
   const n = (blk + 31) & ~31;
+  if (strict && (blk < 0x120 + CTL_SLOT || blk > 0x9CF00 - 0x4000 || 0x4000 + n > 0x9CF00)) throw new Error("app area bounds");
   const area = flash.slice(0x4000, 0x4000 + n);
   pkSfc(area, 0, n, key);
   if (!pkStarts(area, 48, "app.bin") || pkU32(area, 36) !== 0x120) throw new Error("no app.bin in the app area");
   const slot = pkU32(area, 40);
   if (slot !== CTL_SLOT) throw new Error("not an SMK-37 package (the Bluetooth block is on the SMK-37 only)");
+  if (strict && (pkCrc16(area, 2, 32) !== pkU16(area, 0) ||
+      pkCrc16(area, 32, blk) !== pkU16(area, 2) ||
+      pkCrc16(area, 34, 64) !== pkU16(area, 32) ||
+      pkCrc16(area, 0x120, 0x120 + slot) !== pkU16(area, 34))) throw new Error("app area CRC");
   const lo = 0x120 + CTL_CODE_MAX;
   // the block must be free: empty, a controller image, or a package with the slot map record (the build
   // limits the app code since then). An older X0X has app code there: writing it would stop the unit.
   const blockFree = area.subarray(lo, lo + CTL_SIZE).every((b) => b === 0xFF) || pkU32(area, lo) === 0x43423058
     || pkHasSlotMap(lg);
   if (!blockFree) throw new Error(CTL_NO_BLOCK);
+  return {lg, hdr, count, lst, i, e, off, size, flash, key, blk, n, area, slot, lo};
+}
+
+// Return exactly the declared image bytes, excluding erased slot padding.
+// Empty, legacy code-owned, corrupt and unknown controller blocks fail closed.
+export function controllerOf(logical) {
+  const {area, lo, flash} = pkOpenController(logical, true);
+  const map = 0x9CF00; // Current SMK flash layout, independent of arbitrary matching payloads.
+  if (!CTL_SLOTMAP.every((b,j) => flash[map+j] === b) || pkU32(flash,map+16) !== 3 ||
+      ![[0xC2000,0x14000],[0xD6000,0x1E000],[0xB0000,0xB000]].every(([off,size],j) =>
+        pkU32(flash,map+20+j*8) === off && pkU32(flash,map+24+j*8) === size) ||
+      pkU32(flash,map+44) !== pkCrc32(flash,map,map+44))
+    throw new Error("bundled controller requires current SMK slot map");
+  const block = area.slice(lo, lo + CTL_SIZE);
+  if (block.length !== CTL_SIZE || block.every(b => b === 0xFF)) throw new Error("Bluetooth controller is missing from this package");
+  const problem = ctlProblem(block);
+  if (problem) throw new Error("embedded controller: " + problem);
+  return block.slice(0, pkU32(block, 12));
+}
+
+// the logical image (logicalImage) with ctl in the Bluetooth block; throws on anything unexpected
+export function insertCtl(logical, ctl) {
+  if (ctl && ctlProblem(ctl)) throw new Error("ctl.img: " + ctlProblem(ctl));
+  const {lg, hdr, lst, i, e, flash, key, blk, n, area, slot, lo} = pkOpenController(logical);
   area.fill(0xFF, lo, lo + CTL_SIZE);
   if (ctl) area.set(ctl, lo);
   pkPut16(area, 34, pkCrc16(area, 0x120, 0x120 + slot));
