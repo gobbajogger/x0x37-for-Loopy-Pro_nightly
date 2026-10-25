@@ -530,7 +530,7 @@
     },
     {
       "id": "nightly-pr15-qualification-gate-removal-policy-hold-20261025",
-      "sha256": "ccdb34cabe3a603cfabcf66fa45a52d8f2a488fbb7aa73b722d7702884b9ca2e"
+      "sha256": "c550f2c7a69e8557b10b5c8ffa648bb115c59258a5e34b8057db89b108ac7f73"
     },
     {
       "id": "bugfinder-bf031-pr140-r3-random-clock-handoff-source-20261025",
@@ -542,7 +542,7 @@
     },
     {
       "id": "nightly-pr15-r2-upstream-proof-policy-clarification-pending-20261025",
-      "sha256": "94e99eeb5b90b261231c455c9f7b8aa669aadb8dee5317377d0c05575ab6153f"
+      "sha256": "39f5463dbea19144795021078e2aef3cfbf3d8f08fdf0fcad2ba46994d02286d"
     },
     {
       "id": "bugfinder-bf032-pr152-tb3po-accent-preservation-source-20261025",
@@ -558,7 +558,7 @@
     },
     {
       "id": "bugfinder-bf033-pr159-random-tie-independent-host-20261025",
-      "sha256": "93dc47587cb9670a7b1a2025b75d255e70316dcbd8590d407156770c61ab6652"
+      "sha256": "ff22448f01efd27855b6e4b0e43e43f1f34d171597037b21e23df969cdf00563"
     },
     {
       "id": "website-main-pr14-pr16-pr17-merged-source-only-20261025",

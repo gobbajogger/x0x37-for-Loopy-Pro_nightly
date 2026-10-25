@@ -3717,7 +3717,7 @@
       "missing_gate": "PR15 installer-source owner and Independent Website QA must preserve or explicitly resolve missing native-build and lawful distribution checks with authorized updated requirements, including negative receipt tests; sole Main Merger decides on independently reviewed code. Catalog retains no merge/publication authority.",
       "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15",
       "evidence_commit": "c2fdf75577baa0945735c44c15ef219f7adfd9f3",
-      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15#issuecomment-6393622448",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/commit/c2fdf75577baa0945735c44c15ef219f7adfd9f3",
       "source_identity_note": "PR15 c2fdf75577baa0945735c44c15ef219f7adfd9f3 root 1123a906173b6aa0065600528840823162fb502d compared to main 10c47659192a32821da171417069ffefdbc05d63; producer source-policy observation, not independent acceptance or live-served browser exploit evidence."
     },
     {
@@ -3811,7 +3811,7 @@
       "missing_gate": "Existing PR15 source owner fixes wording/binds prior exact-candidate receipts; independent Website QA rechecks negative missing-proof cases; sole Main Merger and Pages publisher alone integrate/publish eligible bytes.",
       "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15",
       "evidence_commit": "b26c0838f8d91788fd4c65bddcf66c2df05883b6",
-      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/15#issuecomment-6393687363",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/commit/b26c0838f8d91788fd4c65bddcf66c2df05883b6",
       "source_identity_note": "Docs R2 source root b5fcae0753c80aebeebdd24abbb915c549f59400; owner-intent comment originally pinned PR15 c2fdf75577baa0945735c44c15ef219f7adfd9f3. No accepted installer release."
     },
     {
@@ -3940,7 +3940,7 @@
       "missing_gate": "Existing firmware Builder and Independent QA validate combined PR139/140/159 compiler/controller inputs, packages, models and safety; sole integrator handles applicable source merge. Distribution and physical QA remain separate.",
       "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/159",
       "evidence_commit": "28fbcf78b8930da6f1535268501cdb7c0a66b6b3",
-      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/159",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/28fbcf78b8930da6f1535268501cdb7c0a66b6b3",
       "source_identity_note": "PR159 root be3f140a3244662fc74bd7f7a68c4b1b8c200478, compiled subtree 75a7a40cb8b0fb647e7143b889309b485bb59fcd; device not tested."
     },
     {
