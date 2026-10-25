@@ -3535,6 +3535,35 @@
       "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/114",
       "evidence_commit": "8361f45a0becb26426d51a795a9505e675cafd2b",
       "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/8361f45a0becb26426d51a795a9505e675cafd2b/docs/scheduler-handoffs/data-safety-pr114-r18-postcreate-fstat-rollback-20261025.json"
+    },
+    {
+      "id": "nightly-pages-git-unqualified-dev-admission-20261025",
+      "title": "Pages Git browser installer source admits unqualified DEV catalogs; repair and independent qualification pending",
+      "source_ref": "gh-pages",
+      "source_commit": "b7af05f00a91056ca732b21cbe1dc719edbcb585",
+      "source_tree": "9e192c467973368c407cf148099e35c6280b2eae",
+      "date": "2026-10-25",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "artifact_distribution_approved": false,
+      "exact_remote_native_build": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Existing Installer Improvements R36 Git receipt on website PR9, source-exact read-only characterization of publisher-owned Pages Git. Catalog separately verified gh-pages and public versions.json ref/blob; Catalog did not rerun native browser tests.",
+        "command": "Installer producer reported native Node v22.16 source-window run (exit 0, 20/20 expected characterizations), Chromium Playwright run (exit 0, 72/72 expected characterizations, 320/390/1280 pixels x EN/JA x Elite/Pro). Test counts include unsafe cases and are NOT safety PASS.",
+        "result": "UNSAFE CATALOG ADMISSION OBSERVED in reported source tests: 10 native/36 Chromium unsafe approvals can pass syntactic metadata checks even when independent QA/license/immutable host/backup receipts explicitly FAIL. No download/OTA observed; no verified served HTTPS bytes, browser rollout or matching-model hardware proof. Existing PR9 producer/independent Website QA/sole Pages publisher own gates."
+      },
+      "description": "Historical source-only Pages Git finding: the existing DEV candidate catalog contains Elite/Pro metadata but the Pages browser installer is not proven to require compiled per-model qualified approvals before offering it. The reporter exercised actual source windows with forged failing QA/rights/host/backup fields; test exit zero characterized unsafe behavior rather than validating firmware flash safety. Preserve the prior 125 facts; do not equate this with a native CLI defect, newly built binary, verified hosting or owner hardware test.",
+      "missing_gate": "Existing PR9 website installer-source owner must close catalog-admission and tested negative cases, independent Website QA must review full-root source, and sole Website Main Merger/Pages publisher must separately integrate, qualify immutable host/live TLS bytes and verify served installer. No firmware/controller publication or automatic physical flash by Catalog Sync.",
+      "source_identity_note": "Pinned website gh-pages Git b7af05f00a91056ca732b21cbe1dc719edbcb585, full root 9e192c467973368c407cf148099e35c6280b2eae; installer HTML blob b196967941a698b6908e0a322b8586833ec60c28; versions.json blob 519d9500c57848d5ed103fbd88befb5f43f6d020. Source URL and independent failure details linked separately in docs/scheduler-handoffs/catalog-sync-20261025-r36-pages-unsafe-admission.json and preexisting PR9 R36 comment; no publicly served bytes rehashed."
     }
   ],
   "policy": {
@@ -3545,7 +3574,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 125
+    "source_or_historical_checkpoints": 126
   },
   "versioning": {
     "firmware_product_version": {

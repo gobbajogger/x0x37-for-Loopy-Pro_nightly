@@ -700,3 +700,26 @@ run('r35-false-distribution-approval-REJECT',editR35(row=>row.artifact_distribut
 run('r35-artifact-link-smuggling-REJECT',editR35(row=>row.pkg='https://invalid.example/fw.fwsc'));
 run('r35-status-forged-success-REJECT',editR35(row=>row.status='dev-checked'));
 run('r35-history-tail-deleted-REJECT',editR35((row,j)=>{j.history.splice(124,1);j.counts.source_or_historical_checkpoints--;}));
+
+ 
+// R36: a reporter-characterized unsafe Pages Git catalog must remain nonflashable evidence.
+const r36Id='nightly-pages-git-unqualified-dev-admission-20261025';
+const editR36=fn=>edit(j=>{const row=j.history[125];assert.equal(row.id,r36Id);fn(row,j);});
+run('r36-pages-unqualified-source-warning-retained',editR36((row,j)=>{
+  assert.equal(j.counts.source_or_historical_checkpoints,126);
+  assert.equal(row.status,'validation-evidence-only');
+  assert.equal(row.source_commit,'b7af05f00a91056ca732b21cbe1dc719edbcb585');
+  assert.equal(row.source_tree,'9e192c467973368c407cf148099e35c6280b2eae');
+  assert.equal(row.installable,false);
+  assert.equal(row.device_verified,false);
+  assert.equal(row.artifact_distribution_approved,false);
+  assert.equal(row.artifact_bytes_independently_verified,false);
+  assert.match(row.reported_checks.result,/UNSAFE CATALOG ADMISSION OBSERVED/);
+}),true);
+run('r36-unsafe-admission-history-deleted-REJECT',editR36((row,j)=>{j.history.splice(125,1);j.counts.source_or_historical_checkpoints--;}));
+run('r36-unsafe-admission-relabeled-to-PASS-REJECT',editR36(row=>{row.reported_checks.result='PASS';}));
+run('r36-fake-download-grant-REJECT',editR36(row=>{row.installable=true;}));
+run('r36-fake-device-PASS-REJECT',editR36(row=>{row.device_verified=true;}));
+run('r36-fake-distribution-grant-REJECT',editR36(row=>{row.artifact_distribution_approved=true;}));
+run('r36-fake-verified-package-bytes-REJECT',editR36(row=>{row.artifact_bytes_independently_verified=true;}));
+run('r36-pages-commit-forged-REJECT',editR36(row=>{row.source_commit='f'.repeat(40);}));

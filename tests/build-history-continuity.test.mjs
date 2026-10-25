@@ -119,4 +119,30 @@ mustReject('R35 source SHA forged',rows=>rows[r35Index].source_commit='f'.repeat
 mustReject('R35 qualified-download fabricated',rows=>rows[r35Index].installable=true);
 mustReject('R35 device QA fabricated',rows=>rows[r35Index].device_verified=true);
 
-console.log('PASS: ' + lock.rows.length + ' SHA256-pinned historical records; 16 malicious continuity negatives; safe append');
+
+ 
+// R36: a known unsafe Pages Git admission precondition is a factual, noninstallable status event.
+const r36Id='nightly-pages-git-unqualified-dev-admission-20261025';
+assert.ok(lock.rows.length>=126,'R36 unsafe Pages Git source observation must remain pinned');
+const r36Index=original.findIndex(row=>row.id===r36Id);
+assert.equal(r36Index,125,'R36 must append after all 125 prior history events');
+const r36Row=original[r36Index];
+assert.equal(r36Row.source_commit,'b7af05f00a91056ca732b21cbe1dc719edbcb585');
+assert.equal(r36Row.source_tree,'9e192c467973368c407cf148099e35c6280b2eae');
+assert.equal(r36Row.status,'validation-evidence-only');
+assert.deepEqual(r36Row.models,['elite','pro']);
+assert.equal(r36Row.installable,false);
+assert.equal(r36Row.device_verified,false);
+assert.equal(r36Row.artifact_distribution_approved,false);
+assert.equal(r36Row.exact_remote_native_build,false);
+assert.equal(r36Row.artifact_bytes_independently_verified,false);
+assert.match(r36Row.reported_checks.result,/UNSAFE CATALOG ADMISSION OBSERVED/);
+mustReject('R36 Pages Git unsafe admission record deleted',rows=>rows.splice(r36Index,1));
+mustReject('R36 Pages Git commit forged',rows=>{rows[r36Index].source_commit='f'.repeat(40);});
+mustReject('R36 source tree forged',rows=>{rows[r36Index].source_tree='f'.repeat(40);});
+mustReject('R36 unsafe admission denied as PASS',rows=>{rows[r36Index].reported_checks.result='PASS';});
+mustReject('R36 falsely qualified for download',rows=>{rows[r36Index].installable=true;});
+mustReject('R36 forged hardware PASS',rows=>{rows[r36Index].device_verified=true;});
+mustReject('R36 fake verified server bytes',rows=>{rows[r36Index].artifact_bytes_independently_verified=true;});
+
+console.log('PASS: ' + lock.rows.length + ' SHA256-pinned historical records; 23 malicious continuity negatives; safe append');
