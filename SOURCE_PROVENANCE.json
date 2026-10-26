@@ -4,7 +4,7 @@
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
     "web/x0x_installer.html": "aeb0ae959a40a10e274c28186db8305fd9305478",
-    "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+    "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "97f3d6d717cfa6b7f8c35956f106f1edb0354dce",
     "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
@@ -13,7 +13,7 @@
     "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
-    "web/test_breaks_page.mjs": "ef910496119f985a6795f690b5fd5ed9486ea97c"
+    "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62"
   },
   "sourcePatches": [
     {
@@ -549,6 +549,18 @@
       "producerCommit": "144f4e042bdfb2cc52ed16a1cf2a26a1148a0101",
       "resultBlob": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
       "description": "EC022: require legacy used-KiB to equal min(127, extended used-KiB), matching the actual firmware producer; reject contradictions before preservation instead of accepting falsely low usage, retain saturation and genuine legacy layouts."
+    },
+    {
+      "paths": [
+        "web/x0x_breaks.html",
+        "web/test_breaks_page.mjs"
+      ],
+      "sourceBaseCommit": "8111c930e91a587ee9cd2825fc56bace85e03b98",
+      "resultBlobs": {
+        "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
+        "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62"
+      },
+      "description": "Copy only: shared sample-workspace invalidation requests fresh slot readback without falsely claiming a firmware operation on project-tab navigation. Callback, MIDI and write-guard behavior unchanged; focused actual-page contract added."
     }
   ]
 }
