@@ -3,16 +3,17 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
-    "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978",
+    "web/x0x_installer.html": "3d29ca716035b996a7f7178887c84e849f4e5024",
+    "web/x0x_breaks.html": "b23c54993f0ba0514616591674d73840cb71ce5e",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
-    "web/x0x_breaks.js": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
+    "web/x0x_breaks.js": "ac39c7236dee13aceba4f8b7c3139cb2d41667d5",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
-    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
+    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
+    "web/test_breaks_page.mjs": "c3e546e2f3143f728818702fff73b021aaeb55a2"
   },
   "sourcePatches": [
     {
@@ -281,6 +282,42 @@
       "sourceBaseCommit": "2128990834d36ea14c4e81ea059dd92eaf3dc17f",
       "resultBlob": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
       "description": "Validate read-request declared eight-byte payload and canonical SysEx envelope before serving any firmware chunk; preserve actual request fields and identity repair."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "ac39c7236dee13aceba4f8b7c3139cb2d41667d5",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "b23c54993f0ba0514616591674d73840cb71ce5e",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "3d29ca716035b996a7f7178887c84e849f4e5024",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "c3e546e2f3143f728818702fff73b021aaeb55a2",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
     }
   ]
 }
