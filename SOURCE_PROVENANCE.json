@@ -5,7 +5,7 @@
   "publicSourceBlobs": {
     "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
-    "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
+    "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
     "web/x0x_breaks.js": "3a576177b9d3bf42f772a1789a41d9e31fcae47f",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
@@ -292,6 +292,13 @@
       "sourceBaseCommit": "713024aac6a4b5650f431910bab4494de8a9502b",
       "resultBlob": "3a576177b9d3bf42f772a1789a41d9e31fcae47f",
       "description": "EC013: reject zero-slot SMP_INFO before preflash backup-risk decisions and OTA; valid empty-slot layouts remain supported."
+    },
+    {
+      "path": "web/fm1pkg.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "eca66eb8536b015361edc35c50197d7b6b784e0c",
+      "resultBlob": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
+      "description": "EC014: require the exact CRC-valid SMK slot map at its flash-map address before controller insertion can overwrite a nonempty legacy app region; share admission with bundled readback."
     }
   ]
 }
