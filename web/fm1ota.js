@@ -207,7 +207,9 @@ export class Updater {
       last = Date.now();
       if (r.addr === 0xE0000000 || r.addr === 0xF0000000) {
         if (r.len !== 0) throw fail("badreq", `bad finish request ${r.addr.toString(16)}+${r.len}`);
-        link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]));
+        if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
+          return { served, finished: false, lost: true };
+        }
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }

@@ -6,7 +6,7 @@
     "web/x0x_installer.html": "bac88bee2c71215d07224e10475bae2aa97fa984",
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
-    "web/fm1ota.js": "f4d84485ad3d9395cbabf4d1e5bd7b6fb786515b",
+    "web/fm1ota.js": "d8f108fc8f335cdac24f206534bec05de5a0aa5a",
     "web/x0x_breaks.js": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
@@ -357,6 +357,13 @@
       ],
       "resultBlob": "f4d84485ad3d9395cbabf4d1e5bd7b6fb786515b",
       "description": "Compose reviewed EC011 receive-queue bounds and EC017 zero-length finish guards without dropping either source hunk or original provenance record."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "8dc4173237d4c758334a663e199d796540972601",
+      "resultBlob": "d8f108fc8f335cdac24f206534bec05de5a0aa5a",
+      "description": "EC008: propagate failure to send either finish acknowledgment as lost/unfinished before stage completion; retain EC011 receive bounds, EC017 finish-length validation and valid resume behavior."
     }
   ]
 }
