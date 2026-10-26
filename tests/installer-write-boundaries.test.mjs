@@ -81,7 +81,7 @@ function slotDevice(text, mode) {
       if(mode==='no-reply')return null;
       if(mode==='read-error')throw Error('synthetic USB read failure');
       if(command===15) {
-        const payload=mode==='short-reply'?[1]:mode==='backup-error'?[1,80,1,0,1]:[0,80];
+        const payload=mode==='short-reply'?[1]:mode==='backup-error'?[1,80,1,0,1]:mode==='zero-count'?[0,80]:[2,80,0,0,0,0,0,0];
         return [0xF0,0x7D,0x46,0x4C,15,...payload,0xF7];
       }
       throw Error('synthetic slot backup read failure');
@@ -95,6 +95,7 @@ for(const [name,text,mode,code] of [
   ['USB send failure blocks install','SMK-37 Pro_900','usb-loss','slotbackup'],
   ['USB read failure blocks install','SMK-37 Pro_900','read-error','slotbackup'],
   ['malformed SMP_INFO blocks install','SMK-37 Pro_900','short-reply','slotbackup'],
+  ['zero-slot SMP_INFO blocks install','SMK-37 Pro_900','zero-count','slotbackup'],
   ['stock corrupt reply is not unsupported','SMK-37 Pro_016','short-reply','slotbackup'],
   ['stock USB loss is not unsupported','SMK-37 Pro_016','usb-loss','slotbackup'],
   ['unclassified no response is not unsupported','SMK-37 Elite_017','no-reply','slotbackup'],
