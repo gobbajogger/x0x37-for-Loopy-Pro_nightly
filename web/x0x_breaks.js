@@ -383,12 +383,23 @@ export function parseInfo(r) {
     slots.push({ nz, name: asciiName(r.slice(i + 1, j)), kb: r[j + 1], size, off: null, used: r[j + 1] });
     i = j + 2;
   }
-  const ext = r.length >= i + 2 + 6 * count && r[i] === 0x58 && r[i + 1] === 1;
-  if (ext)
+  const ext = r[i] === 0x58;
+  if (ext && (r[i + 1] !== 1 || r.length !== i + 2 + 6 * count))
+    throw new Error("truncated or unsupported SMP_INFO flash-map extension");
+  if (ext) {
+    const ranges = [];
     slots.forEach((sl, k) => {
       const v = [0, 1, 2].map((m) => r[i + 2 + 6 * k + 2 * m] | r[i + 3 + 6 * k + 2 * m] << 7);
-      Object.assign(sl, { off: v[0] * 0x1000, size: v[1] * 0x1000, used: v[2] });
+      const off = v[0] * 0x1000, size = v[1] * 0x1000, end = off + size;
+      // Validate every range before preservation decisions: two occupied slots
+      // must never alias one kept destination and silently bypass the backup.
+      if (!off || size < SLOT_HDR_AREA || v[2] * 1024 > size ||
+          ranges.some(([lo, hi]) => off < hi && lo < end))
+        throw new Error(`slot ${k + 1}: invalid or overlapping SMP_INFO flash range`);
+      ranges.push([off, end]);
+      Object.assign(sl, { off, size, used: v[2] });
     });
+  }
   return { count, size, ext, slots };
 }
 
