@@ -45,7 +45,8 @@ const tick=async()=>{for(let i=0;i<20;i++)await Promise.resolve();};
 test('space-saving selector is visible, defaults Off, and explains actual rate rather than stretch promise',()=>{
  assert.match(html,/Oldschool space saver/);assert.match(html,/<option value="">Off<\/option>/);
  assert.match(html,/original files stay untouched/i);assert.match(html,/matching lower playback rate/);
- assert.match(html,/Original file plays at its source rate/);
+ assert.match(html,/Mono reference uses the same trim and bar cut/);
+ assert.match(html,/not perceived-loudness matching/);
  const e=environment();assert.equal(e.settings().gritFactor,1);
 });
 
@@ -109,4 +110,23 @@ test('repeated setting event while confirmation is open cannot apply mismatched 
  e.ids.grit.value='medium';const change=e.recutNewLoops();await tick();assert.equal(e.ids.previewDlg.open,true);
  e.ids.grit.value='max';await e.recutNewLoops();e.ids.previewGo.onclick();await change;
  assert.equal(e.state().loops[0].gritFactor,2);assert.equal(e.ids.grit.value,'medium');assert.equal(e.writes.length,0);
+});
+
+
+test('A/B reference uses the same trim and bar cut, mono peak target, and leaves encoded preview exact',async()=>{
+ const e=environment(),x=new Float32Array(44100*6);
+ for(let i=44100;i<44100*5;i++)x[i]=.02*Math.sin(i*2*Math.PI*330/44100);
+ const before=hash(x),settings={bars:true,trim:true,storageRate:22050,gritFactor:2};
+ const loop=e.prepare(x,settings);e.seed([loop]);
+ const full=e.prepare(x,{...settings,bars:false,trim:false});
+ assert.ok(loop.reference.length<full.reference.length);
+ assert.equal(loop.referenceRate,44100);
+ const target=30000/32768;
+ assert.ok(Math.abs(loop.reference.reduce((m,v)=>Math.max(m,Math.abs(v)),0)-target)<1e-7);
+ await e.playLoopPreview(loop,true);await e.playLoopPreview(loop,false);
+ const duration=p=>p.buffer.length/p.buffer.rate/p.rate;
+ assert.ok(Math.abs(duration(e.played[0])-duration(e.played[1]))<.001);
+ assert.deepEqual(e.played[0].buffer.data,loop.reference);
+ assert.deepEqual(e.played[1].buffer.data,Float32Array.from(api.imaDecode(loop.adpcm,loop.n),v=>v/32768));
+ assert.equal(hash(x),before);assert.equal(hash(loop.x),before);
 });

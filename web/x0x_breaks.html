@@ -124,7 +124,7 @@
   <p id="savings" role="status" aria-live="polite"></p>
   <dialog id="previewDlg" aria-labelledby="previewTitle">
     <h2 id="previewTitle">Compare before adding</h2>
-    <p id="previewNotice">Original file plays at its source rate. Encoded loop plays the actual saved ADPCM at its saved playback rate. Device tempo, pitch and performance effects are not included.</p>
+    <p id="previewNotice">Mono reference uses the same trim and bar cut, at the decoded source rate. The reference and import are peak normalized; this is not perceived-loudness matching. Encoded loop plays the actual saved ADPCM at its saved playback rate. Compare texture rather than loudness. Device tempo, pitch and performance effects are not included.</p>
     <div id="previewList"></div>
     <p id="previewStatus" role="status" aria-live="polite"></p>
     <div class="bar"><button type="button" class="quiet" id="previewStop">Stop audio</button><button type="button" id="previewGo">Add these loops</button><button type="button" class="quiet" id="previewCancel">Cancel</button></div>
@@ -316,8 +316,8 @@ async function playLoopPreview(loop, original = false) {
   if (!previewAudio) previewAudio = new AudioContext();
   if (previewAudio.state === "suspended") await previewAudio.resume();
   if (serial !== previewSerial) return;
-  const samples = original ? Float32Array.from(loop.x) : loopPreviewPcm(imaDecode(loop.adpcm || imaEncode(loop.s), loop.n), loop.rate, false).samples;
-  const rate = original ? loop.srcRate : loop.rate;
+  const samples = original ? Float32Array.from(loop.reference) : loopPreviewPcm(imaDecode(loop.adpcm || imaEncode(loop.s), loop.n), loop.rate, false).samples;
+  const rate = original ? loop.referenceRate : loop.rate;
   // A fixed supported buffer rate plus rate ratio handles even the lowest stored rates.
   const buffer = previewAudio.createBuffer(1, samples.length, RATE); buffer.copyToChannel(samples, 0);
   const node = previewAudio.createBufferSource(); node.buffer = buffer; node.playbackRate.value = rate / RATE;
@@ -336,9 +336,9 @@ function reviewLoops(items, title, action) {
       (loop.isNew ? ` vs ${loop.baselineBytes.toLocaleString()} B clean 44.1 kHz (${loop.savedBytes.toLocaleString()} B saved)` : " · original file unavailable for a loop read from the device");
     row.appendChild(detail);
     const buttons = document.createElement("div"); buttons.className = "bar";
-    for (const [label,original] of [["Original file",true],["Encoded loop",false]]) {
+    for (const [label,original] of [["Mono reference (same cut)",true],["Encoded loop",false]]) {
       const button = document.createElement("button"); button.type = "button"; button.className = "quiet"; button.textContent = label;
-      button.disabled = original && !loop.x;
+      button.disabled = original && !loop.reference;
       button.onclick = () => playLoopPreview(loop,original).catch(e => { $("previewStatus").textContent = `Preview unavailable: ${e.message || e}`; });
       buttons.appendChild(button);
     }

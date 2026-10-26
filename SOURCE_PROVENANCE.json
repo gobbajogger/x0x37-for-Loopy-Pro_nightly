@@ -4,16 +4,16 @@
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
     "web/x0x_installer.html": "3d29ca716035b996a7f7178887c84e849f4e5024",
-    "web/x0x_breaks.html": "b23c54993f0ba0514616591674d73840cb71ce5e",
+    "web/x0x_breaks.html": "e42e1121ca0d1d9e3be0de57cba0a7c8a71fc9f7",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
-    "web/x0x_breaks.js": "ac39c7236dee13aceba4f8b7c3139cb2d41667d5",
+    "web/x0x_breaks.js": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
-    "web/test_breaks_page.mjs": "c3e546e2f3143f728818702fff73b021aaeb55a2"
+    "web/test_breaks_page.mjs": "8b7dd31c82adca599ef6e74364123a349655f5be"
   },
   "sourcePatches": [
     {
@@ -318,6 +318,27 @@
       "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
       "resultBlob": "c3e546e2f3143f728818702fff73b021aaeb55a2",
       "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+      "resultBlob": "e42e1121ca0d1d9e3be0de57cba0a7c8a71fc9f7",
+      "description": "Use the same source trim/bar cut for mono peak-normalized A/B reference; label normalization and perceived-loudness limits while preserving exact saved ADPCM preview and source cleanup."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+      "resultBlob": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
+      "description": "Use the same source trim/bar cut for mono peak-normalized A/B reference; label normalization and perceived-loudness limits while preserving exact saved ADPCM preview and source cleanup."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+      "resultBlob": "8b7dd31c82adca599ef6e74364123a349655f5be",
+      "description": "Use the same source trim/bar cut for mono peak-normalized A/B reference; label normalization and perceived-loudness limits while preserving exact saved ADPCM preview and source cleanup."
     }
   ]
 }

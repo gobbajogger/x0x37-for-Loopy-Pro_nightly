@@ -241,14 +241,19 @@ function trimSilence(x, sr, floor = 0.001, preMs = 1, fadeMs = 5) {
   return y;
 }
 
-// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
-function cut(x, sr, bars, rate = RATE, trim = false) {
+// Shared source selection keeps A/B on the same trim and one-bar cut.
+function selectLoopSource(x, sr, bars, trim) {
   if (trim) x = trimSilence(x, sr);
   if (bars) {
     const n = barsOf(x.length / sr)[0];
     x = x.slice(0, Math.round(x.length / n));
   }
-  const y = resample(x, sr, rate);
+  return x;
+}
+
+// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
+function cut(x, sr, bars, rate = RATE, trim = false) {
+  const y = resample(selectLoopSource(x, sr, bars, trim), sr, rate);
   const pk = peak(y);
   return toInt16(y.map((v) => v * (0.95 / pk)));
 }
@@ -295,12 +300,17 @@ function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RAT
     throw new Error("The source audio has invalid samples or sample rate.");
   if (storageRate !== RATE && storageRate !== RATE_HALF) throw new Error("Invalid import rate.");
   if (!Number.isFinite(gritFactor) || gritFactor < 1 || gritFactor > 8) throw new Error("Invalid oldschool factor.");
+  const selected = selectLoopSource(x, sr, bars, trim);
+  // A same-cut mono reference at the decoded source rate, before resampling/codec.
+  // Match the import peak target, not perceived loudness; encoded playback stays exact.
+  const scale = (30000 / 32768) / peak(selected);
+  const reference = Float32Array.from(selected, v => v * scale);
   const baseline = cut(x, sr, bars, RATE, trim);
   const { s, rate } = cutLoop(x, sr, bars, storageRate, trim, gritFactor);
   if (s.length < MIN_LOOP_SAMPLES) throw new Error("This loop is too short for BREAK playback (64 samples minimum).");
   const adpcm = imaEncode(s), baselineBytes = Math.ceil(baseline.length / 2);
   return { s, rate, n: s.length, adpcm, baselineSamples: baseline.length, baselineBytes,
-    savedBytes: baselineBytes - adpcm.length, gritFactor, storageRate };
+    savedBytes: baselineBytes - adpcm.length, gritFactor, storageRate, reference, referenceRate: sr };
 }
 
 // sampleio.ima_encode: 4-bit IMA ADPCM, low nibble first, from predictor 0 / index 0

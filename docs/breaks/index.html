@@ -124,7 +124,7 @@
   <p id="savings" role="status" aria-live="polite"></p>
   <dialog id="previewDlg" aria-labelledby="previewTitle">
     <h2 id="previewTitle">Compare before adding</h2>
-    <p id="previewNotice">Original file plays at its source rate. Encoded loop plays the actual saved ADPCM at its saved playback rate. Device tempo, pitch and performance effects are not included.</p>
+    <p id="previewNotice">Mono reference uses the same trim and bar cut, at the decoded source rate. The reference and import are peak normalized; this is not perceived-loudness matching. Encoded loop plays the actual saved ADPCM at its saved playback rate. Compare texture rather than loudness. Device tempo, pitch and performance effects are not included.</p>
     <div id="previewList"></div>
     <p id="previewStatus" role="status" aria-live="polite"></p>
     <div class="bar"><button type="button" class="quiet" id="previewStop">Stop audio</button><button type="button" id="previewGo">Add these loops</button><button type="button" class="quiet" id="previewCancel">Cancel</button></div>
@@ -252,14 +252,19 @@ function trimSilence(x, sr, floor = 0.001, preMs = 1, fadeMs = 5) {
   return y;
 }
 
-// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
-function cut(x, sr, bars, rate = RATE, trim = false) {
+// Shared source selection keeps A/B on the same trim and one-bar cut.
+function selectLoopSource(x, sr, bars, trim) {
   if (trim) x = trimSilence(x, sr);
   if (bars) {
     const n = barsOf(x.length / sr)[0];
     x = x.slice(0, Math.round(x.length / n));
   }
-  const y = resample(x, sr, rate);
+  return x;
+}
+
+// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
+function cut(x, sr, bars, rate = RATE, trim = false) {
+  const y = resample(selectLoopSource(x, sr, bars, trim), sr, rate);
   const pk = peak(y);
   return toInt16(y.map((v) => v * (0.95 / pk)));
 }
@@ -306,12 +311,17 @@ function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RAT
     throw new Error("The source audio has invalid samples or sample rate.");
   if (storageRate !== RATE && storageRate !== RATE_HALF) throw new Error("Invalid import rate.");
   if (!Number.isFinite(gritFactor) || gritFactor < 1 || gritFactor > 8) throw new Error("Invalid oldschool factor.");
+  const selected = selectLoopSource(x, sr, bars, trim);
+  // A same-cut mono reference at the decoded source rate, before resampling/codec.
+  // Match the import peak target, not perceived loudness; encoded playback stays exact.
+  const scale = (30000 / 32768) / peak(selected);
+  const reference = Float32Array.from(selected, v => v * scale);
   const baseline = cut(x, sr, bars, RATE, trim);
   const { s, rate } = cutLoop(x, sr, bars, storageRate, trim, gritFactor);
   if (s.length < MIN_LOOP_SAMPLES) throw new Error("This loop is too short for BREAK playback (64 samples minimum).");
   const adpcm = imaEncode(s), baselineBytes = Math.ceil(baseline.length / 2);
   return { s, rate, n: s.length, adpcm, baselineSamples: baseline.length, baselineBytes,
-    savedBytes: baselineBytes - adpcm.length, gritFactor, storageRate };
+    savedBytes: baselineBytes - adpcm.length, gritFactor, storageRate, reference, referenceRate: sr };
 }
 
 // sampleio.ima_encode: 4-bit IMA ADPCM, low nibble first, from predictor 0 / index 0
@@ -1092,8 +1102,8 @@ async function playLoopPreview(loop, original = false) {
   if (!previewAudio) previewAudio = new AudioContext();
   if (previewAudio.state === "suspended") await previewAudio.resume();
   if (serial !== previewSerial) return;
-  const samples = original ? Float32Array.from(loop.x) : loopPreviewPcm(imaDecode(loop.adpcm || imaEncode(loop.s), loop.n), loop.rate, false).samples;
-  const rate = original ? loop.srcRate : loop.rate;
+  const samples = original ? Float32Array.from(loop.reference) : loopPreviewPcm(imaDecode(loop.adpcm || imaEncode(loop.s), loop.n), loop.rate, false).samples;
+  const rate = original ? loop.referenceRate : loop.rate;
   // A fixed supported buffer rate plus rate ratio handles even the lowest stored rates.
   const buffer = previewAudio.createBuffer(1, samples.length, RATE); buffer.copyToChannel(samples, 0);
   const node = previewAudio.createBufferSource(); node.buffer = buffer; node.playbackRate.value = rate / RATE;
@@ -1112,9 +1122,9 @@ function reviewLoops(items, title, action) {
       (loop.isNew ? ` vs ${loop.baselineBytes.toLocaleString()} B clean 44.1 kHz (${loop.savedBytes.toLocaleString()} B saved)` : " · original file unavailable for a loop read from the device");
     row.appendChild(detail);
     const buttons = document.createElement("div"); buttons.className = "bar";
-    for (const [label,original] of [["Original file",true],["Encoded loop",false]]) {
+    for (const [label,original] of [["Mono reference (same cut)",true],["Encoded loop",false]]) {
       const button = document.createElement("button"); button.type = "button"; button.className = "quiet"; button.textContent = label;
-      button.disabled = original && !loop.x;
+      button.disabled = original && !loop.reference;
       button.onclick = () => playLoopPreview(loop,original).catch(e => { $("previewStatus").textContent = `Preview unavailable: ${e.message || e}`; });
       buttons.appendChild(button);
     }
