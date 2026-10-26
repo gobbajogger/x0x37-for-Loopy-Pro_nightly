@@ -350,7 +350,7 @@ export class ProjectDevice {
   async validate() { await this.command(PROJECT_OP.VALIDATE); }
   async adoptLegacyBass(engines,{confirmed=false}={}) {
     if(confirmed!==true || this.projectProtocol!==2 || !Array.isArray(engines) || engines.length!==2 ||
-       !engines.every((bank)=>integer(bank,0,1)) || engines.every((bank)=>bank===1))
+       !integer(engines[0],0,1) || !integer(engines[1],0,1) || engines[0]===1 && engines[1]===1)
       throw fail("Explicit valid engine choices for both bass slots are required.","identity");
     await this.command(PROJECT_OP.ADOPT_BASS,[...engines,...PROJECT_CONFIRM]);
   }

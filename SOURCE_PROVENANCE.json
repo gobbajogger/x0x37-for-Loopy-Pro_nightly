@@ -10,7 +10,7 @@
     "web/x0x_breaks.js": "244a50032925950e7b88e219172b9f4b389c2233",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
-    "web/x0x_projects.js": "77485dd4cc7eeead7c2b343d43a3a854b3c8026c",
+    "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
     "web/test_breaks_page.mjs": "ef910496119f985a6795f690b5fd5ed9486ea97c"
@@ -500,6 +500,12 @@
       "sourceBlob": "fe53833c9f82a3eb641b137763b5999dc9aaeba4",
       "resultBlob": "77485dd4cc7eeead7c2b343d43a3a854b3c8026c",
       "description": "Bounded TAGGED=1 NOTE=0 consumer: historical pairs plus6/11 exact36452, QUERYv2 exact size, error9 and low-level explicit adoption; stream7 intentionally unsupported. Preserve all high-level expectedLength/VALIDATE-before-sample-write guards; no legacy-adoption UI."
+    },
+    {
+      "path": "web/x0x_projects.js",
+      "sourceBaseCommit": "2a061b352231266cdcd1c3f35d8d7c9c19a064a6",
+      "resultBlob": "60183ccf543d95d3d8909214f22f57979d222189",
+      "description": "Require explicit integer engine choices at both indices before ADOPT_BASS; Array.every skips sparse holes. No inferred engine identity, schema widening or native firmware behavior change."
     }
   ]
 }
