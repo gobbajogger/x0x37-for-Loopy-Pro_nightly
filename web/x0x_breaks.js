@@ -11,6 +11,16 @@ export const SLOT_HDR_LEN = 32 + SLOT_ZONES * 28;
 export const SLOT_MAX_DATA = SLOT_SIZE - SLOT_DATA_OFF;
 export const ROOT_BASE = 36;              // loop i is zone root 36 + i: the slot sorts its zones by root
 export const RATE = 44100, RATE_HALF = 22050;   // 44.1 kHz by default; 22.05 kHz only when asked for
+export const OLDSCHOOL_FACTOR = 2;              // --oldschool CLI default (medium grit)
+export const MIN_LOOP_SAMPLES = 64;           // firmware breaks_set_loop minimum
+/** @type {{ key: string, label: string, factor: number }[]} */
+export const OLDSCHOOL_GRIT = [
+  { key: "", label: "Off (clean)", factor: 1 },
+  { key: "light", label: "Light", factor: 1.5 },
+  { key: "medium", label: "Medium", factor: 2 },
+  { key: "heavy", label: "Heavy", factor: 3 },
+  { key: "max", label: "Max", factor: 4 },
+];
 export const DRY_SLOT_KB = [80, 120, 44]; // upload_breaks.py --dry-run's default layout: the SMK-37's slots (KiB)
 
 const IMA_STEP = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 19, 21, 23, 25, 28, 31, 34, 37, 41, 45, 50, 55, 60, 66, 73, 80, 88,
@@ -95,6 +105,56 @@ export function cut(x, sr, bars, rate = RATE, trim = false) {
   const y = resample(x, sr, rate);
   const pk = peak(y);
   return toInt16(y.map((v) => v * (0.95 / pk)));
+}
+
+// PR362 import method: downsample to fewer stored samples and write the matching lower zone rate.
+// n/rate retains the loop duration; lower bandwidth and the IMA encode/decode change its texture.
+export function applyOldschool(s, storageRate, factor = OLDSCHOOL_FACTOR) {
+  if (!Number.isFinite(factor) || factor < 1 || factor > 8) throw new Error("Invalid oldschool factor.");
+  if (factor === 1) return { s, rate: storageRate };
+  const x = [];
+  for (let i = 0; i < s.length; i++) x.push(s[i] / 32768);
+  const y = resample(x, storageRate, storageRate / factor);
+  const out = toInt16(y.map((v) => v * 0.95));
+  const playbackRate = Math.round(storageRate / factor);
+  if (out.length < MIN_LOOP_SAMPLES)
+    throw new Error(`too short after oldschool processing (${out.length} samples)`);
+  return { s: out, rate: playbackRate };
+}
+
+export function cutLoop(x, sr, bars, storageRate = RATE, trim = false, gritFactor = 1) {
+  let s = cut(x, sr, bars, storageRate, trim);
+  let rate = storageRate;
+  if (gritFactor > 1) ({ s, rate } = applyOldschool(s, storageRate, gritFactor));
+  return { s, rate };
+}
+
+export function gritLabel(factor) {
+  const g = OLDSCHOOL_GRIT.find((o) => o.factor === factor);
+  return g && g.factor > 1 ? g.label : "";
+}
+
+// Encoded preview at the saved zone rate; device tempo, pitch and performance controls remain separate.
+export function loopPreviewPcm(s, playbackRate, roundTrip = true) {
+  const pcm = roundTrip ? imaDecode(imaEncode(s), s.length) : s;
+  const samples = new Float32Array(pcm.length);
+  for (let i = 0; i < pcm.length; i++) samples[i] = pcm[i] / 32768;
+  return { samples, rate: playbackRate };
+}
+
+// Prepare from the retained decoded original, never from an already processed loop.
+// The baseline is the same bar/trim at 44.1 kHz; actual ADPCM bytes include odd-sample nibble padding.
+export function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RATE, gritFactor = 1 } = {}) {
+  if (!Number.isFinite(sr) || sr <= 0 || !x.length || !Array.from(x).every(Number.isFinite))
+    throw new Error("The source audio has invalid samples or sample rate.");
+  if (storageRate !== RATE && storageRate !== RATE_HALF) throw new Error("Invalid import rate.");
+  if (!Number.isFinite(gritFactor) || gritFactor < 1 || gritFactor > 8) throw new Error("Invalid oldschool factor.");
+  const baseline = cut(x, sr, bars, RATE, trim);
+  const { s, rate } = cutLoop(x, sr, bars, storageRate, trim, gritFactor);
+  if (s.length < MIN_LOOP_SAMPLES) throw new Error("This loop is too short for BREAK playback (64 samples minimum).");
+  const adpcm = imaEncode(s), baselineBytes = Math.ceil(baseline.length / 2);
+  return { s, rate, n: s.length, adpcm, baselineSamples: baseline.length, baselineBytes,
+    savedBytes: baselineBytes - adpcm.length, gritFactor, storageRate };
 }
 
 // sampleio.ima_encode: 4-bit IMA ADPCM, low nibble first, from predictor 0 / index 0
