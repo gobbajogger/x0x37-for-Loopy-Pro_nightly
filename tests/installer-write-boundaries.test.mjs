@@ -212,7 +212,7 @@ for(const mode of ['positive','name-change','extra-port','archive-error','readba
  const context={TextEncoder,TextDecoder,io};new Script(source('web/x0x_breaks.js')+'\nreadSlotLayout=io.layout;backupSlots=io.backup;writeSlotImage=io.write;readSlotImage=io.read;this.run=installKeepingSlots;').runInNewContext(context);
  up.find=async()=>dev;up.install=async()=>{assert.equal(saved,true,'verified archive saved before install');installs++;events.push('install');up.targetName=back.name;up.verified=true;portFor(up.access,back);if(mode==='name-change')up.access.inputs.set('in',{name:'SMK changed',state:'connected'});if(mode==='extra-port')up.access.inputs.set('extra',{name:'SMK extra',state:'connected'});return 'SMK-37 Pro_900';};
  up.waitFor=async()=>back;
- const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');}});
+ const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');return true; /* simulated retained backup */}});
  if(mode==='positive'){await result;assert.equal(installs,1);assert.equal(writes,1);assert.ok(postReads>0);assert.deepEqual(events,['backup','save','install','restore']);}
  else{await assert.rejects(result);if(mode==='archive-error'){assert.equal(installs,0);assert.equal(saved,false);}else if(mode==='readback-mismatch'){assert.equal(installs,1);assert.equal(writes,1);}else{assert.equal(installs,1);assert.equal(postReads,0);assert.equal(writes,0);}}
 });

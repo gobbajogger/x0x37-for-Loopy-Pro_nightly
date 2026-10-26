@@ -160,6 +160,10 @@ progress::-webkit-progress-bar { background: #27302b; }
 progress::-webkit-progress-value { background: var(--accent); }
 progress::-moz-progress-bar { background: var(--accent); }
 #status { margin: 12px 0 0; min-height: 1.65em; font: 650 12px/1.55 var(--mono); overflow-wrap: anywhere; }
+.backup-confirmation { margin-top: 16px; padding: 16px; border: 1px solid var(--busy); border-radius: 8px; }
+.backup-confirmation p { margin: 0 0 12px; }
+.backup-confirmation code { overflow-wrap: anywhere; }
+.backup-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .diagnostics { border-top: 1px solid var(--rule); margin-top: 14px; padding-top: 12px; }
 .diagnostics summary { cursor: pointer; font-size: 11px; color: var(--dim); }
 .diagnostics pre { margin: 13px 0 0; color: var(--dim); font: 11px/1.5 var(--mono); white-space: pre-wrap; max-height: 250px; overflow: auto; }
@@ -524,6 +528,15 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
           <p class="install-hint" id="installhint" aria-live="polite"></p>
           <progress id="bar" max="100" value="0" aria-label="Firmware installation progress"></progress>
           <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <section id="backup-confirmation" class="backup-confirmation" aria-labelledby="backup-heading" hidden>
+            <p id="backup-heading"><strong data-t="slotconfirm">Confirm your recovery backup before installing.</strong></p>
+            <p class="small" data-t="slotconfirmhelp">The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.</p>
+            <p><code id="backup-name"></code></p>
+            <div class="backup-actions">
+              <button type="button" class="quiet" id="backup-cancel" data-t="slotcancel">Cancel installation</button>
+              <button type="button" class="quiet" id="backup-retained" data-t="slotretained">I have saved this backup — continue</button>
+            </div>
+          </section>
           <details class="diagnostics">
             <summary data-t="diagnostics">Technical details / activity log</summary>
             <pre id="log"></pre>
@@ -1866,10 +1879,11 @@ function archiveStamp(t = new Date()) {
 }
 
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
-// hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) (the download), progress(f),
+// hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
 // 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
-//    save it. 2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
+//    await explicit retained-backup acknowledgement (only boolean true permits OTA).
+//    2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 async function installKeepingSlots(up, image, product, board, hooks) {
@@ -1898,8 +1912,12 @@ async function installKeepingSlots(up, image, product, board, hooks) {
             saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
           } catch (e) { throw fail("slotbackup", e.message); }
           const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
-          readArchive(file);                                  // what was saved reads back
-          h.save(file, st.name);
+          readArchive(file);                                  // verify the in-memory archive
+          let retained;
+          try { retained = await h.save(file, st.name); }
+          catch (e) { throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name); }
+          if (retained !== true)
+            throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
           // snapshot for preservation, just as the Python SlotMove.backup does.
           const savedMap = flashMap(saved.layout, board);
@@ -1952,7 +1970,7 @@ const TEXT = {
     hintverifying: "パッケージの読み込み・整合性確認を待ってください。",
     hintack: "開発版の注意事項を確認し、チェックを入れてください。",
     hintready: "書き込む準備ができました。開始前に機種と内容をもう一度確認します。",
-    hintbusy: "書き込み中です。USB を抜かず、ページを閉じないでください。",
+    hintbusy: "インストールの処理中です。USB を抜かず、ページを閉じないでください。",
     latestdev: "最新の利用可能な DEV", devchecked: "DEV CHECKED", hardwareuntested: "実機未テスト", superseded: "旧ビルド・非推奨",
     devagree: "実機未テストの開発版であることを理解し、機種と大切なサンプルのバックアップを確認しました。",
     ctrlwarning: "この旧パッケージのインストールには、一致するローカル ctl.img が必要です。",
@@ -1996,7 +2014,7 @@ const TEXT = {
     stockdone: "完了。デバイスは新しいファームウェアで起動しました。",
     confirm: "書き込みますか？\n\n接続中: ",
     confirmto: "\n書き込む: ",
-    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は先にファイルへ保存します。USB を抜かないでください。",
+    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は、先にバックアップを保存し、保存できたことを確認してください。USB を抜かないでください。",
     nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
     start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
     reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
@@ -2012,7 +2030,13 @@ const TEXT = {
     leave: "書き込み中です。ページを閉じないでください。",
     slotsave: "新しいファームウェアではスロットのサンプルが消えます（スロット ",
     slotsave2: "）。先に全スロットをファイルに保存します。",
-    slotsaved: "スロットを保存しました（ダウンロード）: ",
+    slotdownload: "バックアップのダウンロードを要求しました（保存は未確認）: ",
+    slotsaved: "バックアップを保管したことをユーザーが確認しました: ",
+    slotconfirm: "インストールする前にバックアップの保存を確認してください。",
+    slotconfirmhelp: "ブラウザにこのファイルのダウンロードを要求しましたが、保存できたかは確認できません。ダウンロード先でファイルを見つけ、安全な場所に保管してください。ファイルを保管できた場合だけ続行し、それ以外はキャンセルしてください。ファームウェアはまだ書き込んでいません。",
+    slotretained: "バックアップを保存しました — 続行",
+    slotcancel: "インストールをキャンセル",
+    slotbackupconfirm: "バックアップの保存確認を受け付けませんでした。ファームウェアもサンプルも書き込んでいません。選択内容を確認し、保存できる状態で再試行してください: ",
     slotback: "スロットを書き戻しています",
     slotsdone: "完了。スロットを書き戻して確認しました。",
     slotspartial: "インストールは完了しましたが、復元できなかったサンプルがあります。ダウンロードした .x0xslots バックアップを確認し、容量を空けてブレークループの「Restore」で復元してください。未復元: ",
@@ -2047,7 +2071,7 @@ const TEXT = {
     hintverifying: "Waiting for the firmware download and integrity check.",
     hintack: "Confirm the model and consent above to continue.",
     hintready: "Ready to install.",
-    hintbusy: "Writing is in progress. Keep USB connected and this page open.",
+    hintbusy: "An installation operation is in progress. Keep USB connected and this page open.",
     latestdev: "LATEST AVAILABLE DEV", devchecked: "DEV CHECKED", hardwareuntested: "HARDWARE UNTESTED", superseded: "SUPERSEDED",
     devagree: "I accept hardware-untested development firmware for my selected keyboard model.",
     ctrlwarning: "This legacy package requires the matching local ctl.img before installation.",
@@ -2091,7 +2115,7 @@ const TEXT = {
     stockdone: "Done. The device has restarted with the new firmware.",
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
-    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, they are saved to a file first. Keep USB connected until Done.",
+    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, you must save and confirm a recovery backup first. Keep USB connected until Done.",
     nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
@@ -2107,7 +2131,13 @@ const TEXT = {
     leave: "Writing. Do not close the page.",
     slotsave: "The new firmware does not keep the samples in slot ",
     slotsave2: ". Saving every slot to a file first.",
-    slotsaved: "Slots saved (downloaded): ",
+    slotdownload: "Backup download requested (not yet confirmed): ",
+    slotsaved: "User confirmed retained recovery backup: ",
+    slotconfirm: "Confirm your recovery backup before installing.",
+    slotconfirmhelp: "The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.",
+    slotretained: "I have saved this backup — continue",
+    slotcancel: "Cancel installation",
+    slotbackupconfirm: "Recovery backup confirmation was not accepted. No firmware or samples were written. Check your selection and retry when you can save the backup: ",
     slotback: "Writing the slots back",
     slotsdone: "Done. The slots were written back and checked.",
     slotspartial: "Installed, but some samples were NOT restored. Check the downloaded .x0xslots backup and use Restore on the break loops page after making room. Not restored: ",
@@ -2734,6 +2764,40 @@ drop.addEventListener("drop", async (e) => {
   await selectStockFile(f);
 });
 
+// A download request is not proof of a filesystem write. Keep OTA waiting for
+// this archive's explicit user acknowledgement, without a blocking browser dialog.
+async function saveSlotBackup(file, name) {
+  const panel = $("backup-confirmation"), retained = $("backup-retained"), cancel = $("backup-cancel");
+  const a = document.createElement("a");
+  const url = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
+  a.href = url;
+  a.download = name;
+  try {
+    document.body.appendChild(a);
+    a.click();
+  } finally {
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  }
+  log(t("slotdownload") + name);
+  $("backup-name").textContent = name;
+  try {
+    const confirmation = new Promise((resolve) => {
+      retained.onclick = () => resolve(true);
+      cancel.onclick = () => resolve(false);
+    });
+    panel.hidden = false;
+    sayK("slotconfirm");
+    cancel.focus(); // Enter must not accidentally confirm the irreversible step.
+    const confirmed = await confirmation;
+    if (confirmed === true) log(t("slotsaved") + name);
+    return confirmed;
+  } finally {
+    retained.onclick = cancel.onclick = null;
+    panel.hidden = true;
+  }
+}
+
 async function run(img, product, opts = {}) {
   if (writing || !workspaceActive) return;
   getSampleWorkspace()?.invalidate();
@@ -2780,15 +2844,10 @@ async function run(img, product, opts = {}) {
         step, sameKeyboard,
         say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
         progress: (f) => { $("bar").value = Math.min(100, f * 100); },
-        save: (file, name) => {
-          const a = document.createElement("a");
-          a.href = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
-          a.download = name;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          setTimeout(() => URL.revokeObjectURL(a.href), 60000);
-          log(t("slotsaved") + name);
+        save: async (file, name) => {
+          const retained = await saveSlotBackup(file, name);
+          // The user may change/revoke a NIGHTLY selection while checking the file.
+          return retained === true && (!opts.admitted || opts.admitted());
         },
       });
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);

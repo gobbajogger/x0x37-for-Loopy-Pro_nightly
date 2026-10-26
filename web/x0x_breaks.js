@@ -778,10 +778,11 @@ export function archiveStamp(t = new Date()) {
 }
 
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
-// hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) (the download), progress(f),
+// hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
 // 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
-//    save it. 2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
+//    await explicit retained-backup acknowledgement (only boolean true permits OTA).
+//    2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 export async function installKeepingSlots(up, image, product, board, hooks) {
@@ -810,8 +811,12 @@ export async function installKeepingSlots(up, image, product, board, hooks) {
             saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
           } catch (e) { throw fail("slotbackup", e.message); }
           const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
-          readArchive(file);                                  // what was saved reads back
-          h.save(file, st.name);
+          readArchive(file);                                  // verify the in-memory archive
+          let retained;
+          try { retained = await h.save(file, st.name); }
+          catch (e) { throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name); }
+          if (retained !== true)
+            throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
           // snapshot for preservation, just as the Python SlotMove.backup does.
           const savedMap = flashMap(saved.layout, board);

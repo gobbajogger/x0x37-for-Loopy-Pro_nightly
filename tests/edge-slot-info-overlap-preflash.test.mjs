@@ -87,6 +87,7 @@ async function simulateInstall(secondOffset) {
         save(bytes, name) {
           events.push('BACKUP_SAVED');
           saved.push({ bytes, name });
+          return true; // Simulated explicit retained-backup acknowledgement.
         },
       });
   } catch (e) { error = e; }
