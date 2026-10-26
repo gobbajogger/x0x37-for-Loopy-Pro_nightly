@@ -1,0 +1,11 @@
+✔ positive: valid length-8 request reads one chunk then finishes (12.728708ms)
+✔ negative: contradictory 24-bit length 7 must not read firmware bytes (0.150625ms)
+✔ negative: contradictory 24-bit length 65544 must not read firmware bytes (0.068167ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.648208

@@ -53,8 +53,13 @@ function response(addr, data, fl = 0) {
 
 function parseRequest(pkt) {
   if (pkt[0] !== 0xF0 || pkt[pkt.length - 1] !== 0xF7) return null;
-  const u = unpack7(pkt.slice(1, -1));
-  if (u.length !== 15 || u[0] !== 0 || u[1] !== 0x59 || u[2] !== 0x30) return null;
+  const wire = pkt.slice(1, -1);
+  if (wire.some((b) => b & 0x80)) return null;
+  const u = unpack7(wire);
+  // ota_read sends an eight-byte body: flags, address32, requested length24.
+  if (u.length !== 15 || u[0] !== 0 || u[1] !== 0x59 || u[2] !== 0x30 ||
+      u[3] !== 8 || u[4] !== 0 || u[5] !== 0) return null;
+  if (pack7(u).some((b, i) => b !== wire[i])) return null;
   let s = 0;
   for (let i = 6; i < 14; i++) s += u[i];
   if ((~s & 0xFF) !== u[14]) return null;

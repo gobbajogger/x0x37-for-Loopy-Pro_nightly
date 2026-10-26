@@ -1,0 +1,47 @@
+✔ positive: valid length-8 request reads one chunk then finishes (13.561791ms)
+✖ negative: contradictory 24-bit length 7 must not read firmware bytes (11.378417ms)
+✖ negative: contradictory 24-bit length 65544 must not read firmware bytes (11.852917ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 92.624
+
+✖ failing tests:
+
+test at ota-request-site/tests/edge-ota-read-declared-length.test.mjs:49:3
+✖ negative: contradictory 24-bit length 7 must not read firmware bytes (11.378417ms)
+  AssertionError [ERR_ASSERTION]: FAIL_BEFORE_FIX: parsed and serviced a malformed length-8 request header
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/ota-request-site/tests/edge-ota-read-declared-length.test.mjs:51:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ota-request-site/tests/edge-ota-read-declared-length.test.mjs:49:3
+✖ negative: contradictory 24-bit length 65544 must not read firmware bytes (11.852917ms)
+  AssertionError [ERR_ASSERTION]: FAIL_BEFORE_FIX: parsed and serviced a malformed length-8 request header
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/ota-request-site/tests/edge-ota-read-declared-length.test.mjs:51:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
