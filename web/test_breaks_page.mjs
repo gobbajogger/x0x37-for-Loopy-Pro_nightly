@@ -32,8 +32,8 @@ function environment(){
  const window={},execute=new Function('document','window','parent','location','getComputedStyle','AudioContext','writes',...Object.keys(api),script+`
  writeImage=async(k,img)=>writes.push({k,img});readAll=async()=>{};
  return { seed(items=[]){loops=items;readOk=true;lay={count:1,size:81920,slots:[{size:81920,nz:0}]};dev=[null];acceptedSettings=importSettings();render();},
-  state:()=>({loops,busy,readOk}),addFiles,recutNewLoops,playLoopPreview,stopLoopPreview,
-  decodeWith(x,sr=44100){decode=async()=>({x,rate:sr});},settings(){return importSettings();},setSettings(s){restoreSettings(s);acceptedSettings=importSettings();},
+  state:()=>({loops,busy,readOk,auditionLoop,auditionSource}),chooseAuditionFile,addFiles,recutNewLoops,playLoopPreview,stopLoopPreview,
+  decodeWith(x,sr=44100){decode=async()=>({x,rate:sr});},setDecoder(fn){decode=fn;},settings(){return importSettings();},setSettings(s){restoreSettings(s);acceptedSettings=importSettings();},
   prepare:(x,settings)=>prepareImportedLoop(Array.from(x),44100,'literal <file>.wav',settings),writes};`);
  const e=execute(document,window,window,{search:''},()=>({getPropertyValue:()=>''}),AudioContext,writes,...Object.values(api));
  // writeImage replacement closes over this explicitly supplied test-only sink.
@@ -129,4 +129,33 @@ test('A/B reference uses the same trim and bar cut, mono peak target, and leaves
  assert.deepEqual(e.played[0].buffer.data,loop.reference);
  assert.deepEqual(e.played[1].buffer.data,Float32Array.from(api.imaDecode(loop.adpcm,loop.n),v=>v/32768));
  assert.equal(hash(x),before);assert.equal(hash(loop.x),before);
+});
+
+
+test('visible local file audition works before MIDI or Add and refreshes settings without device draft writes',async()=>{
+ const e=environment(),x=tone(),before=hash(x);e.decodeWith(x);
+ assert.match(html,/<input id="auditionFile" style="display:block/);
+ assert.equal(e.ids.auditionReference.disabled,true);assert.equal(e.ids.auditionEncoded.disabled,true);
+ assert.equal(e.state().readOk,false);
+ await e.chooseAuditionFile({name:'local.wav'});
+ assert.equal(e.ids.auditionEncoded.disabled,false);assert.equal(e.ids.auditionReference.disabled,false);
+ assert.equal(e.state().loops.length,0);assert.equal(e.writes.length,0);
+ await e.ids.auditionReference.onclick();await e.ids.auditionEncoded.onclick();
+ assert.equal(e.played.length,2);assert.deepEqual(e.played[1].buffer.data,Float32Array.from(api.imaDecode(e.state().auditionLoop.adpcm,e.state().auditionLoop.n),v=>v/32768));
+ const prior=e.state().auditionLoop.adpcm.length;e.ids.grit.value='medium';await e.recutNewLoops();
+ assert.ok(e.state().auditionLoop.adpcm.length<prior);assert.equal(e.state().loops.length,0);assert.equal(e.writes.length,0);assert.equal(hash(x),before);
+ await e.chooseAuditionFile(null);assert.equal(e.ids.auditionEncoded.disabled,true);assert.equal(e.state().auditionSource,null);
+});
+
+test('local source decode epochs ignore a stale file after replacement or removal',async()=>{
+ const e=environment(),waiters=[];e.decodeWith(tone());
+ // The actual decode path is supplied delayed arrays through the test sink.
+ e.setDecoder(file=>new Promise(resolve=>waiters.push({file,resolve})));
+ const a=e.chooseAuditionFile({name:'old.wav'}),b=e.chooseAuditionFile({name:'new.wav'});
+ waiters[1].resolve({x:tone(),rate:44100});await b;
+ waiters[0].resolve({x:tone(),rate:44100});await a;
+ assert.equal(e.state().auditionSource.name,'new.wav');
+ const c=e.chooseAuditionFile({name:'removed.wav'});await e.chooseAuditionFile(null);
+ waiters[2].resolve({x:tone(),rate:44100});await c;
+ assert.equal(e.state().auditionLoop,null);assert.equal(e.writes.length,0);
 });

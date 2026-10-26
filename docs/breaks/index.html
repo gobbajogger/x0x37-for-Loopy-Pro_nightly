@@ -119,6 +119,14 @@
     </label>
   </div>
   <p id="import-help">Store fewer samples with a matching lower playback rate: retain the prepared loop’s duration and pitch at its original tempo, with less bandwidth and an oldschool texture. Other BREAK tempo and pitch settings still change playback. Off by default; original files stay untouched. First-bar and trim settings apply before rate reduction.</p>
+  <section aria-labelledby="auditionTitle">
+    <h2 id="auditionTitle">Listen locally before connecting</h2>
+    <label for="auditionFile">Choose an audio file to compare</label>
+    <input id="auditionFile" style="display:block;max-width:100%;margin:12px 0" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg">
+    <p class="small">Mono reference uses the same trim and bar cut, at the decoded source rate. Both paths are peak normalized, not perceived-loudness matched. Encoded loop plays the saved ADPCM and rate; compare texture rather than loudness. Device tempo and effects are not included.</p>
+    <div class="bar"><button type="button" class="quiet" id="auditionReference" disabled>Play mono reference</button><button type="button" id="auditionEncoded" disabled>Play encoded loop</button><button type="button" class="quiet" id="auditionStop">Stop audio</button></div>
+    <p id="auditionStatus" role="status" aria-live="polite">Choose a file above. Listening is local and does not require MIDI or change device samples.</p>
+  </section>
   <div class="full"><div id="fill"></div></div>
   <p id="room"></p>
   <p id="savings" role="status" aria-live="polite"></p>
@@ -1091,6 +1099,29 @@ function restoreSettings(settings) {
 function prepareImportedLoop(x, srcRate, file, settings) {
   return { ...prepareLoopImport(x, srcRate, settings), file, isNew: true, srcRate, x };
 }
+let auditionSource = null, auditionLoop = null, auditionSerial = 0;
+function refreshAudition() {
+  stopLoopPreview(); auditionLoop = null;
+  try {
+    if (auditionSource) {
+      auditionLoop = prepareImportedLoop(auditionSource.x,auditionSource.rate,auditionSource.name,importSettings());
+      const l=auditionLoop;
+      $("auditionStatus").textContent = `${l.file} · ${(l.n/l.rate).toFixed(3)} s · ${l.adpcm.length.toLocaleString()} B ADPCM vs ${l.baselineBytes.toLocaleString()} B clean 44.1 kHz (${l.savedBytes.toLocaleString()} B saved). Preview only; not added to device slots.`;
+    }
+  } catch(e) { $("auditionStatus").textContent = `Preview unavailable: ${e.message || e}`; }
+  $("auditionReference").disabled = $("auditionEncoded").disabled = !auditionLoop;
+}
+async function chooseAuditionFile(file) {
+  const serial=++auditionSerial; stopLoopPreview(); auditionSource=null; auditionLoop=null;
+  $("auditionReference").disabled=$("auditionEncoded").disabled=true;
+  if (!file) { $("auditionStatus").textContent="Choose a file above. Listening is local and does not require MIDI or change device samples."; return; }
+  $("auditionStatus").textContent="Decoding local audio…";
+  try {
+    const decoded=await decode(file);
+    if(serial!==auditionSerial)return;
+    auditionSource={x:Array.from(decoded.x),rate:decoded.rate,name:file.name};refreshAudition();
+  } catch(e) { if(serial===auditionSerial)$("auditionStatus").textContent=`Couldn't read local audio: ${e.message || e}`; }
+}
 let previewAudio = null, previewNode = null, previewSerial = 0;
 function stopLoopPreview() {
   previewSerial++;
@@ -1425,9 +1456,13 @@ async function recutNewLoops() {
       say("New loops rebuilt from their retained original audio. Device samples are unchanged until Send.");
     } catch (e) { restoreSettings(acceptedSettings); throw e; }
   });
+  refreshAudition();
 }
 $("bars").onchange = $("trim").onchange = $("half").onchange = $("grit").onchange = recutNewLoops;
-$("previewStop").onclick = stopLoopPreview;
+$("previewStop").onclick = $("auditionStop").onclick = stopLoopPreview;
+$("auditionFile").onchange = () => chooseAuditionFile($("auditionFile").files[0]);
+for (const [id,original] of [["auditionReference",true],["auditionEncoded",false]])
+  $(id).onclick = () => { if(auditionLoop) return playLoopPreview(auditionLoop,original).catch(e=>{ $("auditionStatus").textContent=`Preview unavailable: ${e.message || e}`; }); };
 window.sampleWorkspace = {
   busy: () => busy,
   activate: active => {

@@ -4,7 +4,7 @@
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
     "web/x0x_installer.html": "3d29ca716035b996a7f7178887c84e849f4e5024",
-    "web/x0x_breaks.html": "e42e1121ca0d1d9e3be0de57cba0a7c8a71fc9f7",
+    "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
     "web/x0x_breaks.js": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
@@ -13,7 +13,7 @@
     "web/x0x_projects.js": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
-    "web/test_breaks_page.mjs": "8b7dd31c82adca599ef6e74364123a349655f5be"
+    "web/test_breaks_page.mjs": "ef910496119f985a6795f690b5fd5ed9486ea97c"
   },
   "sourcePatches": [
     {
@@ -339,6 +339,20 @@
       "sourceBaseCommit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
       "resultBlob": "8b7dd31c82adca599ef6e74364123a349655f5be",
       "description": "Use the same source trim/bar cut for mono peak-normalized A/B reference; label normalization and perceived-loudness limits while preserving exact saved ADPCM preview and source cleanup."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "b007cc2f87669c481e6c7863dabcdb7405e95f8e",
+      "resultBlob": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+      "description": "Expose local file reference/encoded/stop controls before MIDI and independently of device draft; keep settings/codec representation current and reject stale decode completions."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "b007cc2f87669c481e6c7863dabcdb7405e95f8e",
+      "resultBlob": "ef910496119f985a6795f690b5fd5ed9486ea97c",
+      "description": "Expose local file reference/encoded/stop controls before MIDI and independently of device draft; keep settings/codec representation current and reject stale decode completions."
     }
   ]
 }
