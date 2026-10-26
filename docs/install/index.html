@@ -459,20 +459,20 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 
 
   <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
-    <div class="prep-top"><div><div class="step-kicker">Your loops / ready to listen</div><h2 id="prep-title">Prepare a sample</h2><p>Choose a loop, shape its storage quality, then hear the difference.</p></div><span class="prep-badge">No keyboard needed</span></div>
+    <div class="prep-top"><div><div class="step-kicker">Your loops / ready to listen</div><h2 id="prep-title">Prepare a sample</h2><p>Choose a loop and compare sound quality against the space it uses.</p></div><span class="prep-badge">No keyboard needed</span></div>
     <div class="prep-grid">
       <label class="prep-upload" for="prep-file"><strong>1. Choose your audio</strong><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label>
       <div class="prep-options" role="group" aria-label="Sample processing options">
         <label><input id="prep-bars" type="checkbox" checked>Detect first bar</label><label><input id="prep-trim" type="checkbox">Trim silence</label>
-        <label class="prep-select" for="prep-rate">2. Storage quality<select id="prep-rate"><option value="44100">44.1 kHz · full</option><option value="22050">22.05 kHz · half size</option></select></label>
+        <label class="prep-select" for="prep-rate">2. Sound &amp; space<select id="prep-rate"><option value="44100">Full quality</option><option value="22050">Compact · half size</option></select></label>
         <label class="prep-select" for="prep-grit">Oldschool space saver<select id="prep-grit"><option value="1">Off</option><option value="1.5">Light · 1.5×</option><option value="2">Medium · 2×</option><option value="3">Heavy · 3×</option><option value="4">Max · 4×</option></select></label>
       </div>
     </div>
-    <div class="prep-audio" role="group" aria-label="Compare sample audio"><button class="quiet" type="button" id="prep-reference" disabled>Play reference<small>Original audio · same mono cut</small></button><button type="button" id="prep-encoded" disabled>Play processed<small>Encoded audio · saved playback rate</small></button><button class="quiet" type="button" id="prep-stop">Stop</button></div>
+    <div class="prep-audio" role="group" aria-label="Compare sample audio"><button class="quiet" type="button" id="prep-reference" disabled>Play reference<small>Original audio · same cut</small></button><button type="button" id="prep-encoded" disabled>Play processed<small>Your processing settings</small></button><button class="quiet" type="button" id="prep-stop">Stop</button></div>
     <p id="prep-status" role="status" aria-live="polite">Choose a file to enable listening. Your audio stays in this browser.</p>
-    <p class="prep-detail">44.1 → 22.05 kHz stores half as many samples with a matching playback rate. Duration and pitch stay the same at the original tempo; high frequencies become softer. Oldschool reduces the rate further.</p>
-    <details class="prep-detail"><summary>About the audio comparison</summary><p>Reference uses your original audio in mono, with the same trim and bar cut. Processed plays the saved ADPCM at its saved rate. Both are peak normalized; loudness may differ. Rate reduction does not stretch time independently. BREAK tempo, pitch and effects are not included.</p></details>
-    <p class="prep-detail">Ready to put loops on your keyboard? <a href="#samples">Open device sample management</a> to read slots, add loops and review before sending. This preview does not change device samples.</p>
+    <p class="prep-detail">Full quality keeps more high-end detail. Compact fits more audio; Oldschool trades more detail for extra space and texture.</p>
+    <details class="prep-detail" id="prep-details"><summary>How the comparison works</summary><p id="prep-technical"></p><p>Compact stores audio at 22.05 kHz instead of 44.1 kHz: half as many samples with a matching playback rate. Oldschool reduces the rate further. Duration and pitch stay the same at the original tempo; this is not independent time stretching. Space saved is compared with the same cut at clean 44.1 kHz.</p><p>Reference uses the original audio in mono, with the same trim and bar cut. Processed plays the saved ADPCM at its saved rate. Both are peak normalized; loudness may differ. BREAK tempo, pitch and effects are not included.</p></details>
+    <p class="prep-detail"><a href="#samples" id="prep-manage">Import samples to your keyboard on this page ↓</a><br>Connect below to read slots, add loops and review before sending. Listening here does not change your keyboard.</p>
   </section>
 
   <section id="samples-panel" aria-label="Sample workspace" hidden><iframe id="sample-frame" title="Import break loops, back up or restore sample slots" src="../breaks/?embedded=1" allow="midi"></iframe><p class="small"><a href="../breaks/">Open sample tools separately</a> if this panel does not load.</p></section>
@@ -2883,7 +2883,7 @@ navigateWorkspace();
   };
   const buttons = enabled => { el("reference").disabled = el("encoded").disabled = !enabled; };
   function prepare() {
-    stop(); prepared = null; buttons(false);
+    stop(); prepared = null; buttons(false); el("technical").textContent = "";
     if (!source) return;
     try {
       prepared = prepareLoopImport(source.x, source.rate, {
@@ -2891,13 +2891,14 @@ navigateWorkspace();
         storageRate: Number(el("rate").value), gritFactor: Number(el("grit").value)
       });
       const l = prepared;
-      el("status").textContent = `${source.name} · ${(l.n / l.rate).toFixed(3)} s · ${l.rate.toLocaleString()} Hz saved rate · ${(l.adpcm.length / 1024).toFixed(1)} KB encoded · ${(100 * l.savedBytes / l.baselineBytes).toFixed(0)}% less space than clean 44.1 kHz. Ready to compare.`;
+      el("status").textContent = `${source.name} · ${(l.n / l.rate).toFixed(2)} s · ${(l.adpcm.length / 1024).toFixed(1)} KB · ${(100 * l.savedBytes / l.baselineBytes).toFixed(0)}% space saved`;
+      el("technical").textContent = `${l.rate.toLocaleString()} Hz saved playback rate · ${l.adpcm.length.toLocaleString()} bytes ADPCM · ${l.savedBytes.toLocaleString()} bytes saved.`;
       buttons(true);
     } catch (e) { el("status").textContent = `Could not prepare audio: ${e.message || e}`; }
   }
   el("file").addEventListener("change", async () => {
     const current = ++serial, file = el("file").files[0];
-    stop(); source = prepared = null; buttons(false);
+    stop(); source = prepared = null; buttons(false); el("technical").textContent = "";
     if (!file) { el("status").textContent = "Choose a file to enable listening. Your audio stays in this browser."; return; }
     el("status").textContent = `Reading ${file.name}…`;
     try {
