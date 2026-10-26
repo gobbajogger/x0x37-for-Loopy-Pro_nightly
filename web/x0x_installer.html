@@ -421,6 +421,15 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 @media(max-width:360px){.feature-grid figure{grid-template-columns:1fr}.feature-grid .ui-illustration{width:176px}}
 .screen-link{display:block;width:fit-content;max-width:100%;border-radius:3px}.screen-link:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 @media(max-width:760px){.workspace-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.workspace-nav a,.workspace-nav a:last-child{font-size:13px;line-height:1.3;min-height:48px;white-space:normal;align-content:center}.workspace-nav a:last-child{grid-column:auto}.workspace-nav a[aria-current]{border-bottom:2px solid var(--accent)}}
+
+/* Local sample preparation is always available, before any device connection. */
+.sample-prep{margin:0 0 28px;padding:24px;border:1px solid var(--rule);border-radius:16px;background:linear-gradient(130deg,#19251f,#12191c);scroll-margin-top:20px}
+.sample-prep .prep-top{display:flex;justify-content:space-between;gap:16px;align-items:start}.sample-prep h2{margin:3px 0 8px;font-size:24px;letter-spacing:-.03em}.sample-prep p{margin:0 0 12px;font-size:14px;color:var(--dim)}
+.prep-badge{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap;border:1px solid #536443;padding:5px 9px;border-radius:20px}
+.prep-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}.prep-upload{display:block;padding:16px;border:1px dashed #668050;border-radius:10px;background:#0d1511}.prep-upload strong{display:block;margin-bottom:8px}.sample-prep input[type=file]{display:block;max-width:100%;width:100%;font:inherit;font-size:13px;color:var(--fg)}.sample-prep input::file-selector-button{min-height:44px;padding:8px 12px;margin-right:10px;border:0;border-radius:7px;background:var(--accent);color:#17200f;font-weight:650;cursor:pointer}
+.prep-options{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}.prep-options label{font-size:13px;display:flex;align-items:center;gap:7px;min-height:44px}.prep-options .prep-select{display:block}.prep-options select{display:block;width:100%;min-height:44px;margin-top:6px;padding:8px;border:1px solid var(--rule);border-radius:7px;background:#101719;color:var(--fg);font:inherit}.prep-options input{accent-color:var(--accent)}
+.prep-audio{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:16px}.prep-audio button{min-height:54px;text-align:left}.sample-prep #prep-encoded{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;font-weight:650}.prep-audio small{display:block;font-size:11px;font-weight:400;opacity:.8}.sample-prep .prep-detail{margin:12px 0 0;font-size:12px;line-height:1.55}.sample-prep #prep-status{color:var(--fg);margin-top:12px;overflow-wrap:anywhere}.sample-prep a{color:var(--accent)}.sample-prep button:disabled{opacity:.48}.sample-prep :is(input,select,button,a):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:700px){.sample-prep{padding:18px}.prep-grid{grid-template-columns:1fr;gap:12px}.sample-prep .prep-top{display:block}.prep-badge{display:inline-block;margin-bottom:10px}.prep-audio{grid-template-columns:1fr 1fr}.prep-audio button:last-child{grid-column:1/-1;min-height:44px;text-align:center}.sample-prep h2{font-size:22px}}
 </style>
 </head>
 <body>
@@ -447,6 +456,24 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 
 
   <p id="workspace-message" role="status" aria-live="polite"></p>
+
+
+  <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
+    <div class="prep-top"><div><div class="step-kicker">Your loops / ready to listen</div><h2 id="prep-title">Prepare a sample</h2><p>Choose a loop, shape its storage quality, then hear the difference.</p></div><span class="prep-badge">No keyboard needed</span></div>
+    <div class="prep-grid">
+      <label class="prep-upload" for="prep-file"><strong>1. Choose your audio</strong><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label>
+      <div class="prep-options" role="group" aria-label="Sample processing options">
+        <label><input id="prep-bars" type="checkbox" checked>Detect first bar</label><label><input id="prep-trim" type="checkbox">Trim silence</label>
+        <label class="prep-select" for="prep-rate">2. Storage quality<select id="prep-rate"><option value="44100">44.1 kHz · full</option><option value="22050">22.05 kHz · half size</option></select></label>
+        <label class="prep-select" for="prep-grit">Oldschool space saver<select id="prep-grit"><option value="1">Off</option><option value="1.5">Light · 1.5×</option><option value="2">Medium · 2×</option><option value="3">Heavy · 3×</option><option value="4">Max · 4×</option></select></label>
+      </div>
+    </div>
+    <div class="prep-audio" role="group" aria-label="Compare sample audio"><button class="quiet" type="button" id="prep-reference" disabled>Play reference<small>Original audio · same mono cut</small></button><button type="button" id="prep-encoded" disabled>Play processed<small>Encoded audio · saved playback rate</small></button><button class="quiet" type="button" id="prep-stop">Stop</button></div>
+    <p id="prep-status" role="status" aria-live="polite">Choose a file to enable listening. Your audio stays in this browser.</p>
+    <p class="prep-detail">44.1 → 22.05 kHz stores half as many samples with a matching playback rate. Duration and pitch stay the same at the original tempo; high frequencies become softer. Oldschool reduces the rate further.</p>
+    <details class="prep-detail"><summary>About the audio comparison</summary><p>Reference uses your original audio in mono, with the same trim and bar cut. Processed plays the saved ADPCM at its saved rate. Both are peak normalized; loudness may differ. Rate reduction does not stretch time independently. BREAK tempo, pitch and effects are not included.</p></details>
+    <p class="prep-detail">Ready to put loops on your keyboard? <a href="#samples">Open device sample management</a> to read slots, add loops and review before sending. This preview does not change device samples.</p>
+  </section>
 
   <section id="samples-panel" aria-label="Sample workspace" hidden><iframe id="sample-frame" title="Import break loops, back up or restore sample slots" src="../breaks/?embedded=1" allow="midi"></iframe><p class="small"><a href="../breaks/">Open sample tools separately</a> if this panel does not load.</p></section>
   <section id="projects-panel" aria-label="Songs and projects workspace" hidden><iframe id="project-frame" title="Import or export a whole song project; reset project while keeping samples" src="../projects/?embedded=1" allow="midi"></iframe><p class="small"><a href="../projects/">Open Songs &amp; projects separately</a> if this panel does not load.</p></section>
@@ -1560,6 +1587,78 @@ navigateWorkspace();
     // Soft probe without prompting until Connect, unless the browser already granted MIDI.
   }
 })();
+// Local audition only: reuses the importer's preparation and saved ADPCM path.
+// No MIDI access, slot state or device writes are involved.
+{
+  const el = id => document.getElementById("prep-" + id);
+  let source = null, prepared = null, serial = 0, audio = null, node = null, playSerial = 0;
+  const stop = () => {
+    playSerial++;
+    const old = node; node = null;
+    if (old) { try { old.stop(); } catch (_) {} old.disconnect(); }
+  };
+  const buttons = enabled => { el("reference").disabled = el("encoded").disabled = !enabled; };
+  function prepare() {
+    stop(); prepared = null; buttons(false);
+    if (!source) return;
+    try {
+      prepared = prepareLoopImport(source.x, source.rate, {
+        bars: el("bars").checked, trim: el("trim").checked,
+        storageRate: Number(el("rate").value), gritFactor: Number(el("grit").value)
+      });
+      const l = prepared;
+      el("status").textContent = `${source.name} · ${(l.n / l.rate).toFixed(3)} s · ${l.rate.toLocaleString()} Hz saved rate · ${(l.adpcm.length / 1024).toFixed(1)} KB encoded · ${(100 * l.savedBytes / l.baselineBytes).toFixed(0)}% less space than clean 44.1 kHz. Ready to compare.`;
+      buttons(true);
+    } catch (e) { el("status").textContent = `Could not prepare audio: ${e.message || e}`; }
+  }
+  el("file").addEventListener("change", async () => {
+    const current = ++serial, file = el("file").files[0];
+    stop(); source = prepared = null; buttons(false);
+    if (!file) { el("status").textContent = "Choose a file to enable listening. Your audio stays in this browser."; return; }
+    el("status").textContent = `Reading ${file.name}…`;
+    try {
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      let decoded;
+      try { decoded = readWav(bytes); }
+      catch (_) {
+        const ctx = new OfflineAudioContext(1, 1, 44100);
+        const buffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
+        const x = new Float32Array(buffer.length);
+        for (let ch = 0; ch < buffer.numberOfChannels; ch++) {
+          const data = buffer.getChannelData(ch);
+          for (let i = 0; i < x.length; i++) x[i] += data[i] / buffer.numberOfChannels;
+        }
+        decoded = { x, rate: buffer.sampleRate };
+      }
+      if (current !== serial) return;
+      source = { x: Array.from(decoded.x), rate: decoded.rate, name: file.name }; prepare();
+    } catch (e) { if (current === serial) el("status").textContent = `Could not read audio: ${e.message || e}. Choose another file.`; }
+  });
+  for (const id of ["bars", "trim", "rate", "grit"]) el(id).addEventListener("change", prepare);
+  async function play(reference) {
+    if (!prepared) return;
+    stop(); const current = playSerial, loop = prepared;
+    try {
+      if (!audio) audio = new AudioContext();
+      if (audio.state === "suspended") await audio.resume();
+      if (current !== playSerial) return;
+      const samples = reference ? Float32Array.from(loop.reference) : loopPreviewPcm(imaDecode(loop.adpcm, loop.n), loop.rate, false).samples;
+      const rate = reference ? loop.referenceRate : loop.rate;
+      const buffer = audio.createBuffer(1, samples.length, RATE); buffer.copyToChannel(samples, 0);
+      const next = audio.createBufferSource(); next.buffer = buffer; next.playbackRate.value = rate / RATE;
+      next.connect(audio.destination); node = next;
+      next.onended = () => { if (node === next) node = null; next.disconnect(); };
+      next.start();
+    } catch (e) { el("status").textContent = `Playback unavailable: ${e.message || e}`; }
+  }
+  el("reference").addEventListener("click", () => play(true));
+  el("encoded").addEventListener("click", () => play(false));
+  el("stop").addEventListener("click", stop);
+  window.addEventListener("pagehide", stop);
+  document.addEventListener("visibilitychange", () => { if (document.hidden) stop(); });
+  window.addEventListener("hashchange", stop);
+}
+
 </script>
 </body>
 </html>

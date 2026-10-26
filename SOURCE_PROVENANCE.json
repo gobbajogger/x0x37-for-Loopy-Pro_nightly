@@ -3,7 +3,7 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
+    "web/x0x_installer.html": "f80501c00241f27403b019a5484b58ac300027cb",
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
@@ -285,6 +285,13 @@
       "sourceBaseCommit": "365d967fd007df131883fc4010b7b4705f85de0b",
       "resultBlob": "a876b35220251d8bdff2398b69c2b30f522d8ba3",
       "description": "EC-012: reject invalid/overlapping SMP_INFO flash ranges and incomplete extensions before sample-risk and OTA decisions; preserve valid legacy maps and empty slots."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "2d9edad4f25b9275a499d1d4b01f88fcc8e91142",
+      "resultBlob": "f80501c00241f27403b019a5484b58ac300027cb",
+      "description": "Always-visible installer local sample upload, processing controls and reference/encoded audition before MIDI; reuse existing rate-compensated importer and ADPCM without changing device operations."
     }
   ]
 }
