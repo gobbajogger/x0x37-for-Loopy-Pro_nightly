@@ -285,8 +285,11 @@ class Link {
     this.input = input; this.output = output; this.wait = null;
     input.onmidimessage = (ev) => {
       const d = ev.data;
-      if (d[0] !== 0xF0 || d[1] !== HDR[0] || d[2] !== HDR[1] || d[3] !== HDR[2] || !this.wait || d[4] !== this.wait.cmd) return;
+      if (d.length < 6 || d[0] !== 0xF0 || d[1] !== HDR[0] || d[2] !== HDR[1] || d[3] !== HDR[2] || d[d.length - 1] !== 0xF7 || !this.wait || d[4] !== this.wait.cmd) return;
       const w = this.wait;
+      // SMP_READ echoes slot + three offset bytes. A delayed retry must not
+      // consume the next chunk's wait, even though both replies use command 16.
+      if (w.readAddress && (d.length < 12 || !w.readAddress.every((a, i) => d[5 + i] === a))) return;
       this.wait = null;
       clearTimeout(w.timer);
       w.resolve([...d.slice(5, d.length - 1)]);
@@ -295,7 +298,7 @@ class Link {
   req(cmd, args, ms = 3000) {
     return new Promise((resolve, reject) => {
       // Own the timer by request identity so a failed send's timeout cannot clear a newer wait.
-      const entry = { cmd, resolve, timer: null };
+      const entry = { cmd, resolve, timer: null, readAddress: cmd === 16 ? args.slice(0, 4) : null };
       entry.timer = setTimeout(() => {
         if (this.wait === entry) this.wait = null;
         reject(new Error("The FM-1 stopped answering."));
