@@ -723,10 +723,15 @@ async function readSlotBytes(link, k, off, n, onPart) {
 }
 
 // slot k as an image (the 512-byte header area, then the data), or null if it is empty. Reads only.
-export async function readSlotImage(link, k, nz, onPart) {
+// Layout-aware callers pass the actual capacity; standalone legacy reads retain the 80 KiB default.
+export async function readSlotImage(link, k, nz, onPart, capacity = SLOT_SIZE) {
   if (!nz) return null;
+  if (!Number.isSafeInteger(capacity) || capacity < SLOT_HDR_AREA)
+    throw new Error(`slot ${k + 1}: invalid sample slot capacity`);
   const area = await readSlotBytes(link, k, 0, SLOT_HDR_AREA), h = parseHeader(area.subarray(0, SLOT_HDR_LEN));
   if (!h) throw new Error(`slot ${k + 1}: occupied sample slot has an invalid header; backup stopped`);
+  if (h.dataLen > capacity - SLOT_HDR_AREA)
+    throw new Error(`slot ${k + 1}: sample data exceeds slot capacity`);
   const data = await readSlotBytes(link, k, SLOT_HDR_AREA, h.dataLen, onPart);
   if (crc32(data) !== h.crc) throw new Error(`slot ${k + 1}: the data read back does not match its CRC`);
   const img = new Uint8Array(SLOT_HDR_AREA + data.length);
@@ -739,7 +744,7 @@ export async function readSlotImage(link, k, nz, onPart) {
 export async function backupSlots(link, onPart) {
   const layout = await readSlotLayout(link), images = [];
   for (let k = 0; k < layout.count; k++)
-    images.push(await readSlotImage(link, k, layout.slots[k].nz, onPart && ((d, n) => onPart(k, d, n))));
+    images.push(await readSlotImage(link, k, layout.slots[k].nz, onPart && ((d, n) => onPart(k, d, n)), slotSize(layout, k)));
   return { layout, images };
 }
 
@@ -766,7 +771,7 @@ export async function restoreMapped(link, todo, images, onPart) {
   for (const { k, j } of todo) await writeSlotImage(link, j, images[k], onPart && ((d, n) => onPart(j, d, n)));
   const after = await readSlotLayout(link);
   for (const { k, j } of todo) {
-    const got = await readSlotImage(link, j, after.slots[j].nz);
+    const got = await readSlotImage(link, j, after.slots[j].nz, undefined, slotSize(after, j));
     if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]))
       throw new Error(`slot ${j + 1}: read back differs from the backup of slot ${k + 1}`);
   }

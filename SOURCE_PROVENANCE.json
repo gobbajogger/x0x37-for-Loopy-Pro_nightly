@@ -7,7 +7,7 @@
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "97f3d6d717cfa6b7f8c35956f106f1edb0354dce",
-    "web/x0x_breaks.js": "031d8265e0386d2085086db577e1669de71c5023",
+    "web/x0x_breaks.js": "f41bf713288560062f09983177ee5089b3c5ab04",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
@@ -530,6 +530,15 @@
       "regressionBlob": "b2686b2dd17de3980aa2e98f7c0df023de8193f3",
       "resultBlob": "031d8265e0386d2085086db577e1669de71c5023",
       "description": "EC020: reject unknown SMP_INFO trailing metadata instead of falling back to guessed legacy sample offsets; preserve genuine legacy replies and existing exact X-extension length/version/range checks."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "094aa3227c0bf512c71f7e0449361cf9886a6223",
+      "regressionCommit": "d143ba139f43322ce5bb1cc2a03a6333a58001c9",
+      "regressionBlob": "75369330d46d0f2648b97a8d577b054945f27aa3",
+      "resultBlob": "f41bf713288560062f09983177ee5089b3c5ab04",
+      "description": "EC021: validate occupied image length against actual slot capacity before data allocation/read; backup and restore readback pass their observed per-slot capacities, with unchanged standalone legacy default and progress argument order."
     }
   ]
 }
