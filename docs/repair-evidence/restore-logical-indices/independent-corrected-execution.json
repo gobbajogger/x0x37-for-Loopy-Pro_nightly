@@ -1,0 +1,83 @@
+{
+  "heads": {
+    "restore-integrity": {
+      "head": "e4fd6fd200bedd6a9a789441b3e283a7f65b729d",
+      "tree": "8e7fc8c242241d13ceba68992ca291d4723b163e",
+      "status": ""
+    },
+    "restore-site": {
+      "head": "a22c9bbef2ac315154931e9fd612b903e04cc5d5",
+      "tree": "b86b2418acdfc7d2a3a1c686db471955b91134d1",
+      "status": ""
+    }
+  },
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "node": "v24.14.1",
+  "checks": [
+    {
+      "name": "corrected-firmware-race",
+      "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-integrity",
+      "argv": [
+        "node",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-review/snapshot-race.mjs",
+        "file:///Users/mac/Documents/Codex/2026-10-26/task-6/restore-integrity/web/x0x_breaks.js"
+      ],
+      "exit": 0,
+      "sha256": "190ecd348beac209822d45165085a180e94060231b2e9c0ae6420ee22825e4b5"
+    },
+    {
+      "name": "corrected-site-race",
+      "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-site",
+      "argv": [
+        "node",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-review/snapshot-race.mjs",
+        "file:///Users/mac/Documents/Codex/2026-10-26/task-6/restore-site/web/x0x_breaks.js"
+      ],
+      "exit": 0,
+      "sha256": "c94218b2d4fb127a6104f2c169f4a2c41624c2f81a05d86955fae25db6a274de"
+    },
+    {
+      "name": "corrected-firmware-production",
+      "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-integrity",
+      "argv": [
+        "node",
+        "--test",
+        "web/test_migration_indices.mjs"
+      ],
+      "exit": 0,
+      "sha256": "e67a9b3ad350ee15ea5754fe5764627f5a176b664a9cd632f177582b0541befe"
+    },
+    {
+      "name": "corrected-site-production",
+      "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-site",
+      "argv": [
+        "node",
+        "--test",
+        "tests/edge-migration-logical-indices.test.mjs"
+      ],
+      "exit": 0,
+      "sha256": "3cf8e004492bfad66a92125405d329c6bf96753b43c1026f79d1267392a7d8db"
+    },
+    {
+      "name": "corrected-site-parity",
+      "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-site",
+      "argv": [
+        "node",
+        "scripts/build-preview.mjs",
+        "--check"
+      ],
+      "exit": 0,
+      "sha256": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41"
+    },
+    {
+      "name": "corrected-site-provenance",
+      "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/restore-site",
+      "argv": [
+        "node",
+        "tests/nightly-preview.test.mjs"
+      ],
+      "exit": 0,
+      "sha256": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337"
+    }
+  ]
+}

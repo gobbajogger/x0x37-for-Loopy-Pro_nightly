@@ -1,0 +1,14 @@
+{
+  "firmware": {
+    "all_receipt_log_digests_match": true,
+    "number_of_logs": 22,
+    "full_npm_followup": "48 edge PASS / 0 FAIL (author execution, inspected not rerun)",
+    "headless": "DENIED_BEFORE_EXECUTION_NOT_RETRIED"
+  },
+  "site": {
+    "all_receipt_log_digests_match": true,
+    "number_of_logs": 22,
+    "full_npm_followup": "48 edge PASS / 0 FAIL (author execution, inspected not rerun)",
+    "headless": "DENIED_BEFORE_EXECUTION_NOT_RETRIED"
+  }
+}
