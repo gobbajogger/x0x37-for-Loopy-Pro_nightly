@@ -702,13 +702,12 @@ function ctlProblem(img) {
 
 // the slot map record (fm1pkg_make.slotmap_of): magic, u32 count, count x (u32 offset, u32 size), CRC-32
 const CTL_SLOTMAP = [..."X0X-SLOTMAP-1\0\0\0"].map((c) => c.charCodeAt(0));
-function pkHasSlotMap(d) {
-  outer: for (let i = d.indexOf(CTL_SLOTMAP[0]); i >= 0 && i + 24 <= d.length; i = d.indexOf(CTL_SLOTMAP[0], i + 1)) {
-    for (let j = 1; j < CTL_SLOTMAP.length; j++) if (d[i + j] !== CTL_SLOTMAP[j]) continue outer;
-    const n = pkU32(d, i + 16), end = i + 20 + 8 * n;
-    return n <= 16 && end + 4 <= d.length && pkU32(d, end) === pkCrc32(d, i, end);
-  }
-  return false;
+function pkHasSlotMap(flash) {
+  const map = 0x9CF00; // Fixed SMK flash-map address, not a marker elsewhere in package padding.
+  return CTL_SLOTMAP.every((b, j) => flash[map + j] === b) && pkU32(flash, map + 16) === 3 &&
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]].every(([off, size], j) =>
+      pkU32(flash, map + 20 + j * 8) === off && pkU32(flash, map + 24 + j * 8) === size) &&
+    pkU32(flash, map + 44) === pkCrc32(flash, map, map + 44);
 }
 const CTL_NO_BLOCK = "the app code of this package goes into the Bluetooth block (flash 0x8B000-0x9AFFF). "
   + "It is an X0X from before the block. It takes no controller image (install it without one)";
@@ -776,7 +775,7 @@ function pkOpenController(logical, strict = false) {
   // the block must be free: empty, a controller image, or a package with the slot map record (the build
   // limits the app code since then). An older X0X has app code there: writing it would stop the unit.
   const blockFree = area.subarray(lo, lo + CTL_SIZE).every((b) => b === 0xFF) || pkU32(area, lo) === 0x43423058
-    || pkHasSlotMap(lg);
+    || pkHasSlotMap(flash);
   if (!blockFree) throw new Error(CTL_NO_BLOCK);
   return {lg, hdr, count, lst, i, e, off, size, flash, key, blk, n, area, slot, lo};
 }
@@ -785,11 +784,7 @@ function pkOpenController(logical, strict = false) {
 // Empty, legacy code-owned, corrupt and unknown controller blocks fail closed.
 function controllerOf(logical) {
   const {area, lo, flash} = pkOpenController(logical, true);
-  const map = 0x9CF00; // Current SMK flash layout, independent of arbitrary matching payloads.
-  if (!CTL_SLOTMAP.every((b,j) => flash[map+j] === b) || pkU32(flash,map+16) !== 3 ||
-      ![[0xC2000,0x14000],[0xD6000,0x1E000],[0xB0000,0xB000]].every(([off,size],j) =>
-        pkU32(flash,map+20+j*8) === off && pkU32(flash,map+24+j*8) === size) ||
-      pkU32(flash,map+44) !== pkCrc32(flash,map,map+44))
+  if (!pkHasSlotMap(flash))
     throw new Error("bundled controller requires current SMK slot map");
   const block = area.slice(lo, lo + CTL_SIZE);
   if (block.length !== CTL_SIZE || block.every(b => b === 0xFF)) throw new Error("Bluetooth controller is missing from this package");
@@ -1470,6 +1465,7 @@ function asciiName(b) {
 function parseInfo(r) {
   if (r.length < 2) throw new Error("short SMP_INFO reply");
   const count = r[0], size = r[1] * 1024, slots = [];
+  if (count < 1) throw new Error("invalid SMP_INFO slot count");
   let i = 2;
   for (let k = 0; k < count; k++) {
     const nz = r[i], j = r.indexOf(0, i + 1);
