@@ -3,7 +3,7 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "bac88bee2c71215d07224e10475bae2aa97fa984",
+    "web/x0x_installer.html": "f4ba512ecfb911a97de74416e1d3516e2d2dc4f5",
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
@@ -326,6 +326,13 @@
       "sourceBaseCommit": "d40fa088f65986e130e94bac8ab6b10a5618257a",
       "resultBlob": "dedd45cdd942bba2bb4e03e33603b6d8069242e2",
       "description": "EC015: reject invalid occupied sample headers before accepting a backup or starting OTA; retain null for known empty slots."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "08aed72e1b96db73dea08edca09c83ba22880e9c",
+      "resultBlob": "f4ba512ecfb911a97de74416e1d3516e2d2dc4f5",
+      "description": "Owner placement correction: one existing local sample preparation block below installer controls, scoped to firmware task and absent from Songs & Projects; audio and device guards preserved."
     }
   ]
 }
