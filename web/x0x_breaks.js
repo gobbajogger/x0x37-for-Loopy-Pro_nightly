@@ -418,7 +418,7 @@ export function readArchive(b) {
     const equalArray = (a, expected) => Array.isArray(a) && a.length === expected.length && a.every((x, i) => x === expected[i]);
     if (e.name !== h.name || e.zones !== h.nz || e.data_len !== h.dataLen || e.data_crc32 !== h.crc ||
         !equalArray(e.samples, h.zones.map((z) => z.n)) || !equalArray(e.rates, h.zones.map((z) => z.rate)))
-      bad(`Slot ${e.slot} in the backup has metadata that does not match its image.`);
+      bad(`Slot ${e.slot} metadata does not match its original header.`);
     images.push(img);
     used += img.length;
   }
