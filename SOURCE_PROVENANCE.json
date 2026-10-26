@@ -3,7 +3,7 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
+    "web/x0x_installer.html": "bac88bee2c71215d07224e10475bae2aa97fa984",
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
@@ -299,6 +299,26 @@
       "sourceBaseCommit": "eca66eb8536b015361edc35c50197d7b6b784e0c",
       "resultBlob": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
       "description": "EC014: require the exact CRC-valid SMK slot map at its flash-map address before controller insertion can overwrite a nonempty legacy app region; share admission with bundled readback."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "2d9edad4f25b9275a499d1d4b01f88fcc8e91142",
+      "resultBlob": "f80501c00241f27403b019a5484b58ac300027cb",
+      "description": "Always-visible installer local sample upload, processing controls and reference/encoded audition before MIDI; reuse existing rate-compensated importer and ADPCM without changing device operations."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d03a3a332fb729642f156935617fcafd182e894a",
+      "resultBlob": "26ebfbf459af1451472489e7c21a36e72aa93785",
+      "description": "Owner preview refinement: emphasize sound quality and space, show filename/duration/savings, collapse saved-rate/ADPCM explanation, explicitly identify sample import as same installer page. Local playback and all device gates retained."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceBaseCommit": "dceeb1416e3266be32beb670d501f979737cdf2e",
+      "resultBlob": "bac88bee2c71215d07224e10475bae2aa97fa984",
+      "description": "Owner-requested frontend-design rework: compact sampler workbench, real selected-loop waveform, listening transport, processing bank and same-page import footer. Processing and device gates retained."
     }
   ]
 }
