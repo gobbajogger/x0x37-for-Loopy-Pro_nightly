@@ -8,6 +8,9 @@ import assert from 'node:assert/strict';
 import { crc32, userSlotRaw, pack78, readArchive, parseInfo, flashMap, atRisk,
   installKeepingSlots } from '../web/x0x_breaks.js';
 
+import { makePackage } from './fixtures/bundled-synthetic.mjs';
+import { logicalImage } from '../web/fm1pkg.js';
+
 const enc14 = x => [x & 127, (x >> 7) & 127];
 const OLD_SLOT_A = 0xC2000;
 const OLD_SLOT_B = 0xD6000;
@@ -35,17 +38,7 @@ function sampleImage(name) {
 }
 
 function replacementFirmware() {
-  // The valid, checksummed one-slot map keeps the old first slot and omits
-  // the old second. Both true old offsets are required for the risk analysis.
-  const bytes = new Uint8Array(64);
-  const marker = 'X0X-SLOTMAP-1\0\0\0';
-  for (let i = 0; i < marker.length; i++) bytes[i] = marker.charCodeAt(i);
-  const view = new DataView(bytes.buffer);
-  view.setUint32(16, 1, true);
-  view.setUint32(20, OLD_SLOT_A, true);
-  view.setUint32(24, SLOT_SIZE, true);
-  view.setUint32(28, crc32(bytes.subarray(0, 28)), true);
-  return bytes;
+  return logicalImage(makePackage('pro', {slotMap: [[OLD_SLOT_A, SLOT_SIZE]]}));
 }
 
 async function simulateInstall(secondOffset) {

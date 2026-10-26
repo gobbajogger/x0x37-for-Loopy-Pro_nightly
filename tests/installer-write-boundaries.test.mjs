@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Actual shipping Updater.install/write/resume and installKeepingSlots bodies.
 // Only discovery/serve/MIDI-link boundaries are mocked; no physical-unit claim.
+import { makePackage } from './fixtures/bundled-synthetic.mjs';
+import { logicalImage } from '../web/fm1pkg.js';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Script } from 'node:vm';
@@ -203,8 +205,7 @@ for(const mode of ['positive','name-change','extra-port','archive-error','readba
  const newLayout=()=>({count:1,size:4096,ext:true,slots:[{nz:writes?1:0,off:4096,size:4096,used:writes?1:0}]});
  const {userSlotRaw,crc32}=slotsContext.api;const part=userSlotRaw('test',[{adpcm:new Uint8Array([17]),n:2,rate:44100}],4096);
  const sample=new Uint8Array(512+part.data.length);sample.fill(255);sample.set(part.hdr);sample.set(part.data,512);
- const packageImage=new Uint8Array(1024),v=new DataView(packageImage.buffer),magic='X0X-SLOTMAP-1'+String.fromCharCode(0,0,0);
- for(let i=0;i<magic.length;i++)packageImage[i]=magic.charCodeAt(i);v.setUint32(16,1,true);v.setUint32(20,4096,true);v.setUint32(24,4096,true);v.setUint32(28,crc32(packageImage.subarray(0,28)),true);
+ const packageImage=logicalImage(makePackage('pro',{slotMap:[[4096,4096]]}));
  const io={layout:async link=>{if(link===dev.link)return oldLayout;postReads++;return newLayout();},
   backup:async()=>{events.push('backup');const img=sample.slice();if(mode==='archive-error')img[512]^=1;return{layout:oldLayout,images:[img]};},
   write:async()=>{writes++;events.push('restore');},read:async()=>{const img=sample.slice();if(mode==='readback-mismatch')img[512]^=1;return img;}};
