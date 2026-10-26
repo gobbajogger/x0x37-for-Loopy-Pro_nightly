@@ -33,7 +33,7 @@ async function simulateInstall(info) {
 }
 
 test('baseline: valid two-empty-slot legacy SMP_INFO permits a source-only OTA call', async () => {
-  const info = [2, 80, 0, 0, 0, 0];
+  const info = [2, 80, 0, 0, 0, 0, 0, 0];
   const layout = parseInfo(info);
   assert.equal(layout.count, 2);
   assert.equal(layout.slots.length, 2);
