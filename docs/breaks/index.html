@@ -550,6 +550,8 @@ function parseInfo(r) {
     i = j + 2;
   }
   const ext = r[i] === 0x58;
+  // Unknown metadata after the descriptors cannot become a legacy preservation map.
+  if (i < r.length && !ext) throw new Error("unknown SMP_INFO trailing metadata");
   if (ext && (r[i + 1] !== 1 || r.length !== i + 2 + 6 * count))
     throw new Error("truncated or unsupported SMP_INFO flash-map extension");
   if (ext) {

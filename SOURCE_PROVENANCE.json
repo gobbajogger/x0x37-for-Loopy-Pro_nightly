@@ -7,7 +7,7 @@
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "97f3d6d717cfa6b7f8c35956f106f1edb0354dce",
-    "web/x0x_breaks.js": "244a50032925950e7b88e219172b9f4b389c2233",
+    "web/x0x_breaks.js": "031d8265e0386d2085086db577e1669de71c5023",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
@@ -521,6 +521,15 @@
         "web/x0x_installer.html": "aeb0ae959a40a10e274c28186db8305fd9305478"
       },
       "description": "EC019: full and resumed install share bounded fresh application return/marker confirmation under same-family and sole-observable-port guards; caller completion cannot be inferred from loader ACK or pre-app progress. Matching identity marker is not flash hash or unit serial proof; foreign mismatch policy remains explicit."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "88a5e5582f02e5512775ea351a6a7ac76fd06194",
+      "regressionCommit": "39842ee457085cad2d527aa04caf30ef3fcd2b2a",
+      "regressionBlob": "b2686b2dd17de3980aa2e98f7c0df023de8193f3",
+      "resultBlob": "031d8265e0386d2085086db577e1669de71c5023",
+      "description": "EC020: reject unknown SMP_INFO trailing metadata instead of falling back to guessed legacy sample offsets; preserve genuine legacy replies and existing exact X-extension length/version/range checks."
     }
   ]
 }
