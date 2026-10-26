@@ -518,30 +518,57 @@ function makeArchive(layout, images, created) {
 // archive bytes -> {meta, images}; throws on any damage (x0x_slots.read_archive)
 function readArchive(b) {
   const bad = (m) => { throw new Error(m); };
+  const uint = (x, max = Number.MAX_SAFE_INTEGER) => Number.isSafeInteger(x) && x >= 0 && x <= max;
   if (b.length < 20 || String.fromCharCode(...b.subarray(0, 8)) !== ARCH_MAGIC) bad("This is not an .x0xslots backup.");
   const v = new DataView(b.buffer, b.byteOffset, b.byteLength);
   if (v.getUint32(b.length - 4, true) !== crc32(b.subarray(0, b.length - 4))) bad("The backup file is damaged (CRC).");
-  if (v.getUint16(8, true) !== 1) bad("This backup has a newer format.");
-  const n = v.getUint32(12, true), meta = JSON.parse(new TextDecoder().decode(b.subarray(16, 16 + n)));
-  // Fail closed on CRC-valid but noncanonical slot identity/count (matches tools/x0x_slots.read_archive).
-  // planRestore maps images by array index, so wrong/duplicate labels would restore to the wrong slot.
+  if (v.getUint16(8, true) !== 1 || v.getUint16(10, true) !== 0) bad("This backup has an unsupported format.");
+  const n = v.getUint32(12, true), base = 16 + n;
+  if (base > b.length - 4) bad("The backup metadata exceeds the file length.");
+  const meta = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(b.subarray(16, base)));
+  // Both archive writers serialize one contiguous image per populated slot, in slot order.
+  // Require that exact layout: a valid outer CRC alone cannot establish which data a slot owns.
   const slots = meta && meta.slots;
-  if (!Array.isArray(slots) || typeof meta.count !== "number" || meta.count !== slots.length)
-    bad("The backup file has a damaged slot list.");
+  if (!meta || meta.format !== "x0xslots" || meta.version !== 1 || !Array.isArray(slots) ||
+      !uint(meta.count) || meta.count !== slots.length || !uint(meta.size) || meta.size < SLOT_HDR_AREA)
+    bad("The backup file has invalid slot metadata.");
+  const imageFields = ["name", "zones", "samples", "rates", "data_len", "data_crc32", "offset", "length", "crc32"];
+  const images = [];
+  let used = 0;
   for (let k = 0; k < slots.length; k++) {
     const e = slots[k];
-    if (!e || typeof e !== "object" || typeof e.slot !== "number" || e.slot !== k + 1)
+    if (!e || typeof e !== "object" || Array.isArray(e) || e.slot !== k + 1)
       bad(`The backup file has a bad slot number for entry ${k + 1}.`);
-  }
-  const base = 16 + n, images = [];
-  for (const e of slots) {
-    if (e.empty) { images.push(null); continue; }
-    const img = b.slice(base + e.offset, base + e.offset + e.length), h = parseHeader(img);
-    if (img.length !== e.length || crc32(img) !== e.crc32) bad(`Slot ${e.slot} in the backup is damaged.`);
+    if (!uint(e.size) || e.size < SLOT_HDR_AREA || ("flash" in e && !uint(e.flash)) || typeof e.empty !== "boolean")
+      bad(`Slot ${e.slot} in the backup has invalid metadata.`);
+    if (e.empty) {
+      if (imageFields.some((f) => f in e)) bad(`Slot ${e.slot} has conflicting empty/image metadata.`);
+      images.push(null);
+      continue;
+    }
+    if (!uint(e.offset) || e.offset !== used || !uint(e.length) || e.length < SLOT_HDR_AREA ||
+        e.length > b.length - 4 - base - used || e.length > e.size || !uint(e.crc32, 0xFFFFFFFF))
+      bad(`Slot ${e.slot} in the backup has invalid image range metadata.`);
+    const img = b.slice(base + used, base + used + e.length), h = parseHeader(img);
+    if (crc32(img) !== e.crc32) bad(`Slot ${e.slot} in the backup is damaged.`);
     if (!h || img.length !== SLOT_HDR_AREA + h.dataLen || crc32(img.subarray(SLOT_HDR_AREA)) !== h.crc)
       bad(`Slot ${e.slot} in the backup is not a valid slot.`);
+    // Match the device scanner before restore is allowed to erase a destination.
+    const iv = new DataView(img.buffer, img.byteOffset, img.byteLength);
+    for (let z = 0; z < h.nz; z++) {
+      const o = 32 + z * 28, zone = h.zones[z], q16 = iv.getUint32(o + 16, true);
+      if (zone.off > h.dataLen || Math.ceil(zone.n / 2) > h.dataLen - zone.off ||
+          img[o + 24] > 88 || q16 === 0 || q16 > (4 << 16))
+        bad(`Slot ${e.slot} in the backup has an invalid sample zone.`);
+    }
+    const equalArray = (a, expected) => Array.isArray(a) && a.length === expected.length && a.every((x, i) => x === expected[i]);
+    if (e.name !== h.name || e.zones !== h.nz || e.data_len !== h.dataLen || e.data_crc32 !== h.crc ||
+        !equalArray(e.samples, h.zones.map((z) => z.n)) || !equalArray(e.rates, h.zones.map((z) => z.rate)))
+      bad(`Slot ${e.slot} metadata does not match its original header.`);
     images.push(img);
+    used += img.length;
   }
+  if (base + used !== b.length - 4) bad("The backup contains unreferenced sample data.");
   return { meta, images };
 }
 

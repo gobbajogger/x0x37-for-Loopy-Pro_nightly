@@ -1,0 +1,72 @@
+{
+  "implementation_commit": "e4e3d42c3573e73629c03b0a1dd819bc47c80c7e",
+  "base": "2b11200c8cc69b7f80d8cd2ccef968adb6cc3a75",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "node": "v24.14.1",
+  "npm": "11.11.0",
+  "playwright": "1.60.0",
+  "chromium": "148.0.7778.96",
+  "browser_tests": "headless, synthetic bytes, mocked MIDI",
+  "baseline_edge": [
+    "\u2139 tests 43",
+    "\u2139 suites 0",
+    "\u2139 pass 18",
+    "\u2139 fail 25",
+    "\u2139 cancelled 0",
+    "\u2139 skipped 0",
+    "\u2139 todo 0",
+    "\u2139 duration_ms 73.888833"
+  ],
+  "final_edge_pass": 43,
+  "checks": {
+    "npm_build": 0,
+    "npm_test": 0,
+    "browser_admission": {
+      "exit": 0,
+      "checks": 679
+    },
+    "bundled_browser": {
+      "exit": 0,
+      "checks": 61
+    },
+    "history_response": {
+      "exit": 0,
+      "checks": 34
+    },
+    "workspace_browser": {
+      "exit": 0,
+      "checks": 29
+    },
+    "presentation_browser": {
+      "exit": 0,
+      "checks": 106
+    },
+    "project_workspace_browser": {
+      "exit": 0,
+      "checks": 63
+    },
+    "python_writer_compatibility": 0
+  },
+  "source_blobs": {
+    "web/x0x_breaks.js": "360dcfccd70b0f7e521b47f83ad196743a4f7f1c",
+    "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978",
+    "tests/browser-admission.py": "12bb25e84984f0cfb94ebb33aa13e826445368e9",
+    "tests/bundled-browser.py": "186679c02c96d25e80d5180596f1460419ea2817"
+  },
+  "log_sha256": {
+    "baseline-edge.log": "c7c3b12d61016e7bfae2169e05697e3b039a06e95d622558e458c0c63fdeec24",
+    "browser-admission-before-fixture-repair.log": "7c2110f44e22677313790a5a61251b0b31cd8facab808c777e88c2d0d50ed95b",
+    "browser-admission.log": "2440260d658ee891082d46d8f8dbcb0e7996fad3257f480a6ac3c678f552a6e8",
+    "bundled-browser-before-fixture-repair.log": "32e60f725ceec9abfc8a472527bfa87c246269a6128cce731eff0d8d183766dd",
+    "bundled-browser.log": "91e1428582fa28227bbdc617cd9c1e2c5565cfe5dac152a57375c66069abf152",
+    "history-response.log": "94bb04b749794664defef30f0f378abe28b60d2b425d0d95de049facd8b9c6d7",
+    "independent-edge.log": "a6cf4cf47aa5644d85d27873e34be5d52ec9e5d9a41dbd907853d1e9abe1ed99",
+    "independent-generated.log": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41",
+    "independent-python-archive.log": "95e37b18ef9718b10c5c08411aaef153265a51cd522aca6f8ab192c791dfbe91",
+    "npm-test.log": "afa032c0fd28b4100b4efe44a1ce5d46c5b3f411761bd83b6120811c3ab0fb95",
+    "presentation-browser.log": "c6df4363e10246de19f4cc3029d5c96b9cb8222701c31584f4ea8214a5dc7af7",
+    "project-workspace-browser.log": "0fc99167516e410730ea3dbce630306001f1addba0b5b1b592b86b62a50b570f",
+    "python-archive-compat.log": "95e37b18ef9718b10c5c08411aaef153265a51cd522aca6f8ab192c791dfbe91",
+    "workspace-browser.log": "859c1111b979e36233736ff430c08395da21464ef7ad814c2be3560047362d3b"
+  }
+}

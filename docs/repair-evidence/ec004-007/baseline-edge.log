@@ -1,0 +1,950 @@
+✔ baseline: distinct slot images have distinct restore targets (2.211375ms)
+✖ negative: CRC-valid alias of slot 2 to slot 1 must be rejected before any restore (0.992667ms)
+✖ negative: CRC-valid false empty marker must never turn a populated backup slot into CLEAR (0.201209ms)
+✔ tests/edge-archive-duplicate-slot-id.test.mjs (38.209833ms)
+✔ real archive roundtrip retains interspersed empty slots, multizone data and nonzero buffer offset (1.494459ms)
+✔ genuine all-empty archive remains valid and contains no payload (0.0835ms)
+✔ CRC-valid alias is refused before restore (0.357334ms)
+✔ CRC-valid gap is refused before restore (0.155792ms)
+✔ CRC-valid negative offset is refused before restore (0.126667ms)
+✔ CRC-valid fractional length is refused before restore (0.145417ms)
+✔ CRC-valid string offset is refused before restore (0.517084ms)
+✔ CRC-valid out-of-range length is refused before restore (0.099125ms)
+✔ CRC-valid CRC type is refused before restore (0.108834ms)
+✖ CRC-valid false empty is refused before restore (3.120083ms)
+✖ CRC-valid nonboolean empty is refused before restore (0.198042ms)
+✖ CRC-valid empty with display metadata is refused before restore (0.124583ms)
+✖ CRC-valid unreferenced trailing payload is refused before restore (0.12825ms)
+✖ CRC-valid wrong format is refused before restore (0.089458ms)
+✖ CRC-valid wrong metadata version is refused before restore (0.086166ms)
+✔ CRC-valid fractional count is refused before restore (0.090958ms)
+✖ CRC-valid reserved framing flags is refused before restore (0.100167ms)
+✖ CRC-valid source size too small is refused before restore (0.14775ms)
+✖ preview name must agree with embedded image (0.263416ms)
+✖ preview zones must agree with embedded image (0.12775ms)
+✖ preview samples must agree with embedded image (0.122834ms)
+✖ preview rates must agree with embedded image (0.223375ms)
+✖ preview data_len must agree with embedded image (0.119833ms)
+✖ preview data_crc32 must agree with embedded image (0.107375ms)
+✖ false-empty with image fields stripped cannot leave the original payload hidden (0.109666ms)
+✖ CRC-valid image with an out-of-bounds zone is refused (0.173417ms)
+✖ metadata framing cannot run past payload and final CRC (0.435875ms)
+✔ baseline valid backup presents and restores matching sample names (2.749167ms)
+✖ CRC-valid but false sample-name metadata must be rejected before restore confirmation (0.991417ms)
+✔ tests/edge-archive-slot-identity.test.mjs (36.248459ms)
+✔ positive: firmware envelopes echo offsets 0 and 224 for distinct chunks (1.488042ms)
+✖ negative: stale retry offset 0 cannot consume pending offset 224 (7.188583ms)
+✖ negative: wrong-slot echo leaves the matching read wait intact (0.560916ms)
+✔ positive: nonzero slot and high offset with odd final pair padding (0.311333ms)
+✖ negative: truncated echoed address cannot consume the read wait (0.336584ms)
+✖ negative: missing SysEx terminator leaves the matching wait intact (0.308834ms)
+✖ negative: address prefix without payload leaves the matching wait intact (0.22725ms)
+✔ baseline: one matching MIDI acknowledgement resolves before timeout (0.672167ms)
+✔ negative: a thrown send's old timer must not erase a newer live request (0.794291ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 18
+ℹ fail 25
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73.888833
+
+✖ failing tests:
+
+test at tests/edge-archive-aliased-payload.test.mjs:69:1
+✖ negative: CRC-valid alias of slot 2 to slot 1 must be rejected before any restore (0.992667ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception (Error): FAIL_BEFORE_FIX: CRC-valid aliased archive maps sample ONE into both slot 1 and slot 2
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-aliased-payload.test.mjs:71:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-aliased-payload.test.mjs:103:1
+✖ negative: CRC-valid false empty marker must never turn a populated backup slot into CLEAR (0.201209ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception (Error): FAIL_BEFORE_FIX: false empty marker skips existing sample TWO and plans an erase of slot 2
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-aliased-payload.test.mjs:105:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid false empty is refused before restore (3.120083ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid nonboolean empty is refused before restore (0.198042ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid empty with display metadata is refused before restore (0.124583ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid unreferenced trailing payload is refused before restore (0.12825ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid wrong format is refused before restore (0.089458ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid wrong metadata version is refused before restore (0.086166ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid reserved framing flags is refused before restore (0.100167ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:63:3
+✖ CRC-valid source size too small is refused before restore (0.14775ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:64:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:72:3
+✖ preview name must agree with embedded image (0.263416ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:73:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /metadata/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:72:3
+✖ preview zones must agree with embedded image (0.12775ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:73:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /metadata/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:72:3
+✖ preview samples must agree with embedded image (0.122834ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:73:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /metadata/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:72:3
+✖ preview rates must agree with embedded image (0.223375ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:73:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /metadata/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:72:3
+✖ preview data_len must agree with embedded image (0.119833ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:73:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /metadata/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:72:3
+✖ preview data_crc32 must agree with embedded image (0.107375ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:73:12)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /metadata/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:77:1
+✖ false-empty with image fields stripped cannot leave the original payload hidden (0.109666ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:81:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:84:1
+✖ CRC-valid image with an out-of-bounds zone is refused (0.173417ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:89:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /zone/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-integrity.test.mjs:92:1
+✖ metadata framing cannot run past payload and final CRC (0.435875ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /metadata/. Input:
+  
+  'SyntaxError: Unexpected non-whitespace character after JSON at position 499 (line 1 column 500)'
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:97:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: SyntaxError: Unexpected non-whitespace character after JSON at position 499 (line 1 column 500)
+        at JSON.parse (<anonymous>)
+        at readArchive (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/web/x0x_breaks.js:379:48)
+        at file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:97:23
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-integrity.test.mjs:97:10)
+        at Test.runInAsyncScope (node:async_hooks:228:14)
+        at Test.run (node:internal/test_runner/test:1118:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+        at Test.postRun (node:internal/test_runner/test:1247:19),
+    expected: /metadata/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-archive-metadata-name.test.mjs:60:1
+✖ CRC-valid but false sample-name metadata must be rejected before restore confirmation (0.991417ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception: FAIL_BEFORE_FIX: altered preview name was accepted despite an intact, different slot image
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-archive-metadata-name.test.mjs:65:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /metadata|name|mismatch|damaged|invalid|corrupt/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/edge-midi-offset-correlation.test.mjs:81:1
+✖ negative: stale retry offset 0 cannot consume pending offset 224 (7.188583ms)
+  AssertionError [ERR_ASSERTION]: FAIL_BEFORE_FIX: stale offset consumed the current chunk wait
+  + actual - expected
+  ... Skipped lines
+  
+    Uint8Array(448) [
+      0,
+      13,
+      26,
+      39,
+  ...
+      83,
+  +   0,
+  +   13,
+  +   26,
+  +   39,
+  +   52,
+  +   65,
+  +   78,
+      91,
+  +   104,
+  +   117,
+  +   130,
+  +   143,
+  +   156,
+  +   169,
+  +   182,
+  +   195,
+  +   208,
+  +   221,
+  +   234,
+  +   247,
+  +   4,
+  +   17,
+  +   30,
+  +   43,
+  +   56,
+  +   69,
+  +   82,
+  +   95,
+      108,
+  +   121,
+  +   134,
+  +   147,
+  +   160,
+  +   173,
+  +   186,
+  +   199,
+  +   212,
+  +   225,
+  +   238,
+  +   251,
+  +   8,
+  +   21,
+  +   34,
+  +   47,
+  +   60,
+  +   73,
+  +   86,
+  +   99,
+  +   112,
+      125,
+  +   138,
+  +   151,
+  +   164,
+  +   177,
+  +   190,
+  +   203,
+  +   216,
+  +   229,
+  +   242,
+  +   255,
+  +   12,
+  +   25,
+  +   38,
+  +   51,
+  +   64,
+  +   77,
+  +   90,
+  +   103,
+  +   116,
+  +   129,
+      142,
+  +   155,
+  +   168,
+  +   181,
+  +   194,
+  +   207,
+  +   220,
+  +   233,
+  +   246,
+  +   3,
+  +   16,
+  +   29,
+  +   42,
+  +   55,
+  +   68,
+  +   81,
+  +   94,
+  +   107,
+  +   120,
+  +   133,
+  +   146,
+      159,
+  +   172,
+  +   185,
+  +   198,
+  +   211,
+  +   224,
+  +   237,
+  +   250,
+  +   7,
+  +   20,
+  +   33,
+  +   46,
+  +   59,
+  +   72,
+  +   85,
+  +   98,
+  +   111,
+  +   124,
+  +   137,
+  +   150,
+  +   163,
+      176,
+  +   189,
+  +   202,
+  +   215,
+  +   228,
+  +   241,
+  +   254,
+  +   11,
+  +   24,
+  +   37,
+  +   50,
+  +   63,
+  +   76,
+  +   89,
+  +   102,
+  +   115,
+  +   128,
+  +   141,
+  +   154,
+  +   167,
+  +   180,
+      193,
+  +   206,
+  +   219,
+  +   232,
+  +   245,
+  +   2,
+  +   15,
+  +   28,
+  +   41,
+  +   54,
+  +   67,
+  +   80,
+  +   93,
+  +   106,
+  +   119,
+  +   132,
+  +   145,
+  +   158,
+  +   171,
+  +   184,
+  +   197,
+      210,
+  +   223,
+  +   236,
+  +   249,
+  +   6,
+  +   19,
+  +   32,
+  +   45,
+  +   58,
+  +   71,
+  +   84,
+  +   97,
+  +   110,
+  +   123,
+  +   136,
+  +   149,
+  +   162,
+  +   175,
+  +   188,
+  +   201,
+  +   214,
+      227,
+  +   240,
+  +   253,
+  +   10,
+  +   23,
+  +   36,
+  +   49,
+  +   62,
+  +   75,
+  +   88,
+  +   101,
+  +   114,
+  +   127,
+  +   140,
+  +   153,
+  +   166,
+  +   179,
+  +   192,
+  +   205,
+  +   218,
+  +   231,
+      244,
+  +   1,
+  +   14,
+  +   27,
+  +   40,
+  +   53,
+  +   66,
+  +   79,
+  +   92,
+  +   105,
+  +   118,
+  +   131,
+  +   144,
+  +   157,
+  +   170,
+  +   183,
+  +   196,
+  +   209,
+  +   222,
+  +   235,
+  +   248,
+      5,
+  -   22,
+  -   39,
+  -   56,
+  -   73,
+  -   90,
+  -   107,
+  -   124,
+  -   141,
+  -   158,
+  -   175,
+  -   192,
+  -   209,
+  -   226,
+  -   243,
+  -   4,
+  -   21,
+  -   38,
+  -   55,
+  -   72,
+  -   89,
+  -   106,
+  -   123,
+  -   140,
+  -   157,
+  -   174,
+  -   191,
+  -   208,
+  -   225,
+  -   242,
+  -   3,
+  -   20,
+  -   37,
+  -   54,
+  -   71,
+  -   88,
+  -   105,
+  -   122,
+  -   139,
+  -   156,
+  -   173,
+  -   190,
+  -   207,
+  -   224,
+  -   241,
+  -   2,
+  -   19,
+  -   36,
+  -   53,
+  -   70,
+  -   87,
+  -   104,
+  -   121,
+  -   138,
+  -   155,
+  -   172,
+  -   189,
+  -   206,
+  -   223,
+  -   240,
+  -   1,
+      18,
+  -   35,
+  -   52,
+  -   69,
+  -   86,
+  -   103,
+  -   120,
+  -   137,
+  -   154,
+  -   171,
+  -   188,
+  -   205,
+  -   222,
+  -   239,
+  -   0,
+  -   17,
+  -   34,
+  -   51,
+  -   68,
+  -   85,
+  -   102,
+  -   119,
+  -   136,
+  -   153,
+  -   170,
+  -   187,
+  -   204,
+  -   221,
+  -   238,
+  -   255,
+  -   16,
+  -   33,
+  -   50,
+  -   67,
+  -   84,
+  -   101,
+  -   118,
+  -   135,
+  -   152,
+  -   169,
+  -   186,
+  -   203,
+  -   220,
+  -   237,
+  -   254,
+  -   15,
+  -   32,
+  -   49,
+  -   66,
+  -   83,
+  -   100,
+  -   117,
+  -   134,
+  -   151,
+  -   168,
+  -   185,
+  -   202,
+  -   219,
+  -   236,
+  -   253,
+  -   14,
+      31,
+  -   48,
+  -   65,
+  -   82,
+  -   99,
+  -   116,
+  -   133,
+  -   150,
+  -   167,
+  -   184,
+  -   201,
+  -   218,
+  -   235,
+  -   252,
+  -   13,
+  -   30,
+  -   47,
+  -   64,
+  -   81,
+  -   98,
+  -   115,
+  -   132,
+  -   149,
+  -   166,
+  -   183,
+  -   200,
+  -   217,
+  -   234,
+  -   251,
+  -   12,
+  -   29,
+  -   46,
+  -   63,
+  -   80,
+  -   97,
+  -   114,
+  -   131,
+  -   148,
+  -   165,
+  -   182,
+  -   199,
+  -   216,
+  -   233,
+  -   250,
+  -   11,
+  -   28,
+  -   45,
+  -   62,
+  -   79,
+  -   96,
+  -   113,
+  -   130,
+  -   147,
+  -   164,
+  -   181,
+  -   198,
+  -   215,
+  -   232,
+  -   249,
+  -   10,
+  -   27,
+      44,
+  +   57,
+  +   70,
+  +   83
+  -   61,
+  -   78,
+  -   95,
+  -   112,
+  -   129,
+  -   146,
+  -   163,
+  -   180,
+  -   197,
+  -   214,
+  -   231,
+  -   248,
+  -   9,
+  -   26,
+  -   43,
+  -   60,
+  -   77,
+  -   94,
+  -   111,
+  -   128,
+  -   145,
+  -   162,
+  -   179,
+  -   196,
+  -   213,
+  -   230,
+  -   247,
+  -   8,
+  -   25,
+  -   42
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-midi-offset-correlation.test.mjs:88:10)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: Uint8Array(448) [
+        0,  13,  26,  39,  52,  65,  78,  91, 104, 117, 130, 143,
+      156, 169, 182, 195, 208, 221, 234, 247,   4,  17,  30,  43,
+       56,  69,  82,  95, 108, 121, 134, 147, 160, 173, 186, 199,
+      212, 225, 238, 251,   8,  21,  34,  47,  60,  73,  86,  99,
+      112, 125, 138, 151, 164, 177, 190, 203, 216, 229, 242, 255,
+       12,  25,  38,  51,  64,  77,  90, 103, 116, 129, 142, 155,
+      168, 181, 194, 207, 220, 233, 246,   3,  16,  29,  42,  55,
+       68,  81,  94, 107, 120, 133, 146, 159, 172, 185, 198, 211,
+      224, 237, 250,   7,
+      ... 348 more items
+    ],
+    expected: Uint8Array(448) [
+        0,  13,  26,  39,  52,  65,  78,  91, 104, 117, 130, 143,
+      156, 169, 182, 195, 208, 221, 234, 247,   4,  17,  30,  43,
+       56,  69,  82,  95, 108, 121, 134, 147, 160, 173, 186, 199,
+      212, 225, 238, 251,   8,  21,  34,  47,  60,  73,  86,  99,
+      112, 125, 138, 151, 164, 177, 190, 203, 216, 229, 242, 255,
+       12,  25,  38,  51,  64,  77,  90, 103, 116, 129, 142, 155,
+      168, 181, 194, 207, 220, 233, 246,   3,  16,  29,  42,  55,
+       68,  81,  94, 107, 120, 133, 146, 159, 172, 185, 198, 211,
+      224, 237, 250,   7,
+      ... 348 more items
+    ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/edge-midi-offset-correlation.test.mjs:93:1
+✖ negative: wrong-slot echo leaves the matching read wait intact (0.560916ms)
+  AssertionError [ERR_ASSERTION]: FAIL_BEFORE_FIX: wrong-slot reply consumed a different slot wait
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-midi-offset-correlation.test.mjs:100:10)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/edge-midi-offset-correlation.test.mjs:119:1
+✖ negative: truncated echoed address cannot consume the read wait (0.336584ms)
+  Error: no data
+      at Object.readBytes (eval at setup (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-midi-offset-correlation.test.mjs:45:16), <anonymous>:52:26)
+
+test at tests/edge-midi-offset-correlation.test.mjs:135:3
+✖ negative: missing SysEx terminator leaves the matching wait intact (0.308834ms)
+  AssertionError [ERR_ASSERTION]: missing SysEx terminator consumed the valid pending wait
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-midi-offset-correlation.test.mjs:141:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/edge-midi-offset-correlation.test.mjs:135:3
+✖ negative: address prefix without payload leaves the matching wait intact (0.22725ms)
+  Error: no data
+      at Object.readBytes (eval at setup (file:///Users/mac/Documents/Codex/2026-10-26/task-6/browser-baseline/tests/edge-midi-offset-correlation.test.mjs:45:16), <anonymous>:52:26)

@@ -4,10 +4,10 @@
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
     "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
-    "web/x0x_breaks.html": "c94a1d99e1c66414ad9fcdee9eb97ec9eeda706a",
+    "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
-    "web/x0x_breaks.js": "abe5867dca87c3da1e063997155f0bcc851c5acb",
+    "web/x0x_breaks.js": "360dcfccd70b0f7e521b47f83ad196743a4f7f1c",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
@@ -232,6 +232,20 @@
       "sourceBaseCommit": "dfb96bb51ab9d6bd9b9307438a1a3c2f71891b77",
       "resultBlob": "c94a1d99e1c66414ad9fcdee9eb97ec9eeda706a",
       "description": "Sample-workspace Link.req: clear/own timeout on synchronous send failure so a stale timer cannot erase a newer pending MIDI wait; reply correlation unchanged."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "2b11200c8cc69b7f80d8cd2ccef968adb6cc3a75",
+      "resultBlob": "360dcfccd70b0f7e521b47f83ad196743a4f7f1c",
+      "description": "Reject conflicting archive descriptors, noncanonical image ranges and metadata/header mismatches before restore"
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "2b11200c8cc69b7f80d8cd2ccef968adb6cc3a75",
+      "resultBlob": "ded5783065ad4594af77f85ea98717db647cc978",
+      "description": "Correlate SMP_READ replies by echoed slot and offset before consuming the pending wait"
     }
   ]
 }

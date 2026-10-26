@@ -1,0 +1,64 @@
+PASS 320 top install/sample tasks
+PASS 320 projects entry first viewport
+PASS 320 installer no overflow
+PASS 320 one panel visible
+PASS 320 project no overflow
+PASS 320 embedded no duplicate navigation
+PASS 320 writes denied without connection
+PASS 320 whole-project/reset scope explicit
+PASS 320 autosave risk explained
+PASS 320 corrupt file cannot import
+PASS 320 transfer blocks task switch
+PASS 320 projects relinquishes ownership
+PASS 320 dirty name/options retained
+PASS 320 chosen file retained
+PASS 320 back/forward restores project task
+PASS 390 top install/sample tasks
+PASS 390 projects entry first viewport
+PASS 390 installer no overflow
+PASS 390 one panel visible
+PASS 390 project no overflow
+PASS 390 embedded no duplicate navigation
+PASS 390 writes denied without connection
+PASS 390 whole-project/reset scope explicit
+PASS 390 autosave risk explained
+PASS 390 corrupt file cannot import
+PASS 390 transfer blocks task switch
+PASS 390 projects relinquishes ownership
+PASS 390 dirty name/options retained
+PASS 390 chosen file retained
+PASS 390 back/forward restores project task
+PASS 768 top install/sample tasks
+PASS 768 projects entry first viewport
+PASS 768 installer no overflow
+PASS 768 one panel visible
+PASS 768 project no overflow
+PASS 768 embedded no duplicate navigation
+PASS 768 writes denied without connection
+PASS 768 whole-project/reset scope explicit
+PASS 768 autosave risk explained
+PASS 768 corrupt file cannot import
+PASS 768 transfer blocks task switch
+PASS 768 projects relinquishes ownership
+PASS 768 dirty name/options retained
+PASS 768 chosen file retained
+PASS 768 back/forward restores project task
+PASS 1280 top install/sample tasks
+PASS 1280 projects entry first viewport
+PASS 1280 installer no overflow
+PASS 1280 one panel visible
+PASS 1280 project no overflow
+PASS 1280 embedded no duplicate navigation
+PASS 1280 writes denied without connection
+PASS 1280 whole-project/reset scope explicit
+PASS 1280 autosave risk explained
+PASS 1280 corrupt file cannot import
+PASS 1280 transfer blocks task switch
+PASS 1280 projects relinquishes ownership
+PASS 1280 dirty name/options retained
+PASS 1280 chosen file retained
+PASS 1280 back/forward restores project task
+PASS standalone projects route renders
+PASS standalone navigation available
+PASS no JavaScript errors
+63 project workspace browser checks PASS

@@ -41,7 +41,10 @@ window.qa = {
  badController:()=>{insertCtl=()=>{throw Error("synthetic controller assembly failure");};},
  installMocks:()=>{
   window.entries=[];window.permissions=0;window.midiResolvers=[];window.lookups=0;window.confirm=()=>true;
-  midiAccess=()=>{window.permissions++;return new Promise((r,j)=>{window.midiResolvers.push(()=>r({}));window.midiGrant=()=>r({});window.midiDeny=()=>j({code:'denied'});});};
+  // Production caches successful MIDIAccess. Reconnect scans reuse it without
+  // another permission prompt; a denied first request still permits a retry.
+  let grantedAccess=null;
+  midiAccess=()=>{if(grantedAccess)return Promise.resolve(grantedAccess);window.permissions++;return new Promise((r,j)=>{const grant=()=>r(grantedAccess={});window.midiResolvers.push(grant);window.midiGrant=grant;window.midiDeny=()=>j({code:'denied'});});};
   Updater=class{async find(){lookups++;return null;}};
   installKeepingSlots=async(up,img,product)=>{window.entries.push({product,bytes:Array.from(img)});return await new Promise((r,j)=>{window.installDone=()=>r({});window.installFail=()=>j(new Error('synthetic interruption'));});};
   insertCtl=img=>img;
@@ -392,12 +395,16 @@ async def main():
    check(count==(0 if outcome in ['deny','selection-change','revoked','lookup-change'] else 1),'install target admission '+outcome)
    if count:
     entry=await p.evaluate('entries[0]');check(entry['product']=='SMK-37 Pro_900' and len(entry['bytes'])==1004,'exact logical image and product '+outcome)
-    await p.evaluate('installFail()' if outcome=='interrupt' else 'installDone()');await p.wait_for_timeout(30)
+    await p.evaluate('installFail()' if outcome=='interrupt' else 'installDone()');await p.wait_for_function('!qa.state().writing')
    check(not (await state(p))['writing'],'write lock released '+outcome)
    if outcome in ['deny','interrupt']:
-    await p.locator('#go').click();await p.wait_for_function('permissions===2');await p.evaluate('midiGrant()');await p.wait_for_timeout(30)
+    await p.locator('#go').click()
+    if outcome=='deny':
+     await p.wait_for_function('permissions===2');await p.evaluate('midiGrant()')
+    await p.wait_for_function('entries.length==='+str(1 if outcome=='deny' else 2))
+    check(await p.evaluate('permissions')==(2 if outcome=='deny' else 1),'permission retry/cache '+outcome)
     check(await p.evaluate('entries.length')==(1 if outcome=='deny' else 2),'install retry '+outcome)
-    await p.evaluate('installDone()')
+    await p.evaluate('installDone()');await p.wait_for_function('!qa.state().writing')
    await p.close()
   p,e=await ready(browser);await p.evaluate('qa.installMocks()');await p.locator('#devagree').check()
   # The optional local-package UI is collapsed by default; open it as a user would.

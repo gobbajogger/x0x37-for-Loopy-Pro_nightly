@@ -1,0 +1,45 @@
+{
+  "baseline_head": "2b11200c8cc69b7f80d8cd2ccef968adb6cc3a75",
+  "baseline_status": "",
+  "commands": [
+    {
+      "command": "CHROMIUM_EXECUTABLE=<existing headless Chromium148> /tmp/loopy-site-browser-qa/bin/python browser-triage/bundled-baseline-probe.py",
+      "exit": 1,
+      "result": "Same four failed permission-count assertions as candidate; actual permissions2, writes1, writingfalse on both models and both paths"
+    },
+    {
+      "command": "CHROMIUM_EXECUTABLE=<existing headless Chromium148> /tmp/loopy-site-browser-qa/bin/python browser-triage/grant-baseline-probe.py",
+      "exit": 0,
+      "result": "After installDone permissions2/writingtrue; grant second post-install scan promise -> writingfalse"
+    }
+  ],
+  "logs": {
+    "browser-admission-after.log": "2440260d658ee891082d46d8f8dbcb0e7996fad3257f480a6ac3c678f552a6e8",
+    "bundled-baseline.log": "6ccabdf5e30c0b2b1885e977e1e2cbdd818384fb892048da520531412bcbaec2",
+    "grant-baseline.log": "acb7acce634ccbb9c3829b13113bf117e95bd6dda6b2e9ae8062e75d7802b3b1",
+    "bundled-browser-after.log": "91e1428582fa28227bbdc617cd9c1e2c5565cfe5dac152a57375c66069abf152"
+  },
+  "fixture_repair": {
+    "source_head": "e4e3d42c3573e73629c03b0a1dd819bc47c80c7e",
+    "changed_paths": [
+      "tests/browser-admission.py",
+      "tests/bundled-browser.py"
+    ],
+    "source_changes": false,
+    "description": "Cache a successful mock MIDIAccess, preserve denied retry, assert interrupted retry reuses grant, wait for true postscan lock completion",
+    "bundled_after": {
+      "exit": 0,
+      "checks": 61,
+      "failures": 0
+    },
+    "admission_after": {
+      "exit": 0,
+      "checks": 679,
+      "failures": 0
+    },
+    "test_blobs": {
+      "tests/browser-admission.py": "12bb25e84984f0cfb94ebb33aa13e826445368e9",
+      "tests/bundled-browser.py": "186679c02c96d25e80d5180596f1460419ea2817"
+    }
+  }
+}
