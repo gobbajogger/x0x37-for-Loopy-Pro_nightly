@@ -17,8 +17,8 @@ function request(addr, len) {
   return [0xf0, ...pack7(body), 0xf7];
 }
 
-async function runScenario(finishLength) {
-  const pending = [request(0, 8), request(0xf0000000, finishLength)];
+async function runScenario(finishLength, marker = 0xf0000000, finishAddr = marker) {
+  const pending = [request(0, 8), request(marker, finishLength)];
   const transmissions = [];
   const link = {
     get lost() { return false; },
@@ -28,7 +28,7 @@ async function runScenario(finishLength) {
   const updater = new Updater({ inputs: new Map(), outputs: new Map() });
   let result = null, error = null;
   try {
-    result = await updater.serve(link, new Uint8Array(32), 0xf0000000, 20);
+    result = await updater.serve(link, new Uint8Array(32), finishAddr, 20);
   } catch (e) { error = e; }
   return { result, error, transmissions };
 }
@@ -45,5 +45,25 @@ test('negative: checksummed finish request with a nonzero read length must fail 
   const { result, error, transmissions } = await runScenario(1);
   assert.ok(error || !result?.finished,
     'FAIL_BEFORE_FIX: the OTA server treated a finish-address request for one byte as transfer completion');
-  assert.ok(transmissions.length <= 2, 'must not send further firmware chunks after invalid finish');
+  assert.equal(error?.code, 'badreq');
+  assert.equal(result, null);
+  assert.equal(transmissions.length, 1, 'must reject before acknowledging invalid finish');
+});
+
+test('both finish markers require zero length, including an unexpected stage marker', async () => {
+  for (const marker of [0xe0000000, 0xf0000000]) {
+    const valid = await runScenario(0, marker);
+    assert.equal(valid.error, null);
+    assert.equal(valid.result.finished, true);
+    assert.equal(valid.result.served, 1);
+    assert.equal(valid.transmissions.length, 2);
+    for (const length of [1, 0x100, 0x10000, 0xffffff]) {
+      for (const expected of [0xe0000000, 0xf0000000]) {
+        const invalid = await runScenario(length, marker, expected);
+        assert.equal(invalid.error?.code, 'badreq', `${marker.toString(16)}+${length}`);
+        assert.equal(invalid.result, null);
+        assert.equal(invalid.transmissions.length, 1, 'invalid finish must not send success');
+      }
+    }
+  }
 });
