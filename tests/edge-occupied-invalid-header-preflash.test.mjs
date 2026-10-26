@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  userSlotRaw, pack78, backupSlots, makeArchive, readArchive, installKeepingSlots,
+  userSlotRaw, pack78, readSlotImage, backupSlots, makeArchive, readArchive, installKeepingSlots,
 } from '../web/x0x_breaks.js';
 
 const PREFIX = [0xF0, 0x7D, 0x46, 0x4C];
@@ -61,12 +61,13 @@ test('fail closed: occupied SMP_INFO with invalid read header never proceeds to 
   // Simulates header erase / torn read between SMP_INFO and SMP_READ. The device
   // still reports one occupied zone; all 512 header bytes now read as erased.
   const tornHeader = new Uint8Array(512).fill(0xFF);
+  const link = deviceLink(tornHeader);
   let installs = 0;
   let saved = null;
   const updater = {
     async find() {
       return { id: { model: 'SMK-37 Pro', text: 'SMK-37 Pro_900', version: 900 },
-        link: deviceLink(tornHeader) };
+        link };
     },
     bind() {},
     async install(_image, product) { installs++; return product; },
@@ -82,4 +83,18 @@ test('fail closed: occupied SMP_INFO with invalid read header never proceeds to 
   );
   assert.equal(installs, 0, 'firmware installation must not begin after a failed occupied-slot backup');
   assert.equal(saved, null, 'no misleading empty-slot backup may be treated as verified');
+  assert.ok(link.commands.every(frame => frame[4] === 15 || frame[4] === 16), 'backup failure only queries layout and reads bytes; no sample writes');
+});
+
+
+test('empty slot remains null without any device read or write', async () => {
+  const link = deviceLink(new Uint8Array());
+  assert.equal(await readSlotImage(link, 0, 0), null);
+  assert.deepEqual(link.commands, []);
+});
+
+test('occupied invalid header rejects a standalone backup', async () => {
+  const link = deviceLink(new Uint8Array(512).fill(0xFF));
+  await assert.rejects(() => backupSlots(link), /occupied sample slot has an invalid header/);
+  assert.ok(link.commands.every(frame => frame[4] === 15 || frame[4] === 16));
 });

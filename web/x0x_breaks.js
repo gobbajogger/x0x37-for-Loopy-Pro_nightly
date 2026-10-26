@@ -679,7 +679,7 @@ async function readSlotBytes(link, k, off, n, onPart) {
 export async function readSlotImage(link, k, nz, onPart) {
   if (!nz) return null;
   const area = await readSlotBytes(link, k, 0, SLOT_HDR_AREA), h = parseHeader(area.subarray(0, SLOT_HDR_LEN));
-  if (!h) return null;
+  if (!h) throw new Error(`slot ${k + 1}: occupied sample slot has an invalid header; backup stopped`);
   const data = await readSlotBytes(link, k, SLOT_HDR_AREA, h.dataLen, onPart);
   if (crc32(data) !== h.crc) throw new Error(`slot ${k + 1}: the data read back does not match its CRC`);
   const img = new Uint8Array(SLOT_HDR_AREA + data.length);
