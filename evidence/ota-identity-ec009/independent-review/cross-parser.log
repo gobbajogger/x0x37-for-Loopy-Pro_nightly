@@ -1,0 +1,2 @@
+PASS site/firmware mirror byte-identical parser bodies and 334 independently generated contract/single-bit mutation cases
+PASS actual Python parser 334 cases generated with primary desktop-analysis encoder; no device capture used

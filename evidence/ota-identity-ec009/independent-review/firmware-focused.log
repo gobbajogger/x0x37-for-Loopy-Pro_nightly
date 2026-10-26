@@ -1,0 +1,33 @@
+✔ valid current/legacy identity FM-1_015 remains accepted (1.46025ms)
+✔ valid current/legacy identity FM-1_016 remains accepted (0.108125ms)
+✔ valid current/legacy identity SMK-37 Pro_016 remains accepted (0.066375ms)
+✔ valid current/legacy identity SMK-37 Elite_016 remains accepted (0.058875ms)
+✔ valid current/legacy identity SMK-37 Elite_900 remains accepted (0.047625ms)
+✔ valid current/legacy identity ota-SMK-37 Elite_900 remains accepted (0.041917ms)
+✔ valid current/legacy identity MKE-P37_900 remains accepted (0.038208ms)
+✔ valid current/legacy identity Felucca_000 remains accepted (0.035458ms)
+✔ contradictory 24-bit payload length 0 is rejected (0.055ms)
+✔ contradictory 24-bit payload length 26 is rejected (0.407084ms)
+✔ contradictory 24-bit payload length 28 is rejected (0.053417ms)
+✔ contradictory 24-bit payload length 283 is rejected (0.033167ms)
+✔ contradictory 24-bit payload length 65563 is rejected (0.027667ms)
+✔ missing F0 is rejected before identity admission (0.039708ms)
+✔ missing F7 is rejected before identity admission (0.033459ms)
+✔ interior status byte is rejected before identity admission (0.049375ms)
+✔ nonzero packed padding is rejected before identity admission (0.042375ms)
+✔ truncated frame is rejected before identity admission (0.044833ms)
+✔ extra packed octet is rejected before identity admission (0.082458ms)
+✔ a different version with a correct checksum is valid framing, not authenticated identity (0.036417ms)
+✔ malformed identity followed by valid identity does not poison discovery (0.529209ms)
+✔ positive: checksummed identity frame discovers the correct model and version (2.2525ms)
+✔ negative: corrupt identity checksum must not bind a keyboard (2004.438666ms)
+✔ negative: corrupted version byte with unchanged checksum must not bind (2003.074458ms)
+✔ negative: contradictory identity length header must not bind (2003.808ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6069.885125

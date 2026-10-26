@@ -1,0 +1,32 @@
+pack7 / unpack7 round trip                                       ok
+response: header, address, data, checksum                        ok
+product_of / logical_image (synthetic)                           ok
+product_of: a long SMK identity                                  ok
+install: running -> loader -> Felucca (11 reads)                 ok
+install: missing SMP_INFO -> fail closed before write            ok
+install: malformed SMP_INFO -> fail closed before write          ok
+install: 0.9 (SMK-37 Pro_909) -> 0.10 (SMK-37 Pro_9001000), the longer identity verified after ok
+install: update loader without explicit sample-preservation decision -> fail before write ok
+install: already in loader -> explicit --no-slots recovery finishes the write ok
+install: answer no -> nothing sent but the handshake             ok
+--info: identity of the connected SMK-37 Pro                     ok
+--info: device in update mode                                    ok
+no SMK-37 Pro port -> exit 3, lists the MIDI inputs              ok
+--port that matches nothing -> exit 3                            ok
+--port picks a port the default match skips                      ok
+unplugged in step 1 -> exit 4 'lost', nothing written            ok
+unplugged during the write -> exit 4 at once                     ok
+loader stops answering -> exit 4 after the idle time             ok
+read past the package -> exit 4                                  ok
+another identity after the restart -> exit 6                     ok
+another model -> exit 6, nothing sent                            ok
+SMK package on an FM-1 in update mode -> exit 6 (wrong model), nothing sent ok
+no loader after step 1 -> exit 5                                 ok
+package without the loader marker -> exit 2, no MIDI             ok
+... installs with --force                                        ok
+not a package -> exit 2                                          ok
+missing file -> exit 2                                           ok
+logical image vs fm1pkg.js: skipped (needs node and build/x0x-smk37.fwsc)
+models: SMK-37 Pro / Elite / MKE-P37 / Starrykey are one keyboard, FM-1 is another ok
+port names: every SMK model and every port firmware probed       ok
+install tests passed

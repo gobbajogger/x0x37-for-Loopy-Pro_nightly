@@ -867,8 +867,18 @@ function parseRequest(pkt) {
 }
 
 function parseIdentity(pkt) {
-  const d = unpack7(pkt.slice(1, -1));
-  if (d.length !== 34 || d[0] !== 0 || d[1] !== 0x59 || d[2] !== 0x11) return null;
+  if (pkt[0] !== 0xF0 || pkt[pkt.length - 1] !== 0xF7) return null;
+  const wire = pkt.slice(1, -1);
+  if (wire.some((b) => b & 0x80)) return null;       // SysEx data must be seven-bit
+  const d = unpack7(wire);
+  // ota_send_msg(0x11): 27 identity bytes, a 24-bit declared length, then ~sum(payload).
+  if (d.length !== 34 || d[0] !== 0 || d[1] !== 0x59 || d[2] !== 0x11 ||
+      d[3] !== 27 || d[4] !== 0 || d[5] !== 0) return null;
+  let sum = 0;
+  for (let i = 6; i < 33; i++) sum += d[i];
+  if ((~sum & 0xFF) !== d[33]) return null;
+  // Reject extra packed padding bits as well as status bytes hidden in the payload.
+  if (pack7(d).some((b, i) => b !== wire[i])) return null;
   const txt = String.fromCharCode(...d.slice(6, 33)).replace(/\0+$/, "");
   const m = /^([^_]+)_(\d+)$/.exec(txt);
   return m ? { text: txt, model: m[1], version: parseInt(m[2], 10) } : null;

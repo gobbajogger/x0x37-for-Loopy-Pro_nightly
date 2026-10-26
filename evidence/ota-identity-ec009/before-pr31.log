@@ -1,0 +1,71 @@
+✔ positive: checksummed identity frame discovers the correct model and version (2.255417ms)
+✖ negative: corrupt identity checksum must not bind a keyboard (0.715583ms)
+✖ negative: corrupted version byte with unchanged checksum must not bind (0.613209ms)
+✖ negative: contradictory identity length header must not bind (0.120667ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.066708
+
+✖ failing tests:
+
+test at tests/edge-ota-identity-frame-integrity.test.mjs:43:1
+✖ negative: corrupt identity checksum must not bind a keyboard (0.715583ms)
+  AssertionError [ERR_ASSERTION]: FAIL_BEFORE_FIX: OTA identity with corrupt checksum was trusted
+  + actual - expected
+  
+  + 'SMK-37 Pro_900'
+  - null
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/ota-identity-site/tests/edge-ota-identity-frame-integrity.test.mjs:46:10)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'SMK-37 Pro_900',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/edge-ota-identity-frame-integrity.test.mjs:50:1
+✖ negative: corrupted version byte with unchanged checksum must not bind (0.613209ms)
+  AssertionError [ERR_ASSERTION]: FAIL_BEFORE_FIX: corrupted product identity was accepted
+  + actual - expected
+  
+  + 'SMK-37 Pro_901'
+  - null
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/ota-identity-site/tests/edge-ota-identity-frame-integrity.test.mjs:53:10)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'SMK-37 Pro_901',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/edge-ota-identity-frame-integrity.test.mjs:57:1
+✖ negative: contradictory identity length header must not bind (0.120667ms)
+  AssertionError [ERR_ASSERTION]: FAIL_BEFORE_FIX: identity frame declared 26 bytes but carried 27
+  + actual - expected
+  
+  + 'SMK-37 Pro_900'
+  - null
+  
+      at TestContext.<anonymous> (file:///Users/mac/Documents/Codex/2026-10-26/task-6/ota-identity-site/tests/edge-ota-identity-frame-integrity.test.mjs:60:10)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'SMK-37 Pro_900',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,7 @@
+model: first-match would attach to the unrelated loader                  ok
+snapshot before transition is the pre-existing loader only               ok
+wait_for: only a pre-existing loader -> timeout (noloader), not that port ok
+wait_for: accepts exactly the newly appeared loader, not Other OTA       ok
+returned_port records the accepted transition port                       ok
+wait_for: two new loaders raise InstallError (fail closed)               ok
+reconnect_after: reopens the transition port, not the sibling keyboard   ok

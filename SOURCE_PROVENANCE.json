@@ -6,7 +6,7 @@
     "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
     "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
-    "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
+    "web/fm1ota.js": "aa3252df5fb8c98c9f3559774900feb1a36bb9e1",
     "web/x0x_breaks.js": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
@@ -267,6 +267,13 @@
       "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
       "resultBlob": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
       "description": "Recognize explicit current and endpoint portable project revision pairs; preserve firmware VALIDATE before sample mutation and opaque payload bytes"
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+      "resultBlob": "aa3252df5fb8c98c9f3559774900feb1a36bb9e1",
+      "description": "Validate the identity envelope framing, seven-bit packing, 27-byte declared payload length and complement checksum before OTA discovery admission; keep model/version parsing unchanged."
     }
   ]
 }
