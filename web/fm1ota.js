@@ -87,27 +87,42 @@ function parseIdentity(pkt) {
 // one MIDI in/out pair with a SysEx queue
 class Link {
   constructor(input, output) {
-    this.input = input; this.output = output; this.q = []; this.waiter = null;
+    this.input = input; this.output = output; this.q = []; this.waiter = null; this.rxBytes = 0; this.rxError = null;
     input.onmidimessage = (ev) => {
-      if (ev.data[0] !== 0xF0) return;
+      if (this.rxError || ev.data[0] !== 0xF0) return;
+      // Bound both frame count and bytes; overflow poisons this connection.
+      // Never continue an OTA exchange with dropped or stale responses.
+      if (this.q.length >= 64 || ev.data.length > 65536 - this.rxBytes) {
+        this.rxError = fail("overflow", "MIDI receive overflow. Reconnect before retrying the update.");
+        this.drain();
+        this.close();
+        if (this.waiter) { const w = this.waiter; this.waiter = null; w(); }
+        return;
+      }
       this.q.push(Array.from(ev.data));
+      this.rxBytes += ev.data.length;
       if (this.waiter) { const w = this.waiter; this.waiter = null; w(); }
     };
   }
   get lost() { return this.input.state === "disconnected" || this.output.state === "disconnected"; }
   // false when the port is gone (unplugged): WebMIDI throws on a disconnected output
   send(bytes) {
+    if (this.rxError) throw this.rxError;
     try { this.output.send(bytes); return true; } catch (_) { return false; }
   }
-  drain() { this.q.length = 0; }
+  drain() { this.q.length = 0; this.rxBytes = 0; }
   async read(ms) {
+    if (this.rxError) throw this.rxError;
     if (!this.q.length) {
       let tm;
       await Promise.race([new Promise((r) => { this.waiter = r; }), new Promise((r) => { tm = setTimeout(r, ms); })]);
       clearTimeout(tm);
       this.waiter = null;
     }
-    return this.q.shift() || null;
+    if (this.rxError) throw this.rxError;
+    const pkt = this.q.shift();
+    if (pkt) this.rxBytes -= pkt.length;
+    return pkt || null;
   }
   close() { this.input.onmidimessage = null; }
 }
@@ -206,7 +221,10 @@ export class Updater {
       if (!r) continue;
       last = Date.now();
       if (r.addr === 0xE0000000 || r.addr === 0xF0000000) {
-        link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]));
+        if (r.len !== 0) throw fail("badreq", `bad finish request ${r.addr.toString(16)}+${r.len}`);
+        if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
+          return { served, finished: false, lost: true };
+        }
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }

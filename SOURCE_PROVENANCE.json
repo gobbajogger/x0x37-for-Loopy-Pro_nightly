@@ -3,14 +3,14 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "3d29ca716035b996a7f7178887c84e849f4e5024",
+    "web/x0x_installer.html": "5b2b63d6af88ea0ac5b1cdb466adeed5f3bb2989",
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
-    "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
-    "web/fm1ota.js": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
-    "web/x0x_breaks.js": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
+    "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
+    "web/fm1ota.js": "656cc797871d3c1391a8a2b0b3738f7609ab92e7",
+    "web/x0x_breaks.js": "244a50032925950e7b88e219172b9f4b389c2233",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
-    "web/x0x_projects.js": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
+    "web/x0x_projects.js": "77485dd4cc7eeead7c2b343d43a3a854b3c8026c",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
     "web/test_breaks_page.mjs": "ef910496119f985a6795f690b5fd5ed9486ea97c"
@@ -256,6 +256,137 @@
       "description": "Preserve absolute original slot and per-zone LOOP indices before automatic restoration; retain archive and reconciliation guidance on skipped-middle compaction. Recompute old map and risk from the verified backup snapshot to handle changed SMP_INFO."
     },
     {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "ef910496119f985a6795f690b5fd5ed9486ea97c",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "365d967fd007df131883fc4010b7b4705f85de0b",
+      "resultBlob": "a876b35220251d8bdff2398b69c2b30f522d8ba3",
+      "description": "EC-012: reject invalid/overlapping SMP_INFO flash ranges and incomplete extensions before sample-risk and OTA decisions; preserve valid legacy maps and empty slots."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "713024aac6a4b5650f431910bab4494de8a9502b",
+      "resultBlob": "3a576177b9d3bf42f772a1789a41d9e31fcae47f",
+      "description": "EC013: reject zero-slot SMP_INFO before preflash backup-risk decisions and OTA; valid empty-slot layouts remain supported."
+    },
+    {
+      "path": "web/fm1pkg.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "eca66eb8536b015361edc35c50197d7b6b784e0c",
+      "resultBlob": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
+      "description": "EC014: require the exact CRC-valid SMK slot map at its flash-map address before controller insertion can overwrite a nonempty legacy app region; share admission with bundled readback."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "2d9edad4f25b9275a499d1d4b01f88fcc8e91142",
+      "resultBlob": "f80501c00241f27403b019a5484b58ac300027cb",
+      "description": "Always-visible installer local sample upload, processing controls and reference/encoded audition before MIDI; reuse existing rate-compensated importer and ADPCM without changing device operations."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d03a3a332fb729642f156935617fcafd182e894a",
+      "resultBlob": "26ebfbf459af1451472489e7c21a36e72aa93785",
+      "description": "Owner preview refinement: emphasize sound quality and space, show filename/duration/savings, collapse saved-rate/ADPCM explanation, explicitly identify sample import as same installer page. Local playback and all device gates retained."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceBaseCommit": "dceeb1416e3266be32beb670d501f979737cdf2e",
+      "resultBlob": "bac88bee2c71215d07224e10475bae2aa97fa984",
+      "description": "Owner-requested frontend-design rework: compact sampler workbench, real selected-loop waveform, listening transport, processing bank and same-page import footer. Processing and device gates retained."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d40fa088f65986e130e94bac8ab6b10a5618257a",
+      "resultBlob": "dedd45cdd942bba2bb4e03e33603b6d8069242e2",
+      "description": "EC015: reject invalid occupied sample headers before accepting a backup or starting OTA; retain null for known empty slots."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "08aed72e1b96db73dea08edca09c83ba22880e9c",
+      "resultBlob": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
+      "description": "EC016: bind preflash slot maps to CRC-checked flash.bin and board-specific flash-map address; ignore padding decoys, retain verified legacy loader and empty-slot behavior."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d8660c2caf01f67ca07628fef7a8489570ccb96a",
+      "resultBlob": "d6051869f1f5d0ce6045e66500c900bd13e4744e",
+      "description": "EC011: cap MIDI receive frames and bytes, latch overflow, abort pending reads and prevent further sends until reconnection."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "9614ec7b4c251e9ad064da47c3a06a7a6c7316fc",
+      "resultBlob": "4010a5d85334bef19cf812e61b227671b4bd40a3",
+      "description": "EC017: reject nonzero-length OTA finish markers before success acknowledgment or transfer completion; preserve valid zero-length finish behavior."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommits": [
+        "e42d3074c50917540a679e6f40559396e5f5bfa1",
+        "6b4ed77c978fa9ef6221175b02b30edde2b024fa"
+      ],
+      "resultBlob": "f4d84485ad3d9395cbabf4d1e5bd7b6fb786515b",
+      "description": "Compose reviewed EC011 receive-queue bounds and EC017 zero-length finish guards without dropping either source hunk or original provenance record."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "8dc4173237d4c758334a663e199d796540972601",
+      "resultBlob": "d8f108fc8f335cdac24f206534bec05de5a0aa5a",
+      "description": "EC008: propagate failure to send either finish acknowledgment as lost/unfinished before stage completion; retain EC011 receive bounds, EC017 finish-length validation and valid resume behavior."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "08aed72e1b96db73dea08edca09c83ba22880e9c",
+      "resultBlob": "f4ba512ecfb911a97de74416e1d3516e2d2dc4f5",
+      "description": "Owner placement correction: one existing local sample preparation block below installer controls, scoped to firmware task and absent from Songs & Projects; audio and device guards preserved."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cea93cef0ac0836452e1f70ba27621fd1d575399",
+      "resultBlob": "244a50032925950e7b88e219172b9f4b389c2233",
+      "description": "EC018: await explicit boolean-true retained-backup acknowledgement before OTA; cancel, missing acknowledgement and save errors fail closed."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cea93cef0ac0836452e1f70ba27621fd1d575399",
+      "resultBlob": "294ba23bdc04b1ff5427283479779f4ad5ce1c28",
+      "description": "EC018: distinguish backup download request from explicit retained-file confirmation; keep installation pending/read-only with cancel/retry and recheck existing NIGHTLY admission after the wait."
+    },
+    {
       "path": "web/x0x_projects.js",
       "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
       "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
@@ -353,6 +484,22 @@
       "sourceBaseCommit": "b007cc2f87669c481e6c7863dabcdb7405e95f8e",
       "resultBlob": "ef910496119f985a6795f690b5fd5ed9486ea97c",
       "description": "Expose local file reference/encoded/stop controls before MIDI and independently of device draft; keep settings/codec representation current and reject stale decode completions."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBlob": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
+      "resultBlob": "656cc797871d3c1391a8a2b0b3738f7609ab92e7",
+      "description": "Selective strict parseRequest and parseIdentity composition only; preserve reviewed PR29 receive queue, finish length, lost finish ACK and resume behavior."
+    },
+    {
+      "path": "web/x0x_projects.js",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "144f4e042bdfb2cc52ed16a1cf2a26a1148a0101",
+      "sourceBlob": "fe53833c9f82a3eb641b137763b5999dc9aaeba4",
+      "resultBlob": "77485dd4cc7eeead7c2b343d43a3a854b3c8026c",
+      "description": "Bounded TAGGED=1 NOTE=0 consumer: historical pairs plus6/11 exact36452, QUERYv2 exact size, error9 and low-level explicit adoption; stream7 intentionally unsupported. Preserve all high-level expectedLength/VALIDATE-before-sample-write guards; no legacy-adoption UI."
     }
   ]
 }

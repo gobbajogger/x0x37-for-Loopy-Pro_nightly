@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Actual shipping Updater.install/write/resume and installKeepingSlots bodies.
 // Only discovery/serve/MIDI-link boundaries are mocked; no physical-unit claim.
+import { makePackage } from './fixtures/bundled-synthetic.mjs';
+import { logicalImage } from '../web/fm1pkg.js';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Script } from 'node:vm';
@@ -81,7 +83,7 @@ function slotDevice(text, mode) {
       if(mode==='no-reply')return null;
       if(mode==='read-error')throw Error('synthetic USB read failure');
       if(command===15) {
-        const payload=mode==='short-reply'?[1]:mode==='backup-error'?[1,80,1,0,1]:[0,80];
+        const payload=mode==='short-reply'?[1]:mode==='backup-error'?[1,80,1,0,1]:mode==='zero-count'?[0,80]:[2,80,0,0,0,0,0,0];
         return [0xF0,0x7D,0x46,0x4C,15,...payload,0xF7];
       }
       throw Error('synthetic slot backup read failure');
@@ -95,6 +97,7 @@ for(const [name,text,mode,code] of [
   ['USB send failure blocks install','SMK-37 Pro_900','usb-loss','slotbackup'],
   ['USB read failure blocks install','SMK-37 Pro_900','read-error','slotbackup'],
   ['malformed SMP_INFO blocks install','SMK-37 Pro_900','short-reply','slotbackup'],
+  ['zero-slot SMP_INFO blocks install','SMK-37 Pro_900','zero-count','slotbackup'],
   ['stock corrupt reply is not unsupported','SMK-37 Pro_016','short-reply','slotbackup'],
   ['stock USB loss is not unsupported','SMK-37 Pro_016','usb-loss','slotbackup'],
   ['unclassified no response is not unsupported','SMK-37 Elite_017','no-reply','slotbackup'],
@@ -203,15 +206,14 @@ for(const mode of ['positive','name-change','extra-port','archive-error','readba
  const newLayout=()=>({count:1,size:4096,ext:true,slots:[{nz:writes?1:0,off:4096,size:4096,used:writes?1:0}]});
  const {userSlotRaw,crc32}=slotsContext.api;const part=userSlotRaw('test',[{adpcm:new Uint8Array([17]),n:2,rate:44100}],4096);
  const sample=new Uint8Array(512+part.data.length);sample.fill(255);sample.set(part.hdr);sample.set(part.data,512);
- const packageImage=new Uint8Array(1024),v=new DataView(packageImage.buffer),magic='X0X-SLOTMAP-1'+String.fromCharCode(0,0,0);
- for(let i=0;i<magic.length;i++)packageImage[i]=magic.charCodeAt(i);v.setUint32(16,1,true);v.setUint32(20,4096,true);v.setUint32(24,4096,true);v.setUint32(28,crc32(packageImage.subarray(0,28)),true);
+ const packageImage=logicalImage(makePackage('pro',{slotMap:[[4096,4096]]}));
  const io={layout:async link=>{if(link===dev.link)return oldLayout;postReads++;return newLayout();},
   backup:async()=>{events.push('backup');const img=sample.slice();if(mode==='archive-error')img[512]^=1;return{layout:oldLayout,images:[img]};},
   write:async()=>{writes++;events.push('restore');},read:async()=>{const img=sample.slice();if(mode==='readback-mismatch')img[512]^=1;return img;}};
  const context={TextEncoder,TextDecoder,io};new Script(source('web/x0x_breaks.js')+'\nreadSlotLayout=io.layout;backupSlots=io.backup;writeSlotImage=io.write;readSlotImage=io.read;this.run=installKeepingSlots;').runInNewContext(context);
  up.find=async()=>dev;up.install=async()=>{assert.equal(saved,true,'verified archive saved before install');installs++;events.push('install');up.targetName=back.name;up.verified=true;portFor(up.access,back);if(mode==='name-change')up.access.inputs.set('in',{name:'SMK changed',state:'connected'});if(mode==='extra-port')up.access.inputs.set('extra',{name:'SMK extra',state:'connected'});return 'SMK-37 Pro_900';};
  up.waitFor=async()=>back;
- const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');}});
+ const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');return true; /* simulated retained backup */}});
  if(mode==='positive'){await result;assert.equal(installs,1);assert.equal(writes,1);assert.ok(postReads>0);assert.deepEqual(events,['backup','save','install','restore']);}
  else{await assert.rejects(result);if(mode==='archive-error'){assert.equal(installs,0);assert.equal(saved,false);}else if(mode==='readback-mismatch'){assert.equal(installs,1);assert.equal(writes,1);}else{assert.equal(installs,1);assert.equal(postReads,0);assert.equal(writes,0);}}
 });

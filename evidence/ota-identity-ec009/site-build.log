@@ -1,5 +1,0 @@
-
-> x0x37-nightly-installer-preview@0.0.0-dev build
-> node scripts/build-preview.mjs
-
-BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files

@@ -4,7 +4,28 @@ LX-REQ-037 / LX-REQ-001. Community sharing LX-REQ-038 remains owner-deferred; no
 
 The installer now offers Songs & projects alongside Install firmware and Import samples. These transfer **whole projects**, including song arrangement, patterns, sounds, motion and settings. Arrangement-only export/import is not an existing protocol feature. **Reset project — keep samples** sends existing confirmed op 73, resets all project content, stops playback/recording and enables autosave; it can overwrite the saved project after quiet autosave. Export first if it must be retained. Device SONG → CLEAR SONG clears arrangement length only and retains other project content and sample slots; no browser command is invented for it.
 
-Workspace switching blocks active operations, detaches project MIDI and requires a fresh connection/preview. File/name/options and interrupted-import recovery downloads remain available. Leaving Projects invalidates the sample tool's cached read. No command falls back to reset on unsupported firmware. Compatible X0X project protocol v1 plus sample commands and semantic validation is required. PR171's legacy arrangement Load repair is a separate firmware change, **not installed or included by this website change**. No firmware edits, public catalog changes or device operations are part of this source stage. Host mocks cannot prove hardware behavior.
+Workspace switching blocks active operations, detaches project MIDI and requires a fresh connection/preview. File/name/options and interrupted-import recovery downloads remain available. Leaving Projects invalidates the sample tool's cached read. No command falls back to reset on unsupported firmware. Compatible X0X project protocol v1 or the exact tagged v2 contract below, plus sample commands and semantic validation, is required. PR171's legacy arrangement Load repair is a separate firmware change, **not installed or included by this website change**. No firmware edits, public catalog changes or device operations are part of this source stage. Host mocks cannot prove hardware behavior.
+
+### Current tagged firmware compatibility
+
+The browser recognizes only project `(pattern stream, sound revision)` pairs
+`(3,4)`, `(3,10)`, `(6,10)` and `(6,11)`. The last is firmware144 with tagged
+bass sound enabled and per-note sound disabled: exactly **36,452 bytes**, also
+required by QUERY protocol2. Optional stream7, frozen streams4/5 and unknown
+revisions remain unsupported. Project payload bytes are opaque and firmware
+VALIDATE remains mandatory before any sample mutation.
+
+High-level imports still require the connected firmware's exact project length.
+Legacy rev10 files of 36,428 bytes therefore **cannot be adopted through this UI
+on tagged firmware**. No engine identities are guessed. The low-level client
+can explicitly stage those exact stream3/6 rev10 files and reports firmware
+error9 (both bass identities need explicit confirmation); its separately
+confirmed ADOPT_BASS75 helper is not invoked by the UI or automatic restore.
+See [exact source, producer fixtures and limits](repair-evidence/pr34-current-composition/README.md).
+
+The original v1 protocol tables below describe the historical baseline; the
+bounded tagged additions above do not alter container version1 or bypass its
+length, CRC, backup and semantic-validation checks.
 
 Provenance: Projects HTML/JS and host tests, and the protocol documentation below, reused from GPL-3.0-only gobbajogger/X0X37-for-Loopy-Pro commit 08d3164a265123cb4c84e5104642fd93257d63d7. Keep LICENSE and inherited Felucca attribution (Leo Kuroshita / Hügelton Instruments, 2026); upstream LICENSING.md identifies web code as GPL-3.0-only. Only source, synthetic fixtures/tests and docs were copied. Existing website sample transport and its later fail-closed backup guards remain unchanged.
 

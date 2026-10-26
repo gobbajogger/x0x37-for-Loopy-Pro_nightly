@@ -1,0 +1,56 @@
+{
+  "schema": "loopyx0x37-edgecase-checkpoint/v1",
+  "scenario_id": "EC-20261026-011",
+  "observed_at": "2026-10-26T12:27:33Z",
+  "trigger": "16,000 syntactically valid unrelated 4-byte MIDI SysEx F0 7D 02 F7 delivered to an OTA input while Link.read is not consuming frames",
+  "preconditions": [
+    "WebMIDI selected OTA-compatible port",
+    "input onmidimessage handler of production web/fm1ota.js::Link",
+    "incoming SysEx traffic outpaces OTA read consumer"
+  ],
+  "expected": "A finite receive budget or explicit fail-closed overflow state; never consume stale packets as a valid OTA transaction",
+  "actual": "Queue length grew to 16,000 after 16,000 packets; baseline 64 packets queued 64",
+  "severity": "medium",
+  "likelihood": "low under normal traffic, increased with noisy or malicious MIDI sources",
+  "status": "OPEN - verified synthetic failure, no production repair, hardware untested",
+  "source": {
+    "site_main_commit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+    "site_main_blob": "485a54187e78822847f5cb51088204983caffa71",
+    "pending_pr34_commit": "51acdd60bd7f5ef949ca32acc11f76ca55b96d86",
+    "pending_pr34_blob": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
+    "modules": [
+      "web/fm1ota.js::Link",
+      "web/fm1ota.js::Updater.serve"
+    ],
+    "comparator": "web/x0x_projects.js::ProjectMidiLink 64-queue cap"
+  },
+  "input_sha256": "71d5b83c6d91e7a9e3ebbe819afe9195f5c883f80179e7c6c4536ca6dd437e54",
+  "regression": {
+    "draft_pr": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/36",
+    "branch": "lane/edgecase-011-ota-sysex-queue-20261026",
+    "commit": "b64b3945753b6cad5c1b7fc1ab93099079a002b2",
+    "path": "tests/edge-ota-sysex-queue-overflow.test.mjs",
+    "blob": "ca8f54b4d7bad79b6fbf7670b95516e87ea41d01",
+    "sha256": "c2754b661f5861ee1b0959c0102be64aa47173317fb9171e5ca31540748aff58",
+    "command": "node --test tests/edge-ota-sysex-queue-overflow.test.mjs"
+  },
+  "executed": [
+    "Exact production class in isolated JS V8: main baseline q64, negative q16000",
+    "Exact production class in isolated JS V8: pending PR34 negative q16000",
+    "Native Node 22.16.0 with manually mirrored class-only fixture: exit 1, baseline PASS, negative expected FAIL"
+  ],
+  "untested": [
+    "Native Node full checkout on exact production module",
+    "WebMIDI browser end-to-end",
+    "Physical keyboard/hardware"
+  ],
+  "owner": "NIGHTLY browser/OTA specialist",
+  "handoff": "Add bounded fail-closed OTA SysEx receive queue and appropriate overflow recovery. Preserve firmware protocol correctness. Run full-checkout native negative regression plus browser and installer tests; independent QA to verify before integration.",
+  "prior_ledger": {
+    "library_path": "/LoopyX0X37/edgecase-6ade70eb16fc8191a1d1ab31fdf8be0e-matrix.json",
+    "previous_count": 10,
+    "this_update_count": 11,
+    "local_updated_matrix_sha256": "4d4dc046385ce0d371436041d6b9f9a93b83ae336dc06b6bd637ec9fe1ecd1d3",
+    "library_upload_status": "FAILED: container_session_unavailable; this committed standalone checkpoint preserves scenario 11 while the existing Library matrix remains unchanged"
+  }
+}

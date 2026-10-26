@@ -1,17 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Reused from gobbajogger/X0X37-for-Loopy-Pro 08d3164a265123cb4c84e5104642fd93257d63d7, web/x0x_projects.js.
+// Selective consumer port from firmware 144f4e042bdfb2cc52ed16a1cf2a26a1148a0101.
+// NOTE_SOUND stream 7 is intentionally unsupported by this NOTE0 website contract.
 // X0X projects: an exact project snapshot and the original sample slot images.
 // No audio decoder, encoder, resampler or slot remapping is used by this module.
 import { crc32, pack78, unpack78, parseHeader, parseInfo, makeArchive, readArchive, slotSize } from "./x0x_breaks.js";
 
 export const PROJECT_OP = Object.freeze({ QUERY: 64, EXPORT: 65, READ: 66, IMPORT: 67, WRITE: 68,
-  COMMIT: 69, ABORT: 70, SAVE: 71, LOAD: 72, RESET: 73, VALIDATE: 74 });
+  COMMIT: 69, ABORT: 70, SAVE: 71, LOAD: 72, RESET: 73, VALIDATE: 74, ADOPT_BASS: 75 });
 export const PROJECT_MAX_FILE = 4 * 1024 * 1024;
 const PROJECT_MAGIC = "X0XPROJ\0", PROJECT_META_MAX = 16384, PROJECT_HEADER = 32;
 const PROJECT_ED = [0xF0, 0x7D, 0x46, 0x4C], PROJECT_CONFIRM = [0x58, 0x30];
 const PROJECT_ERRORS = ["", "Unsupported arguments or project version.", "Stop playback, recording and performance mode first.",
   "The project transfer offset is incorrect.", "The project checksum did not match.", "The project contains invalid settings or patterns.",
-  "This project does not fit the keyboard.", "The keyboard could not access project storage.", "Confirmation is required."];
+  "This project does not fit the keyboard.", "The keyboard could not access project storage.", "Confirmation is required.", "Choose and explicitly confirm both legacy bass engine identities before adoption."];
 const fail = (message, code = "invalid") => Object.assign(new Error(message), { code });
 const bytes = (b) => b instanceof Uint8Array ? b : new Uint8Array(b);
 const view = (b) => new DataView(b.buffer, b.byteOffset, b.byteLength);
@@ -41,15 +43,13 @@ export function parseProject(b, expectedLength = null) {
   if (b.length < PROJECT_HEADER || b.length > 0x1FFFFF) throw fail("Invalid project file size.");
   const v = view(b);
   if (v.getUint32(0, true) !== 0x50583058) throw fail("The project header is missing.");
-  const patternVersion = v.getUint32(20, true), soundRevision = v.getUint32(24, true);
-  // Explicit portable-layout pairs, not an engine migration. Current firmware
-  // exports stream 3 / sound 10; endpoint-aware firmware uses stream 6 / sound 10.
-  // Legacy stream 3 / sound 4 files remain readable.
-  // Firmware VALIDATE still decides semantic compatibility before sample writes.
-  const knownSchema = (patternVersion === 3 && (soundRevision === 4 || soundRevision === 10)) ||
-    (patternVersion === 6 && soundRevision === 10);
-  if (v.getUint32(4, true) !== 1 || v.getUint32(16, true) !== 1 || !knownSchema || v.getUint32(28, true) !== 0)
-    throw fail("This project uses an incompatible file, project, pattern or sound version.", "version");
+  const patternVersion=v.getUint32(20,true), soundRevision=v.getUint32(24,true);
+  const knownSchema=(patternVersion===3 && (soundRevision===4 || soundRevision===10)) ||
+    (patternVersion===6 && (soundRevision===10 || soundRevision===11));
+  if(v.getUint32(4,true)!==1 || v.getUint32(16,true)!==1 || !knownSchema || v.getUint32(28,true)!==0)
+    throw fail("This project uses an incompatible file, project, pattern or sound version.","version");
+  if(patternVersion===6 && soundRevision===11 && b.length!==36452)
+    throw fail("This tagged project has an unsupported structural layout.","version");
   if (v.getUint32(8, true) !== b.length - PROJECT_HEADER) throw fail("The project payload length is incorrect.");
   if (expectedLength !== null && b.length !== expectedLength) throw fail("The project size does not match this firmware.", "version");
   if (v.getUint32(12, true) !== crc32(b.subarray(PROJECT_HEADER))) throw fail("The project payload is damaged (CRC).");
@@ -268,7 +268,7 @@ export class ProjectDevice {
   async command(op, args = [], { length = 2, offset = null, tries = 1, timeout = this.timeout } = {}) {
     const r = await this.request(9, [op, ...args], { tries, timeout, accept: (r) => {
       if (r[0] !== op) return false;
-      if (r.length < 2 || r[1] > 8 || r[1] && r.length !== 2 || !r[1] && r.length !== length)
+      if (r.length < 2 || r[1] > 9 || r[1] && r.length !== 2 || !r[1] && r.length !== length)
         throw fail(`Malformed project reply for operation ${op}.`, "protocol");
       if (!r[1] && offset !== null && get21(r, 2) !== offset) return false;
       return true;
@@ -293,12 +293,13 @@ export class ProjectDevice {
   }
   async query({ acceptModeChange = false, allowRecovery = false } = {}) {
     const r = await this.command(PROJECT_OP.QUERY, [], { length: 7, tries: 2 });
-    if (r[2] !== 1 || !integer(get21(r, 3), PROJECT_HEADER, 0x1FFFFF) || !integer(r[6], 0, 3)) throw fail("Unsupported project protocol version or file size.", "version");
+    if (![1,2].includes(r[2]) || r[2]===2 && get21(r,3)!==36452 || !integer(get21(r, 3), PROJECT_HEADER, 0x1FFFFF) || !integer(r[6], 0, 3)) throw fail("Unsupported project protocol version or file size.", "version");
     if (acceptModeChange || allowRecovery && r[6] === 3) { this.mode = r[6]; this.active = this.mode !== 0; }
     if (r[6] !== this.mode) throw fail(this.active ? "The project transfer expired or changed. Sample writes have stopped." :
       "Another project transfer is active. Close the other editor and reconnect after it finishes.", this.active ? "expired" : "busy");
     const size = get21(r, 3);
     if (this.projectLength !== null && this.projectLength !== size) throw fail("The connected firmware changed. Reconnect before continuing.", "version");
+    this.projectProtocol=r[2];
     this.projectLength = size;
     return size;
   }
@@ -334,7 +335,9 @@ export class ProjectDevice {
     return b;
   }
   async stage(project, onProgress = () => {}) {
-    parseProject(project, await this.query());
+    const size=await this.query(), meta=parseProject(project);
+    const legacy=this.projectProtocol===2 && size-project.length===24 && meta.soundRevision===10 && [3,6].includes(meta.patternVersion);
+    if(!legacy)parseProject(project,size);
     this.active = true; this.mode = 2;
     await this.command(PROJECT_OP.IMPORT, u21(project.length));
     for (let off = 0; off < project.length;) {
@@ -345,6 +348,12 @@ export class ProjectDevice {
     }
   }
   async validate() { await this.command(PROJECT_OP.VALIDATE); }
+  async adoptLegacyBass(engines,{confirmed=false}={}) {
+    if(confirmed!==true || this.projectProtocol!==2 || !Array.isArray(engines) || engines.length!==2 ||
+       !engines.every((bank)=>integer(bank,0,1)) || engines.every((bank)=>bank===1))
+      throw fail("Explicit valid engine choices for both bass slots are required.","identity");
+    await this.command(PROJECT_OP.ADOPT_BASS,[...engines,...PROJECT_CONFIRM]);
+  }
   async commit() { await this.command(PROJECT_OP.COMMIT, PROJECT_CONFIRM); this.active = false; this.mode = 0; }
   async save() { await this.command(PROJECT_OP.SAVE, [], { timeout: Math.max(10000, this.timeout) }); }
   async load(confirmed) {
