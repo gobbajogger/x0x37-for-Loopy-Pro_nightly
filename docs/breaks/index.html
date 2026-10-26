@@ -542,6 +542,7 @@ function asciiName(b) {
 function parseInfo(r) {
   if (r.length < 2) throw new Error("short SMP_INFO reply");
   const count = r[0], size = r[1] * 1024, slots = [];
+  if (count < 1) throw new Error("invalid SMP_INFO slot count");
   let i = 2;
   for (let k = 0; k < count; k++) {
     const nz = r[i], j = r.indexOf(0, i + 1);
