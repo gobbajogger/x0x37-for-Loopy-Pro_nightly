@@ -7,7 +7,7 @@
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
-    "web/x0x_breaks.js": "dedd45cdd942bba2bb4e03e33603b6d8069242e2",
+    "web/x0x_breaks.js": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
@@ -326,6 +326,13 @@
       "sourceBaseCommit": "d40fa088f65986e130e94bac8ab6b10a5618257a",
       "resultBlob": "dedd45cdd942bba2bb4e03e33603b6d8069242e2",
       "description": "EC015: reject invalid occupied sample headers before accepting a backup or starting OTA; retain null for known empty slots."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "08aed72e1b96db73dea08edca09c83ba22880e9c",
+      "resultBlob": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
+      "description": "EC016: bind preflash slot maps to CRC-checked flash.bin and board-specific flash-map address; ignore padding decoys, retain verified legacy loader and empty-slot behavior."
     },
     {
       "path": "web/x0x_installer.html",
