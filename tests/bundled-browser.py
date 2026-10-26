@@ -15,7 +15,9 @@ window.qa={state:()=>({image:!!image,disabled:$("go").disabled,status:$("status"
  select:model=>{chosenModel=model;refreshModelUi();return loadSelectedPackage();},
  catalog:()=>catalogLive,
  mocks:()=>{window.permissions=0;window.writes=0;window.lastWritten=null;window.confirm=()=>true;
-  midiAccess=async()=>{window.permissions++;return{};};
+  // Count user permission grants, not cached access calls from post-write scan.
+  const access={};let granted=false;
+  midiAccess=async()=>{if(!granted){window.permissions++;granted=true;}return access;};
   Updater=class{async find(){return null;}};
   installKeepingSlots=async(up,img,product)=>{window.writes++;window.lastWritten=Array.from(img);return{product};};
  },
