@@ -7,7 +7,7 @@
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
-    "web/x0x_breaks.js": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
+    "web/x0x_breaks.js": "a876b35220251d8bdff2398b69c2b30f522d8ba3",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
@@ -278,6 +278,13 @@
       "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
       "resultBlob": "ef910496119f985a6795f690b5fd5ed9486ea97c",
       "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "365d967fd007df131883fc4010b7b4705f85de0b",
+      "resultBlob": "a876b35220251d8bdff2398b69c2b30f522d8ba3",
+      "description": "EC-012: reject invalid/overlapping SMP_INFO flash ranges and incomplete extensions before sample-risk and OTA decisions; preserve valid legacy maps and empty slots."
     }
   ]
 }
