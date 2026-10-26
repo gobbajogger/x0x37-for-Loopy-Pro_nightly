@@ -7,7 +7,7 @@ from playwright.async_api import async_playwright
 root=Path(__file__).resolve().parents[1];out=Path(os.environ.get('UI_EVIDENCE_DIR','/tmp/nightly-installer-ui-evidence'));out.mkdir(parents=True,exist_ok=True)
 fixture=out/'synthetic-loop.wav'
 with wave.open(str(fixture),'wb') as f:
- f.setnchannels(1);f.setsampwidth(2);f.setframerate(44100);f.writeframes(b''.join(struct.pack('<h',int(16000*math.sin(2*math.pi*220*i/44100))) for i in range(88200)))
+ f.setnchannels(1);f.setsampwidth(2);f.setframerate(44100);f.writeframes(b''.join(struct.pack('<h',int(16000*math.exp(-18*((i/44100)%0.25))*(.7*math.sin(2*math.pi*220*i/44100)+.3*math.sin(2*math.pi*730*i/44100)))) for i in range(88200)))
 class H(SimpleHTTPRequestHandler):
  def __init__(self,*a,**k):super().__init__(*a,directory=str(root/'docs'),**k)
  def log_message(self,*a):pass
@@ -28,9 +28,11 @@ async def main():
    check(await page.locator('#prepare-samples').evaluate('(e)=>e.getBoundingClientRect().top<document.querySelector("#connectbar").getBoundingClientRect().top'),f'{width}: preparation before connection')
    check(await page.evaluate('document.documentElement.scrollWidth<=innerWidth'),f'{width}: no horizontal overflow')
    check(await page.locator('#prep-reference').is_disabled(),f'{width}: playback disabled without audio')
+   await page.screenshot(path=str(out/f'empty-{width}.png'))
    await page.locator('#prep-bars').uncheck();await page.locator('#prep-file').set_input_files(str(fixture));await page.wait_for_function('!document.getElementById("prep-reference").disabled')
    check('44,100 Hz' in await page.locator('#prep-technical').text_content(),f'{width}: decoded upload prepared at 44.1 kHz')
-   await page.locator('#prep-reference').click();await page.locator('#prep-encoded').click();await page.locator('#prep-stop').click()
+   await page.locator('#prep-reference').click();check(await page.locator('#prep-reference').get_attribute('aria-pressed')=='true',f'{width}: active reference playback is visible and accessible');await page.locator('#prep-encoded').click();await page.locator('#prep-stop').click()
+   check(await page.locator('#prep-encoded').get_attribute('aria-pressed')=='false',f'{width}: stop clears playback state')
    await page.locator('#prep-rate').select_option('22050');await page.locator('#prep-encoded').click();await page.locator('#prep-stop').click()
    probe=await page.evaluate('probe');plays=probe['plays'];check(len(plays)==3,f'{width}: reference and both encoded rates start actual AudioBufferSources')
    check(plays[0]['samples']==88200 and plays[1]['samples']==88200 and plays[2]['samples']==44100 and plays[2]['rate']==.5,f'{width}: half samples and compensated playback rate')
@@ -38,8 +40,9 @@ async def main():
    await page.locator('#prep-grit').select_option('2');await page.locator('#prep-encoded').click();await page.locator('#prep-stop').click()
    newest=await page.evaluate('probe.plays.at(-1)');check(newest['samples']==22050 and newest['rate']==.25 and abs(newest['duration']-2)<.001,f'{width}: oldschool further reduction keeps duration')
    check(not await page.locator('#prep-details').evaluate('(e)=>e.open'),f'{width}: technical explanation collapsed by default')
-   summary=await page.locator('#prep-status').inner_text()
+   summary=await page.locator('#prep-status').inner_text()+' '+await page.locator('#prep-facts').inner_text()
    check('synthetic-loop.wav' in summary and '2.00 s' in summary and '75% space saved' in summary and 'ADPCM' not in summary and 'Hz' not in summary,f'{width}: visible summary uses filename duration and space saved')
+   check(await page.locator('#prep-wave').get_attribute('aria-label')!='No audio loaded',f'{width}: real selected-loop waveform rendered')
    await page.screenshot(path=str(out/f'after-{width}.png'),full_page=False)
    await page.locator('#prepare-samples').screenshot(path=str(out/f'preparation-{width}.png'))
    await page.locator('#prep-file').set_input_files({'name':'broken.wav','mimeType':'audio/wav','buffer':b'not audio'});await page.wait_for_function('document.getElementById("prep-status").textContent.includes("Could not read")')
