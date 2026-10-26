@@ -71,3 +71,37 @@ test("negative: CRC-valid alias of slot 2 to slot 1 must be rejected before any 
   assert.throws(() => readArchive(tampered), Error,
     "FAIL_BEFORE_FIX: CRC-valid aliased archive maps sample ONE into both slot 1 and slot 2");
 });
+
+
+// EC-20261026-005: changing the metadata empty flag must not silently
+// reinterpret an extant sample image as a request to erase its target slot.
+function falselyMarkSecondSampleEmpty(archive) {
+  const view = new DataView(archive.buffer, archive.byteOffset, archive.byteLength);
+  const originalMetaLength = view.getUint32(12, true);
+  const meta = JSON.parse(new TextDecoder().decode(archive.subarray(16, 16 + originalMetaLength)));
+  assert.deepEqual(meta.slots.map((slot) => slot.slot), [1, 2]);
+  assert.equal(meta.slots[1].empty, false);
+  assert.equal(meta.slots[1].name, "TWO");
+
+  // Keep both real serialized images but lie that slot 2 is empty.
+  // This is distinct from offset aliasing: the restore planner would CLEAR
+  // the second slot instead of writing the original TWO image.
+  meta.slots[1].empty = true;
+  const encodedMeta = new TextEncoder().encode(JSON.stringify(meta));
+  const originalPayload = archive.subarray(16 + originalMetaLength, archive.length - 4);
+  const edited = new Uint8Array(16 + encodedMeta.length + originalPayload.length + 4);
+  edited.set(archive.subarray(0, 16));
+  const editedView = new DataView(edited.buffer);
+  editedView.setUint32(12, encodedMeta.length, true);
+  edited.set(encodedMeta, 16);
+  edited.set(originalPayload, 16 + encodedMeta.length);
+  editedView.setUint32(edited.length - 4, crc32(edited.subarray(0, -4)), true);
+  assert.equal(editedView.getUint32(edited.length - 4, true), crc32(edited.subarray(0, -4)));
+  return edited;
+}
+
+test("negative: CRC-valid false empty marker must never turn a populated backup slot into CLEAR", () => {
+  const mutated = falselyMarkSecondSampleEmpty(canonicalBackup());
+  assert.throws(() => readArchive(mutated), Error,
+    "FAIL_BEFORE_FIX: false empty marker skips existing sample TWO and plans an erase of slot 2");
+});
