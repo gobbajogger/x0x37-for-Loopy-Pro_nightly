@@ -41,7 +41,7 @@
     "site_provenance": 0
   },
   "limits": [
-    "Endpoint fixture pins a dirty producer closure; final recorder/native/device qualification remains separate.",
+    "Initial endpoint producer closure was dirty; superseded by exact clean 6ddea31d producer regeneration in producer-rebind.json. Native/device qualification remains separate.",
     "Firmware decides semantic compatibility before sample mutation.",
     "No engine identity is inferred or migrated.",
     "No GUI/headless/device/native build performed."
@@ -86,5 +86,12 @@
       "exit": 0,
       "log_sha256": "f3e095818f5591e243f7f82038791afedbaa67b6f31108b5cb4f494d9f5aa556"
     }
-  ]
+  ],
+  "initial_stage_only": true,
+  "superseded_by": {
+    "producer": "producer-rebind.json",
+    "combined_checks": "stack-checks.json",
+    "site_stack_base": "1b2b687b0c572602debbe2bba4cde9dfa647f774",
+    "firmware_stack_base": "d049682cccc31a7ce5285edaa5f968869aaef2d9"
+  }
 }

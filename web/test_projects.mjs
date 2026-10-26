@@ -533,6 +533,10 @@ function firmwareProjectFixture(pattern = 3) {
   assert.equal(f.synthetic, true); assert.equal(f.contains_user_data, false);
   assert.equal(f.project_validate_stage, 0); assert.equal(f.project_file_validate, 0);
   assert.ok(f.defines.includes("X0X_WOBBLE=1"), "fixture must use the product Miami backend");
+  const producers = { 3: "d633833ac369f8466bc2563791614206070e87d1", 6: "6ddea31d6040d6735989e64adbe11630fc1ee7ec" };
+  assert.equal(f.source_commit, producers[pattern]);
+  assert.deepEqual(f.dirty_production_files, []);
+  assert.equal(f.producer_readback.same_previous_fixture_bytes, true);
   assert.equal(raw.length, f.length);
   assert.equal(createHash("sha256").update(raw).digest("hex"), f.sha256);
   return raw;

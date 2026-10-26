@@ -4,20 +4,12 @@
   "contains_user_data": false,
   "source_base": "d633833ac369f8466bc2563791614206070e87d1",
   "base_tree": "442b8e3d1d0e785d2f7b6d7517777da727f70dd0",
-  "dirty_production_files": [
-    "firmware/src/app/engine.c",
-    "firmware/src/app/engine.h",
-    "firmware/src/app/project.c",
-    "firmware/src/app/ui.c",
-    "firmware/src/seq/pattern.h",
-    "firmware/src/seq/sequencer.c",
-    "firmware/src/seq/sequencer.h"
-  ],
+  "dirty_production_files": [],
   "source_blobs": {
-    "firmware/src/app/engine.c": "0db91a64dbfb802128558fdf359055343c8a2309",
+    "firmware/src/app/project.c": "dca33fd09edc2b09cf8f0358de21980a69385090",
+    "firmware/src/app/engine.c": "ddbd6848ba25ad6814ddd4d1304f3c06087ba5de",
     "firmware/src/app/engine.h": "1fd23e9c6aa94a4fe6e95f4b63ca6aea6d74c2ac",
-    "firmware/src/app/project.c": "ba2c96a994657dbeb054d1ee46e1145e9f985548",
-    "firmware/src/app/ui.c": "704c4684325a420f9b4e14bfcf523730a4415a27",
+    "firmware/src/app/ui.c": "0b6e092efa0124af5f253b3c41eed224e7981957",
     "firmware/src/seq/pattern.h": "19dc003c8bc3e43d94dd4b4e9c1c068030a84cd2",
     "firmware/src/seq/sequencer.c": "2f25ef43d99e6772476b5942237b0f9be56d7da1",
     "firmware/src/seq/sequencer.h": "e37e3606734c36cf5d4ec247b492a8ddce266e86"
@@ -48,5 +40,22 @@
   "sha256": "c169f42d80c362a1f0a62ffd66baeb7aa6af41c3254a9f702280f67c987331df",
   "header_hex": "58305850010000002c8e00001b3a667e01000000060000000a00000000000000",
   "zlib_base64": "eJzt2DFI1HEYh/Hf/99pnQWWhXhJVhaZVMeVHKUcVBRyUKIZ1FGIoGJQ0NCQBCE0tEkQQUNbS0sEDW0uETS0tbREU20uETS02eVb9C5tL/f2yvPwPe64G47j/UzXqDQmspTS4Qcp9Y7ML/563d58dCSp0qisfZ5lWfpcaDRf5X8+Gs7XnoqpkIiIiIiI1ldbW/QdtQtX9qYUd83f0DN6sJQXU5ZebkjpSPD9/T15etomdyrVdhzrSG3Nd/I8ZS2A8Q8rrfgOd1CGHu9t9NZk67F9k9wJj3GmPU5u9tZk6/HG73+G8Bhn2uO+Tm9Nth7fb5E74THOtMfvXd6abD1WO+VOeIwz7fFtt7cmW49Ptsmd8Bhn2uPjnd6abD2ubpc74THOtMdrfd6abD3Odcud8Bhn2uOJfm9Nth7f9cid8Bhn2mPxgLcmW4/lXrkTHuNMe/w46K3J1uOjXXInPMaZ9vjcXZOtxx+75U54jDPt8e5Rb022Hqf65U54jDPtcazqrcnW45v9cic8xpn22DfsrcnW48CA3AmPcaY9fq15a7L1uDQod8JjnGmPr095a7L1+O2Q3AmPcaY9PjzrrcnW46Wy3AmPcaY9ztS9Ndl6XK7InfAYZ9rj0HlvTbYe9wzJnfAYZ9pjYcJbk63H+1W5Ex7jTHv8cNFbk63HleNyJzzGmfb47LK3JluP4yNyJzzGmfa4cNVbk63HVzW5Ex7jTHusT3trsvVYOil3wmOcaY+lWW9Nth4XT8ud8Bhn2uPKvLcmW49fzsid8Bhn2uPydW9Nth7ro3InPMaZ9rh001uTrccXdbkTHuNMe5y65a3J1mPXObkTHuNMeyzf9tZk63FhTO6ExzjTHlfveGuy9fhpXO70P3gkIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiJaD/0EWSntig==",
-  "note": "Synthetic zero-valued valid sound cells; no historical sound identity inferred. Device ED_PROJECT_READ serializes this canonical header and staged raw bytes; no standalone project_file_read API exists."
+  "note": "Synthetic zero-valued valid sound cells; no historical sound identity inferred. Device ED_PROJECT_READ serializes this canonical header and staged raw bytes; no standalone project_file_read API exists.",
+  "source_commit": "6ddea31d6040d6735989e64adbe11630fc1ee7ec",
+  "source_tree": "c61706b9f06168c2500ff5f2d792a5f253ec478d",
+  "producer_readback": {
+    "argv": [
+      "sh",
+      "tests/host/project_export_fixture.sh"
+    ],
+    "exit": 0,
+    "tracked_checkout_clean": true,
+    "generator_sha256": {
+      "project_export_fixture.c": "f30d20d437b88947095c6070fdb4d8cb50d8ba9db96c30ef4a226639d5aacbbd",
+      "project_export_fixture.sh": "589eb58d8f89a4a445e9e4cb41c3e9a2de943993d8695bcef0c2ac5abac10582"
+    },
+    "log_sha256": "1a1eb64c0a3a4dcbd7c905e724741d1d5124c4d62d9b95a1b089ba2acf9b3199",
+    "same_previous_fixture_bytes": true,
+    "native_or_device_proof": false
+  }
 }

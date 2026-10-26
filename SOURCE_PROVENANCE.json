@@ -11,7 +11,7 @@
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
-    "web/test_projects.mjs": "d1815a731ff7c6af61ebf2c916f8c92f7c85cb46",
+    "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
   },
   "sourcePatches": [
@@ -265,7 +265,7 @@
       "path": "web/test_projects.mjs",
       "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
       "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
-      "resultBlob": "d1815a731ff7c6af61ebf2c916f8c92f7c85cb46",
+      "resultBlob": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
       "description": "Recognize explicit current and endpoint portable project revision pairs; preserve firmware VALIDATE before sample mutation and opaque payload bytes"
     }
   ]
