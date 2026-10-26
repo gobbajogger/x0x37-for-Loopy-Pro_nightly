@@ -4,15 +4,16 @@
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
     "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
-    "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978",
+    "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
     "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
-    "web/x0x_breaks.js": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
+    "web/x0x_breaks.js": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
     "web/test_projects.mjs": "6e3f65e584f0873c0af7bb21539ed3355d49c365",
-    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
+    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
+    "web/test_breaks_page.mjs": "ef910496119f985a6795f690b5fd5ed9486ea97c"
   },
   "sourcePatches": [
     {
@@ -253,6 +254,30 @@
       "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
       "resultBlob": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
       "description": "Preserve absolute original slot and per-zone LOOP indices before automatic restoration; retain archive and reconciliation guidance on skipped-middle compaction. Recompute old map and risk from the verified backup snapshot to handle changed SMP_INFO."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "ef910496119f985a6795f690b5fd5ed9486ea97c",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
     }
   ]
 }
