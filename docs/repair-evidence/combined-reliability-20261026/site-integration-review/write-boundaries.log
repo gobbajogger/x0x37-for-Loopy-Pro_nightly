@@ -1,0 +1,42 @@
+PASS install rejects ota-FM-1 before loader write for Elite package
+PASS install rejects ota-SMK before loader write for FM-1 package
+PASS install preserves Elite package with Pro loader family alias
+PASS install preserves Pro package with Elite loader family alias
+PASS install preserves FM-1 loader positive
+PASS write cross-family refusal
+PASS write requires a known package identity
+PASS write allows SMK alias
+PASS resume preserves legitimate SMK loader alias
+PASS X0X no slot response blocks install
+PASS USB send failure blocks install
+PASS USB read failure blocks install
+PASS malformed SMP_INFO blocks install
+PASS stock corrupt reply is not unsupported
+PASS stock USB loss is not unsupported
+PASS unclassified no response is not unsupported
+PASS stock Elite016 no SMP_INFO retains supported path
+PASS stock MKE016 no SMP_INFO retains supported path
+PASS stock Starry016 no SMP_INFO retains supported path
+PASS stock FM1_015 no SMP_INFO retains supported path
+PASS required slot backup failure blocks install
+PASS known stock Pro016 no SMP_INFO retains existing manual path
+PASS valid empty slot layout retains install
+PASS resume refuses foreign/missing package SMK-37 Elite_900/ota-FM-1
+PASS resume refuses foreign/missing package FM-1_900/ota-SMK-37 Pro
+PASS resume refuses foreign/missing package /ota-SMK-37 Elite
+PASS sameKeyboard preserves all existing named family aliases
+PASS bind single selected observable port positive
+PASS bind ambiguity refuses before app UPGRADE
+PASS selected port name change refuses before app UPGRADE
+PASS real find/wait permits sole compatible loader rename
+PASS real bound find refuses changed family
+PASS real bound wait refuses observable ambiguity before handshake
+PASS verified find blocks name-change before readback
+PASS verified find blocks extra-port before readback
+PASS binding ambiguity blocks sample-layout query and backup
+PASS post-install restore binding positive
+PASS post-install restore binding name-change
+PASS post-install restore binding extra-port
+PASS post-install restore binding archive-error
+PASS post-install restore binding readback-mismatch
+{"cases":41,"failed":0,"scope":"actual browser shipping bodies; synthetic discovery/serve/MIDI boundaries, no hardware"}

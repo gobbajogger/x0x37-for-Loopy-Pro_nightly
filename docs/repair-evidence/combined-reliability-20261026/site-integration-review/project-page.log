@@ -1,0 +1,21 @@
+✔ page checks a file before connecting and keeps keyboard actions disabled (2.482708ms)
+✔ wrong identity and damaged file leave mutation controls unavailable (0.778625ms)
+✔ export defaults portable and project-only option is explicit (0.513833ms)
+✔ collision import requires downloaded recovery, saved acknowledgement and explicit import consent (1.130792ms)
+✔ failed import retains recovery download and requires a new preview before retry (0.60175ms)
+✔ load/reset decline sends no action; accepted action invalidates the import preview (0.424583ms)
+✔ mode3 recovery explains the hold, disables normal actions and confirms the portable recovery source (0.307ms)
+✔ workspace switch detaches MIDI, retains dirty form and file, and invalidates device preview (0.611291ms)
+✔ disconnect disables mutation and invalidates preview while preserving recovery download (0.411583ms)
+✔ busy export refuses repeat clicks and task switching without discarding draft state (0.401375ms)
+✔ unsupported firmware has an honest unavailable state and no reset fallback (0.248792ms)
+✔ reset wording distinguishes whole project, samples and autosave from arrangement clear (0.036708ms)
+✔ empty chooser cancellation keeps checked file, preview and saved-backup consent (0.255583ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10.252333

@@ -1,0 +1,42 @@
+✔ positive: firmware envelopes echo offsets 0 and 224 for distinct chunks (1.012125ms)
+✔ negative: stale retry offset 0 cannot consume pending offset 224 (0.953ms)
+✔ negative: wrong-slot echo leaves the matching read wait intact (0.226875ms)
+✔ positive: nonzero slot and high offset with odd final pair padding (0.634791ms)
+✔ negative: truncated echoed address cannot consume the read wait (0.269666ms)
+✔ negative: missing SysEx terminator leaves the matching wait intact (0.192542ms)
+✔ negative: address prefix without payload leaves the matching wait intact (0.152667ms)
+✔ valid current/legacy identity FM-1_015 remains accepted (0.529166ms)
+✔ valid current/legacy identity FM-1_016 remains accepted (0.094541ms)
+✔ valid current/legacy identity SMK-37 Pro_016 remains accepted (0.064833ms)
+✔ valid current/legacy identity SMK-37 Elite_016 remains accepted (0.06575ms)
+✔ valid current/legacy identity SMK-37 Elite_900 remains accepted (0.046542ms)
+✔ valid current/legacy identity ota-SMK-37 Elite_900 remains accepted (0.039083ms)
+✔ valid current/legacy identity MKE-P37_900 remains accepted (0.040542ms)
+✔ valid current/legacy identity Felucca_000 remains accepted (0.037583ms)
+✔ contradictory 24-bit payload length 0 is rejected (0.054833ms)
+✔ contradictory 24-bit payload length 26 is rejected (0.07025ms)
+✔ contradictory 24-bit payload length 28 is rejected (0.573125ms)
+✔ contradictory 24-bit payload length 283 is rejected (0.036208ms)
+✔ contradictory 24-bit payload length 65563 is rejected (0.026917ms)
+✔ missing F0 is rejected before identity admission (0.049125ms)
+✔ missing F7 is rejected before identity admission (0.0355ms)
+✔ interior status byte is rejected before identity admission (0.041583ms)
+✔ nonzero packed padding is rejected before identity admission (0.030542ms)
+✔ truncated frame is rejected before identity admission (0.041625ms)
+✔ extra packed octet is rejected before identity admission (0.0365ms)
+✔ a different version with a correct checksum is valid framing, not authenticated identity (0.038833ms)
+✔ malformed identity followed by valid identity does not poison discovery (0.328084ms)
+✔ positive: checksummed identity frame discovers the correct model and version (0.67275ms)
+✔ negative: corrupt identity checksum must not bind a keyboard (2005.054125ms)
+✔ negative: corrupted version byte with unchanged checksum must not bind (2005.450375ms)
+✔ negative: contradictory identity length header must not bind (2006.170458ms)
+✔ baseline: one matching MIDI acknowledgement resolves before timeout (0.645667ms)
+✔ negative: a thrown send's old timer must not erase a newer live request (0.752625ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6064.914625
