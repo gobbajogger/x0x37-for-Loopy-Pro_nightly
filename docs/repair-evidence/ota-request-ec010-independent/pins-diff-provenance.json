@@ -1,0 +1,312 @@
+{
+  "ota-request-site": {
+    "full": 2,
+    "source": 0,
+    "head": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+    "tree": "8bb468121145f409d83054f083df7d867cfcdb33",
+    "base": "2128990834d36ea14c4e81ea059dd92eaf3dc17f",
+    "status": "",
+    "sourceBlobsMatch": {
+      "web/fm1ota.js": true
+    }
+  },
+  "ota-request-firmware": {
+    "full": 2,
+    "source": 0,
+    "head": "6e08cf42e10d1d0d47d1df8471cb1294e86fdbed",
+    "tree": "2802cb5cf78635a162ecc8d3f3a3f83f5a023a6e",
+    "base": "43d078dd384dd9d6544d368f5081da985dd27698",
+    "status": "",
+    "sourceBlobsMatch": {
+      "web/fm1ota.js": true,
+      "tools/fm1_install.py": true
+    }
+  },
+  "otaContractBlob": "7d1c48c7dc4ca4a6cb62925bb723a84cc1b146ad",
+  "provenance": {
+    "upstreamRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+    "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
+    "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
+    "publicSourceBlobs": {
+      "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
+      "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978",
+      "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
+      "web/fm1ota.js": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
+      "web/x0x_breaks.js": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
+      "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
+      "web/x0x_projects.js": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
+      "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
+      "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
+    },
+    "sourcePatches": [
+      {
+        "path": "web/fm1pkg.js",
+        "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+        "sourceCommit": "bf5b200b2d2c0adbf0ad1c8b94f49b40c34577f5",
+        "sourcePullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/115",
+        "sourceBlob": "3f8c704e4ea8ea780d6deef67a4bb33249f80d3e",
+        "description": "Reject non-erased controller-image trailing bytes before browser package construction"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "1a176e156b049f476074b77d7e6d54be03e8c9ad",
+        "sourceBlob": "ecc861643de8f9377dc1cb34f54d3db6a40aad63",
+        "description": "NIGHTLY catalog-only browser source: no GitHub Releases auto-import, no direct URL for unapproved, wrong-model or insecure packages, exact package product identity"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "ddbd8d89f7c4dfd5afa432dd51e940b6dd428592",
+        "sourceBlob": "0ee4bd958a873116a5c5363a557a7a3bcc5d0c56",
+        "description": "Require exact qualification-bound owner-supplied controller hash and unchanged selection before candidate install"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+        "sourceCommit": "22d522a4cde4c18f92a846bc40d504b701cf6d17",
+        "description": "Selectively adapted GPL verified-Blob, byte-size, selection binding, empty-catalog invalidation and pre-MIDI single writer safeguards; stricter NIGHTLY admission/revocation and current site acknowledgement retained",
+        "resultBlob": "e170e222372ead0a0bcc09a0a519d9a0d7b37b69"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "363b128793c3aecf49a6eca293d6ab74a1cd7f0b",
+        "reviewEvidenceCommit": "76e059e17db12265bf2062144eb7feee1df7e5f8",
+        "description": "Cancel Download default action before any mutable metadata lookup; total shape/predicate checks deny malformed selections and clear cached bytes; positive verified Blob downloads preserved",
+        "resultBlob": "ad8399392d3584dd2e84858e846cec336a4ff782"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+        "sourceCommit": "a48d745b59683eaaf2283aed5ec1ec2187799cfc",
+        "description": "Port existing GPL bounded readable-stream reader; reject no-reader responses before allocation, cancel oversized/stale streams",
+        "resultBlob": "380aba0d5b5e6bdbce92437126494f1060dd7686"
+      },
+      {
+        "path": "web/fm1ota.js",
+        "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+        "sourceCommit": "c2e63feb11385b91a9dbd3b29b20a368ed948a5a",
+        "description": "Reuse byte-identical existing GPL c2 browser observable-port bind/singlePort/find/write/post-install guards; preserve sameKeyboard aliases, without a new identity scheme",
+        "resultBlob": "485a54187e78822847f5cb51088204983caffa71"
+      },
+      {
+        "path": "web/x0x_breaks.js",
+        "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+        "sourceCommit": "c2e63feb11385b91a9dbd3b29b20a368ed948a5a",
+        "description": "Port existing bind-before-backup, stock FM1_015/SMK-family v16 no-answer exception and binding check before restore; unknown layout/read errors fail closed",
+        "resultBlob": "cf00dbc1d2654fe3fa47bee40f99fc99472d0b4e"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+        "sourceCommit": "e77cd4dfdf970bd1e47490ed304c4c22e8e58564",
+        "sourceBaseCommit": "5d1cf4db62f8700da7671b6b44a6c7dea989228c",
+        "description": "Adapt existing safe-integer/preallocation local File guard: controller68..65536 matches ctlProblem; stock960..16MiB matches product header/resource cap; retain serial invalidation, cleanup and format checks",
+        "resultBlob": "e34761acfb6687a424269f132f89dedb4eb20875"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "10c47659192a32821da171417069ffefdbc05d63",
+        "description": "Optional catalog approval hints are deny-only: explicit false or malformed values at version/package scope refuse admission; independent renderer receipts and verified-byte/model/install guards retained",
+        "resultBlob": "468eb2583cb69f350b07bfba105042f1de6511fd"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "7515d147e4817248dece608c73fd7fb171e996f2",
+        "description": "Optional DEV hardware facts must be literal false when supplied; absent facts remain optional and true remains denied at version/package scope",
+        "resultBlob": "4b44f7514cc424faa0c4afd4690d163550236674"
+      },
+      {
+        "path": "web/fm1pkg.js",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+        "description": "Validate embedded bundled NIGHTLY controller identity/layout/CRCs/hash; retain exact legacy local-controller path and PR14 admission protections",
+        "resultBlob": "4b3152e695512c288a0244b0474fd140392ad4f5"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "593c0fc3c18200fd887373bff4602bfd322f0d54",
+        "description": "Validate embedded bundled NIGHTLY controller identity/layout/CRCs/hash; retain exact legacy local-controller path and PR14 admission protections",
+        "resultBlob": "ec789eb37603218f698dd7f8d2dcdc2a71c1e8ae"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceBaseCommit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
+        "description": "Combined firmware/sample workspace with persistent isolated tool context, task-specific state, MIDI operation exclusion and truthful renderer showcase",
+        "resultBlob": "8f14f5873d0efbfaf838c021f9f893af1493450c"
+      },
+      {
+        "path": "web/x0x_breaks.html",
+        "sourceBaseCommit": "cc7e7e8e68717acda8c774d4da8ca7d5cc401ff8",
+        "description": "Combined firmware/sample workspace with persistent isolated tool context, task-specific state, MIDI operation exclusion and truthful renderer showcase",
+        "resultBlob": "9641a7677921200d8e2afd8f499ba3275a626cc1"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "e60bd9fa1fe05f740ded6280604583b6afad7264",
+        "resultBlob": "0eb06940ba67b370d45ab5cd374e01347fa34b33",
+        "description": "Presentation only: crisp labelled SVG UI illustrations, task hierarchy, readable guidance and coherent sample panel styling; script and operation IDs unchanged"
+      },
+      {
+        "path": "web/x0x_breaks.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "e60bd9fa1fe05f740ded6280604583b6afad7264",
+        "resultBlob": "2b123e974cbde09b3e710357c3c041ebe2c80d41",
+        "description": "Presentation only: crisp labelled SVG UI illustrations, task hierarchy, readable guidance and coherent sample panel styling; script and operation IDs unchanged"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "c778be046753101e1fab0c7004c479a07f3e00ff",
+        "resultBlob": "5f9e4d14db9b9df423746a169119f4deaedd3448",
+        "description": "Replace approximate wide illustrations with native square production draw-command vectors and exact Barlow outlines; explicit public DEV and historical SMC version context, pending redesign reference gap; operations unchanged"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "160b905cbf3c985d5c554f66dbe4418c22e06825",
+        "resultBlob": "2f82c0cfd5e8b1caef7f511a95f4570c6e340ab1",
+        "description": "User-first top Install / Import samples paths, standalone / SMC / Loopy workflow guide, optional provenance and truthful source-preview captions; PR168 b8794f9 native-square SMC vector; operation logic unchanged, three informational strings edited"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "ae7a77233ec0adb97ffeba4171df182e3bf1f6e9",
+        "resultBlob": "e2ffa579bf8b2b4c72655eb7649eece753b2b7af",
+        "description": "Owner-requested Closer look before integration; verified 65a0588 native drum-label vector with failed-link source-preview limitation; operation scripts unchanged"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "570253d35c84748bba82ddd616b9c17af8d7da58",
+        "description": "Add Songs & projects task with exclusive MIDI workspace ownership; preserve firmware and samples top access",
+        "resultBlob": "987818546dfc94b7d5fa285ef760c7af921361ad"
+      },
+      {
+        "paths": [
+          "web/x0x_projects.html",
+          "web/x0x_projects.js",
+          "web/test_projects.mjs",
+          "web/test_projects_page.mjs"
+        ],
+        "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+        "sourceCommit": "08d3164a265123cb4c84e5104642fd93257d63d7",
+        "description": "GPL-3.0-only Projects v1 protocol and safety tests reused; page adapted for task workspace and explicit project reset scope. Protocol unchanged except provenance. Existing website sample transport retained."
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "e8ffcf04f7eb39c15cdbaa6d646a53aedf2ff07a",
+        "description": "Installer density and concise presentation; visible setup steps after Closer look, no operational script changes. Embedded project layout compacted with warnings retained."
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceBaseCommit": "63664686825feb883b33aad25d35404be73d376b",
+        "description": "Owner UX correction: inline safety, optional provenance, visible Setup, concise task guidance; operational guards retained."
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "08b7e2a9ff01bfcfe4edb439ad43302af8c8ad8d",
+        "resultBlob": "44fadbc7b65c572fc44ea0f33d7d9ff2015188cb",
+        "description": "Compact task presentation: progressive technical details, concise action notices, visible setup and faithful enlarged artwork; operation safeguards and catalogs unchanged"
+      },
+      {
+        "path": "web/x0x_breaks.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "08b7e2a9ff01bfcfe4edb439ad43302af8c8ad8d",
+        "resultBlob": "0adc032d95dca24499c80ed4debdf6356a02f7b4",
+        "description": "Compact task presentation: progressive technical details, concise action notices, visible setup and faithful enlarged artwork; operation safeguards and catalogs unchanged"
+      },
+      {
+        "path": "web/x0x_projects.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "08b7e2a9ff01bfcfe4edb439ad43302af8c8ad8d",
+        "resultBlob": "57f93e754d08e77b6197835c92f208c1775832a0",
+        "description": "Compact task presentation: progressive technical details, concise action notices, visible setup and faithful enlarged artwork; operation safeguards and catalogs unchanged"
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceBaseCommit": "ae59015e379b3355c4103d0dd7df52a1b30d35b3",
+        "resultBlob": "71310c52cb5e00e485c69dc24fd2dc48fb7953da",
+        "description": "Readable version captions; exact build identifier retained in optional Details; option values and operation predicates unchanged."
+      },
+      {
+        "path": "web/x0x_installer.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "4cebbb0d7b579ddb7e5c68ffc80986620231a695",
+        "resultBlob": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
+        "description": "Port remaining PR#9 admission-bridge behaviors onto current main: post-write scan under write lock, revoked-latest picker continuity, HTTPS-only evidence links, explicit partial slot restore status. Compact UX and license-gate retirement retained."
+      },
+      {
+        "path": "web/x0x_breaks.js",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "dfb96bb51ab9d6bd9b9307438a1a3c2f71891b77",
+        "resultBlob": "abe5867dca87c3da1e063997155f0bcc851c5acb",
+        "description": "Fail-closed .x0xslots readArchive: refuse CRC-valid noncanonical/duplicate slot identities before planRestore (matches tools/x0x_slots.read_archive). Genuine sequential backups unchanged."
+      },
+      {
+        "path": "web/x0x_breaks.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "dfb96bb51ab9d6bd9b9307438a1a3c2f71891b77",
+        "resultBlob": "c94a1d99e1c66414ad9fcdee9eb97ec9eeda706a",
+        "description": "Sample-workspace Link.req: clear/own timeout on synchronous send failure so a stale timer cannot erase a newer pending MIDI wait; reply correlation unchanged."
+      },
+      {
+        "path": "web/x0x_breaks.js",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "2b11200c8cc69b7f80d8cd2ccef968adb6cc3a75",
+        "resultBlob": "360dcfccd70b0f7e521b47f83ad196743a4f7f1c",
+        "description": "Reject conflicting archive descriptors, noncanonical image ranges and metadata/header mismatches before restore"
+      },
+      {
+        "path": "web/x0x_breaks.html",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "2b11200c8cc69b7f80d8cd2ccef968adb6cc3a75",
+        "resultBlob": "ded5783065ad4594af77f85ea98717db647cc978",
+        "description": "Correlate SMP_READ replies by echoed slot and offset before consuming the pending wait"
+      },
+      {
+        "path": "web/x0x_breaks.js",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+        "resultBlob": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
+        "description": "Preserve absolute original slot and per-zone LOOP indices before automatic restoration; retain archive and reconciliation guidance on skipped-middle compaction. Recompute old map and risk from the verified backup snapshot to handle changed SMP_INFO."
+      },
+      {
+        "path": "web/x0x_projects.js",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+        "resultBlob": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
+        "description": "Recognize explicit current and endpoint portable project revision pairs; preserve firmware VALIDATE before sample mutation and opaque payload bytes"
+      },
+      {
+        "path": "web/test_projects.mjs",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+        "resultBlob": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
+        "description": "Recognize explicit current and endpoint portable project revision pairs; preserve firmware VALIDATE before sample mutation and opaque payload bytes"
+      },
+      {
+        "path": "web/fm1ota.js",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+        "resultBlob": "aa3252df5fb8c98c9f3559774900feb1a36bb9e1",
+        "description": "Validate the identity envelope framing, seven-bit packing, 27-byte declared payload length and complement checksum before OTA discovery admission; keep model/version parsing unchanged."
+      },
+      {
+        "path": "web/fm1ota.js",
+        "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+        "sourceBaseCommit": "2128990834d36ea14c4e81ea059dd92eaf3dc17f",
+        "resultBlob": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
+        "description": "Validate read-request declared eight-byte payload and canonical SysEx envelope before serving any firmware chunk; preserve actual request fields and identity repair."
+      }
+    ]
+  }
+}
