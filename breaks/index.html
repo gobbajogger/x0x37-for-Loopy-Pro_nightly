@@ -50,6 +50,14 @@
   .home { display: inline-block; font-weight: 700; letter-spacing: .03em; color: var(--dim); text-decoration: none; margin: 0 0 12px; }
   .home:hover, .home:focus-visible { color: var(--accent); }
   input[type=file] { display: none; }
+  select { font:inherit; max-width:100%; min-height:44px; color:var(--fg); background:#1b2225; border:1px solid var(--rule); border-radius:8px; padding:8px; }
+  dialog { color:var(--fg); background:var(--bg); border:1px solid var(--rule); border-radius:12px; width:min(640px,calc(100% - 32px)); max-height:85vh; padding:20px; }
+  dialog::backdrop { background:rgba(0,0,0,.65); }
+  .preview-row { border-top:1px solid var(--rule); padding:12px 0; overflow-wrap:anywhere; }
+  .preview-row p { font-size:13px; color:var(--dim); margin:4px 0 8px; }
+  .preview-row .bar { padding:0; }
+  #import-help,#savings { color:var(--dim); font-size:13px; }
+  select:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
 
   [hidden] { display: none !important; }
   :root.embedded { --bg:#14191c; --fg:#eff3ef; --dim:#a1ada9; --rule:#343e3a; --wave:#77847f; --accent:#ccfc76; color-scheme:dark; }
@@ -102,10 +110,33 @@
     <label title="Cuts the silence before and after the sound (below -60 dB). A loop's length sets its tempo, so this is off for loops">
       <input type="checkbox" id="trim"> Trim silence</label>
     <label title="Stores new loops at 22 kHz instead of 44.1 kHz: twice as many fit, but they sound duller">
-      <input type="checkbox" id="half"> 22 kHz (more room)</label>
+      <input type="checkbox" id="half"> 22.05 kHz (more room)</label>
+    <label for="grit">Oldschool space saver
+      <select id="grit" aria-describedby="import-help">
+        <option value="">Off</option><option value="light">Light · 1.5×</option>
+        <option value="medium">Medium · 2×</option><option value="heavy">Heavy · 3×</option><option value="max">Max · 4×</option>
+      </select>
+    </label>
   </div>
+  <p id="import-help">Store fewer samples with a matching lower playback rate: retain the prepared loop’s duration and pitch at its original tempo, with less bandwidth and an oldschool texture. Other BREAK tempo and pitch settings still change playback. Off by default; original files stay untouched. First-bar and trim settings apply before rate reduction.</p>
+  <section aria-labelledby="auditionTitle">
+    <h2 id="auditionTitle">Listen locally before connecting</h2>
+    <label for="auditionFile">Choose an audio file to compare</label>
+    <input id="auditionFile" style="display:block;max-width:100%;margin:12px 0" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg">
+    <p class="small">Mono reference uses the same trim and bar cut, at the decoded source rate. Both paths are peak normalized, not perceived-loudness matched. Encoded loop plays the saved ADPCM and rate; compare texture rather than loudness. Device tempo and effects are not included.</p>
+    <div class="bar"><button type="button" class="quiet" id="auditionReference" disabled>Play mono reference</button><button type="button" id="auditionEncoded" disabled>Play encoded loop</button><button type="button" class="quiet" id="auditionStop">Stop audio</button></div>
+    <p id="auditionStatus" role="status" aria-live="polite">Choose a file above. Listening is local and does not require MIDI or change device samples.</p>
+  </section>
   <div class="full"><div id="fill"></div></div>
   <p id="room"></p>
+  <p id="savings" role="status" aria-live="polite"></p>
+  <dialog id="previewDlg" aria-labelledby="previewTitle">
+    <h2 id="previewTitle">Compare before adding</h2>
+    <p id="previewNotice">Mono reference uses the same trim and bar cut, at the decoded source rate. The reference and import are peak normalized; this is not perceived-loudness matching. Encoded loop plays the actual saved ADPCM at its saved playback rate. Compare texture rather than loudness. Device tempo, pitch and performance effects are not included.</p>
+    <div id="previewList"></div>
+    <p id="previewStatus" role="status" aria-live="polite"></p>
+    <div class="bar"><button type="button" class="quiet" id="previewStop">Stop audio</button><button type="button" id="previewGo">Add these loops</button><button type="button" class="quiet" id="previewCancel">Cancel</button></div>
+  </dialog>
 
   <p class="sample-warning">Back up important slots first. Send replaces changed slots and applies removals; Restore replaces slots from your backup.</p>
   <div class="bar">
@@ -145,6 +176,16 @@ const SLOT_HDR_LEN = 32 + SLOT_ZONES * 28;
 const SLOT_MAX_DATA = SLOT_SIZE - SLOT_DATA_OFF;
 const ROOT_BASE = 36;              // loop i is zone root 36 + i: the slot sorts its zones by root
 const RATE = 44100, RATE_HALF = 22050;   // 44.1 kHz by default; 22.05 kHz only when asked for
+const OLDSCHOOL_FACTOR = 2;              // --oldschool CLI default (medium grit)
+const MIN_LOOP_SAMPLES = 64;           // firmware breaks_set_loop minimum
+/** @type {{ key: string, label: string, factor: number }[]} */
+const OLDSCHOOL_GRIT = [
+  { key: "", label: "Off (clean)", factor: 1 },
+  { key: "light", label: "Light", factor: 1.5 },
+  { key: "medium", label: "Medium", factor: 2 },
+  { key: "heavy", label: "Heavy", factor: 3 },
+  { key: "max", label: "Max", factor: 4 },
+];
 const DRY_SLOT_KB = [80, 120, 44]; // upload_breaks.py --dry-run's default layout: the SMK-37's slots (KiB)
 
 const IMA_STEP = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 19, 21, 23, 25, 28, 31, 34, 37, 41, 45, 50, 55, 60, 66, 73, 80, 88,
@@ -219,16 +260,76 @@ function trimSilence(x, sr, floor = 0.001, preMs = 1, fadeMs = 5) {
   return y;
 }
 
-// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
-function cut(x, sr, bars, rate = RATE, trim = false) {
+// Shared source selection keeps A/B on the same trim and one-bar cut.
+function selectLoopSource(x, sr, bars, trim) {
   if (trim) x = trimSilence(x, sr);
   if (bars) {
     const n = barsOf(x.length / sr)[0];
     x = x.slice(0, Math.round(x.length / n));
   }
-  const y = resample(x, sr, rate);
+  return x;
+}
+
+// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
+function cut(x, sr, bars, rate = RATE, trim = false) {
+  const y = resample(selectLoopSource(x, sr, bars, trim), sr, rate);
   const pk = peak(y);
   return toInt16(y.map((v) => v * (0.95 / pk)));
+}
+
+// PR362 import method: downsample to fewer stored samples and write the matching lower zone rate.
+// n/rate retains the loop duration; lower bandwidth and the IMA encode/decode change its texture.
+function applyOldschool(s, storageRate, factor = OLDSCHOOL_FACTOR) {
+  if (!Number.isFinite(factor) || factor < 1 || factor > 8) throw new Error("Invalid oldschool factor.");
+  if (factor === 1) return { s, rate: storageRate };
+  const x = [];
+  for (let i = 0; i < s.length; i++) x.push(s[i] / 32768);
+  const y = resample(x, storageRate, storageRate / factor);
+  const out = toInt16(y.map((v) => v * 0.95));
+  const playbackRate = Math.round(storageRate / factor);
+  if (out.length < MIN_LOOP_SAMPLES)
+    throw new Error(`too short after oldschool processing (${out.length} samples)`);
+  return { s: out, rate: playbackRate };
+}
+
+function cutLoop(x, sr, bars, storageRate = RATE, trim = false, gritFactor = 1) {
+  let s = cut(x, sr, bars, storageRate, trim);
+  let rate = storageRate;
+  if (gritFactor > 1) ({ s, rate } = applyOldschool(s, storageRate, gritFactor));
+  return { s, rate };
+}
+
+function gritLabel(factor) {
+  const g = OLDSCHOOL_GRIT.find((o) => o.factor === factor);
+  return g && g.factor > 1 ? g.label : "";
+}
+
+// Encoded preview at the saved zone rate; device tempo, pitch and performance controls remain separate.
+function loopPreviewPcm(s, playbackRate, roundTrip = true) {
+  const pcm = roundTrip ? imaDecode(imaEncode(s), s.length) : s;
+  const samples = new Float32Array(pcm.length);
+  for (let i = 0; i < pcm.length; i++) samples[i] = pcm[i] / 32768;
+  return { samples, rate: playbackRate };
+}
+
+// Prepare from the retained decoded original, never from an already processed loop.
+// The baseline is the same bar/trim at 44.1 kHz; actual ADPCM bytes include odd-sample nibble padding.
+function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RATE, gritFactor = 1 } = {}) {
+  if (!Number.isFinite(sr) || sr <= 0 || !x.length || !Array.from(x).every(Number.isFinite))
+    throw new Error("The source audio has invalid samples or sample rate.");
+  if (storageRate !== RATE && storageRate !== RATE_HALF) throw new Error("Invalid import rate.");
+  if (!Number.isFinite(gritFactor) || gritFactor < 1 || gritFactor > 8) throw new Error("Invalid oldschool factor.");
+  const selected = selectLoopSource(x, sr, bars, trim);
+  // A same-cut mono reference at the decoded source rate, before resampling/codec.
+  // Match the import peak target, not perceived loudness; encoded playback stays exact.
+  const scale = (30000 / 32768) / peak(selected);
+  const reference = Float32Array.from(selected, v => v * scale);
+  const baseline = cut(x, sr, bars, RATE, trim);
+  const { s, rate } = cutLoop(x, sr, bars, storageRate, trim, gritFactor);
+  if (s.length < MIN_LOOP_SAMPLES) throw new Error("This loop is too short for BREAK playback (64 samples minimum).");
+  const adpcm = imaEncode(s), baselineBytes = Math.ceil(baseline.length / 2);
+  return { s, rate, n: s.length, adpcm, baselineSamples: baseline.length, baselineBytes,
+    savedBytes: baselineBytes - adpcm.length, gritFactor, storageRate, reference, referenceRate: sr };
 }
 
 // sampleio.ima_encode: 4-bit IMA ADPCM, low nibble first, from predictor 0 / index 0
@@ -506,20 +607,57 @@ function makeArchive(layout, images, created) {
 // archive bytes -> {meta, images}; throws on any damage (x0x_slots.read_archive)
 function readArchive(b) {
   const bad = (m) => { throw new Error(m); };
+  const uint = (x, max = Number.MAX_SAFE_INTEGER) => Number.isSafeInteger(x) && x >= 0 && x <= max;
   if (b.length < 20 || String.fromCharCode(...b.subarray(0, 8)) !== ARCH_MAGIC) bad("This is not an .x0xslots backup.");
   const v = new DataView(b.buffer, b.byteOffset, b.byteLength);
   if (v.getUint32(b.length - 4, true) !== crc32(b.subarray(0, b.length - 4))) bad("The backup file is damaged (CRC).");
-  if (v.getUint16(8, true) !== 1) bad("This backup has a newer format.");
-  const n = v.getUint32(12, true), meta = JSON.parse(new TextDecoder().decode(b.subarray(16, 16 + n)));
-  const base = 16 + n, images = [];
-  for (const e of meta.slots) {
-    if (e.empty) { images.push(null); continue; }
-    const img = b.slice(base + e.offset, base + e.offset + e.length), h = parseHeader(img);
-    if (img.length !== e.length || crc32(img) !== e.crc32) bad(`Slot ${e.slot} in the backup is damaged.`);
+  if (v.getUint16(8, true) !== 1 || v.getUint16(10, true) !== 0) bad("This backup has an unsupported format.");
+  const n = v.getUint32(12, true), base = 16 + n;
+  if (base > b.length - 4) bad("The backup metadata exceeds the file length.");
+  const meta = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(b.subarray(16, base)));
+  // Both archive writers serialize one contiguous image per populated slot, in slot order.
+  // Require that exact layout: a valid outer CRC alone cannot establish which data a slot owns.
+  const slots = meta && meta.slots;
+  if (!meta || meta.format !== "x0xslots" || meta.version !== 1 || !Array.isArray(slots) ||
+      !uint(meta.count) || meta.count !== slots.length || !uint(meta.size) || meta.size < SLOT_HDR_AREA)
+    bad("The backup file has invalid slot metadata.");
+  const imageFields = ["name", "zones", "samples", "rates", "data_len", "data_crc32", "offset", "length", "crc32"];
+  const images = [];
+  let used = 0;
+  for (let k = 0; k < slots.length; k++) {
+    const e = slots[k];
+    if (!e || typeof e !== "object" || Array.isArray(e) || e.slot !== k + 1)
+      bad(`The backup file has a bad slot number for entry ${k + 1}.`);
+    if (!uint(e.size) || e.size < SLOT_HDR_AREA || ("flash" in e && !uint(e.flash)) || typeof e.empty !== "boolean")
+      bad(`Slot ${e.slot} in the backup has invalid metadata.`);
+    if (e.empty) {
+      if (imageFields.some((f) => f in e)) bad(`Slot ${e.slot} has conflicting empty/image metadata.`);
+      images.push(null);
+      continue;
+    }
+    if (!uint(e.offset) || e.offset !== used || !uint(e.length) || e.length < SLOT_HDR_AREA ||
+        e.length > b.length - 4 - base - used || e.length > e.size || !uint(e.crc32, 0xFFFFFFFF))
+      bad(`Slot ${e.slot} in the backup has invalid image range metadata.`);
+    const img = b.slice(base + used, base + used + e.length), h = parseHeader(img);
+    if (crc32(img) !== e.crc32) bad(`Slot ${e.slot} in the backup is damaged.`);
     if (!h || img.length !== SLOT_HDR_AREA + h.dataLen || crc32(img.subarray(SLOT_HDR_AREA)) !== h.crc)
       bad(`Slot ${e.slot} in the backup is not a valid slot.`);
+    // Match the device scanner before restore is allowed to erase a destination.
+    const iv = new DataView(img.buffer, img.byteOffset, img.byteLength);
+    for (let z = 0; z < h.nz; z++) {
+      const o = 32 + z * 28, zone = h.zones[z], q16 = iv.getUint32(o + 16, true);
+      if (zone.off > h.dataLen || Math.ceil(zone.n / 2) > h.dataLen - zone.off ||
+          img[o + 24] > 88 || q16 === 0 || q16 > (4 << 16))
+        bad(`Slot ${e.slot} in the backup has an invalid sample zone.`);
+    }
+    const equalArray = (a, expected) => Array.isArray(a) && a.length === expected.length && a.every((x, i) => x === expected[i]);
+    if (e.name !== h.name || e.zones !== h.nz || e.data_len !== h.dataLen || e.data_crc32 !== h.crc ||
+        !equalArray(e.samples, h.zones.map((z) => z.n)) || !equalArray(e.rates, h.zones.map((z) => z.rate)))
+      bad(`Slot ${e.slot} metadata does not match its original header.`);
     images.push(img);
+    used += img.length;
   }
+  if (base + used !== b.length - 4) bad("The backup contains unreferenced sample data.");
   return { meta, images };
 }
 
@@ -599,6 +737,53 @@ function planMigration(images, risk, oldMap, newLayout, newMap) {
     else { todo.push({ k, j }); taken.add(j); }
   }
   return { todo, skipped };
+}
+
+const X0X_NBREAKS_BUILTIN = 2;
+const LOOP_MENU_GUARD = "LOOP menu order or indices would change; saved break pattern A/B indices could point at different loops. "
+  + "The backup is retained. Restore samples manually to a compatible layout, then check and re-assign LOOP A/B in every saved pattern before playback.";
+
+function userLoopMenuIds(layout, images, origins = null) {
+  // scan_loops lists each zone, not each slot. Preserve original slot identity:
+  // identical sample bytes in distinct slots are not interchangeable indices.
+  const ids = [];
+  layout.slots.forEach((sl, k) => {
+    for (let z = 0; z < sl.nz; z++)
+      ids.push(origins === null ? `old:${k}:${z}` : origins[k] === null ? `new:${k}:${z}` : `old:${origins[k]}:${z}`);
+  });
+  return ids;
+}
+
+function loopMenuAfterMigration(oldLayout, images, risk, oldMap, newMap, newLayout, todo) {
+  const imgs = newMap.map(() => null), origins = newMap.map(() => null);
+  const slots = newLayout.slots.map((sl) => ({ ...sl }));
+  images.forEach((img, k) => {
+    if (risk.includes(k) || !img) return;
+    const off = oldMap[k].off;
+    const j = newMap.findIndex((m) => m.off === off);
+    if (j < 0) return;
+    imgs[j] = img; origins[j] = k;
+    slots[j] = { ...oldLayout.slots[k] };
+  });
+  todo.forEach(({ k, j }) => { imgs[j] = images[k]; origins[j] = k; slots[j] = { ...oldLayout.slots[k] }; });
+  return userLoopMenuIds({ ...newLayout, slots }, imgs, origins);
+}
+
+function migrationReordersLoopMenu(oldLayout, images, risk, oldMap, newLayout, newMap, todo) {
+  if (!todo.length) return false;
+  const before = userLoopMenuIds(oldLayout, images);
+  const after = loopMenuAfterMigration(oldLayout, images, risk, oldMap, newMap, newLayout, todo);
+  // Compare absolute common positions; skipped middle slots can shift indices
+  // even when surviving entries retain their relative order. Trailing-only
+  // omissions or additions leave all remaining original positions unchanged.
+  return before.slice(0, after.length).some((id, i) => id !== after[i]);
+}
+
+function guardMigrationLoopMenu(oldLayout, images, risk, oldMap, newLayout, newMap, todo, skipped) {
+  if (!migrationReordersLoopMenu(oldLayout, images, risk, oldMap, newLayout, newMap, todo)) return { todo, skipped };
+  const extra = [...skipped];
+  for (const { k } of todo) extra.push(`slot ${k + 1}: not restored automatically (${LOOP_MENU_GUARD})`);
+  return { todo: [], skipped: extra };
 }
 
 // ---- the slot commands over a link with send / read / drain (fm1ota.js's Link): SysEx F0 7D 46 4C cmd .. F7 ----
@@ -735,7 +920,11 @@ async function installKeepingSlots(up, image, product, board, hooks) {
           const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
           readArchive(file);                                  // what was saved reads back
           h.save(file, st.name);
-          move = { risk, oldMap, newMap, images: saved.images, name: st.name, todo: [], skipped: [] };
+          // SMP_INFO can change while the backup is read. Use the exact verified
+          // snapshot for preservation, just as the Python SlotMove.backup does.
+          const savedMap = flashMap(saved.layout, board);
+          move = { risk: atRisk(saved.layout, savedMap, newMap), oldMap: savedMap, newMap,
+            layout: saved.layout, images: saved.images, name: st.name, todo: [], skipped: [] };
         }
       }
     } finally { dev.link.close(); }
@@ -748,7 +937,9 @@ async function installKeepingSlots(up, image, product, board, hooks) {
   try {
     up.bind(back);
     const layout = await readSlotLayout(back.link);
-    const plan = planMigration(move.images, move.risk, move.oldMap, layout, flashMap(layout, board));
+    let plan = planMigration(move.images, move.risk, move.oldMap, layout, flashMap(layout, board));
+    plan = guardMigrationLoopMenu(move.layout, move.images, move.risk, move.oldMap, layout,
+      flashMap(layout, board), plan.todo, plan.skipped);
     move.todo = plan.todo;
     move.skipped = plan.skipped;
     const total = plan.todo.length || 1;
@@ -788,10 +979,14 @@ function render() {
   loops.forEach((l, i) => {
     const r = document.createElement("div");
     r.className = l.isNew ? "loop new" : "loop";
-    r.innerHTML = `<div class="name">BR${i + 1}<small>${(l.n / l.rate).toFixed(1)} s${l.rate === RATE ? "" : " · 22k"}${l.isNew ? " · new" : ""}</small></div>
+    const rateTag = l.rate === RATE ? "" : ` · ${(l.rate / 1000).toFixed(2)} kHz`;
+    const gritTag = l.isNew && l.gritFactor > 1 ? ` · ${gritLabel(l.gritFactor)}` : "";
+    r.innerHTML = `<div class="name">BR${i + 1}<small>${(l.n / l.rate).toFixed(2)} s${rateTag}${gritTag}${l.isNew ? " · new" : ""}</small></div>
       <canvas width="900" height="80"></canvas>
-      <div class="acts"><button class="link rep">Replace</button><button class="link del">Remove</button></div>`;
+      <div class="acts"><button class="link prv">Compare</button><button class="link rep">Replace</button><button class="link del">Remove</button></div>`;
     if (l.file) r.title = l.file;
+    r.querySelector(".prv").onclick = () => run(() => reviewLoops([l], "Compare loop", "Close"));
+    r.querySelector(".prv").disabled = busy;
     r.querySelector(".rep").onclick = () => { replaceAt = i; $("files").multiple = false; $("files").click(); };
     r.querySelector(".del").onclick = () => { loops.splice(i, 1); render(); };
     r.querySelector(".rep").disabled = r.querySelector(".del").disabled = busy;
@@ -814,6 +1009,14 @@ function render() {
   $("connect").disabled = busy;
   $("backup").disabled = busy || !readOk;
   $("restore").disabled = busy || !readOk;
+  for (const id of ["bars", "trim", "half", "grit"]) $(id).disabled = busy;
+  const newLoops = loops.filter(l => l.isNew), baseline = newLoops.reduce((n,l) => n + l.baselineBytes,0);
+  const actual = newLoops.reduce((n,l) => n + bytesOf(l),0), saved = baseline - actual;
+  const occupied = plan ? plan.filter(ls => ls.length).length : 0;
+  $("savings").textContent = !readOk || !newLoops.length ? "" :
+    `New loops: ${actual.toLocaleString()} B sample data vs ${baseline.toLocaleString()} B for the same cut at 44.1 kHz (${saved.toLocaleString()} B saved, ${baseline ? (100 * saved / baseline).toFixed(1) : "0"}%). ` +
+    (plan ? `Packed images: ${(used + occupied * SLOT_DATA_OFF).toLocaleString()} B including ${occupied} × 512 B slot headers. ` : "") +
+    "ADPCM uses one byte per sample pair, including an odd final nibble; no per-loop codec block headers. Flash slot capacities stay fixed.";
 }
 
 // one loop's waveform: its peak in each pixel column
@@ -883,26 +1086,111 @@ async function decode(file) {
   return { rate: ab.sampleRate, x };
 }
 
-// the rate new loops get: 44.1 kHz, or 22.05 kHz when asked for
+// Reuse PR362's rate-reduction method, retaining the unprocessed decoded source for every change.
 const newRate = () => ($("half").checked ? RATE_HALF : RATE);
-
+const gritFactor = () => (OLDSCHOOL_GRIT.find(g => g.key === $("grit").value) || OLDSCHOOL_GRIT[0]).factor;
+const importSettings = () => ({ bars: $("bars").checked, trim: $("trim").checked, storageRate: newRate(), gritFactor: gritFactor() });
+let acceptedSettings = importSettings();
+function restoreSettings(settings) {
+  $("bars").checked = settings.bars; $("trim").checked = settings.trim;
+  $("half").checked = settings.storageRate === RATE_HALF;
+  $("grit").value = (OLDSCHOOL_GRIT.find(g => g.factor === settings.gritFactor) || OLDSCHOOL_GRIT[0]).key;
+}
+function prepareImportedLoop(x, srcRate, file, settings) {
+  return { ...prepareLoopImport(x, srcRate, settings), file, isNew: true, srcRate, x };
+}
+let auditionSource = null, auditionLoop = null, auditionSerial = 0;
+function refreshAudition() {
+  stopLoopPreview(); auditionLoop = null;
+  try {
+    if (auditionSource) {
+      auditionLoop = prepareImportedLoop(auditionSource.x,auditionSource.rate,auditionSource.name,importSettings());
+      const l=auditionLoop;
+      $("auditionStatus").textContent = `${l.file} · ${(l.n/l.rate).toFixed(3)} s · ${l.adpcm.length.toLocaleString()} B ADPCM vs ${l.baselineBytes.toLocaleString()} B clean 44.1 kHz (${l.savedBytes.toLocaleString()} B saved). Preview only; not added to device slots.`;
+    }
+  } catch(e) { $("auditionStatus").textContent = `Preview unavailable: ${e.message || e}`; }
+  $("auditionReference").disabled = $("auditionEncoded").disabled = !auditionLoop;
+}
+async function chooseAuditionFile(file) {
+  const serial=++auditionSerial; stopLoopPreview(); auditionSource=null; auditionLoop=null;
+  $("auditionReference").disabled=$("auditionEncoded").disabled=true;
+  if (!file) { $("auditionStatus").textContent="Choose a file above. Listening is local and does not require MIDI or change device samples."; return; }
+  $("auditionStatus").textContent="Decoding local audio…";
+  try {
+    const decoded=await decode(file);
+    if(serial!==auditionSerial)return;
+    auditionSource={x:Array.from(decoded.x),rate:decoded.rate,name:file.name};refreshAudition();
+  } catch(e) { if(serial===auditionSerial)$("auditionStatus").textContent=`Couldn't read local audio: ${e.message || e}`; }
+}
+let previewAudio = null, previewNode = null, previewSerial = 0;
+function stopLoopPreview() {
+  previewSerial++;
+  const node = previewNode; previewNode = null;
+  if (node) { try { node.stop(); } catch (_) { /* already ended */ } node.disconnect(); }
+}
+async function playLoopPreview(loop, original = false) {
+  stopLoopPreview(); const serial = previewSerial;
+  if (!previewAudio) previewAudio = new AudioContext();
+  if (previewAudio.state === "suspended") await previewAudio.resume();
+  if (serial !== previewSerial) return;
+  const samples = original ? Float32Array.from(loop.reference) : loopPreviewPcm(imaDecode(loop.adpcm || imaEncode(loop.s), loop.n), loop.rate, false).samples;
+  const rate = original ? loop.referenceRate : loop.rate;
+  // A fixed supported buffer rate plus rate ratio handles even the lowest stored rates.
+  const buffer = previewAudio.createBuffer(1, samples.length, RATE); buffer.copyToChannel(samples, 0);
+  const node = previewAudio.createBufferSource(); node.buffer = buffer; node.playbackRate.value = rate / RATE;
+  node.connect(previewAudio.destination); previewNode = node;
+  node.onended = () => { if (previewNode === node) previewNode = null; node.disconnect(); };
+  node.start();
+}
+function reviewLoops(items, title, action) {
+  const dialog = $("previewDlg"), list = $("previewList");
+  $("previewTitle").textContent = title; $("previewGo").textContent = action; $("previewStatus").textContent = ""; list.textContent = "";
+  for (const [i,loop] of items.entries()) {
+    const row = document.createElement("div"); row.className = "preview-row";
+    const name = document.createElement("strong"); name.textContent = loop.file || `Loop ${i + 1}`; row.appendChild(name);
+    const detail = document.createElement("p"), bytes = (loop.adpcm || imaEncode(loop.s)).length;
+    detail.textContent = `${(loop.n / loop.rate).toFixed(3)} s · saved rate ${loop.rate.toLocaleString()} Hz · ${bytes.toLocaleString()} B ADPCM` +
+      (loop.isNew ? ` vs ${loop.baselineBytes.toLocaleString()} B clean 44.1 kHz (${loop.savedBytes.toLocaleString()} B saved)` : " · original file unavailable for a loop read from the device");
+    row.appendChild(detail);
+    const buttons = document.createElement("div"); buttons.className = "bar";
+    for (const [label,original] of [["Mono reference (same cut)",true],["Encoded loop",false]]) {
+      const button = document.createElement("button"); button.type = "button"; button.className = "quiet"; button.textContent = label;
+      button.disabled = original && !loop.reference;
+      button.onclick = () => playLoopPreview(loop,original).catch(e => { $("previewStatus").textContent = `Preview unavailable: ${e.message || e}`; });
+      buttons.appendChild(button);
+    }
+    row.appendChild(buttons); list.appendChild(row);
+  }
+  if (!items.length) list.textContent = "The changed slots will be cleared. No loop audio remains to preview.";
+  return new Promise(resolve => {
+    let settled = false;
+    const done = ok => {
+      if (settled) return; settled = true; stopLoopPreview();
+      dialog.oncancel = dialog.onclose = null; dialog.close(); resolve(ok);
+    };
+    $("previewGo").onclick = () => done(true); $("previewCancel").onclick = () => done(false);
+    dialog.oncancel = ev => { ev.preventDefault(); done(false); }; dialog.onclose = () => done(false);
+    dialog.showModal();
+  });
+}
 async function addFiles(list, at = -1) {
   if (busy || !sampleActive || !readOk || !list.length) return;
-  busy = true; render();
+  stopLoopPreview(); busy = true; render(); const settings = importSettings();
   const got = [], bad = [];
-  for (const f of at >= 0 ? list.slice(0, 1) : list) {
-    try {
-      const { rate: srcRate, x } = await decode(f);
-      if (!x.length) throw new Error("no audio");
-      const rate = newRate(), s = cut(x, srcRate, $("bars").checked, rate, $("trim").checked);
-      got.push({ adpcm: null, n: s.length, s, rate, file: f.name, isNew: true, srcRate, x });
-    } catch (_) { bad.push(f.name); }
-  }
-  busy = false;
-  say(bad.length ? `Couldn't read ${bad.join(", ")}.` : "");
-  if (at >= 0 && got.length) loops[at] = got[0];
-  else loops.push(...got);
-  render();
+  try {
+    for (const f of at >= 0 ? list.slice(0,1) : list) {
+      try {
+        const { rate: srcRate, x } = await decode(f);
+        got.push(prepareImportedLoop(Array.from(x),srcRate,f.name,settings));
+      } catch (e) { bad.push(`${f.name}: ${e.message || e}`); }
+    }
+    if (got.length && settings.gritFactor > 1 && !await reviewLoops(got,"Compare before adding","Add these loops")) return;
+    if (!sampleActive || !readOk) throw new Error("Read the device again before adding prepared loops.");
+    if (at >= 0 && got.length) loops[at] = got[0]; else loops.push(...got);
+    acceptedSettings = settings; restoreSettings(settings);
+    say(bad.length ? `Couldn't read ${bad.join("; ")}.` : "Prepared locally. Send applies changes to the device.");
+  } catch (e) { say(e.message || String(e)); }
+  finally { busy = false; render(); }
 }
 
 // ---- the FM-1 ------------------------------------------------------------------
@@ -911,8 +1199,11 @@ class Link {
     this.input = input; this.output = output; this.wait = null;
     input.onmidimessage = (ev) => {
       const d = ev.data;
-      if (d[0] !== 0xF0 || d[1] !== HDR[0] || d[2] !== HDR[1] || d[3] !== HDR[2] || !this.wait || d[4] !== this.wait.cmd) return;
+      if (d.length < 6 || d[0] !== 0xF0 || d[1] !== HDR[0] || d[2] !== HDR[1] || d[3] !== HDR[2] || d[d.length - 1] !== 0xF7 || !this.wait || d[4] !== this.wait.cmd) return;
       const w = this.wait;
+      // SMP_READ echoes slot + three offset bytes. A delayed retry must not
+      // consume the next chunk's wait, even though both replies use command 16.
+      if (w.readAddress && (d.length < 12 || !w.readAddress.every((a, i) => d[5 + i] === a))) return;
       this.wait = null;
       clearTimeout(w.timer);
       w.resolve([...d.slice(5, d.length - 1)]);
@@ -920,8 +1211,20 @@ class Link {
   }
   req(cmd, args, ms = 3000) {
     return new Promise((resolve, reject) => {
-      this.wait = { cmd, resolve, timer: setTimeout(() => { this.wait = null; reject(new Error("The FM-1 stopped answering.")); }, ms) };
-      this.output.send([0xF0, ...HDR, cmd, ...args, 0xF7]);
+      // Own the timer by request identity so a failed send's timeout cannot clear a newer wait.
+      const entry = { cmd, resolve, timer: null, readAddress: cmd === 16 ? args.slice(0, 4) : null };
+      entry.timer = setTimeout(() => {
+        if (this.wait === entry) this.wait = null;
+        reject(new Error("The FM-1 stopped answering."));
+      }, ms);
+      this.wait = entry;
+      try {
+        this.output.send([0xF0, ...HDR, cmd, ...args, 0xF7]);
+      } catch (e) {
+        clearTimeout(entry.timer);
+        if (this.wait === entry) this.wait = null;
+        reject(e);
+      }
     });
   }
   async retry(cmd, args, ms, tries = 3) {
@@ -1059,7 +1362,10 @@ $("connect").onclick = () => run(readFromDevice);
 $("discard").onclick = () => run(readFromDevice);
 
 $("send").onclick = () => run(async () => {
-  const todo = changedSlots(packLoops()), bar = $("progress");
+  const plan = packLoops(), todo = changedSlots(plan), bar = $("progress");
+  const review = todo.flatMap(({ k }) => plan[k]);
+  if (!await reviewLoops(review, "Compare before sending — changed slots will be replaced", "Send to the device")) return;
+  if (!sampleActive || !readOk) throw new Error("Read the device again before sending prepared loops.");
   const total = todo.reduce((a, t) => a + (t.im ? t.im.data.length : 1), 0);
   let sent = 0;
   bar.hidden = false;
@@ -1135,27 +1441,40 @@ $("files").onchange = (ev) => { addFiles([...ev.target.files], replaceAt); ev.ta
 document.body.ondragover = (ev) => { if (readOk) { ev.preventDefault(); $("list").classList.add("over"); } };
 document.body.ondragleave = (ev) => { if (!ev.relatedTarget) $("list").classList.remove("over"); };
 document.body.ondrop = (ev) => { ev.preventDefault(); $("list").classList.remove("over"); addFiles([...ev.dataTransfer.files]); };
-$("bars").onchange = $("trim").onchange = $("half").onchange = () => {   // the new loops, cut again
-  for (const l of loops)
-    if (l.isNew) {
-      l.rate = newRate();
-      l.s = cut(l.x, l.srcRate, $("bars").checked, l.rate, $("trim").checked);
-      l.n = l.s.length;
-      l.adpcm = null;
-    }
-  render();
-};
+async function recutNewLoops() {
+  stopLoopPreview();
+  if (busy || !sampleActive) { restoreSettings(acceptedSettings); return; }
+  const settings = importSettings();
+  await run(async () => {
+    try {
+      const replacements = loops.map(loop => loop.isNew ? prepareImportedLoop(loop.x,loop.srcRate,loop.file,settings) : loop);
+      const changed = replacements.filter(loop => loop.isNew);
+      if (changed.length && settings.gritFactor > 1 && !await reviewLoops(changed,"Compare changed import settings","Apply to new loops")) {
+        restoreSettings(acceptedSettings); return;
+      }
+      loops = replacements; acceptedSettings = settings; restoreSettings(settings);
+      say("New loops rebuilt from their retained original audio. Device samples are unchanged until Send.");
+    } catch (e) { restoreSettings(acceptedSettings); throw e; }
+  });
+  refreshAudition();
+}
+$("bars").onchange = $("trim").onchange = $("half").onchange = $("grit").onchange = recutNewLoops;
+$("previewStop").onclick = $("auditionStop").onclick = stopLoopPreview;
+$("auditionFile").onchange = () => chooseAuditionFile($("auditionFile").files[0]);
+for (const [id,original] of [["auditionReference",true],["auditionEncoded",false]])
+  $(id).onclick = () => { if(auditionLoop) return playLoopPreview(auditionLoop,original).catch(e=>{ $("auditionStatus").textContent=`Preview unavailable: ${e.message || e}`; }); };
 window.sampleWorkspace = {
   busy: () => busy,
   activate: active => {
     if (sampleActive === active) return;
     sampleActive = active;
+    if (!active) stopLoopPreview();
     if (link) {
       if (!active) { savedMidiHandler = link.input.onmidimessage; link.input.onmidimessage = null; }
       else if (savedMidiHandler) { link.input.onmidimessage = savedMidiHandler; savedMidiHandler = null; }
     }
   },
-  invalidate: () => { readOk = false; render(); say("Firmware operation started. Prepared loops are retained, but read device slots again before sending; reading replaces the draft after confirmation."); }
+  invalidate: () => { stopLoopPreview(); readOk = false; render(); say("Firmware operation started. Prepared loops are retained, but read device slots again before sending; reading replaces the draft after confirmation."); }
 };
 if (new URLSearchParams(location.search).has("embedded")) {
   document.querySelector(".home").hidden = true;
