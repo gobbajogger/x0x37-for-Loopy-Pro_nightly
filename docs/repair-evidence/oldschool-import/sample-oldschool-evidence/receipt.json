@@ -1,0 +1,60 @@
+{
+  "candidate": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+  "tree": "001b61dcdc81dd566b4653da9e7fcb2e8de846b3",
+  "base": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "node": "v24.14.1",
+  "checks": [
+    {
+      "name": "full-npm",
+      "argv": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "seconds": 27.181,
+      "log_sha256": "41b5eb6484bf9952513db0a144911d27afae6ac68bf1bae6d5ae448a35270893"
+    },
+    {
+      "name": "generated",
+      "argv": [
+        "node",
+        "scripts/build-preview.mjs",
+        "--check"
+      ],
+      "exit": 0,
+      "seconds": 0.033,
+      "log_sha256": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41"
+    },
+    {
+      "name": "provenance",
+      "argv": [
+        "node",
+        "tests/nightly-preview.test.mjs"
+      ],
+      "exit": 0,
+      "seconds": 0.035,
+      "log_sha256": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337"
+    },
+    {
+      "name": "source-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD~1..HEAD"
+      ],
+      "exit": 0,
+      "seconds": 0.02,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source_files": {
+    "web/x0x_breaks.js": "ac39c7236dee13aceba4f8b7c3139cb2d41667d5",
+    "web/x0x_breaks.html": "b23c54993f0ba0514616591674d73840cb71ce5e",
+    "web/x0x_installer.html": "3d29ca716035b996a7f7178887c84e849f4e5024",
+    "web/test_breaks_page.mjs": "c3e546e2f3143f728818702fff73b021aaeb55a2"
+  },
+  "device_gui_headless_publication": "NOT_PERFORMED",
+  "independent_review": "PENDING"
+}
