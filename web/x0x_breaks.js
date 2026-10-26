@@ -11,6 +11,16 @@ export const SLOT_HDR_LEN = 32 + SLOT_ZONES * 28;
 export const SLOT_MAX_DATA = SLOT_SIZE - SLOT_DATA_OFF;
 export const ROOT_BASE = 36;              // loop i is zone root 36 + i: the slot sorts its zones by root
 export const RATE = 44100, RATE_HALF = 22050;   // 44.1 kHz by default; 22.05 kHz only when asked for
+export const OLDSCHOOL_FACTOR = 2;              // --oldschool CLI default (medium grit)
+export const MIN_LOOP_SAMPLES = 64;           // firmware breaks_set_loop minimum
+/** @type {{ key: string, label: string, factor: number }[]} */
+export const OLDSCHOOL_GRIT = [
+  { key: "", label: "Off (clean)", factor: 1 },
+  { key: "light", label: "Light", factor: 1.5 },
+  { key: "medium", label: "Medium", factor: 2 },
+  { key: "heavy", label: "Heavy", factor: 3 },
+  { key: "max", label: "Max", factor: 4 },
+];
 export const DRY_SLOT_KB = [80, 120, 44]; // upload_breaks.py --dry-run's default layout: the SMK-37's slots (KiB)
 
 const IMA_STEP = [7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 19, 21, 23, 25, 28, 31, 34, 37, 41, 45, 50, 55, 60, 66, 73, 80, 88,
@@ -85,16 +95,76 @@ export function trimSilence(x, sr, floor = 0.001, preMs = 1, fadeMs = 5) {
   return y;
 }
 
-// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
-export function cut(x, sr, bars, rate = RATE, trim = false) {
+// Shared source selection keeps A/B on the same trim and one-bar cut.
+function selectLoopSource(x, sr, bars, trim) {
   if (trim) x = trimSilence(x, sr);
   if (bars) {
     const n = barsOf(x.length / sr)[0];
     x = x.slice(0, Math.round(x.length / n));
   }
-  const y = resample(x, sr, rate);
+  return x;
+}
+
+// upload_breaks.cut: mono floats at their rate -> int16 at `rate` (one bar if bars; silence cut if trim)
+export function cut(x, sr, bars, rate = RATE, trim = false) {
+  const y = resample(selectLoopSource(x, sr, bars, trim), sr, rate);
   const pk = peak(y);
   return toInt16(y.map((v) => v * (0.95 / pk)));
+}
+
+// PR362 import method: downsample to fewer stored samples and write the matching lower zone rate.
+// n/rate retains the loop duration; lower bandwidth and the IMA encode/decode change its texture.
+export function applyOldschool(s, storageRate, factor = OLDSCHOOL_FACTOR) {
+  if (!Number.isFinite(factor) || factor < 1 || factor > 8) throw new Error("Invalid oldschool factor.");
+  if (factor === 1) return { s, rate: storageRate };
+  const x = [];
+  for (let i = 0; i < s.length; i++) x.push(s[i] / 32768);
+  const y = resample(x, storageRate, storageRate / factor);
+  const out = toInt16(y.map((v) => v * 0.95));
+  const playbackRate = Math.round(storageRate / factor);
+  if (out.length < MIN_LOOP_SAMPLES)
+    throw new Error(`too short after oldschool processing (${out.length} samples)`);
+  return { s: out, rate: playbackRate };
+}
+
+export function cutLoop(x, sr, bars, storageRate = RATE, trim = false, gritFactor = 1) {
+  let s = cut(x, sr, bars, storageRate, trim);
+  let rate = storageRate;
+  if (gritFactor > 1) ({ s, rate } = applyOldschool(s, storageRate, gritFactor));
+  return { s, rate };
+}
+
+export function gritLabel(factor) {
+  const g = OLDSCHOOL_GRIT.find((o) => o.factor === factor);
+  return g && g.factor > 1 ? g.label : "";
+}
+
+// Encoded preview at the saved zone rate; device tempo, pitch and performance controls remain separate.
+export function loopPreviewPcm(s, playbackRate, roundTrip = true) {
+  const pcm = roundTrip ? imaDecode(imaEncode(s), s.length) : s;
+  const samples = new Float32Array(pcm.length);
+  for (let i = 0; i < pcm.length; i++) samples[i] = pcm[i] / 32768;
+  return { samples, rate: playbackRate };
+}
+
+// Prepare from the retained decoded original, never from an already processed loop.
+// The baseline is the same bar/trim at 44.1 kHz; actual ADPCM bytes include odd-sample nibble padding.
+export function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RATE, gritFactor = 1 } = {}) {
+  if (!Number.isFinite(sr) || sr <= 0 || !x.length || !Array.from(x).every(Number.isFinite))
+    throw new Error("The source audio has invalid samples or sample rate.");
+  if (storageRate !== RATE && storageRate !== RATE_HALF) throw new Error("Invalid import rate.");
+  if (!Number.isFinite(gritFactor) || gritFactor < 1 || gritFactor > 8) throw new Error("Invalid oldschool factor.");
+  const selected = selectLoopSource(x, sr, bars, trim);
+  // A same-cut mono reference at the decoded source rate, before resampling/codec.
+  // Match the import peak target, not perceived loudness; encoded playback stays exact.
+  const scale = (30000 / 32768) / peak(selected);
+  const reference = Float32Array.from(selected, v => v * scale);
+  const baseline = cut(x, sr, bars, RATE, trim);
+  const { s, rate } = cutLoop(x, sr, bars, storageRate, trim, gritFactor);
+  if (s.length < MIN_LOOP_SAMPLES) throw new Error("This loop is too short for BREAK playback (64 samples minimum).");
+  const adpcm = imaEncode(s), baselineBytes = Math.ceil(baseline.length / 2);
+  return { s, rate, n: s.length, adpcm, baselineSamples: baseline.length, baselineBytes,
+    savedBytes: baselineBytes - adpcm.length, gritFactor, storageRate, reference, referenceRate: sr };
 }
 
 // sampleio.ima_encode: 4-bit IMA ADPCM, low nibble first, from predictor 0 / index 0
@@ -307,18 +377,30 @@ export function asciiName(b) {
 export function parseInfo(r) {
   if (r.length < 2) throw new Error("short SMP_INFO reply");
   const count = r[0], size = r[1] * 1024, slots = [];
+  if (count < 1) throw new Error("invalid SMP_INFO slot count");
   let i = 2;
   for (let k = 0; k < count; k++) {
     const nz = r[i], j = r.indexOf(0, i + 1);
     slots.push({ nz, name: asciiName(r.slice(i + 1, j)), kb: r[j + 1], size, off: null, used: r[j + 1] });
     i = j + 2;
   }
-  const ext = r.length >= i + 2 + 6 * count && r[i] === 0x58 && r[i + 1] === 1;
-  if (ext)
+  const ext = r[i] === 0x58;
+  if (ext && (r[i + 1] !== 1 || r.length !== i + 2 + 6 * count))
+    throw new Error("truncated or unsupported SMP_INFO flash-map extension");
+  if (ext) {
+    const ranges = [];
     slots.forEach((sl, k) => {
       const v = [0, 1, 2].map((m) => r[i + 2 + 6 * k + 2 * m] | r[i + 3 + 6 * k + 2 * m] << 7);
-      Object.assign(sl, { off: v[0] * 0x1000, size: v[1] * 0x1000, used: v[2] });
+      const off = v[0] * 0x1000, size = v[1] * 0x1000, end = off + size;
+      // Validate every range before preservation decisions: two occupied slots
+      // must never alias one kept destination and silently bypass the backup.
+      if (!off || size < SLOT_HDR_AREA || v[2] * 1024 > size ||
+          ranges.some(([lo, hi]) => off < hi && lo < end))
+        throw new Error(`slot ${k + 1}: invalid or overlapping SMP_INFO flash range`);
+      ranges.push([off, end]);
+      Object.assign(sl, { off, size, used: v[2] });
     });
+  }
   return { count, size, ext, slots };
 }
 
@@ -461,20 +543,65 @@ export function flashMap(layout, board = "smk") {
   return layout.slots.map((_, k) => ({ off: LEGACY_BASE[board] + k * layout.size, size: layout.size }));
 }
 
+// Read only CRC-checked package files, never trust markers in header/padding.
+function slotPackageFiles(image) {
+  const crc16 = b => {
+    let c = 0;
+    for (const x of b) {
+      c ^= x << 8;
+      for (let k = 0; k < 8; k++) c = c & 0x8000 ? ((c << 1) ^ 0x1021) & 0xFFFF : (c << 1) & 0xFFFF;
+    }
+    return c;
+  };
+  const decode = b => {
+    const out = Uint8Array.from(b); let key = 0xFFFF;
+    for (let j = 0; j < out.length; j++) {
+      out[j] ^= key & 0xFF;
+      key = ((key << 1) ^ (key & 0x8000 ? 0x1021 : 0)) & 0xFFFF;
+    }
+    return out;
+  };
+  if (image.length < 64) return null;
+  const hdr = decode(image.subarray(0, 64)), h = new DataView(hdr.buffer, hdr.byteOffset, hdr.byteLength);
+  const count = h.getUint16(8, true), end = 64 + count * 80;
+  if (crc16(hdr.subarray(2)) !== h.getUint16(0, true) || h.getUint32(4, true) !== image.length ||
+      count < 1 || count > 8 || end > image.length || crc16(image.subarray(64, end)) !== h.getUint16(2, true)) return null;
+  const files = {}; let priorEnd = end;
+  for (let j = 0; j < count; j++) {
+    const entry = decode(image.subarray(64 + j * 80, 144 + j * 80));
+    const v = new DataView(entry.buffer, entry.byteOffset, entry.byteLength);
+    const off = v.getUint32(8, true), size = v.getUint32(12, true);
+    if (!size || off < priorEnd || off + size > image.length) return null;
+    const data = image.subarray(off, off + size);
+    if (crc16(data) !== v.getUint16(4, true)) return null;
+    for (const [name, type] of [["flash.bin", 0], ["ota.bin", 100]]) {
+      if (v.getUint16(0, true) === type) {
+        if (files[name] || findBytes(entry.subarray(64), name + "\0") !== 0) return null;
+        files[name] = data;
+      }
+    }
+    priorEnd = off + size;
+  }
+  return files["flash.bin"] ? files : null;
+}
+
 // the slot map of a package's logical image (fm1pkg_make.slotmap_of): its slot map record; for an older X0X
 // (Felucca loader, no record) the equal 80 KiB slots of that time; [] for any other package (stock firmware)
 export function packageSlotMap(image, board = "smk") {
-  const i = findBytes(image, SLOTMAP_MAGIC);
-  if (i >= 0 && i + 24 <= image.length) {
-    const v = new DataView(image.buffer, image.byteOffset, image.byteLength), n = v.getUint32(i + 16, true);
+  const files = slotPackageFiles(image);
+  if (!files) return [];
+  const flash = files["flash.bin"], i = board === "fm1" ? 0x92F00 : 0x9CF00;
+  if (i + 24 <= flash.length && findBytes(flash.subarray(i, i + 16), SLOTMAP_MAGIC) === 0) {
+    const v = new DataView(flash.buffer, flash.byteOffset, flash.byteLength), n = v.getUint32(i + 16, true);
     const end = i + 20 + 8 * n;
-    if (n <= 16 && end + 4 <= image.length && v.getUint32(end, true) === crc32(image.subarray(i, end))) {
+    if (n <= 16 && end + 4 <= flash.length && v.getUint32(end, true) === crc32(flash.subarray(i, end))) {
       const m = [];
       for (let k = 0; k < n; k++) m.push({ off: v.getUint32(i + 20 + 8 * k, true), size: v.getUint32(i + 24 + 8 * k, true) });
       return m;
     }
+    return []; // A damaged current record cannot claim the legacy layout.
   }
-  if (findBytes(image, LOADER_MARK) < 0) return [];
+  if (!files["ota.bin"] || findBytes(files["ota.bin"], LOADER_MARK) < 0) return [];
   return Array.from({ length: board === "smk" ? 2 : 3 }, (_, k) => ({ off: LEGACY_BASE[board] + k * 0x14000, size: 0x14000 }));
 }
 
@@ -502,6 +629,53 @@ export function planMigration(images, risk, oldMap, newLayout, newMap) {
     else { todo.push({ k, j }); taken.add(j); }
   }
   return { todo, skipped };
+}
+
+export const X0X_NBREAKS_BUILTIN = 2;
+const LOOP_MENU_GUARD = "LOOP menu order or indices would change; saved break pattern A/B indices could point at different loops. "
+  + "The backup is retained. Restore samples manually to a compatible layout, then check and re-assign LOOP A/B in every saved pattern before playback.";
+
+function userLoopMenuIds(layout, images, origins = null) {
+  // scan_loops lists each zone, not each slot. Preserve original slot identity:
+  // identical sample bytes in distinct slots are not interchangeable indices.
+  const ids = [];
+  layout.slots.forEach((sl, k) => {
+    for (let z = 0; z < sl.nz; z++)
+      ids.push(origins === null ? `old:${k}:${z}` : origins[k] === null ? `new:${k}:${z}` : `old:${origins[k]}:${z}`);
+  });
+  return ids;
+}
+
+function loopMenuAfterMigration(oldLayout, images, risk, oldMap, newMap, newLayout, todo) {
+  const imgs = newMap.map(() => null), origins = newMap.map(() => null);
+  const slots = newLayout.slots.map((sl) => ({ ...sl }));
+  images.forEach((img, k) => {
+    if (risk.includes(k) || !img) return;
+    const off = oldMap[k].off;
+    const j = newMap.findIndex((m) => m.off === off);
+    if (j < 0) return;
+    imgs[j] = img; origins[j] = k;
+    slots[j] = { ...oldLayout.slots[k] };
+  });
+  todo.forEach(({ k, j }) => { imgs[j] = images[k]; origins[j] = k; slots[j] = { ...oldLayout.slots[k] }; });
+  return userLoopMenuIds({ ...newLayout, slots }, imgs, origins);
+}
+
+export function migrationReordersLoopMenu(oldLayout, images, risk, oldMap, newLayout, newMap, todo) {
+  if (!todo.length) return false;
+  const before = userLoopMenuIds(oldLayout, images);
+  const after = loopMenuAfterMigration(oldLayout, images, risk, oldMap, newMap, newLayout, todo);
+  // Compare absolute common positions; skipped middle slots can shift indices
+  // even when surviving entries retain their relative order. Trailing-only
+  // omissions or additions leave all remaining original positions unchanged.
+  return before.slice(0, after.length).some((id, i) => id !== after[i]);
+}
+
+export function guardMigrationLoopMenu(oldLayout, images, risk, oldMap, newLayout, newMap, todo, skipped) {
+  if (!migrationReordersLoopMenu(oldLayout, images, risk, oldMap, newLayout, newMap, todo)) return { todo, skipped };
+  const extra = [...skipped];
+  for (const { k } of todo) extra.push(`slot ${k + 1}: not restored automatically (${LOOP_MENU_GUARD})`);
+  return { todo: [], skipped: extra };
 }
 
 // ---- the slot commands over a link with send / read / drain (fm1ota.js's Link): SysEx F0 7D 46 4C cmd .. F7 ----
@@ -550,7 +724,7 @@ async function readSlotBytes(link, k, off, n, onPart) {
 export async function readSlotImage(link, k, nz, onPart) {
   if (!nz) return null;
   const area = await readSlotBytes(link, k, 0, SLOT_HDR_AREA), h = parseHeader(area.subarray(0, SLOT_HDR_LEN));
-  if (!h) return null;
+  if (!h) throw new Error(`slot ${k + 1}: occupied sample slot has an invalid header; backup stopped`);
   const data = await readSlotBytes(link, k, SLOT_HDR_AREA, h.dataLen, onPart);
   if (crc32(data) !== h.crc) throw new Error(`slot ${k + 1}: the data read back does not match its CRC`);
   const img = new Uint8Array(SLOT_HDR_AREA + data.length);
@@ -638,7 +812,11 @@ export async function installKeepingSlots(up, image, product, board, hooks) {
           const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
           readArchive(file);                                  // what was saved reads back
           h.save(file, st.name);
-          move = { risk, oldMap, newMap, images: saved.images, name: st.name, todo: [], skipped: [] };
+          // SMP_INFO can change while the backup is read. Use the exact verified
+          // snapshot for preservation, just as the Python SlotMove.backup does.
+          const savedMap = flashMap(saved.layout, board);
+          move = { risk: atRisk(saved.layout, savedMap, newMap), oldMap: savedMap, newMap,
+            layout: saved.layout, images: saved.images, name: st.name, todo: [], skipped: [] };
         }
       }
     } finally { dev.link.close(); }
@@ -651,7 +829,9 @@ export async function installKeepingSlots(up, image, product, board, hooks) {
   try {
     up.bind(back);
     const layout = await readSlotLayout(back.link);
-    const plan = planMigration(move.images, move.risk, move.oldMap, layout, flashMap(layout, board));
+    let plan = planMigration(move.images, move.risk, move.oldMap, layout, flashMap(layout, board));
+    plan = guardMigrationLoopMenu(move.layout, move.images, move.risk, move.oldMap, layout,
+      flashMap(layout, board), plan.todo, plan.skipped);
     move.todo = plan.todo;
     move.skipped = plan.skipped;
     const total = plan.todo.length || 1;

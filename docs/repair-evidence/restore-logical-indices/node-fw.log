@@ -1,0 +1,12 @@
+✔ skipped middle multizone image cannot donate its saved LOOP indices to C (0.949416ms)
+✔ identical image CRCs do not hide original-slot reorder (0.079666ms)
+✔ safe prefix, trailing omission and append-only occupants retain existing indices (0.730542ms)
+✔ production installer retains verified archive and emits no restoration write for skipped middle slot (32.304208ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.582125

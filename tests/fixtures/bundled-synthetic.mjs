@@ -12,7 +12,7 @@ function enc(b,key=65535){for(let i=0;i<b.length;i++){b[i]^=key&255;key=((key<<1
 function sfc(b){for(let o=0;o<b.length;o+=32)enc(b.subarray(o,Math.min(o+32,b.length)),65535^(o>>>2));return b;}
 function entry(dcrc,off,size,name){const b=Buffer.alloc(32,255);u16(b,2,dcrc);u32(b,4,off);u32(b,8,size);b[12]=0x82;b[13]=255;u16(b,14,0);b.fill(255,16);b.write(name+'\0',16,'ascii');u16(b,0,crc16(b.subarray(2)));return b;}
 export function makeController(edit){const b=Buffer.alloc(4096);for(let i=68;i<b.length;i++)b[i]=(i*13+7)&255;u32(b,0,0x43423058);u16(b,4,2);u16(b,6,68);u32(b,8,0x20000);u32(b,12,b.length);u32(b,20,2);u32(b,24,0x02087080);u32(b,28,0x02087090);u32(b,32,0x01c06e80);u32(b,36,0x01c07680);u32(b,40,0x01c01800);u32(b,44,0x01c07680);u32(b,48,1<<29);u32(b,52,1<<8);if(edit)edit(b);u32(b,16,0);u32(b,16,crc32(b));return b;}
-export function makePackage(model='pro',{controller=makeController(),tail=false,appCrc=false,outerCrc=false,noMap=false}={}){
+export function makePackage(model='pro',{controller=makeController(),tail=false,appCrc=false,outerCrc=false,noMap=false,slotMap=[[0xc2000,0x14000],[0xd6000,0x1e000],[0xb0000,0xb000]],flashOffset=0x400,slotMapOffset=0x9cf00,extraFiles=[]}={}){
  const slot=0x97400,blk=0x120+slot,area=Buffer.alloc(blk,255),flash=Buffer.alloc(0x9d000,255);
  area.write('SYNTHETIC NONEXECUTABLE APPLICATION',0x120,'ascii');
  if(controller)controller.copy(area,0x120+0x86ee0);
@@ -22,11 +22,13 @@ export function makePackage(model='pro',{controller=makeController(),tail=false,
  if(appCrc)area[34]^=1;
  sfc(area).copy(flash,0x4000);
  const isd=entry(0,0x200,32,'isd_config.ini');enc(isd).copy(flash,64);flash.fill(0,0x200,0x220);
- if(!noMap){const map=Buffer.alloc(48);map.write('X0X-SLOTMAP-1\0\0\0',0,'ascii');u32(map,16,3);[[0xc2000,0x14000],[0xd6000,0x1e000],[0xb0000,0xb000]].forEach(([o,n],i)=>{u32(map,20+i*8,o);u32(map,24+i*8,n);});u32(map,44,crc32(map.subarray(0,44)));map.copy(flash,0x9cf00);}
- const ota=Buffer.from('SYNTHETIC NONEXECUTABLE FELUCCA-LOADER-1'),off=0x400,otaOff=(off+flash.length+255)&~255;
- const logical=Buffer.alloc(otaOff+ota.length,255),hdr=Buffer.alloc(64),list=Buffer.alloc(160);
- for(const [i,type,name,data,pos]of[[0,0,'flash.bin',flash,off],[1,100,'ota.bin',ota,otaOff]]){const e=Buffer.alloc(80);u16(e,0,type);u16(e,2,i);u16(e,4,crc16(data));u32(e,8,pos);u32(e,12,data.length);u32(e,16,(data.length+31)&~31);e.write(name,64,'ascii');enc(e).copy(list,i*80);data.copy(logical,pos);}
- u32(hdr,4,logical.length);u16(hdr,8,2);hdr.write('AC791N',16,'ascii');u16(hdr,2,crc16(list));u16(hdr,0,crc16(hdr.subarray(2)));enc(hdr).copy(logical);list.copy(logical,64);
+ if(!noMap){const map=Buffer.alloc(24+8*slotMap.length);map.write('X0X-SLOTMAP-1\0\0\0',0,'ascii');u32(map,16,slotMap.length);slotMap.forEach(([o,n],i)=>{u32(map,20+i*8,o);u32(map,24+i*8,n);});u32(map,20+8*slotMap.length,crc32(map.subarray(0,20+8*slotMap.length)));map.copy(flash,slotMapOffset);}
+ const ota=Buffer.from('SYNTHETIC NONEXECUTABLE FELUCCA-LOADER-1'),off=flashOffset,otaOff=(off+flash.length+255)&~255;
+ const files=[[0,'flash.bin',flash,off],[100,'ota.bin',ota,otaOff]];let total=otaOff+ota.length;
+ for(const [type,name,data] of extraFiles){const pos=(total+255)&~255;files.push([type,name,data,pos]);total=pos+data.length;}
+ const logical=Buffer.alloc(total,255),hdr=Buffer.alloc(64),list=Buffer.alloc(80*files.length);
+ for(const [i,[type,name,data,pos]]of files.entries()){const e=Buffer.alloc(80);u16(e,0,type);u16(e,2,i);u16(e,4,crc16(data));u32(e,8,pos);u32(e,12,data.length);u32(e,16,(data.length+31)&~31);e.write(name,64,'ascii');enc(e).copy(list,i*80);data.copy(logical,pos);}
+ u32(hdr,4,logical.length);u16(hdr,8,files.length);hdr.write('AC791N',16,'ascii');u16(hdr,2,crc16(list));u16(hdr,0,crc16(hdr.subarray(2)));enc(hdr).copy(logical);list.copy(logical,64);
  const product=`SMK-37 ${model==='elite'?'Elite':'Pro'}_900`,raw=Buffer.alloc(logical.length+20);for(let i=0;i<20;i++){logical.copy(raw,i*48,i*47,(i+1)*47);raw[i*48+47]=i<product.length?(product.charCodeAt(i)+i+1)&255:125;}logical.copy(raw,960,940);if(outerCrc)raw[raw.length-1]^=1;return raw;
 }
 export function packageRecord(model,raw=makePackage(model),extra={}){const digest=hash(raw);return{product:`SMK-37 ${model==='elite'?'Elite':'Pro'}_900`,sha256:digest,size:raw.length,pkg:`https://example.invalid/${digest}/${model}.fwsc`,controller_strategy:'bundled',controller_size:4096,controller_sha256:hash(makeController()),...extra};}

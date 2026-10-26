@@ -1,0 +1,23 @@
+✖ production installer retains verified archive and emits no restoration write for skipped middle slot (19.114459ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.81875
+
+✖ failing tests:
+
+test at ../../../../../../../private/tmp/restore-site-baseline-test.mjs:32:1
+✖ production installer retains verified archive and emits no restoration write for skipped middle slot (19.114459ms)
+  Error: unexpected restoration write 11
+      at fail (file:///private/tmp/restore-site-baseline.mjs:615:58)
+      at installKeepingSlots (file:///private/tmp/restore-site-baseline.mjs:660:11)
+      at async TestContext.<anonymous> (file:///private/tmp/restore-site-baseline-test.mjs:49:15)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    code: 'slots',
+    detail: 'x0x-slots-before-install-20261026-193150.x0xslots'
+  }

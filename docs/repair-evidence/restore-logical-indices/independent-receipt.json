@@ -1,0 +1,21 @@
+{
+  "verdict": "PASS_BOUNDED_SOURCE_REPAIR",
+  "firmware_head": "e4fd6fd200bedd6a9a789441b3e283a7f65b729d",
+  "firmware_tree": "8e7fc8c242241d13ceba68992ca291d4723b163e",
+  "site_head": "a22c9bbef2ac315154931e9fd612b903e04cc5d5",
+  "site_tree": "b86b2418acdfc7d2a3a1c686db471955b91134d1",
+  "superseded_blocked_heads": [
+    "d99fdb47ea94e003565347df74dd9cb0eb206cbe",
+    "a7945282353f1cd164d51583a386cff506692696"
+  ],
+  "independent_repro": "PASS both exact modules; postinstall commands15/15 only",
+  "independent_production_tests": "5/5 each copy",
+  "generated_parity": "PASS",
+  "provenance": "PASS",
+  "author_full_npm": "48 edge passes, logs digest-verified; not independently rerun",
+  "source_changes_by_reviewer": false,
+  "headless_smoke": "DENIED_BEFORE_EXECUTION; not retried; NOT_RUN",
+  "scope": "Tools/browser logic only; no target binary, device, production rollout or publication claim",
+  "execution_receipt": "corrected-execution.json",
+  "verified_proof": "proof-log-verification.json"
+}

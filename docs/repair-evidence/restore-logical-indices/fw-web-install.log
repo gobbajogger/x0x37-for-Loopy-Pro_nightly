@@ -1,0 +1,149 @@
+PASS unreviewed all-green catalog still hides direct download
+PASS 34 exact-source NIGHTLY product identity/approval assertions (synthetic, no device/HTTP)
+PASS 17/17 exact-source stock model preflight tests (mock UI, no device)
+PASS unapproved GitHub release asset cannot appear or request network
+PASS approved Elite appears only after verified bytes, not before host SHA check
+PASS unapproved Pro cannot borrow Elite proof
+PASS switch from good to bad clears previously displayed href
+PASS reject per-model revoked=true
+PASS reject per-model revoked string
+PASS reject catalog revoked string
+PASS reject catalog Release marker
+PASS reject nonboolean imported-Release marker
+PASS reject revoked publisher tuple
+PASS reject Release-marked publisher tuple
+PASS reject nonboolean Release-marked publisher tuple
+PASS revoked package clears a previously approved direct Download link
+PASS explicitly nonrevoked approved package still appears
+PASS reject unapproved Release import
+PASS reject QA not passed
+PASS reject source license not verified
+PASS reject source root mismatch
+PASS reject firmware subtree mismatch
+PASS reject model swap
+PASS reject package SHA mismatch
+PASS reject catalog package size changed without publisher approval
+PASS reject catalog package size enlarged to unbounded budget
+PASS reject publisher package size mismatch
+PASS reject publisher package size absent
+PASS reject controller SHA mismatch
+PASS reject unapproved HTTP origin
+PASS reject relative Pages package without immutable approval
+PASS reject traversal link
+PASS reject revoked build
+PASS reject missing host byte check
+PASS reject missing backup integrity
+PASS reject wrong approved model
+PASS default embedded publisher list cannot self-authorize
+PASS unapproved newest catalog entry falls back to eligible version
+PASS missing latest catalog entry falls back to eligible version
+PASS approved newest catalog entry remains selected
+PASS manual eligible choice survives catalog refresh
+PASS empty eligible catalog keeps picker blank and direct link hidden
+PASS exact approved loaded Blob permits the normal install click
+PASS removed/version-blank DOM selection refuses the previously loaded image
+PASS another eligible selected version cannot authorize previously cached bytes
+PASS different cached package cannot borrow the new version approval
+PASS mismatched cached product identity cannot be flashed
+PASS no verified Blob never creates a usable install candidate
+PASS remote non-Blob href never creates a usable install candidate
+PASS unaltered verified Blob download remains permitted
+PASS altered direct remote Download HREF is vetoed and verified URL revoked
+PASS 49 NIGHTLY installer source-excerpt assertions; device/host HTTP not tested
+PASS latest valid file replaces earlier slow read
+PASS reconnect SMK-37 Elite normal
+PASS latest approved model wins in-flight race
+PASS bad latest file blocks old valid controller
+PASS Pro ignores unrelated FM-1 after loader write
+PASS stale not-found scan cannot replace new connected result
+PASS reconnect SMK-37 Elite resume
+PASS late read error cannot overwrite newer success
+PASS stale HTTP error does not hide current selection
+PASS reconnect SMK-37 Elite resume-cancel
+PASS controller read completing during flash is ignored
+PASS write-start invalidation survives flash completion
+PASS mismatch: bytes=1, approved size=2 forbids Blob/Install
+PASS 9/9 NIGHTLY physical-model prewrite mocked source cases
+installer SMP_INFO prewrite checked: 38/38
+PASS controller selection forbidden while flashing
+PASS Pro wrong-family-only reboot is not success
+PASS stale disconnect error cannot replace new connected result
+PASS mismatch: bytes=2, approved size=1 forbids Blob/Install
+PASS reconnect SMK-37 Elite missing
+PASS valid single controller accepted
+PASS reconnect SMK-37 Elite failure
+PASS size-matched eligible model still yields verified Blob
+PASS reconnect SMK-37 Elite denied
+PASS failed read can retry same file
+PASS failed HTTP fetch still forbids Blob/Install
+PASS older Elite scan cannot overwrite newer Pro selection
+PASS FM-1 ignores unrelated Pro after loader write
+PASS controller hash recorded for latest selected file
+PASS controller cleared; no Bluetooth selection remains
+PASS in-flight scan does not disturb active flashing status
+PASS reconnect SMK-37 Elite pending
+PASS clear invalidates outstanding file read
+PASS reconnect SMK-37 Elite pending-stale
+PASS reconnect SMK-37 Elite revoked
+PASS cannot clear active controller during write
+PASS wrong-family reboot discovery bypass still rejected
+PASS unapproved ctl never reaches insertion or firmware write
+PASS matching approved ctl preserves Bluetooth insertion
+PASS omitted ctl preserves non-Bluetooth install
+PASS 8/8 installer local-selection mock regressions (no hardware)
+PASS changing model-approved ctl SHA blocks earlier selection
+PASS revoked catalog cannot install even with matching ctl
+PASS reconnect SMK-37 Pro normal
+PASS pending controller read blocks installer until file verification
+PASS corrupted ctl.img requires explicit remove before no-Bluetooth install
+PASS legitimate same-family Elite reboot keeps mismatch report
+PASS 8/8 approved firmware streaming bound/abort/no-stream regressions (source-exact synthetic)
+PASS failed ctl.img read requires explicit remove before no-Bluetooth install
+PASS reconnect SMK-37 Pro resume
+PASS latest error, not-found and OTA result still work
+PASS reconnect SMK-37 Pro resume-cancel
+PASS canceling file chooser preserves an accepted controller image
+PASS pending controller blocks even if button was programmatically enabled
+PASS oversized controller is rejected before buffer allocation and requires explicit Remove
+PASS post-write scan updates connection without clobbering restoration result
+PASS Pro skips unrelated FM-1 loader
+PASS reconnect SMK-37 Pro missing
+PASS missing, zero, negative or nonfinite controller size is rejected before read
+PASS 24/24 exact-source controller selection/prewrite regression cases; no hardware
+PASS pre-write scan stays invalid even after permission/write finishes
+PASS scan-race regression (7 scenarios; NIGHTLY exact source, simulated MIDI)
+PASS reconnect SMK-37 Pro failure
+PASS reconnect SMK-37 Pro denied
+PASS Pro never writes FM-1-only loader
+PASS reconnect SMK-37 Pro pending
+PASS FM-1 never writes Pro-only loader
+PASS reconnect SMK-37 Pro pending-stale
+PASS reconnect SMK-37 Pro revoked
+PASS 18 exact-source Web MIDI mock scenarios
+PASS FM-1 skips unrelated Pro loader
+PASS Elite loader alias accepted for Pro
+PASS MKE loader alias accepted for Pro
+installer occupied sample header backup checked: 100/100
+PASS Starrykey loader alias accepted for Pro
+PASS independent check rejects wrong loader from discovery
+PASS 10/10 sample-restore disposition scenarios (Elite/Pro)
+PASS independent check rejects non-OTA port from discovery
+PASS wrong running keyboard rejected
+PASS FM-1 normal OTA supported
+PASS ordinary port skipped during OTA discovery
+PASS case-insensitive SMK alias supported
+PASS 18 OTA-loader source-exact mock regressions; no device used
+packageSlotMap: the record, else the old 2 x 80 KiB (loader mark), else none ok
+upgrade: slots kept in place, no backup, SMP_INFO only                 ok
+downgrade: every slot saved (x0x-slots-before-install-20261026-193229.x0xslots) ok
+downgrade: the backup sends SMP_INFO / SMP_READ only                   ok
+downgrade: skipped middle loop blocks all restore writes and preserves archive for reconciliation ok
+downgrade: the page is told which slots are at risk                    ok
+moved slot: saved, installed, slot 2 written back at 0xD7000 and verified ok
+failure mid-restore: error 'slots' (slot 2: write at 0x4200 failed (3)) ok
+failure mid-restore: the saved archive holds the slots, the install itself completed ok
+backup fails: error 'slotbackup', nothing sent to install              ok
+stock package: all slots saved, nothing written back                   ok
+installer page: download, install, slots back ("Done. The slots were written back and checked.") ok
+installer page: failure mid-restore keeps the file and says how to restore it ok
+install slot web tests passed

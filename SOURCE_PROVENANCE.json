@@ -3,16 +3,17 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "891dfeb6ca4eab5acd1107e80e9e62af5253033c",
-    "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978",
-    "web/fm1pkg.js": "4b3152e695512c288a0244b0474fd140392ad4f5",
-    "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
-    "web/x0x_breaks.js": "360dcfccd70b0f7e521b47f83ad196743a4f7f1c",
+    "web/x0x_installer.html": "bac88bee2c71215d07224e10475bae2aa97fa984",
+    "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+    "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
+    "web/fm1ota.js": "d6051869f1f5d0ce6045e66500c900bd13e4744e",
+    "web/x0x_breaks.js": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
     "web/test_projects.mjs": "6e3f65e584f0873c0af7bb21539ed3355d49c365",
-    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf"
+    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
+    "web/test_breaks_page.mjs": "ef910496119f985a6795f690b5fd5ed9486ea97c"
   },
   "sourcePatches": [
     {
@@ -246,6 +247,99 @@
       "sourceBaseCommit": "2b11200c8cc69b7f80d8cd2ccef968adb6cc3a75",
       "resultBlob": "ded5783065ad4594af77f85ea98717db647cc978",
       "description": "Correlate SMP_READ replies by echoed slot and offset before consuming the pending wait"
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+      "resultBlob": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
+      "description": "Preserve absolute original slot and per-zone LOOP indices before automatic restoration; retain archive and reconciliation guidance on skipped-middle compaction. Recompute old map and risk from the verified backup snapshot to handle changed SMP_INFO."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBaseCommit": "17abc1a5069a44cea6f38edf31f1cbf7037a639a",
+      "resultBlob": "ef910496119f985a6795f690b5fd5ed9486ea97c",
+      "description": "Scoped NIGHTLY Oldschool importer and visible pre-MIDI local mono-reference/encoded listening; preserve source, cancel recut without writes, show rate-compensated ADPCM size and duration."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "365d967fd007df131883fc4010b7b4705f85de0b",
+      "resultBlob": "a876b35220251d8bdff2398b69c2b30f522d8ba3",
+      "description": "EC-012: reject invalid/overlapping SMP_INFO flash ranges and incomplete extensions before sample-risk and OTA decisions; preserve valid legacy maps and empty slots."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "713024aac6a4b5650f431910bab4494de8a9502b",
+      "resultBlob": "3a576177b9d3bf42f772a1789a41d9e31fcae47f",
+      "description": "EC013: reject zero-slot SMP_INFO before preflash backup-risk decisions and OTA; valid empty-slot layouts remain supported."
+    },
+    {
+      "path": "web/fm1pkg.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "eca66eb8536b015361edc35c50197d7b6b784e0c",
+      "resultBlob": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
+      "description": "EC014: require the exact CRC-valid SMK slot map at its flash-map address before controller insertion can overwrite a nonempty legacy app region; share admission with bundled readback."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "2d9edad4f25b9275a499d1d4b01f88fcc8e91142",
+      "resultBlob": "f80501c00241f27403b019a5484b58ac300027cb",
+      "description": "Always-visible installer local sample upload, processing controls and reference/encoded audition before MIDI; reuse existing rate-compensated importer and ADPCM without changing device operations."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d03a3a332fb729642f156935617fcafd182e894a",
+      "resultBlob": "26ebfbf459af1451472489e7c21a36e72aa93785",
+      "description": "Owner preview refinement: emphasize sound quality and space, show filename/duration/savings, collapse saved-rate/ADPCM explanation, explicitly identify sample import as same installer page. Local playback and all device gates retained."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceBaseCommit": "dceeb1416e3266be32beb670d501f979737cdf2e",
+      "resultBlob": "bac88bee2c71215d07224e10475bae2aa97fa984",
+      "description": "Owner-requested frontend-design rework: compact sampler workbench, real selected-loop waveform, listening transport, processing bank and same-page import footer. Processing and device gates retained."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d40fa088f65986e130e94bac8ab6b10a5618257a",
+      "resultBlob": "dedd45cdd942bba2bb4e03e33603b6d8069242e2",
+      "description": "EC015: reject invalid occupied sample headers before accepting a backup or starting OTA; retain null for known empty slots."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "08aed72e1b96db73dea08edca09c83ba22880e9c",
+      "resultBlob": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
+      "description": "EC016: bind preflash slot maps to CRC-checked flash.bin and board-specific flash-map address; ignore padding decoys, retain verified legacy loader and empty-slot behavior."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d8660c2caf01f67ca07628fef7a8489570ccb96a",
+      "resultBlob": "d6051869f1f5d0ce6045e66500c900bd13e4744e",
+      "description": "EC011: cap MIDI receive frames and bytes, latch overflow, abort pending reads and prevent further sends until reconnection."
     }
   ]
 }
