@@ -2,7 +2,7 @@
   "base": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
   "branch": "codex/restore-logical-indices-20261026",
   "scope": "tools/browser migration guard, no target DSP changes",
-  "independent_review": "FIRST_CANDIDATE_BLOCKED; FOLLOWUP_RECHECK_PENDING",
+  "independent_review": "PASS on corrected source; see independent-README.md and corrected-execution evidence",
   "native_build": "NOT_RUN (target source unchanged)",
   "hardware": "NOT_RUN",
   "browser_smoke": {
@@ -64,5 +64,6 @@
     "site-snapshot-followup.log": "9ce3a4193856970ec94896495350017193aa0d25a418efc1b96034384af3fd37"
   },
   "followup_for": "a7945282353f1cd164d51583a386cff506692696",
-  "followup": "Recompute browser old map and risk from the exact verified backup snapshot; resolve independently reproduced fresh-population race."
+  "followup": "Recompute browser old map and risk from the exact verified backup snapshot; resolve independently reproduced fresh-population race.",
+  "qualified_scope": "Logic-only source repair, actual Python/Node installer guards and full npm; no hardware/Pages/target binary qualification"
 }
