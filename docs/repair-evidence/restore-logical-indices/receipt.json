@@ -1,0 +1,56 @@
+{
+  "base": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+  "branch": "codex/restore-logical-indices-20261026",
+  "scope": "tools/browser migration guard, no target DSP changes",
+  "independent_review": "PENDING",
+  "native_build": "NOT_RUN (target source unchanged)",
+  "hardware": "NOT_RUN",
+  "browser_smoke": {
+    "state": "DENIED_BEFORE_EXECUTION",
+    "target": "restore-site tests/workspace-browser.py; headless Chromium, localhost server, /tmp screenshots",
+    "reason": "Explicit no GUI/computer-use restriction; escalation not authorized",
+    "retry": "NOT_ATTEMPTED"
+  },
+  "checks": {
+    "python_menu": {
+      "exit": 0,
+      "checks": 12
+    },
+    "python_backup_snapshot": {
+      "exit": 0,
+      "tests": 8
+    },
+    "python_matching": {
+      "exit": 0,
+      "tests": 9
+    },
+    "python_installer": 0,
+    "firmware_web_installer": 0,
+    "new_js_each_copy": {
+      "exit": 0,
+      "tests": 4
+    },
+    "registered_selectors": 0,
+    "site_build": 0,
+    "site_npm": {
+      "exit": 0,
+      "edge_tests": 47
+    }
+  },
+  "log_sha256": {
+    "baseline-python.log": "a6555bd340c2567df2e6e86d2d8f90dd5144152ac60b90d86fb4ef676041dee5",
+    "fw-web-install.log": "c87f04d025a48924193402596b0f25ffc249a32b09c5e91539f9d7a014b8d943",
+    "node-fw.log": "a826a08f1e3932d69c78bd9432b6ae69ae36b0afeedd1d58182e54dbac455f9b",
+    "node-site.log": "81d0eeace41ca0852735ba8c14c545eab217852a1fa5ecc13fa3dd2c16e97436",
+    "python-backup-snapshot.log": "bb86ef8c8f21e92e9d2a32541109e4c60d1b7467a6d139bea358e11fa6b8afd9",
+    "python-install.log": "5370b6ac647c474dab98a092ccbc96371a5d8add24ccd34ed49e0505b030c5dd",
+    "python-matching.log": "64fe0094ef5051df7a6a76e902e0702069a88f8244961e754d05cdef0754dd9a",
+    "python-menu.log": "a4be65af8f2e3cca4a05a40efdec935bbe22e03e835f8d85844d4e896b1ea855",
+    "registered-selectors.log": "988cbb6a474f84d6fda9d0c85ed388b44c8ea3c13cd90d04ddf31b17b3ad1250",
+    "repaired-python.log": "b1ae773ea80c4a0a3d8b42464630644e8495b00236c4240d1505359c1ec500bb",
+    "restore-integrity-baseline-node.log": "50ad075f68f5796c28d7952b072dd5a97d5aefc71f9ee7bcd23d7bdb7d0c677f",
+    "restore-site-baseline-node.log": "ab5eb704903e1233d6ee421fdeb43fbc862dd6402777bdec5ee21b70bcac1390",
+    "site-build.log": "84ebc50ac461bbd6395a55ebad7a2b461aeb1384d50f06710dfe33265adfa52a",
+    "site-npm.log": "3c949fd3fec80091743496f06128e39b8ac501ba8c8d4240c2552495ca04dcd2"
+  }
+}

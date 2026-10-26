@@ -1,0 +1,2 @@
+todo [(2, 1)] skipped ['slot 2 (100000 B): no free slot of that size on the new firmware']
+guarded [] ['slot 2 (100000 B): no free slot of that size on the new firmware', 'slot 3: not restored automatically (LOOP menu order or indices would change; saved break pattern A/B indices could point at different loops. The backup is retained. Restore samples manually to a compatible layout, then check and re-assign LOOP A/B in every saved pattern before playback.)']
