@@ -1,0 +1,36 @@
+{
+  "kind": "actual firmware canonical header + validated project_stage bytes",
+  "synthetic": true,
+  "contains_user_data": false,
+  "source_base": "d633833ac369f8466bc2563791614206070e87d1",
+  "base_tree": "442b8e3d1d0e785d2f7b6d7517777da727f70dd0",
+  "dirty_production_files": [],
+  "source_blobs": {},
+  "compiler": "Apple clang via cc",
+  "defines": [
+    "X0X_HOST",
+    "BOARD_SMK37=1",
+    "X0X_WOBBLE=1",
+    "X0X_DEV_WOBBLE=1"
+  ],
+  "generator": "tests/host/project_export_fixture.c and .sh",
+  "engine_bass_is_wobble_0": 1,
+  "project_validate_stage": 0,
+  "project_file_validate": 0,
+  "header_words_le": [
+    1347956824,
+    1,
+    36396,
+    1489721043,
+    1,
+    3,
+    10,
+    0
+  ],
+  "payload_length": 36396,
+  "length": 36428,
+  "sha256": "2c47e1459cdef8db8eec73b96ce58d3a9c67b8c0abaeb3065a46141c2f911d3a",
+  "header_hex": "58305850010000002c8e0000d356cb5801000000030000000a00000000000000",
+  "zlib_base64": "eJzt2EGIjHEYx/H/+5rFLLUsbTtksWRtmIZtYjWFaJti241ab7QpRFEODjYl5eC2KSkHNxcXKQe3vUg5yEXJRU7c9iLl4LZe+5Dn4vY0j2f7fvttM+0cpun5XGaKRjGZpZR230vp/dTb4tfzZeVfd5IaRWPx9SzL0udKUT7L/7w0mi8+VFMlEREREREtrdZ06D1a2ZmtKcVd+Rn6x3bW8mrK0vPyi8Se4Pv7efL0uEvuVGut39edusr/5HnKOgDjH1Y68R7uoAw93lnhrcnW4/KVcic8xpn2eHKVtyZbj1d//zKExzjTHrf1eGuy9fhutdwJj3GmPX7v9dZk67HZI3fCY5xpj6/7vDXZeny0Vu6ExzjTHh9u8NZk63FhndwJj3GmPV4e8NZk6/Fin9wJj3GmPR4Y9NZk6/FNv9wJj3GmPVZ3eGuy9VjfKHfCY5xpjx+HvTXZenywSe6ExzjTHp+6a7L1+GOz3AmPcaY93trrrcnW4/Sg3AmPcaY9jje9Ndl6fLVd7oTHONMeB0a9Ndl6HBqSO+ExzrTHry1vTbYeZ4flTniMM+3x5WFvTbYev+2SO+ExzrTH+8e8Ndl6nKrLnfAYZ9rj+ba3JluPcw25Ex7jTHscOeGtydbjlhG5Ex7jTHusTHprsvV4tyl3wmOcaY8fTnlrsvU4v1/uhMc40x6fnPbWZOtx4qDcCY9xpj3OnPXWZOvxRUvuhMc40x7b57w12XqsHZI74THOtMfaBW9Nth5vH5E74THOtMf5S96abD1+OSp3wmOcaY9zV7w12Xpsj8md8Bhn2uPsNW9Nth6fteVOeIwz7XH6urcmW4+9x+VOeIwz7bF+w1uTrceZcbkTHuNMe1y46a3J1uOnCbnT/+CRiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhoKfQTqM/uSg==",
+  "note": "Synthetic zero-valued valid sound cells; no historical sound identity inferred. Device ED_PROJECT_READ serializes this canonical header and staged raw bytes; no standalone project_file_read API exists."
+}
