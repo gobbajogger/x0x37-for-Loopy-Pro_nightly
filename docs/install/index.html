@@ -1760,7 +1760,11 @@ async function installKeepingSlots(up, image, product, board, hooks) {
           const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
           readArchive(file);                                  // what was saved reads back
           h.save(file, st.name);
-          move = { risk, oldMap, newMap, layout: saved.layout, images: saved.images, name: st.name, todo: [], skipped: [] };
+          // SMP_INFO can change while the backup is read. Use the exact verified
+          // snapshot for preservation, just as the Python SlotMove.backup does.
+          const savedMap = flashMap(saved.layout, board);
+          move = { risk: atRisk(saved.layout, savedMap, newMap), oldMap: savedMap, newMap,
+            layout: saved.layout, images: saved.images, name: st.name, todo: [], skipped: [] };
         }
       }
     } finally { dev.link.close(); }

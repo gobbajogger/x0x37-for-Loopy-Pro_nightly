@@ -52,3 +52,18 @@ test('production installer retains verified archive and emits no restoration wri
  assert.deepEqual(result.move.todo,[]);assert.equal(result.move.skipped.length,2);
  assert.ok(commands.filter(([after])=>after).every(([,cmd])=>cmd===15||cmd===16));
 });
+
+test('fresh backup population recomputes risk before any restore writes',async()=>{
+const images=[image('NEW_A',100000),image('B',30000)];
+const oldMap=[{off:0xC2000,size:0x1E000},{off:0xB0000,size:0xB000}],newMap=[{off:0xC2000,size:0x14000},{off:0xD6000,size:0x14000}];
+let installed=false,response=null,infos=0;const commands=[],saved=[];
+function info(){infos++;const map=installed?newMap:oldMap,occupied=installed?[null,null]:infos===1?[null,images[1]]:images;const r=[map.length,Math.min(...map.map(x=>x.size))>>10];occupied.forEach(img=>r.push(img?1:0,...(img?[88]:[]),0,img?Math.ceil((img.length-512)/1024):0));r.push(0x58,1);map.forEach((x,k)=>{for(const n of [x.off>>12,x.size>>12,occupied[k]?Math.ceil((occupied[k].length-512)/1024):0])r.push(n&127,(n>>7)&127);});return r;}
+const link={close(){},drain(){},send(frame){const cmd=frame[4],a=frame.slice(5,-1);commands.push([installed,cmd]);let body;if(cmd===15)body=info();else if(cmd===16){const off=a[1]|a[2]<<7|a[3]<<14;body=[...a.slice(0,4),...pack78(images[a[0]].slice(off,off+a[4]*2))];}else throw Error('RESTORE_WRITE '+cmd);response=[0xf0,0x7d,0x46,0x4c,cmd,...body,0xf7];return true;},async read(){return response;}};
+const dev={link,id:{text:'SMK-37 Pro_900',model:'SMK-37 Pro',version:900}};
+const up={async find(){return dev;},bind(){},async install(){installed=true;return 'SMK-37 Pro_901';},async waitFor(){return dev;},async reconnectAfter(){return dev;}};
+let error,result;try{result=await installKeepingSlots(up,new TextEncoder().encode('FELUCCA-LOADER-1'),'SMK-37 Pro_901','smk',{save(bytes,name){saved.push({bytes,name});}});}catch(e){error=e;}
+assert.equal(saved.length,1);assert.deepEqual(readArchive(saved[0].bytes).images,images);
+assert.equal(error,undefined);assert.equal(installed,true);assert.deepEqual(result.move.risk,[0,1]);assert.deepEqual(result.move.todo,[]);assert.equal(result.move.skipped.length,2);
+assert.ok(!commands.some(([after,cmd])=>after && ![15,16].includes(cmd)),'UNSAFE: fresh backup populated oversized A, stale risk list treats A as kept and begins restoring B at A\'s logical index');
+
+});

@@ -2,7 +2,7 @@
   "base": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
   "branch": "codex/restore-logical-indices-20261026",
   "scope": "tools/browser migration guard, no target DSP changes",
-  "independent_review": "PENDING",
+  "independent_review": "FIRST_CANDIDATE_BLOCKED; FOLLOWUP_RECHECK_PENDING",
   "native_build": "NOT_RUN (target source unchanged)",
   "hardware": "NOT_RUN",
   "browser_smoke": {
@@ -28,18 +28,24 @@
     "firmware_web_installer": 0,
     "new_js_each_copy": {
       "exit": 0,
-      "tests": 4
+      "tests": 5
     },
     "registered_selectors": 0,
     "site_build": 0,
     "site_npm": {
       "exit": 0,
-      "edge_tests": 47
-    }
+      "edge_tests": 48
+    },
+    "exact_reviewer_race_each_copy": 0,
+    "firmware_web_installer_followup": 0
   },
   "log_sha256": {
     "baseline-python.log": "a6555bd340c2567df2e6e86d2d8f90dd5144152ac60b90d86fb4ef676041dee5",
+    "fw-reviewer-race-after.log": "190ecd348beac209822d45165085a180e94060231b2e9c0ae6420ee22825e4b5",
+    "fw-snapshot-followup.log": "f986c720c8cf2929ced09c0740b968b0b9181bdabcc29a7113688051e57c8dfb",
+    "fw-web-install-followup.log": "148529ab52e63781c1687781c321061c16c1b22046883134f3aad31992e8fd7b",
     "fw-web-install.log": "c87f04d025a48924193402596b0f25ffc249a32b09c5e91539f9d7a014b8d943",
+    "independent-before-site-snapshot-race.log": "f41a71732565907b1a58df38d8906799b7ae9660057048271e61c5336b3bdbad",
     "node-fw.log": "a826a08f1e3932d69c78bd9432b6ae69ae36b0afeedd1d58182e54dbac455f9b",
     "node-site.log": "81d0eeace41ca0852735ba8c14c545eab217852a1fa5ecc13fa3dd2c16e97436",
     "python-backup-snapshot.log": "bb86ef8c8f21e92e9d2a32541109e4c60d1b7467a6d139bea358e11fa6b8afd9",
@@ -50,7 +56,13 @@
     "repaired-python.log": "b1ae773ea80c4a0a3d8b42464630644e8495b00236c4240d1505359c1ec500bb",
     "restore-integrity-baseline-node.log": "50ad075f68f5796c28d7952b072dd5a97d5aefc71f9ee7bcd23d7bdb7d0c677f",
     "restore-site-baseline-node.log": "ab5eb704903e1233d6ee421fdeb43fbc862dd6402777bdec5ee21b70bcac1390",
+    "site-build-followup.log": "84ebc50ac461bbd6395a55ebad7a2b461aeb1384d50f06710dfe33265adfa52a",
     "site-build.log": "84ebc50ac461bbd6395a55ebad7a2b461aeb1384d50f06710dfe33265adfa52a",
-    "site-npm.log": "3c949fd3fec80091743496f06128e39b8ac501ba8c8d4240c2552495ca04dcd2"
-  }
+    "site-npm-followup.log": "19648e90d87e47cd6511b627801f672b8c3ebaafaa914dbba2c99168a84ce24b",
+    "site-npm.log": "3c949fd3fec80091743496f06128e39b8ac501ba8c8d4240c2552495ca04dcd2",
+    "site-reviewer-race-after.log": "45f3e43461783aef5d8f98753f5109bc1c19756267cae555b2328fd64448d226",
+    "site-snapshot-followup.log": "9ce3a4193856970ec94896495350017193aa0d25a418efc1b96034384af3fd37"
+  },
+  "followup_for": "a7945282353f1cd164d51583a386cff506692696",
+  "followup": "Recompute browser old map and risk from the exact verified backup snapshot; resolve independently reproduced fresh-population race."
 }

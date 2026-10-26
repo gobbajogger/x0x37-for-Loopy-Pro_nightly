@@ -1,0 +1,16 @@
+{"source":"file:///Users/mac/Documents/Codex/2026-10-26/task-6/restore-site/web/x0x_breaks.js","infos":3,"firmware_installed":true,"backup_populated":2,"backup_A_bytes":100512,"new_slot_A_capacity":81920,"postinstall_commands":[[true,15],[true,11]],"error":"RESTORE_WRITE 11"}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: UNSAFE: fresh backup populated oversized A, stale risk list treats A as kept and begins restoring B at A's logical index
+    at file:///Users/mac/Documents/Codex/2026-10-26/task-6/restore-review/snapshot-race.mjs:15:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.14.1
