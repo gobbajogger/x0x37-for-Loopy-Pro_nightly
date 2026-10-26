@@ -7,7 +7,7 @@
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "97f3d6d717cfa6b7f8c35956f106f1edb0354dce",
-    "web/x0x_breaks.js": "f41bf713288560062f09983177ee5089b3c5ab04",
+    "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
     "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
@@ -539,6 +539,16 @@
       "regressionBlob": "75369330d46d0f2648b97a8d577b054945f27aa3",
       "resultBlob": "f41bf713288560062f09983177ee5089b3c5ab04",
       "description": "EC021: validate occupied image length against actual slot capacity before data allocation/read; backup and restore readback pass their observed per-slot capacities, with unchanged standalone legacy default and progress argument order."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "b12d1183f80500765ac5c926c731ad2ebfbc7d67",
+      "regressionCommit": "75835717c0af72f9ac9e4a0f93d0cfcfdfb7e0d9",
+      "regressionBlob": "ac0d91181591ff2614bd2501cd73ba58cc1c5b7f",
+      "producerCommit": "144f4e042bdfb2cc52ed16a1cf2a26a1148a0101",
+      "resultBlob": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
+      "description": "EC022: require legacy used-KiB to equal min(127, extended used-KiB), matching the actual firmware producer; reject contradictions before preservation instead of accepting falsely low usage, retain saturation and genuine legacy layouts."
     }
   ]
 }

@@ -399,6 +399,9 @@ export function parseInfo(r) {
       if (!off || size < SLOT_HDR_AREA || v[2] * 1024 > size ||
           ranges.some(([lo, hi]) => off < hi && lo < end))
         throw new Error(`slot ${k + 1}: invalid or overlapping SMP_INFO flash range`);
+      // Firmware saturates only the legacy byte; both fields describe the same used KiB.
+      if (sl.kb !== Math.min(127, v[2]))
+        throw new Error(`slot ${k + 1}: legacy/extended used-size disagreement`);
       ranges.push([off, end]);
       Object.assign(sl, { off, size, used: v[2] });
     });
