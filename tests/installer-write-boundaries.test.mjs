@@ -135,8 +135,9 @@ function midiPort(name,text) {
  const output={name,state:'connected',async open(){},send(bytes){
   state.sent.push([...bytes]);
   if(bytes[1]===0 && bytes[2]===0x32) {
-   const payload=new Uint8Array(34);payload[1]=0x59;payload[2]=0x11;
+   const payload=new Uint8Array(34);payload[1]=0x59;payload[2]=0x11;payload[3]=27;
    for(let i=0;i<text.length;i++)payload[i+6]=text.charCodeAt(i);
+   payload[33]=~payload.slice(6,33).reduce((sum,b)=>sum+b,0)&255;
    input.onmidimessage?.({data:[0xF0,...pack7(payload),0xF7]});
   }
  }};
