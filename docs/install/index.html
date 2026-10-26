@@ -1452,8 +1452,18 @@ function readArchive(b) {
   if (v.getUint32(b.length - 4, true) !== crc32(b.subarray(0, b.length - 4))) bad("The backup file is damaged (CRC).");
   if (v.getUint16(8, true) !== 1) bad("This backup has a newer format.");
   const n = v.getUint32(12, true), meta = JSON.parse(new TextDecoder().decode(b.subarray(16, 16 + n)));
+  // Fail closed on CRC-valid but noncanonical slot identity/count (matches tools/x0x_slots.read_archive).
+  // planRestore maps images by array index, so wrong/duplicate labels would restore to the wrong slot.
+  const slots = meta && meta.slots;
+  if (!Array.isArray(slots) || typeof meta.count !== "number" || meta.count !== slots.length)
+    bad("The backup file has a damaged slot list.");
+  for (let k = 0; k < slots.length; k++) {
+    const e = slots[k];
+    if (!e || typeof e !== "object" || typeof e.slot !== "number" || e.slot !== k + 1)
+      bad(`The backup file has a bad slot number for entry ${k + 1}.`);
+  }
   const base = 16 + n, images = [];
-  for (const e of meta.slots) {
+  for (const e of slots) {
     if (e.empty) { images.push(null); continue; }
     const img = b.slice(base + e.offset, base + e.offset + e.length), h = parseHeader(img);
     if (img.length !== e.length || crc32(img) !== e.crc32) bad(`Slot ${e.slot} in the backup is damaged.`);
