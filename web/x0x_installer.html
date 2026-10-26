@@ -1495,9 +1495,9 @@ async function run(img, product, opts = {}) {
     const step = (k, a) => {
       log(`${k} ${a ?? ""}`);
       if (k === "start") sayK("start");
-      if (k === "verify") { sayK("verify"); $("bar").value = (a / total) * 100; }
+      if (k === "verify") { sayK("verify"); $("bar").value = Math.min(99, (a / total) * 100); }
       if (k === "loader") sayK("loader");
-      if (k === "write") { sayK("write"); $("bar").value = ((74 + a) / total) * 100; }
+      if (k === "write") { sayK("write"); $("bar").value = Math.min(99, ((74 + a) / total) * 100); }
       if (k === "reboot") sayK("reboot");
       if (k === "done") { $("bar").value = 100; sayK(foreign ? "stockdone" : "done"); }
     };
@@ -1507,14 +1507,13 @@ async function run(img, product, opts = {}) {
       // Interrupted upgrade/downgrade/stock write: finish with this package (same keyboard family).
       ota.link.close();
       const ok = await up.resume(img, step, product);
-      $("bar").value = ok ? 100 : $("bar").value;
-      sayK(ok ? (foreign ? "stockdone" : "done") : "stopped");
+      if (!ok) sayK("stopped"); // Successful completion is emitted only after application readback.
     } else {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
         step, sameKeyboard,
         say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
-        progress: (f) => { $("bar").value = Math.min(100, f * 100); },
+        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
         save: async (file, name) => {
           const retained = await saveSlotBackup(file, name);
           // The user may change/revoke a NIGHTLY selection while checking the file.

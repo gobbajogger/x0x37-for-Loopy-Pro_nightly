@@ -88,10 +88,17 @@ test('a fresh resume still succeeds after a previous failed finish ACK', async (
   assert.equal(failed.closed, 1);
   const retry = syntheticLink([request(0, 8), request(0xf0000000)]);
   updater.find = updaterFor(retry).find;
+  const back = syntheticLink([]);
+  updater.waitFor = async filter => {
+    const id = { text: 'FM-1_2', model: 'FM-1', version: 2 };
+    assert.equal(filter(id), true);
+    return { name: 'FM-1', id, link: back };
+  };
   const steps = [];
   assert.equal(await updater.resume(new Uint8Array(32), (...args) => steps.push(args), 'FM-1_2'), true);
   assert.equal(retry.closed, 1);
-  assert.deepEqual(steps, [['write', 1]]);
+  assert.equal(back.closed, 1);assert.equal(updater.verified, true);
+  assert.deepEqual(steps, [['write', 1], ['reboot'], ['done', 'FM-1_2']]);
   assert.equal(retry.sent.length, 3);
 });
 

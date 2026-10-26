@@ -71,7 +71,10 @@ await check('resume preserves legitimate SMK loader alias',async()=>{
   const loader=device('ota-SMK-37 Pro'),up=new Updater(accessFor(loader),()=>{});let served=0;
   up.find=async filter=>{assert.ok(filter(loader.id));return loader;};
   up.serve=async()=>{served++;return {finished:true};};
+  const back=device('SMK-37 Elite','SMK-37 Elite_900');
+  up.waitFor=async filter=>{portFor(up.access,back);assert.ok(filter(back.id));return back;};
   assert.equal(await up.resume(image,()=>{},'SMK-37 Elite_900'),true);
+  assert.equal(up.verified,true);assert.equal(back.state.closed,1);
   assert.equal(served,1);assert.equal(loader.state.sends.length,1);
 });
 function slotDevice(text, mode) {

@@ -259,13 +259,25 @@ export class Updater {
     if (!ota) throw fail("noloader", "the update loader did not appear. Replug the USB cable and press Install again: the device stays in update mode until it is finished.");
     const s2 = await this.write(ota, image, step);
     if (!s2.finished) throw fail(s2.lost ? "lost" : "stopped", `the loader ${s2.lost ? "was disconnected" : "stopped"} after ${s2.served} requests. Replug and press Install again to resume.`);
+    return this.finishApplication(product, step);
+  }
+
+  // Observe a fresh application and its marker under the single-port guard.
+  // The protocol has no unit serial or flash hash: this is not exact-byte proof.
+  async finishApplication(product, step) {
+    this.verified = false;
     step("reboot");
     await sleep(3000);
     const back = await this.waitFor((id) => !IS_OTA(id), 40000);
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
-    back.link.close();
-    if (back.id.text !== product) throw fail("mismatch", `installed, but the device reports ${back.id.text}`, back.id.text);
-    this.targetName = back.name;
+    try {
+      this.singlePort(back.name);
+      if (IS_OTA(back.id)) throw fail("noreturn", "the device is still in update mode");
+      if (!sameKeyboard(back.id.model, product.split("_")[0]))
+        throw fail("model", `The selected keyboard changed model during the update: ${back.id.text}`);
+      if (back.id.text !== product) throw fail("mismatch", `installed, but the device reports ${back.id.text}`, back.id.text);
+      this.targetName = back.name; // A sole keyboard may rename its port on reboot.
+    } finally { back.link.close(); }
     this.verified = true;
     step("done", back.id.text);
     return back.id.text;
@@ -285,7 +297,7 @@ export class Updater {
     return s2;
   }
 
-  // resume: the device is already in update mode (loader) -> true when the write finished. product: the
+  // resume: loader -> true only after a fresh application response matches product. product: the
   // package's identity; the loader's model must match it by install()'s rule (sameKeyboard): an SMK's loader
   // never gets an FM-1 image, and without the identity nothing is written
   async resume(image, onStep, product = "") {
@@ -297,6 +309,9 @@ export class Updater {
     }
     this.bind(ota);
     this.product = product;
-    return (await this.write(ota, image, onStep || (() => {}))).finished;
+    const step = onStep || (() => {});
+    if (!(await this.write(ota, image, step)).finished) return false;
+    await this.finishApplication(product, step);
+    return true;
   }
 }

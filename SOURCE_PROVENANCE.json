@@ -3,10 +3,10 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "5b2b63d6af88ea0ac5b1cdb466adeed5f3bb2989",
+    "web/x0x_installer.html": "aeb0ae959a40a10e274c28186db8305fd9305478",
     "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
-    "web/fm1ota.js": "656cc797871d3c1391a8a2b0b3738f7609ab92e7",
+    "web/fm1ota.js": "97f3d6d717cfa6b7f8c35956f106f1edb0354dce",
     "web/x0x_breaks.js": "244a50032925950e7b88e219172b9f4b389c2233",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
@@ -506,6 +506,21 @@
       "sourceBaseCommit": "2a061b352231266cdcd1c3f35d8d7c9c19a064a6",
       "resultBlob": "60183ccf543d95d3d8909214f22f57979d222189",
       "description": "Require explicit integer engine choices at both indices before ADOPT_BASS; Array.every skips sparse holes. No inferred engine identity, schema widening or native firmware behavior change."
+    },
+    {
+      "paths": [
+        "web/fm1ota.js",
+        "web/x0x_installer.html"
+      ],
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "eece3f368c4c48cc65e05d7bc1a85337e945cc73",
+      "regressionCommit": "f7d58ac2a85abbc5ee0b0ff84a7cc08b45fd8a88",
+      "regressionBlob": "cbfd73774b0fd35016605b2225e5a0ffccb1fd3d",
+      "resultBlobs": {
+        "web/fm1ota.js": "97f3d6d717cfa6b7f8c35956f106f1edb0354dce",
+        "web/x0x_installer.html": "aeb0ae959a40a10e274c28186db8305fd9305478"
+      },
+      "description": "EC019: full and resumed install share bounded fresh application return/marker confirmation under same-family and sole-observable-port guards; caller completion cannot be inferred from loader ACK or pre-app progress. Matching identity marker is not flash hash or unit serial proof; foreign mismatch policy remains explicit."
     }
   ]
 }
