@@ -1,0 +1,87 @@
+[
+  {
+    "name": "site-projects",
+    "cwd": "project-compat-site",
+    "argv": [
+      "node",
+      "web/test_projects.mjs"
+    ],
+    "exit": 0,
+    "log_sha256": "ee235a10e80c8de541a3f0f080bada4b12a827af834313a2a1cc06fa0518a029"
+  },
+  {
+    "name": "site-page",
+    "cwd": "project-compat-site",
+    "argv": [
+      "node",
+      "web/test_projects_page.mjs"
+    ],
+    "exit": 0,
+    "log_sha256": "8e568fda11b09759c7bb9f98d7172d5c14200a9ada29ad4c348a8abd932d98ca"
+  },
+  {
+    "name": "firmware-projects",
+    "cwd": "project-compat-firmware",
+    "argv": [
+      "node",
+      "web/test_projects.mjs"
+    ],
+    "exit": 0,
+    "log_sha256": "3eca7d736670292cb5e3e5475eb3eb88cc4e3d001cfb1ea4b6ca623d9c26caf1"
+  },
+  {
+    "name": "firmware-page",
+    "cwd": "project-compat-firmware",
+    "argv": [
+      "node",
+      "web/test_projects_page.mjs"
+    ],
+    "exit": 0,
+    "log_sha256": "57b9f5e960e3d840974343292c8da01c9a49a56d548aff6e742adeaac3f178ad"
+  },
+  {
+    "name": "site-generated",
+    "cwd": "project-compat-site",
+    "argv": [
+      "node",
+      "scripts/build-preview.mjs",
+      "--check"
+    ],
+    "exit": 0,
+    "log_sha256": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41"
+  },
+  {
+    "name": "site-provenance",
+    "cwd": "project-compat-site",
+    "argv": [
+      "node",
+      "tests/nightly-preview.test.mjs"
+    ],
+    "exit": 0,
+    "log_sha256": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337"
+  },
+  {
+    "name": "site-diff",
+    "cwd": "project-compat-site",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "1b2b687..HEAD"
+    ],
+    "exit": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "firmware-diff",
+    "cwd": "project-compat-firmware",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "d049682..HEAD"
+    ],
+    "exit": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
