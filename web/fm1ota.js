@@ -177,12 +177,26 @@ export class Updater {
     this.targetName = dev.name;
   }
 
+  _portPairs() {
+    const ins = [...this.access.inputs.values()].filter((p) => p.state !== "disconnected");
+    const outs = [...this.access.outputs.values()].filter((p) => p.state !== "disconnected");
+    const pairs = [];
+    for (const input of ins) {
+      if (!/fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro|snoop|vector|vox|ota|composite|sinco|usb-midi/i.test(input.name || "")) continue;   // never probe other gear
+      // Names alone do not prove physical identity. Refuse duplicate or
+      // mismatched port labels instead of guessing which keyboard receives MIDI.
+      if (ins.filter((p) => p.name === input.name).length !== 1) continue;
+      const matching = outs.filter((p) => p.name === input.name);
+      if (matching.length !== 1) continue;
+      pairs.push({ input, output: matching[0], name: input.name });
+    }
+    return pairs;
+  }
+
   // every in/out pair with the same port name that answers the handshake
   async find(filter) {
-    const outs = [...this.access.outputs.values()];
-    for (const input of (this.target ? this.singlePort() : this.ports())) {
-      const output = outs.find((o) => o.name === input.name) || (outs.length === 1 ? outs[0] : null);
-      if (!output) continue;
+    if (this.target) this.singlePort();
+    for (const { input, output } of this._portPairs()) {
       try { await input.open(); await output.open(); } catch (_) { continue; }
       const link = new Link(input, output);
       const id = await handshake(link, 2);
