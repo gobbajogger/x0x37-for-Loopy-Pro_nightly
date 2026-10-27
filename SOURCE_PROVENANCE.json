@@ -9,7 +9,7 @@
     "web/fm1ota.js": "cddeab7ed223efdccf5451dd0accccebf7f70454",
     "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
-    "web/x0x_projects.html": "abf7cba575c50ba680a122c59ad66bfc8bf81209",
+    "web/x0x_projects.html": "bb5f1a4fbd45942f82c82289f81d745a7e99df13",
     "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "5bf61b8b234be05dbbcffac7a14c787ae129f8f0",
@@ -607,6 +607,17 @@
       "sourceBaseCommit": "30e54656b97ccfdab45dbe4d903d65465f500596",
       "description": "Accept exact numeric Pro/Elite 9XXYYZZ codec and require supplied version/display metadata to agree; keep catalog ID semantics, optional metadata, legacy unversioned identities and all existing admission/integrity gates",
       "resultBlob": "732ee5ae061395cc27fff37af893e92270c12952"
+    },
+    {
+      "path": "web/x0x_projects.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "f7c3745aa1ab8859f8d5ba3966162917d881baa9",
+      "regressionCommit": "a7e27925a8d1a121c14a90c7147b9b3705fc3f23",
+      "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/54",
+      "reuseSourceCommit": "66e15ed0af2f06a8cd97cea2c7302d6395a2da15",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "description": "EC024: apply canonical unique connected exact-name pairing to Projects discovery and explicit selection; preserve the existing recognized auto-discovery names and sole matching custom labels, invalidate old session on rediscovery; no protocol or mutation changes",
+      "resultBlob": "bb5f1a4fbd45942f82c82289f81d745a7e99df13"
     }
   ]
 }

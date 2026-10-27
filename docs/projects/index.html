@@ -1641,12 +1641,26 @@ function progress(k, n, all) {
   if (all) $("progress").value = Math.min(1, n / all);
   $("progress").setAttribute("aria-label", `Reading or writing sample slot ${k + 1}`);
 }
+function portPairs() {
+  const ins = [...midi.inputs.values()].filter((p) => p.state !== "disconnected");
+  const outs = [...midi.outputs.values()].filter((p) => p.state !== "disconnected");
+  const pairs = [];
+  for (const input of ins) {
+    // Canonical PR398 pairing rule: labels are not physical identity; never guess.
+    if (!input.name || ins.filter((p) => p.name === input.name).length !== 1) continue;
+    const matching = outs.filter((p) => p.name === input.name);
+    if (matching.length !== 1) continue;
+    pairs.push({ input, output: matching[0], name: input.name });
+  }
+  return pairs;
+}
 async function connectSelected() {
   if (!workspaceActive) return;
-  if (link) link.close();
+  if (link) link.close(); link = null;
   device = null; clearPreview(); $("identity").textContent = "Not connected";
   const input = midi.inputs.get($("midi-input").value), output = midi.outputs.get($("midi-output").value);
   if (!input || !output) throw new Error("Choose the keyboard’s MIDI input and output ports.");
+  if (!portPairs().some((p) => p.input === input && p.output === output)) throw new Error("Choose connected MIDI ports with one matching name. Disconnect duplicate or unrelated ports, then find ports again.");
   const pendingLink = link = new ProjectMidiLink(input, output);
   const next = new ProjectDevice(pendingLink);
   try {
@@ -1670,6 +1684,8 @@ function invalidateDisconnectedLink() {
   }
 }
 $("find").onclick = () => run("Finding USB MIDI ports…", async () => {
+  if (link) link.close(); link = null;
+  device = null; clearPreview(); $("identity").textContent = "Not connected";
   if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable in this browser. Open this page in Chrome or Edge over HTTPS or localhost.");
   midi = await navigator.requestMIDIAccess({ sysex: true });
   midi.onstatechange = invalidateDisconnectedLink;
@@ -1680,9 +1696,9 @@ $("find").onclick = () => run("Finding USB MIDI ports…", async () => {
   }
   $("ports").hidden = false;
   if (!inputs.length || !outputs.length) throw new Error("No MIDI input/output pair was found. Connect the keyboard by USB, then find ports again.");
-  const known = inputs.filter((i) => /x0x|smk-37|mke-p37|fm-1|felucca/i.test(i.name) && outputs.some((o) => o.name === i.name));
-  if (inputs.length === 1 && outputs.length === 1 || known.length === 1) {
-    const input = known.length === 1 ? known[0] : inputs[0], output = outputs.find((o) => o.name === input.name) || outputs[0];
+  const pairs = portPairs(), known = pairs.filter((p) => /x0x|smk-37|mke-p37|fm-1|felucca/i.test(p.name));
+  if (inputs.length === 1 && outputs.length === 1 && pairs.length === 1 || known.length === 1) {
+    const { input, output } = known.length === 1 ? known[0] : pairs[0];
     $("midi-input").value = input.id; $("midi-output").value = output.id; await connectSelected();
   } else say("Choose the keyboard’s MIDI input and output, then connect the selected ports.");
 });
