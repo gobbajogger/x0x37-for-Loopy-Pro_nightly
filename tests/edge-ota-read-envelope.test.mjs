@@ -11,7 +11,7 @@ function raw({fl=0, addr=0, len=8}={}) {
   return [...u,~u.slice(6).reduce((a,b)=>a+b,0)&255];
 }
 const frame = u => [0xf0,...pack7(u),0xf7];
-for (const args of [{}, {fl:255,addr:0x12345678,len:0x123456}, {addr:0xe0000000,len:8}, {addr:0xf0000000,len:0}])
+for (const args of [{}, {fl:255,addr:0x12345678,len:0x123456}, {addr:0xe0000000,len:8}, {addr:0xf0000000,len:8}])
  test(`valid request fields retained ${JSON.stringify(args)}`,()=>{
   const want={fl:0,addr:0,len:8,...args};assert.deepEqual(parse(frame(raw(args))),want);
  });
@@ -26,7 +26,7 @@ malformed.push(['missing F0',good.slice(1)],['missing F7',good.slice(0,-1)],['tr
 {const p=[...good];p[p.length-2]|=64;malformed.push(['packed padding',p]);}
 for(const [name,pkt] of malformed) test(`${name} refuses before any firmware-data reply`,async()=>{
  assert.equal(parse(pkt),null);
- const packets=[pkt,frame(raw({addr:0xf0000000,len:0}))],sent=[];
+ const packets=[pkt,frame(raw({addr:0xf0000000,len:8}))],sent=[];
  const link={lost:false,async read(){return packets.shift()||null;},send(p){sent.push(p);return true;}};
  const result=await new Updater({inputs:new Map(),outputs:new Map()}).serve(link,new Uint8Array(16),0xf0000000,1000);
  assert.equal(result.served,0);assert.equal(sent.length,1,'only canonical finish reply');assert.equal(result.finished,true);

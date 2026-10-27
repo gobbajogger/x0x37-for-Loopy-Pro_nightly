@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Updater, pack7 } from '../web/fm1ota.js';
 
-function request(addr, len = 0) {
+function request(addr, len = 8) {
   const body = [0, 0x59, 0x30, 8, 0, 0, 0,
     addr & 0xff, (addr >>> 8) & 0xff, (addr >>> 16) & 0xff,
     (addr >>> 24) & 0xff, len & 0xff, (len >>> 8) & 0xff,

@@ -43,7 +43,7 @@ function fixture(api, { outcome = 'matching', failAck = false, loaderModel = 'ot
       }
       if (pkt[1] === 0x22) {
         assert.equal(loader, true); state.upgrades++;
-        emit(request(0, 8)); emit(request(0xf0000000, 0)); return;
+        emit(request(0, 8)); emit(request(0xf0000000, 8)); return;
       }
       const d = unpack7(pkt.slice(1,-1)), addr = (d[7]|d[8]<<8|d[9]<<16|d[10]<<24)>>>0;
       if (addr !== 0xf0000000) { state.dataReplies++; return; }

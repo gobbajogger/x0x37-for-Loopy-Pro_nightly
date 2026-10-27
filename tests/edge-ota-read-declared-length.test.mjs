@@ -24,7 +24,7 @@ function readRequest(declaredLength, address = 0, requestedLength = 8) {
 async function serveOne(declaredLength) {
   const packets = [
     readRequest(declaredLength, 0, 8),
-    readRequest(8, 0xf0000000, 0), // Valid normal loader finish request.
+    readRequest(8, 0xf0000000, 8), // Valid normal loader finish request.
   ];
   const transmitted = [];
   const link = {

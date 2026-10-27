@@ -18,7 +18,7 @@ function request(addr, len) {
 }
 
 async function runScenario(finishAckDisconnects) {
-  const packets = [request(0, 8), request(0xf0000000, 0)];
+  const packets = [request(0, 8), request(0xf0000000, 8)];
   const sent = [];
   let disconnected = false;
   const link = {

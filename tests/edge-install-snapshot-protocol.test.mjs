@@ -85,7 +85,7 @@ function setup({ empty = false, lateMutation = false, rejectCommit = false, lega
     if (frame[4] === 48 && frame[5] === 3 && watch.commits) {
       events.push('DEVICE_OTA_ENTRY');
       // A complete ACK is ahead of this genuine first-stage OTA request.
-      const b = [0, 0x59, 0x30, 8, 0, 0, 0, 0, 0, 0, 0xE0, 0, 0, 0];
+      const b = [0, 0x59, 0x30, 8, 0, 0, 0, 0, 0, 0, 0xE0, 8, 0, 0];
       b.push(~b.slice(6).reduce((a, v) => a + v, 0) & 255);
       final.q.push([0xF0, ...api.pack7(b), 0xF7]);
     }
