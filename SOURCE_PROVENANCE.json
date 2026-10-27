@@ -10,7 +10,7 @@
     "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "bb5f1a4fbd45942f82c82289f81d745a7e99df13",
-    "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
+    "web/x0x_projects.js": "b68f5bf50c5ca21f211412e758e240df7c3ebce7",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
     "web/test_projects_page.mjs": "5bf61b8b234be05dbbcffac7a14c787ae129f8f0",
     "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62",
@@ -618,6 +618,15 @@
       "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
       "description": "EC024: apply canonical unique connected exact-name pairing to Projects discovery and explicit selection; preserve the existing recognized auto-discovery names and sole matching custom labels, invalidate old session on rediscovery; no protocol or mutation changes",
       "resultBlob": "bb5f1a4fbd45942f82c82289f81d745a7e99df13"
+    },
+    {
+      "path": "web/x0x_projects.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "9d305de0ef8381a0920703879867ecbe287a2db4",
+      "regressionCommit": "820438010eeaf1b19901dbbb848e672cd360c2ed",
+      "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/55",
+      "description": "EC025: latch ProjectMidiLink closure and refuse send/read/listener delivery on closed or disconnected links; retain valid live retry policy and require a fresh link after closure",
+      "resultBlob": "b68f5bf50c5ca21f211412e758e240df7c3ebce7"
     }
   ]
 }

@@ -1,0 +1,9 @@
+# EC025 — closed Project WebMIDI link cannot retry WRITE
+
+Exact base main `9d305de0ef8381a0920703879867ecbe287a2db4`; original test-only PR55 `820438010eeaf1b19901dbbb848e672cd360c2ed` is the repair parent. Original regression blob `66af6a573a5c814d95d84cc0836932f1312552ce` remains byte-identical.
+
+Native full production-module reproduction: original tests RED1/2. Closing a pending WRITE read after input disconnection with output still connected emitted a second WRITE. The repair makes link closure sticky/idempotent and guards send, read and listener delivery against closure or either port reporting disconnected. Closing resolves the pending read and clears buffered replies; a closed link cannot revive after replug. Existing request retry counts and policy are unchanged, and a fresh live link remains usable.
+
+Original regression GREEN2/2; 12 additional lifecycle cases cover close while both ports remain connected, input/output disconnect without callbacks, initially disconnected ports, old queued/detached replies, no new reads after close, idempotence, replug/fresh link, successful live second-attempt ACK and exhausted bounded retries. Combined actual-module/page suite: **86/86 PASS** (original2, lifecycle12, EC0233, EC02416, projects33, page20). All WebMIDI/input samples are synthetic; no device or destructive command was used.
+
+Required build/provenance and one final aggregate, independent native Sol verdict and exact transport tree mapping are reported on PR55. Only the adapter, generated Projects mirror, provenance, tests and public explanation change. Project transaction/VALIDATE/recovery/consent semantics and the page's EC023/EC024 safeguards remain unchanged. Markup/styles, firmware catalogs/packages and installer/sample source are unchanged. Prior browser launch limits remain; no fresh rendered browser, audio or hardware PASS is claimed.
