@@ -1,0 +1,11 @@
+# Combined website integration candidate
+
+Implementation-stage PASS; independent review pending. Local candidate `6ca7fd18e9b4bbbdbd151febbe2f7f46c00c86c9`, tree `ecbcd2b42cb5bb3f090358282b04951492656208`, branch `codex/site-integrated-20261026` in task6/site-integrated.
+
+Normal merge parents are reviewed website PR32 `57124e472b96d01917770b55529df69cc20d94d7` (includes restore PR30) and OTA identity PR33 `a17487fe7657d891f73ad9aa369dc8cb6b0a43d9`. Actual remote main observed before integration was `5ba8596579fc3649aa205cd927cf8d03a327ff2c`. No shared branch or original checkout was edited.
+
+Only merge conflict: SOURCE_PROVENANCE.json. Resolved by retaining both sourcePatches histories, selecting actual current source module hashes, and running existing npm run build. docs/install/index.html was regenerated from combined reviewed modules. No source implementation conflict or new implementation was needed. input-retention.json proves every file changed uniquely by either input or identical in both remains byte-identical; only the provenance JSON and combined generated installer differ from those simple choices. Project3/10 and6/10 fixture blobs are unchanged. No firmware schema, payload reinterpretation or REC qualification is implied.
+
+Exact-candidate implementation-stage checks all exit0: complete npm test (including 73 edge tests,33 project contracts and13 page contracts), generated-source --check, source provenance/syntax/safeguard checks, source-only diff check. Command arrays, runtime versions, durations, log hashes and exact source tree are in receipt.json. The generator's write pass succeeded before the merge commit; its subsequent --check proves committed parity. Full diff --check retains exit2 from authentic inherited evidence logs containing trailing spaces; their bytes/hashes were preserved, and full-diff.log records that limitation. No implementation whitespace errors were found.
+
+No GUI/headless action or rerouting of the earlier denied browser action, device/native build, firmware edit, GitHub merge or publication. Nothing has been pushed. The sole next action is independent exact-candidate review, then coordinator-authorized delivery. Local working tree is clean.

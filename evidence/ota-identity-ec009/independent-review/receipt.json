@@ -1,0 +1,172 @@
+{
+  "verdict": "PASS for bounded EC009 parser/source/test scope; no blocking parser finding",
+  "site": {
+    "head": "323da53fae16384596eb71e16f2d1d3dcdf542be",
+    "tree": "ec5ae1a4b3e41ef0626aae7e81273cd38199f6eb",
+    "base": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+    "parser_blob": "aa3252df5fb8c98c9f3559774900feb1a36bb9e1"
+  },
+  "firmware_tools_mirror": {
+    "head": "d8f2d50c80909f5484d46c549a0805a2b9da2656",
+    "tree": "83e6c66909b6bdebea6e4251f4557cd56aadbd2d",
+    "base": "d633833ac369f8466bc2563791614206070e87d1",
+    "browser_blob": "54cdcf97d060bc09bd89e2d6478dd0730db5e8d5",
+    "python_blob": "68c7cf93f469a89cbd0f1f692eef41634991fab3",
+    "current_ota_c_blob": "7d1c48c7dc4ca4a6cb62925bb723a84cc1b146ad"
+  },
+  "checks": {
+    "site_focused": {
+      "exit": 0,
+      "tests": 25
+    },
+    "firmware_browser_focused": {
+      "exit": 0,
+      "tests": 25
+    },
+    "site_write_boundaries": {
+      "exit": 0,
+      "tests": 41
+    },
+    "python_parser": {
+      "exit": 0,
+      "tests": 2,
+      "subcases": 21
+    },
+    "python_install_integration": {
+      "exit": 0,
+      "package_image_parity": "SKIPPED, no build/x0x-smk37.fwsc"
+    },
+    "f02_loader_binding": {
+      "exit": 0
+    },
+    "site_generated": {
+      "exit": 0
+    },
+    "site_provenance": {
+      "exit": 0
+    },
+    "cross_language_primary_encoder_mutations": {
+      "exit": 0,
+      "cases_per_parser": 334,
+      "wire_single_bit_mutations": 328
+    },
+    "firmware_full_diffcheck": 0,
+    "site_source_diffcheck": 0,
+    "site_full_diffcheck": {
+      "exit": 2,
+      "exception": "six trailing-whitespace lines in immutable raw before-pr31.log, lines20/23/39/42/58/61; preserved unchanged per parent instruction"
+    }
+  },
+  "contract": {
+    "firmware_contract_pin": "ae269094e311519bdefdae93d0a73fc9ffc86567",
+    "current_send_and_identity_functions": "byte-identical to that contract pin",
+    "primary_desktop_report_lines": "142-222",
+    "primary_report_sha256": "744acee1745817e6de73f029e8470863dd9596c4b065381a7b17d2fa327593b2",
+    "primary_script_sha256": "c7cab1c04a5a4ce176a8e97d8cb0a89ff45776bc0803a961b3bef0ce3b1b3630",
+    "scope": "static reverse engineering and actual firmware encoder, not physical stock capture"
+  },
+  "author_receipt_log_hash_verification": {
+    "site": {
+      "matched": 4
+    },
+    "firmware": {
+      "matched": 9
+    }
+  },
+  "limits": [
+    "Broad native transport harness remains17tests/9failures/2errors on both recorded baseline and candidate; not claimed passing and broader findings unresolved",
+    "Correct checksum validates envelope integrity, not device authentication; correctly checksummed901 remains valid framing",
+    "Synthetic legacy and stock model names are not physical stock compatibility proof",
+    "No USB, real MIDI, hardware causal inference, firmware build/install qualification, GUI/headless browser operation, publication or merge by reviewer"
+  ],
+  "source_edits_by_reviewer": false,
+  "source_checkouts_clean": true,
+  "environment": {
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "node": "v24.14.1",
+    "python": "3.9.6"
+  },
+  "logs": {
+    "cross-parser.log": "438780cbcf85c10d713e13dea47189ba71af40858025c8ea172a63862db878b2",
+    "f02-loader.log": "a5442dec04276e9a606f949d35dead79cdd04caca06cffb1b03ce59e5326f4b2",
+    "firmware-focused.log": "ad4d00e6de7ed21aea5d9ef1bfa3394e13dffa8278b5a377f4003671d2cc5ca0",
+    "ota-identity-firmware-full-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ota-identity-firmware-source-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ota-identity-site-full-diff.log": "f4e538e733b5b912981fa738551cd944cd64e02ee53e27bd7a03add5d05aceb0",
+    "ota-identity-site-source-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "python-focused.log": "e7c1f66bf040b3241b4d23c25cb24a07123fcfd9364cf0e3a8c2bbff8c2f0fec",
+    "python-install.log": "2fdf9c36a39911d48603346b14cb4375293a48e5e3d1c08e84417089cdba975b",
+    "site-focused.log": "5cba2705615de124ceedc361880d0440ba1f83d0dfb970a735b64c76a597070e",
+    "site-generated.log": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41",
+    "site-provenance.log": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337",
+    "site-write-boundaries.log": "48c571ba7071425f9db773574e9cea3c5b12b5f443e8097d3baf7769ebfa596a"
+  },
+  "commands": {
+    "site_focused": [
+      "node",
+      "--test",
+      "tests/edge-ota-identity-envelope.test.mjs",
+      "tests/edge-ota-identity-frame-integrity.test.mjs"
+    ],
+    "firmware_browser_focused": [
+      "node",
+      "--test",
+      "tests/edge-ota-identity-envelope.test.mjs",
+      "tests/edge-ota-identity-frame-integrity.test.mjs"
+    ],
+    "site_write_boundaries": [
+      "node",
+      "tests/installer-write-boundaries.test.mjs"
+    ],
+    "python_parser": [
+      "python3",
+      "-B",
+      "tests/fm1_install_identity_integrity_test.py"
+    ],
+    "python_install_integration": [
+      "python3",
+      "-B",
+      "tests/install_test.py"
+    ],
+    "f02_loader_binding": [
+      "python3",
+      "-B",
+      "tests/install_f02_loader_bind_test.py"
+    ],
+    "site_generated": [
+      "node",
+      "scripts/build-preview.mjs",
+      "--check"
+    ],
+    "site_provenance": [
+      "node",
+      "tests/nightly-preview.test.mjs"
+    ],
+    "cross_language": [
+      "python3",
+      "-B",
+      "../ota-independent-review/cross-parser.py"
+    ],
+    "full_diffcheck": [
+      "git",
+      "diff",
+      "--check",
+      "HEAD^",
+      "HEAD"
+    ],
+    "source_diffcheck": [
+      "git",
+      "diff",
+      "--check",
+      "HEAD^",
+      "HEAD",
+      "--",
+      "web",
+      "tools",
+      "tests",
+      "SOURCE_PROVENANCE.json",
+      "docs/install",
+      "docs/native-midi"
+    ]
+  }
+}

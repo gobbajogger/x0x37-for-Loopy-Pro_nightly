@@ -1,0 +1,24 @@
+✔ actual prepared bank 1x has fewer bytes and compensating saved rate (33.174125ms)
+✔ actual prepared bank 1.5x has fewer bytes and compensating saved rate (20.588084ms)
+✔ actual prepared bank 2x has fewer bytes and compensating saved rate (17.831542ms)
+✔ actual prepared bank 3x has fewer bytes and compensating saved rate (15.337166ms)
+✔ actual prepared bank 4x has fewer bytes and compensating saved rate (12.017417ms)
+✔ Off is byte-identical to existing clean cut; toggles always rebuild from unchanged original (57.653708ms)
+✔ half-rate plus grit reports actual payload, odd nibble and fixed slot header overhead (10.095459ms)
+✔ bad factors, malformed source and too-short rate-reduced loops fail before serialization (3.991083ms)
+✔ space-saving selector is visible, defaults Off, and explains actual rate rather than stretch promise (1.673917ms)
+✔ cancel add or replace preview preserves loop list, original input and zero writes (69.497041ms)
+✔ accepted add shows exact data saving and retains original for Off and preview (22.761041ms)
+✔ failed recut is atomic and restores controls instead of leaving partial transformed loops (18.858542ms)
+✔ cancel send/escape performs no slot writes; confirmation sends actual prepared saved-rate image (11.18175ms)
+✔ rapid preview source changes and Stop cannot start stale audio after a suspended context resumes (10.421791ms)
+✔ workspace source switch stops a pending original preview before audio starts (14.923417ms)
+✔ repeated setting event while confirmation is open cannot apply mismatched control labels (14.9365ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 227.476208

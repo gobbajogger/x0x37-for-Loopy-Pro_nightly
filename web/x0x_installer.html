@@ -160,6 +160,10 @@ progress::-webkit-progress-bar { background: #27302b; }
 progress::-webkit-progress-value { background: var(--accent); }
 progress::-moz-progress-bar { background: var(--accent); }
 #status { margin: 12px 0 0; min-height: 1.65em; font: 650 12px/1.55 var(--mono); overflow-wrap: anywhere; }
+.backup-confirmation { margin-top: 16px; padding: 16px; border: 1px solid var(--busy); border-radius: 8px; }
+.backup-confirmation p { margin: 0 0 12px; }
+.backup-confirmation code { overflow-wrap: anywhere; }
+.backup-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .diagnostics { border-top: 1px solid var(--rule); margin-top: 14px; padding-top: 12px; }
 .diagnostics summary { cursor: pointer; font-size: 11px; color: var(--dim); }
 .diagnostics pre { margin: 13px 0 0; color: var(--dim); font: 11px/1.5 var(--mono); white-space: pre-wrap; max-height: 250px; overflow: auto; }
@@ -457,14 +461,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   <p id="workspace-message" role="status" aria-live="polite"></p>
 
 
-  <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
-    <div class="prep-head"><div><h2 id="prep-title">Prepare a sample</h2><p>Listen first. Connect when you’re ready.</p></div><label class="prep-file" for="prep-file"><span >Choose your audio</span><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label></div>
-    <div class="prep-workbench">
-      <div class="prep-listen"><div class="prep-display"><p id="prep-status" role="status" aria-live="polite">Choose audio to hear your loop</p><canvas id="prep-wave" width="1200" height="160" role="img" aria-label="No audio loaded"></canvas><div class="prep-facts" id="prep-facts" hidden><span id="prep-duration"></span><span id="prep-size"></span><span id="prep-saving"></span></div></div><div class="prep-audio" role="group" aria-label="Compare sample audio"><button type="button" id="prep-reference" aria-pressed="false" disabled aria-label="Play reference: original audio with the same cut">▶ Reference</button><button type="button" id="prep-encoded" aria-pressed="false" disabled aria-label="Play processed audio">▶ Processed</button><button type="button" id="prep-stop">■ Stop</button></div></div>
-      <div class="prep-options" role="group" aria-label="Sample processing options"><label for="prep-rate">Sound quality<select id="prep-rate"><option value="44100">Full quality</option><option value="22050">Compact / half size</option></select></label><label for="prep-grit">Oldschool texture<select id="prep-grit"><option value="1">Off</option><option value="1.5">Light / 1.5×</option><option value="2">Medium / 2×</option><option value="3">Heavy / 3×</option><option value="4">Max / 4×</option></select></label><div class="prep-cuts"><label><input id="prep-bars" type="checkbox" checked>First bar only</label><label><input id="prep-trim" type="checkbox">Trim silence</label></div><p class="prep-quality-help">Full keeps the detail. Compact fits more audio. Oldschool saves extra space with a rougher texture.</p></div>
-    </div>
-    <div class="prep-footer"><details class="prep-detail" id="prep-details"><summary>Audio details</summary><p id="prep-technical"></p><p>Compact stores audio at 22.05 kHz instead of 44.1 kHz: half as many samples with a matching playback rate. Oldschool reduces the rate further. Duration and pitch stay the same at the original tempo; this is not independent time stretching. Savings compare the same cut at clean 44.1 kHz.</p><p>Reference uses the original audio in mono with the same cut. Processed plays saved ADPCM at its saved rate. Both are peak normalized; loudness may differ. BREAK tempo, pitch and effects are not included. Audio stays in this browser; listening does not change your keyboard.</p></details><div class="prep-import"><a href="#samples" id="prep-manage">Import to keyboard</a><small>Sample slots open below on this page.</small></div></div>
-  </section>
+
 
   <section id="samples-panel" aria-label="Sample workspace" hidden><iframe id="sample-frame" title="Import break loops, back up or restore sample slots" src="../breaks/?embedded=1" allow="midi"></iframe><p class="small"><a href="../breaks/">Open sample tools separately</a> if this panel does not load.</p></section>
   <section id="projects-panel" aria-label="Songs and projects workspace" hidden><iframe id="project-frame" title="Import or export a whole song project; reset project while keeping samples" src="../projects/?embedded=1" allow="midi"></iframe><p class="small"><a href="../projects/">Open Songs &amp; projects separately</a> if this panel does not load.</p></section>
@@ -524,6 +521,15 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
           <p class="install-hint" id="installhint" aria-live="polite"></p>
           <progress id="bar" max="100" value="0" aria-label="Firmware installation progress"></progress>
           <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <section id="backup-confirmation" class="backup-confirmation" aria-labelledby="backup-heading" hidden>
+            <p id="backup-heading"><strong data-t="slotconfirm">Confirm your recovery backup before installing.</strong></p>
+            <p class="small" data-t="slotconfirmhelp">The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.</p>
+            <p><code id="backup-name"></code></p>
+            <div class="backup-actions">
+              <button type="button" class="quiet" id="backup-cancel" data-t="slotcancel">Cancel installation</button>
+              <button type="button" class="quiet" id="backup-retained" data-t="slotretained">I have saved this backup — continue</button>
+            </div>
+          </section>
           <details class="diagnostics">
             <summary data-t="diagnostics">Technical details / activity log</summary>
             <pre id="log"></pre>
@@ -572,6 +578,14 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   <details class="connection-help"><summary>Connection &amp; recovery help</summary><p class="small" data-t="direct"></p><p class="small" data-t="helptext"></p><p class="small"><a href="../manual/" data-t="helpmanual">Open the manual</a></p>  <p class="small" id="recovery"><span data-t="brick"></span>
     <a href="../manual/#recovering-an-fm-1-that-won-t-start" style="color:inherit" data-t="bricklink"></a></p>
   <p class="small" data-t="back"></p></details>
+  <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
+    <div class="prep-head"><div><h2 id="prep-title">Prepare a sample</h2><p>Listen first. Connect when you’re ready.</p></div><label class="prep-file" for="prep-file"><span >Choose your audio</span><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label></div>
+    <div class="prep-workbench">
+      <div class="prep-listen"><div class="prep-display"><p id="prep-status" role="status" aria-live="polite">Choose audio to hear your loop</p><canvas id="prep-wave" width="1200" height="160" role="img" aria-label="No audio loaded"></canvas><div class="prep-facts" id="prep-facts" hidden><span id="prep-duration"></span><span id="prep-size"></span><span id="prep-saving"></span></div></div><div class="prep-audio" role="group" aria-label="Compare sample audio"><button type="button" id="prep-reference" aria-pressed="false" disabled aria-label="Play reference: original audio with the same cut">▶ Reference</button><button type="button" id="prep-encoded" aria-pressed="false" disabled aria-label="Play processed audio">▶ Processed</button><button type="button" id="prep-stop">■ Stop</button></div></div>
+      <div class="prep-options" role="group" aria-label="Sample processing options"><label for="prep-rate">Sound quality<select id="prep-rate"><option value="44100">Full quality</option><option value="22050">Compact / half size</option></select></label><label for="prep-grit">Oldschool texture<select id="prep-grit"><option value="1">Off</option><option value="1.5">Light / 1.5×</option><option value="2">Medium / 2×</option><option value="3">Heavy / 3×</option><option value="4">Max / 4×</option></select></label><div class="prep-cuts"><label><input id="prep-bars" type="checkbox" checked>First bar only</label><label><input id="prep-trim" type="checkbox">Trim silence</label></div><p class="prep-quality-help">Full keeps the detail. Compact fits more audio. Oldschool saves extra space with a rougher texture.</p></div>
+    </div>
+    <div class="prep-footer"><details class="prep-detail" id="prep-details"><summary>Audio details</summary><p id="prep-technical"></p><p>Compact stores audio at 22.05 kHz instead of 44.1 kHz: half as many samples with a matching playback rate. Oldschool reduces the rate further. Duration and pitch stay the same at the original tempo; this is not independent time stretching. Savings compare the same cut at clean 44.1 kHz.</p><p>Reference uses the original audio in mono with the same cut. Processed plays saved ADPCM at its saved rate. Both are peak normalized; loudness may differ. BREAK tempo, pitch and effects are not included. Audio stays in this browser; listening does not change your keyboard.</p></details><div class="prep-import"><a href="#samples" id="prep-manage">Import to keyboard</a><small>Sample slots open on this page.</small></div></div>
+  </section>
   </div><!-- firmware-panel -->
   <section class="features" aria-labelledby="features-title">
     <div class="feature-heading"><div><h2 id="features-title">Closer look</h2></div></div>
@@ -627,7 +641,7 @@ const TEXT = {
     hintverifying: "パッケージの読み込み・整合性確認を待ってください。",
     hintack: "開発版の注意事項を確認し、チェックを入れてください。",
     hintready: "書き込む準備ができました。開始前に機種と内容をもう一度確認します。",
-    hintbusy: "書き込み中です。USB を抜かず、ページを閉じないでください。",
+    hintbusy: "インストールの処理中です。USB を抜かず、ページを閉じないでください。",
     latestdev: "最新の利用可能な DEV", devchecked: "DEV CHECKED", hardwareuntested: "実機未テスト", superseded: "旧ビルド・非推奨",
     devagree: "実機未テストの開発版であることを理解し、機種と大切なサンプルのバックアップを確認しました。",
     ctrlwarning: "この旧パッケージのインストールには、一致するローカル ctl.img が必要です。",
@@ -671,7 +685,7 @@ const TEXT = {
     stockdone: "完了。デバイスは新しいファームウェアで起動しました。",
     confirm: "書き込みますか？\n\n接続中: ",
     confirmto: "\n書き込む: ",
-    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は先にファイルへ保存します。USB を抜かないでください。",
+    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は、先にバックアップを保存し、保存できたことを確認してください。USB を抜かないでください。",
     nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
     start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
     reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
@@ -687,7 +701,13 @@ const TEXT = {
     leave: "書き込み中です。ページを閉じないでください。",
     slotsave: "新しいファームウェアではスロットのサンプルが消えます（スロット ",
     slotsave2: "）。先に全スロットをファイルに保存します。",
-    slotsaved: "スロットを保存しました（ダウンロード）: ",
+    slotdownload: "バックアップのダウンロードを要求しました（保存は未確認）: ",
+    slotsaved: "バックアップを保管したことをユーザーが確認しました: ",
+    slotconfirm: "インストールする前にバックアップの保存を確認してください。",
+    slotconfirmhelp: "ブラウザにこのファイルのダウンロードを要求しましたが、保存できたかは確認できません。ダウンロード先でファイルを見つけ、安全な場所に保管してください。ファイルを保管できた場合だけ続行し、それ以外はキャンセルしてください。ファームウェアはまだ書き込んでいません。",
+    slotretained: "バックアップを保存しました — 続行",
+    slotcancel: "インストールをキャンセル",
+    slotbackupconfirm: "バックアップの保存確認を受け付けませんでした。ファームウェアもサンプルも書き込んでいません。選択内容を確認し、保存できる状態で再試行してください: ",
     slotback: "スロットを書き戻しています",
     slotsdone: "完了。スロットを書き戻して確認しました。",
     slotspartial: "インストールは完了しましたが、復元できなかったサンプルがあります。ダウンロードした .x0xslots バックアップを確認し、容量を空けてブレークループの「Restore」で復元してください。未復元: ",
@@ -722,7 +742,7 @@ const TEXT = {
     hintverifying: "Waiting for the firmware download and integrity check.",
     hintack: "Confirm the model and consent above to continue.",
     hintready: "Ready to install.",
-    hintbusy: "Writing is in progress. Keep USB connected and this page open.",
+    hintbusy: "An installation operation is in progress. Keep USB connected and this page open.",
     latestdev: "LATEST AVAILABLE DEV", devchecked: "DEV CHECKED", hardwareuntested: "HARDWARE UNTESTED", superseded: "SUPERSEDED",
     devagree: "I accept hardware-untested development firmware for my selected keyboard model.",
     ctrlwarning: "This legacy package requires the matching local ctl.img before installation.",
@@ -766,7 +786,7 @@ const TEXT = {
     stockdone: "Done. The device has restarted with the new firmware.",
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
-    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, they are saved to a file first. Keep USB connected until Done.",
+    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, you must save and confirm a recovery backup first. Keep USB connected until Done.",
     nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
@@ -782,7 +802,13 @@ const TEXT = {
     leave: "Writing. Do not close the page.",
     slotsave: "The new firmware does not keep the samples in slot ",
     slotsave2: ". Saving every slot to a file first.",
-    slotsaved: "Slots saved (downloaded): ",
+    slotdownload: "Backup download requested (not yet confirmed): ",
+    slotsaved: "User confirmed retained recovery backup: ",
+    slotconfirm: "Confirm your recovery backup before installing.",
+    slotconfirmhelp: "The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.",
+    slotretained: "I have saved this backup — continue",
+    slotcancel: "Cancel installation",
+    slotbackupconfirm: "Recovery backup confirmation was not accepted. No firmware or samples were written. Check your selection and retry when you can save the backup: ",
     slotback: "Writing the slots back",
     slotsdone: "Done. The slots were written back and checked.",
     slotspartial: "Installed, but some samples were NOT restored. Check the downloaded .x0xslots backup and use Restore on the break loops page after making room. Not restored: ",
@@ -964,8 +990,22 @@ function currentSelection() {
   } catch { return { version: null, pkg: null }; }
 }
 
+// Same exact firmware numeric codec and optional metadata rules as candidate preparation.
+function nightlyProductIdentity(product) {
+  if (typeof product !== "string") return null;
+  const m = /^(SMK-37 Pro|SMK-37 Elite)_(900|9([0-9]{2})([0-9]{2})([0-9]{2}))$/.exec(product);
+  if (!m || m[0] !== product) return null;
+  return { model: m[1] === "SMK-37 Pro" ? "pro" : "elite",
+    version: m[2] === "900" ? null : m.slice(3).map(Number).join(".") };
+}
+function versionMetadataMatches(record, identity) {
+  if (!record || !identity) return false;
+  const version = identity.version, display = version === null ? null : `${version}_openbeta`;
+  return (!Object.hasOwn(record, "firmware_version") || record.firmware_version === version) &&
+    (!Object.hasOwn(record, "release_display") || record.release_display === display);
+}
 function modelKeyForProduct(product) {
-  return {"SMK-37 Pro_900":"pro", "SMK-37 Elite_900":"elite"}[product] || null;
+  return nightlyProductIdentity(product)?.model || null;
 }
 // Revocation is monotonic: any explicit denial wins over a checked status.
 // Optional approval hints must be true when present. They are not qualification
@@ -1062,6 +1102,8 @@ function isCatalogChecked(v,p) {
         (p.status !== undefined && p.status !== "dev-checked") ||
         p.fromRelease === true || v.models?.[chosenModel] !== p ||
         modelKeyForProduct(p.product) !== chosenModel ||
+        !versionMetadataMatches(v, nightlyProductIdentity(p.product)) ||
+        !versionMetadataMatches(p, nightlyProductIdentity(p.product)) ||
         !/^[0-9a-f]{64}$/.test(p.sha256 || "") ||
         !/^[0-9a-f]{64}$/.test(p.controller_sha256 || "") ||
         (Object.hasOwn(p, "controller_strategy") && !["bundled", "owner-supplied"].includes(p.controller_strategy)) ||
@@ -1409,6 +1451,40 @@ drop.addEventListener("drop", async (e) => {
   await selectStockFile(f);
 });
 
+// A download request is not proof of a filesystem write. Keep OTA waiting for
+// this archive's explicit user acknowledgement, without a blocking browser dialog.
+async function saveSlotBackup(file, name) {
+  const panel = $("backup-confirmation"), retained = $("backup-retained"), cancel = $("backup-cancel");
+  const a = document.createElement("a");
+  const url = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
+  a.href = url;
+  a.download = name;
+  try {
+    document.body.appendChild(a);
+    a.click();
+  } finally {
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  }
+  log(t("slotdownload") + name);
+  $("backup-name").textContent = name;
+  try {
+    const confirmation = new Promise((resolve) => {
+      retained.onclick = () => resolve(true);
+      cancel.onclick = () => resolve(false);
+    });
+    panel.hidden = false;
+    sayK("slotconfirm");
+    cancel.focus(); // Enter must not accidentally confirm the irreversible step.
+    const confirmed = await confirmation;
+    if (confirmed === true) log(t("slotsaved") + name);
+    return confirmed;
+  } finally {
+    retained.onclick = cancel.onclick = null;
+    panel.hidden = true;
+  }
+}
+
 async function run(img, product, opts = {}) {
   if (writing || !workspaceActive) return;
   getSampleWorkspace()?.invalidate();
@@ -1435,9 +1511,9 @@ async function run(img, product, opts = {}) {
     const step = (k, a) => {
       log(`${k} ${a ?? ""}`);
       if (k === "start") sayK("start");
-      if (k === "verify") { sayK("verify"); $("bar").value = (a / total) * 100; }
+      if (k === "verify") { sayK("verify"); $("bar").value = Math.min(99, (a / total) * 100); }
       if (k === "loader") sayK("loader");
-      if (k === "write") { sayK("write"); $("bar").value = ((74 + a) / total) * 100; }
+      if (k === "write") { sayK("write"); $("bar").value = Math.min(99, ((74 + a) / total) * 100); }
       if (k === "reboot") sayK("reboot");
       if (k === "done") { $("bar").value = 100; sayK(foreign ? "stockdone" : "done"); }
     };
@@ -1447,23 +1523,17 @@ async function run(img, product, opts = {}) {
       // Interrupted upgrade/downgrade/stock write: finish with this package (same keyboard family).
       ota.link.close();
       const ok = await up.resume(img, step, product);
-      $("bar").value = ok ? 100 : $("bar").value;
-      sayK(ok ? (foreign ? "stockdone" : "done") : "stopped");
+      if (!ok) sayK("stopped"); // Successful completion is emitted only after application readback.
     } else {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
         step, sameKeyboard,
         say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
-        progress: (f) => { $("bar").value = Math.min(100, f * 100); },
-        save: (file, name) => {
-          const a = document.createElement("a");
-          a.href = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
-          a.download = name;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          setTimeout(() => URL.revokeObjectURL(a.href), 60000);
-          log(t("slotsaved") + name);
+        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
+        save: async (file, name) => {
+          const retained = await saveSlotBackup(file, name);
+          // The user may change/revoke a NIGHTLY selection while checking the file.
+          return retained === true && (!opts.admitted || opts.admitted());
         },
       });
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);

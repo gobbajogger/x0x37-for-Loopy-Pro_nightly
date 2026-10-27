@@ -1,0 +1,22 @@
+{
+  "ota-request-site": {
+    "reproducerSHA256": "050b503470e3136118b1fb2c775b5b2982142855d5504a6b6ca46733838330c4",
+    "identityParserUnchanged": true
+  },
+  "ota-request-firmware": {
+    "reproducerSHA256": "050b503470e3136118b1fb2c775b5b2982142855d5504a6b6ca46733838330c4",
+    "identityParserUnchanged": true
+  },
+  "publicSourceBlobs": {
+    "web/x0x_installer.html": true,
+    "web/x0x_breaks.html": true,
+    "web/fm1pkg.js": true,
+    "web/fm1ota.js": true,
+    "web/x0x_breaks.js": true,
+    "LICENSE": true,
+    "web/x0x_projects.html": true,
+    "web/x0x_projects.js": true,
+    "web/test_projects.mjs": true,
+    "web/test_projects_page.mjs": true
+  }
+}

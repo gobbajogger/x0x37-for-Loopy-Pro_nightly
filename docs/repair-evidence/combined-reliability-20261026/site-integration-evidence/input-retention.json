@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "retention": "Every uniquely changed or identical input file retained byte-for-byte",
+  "only_combined_files": [
+    "docs/install/index.html",
+    "SOURCE_PROVENANCE.json"
+  ],
+  "provenance": "Both histories retained and all current source blob pins match",
+  "source_modules": {
+    "web/x0x_breaks.js": "6b9c7f5017f295ef1f5d64c2d34e0c1790fe19fd",
+    "web/x0x_projects.js": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
+    "web/fm1ota.js": "aa3252df5fb8c98c9f3559774900feb1a36bb9e1",
+    "web/x0x_breaks.html": "ded5783065ad4594af77f85ea98717db647cc978"
+  },
+  "fixture_blobs": {
+    "tests/fixtures/project-v3-sound10.json": "f9457d95bbc1dee232ef810e006f503afc2a963d",
+    "tests/fixtures/project-v6-sound10.json": "4a2862c86deb196d3ae02b187a6cc134b2ec4dca"
+  }
+}

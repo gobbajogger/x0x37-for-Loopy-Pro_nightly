@@ -1,0 +1,17 @@
+{
+  "synthetic": true,
+  "contains_user_data": false,
+  "producer_repository": "gobbajogger/X0X37-for-Loopy-Pro",
+  "producer_commit": "144f4e042bdfb2cc52ed16a1cf2a26a1148a0101",
+  "producer_test": "tests/host/bass_tagged_storage_test.c",
+  "producer_test_blob": "8638e4e80ada5ee165b28f49a254e33cc1569441",
+  "configuration": {
+    "X0X_BASS_TAGGED_SOUND": 1,
+    "X0X_BASS_NOTE_SOUND": 0,
+    "X0X_BASS_PRESET_PREVIEW": 1,
+    "X0X_DEV_WOBBLE": 1
+  },
+  "length": 36452,
+  "sha256": "4ea28d27f4e6c6a3a56af78d075d1df378a9197cb5469aac1c42d96ea926abe4",
+  "zlib_base64": "eNrt1k9Ik3Ecx/Hvb86/Uywz3YrmUkm3mk7nSmVtv2yt5R+UbG1WItkfoSSiICuihw7dJIigQ7cIukQQ1M2LBB26BdElOtXNSwQdutnjPHSo/R6i0r5fPm8mPvgZbnv22sPykfyYIqLUHaJHb5uerxyX2T8eWi2SjxR2pRR9dOftI5enyuMqcRNVuAr3qCT7mJprxvZS2G8fafpVOqWD/a1FZxo40dMYLD7Tgbx5jx0z7zMJr2Elup5M+qm7+B2OTBSmovvJuHnXnbPmPWTeQxYZ06Gc9hr+g9YTeta4p8j0BLTuddhjDnu7w64DZHx+CfP5Szuc/0GHXXcad8vh/IesXFg36RyplvIouZWqHoyG7U+GogpVY2lSl62kZ5qG0sMNanz3mcDKA1nUSujvZFXjHKxnuyhIh/oS2fKeaDahfv4YHcQp+qcN2dcu0yXqosM++If7VZ95l552Z/uz1mb7QlSvpjQ8rnWF76gUWPlFXcMDOUWNai0ed8MaPcZ25jf7NXjT7T5Xpf0uPSshCjO//Xg9LnpYuvo++eL13VVUav/F5SK1Pp8DePx9j7fKZXksq4BHzh4Pe2R5PF8Fj5w9ttTK8vimGh45e/xaJ8tjrBYeOXt81SDL44ON8MjZ4/0tsjwub4JHzh5n/LI8nm6AR84ee5tleXzthUfOHit3yPLYsRUeOXt8H5Tl8d42eOTs8UlYlsdvTfDI2eONLlkeJ5vhkbPHkZgsjy9b4ZGzR3+fLI9tbfDI2ePnuCyP80F45OxxUcvy+GUnPHL2eDcly+PRDnjk7HE6I8vjQgQeOXuMDsvyGIjCI2eP7jFZHm/H4JGzx3fjsjwu7YFHzh4f52R5HO2HR84e547L8vgiDo+cPWamZHn0JeGRs0ffKVkeb+6DR84el87K8vhpPzxy9rhwTpbHTBoeOXucvyDL49MMPHL2OHlJlse6IXjk7LHjiiyPcyPwyNnj8jVZHj+M/j8eEUIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEJPQd0ycfUQ=="
+}

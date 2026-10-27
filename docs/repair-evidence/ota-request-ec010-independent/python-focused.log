@@ -1,0 +1,8 @@
+test_canonical_serve (__main__.RequestIntegrity) ... ok
+test_malformed (__main__.RequestIntegrity) ... ok
+test_valid_fields (__main__.RequestIntegrity) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.014s
+
+OK

@@ -1,0 +1,29 @@
+✔ positive: valid length-8 request reads one chunk then finishes (11.553834ms)
+✔ negative: contradictory 24-bit length 7 must not read firmware bytes (0.160708ms)
+✔ negative: contradictory 24-bit length 65544 must not read firmware bytes (0.068167ms)
+✔ valid request fields retained {} (1.00375ms)
+✔ valid request fields retained {"fl":255,"addr":305419896,"len":1193046} (0.070291ms)
+✔ valid request fields retained {"addr":3758096384,"len":8} (0.047125ms)
+✔ valid request fields retained {"addr":4026531840,"len":0} (0.057709ms)
+✔ declared 0 refuses before any firmware-data reply (0.216584ms)
+✔ declared 7 refuses before any firmware-data reply (0.068167ms)
+✔ declared 9 refuses before any firmware-data reply (0.0545ms)
+✔ declared 264 refuses before any firmware-data reply (0.051ms)
+✔ declared 65544 refuses before any firmware-data reply (0.061792ms)
+✔ checksum refuses before any firmware-data reply (0.10125ms)
+✔ changed address unchanged checksum refuses before any firmware-data reply (0.064208ms)
+✔ wrong command refuses before any firmware-data reply (0.054625ms)
+✔ missing F0 refuses before any firmware-data reply (0.0455ms)
+✔ missing F7 refuses before any firmware-data reply (0.049042ms)
+✔ truncated refuses before any firmware-data reply (0.052292ms)
+✔ extra refuses before any firmware-data reply (0.042041ms)
+✔ status byte refuses before any firmware-data reply (0.044417ms)
+✔ packed padding refuses before any firmware-data reply (0.032833ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.942875

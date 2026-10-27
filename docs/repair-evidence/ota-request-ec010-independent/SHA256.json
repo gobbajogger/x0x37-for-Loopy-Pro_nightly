@@ -1,0 +1,19 @@
+{
+  "site-focused.log": "59ff7427e83da019a418368e3c9749c2a9a4476fe88b039d128579a5f494303b",
+  "ota-request-site-source-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "author-log-verification.json": "bb5bd80feafce41e181f3359cd0ef7cd73f7c6272b6a738d043723066364eec6",
+  "ota-request-site-full-diff.log": "19c9551c80b406207b71a643ad49c1c67962e36b6212b1fcc77d2b4c316788e9",
+  "ota-request-firmware-full-diff.log": "30f0779ba99066a32b4c55788389b4b1ca691a0f430f71d6e62e61377cee0477",
+  "pins-diff-provenance.json": "a84069e607d122dd7a74823413b6e0383062c2512414b9d45d07760e610b2e79",
+  "ota-request-firmware-source-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "commands.json": "03c338835d59338ffa92339276ff74d29f0188bf117363192681a67460f3ad55",
+  "README.md": "47fb0589ffe7d850a7150926c0af568225ddf00956ae90b6f3a89ce3bca6b7a1",
+  "cross-request.log": "e8f182bc15f545eca82790758f8d4f2dcc14db4acec7f0818904e4edf69fe8eb",
+  "cross-request.py": "1d4865a64b721e068a40875601840b34ef04cdf6ad376177d99005c2470bcfad",
+  "closure-verification.json": "dd829ef586c566fd783598b8f3a5005b63b3eb39edc72f404d2726dfe9ede251",
+  "cross-request.mjs": "6a0a8ff6056ba4c176b2b6cd2495eeab073515c0e9d69f4fb18afa7fe7968fb9",
+  "firmware-focused.log": "f93f645df33b6d6acbdde63efd5e300c4d203350e76d99b3c1cc34a3d9456be4",
+  "site-generated.log": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41",
+  "receipt.json": "13ebc414f5f669c37bca96b72833dfa7acd2a4a31862bb9297ab09feb1d164e1",
+  "python-focused.log": "04e711bcff1542042d449289a7af937c9159be201d62dbe5556191905dd0bf13"
+}

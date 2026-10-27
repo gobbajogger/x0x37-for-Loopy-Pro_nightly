@@ -1,0 +1,64 @@
+[
+  {
+    "name": "generated",
+    "argv": [
+      "node",
+      "scripts/build-preview.mjs",
+      "--check"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "provenance",
+    "argv": [
+      "node",
+      "tests/nightly-preview.test.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "projects",
+    "argv": [
+      "node",
+      "web/test_projects.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "project-page",
+    "argv": [
+      "node",
+      "web/test_projects_page.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "restore",
+    "argv": [
+      "node",
+      "--test",
+      "tests/edge-migration-logical-indices.test.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "ota-and-read",
+    "argv": [
+      "node",
+      "--test",
+      "tests/edge-ota-identity-envelope.test.mjs",
+      "tests/edge-ota-identity-frame-integrity.test.mjs",
+      "tests/edge-midi-offset-correlation.test.mjs",
+      "tests/edge-sample-midi-stale-timeout.test.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "write-boundaries",
+    "argv": [
+      "node",
+      "tests/installer-write-boundaries.test.mjs"
+    ],
+    "exit": 0
+  }
+]

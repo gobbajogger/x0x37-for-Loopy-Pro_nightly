@@ -3,17 +3,18 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "bac88bee2c71215d07224e10475bae2aa97fa984",
-    "web/x0x_breaks.html": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+    "web/x0x_installer.html": "ba6f0c17952677420f75ad2c6ea57f5eb5b5e552",
+    "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
-    "web/fm1ota.js": "485a54187e78822847f5cb51088204983caffa71",
-    "web/x0x_breaks.js": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
+    "web/fm1ota.js": "cddeab7ed223efdccf5451dd0accccebf7f70454",
+    "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
-    "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
-    "web/x0x_projects.js": "c9aae930f79ccdef2d03978fbf3cf42045baea06",
-    "web/test_projects.mjs": "6e3f65e584f0873c0af7bb21539ed3355d49c365",
-    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
-    "web/test_breaks_page.mjs": "ef910496119f985a6795f690b5fd5ed9486ea97c"
+    "web/x0x_projects.html": "bb5f1a4fbd45942f82c82289f81d745a7e99df13",
+    "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
+    "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
+    "web/test_projects_page.mjs": "5bf61b8b234be05dbbcffac7a14c787ae129f8f0",
+    "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62",
+    "web/test_midi_port_pairing.mjs": "a9bc22c45bae94262e244e0a49f97994656458f5"
   },
   "sourcePatches": [
     {
@@ -333,6 +334,290 @@
       "sourceBaseCommit": "08aed72e1b96db73dea08edca09c83ba22880e9c",
       "resultBlob": "068db65f8b7657f583e22621d5cbfaa3a07f2703",
       "description": "EC016: bind preflash slot maps to CRC-checked flash.bin and board-specific flash-map address; ignore padding decoys, retain verified legacy loader and empty-slot behavior."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "d8660c2caf01f67ca07628fef7a8489570ccb96a",
+      "resultBlob": "d6051869f1f5d0ce6045e66500c900bd13e4744e",
+      "description": "EC011: cap MIDI receive frames and bytes, latch overflow, abort pending reads and prevent further sends until reconnection."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "9614ec7b4c251e9ad064da47c3a06a7a6c7316fc",
+      "resultBlob": "4010a5d85334bef19cf812e61b227671b4bd40a3",
+      "description": "EC017: reject nonzero-length OTA finish markers before success acknowledgment or transfer completion; preserve valid zero-length finish behavior."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommits": [
+        "e42d3074c50917540a679e6f40559396e5f5bfa1",
+        "6b4ed77c978fa9ef6221175b02b30edde2b024fa"
+      ],
+      "resultBlob": "f4d84485ad3d9395cbabf4d1e5bd7b6fb786515b",
+      "description": "Compose reviewed EC011 receive-queue bounds and EC017 zero-length finish guards without dropping either source hunk or original provenance record."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "8dc4173237d4c758334a663e199d796540972601",
+      "resultBlob": "d8f108fc8f335cdac24f206534bec05de5a0aa5a",
+      "description": "EC008: propagate failure to send either finish acknowledgment as lost/unfinished before stage completion; retain EC011 receive bounds, EC017 finish-length validation and valid resume behavior."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "08aed72e1b96db73dea08edca09c83ba22880e9c",
+      "resultBlob": "f4ba512ecfb911a97de74416e1d3516e2d2dc4f5",
+      "description": "Owner placement correction: one existing local sample preparation block below installer controls, scoped to firmware task and absent from Songs & Projects; audio and device guards preserved."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cea93cef0ac0836452e1f70ba27621fd1d575399",
+      "resultBlob": "244a50032925950e7b88e219172b9f4b389c2233",
+      "description": "EC018: await explicit boolean-true retained-backup acknowledgement before OTA; cancel, missing acknowledgement and save errors fail closed."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cea93cef0ac0836452e1f70ba27621fd1d575399",
+      "resultBlob": "294ba23bdc04b1ff5427283479779f4ad5ce1c28",
+      "description": "EC018: distinguish backup download request from explicit retained-file confirmation; keep installation pending/read-only with cancel/retry and recheck existing NIGHTLY admission after the wait."
+    },
+    {
+      "path": "web/x0x_projects.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+      "resultBlob": "01f9a59174b2a7ec48cf82de4651e180935ab61c",
+      "description": "Recognize explicit current and endpoint portable project revision pairs; preserve firmware VALIDATE before sample mutation and opaque payload bytes"
+    },
+    {
+      "path": "web/test_projects.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+      "resultBlob": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
+      "description": "Recognize explicit current and endpoint portable project revision pairs; preserve firmware VALIDATE before sample mutation and opaque payload bytes"
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+      "resultBlob": "aa3252df5fb8c98c9f3559774900feb1a36bb9e1",
+      "description": "Validate the identity envelope framing, seven-bit packing, 27-byte declared payload length and complement checksum before OTA discovery admission; keep model/version parsing unchanged."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "2128990834d36ea14c4e81ea059dd92eaf3dc17f",
+      "resultBlob": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
+      "description": "Validate read-request declared eight-byte payload and canonical SysEx envelope before serving any firmware chunk; preserve actual request fields and identity repair."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "ac39c7236dee13aceba4f8b7c3139cb2d41667d5",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "b23c54993f0ba0514616591674d73840cb71ce5e",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "3d29ca716035b996a7f7178887c84e849f4e5024",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+      "reuseSourceCommit": "6d5c7c3443a92f806fce5ba43bcde9a2ddc60a87",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "resultBlob": "c3e546e2f3143f728818702fff73b021aaeb55a2",
+      "description": "Integrate existing PR362 oldschool rate reduction into the current importer with exact ADPCM/slot byte accounting, original/encoded saved-rate previews, retained-original recuts and cancel-before-write; default Off and existing source guards preserved."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+      "resultBlob": "e42e1121ca0d1d9e3be0de57cba0a7c8a71fc9f7",
+      "description": "Use the same source trim/bar cut for mono peak-normalized A/B reference; label normalization and perceived-loudness limits while preserving exact saved ADPCM preview and source cleanup."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+      "resultBlob": "33e2675df0d14dc9213f29d0161e5c39efc4bcc1",
+      "description": "Use the same source trim/bar cut for mono peak-normalized A/B reference; label normalization and perceived-loudness limits while preserving exact saved ADPCM preview and source cleanup."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+      "resultBlob": "8b7dd31c82adca599ef6e74364123a349655f5be",
+      "description": "Use the same source trim/bar cut for mono peak-normalized A/B reference; label normalization and perceived-loudness limits while preserving exact saved ADPCM preview and source cleanup."
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "b007cc2f87669c481e6c7863dabcdb7405e95f8e",
+      "resultBlob": "d843e898d2aacf3e9903b7b609eaf465b3d582a7",
+      "description": "Expose local file reference/encoded/stop controls before MIDI and independently of device draft; keep settings/codec representation current and reject stale decode completions."
+    },
+    {
+      "path": "web/test_breaks_page.mjs",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "b007cc2f87669c481e6c7863dabcdb7405e95f8e",
+      "resultBlob": "ef910496119f985a6795f690b5fd5ed9486ea97c",
+      "description": "Expose local file reference/encoded/stop controls before MIDI and independently of device draft; keep settings/codec representation current and reject stale decode completions."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceCommit": "31982d3776da36e4d3a7c123d372051e0b130c0f",
+      "sourceBlob": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9",
+      "resultBlob": "656cc797871d3c1391a8a2b0b3738f7609ab92e7",
+      "description": "Selective strict parseRequest and parseIdentity composition only; preserve reviewed PR29 receive queue, finish length, lost finish ACK and resume behavior."
+    },
+    {
+      "path": "web/x0x_projects.js",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "144f4e042bdfb2cc52ed16a1cf2a26a1148a0101",
+      "sourceBlob": "fe53833c9f82a3eb641b137763b5999dc9aaeba4",
+      "resultBlob": "77485dd4cc7eeead7c2b343d43a3a854b3c8026c",
+      "description": "Bounded TAGGED=1 NOTE=0 consumer: historical pairs plus6/11 exact36452, QUERYv2 exact size, error9 and low-level explicit adoption; stream7 intentionally unsupported. Preserve all high-level expectedLength/VALIDATE-before-sample-write guards; no legacy-adoption UI."
+    },
+    {
+      "path": "web/x0x_projects.js",
+      "sourceBaseCommit": "2a061b352231266cdcd1c3f35d8d7c9c19a064a6",
+      "resultBlob": "60183ccf543d95d3d8909214f22f57979d222189",
+      "description": "Require explicit integer engine choices at both indices before ADOPT_BASS; Array.every skips sparse holes. No inferred engine identity, schema widening or native firmware behavior change."
+    },
+    {
+      "paths": [
+        "web/fm1ota.js",
+        "web/x0x_installer.html"
+      ],
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "eece3f368c4c48cc65e05d7bc1a85337e945cc73",
+      "regressionCommit": "f7d58ac2a85abbc5ee0b0ff84a7cc08b45fd8a88",
+      "regressionBlob": "cbfd73774b0fd35016605b2225e5a0ffccb1fd3d",
+      "resultBlobs": {
+        "web/fm1ota.js": "97f3d6d717cfa6b7f8c35956f106f1edb0354dce",
+        "web/x0x_installer.html": "aeb0ae959a40a10e274c28186db8305fd9305478"
+      },
+      "description": "EC019: full and resumed install share bounded fresh application return/marker confirmation under same-family and sole-observable-port guards; caller completion cannot be inferred from loader ACK or pre-app progress. Matching identity marker is not flash hash or unit serial proof; foreign mismatch policy remains explicit."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "88a5e5582f02e5512775ea351a6a7ac76fd06194",
+      "regressionCommit": "39842ee457085cad2d527aa04caf30ef3fcd2b2a",
+      "regressionBlob": "b2686b2dd17de3980aa2e98f7c0df023de8193f3",
+      "resultBlob": "031d8265e0386d2085086db577e1669de71c5023",
+      "description": "EC020: reject unknown SMP_INFO trailing metadata instead of falling back to guessed legacy sample offsets; preserve genuine legacy replies and existing exact X-extension length/version/range checks."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "094aa3227c0bf512c71f7e0449361cf9886a6223",
+      "regressionCommit": "d143ba139f43322ce5bb1cc2a03a6333a58001c9",
+      "regressionBlob": "75369330d46d0f2648b97a8d577b054945f27aa3",
+      "resultBlob": "f41bf713288560062f09983177ee5089b3c5ab04",
+      "description": "EC021: validate occupied image length against actual slot capacity before data allocation/read; backup and restore readback pass their observed per-slot capacities, with unchanged standalone legacy default and progress argument order."
+    },
+    {
+      "path": "web/x0x_breaks.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "b12d1183f80500765ac5c926c731ad2ebfbc7d67",
+      "regressionCommit": "75835717c0af72f9ac9e4a0f93d0cfcfdfb7e0d9",
+      "regressionBlob": "ac0d91181591ff2614bd2501cd73ba58cc1c5b7f",
+      "producerCommit": "144f4e042bdfb2cc52ed16a1cf2a26a1148a0101",
+      "resultBlob": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
+      "description": "EC022: require legacy used-KiB to equal min(127, extended used-KiB), matching the actual firmware producer; reject contradictions before preservation instead of accepting falsely low usage, retain saturation and genuine legacy layouts."
+    },
+    {
+      "paths": [
+        "web/x0x_breaks.html",
+        "web/test_breaks_page.mjs"
+      ],
+      "sourceBaseCommit": "8111c930e91a587ee9cd2825fc56bace85e03b98",
+      "resultBlobs": {
+        "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
+        "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62"
+      },
+      "description": "Copy only: shared sample-workspace invalidation requests fresh slot readback without falsely claiming a firmware operation on project-tab navigation. Callback, MIDI and write-guard behavior unchanged; focused actual-page contract added."
+    },
+    {
+      "path": "web/fm1ota.js",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "66e15ed0af2f06a8cd97cea2c7302d6395a2da15",
+      "sourcePullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/398",
+      "sourceBlob": "ba3cd28e27b47f3e0731308be4a760d9eb7ee520",
+      "sourceBaseCommit": "003cf088c0c434f28341d5121a53ec66db027c15",
+      "description": "Integrate canonical byte-identical _portPairs helper; retain current singlePort/cross-family guards in find. Canonical regression adapted only for method-end delimiter and registered. PR52 duplicate proof not merged.",
+      "resultBlob": "cddeab7ed223efdccf5451dd0accccebf7f70454"
+    },
+    {
+      "path": "web/x0x_projects.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "1ff193839a03609112870c80f0eb339584a301d2",
+      "regressionCommit": "e842ca5cc3f8b903ced484170ffcf9e246d820f7",
+      "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/53",
+      "description": "EC023: retain pending-link identity across await, recheck disconnected ports and ignore invalidated connection success/error; preserve workspace/recovery and project transaction guards",
+      "resultBlob": "abf7cba575c50ba680a122c59ad66bfc8bf81209"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "85976ecaed11317de73718589693e034061447a8",
+      "sourceFiles": [
+        "tools/firmware_build_labels.py",
+        "tools/release_alloc.py",
+        "tools/package_nightly.py"
+      ],
+      "sourceBaseCommit": "30e54656b97ccfdab45dbe4d903d65465f500596",
+      "description": "Accept exact numeric Pro/Elite 9XXYYZZ codec and require supplied version/display metadata to agree; keep catalog ID semantics, optional metadata, legacy unversioned identities and all existing admission/integrity gates",
+      "resultBlob": "ba6f0c17952677420f75ad2c6ea57f5eb5b5e552"
+    },
+    {
+      "path": "scripts/render-qualified-nightly.mjs",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "85976ecaed11317de73718589693e034061447a8",
+      "sourceFiles": [
+        "tools/firmware_build_labels.py",
+        "tools/release_alloc.py",
+        "tools/package_nightly.py"
+      ],
+      "sourceBaseCommit": "30e54656b97ccfdab45dbe4d903d65465f500596",
+      "description": "Accept exact numeric Pro/Elite 9XXYYZZ codec and require supplied version/display metadata to agree; keep catalog ID semantics, optional metadata, legacy unversioned identities and all existing admission/integrity gates",
+      "resultBlob": "732ee5ae061395cc27fff37af893e92270c12952"
+    },
+    {
+      "path": "web/x0x_projects.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "f7c3745aa1ab8859f8d5ba3966162917d881baa9",
+      "regressionCommit": "a7e27925a8d1a121c14a90c7147b9b3705fc3f23",
+      "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/54",
+      "reuseSourceCommit": "66e15ed0af2f06a8cd97cea2c7302d6395a2da15",
+      "reuseSourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "description": "EC024: apply canonical unique connected exact-name pairing to Projects discovery and explicit selection; preserve the existing recognized auto-discovery names and sole matching custom labels, invalidate old session on rediscovery; no protocol or mutation changes",
+      "resultBlob": "bb5f1a4fbd45942f82c82289f81d745a7e99df13"
     }
   ]
 }

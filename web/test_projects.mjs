@@ -3,7 +3,9 @@
 // Host-only project/container/MIDI safety checks. Run: node web/test_projects.mjs
 import test from "node:test";
 import assert from "node:assert/strict";
-import { webcrypto } from "node:crypto";
+import { webcrypto, createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { inflateSync } from "node:zlib";
 import { crc32, pack78, unpack78, userSlotRaw, parseHeader } from "./x0x_breaks.js";
 import { PROJECT_OP as OP, ProjectDevice, ProjectMidiLink, parseProject, validateSlotImage, sameBytes, makeProjectFile,
   readProjectFile, planProjectImport, readProjectSnapshot, prepareProjectImport, applyProjectImport } from "./x0x_projects.js";
@@ -60,7 +62,8 @@ function editArchive(b, edit) {
 // taken effect, which catches unsafe retries and ambiguous COMMIT handling.
 class Keyboard {
   constructor({ project = rawProject(), images = [original, null, third], sizes = [4096, 8192, 4096], identity = "X0X test", transform = null } = {}) {
-    this.project = project.slice(); this.saved = project.slice(); this.images = images.map(clone); this.sizes = sizes;
+    this.project = project.slice(); this.saved = project.slice();
+    this.supportedSchema = parseProject(project); this.images = images.map(clone); this.sizes = sizes;
     this.flash = images.map((img, k) => { const b = new Uint8Array(sizes[k]).fill(255); if (img) b.set(img); return b; });
     this.identity = identity; this.mode = 0; this.staging = null; this.offset = 0; this.previousWrite = null; this.validated = false; this.sampleBaseline = null;
     this.queue = []; this.calls = []; this.commits = []; this.transform = transform; this.clock = 0; this.disconnected = false;
@@ -114,7 +117,11 @@ class Keyboard {
       }
       if (op === OP.VALIDATE || op === OP.COMMIT) {
         if (this.mode !== 2 || this.offset !== this.project.length) return reply(2);
-        try { parseProject(this.staging, this.project.length); } catch { return reply(4); }
+        try {
+          const schema = parseProject(this.staging, this.project.length);
+          if (schema.patternVersion !== this.supportedSchema.patternVersion || schema.soundRevision !== this.supportedSchema.soundRevision)
+            return reply(1); // Firmware, not the browser, owns adoption of a different revision.
+        } catch { return reply(4); }
         if (this.staging[32] === 0xEE) return reply(5);
         if (op === OP.VALIDATE) this.validated = true;
         if (op === OP.COMMIT) {
@@ -517,4 +524,67 @@ test("MIDI adapter ignores normal playing traffic and bounds idle SysEx bufferin
   listener({ data: [0xF8] }); assert.notEqual(link.pending, null);
   listener({ data: frame(9, [OP.ABORT, 0]) }); assert.deepEqual(await waiting, frame(9, [OP.ABORT, 0]));
   link.close(); assert.equal(listener, null);
+});
+
+// Actual C project_capture_stage/project_file_header export, not a forged JS header.
+function firmwareProjectFixture(pattern = 3) {
+  const f = JSON.parse(readFileSync(new URL(`../tests/fixtures/project-v${pattern}-sound10.json`, import.meta.url), "utf8"));
+  const raw = new Uint8Array(inflateSync(Buffer.from(f.zlib_base64, "base64")));
+  assert.equal(f.synthetic, true); assert.equal(f.contains_user_data, false);
+  assert.equal(f.project_validate_stage, 0); assert.equal(f.project_file_validate, 0);
+  assert.ok(f.defines.includes("X0X_WOBBLE=1"), "fixture must use the product Miami backend");
+  const producers = { 3: "d633833ac369f8466bc2563791614206070e87d1", 6: "6ddea31d6040d6735989e64adbe11630fc1ee7ec" };
+  assert.equal(f.source_commit, producers[pattern]);
+  assert.deepEqual(f.dirty_production_files, []);
+  assert.equal(f.producer_readback.same_previous_fixture_bytes, true);
+  assert.equal(raw.length, f.length);
+  assert.equal(createHash("sha256").update(raw).digest("hex"), f.sha256);
+  return raw;
+}
+
+test("only explicit pattern/sound revision pairs are accepted", () => {
+  for (const [patternVersion, soundRevision] of [[3, 4], [3, 10], [6, 10]]) {
+    const raw = rawProject(), v = new DataView(raw.buffer); v.setUint32(20, patternVersion, true); v.setUint32(24, soundRevision, true);
+    assert.equal(parseProject(raw).patternVersion, patternVersion); assert.equal(parseProject(raw).soundRevision, soundRevision);
+  }
+  for (const [pattern, sound] of [[2, 10], [3, 5], [3, 9], [3, 11], [4, 10], [5, 10], [6, 4], [6, 9], [7, 10], [999, 999]]) {
+    const raw = rawProject(), v = new DataView(raw.buffer); v.setUint32(20, pattern, true); v.setUint32(24, sound, true);
+    assert.throws(() => parseProject(raw), /incompatible/);
+  }
+});
+
+test("actual current firmware export retains its 3/10 header and every payload byte", async () => {
+  const raw = firmwareProjectFixture(), info = parseProject(raw);
+  assert.equal(info.patternVersion, 3); assert.equal(info.soundRevision, 10);
+  for (const portable of [false, true]) {
+    const file = await readProjectFile(await bundle(raw, snapshot(), portable));
+    assert.deepEqual(file.project, raw); assert.equal(file.portable, portable);
+  }
+  const corrupt = raw.slice(); corrupt[corrupt.length - 1] ^= 1;
+  assert.throws(() => parseProject(corrupt), /CRC/);
+  assert.throws(() => parseProject(raw, raw.length + 1), /firmware/);
+});
+
+test("current and endpoint-revision exports pass the real frontend transaction without sample changes", async () => {
+  for (const pattern of [3, 6]) {
+    const raw = firmwareProjectFixture(pattern), { keyboard, device } = await connected({ project: raw });
+    const exported = await readProjectSnapshot(device);
+    assert.deepEqual(exported.project, raw);
+    const prepared = await prepareProjectImport(device, await bundle(raw, snapshot(), false));
+    await applyProjectImport(device, prepared, { confirmed: true });
+    assert.deepEqual(keyboard.project, raw); assert.equal(keyboard.sampleWrites().length, 0);
+    assert.equal(keyboard.projectCalls(OP.VALIDATE).length, 1);
+    assert.equal(keyboard.projectCalls(OP.COMMIT).length, 1);
+  }
+});
+
+test("current stream-3 firmware refuses endpoint stream-6 data before any sample replacement or adoption", async () => {
+  const raw = firmwareProjectFixture(6), old = firmwareProjectFixture(3);
+  const { keyboard, device } = await connected({ project: old });
+  const prepared = await prepareProjectImport(device, await bundle(raw, snapshot([alternate, null, third])));
+  assert.ok(prepared.plan.collisions.length, "the rejected import would otherwise replace an occupied sample");
+  await assert.rejects(applyProjectImport(device, prepared, { confirmed: true, backupSaved: true }), /project version/);
+  assert.equal(keyboard.projectCalls(OP.VALIDATE).length, 1);
+  assert.equal(keyboard.projectCalls(OP.COMMIT).length, 0); assert.equal(keyboard.sampleWrites().length, 0);
+  assert.deepEqual(keyboard.project, old); assert.equal(keyboard.mode, 0);
 });

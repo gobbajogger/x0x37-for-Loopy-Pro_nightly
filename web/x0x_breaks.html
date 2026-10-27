@@ -688,7 +688,7 @@ window.sampleWorkspace = {
       else if (savedMidiHandler) { link.input.onmidimessage = savedMidiHandler; savedMidiHandler = null; }
     }
   },
-  invalidate: () => { stopLoopPreview(); readOk = false; render(); say("Firmware operation started. Prepared loops are retained, but read device slots again before sending; reading replaces the draft after confirmation."); }
+  invalidate: () => { stopLoopPreview(); readOk = false; render(); say("Read device slots again before sending. Prepared loops are retained; reading replaces the draft after confirmation."); }
 };
 if (new URLSearchParams(location.search).has("embedded")) {
   document.querySelector(".home").hidden = true;

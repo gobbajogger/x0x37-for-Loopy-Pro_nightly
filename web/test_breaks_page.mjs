@@ -159,3 +159,14 @@ test('local source decode epochs ignore a stale file after replacement or remova
  waiters[2].resolve({x:tone(),rate:44100});await c;
  assert.equal(e.state().auditionLoop,null);assert.equal(e.writes.length,0);
 });
+
+test('workspace invalidation uses neutral status while retaining the draft and send guard',()=>{
+ const e=environment(),loop=e.prepare(tone(),{bars:false,gritFactor:1});e.seed([loop]);
+ assert.equal(e.state().readOk,true);
+ e.window.sampleWorkspace.invalidate();
+ assert.equal(e.state().readOk,false);assert.equal(e.state().loops[0],loop);
+ assert.equal(e.ids.send.disabled,true);assert.equal(e.writes.length,0);
+ assert.match(e.ids.status.textContent,/Read device slots again before sending/);
+ assert.match(e.ids.status.textContent,/Prepared loops are retained/);
+ assert.doesNotMatch(e.ids.status.textContent,/Firmware operation started/);
+});

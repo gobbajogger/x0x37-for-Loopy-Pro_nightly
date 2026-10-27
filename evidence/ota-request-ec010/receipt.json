@@ -1,0 +1,41 @@
+{
+  "scope": "Offline production OTA read request envelope integrity; no hardware, device, GUI, flash, publication or merge.",
+  "base": "2128990834d36ea14c4e81ea059dd92eaf3dc17f",
+  "reproducerPR": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/35",
+  "reproducerHead": "887ef20178d07b99184c37ff450b345561000e68",
+  "reproducerPreservedSHA256": "050b503470e3136118b1fb2c775b5b2982142855d5504a6b6ca46733838330c4",
+  "contract": {
+    "firmwareSourcePin": "43d078dd384dd9d6544d368f5081da985dd27698",
+    "otaBlob": "7d1c48c7dc4ca4a6cb62925bb723a84cc1b146ad",
+    "function": "ota_read: ota_send_msg(0x30,q,8); ota_send_msg writes payload length24 and complement body checksum",
+    "noVersionField": "Bytes3..5 are declared length, not protocol version; flags/address/requested length semantics retained."
+  },
+  "changes": "Reject noncanonical or non-seven-bit SysEx, incorrect framing/count/command/declared-eight-byte payload/checksum before admitting read request. Retain valid flags and all24 requested-length bits.",
+  "checks": {
+    "exactPR35Before": "site and firmware: exit1,1pass2fail",
+    "exactPR35After": "3/3pass",
+    "siteFocused": "21/21pass",
+    "firmwareIdentityAndRequestFocused": "46/46pass",
+    "pythonBefore": "3tests,7 failing malformed subcases,exit1 using baseline production parse_request injected into actual module",
+    "pythonAfter": "3tests/4 valid field subcases,14 malformed parser-and-serve subcases plus canonical serve pass",
+    "siteBuild": "exit0",
+    "siteFullNpm": "exit0,94edge tests pass",
+    "installerIntegration": "node web/test_web.mjs; Python install_test/F02/F03/finish_ack/install_slots/identity parser all exit0; package/image parity skipped without built package"
+  },
+  "limits": [
+    "Independent review pending; no push permitted yet.",
+    "Physical stock/loader request compatibility not hardware-proven. Synthetic frames and actual encoder/static desktop contract are offline evidence only.",
+    "No firmware C changes or native firmware build qualification implied. Previous integrated43d full-run evidence remains separate and unchanged.",
+    "Broader legacy native-transport baseline failures from EC009 remain unresolved/not claimed passing. Other composite web mocks are independently owned and excluded from this patch."
+  ],
+  "sourceBlobs": {
+    "web/fm1ota.js": "c9ac89bbbf82dc6c222a9b08ea68db951fbdd1f9"
+  },
+  "logs": {
+    "site-before.log": "351215997141b60ce055e390074ac9a1007ed726400f6f53450ed6cfa6ad205d",
+    "site-after.log": "35a315a14a1215ecce465fc950c07178716179c178e1469021be268553ea533f",
+    "site-focused.log": "2b08786f1bae5336b8927d3b67b920a0080ea048ce3594ba07294fbc3b44d4b4",
+    "site-build.log": "84ebc50ac461bbd6395a55ebad7a2b461aeb1384d50f06710dfe33265adfa52a",
+    "site-full.log": "0f0502114c1a3e99c2ccc205ee4a9f6e10a014782fd2a1c41aab6bbb00e6c3fe"
+  }
+}

@@ -71,7 +71,10 @@ await check('resume preserves legitimate SMK loader alias',async()=>{
   const loader=device('ota-SMK-37 Pro'),up=new Updater(accessFor(loader),()=>{});let served=0;
   up.find=async filter=>{assert.ok(filter(loader.id));return loader;};
   up.serve=async()=>{served++;return {finished:true};};
+  const back=device('SMK-37 Elite','SMK-37 Elite_900');
+  up.waitFor=async filter=>{portFor(up.access,back);assert.ok(filter(back.id));return back;};
   assert.equal(await up.resume(image,()=>{},'SMK-37 Elite_900'),true);
+  assert.equal(up.verified,true);assert.equal(back.state.closed,1);
   assert.equal(served,1);assert.equal(loader.state.sends.length,1);
 });
 function slotDevice(text, mode) {
@@ -138,8 +141,9 @@ function midiPort(name,text) {
  const output={name,state:'connected',async open(){},send(bytes){
   state.sent.push([...bytes]);
   if(bytes[1]===0 && bytes[2]===0x32) {
-   const payload=new Uint8Array(34);payload[1]=0x59;payload[2]=0x11;
+   const payload=new Uint8Array(34);payload[1]=0x59;payload[2]=0x11;payload[3]=27;
    for(let i=0;i<text.length;i++)payload[i+6]=text.charCodeAt(i);
+   payload[33]=~payload.slice(6,33).reduce((sum,b)=>sum+b,0)&255;
    input.onmidimessage?.({data:[0xF0,...pack7(payload),0xF7]});
   }
  }};
@@ -212,7 +216,7 @@ for(const mode of ['positive','name-change','extra-port','archive-error','readba
  const context={TextEncoder,TextDecoder,io};new Script(source('web/x0x_breaks.js')+'\nreadSlotLayout=io.layout;backupSlots=io.backup;writeSlotImage=io.write;readSlotImage=io.read;this.run=installKeepingSlots;').runInNewContext(context);
  up.find=async()=>dev;up.install=async()=>{assert.equal(saved,true,'verified archive saved before install');installs++;events.push('install');up.targetName=back.name;up.verified=true;portFor(up.access,back);if(mode==='name-change')up.access.inputs.set('in',{name:'SMK changed',state:'connected'});if(mode==='extra-port')up.access.inputs.set('extra',{name:'SMK extra',state:'connected'});return 'SMK-37 Pro_900';};
  up.waitFor=async()=>back;
- const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');}});
+ const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');return true; /* simulated retained backup */}});
  if(mode==='positive'){await result;assert.equal(installs,1);assert.equal(writes,1);assert.ok(postReads>0);assert.deepEqual(events,['backup','save','install','restore']);}
  else{await assert.rejects(result);if(mode==='archive-error'){assert.equal(installs,0);assert.equal(saved,false);}else if(mode==='readback-mismatch'){assert.equal(installs,1);assert.equal(writes,1);}else{assert.equal(installs,1);assert.equal(postReads,0);assert.equal(writes,0);}}
 });

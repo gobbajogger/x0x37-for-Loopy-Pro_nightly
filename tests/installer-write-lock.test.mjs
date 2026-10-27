@@ -6,6 +6,7 @@ import {Script,createContext} from 'node:vm';
 const source=readFileSync(process.argv[2] || new URL('../web/x0x_installer.html',import.meta.url),'utf8');
 function span(first,next){const i=source.indexOf(first),j=source.indexOf(next,i);assert.ok(i>=0&&j>i,'missing '+first);return source.slice(i,j);}
 const scan=span('async function scan(', '\n$("connbtn").addEventListener');
+const saveBackup=span('async function saveSlotBackup(', '\nasync function run(');
 const run=span('async function run(img, product, opts = {}) {','\n$("go").addEventListener');
 let cases=0;
 function runtime(mode='normal'){
@@ -13,7 +14,7 @@ function runtime(mode='normal'){
  const ui={};let ctx,grant;
  const permission=new Promise(resolve=>grant=resolve);
  const mock={
-  $:id=>ui[id]||={disabled:false,checked:true,textContent:'',value:0},
+  $:id=>ui[id]||={disabled:false,checked:true,textContent:'',value:0,hidden:true,onclick:null,focus(){}},
   midiAccess:async()=>{if(mode==='pending')return permission;if(mode==='denied'&&state.denials++===0)throw Object.assign(Error('denied'),{code:'denied'});return{};},
   Updater:class{async find(predicate){
    if(!state.writes)return null;
@@ -21,7 +22,9 @@ function runtime(mode='normal'){
    const id={model:'SMK-37 Pro',text:'SMK-37 Pro_900'};
    return predicate(id)?{id,name:'Keyboard',link:{close(){state.closed++;}}}:null;
   }},
-  installKeepingSlots:async()=>{
+  installKeepingSlots:async(_up,_image,_product,_board,hooks)=>{
+   if(mode==='confirm-backup' && await hooks.save(new Uint8Array([1]), 'before.x0xslots') !== true)
+    throw Object.assign(Error('confirmation refused'),{code:'slotbackupconfirm'});
    state.writes++;
    if(mode==='backup-error')throw Object.assign(Error('backup refused'),{code:'slotbackup'});
    const move=mode==='stock'?{newMap:[],skipped:[],name:'before.x0xslots'}:
@@ -35,12 +38,12 @@ function runtime(mode='normal'){
   hasVerifiedNightlySelection:()=>true,isCatalogChecked:()=>true,
   getSampleWorkspace:()=>null,getProjectWorkspace:()=>null,
   sayK:(key,suffix='')=>{state.status=key+suffix;},say:msg=>{state.status=msg;},
-  t:key=>key,log(){},led(){},TEXT:{en:{slotbackup:'Backup error'}},lang:'en',
-  Blob,URL,setTimeout,window:{confirm:()=>true},
+  t:key=>key,log(){},led(){},TEXT:{en:{slotbackup:'Backup error',slotbackupconfirm:'Backup not confirmed'}},lang:'en',
+  Blob,URL:{createObjectURL:()=> 'blob:backup',revokeObjectURL(){}},setTimeout(){},window:{confirm:()=>true},
   document:{createElement:()=>({click(){},remove(){}}),body:{appendChild(){}}},
  };
  ctx=createContext(mock);
- new Script('let writing=false,workspaceActive=true,workspaceScanning=0,lastId=null,stock=null,ctl=null,ctlLoadSerial=0,stockLoadSerial=0,scanSerial=0,ctlNeedsResolution=false,chosenModel="pro";\n'+scan+'\n'+run+'\nglobalThis.start=run;globalThis.lock=()=>writing;globalThis.ctlSerial=()=>ctlLoadSerial;').runInContext(ctx);
+ new Script('let writing=false,workspaceActive=true,workspaceScanning=0,lastId=null,stock=null,ctl=null,ctlLoadSerial=0,stockLoadSerial=0,scanSerial=0,ctlNeedsResolution=false,chosenModel="pro";\n'+scan+'\n'+saveBackup+'\n'+run+'\nglobalThis.start=run;globalThis.lock=()=>writing;globalThis.ctlSerial=()=>ctlLoadSerial;').runInContext(ctx);
  return{ctx,state,ui,grant};
 }
 {
@@ -70,5 +73,30 @@ for(const [mode,wanted] of [['normal','slotsdone'],['partial','slotspartial'],['
  }else assert.equal(r.state.scans,0,'failed backup was hidden by reconnect');
  if(['partial','total'].includes(mode))assert.ok(r.state.status.includes('before.x0xslots'),'partial recovery lost backup name');
  cases++;
+}
+{
+ const r=runtime('confirm-backup');
+ const tick=async()=>{for(let i=0;i<12;i++)await Promise.resolve();};
+ const first=r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900',{foreign:true});
+ await tick();
+ assert.equal(r.state.writes,0);assert.equal(r.ctx.lock(),true);
+ assert.equal(r.ui.go.disabled,true);assert.equal(r.ui.stockgo.disabled,true);
+ assert.equal(r.ui['backup-confirmation'].hidden,false);
+ await r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900');
+ r.ui['backup-cancel'].onclick();await first;
+ assert.equal(r.state.writes,0);assert.equal(r.ctx.lock(),false);
+ assert.equal(r.state.status,'slotbackupconfirm');
+ assert.equal(r.ui['backup-confirmation'].hidden,true);
+ const retry=r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900');await tick();
+ r.ui['backup-retained'].onclick();await retry;
+ assert.equal(r.state.writes,1);assert.equal(r.ctx.lock(),false);cases++;
+}
+{
+ const r=runtime('confirm-backup');let admitted=true;
+ const run=r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900',{admitted:()=>admitted});
+ for(let i=0;i<12;i++)await Promise.resolve();
+ admitted=false;r.ui['backup-retained'].onclick();await run;
+ assert.equal(r.state.writes,0,'revoked NIGHTLY admission must not survive the backup confirmation wait');
+ assert.equal(r.ctx.lock(),false);assert.equal(r.state.status,'slotbackupconfirm');cases++;
 }
 console.log('PASS '+cases+' actual-source permission/write-lock/reconnect/restore scenarios; simulated only');

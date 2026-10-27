@@ -1,0 +1,53 @@
+[
+  {
+    "name": "combined-full-diff",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+      "HEAD"
+    ],
+    "exit": 2
+  },
+  {
+    "name": "combined-source-diff",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+      "HEAD",
+      "--",
+      "web",
+      "tests",
+      "SOURCE_PROVENANCE.json",
+      "docs/install",
+      "docs/breaks",
+      "docs/projects"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "merge-from-project",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "HEAD^1",
+      "HEAD"
+    ],
+    "exit": 2
+  },
+  {
+    "name": "merge-from-ota",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "HEAD^2",
+      "HEAD"
+    ],
+    "exit": 0
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "sourceCommit": "85976ecaed11317de73718589693e034061447a8",
+  "sourceFunctions": [
+    "release_alloc.product_for",
+    "release_alloc._next_components (empty input only)",
+    "firmware_build_labels.canonical_version",
+    "firmware_build_labels.version_of_product",
+    "firmware_build_labels.release_display"
+  ],
+  "sourceBlobs": {
+    "firmware_build_labels.py": "32fa131cbce901d3844bbba3a5b833fae3139190",
+    "release_alloc.py": "3926f1d409c8ae41e3d2e969d3a8a0e812505fc2"
+  },
+  "firstVersion": "0.1.0",
+  "vectors": [
+    {
+      "model": "pro",
+      "firmware_version": "0.1.0",
+      "release_display": "0.1.0_openbeta",
+      "product": "SMK-37 Pro_9000100"
+    },
+    {
+      "model": "pro",
+      "firmware_version": "0.1.99",
+      "release_display": "0.1.99_openbeta",
+      "product": "SMK-37 Pro_9000199"
+    },
+    {
+      "model": "pro",
+      "firmware_version": "0.2.0",
+      "release_display": "0.2.0_openbeta",
+      "product": "SMK-37 Pro_9000200"
+    },
+    {
+      "model": "pro",
+      "firmware_version": "1.0.0",
+      "release_display": "1.0.0_openbeta",
+      "product": "SMK-37 Pro_9010000"
+    },
+    {
+      "model": "pro",
+      "firmware_version": "99.99.99",
+      "release_display": "99.99.99_openbeta",
+      "product": "SMK-37 Pro_9999999"
+    },
+    {
+      "model": "elite",
+      "firmware_version": "0.1.0",
+      "release_display": "0.1.0_openbeta",
+      "product": "SMK-37 Elite_9000100"
+    },
+    {
+      "model": "elite",
+      "firmware_version": "0.1.99",
+      "release_display": "0.1.99_openbeta",
+      "product": "SMK-37 Elite_9000199"
+    },
+    {
+      "model": "elite",
+      "firmware_version": "0.2.0",
+      "release_display": "0.2.0_openbeta",
+      "product": "SMK-37 Elite_9000200"
+    },
+    {
+      "model": "elite",
+      "firmware_version": "1.0.0",
+      "release_display": "1.0.0_openbeta",
+      "product": "SMK-37 Elite_9010000"
+    },
+    {
+      "model": "elite",
+      "firmware_version": "99.99.99",
+      "release_display": "99.99.99_openbeta",
+      "product": "SMK-37 Elite_9999999"
+    }
+  ],
+  "refusedCanonicalVersions": [
+    "0.1.00",
+    "00.1.0",
+    "0.100.0",
+    "0.1.-1",
+    "0.1.0_openbeta",
+    "0.1.0\n"
+  ],
+  "allocationPerformed": false
+}

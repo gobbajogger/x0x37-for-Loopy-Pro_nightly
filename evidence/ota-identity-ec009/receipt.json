@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-26",
+  "node": "v24.14.1",
+  "npm": "11.11.0",
+  "firmwareContractCommit": "ae269094e311519bdefdae93d0a73fc9ffc86567",
+  "firmwareContractBlob": "735e6791540b7586ed78ebe73b720fcd62310162",
+  "pr31TestHead": "fade4bd5147e002685a74adbee785047e89ee86f",
+  "scope": "Offline production identity parsers only; no device access, GUI, flash, publication or native firmware changes.",
+  "compatibility": "Existing decoded34-byte identity shape retained; check declared payload27, complement checksum, F0/F7, 7-bit canonical packing. Product/version regex unchanged; correctly checksummed901 accepted. Static desktop M-UPGRADE analysis corroborates envelope/checksum/packing; synthetic stock/loader model names are not physical stock captures. Physical stock compatibility and independent QA remain unverified.",
+  "baseline": "Exact original PR31: 1 pass / 3 fail, exit1. Python new malformed cases: 9 previously admitted subcases, exit1.",
+  "limitations": [
+    "No package build present; package/image parity portions of legacy suites explicitly skipped.",
+    "docs/native-midi/tests/transport_test.py: 17 tests, 9 failures and2 errors on both candidate and original-parser baseline; broader transport expectations already diverge from this source. Not claimed passing.",
+    "No headless browser attempted: prior no-GUI denial respected.",
+    "No hardware causal conclusion; parser defect does not prove wrong firmware was flashed."
+  ],
+  "desktopContractReferences": [
+    "Local firmware-and-sincoota-findings.md lines142-222 (static desktop analysis)",
+    "Local analysis/scripts/sinco_packet.py sinco_checksum/sinco_packet (payload checksum from offset6)"
+  ],
+  "base": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+  "checks": {
+    "npm run build": 0,
+    "npm test": 0,
+    "focusedNode": "25/25 exit0",
+    "allEdge": "68/68 exit0",
+    "writeBoundary": "41/41 exit0"
+  },
+  "sourceBlobs": {
+    "web/fm1ota.js": "aa3252df5fb8c98c9f3559774900feb1a36bb9e1"
+  },
+  "logs": {
+    "before-pr31.log": "6054a8d561978d7c6e329e14411d0f022a504d1d3d883bf6d643e93f30d52f4b",
+    "after-site-scoped.log": "f48fa6fa4dba1d816465b745fdec4e58e37b5ac57b64b783aafbefc51876db49",
+    "site-build.log": "84ebc50ac461bbd6395a55ebad7a2b461aeb1384d50f06710dfe33265adfa52a",
+    "site-npm-test.log": "7f66821fce493fc7652f3abaa055f25b08794fb0ebd9d37dedb6535d9675b7f0"
+  }
+}

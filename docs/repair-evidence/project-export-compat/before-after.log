@@ -1,0 +1,2 @@
+{"fixture":"current-v3-sound10","sha256":"2c47e1459cdef8db8eec73b96ce58d3a9c67b8c0abaeb3065a46141c2f911d3a","baseline_parser":"REJECTED (bug reproduced)","repaired_site":"PASS exact bytes","repaired_firmware_web":"PASS exact bytes","actual_c_validator":0}
+{"fixture":"endpoint-v6-sound10","sha256":"c169f42d80c362a1f0a62ffd66baeb7aa6af41c3254a9f702280f67c987331df","baseline_parser":"REJECTED (bug reproduced)","repaired_site":"PASS exact bytes","repaired_firmware_web":"PASS exact bytes","actual_c_validator":0}
