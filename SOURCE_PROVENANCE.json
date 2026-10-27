@@ -3,8 +3,8 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "ba6f0c17952677420f75ad2c6ea57f5eb5b5e552",
-    "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
+    "web/x0x_installer.html": "cc08ad11b8ff58f60f1f6c2eb6b5270b504f4c91",
+    "web/x0x_breaks.html": "84a8fd8879383297113794bc3e849a0b833af676",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "cddeab7ed223efdccf5451dd0accccebf7f70454",
     "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
@@ -636,6 +636,20 @@
       "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/57",
       "description": "EC027: cap ProjectMidiLink receive buffering at 64 frames and 65536 wire bytes before copying; overflow closes with a sticky error, rejects pending or already-delivered acknowledgments and prevents retries or follow-on project commands; preserve valid FIFO and EC025 close/reconnect guards",
       "resultBlob": "4e8da9de38e8d4502da61a8c8ada405894860bd8"
+    },
+    {
+      "path": "web/x0x_breaks.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "3735b1e41a6673675f9cb796b6ac7307308a4f6f",
+      "resultBlob": "84a8fd8879383297113794bc3e849a0b833af676",
+      "description": "Route existing help link to its maintained GitHub manual section instead of a nonexistent local-stub fragment; labels and runtime behavior unchanged"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "3735b1e41a6673675f9cb796b6ac7307308a4f6f",
+      "resultBlob": "cc08ad11b8ff58f60f1f6c2eb6b5270b504f4c91",
+      "description": "Route existing help link to its maintained GitHub manual section instead of a nonexistent local-stub fragment; labels and runtime behavior unchanged"
     }
   ]
 }
