@@ -1259,6 +1259,8 @@ class ProjectDevice {
       const deadline = this.now() + timeout;
       while (this.now() < deadline) {
         const p = await this.link.read(Math.max(1, deadline - this.now()));
+        // A receive burst may poison the link after resolving this read.
+        if (this.link.rxError) throw this.link.rxError;
         if (!p) break;
         if (p.length < 6 || p[0] !== 0xF0 || p.at(-1) !== 0xF7 || p[1] !== 0x7D || p[2] !== 0x46 || p[3] !== 0x4C || p[4] !== cmd) continue;
         const r = Array.from(p).slice(5, -1);
@@ -1576,32 +1578,48 @@ async function applyRecoveryImport(device, file, originalLayout, progress) {
 class ProjectMidiLink {
   constructor(input, output) {
     this.input = input; this.output = output; this.queue = []; this.pending = null; this.closed = false;
+    this.rxBytes = 0; this.rxError = null;
     this.listener = (event) => {
       if (!this.connected()) return;
       const d = event.data;
       if (d.length < 6 || d[0] !== 0xF0 || d.at(-1) !== 0xF7 || d[1] !== 0x7D || d[2] !== 0x46 || d[3] !== 0x4C) return;
+      // Bound frame size and aggregate wire bytes before copying. Never drop
+      // replies and then continue a project transaction on the same link.
+      if (this.queue.length >= 64 || d.length > 65536 - this.rxBytes) {
+        this.rxError = fail("MIDI receive overflow. Reconnect before continuing.", "overflow");
+        this.close();
+        return;
+      }
       if (this.pending) { const p = this.pending; this.pending = null; clearTimeout(p.timer); p.resolve(Array.from(event.data)); }
-      else { if (this.queue.length === 64) this.queue.shift(); this.queue.push(Array.from(event.data)); }
+      else { this.queue.push(Array.from(d)); this.rxBytes += d.length; }
     };
     input.addEventListener("midimessage", this.listener);
   }
   connected() { return !this.closed && this.input.state !== "disconnected" && this.output.state !== "disconnected"; }
-  drain() { this.queue.length = 0; }
-  send(frame) { try { if (!this.connected()) return false; this.output.send(frame); return true; } catch { return false; } }
+  drain() { this.queue.length = 0; this.rxBytes = 0; }
+  send(frame) {
+    if (this.rxError) throw this.rxError;
+    try { if (!this.connected()) return false; this.output.send(frame); return true; } catch { return false; }
+  }
   read(ms) {
+    if (this.rxError) return Promise.reject(this.rxError);
     if (!this.connected()) return Promise.resolve(null);
-    if (this.queue.length) return Promise.resolve(this.queue.shift());
-    return new Promise((resolve) => {
+    if (this.queue.length) { const frame = this.queue.shift(); this.rxBytes -= frame.length; return Promise.resolve(frame); }
+    return new Promise((resolve, reject) => {
       const timer = setTimeout(() => { this.pending = null; resolve(null); }, ms);
-      this.pending = { resolve, timer };
+      this.pending = { resolve, reject, timer };
     });
   }
   close() {
     if (this.closed) return;
     this.closed = true;
     this.input.removeEventListener("midimessage", this.listener);
-    if (this.pending) { clearTimeout(this.pending.timer); this.pending.resolve(null); this.pending = null; }
-    this.queue.length = 0;
+    if (this.pending) {
+      clearTimeout(this.pending.timer);
+      if (this.rxError) this.pending.reject(this.rxError); else this.pending.resolve(null);
+      this.pending = null;
+    }
+    this.drain();
   }
 }
 

@@ -10,8 +10,8 @@
     "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "bb5f1a4fbd45942f82c82289f81d745a7e99df13",
-    "web/x0x_projects.js": "b68f5bf50c5ca21f211412e758e240df7c3ebce7",
-    "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
+    "web/x0x_projects.js": "4e8da9de38e8d4502da61a8c8ada405894860bd8",
+    "web/test_projects.mjs": "ba80d2eef457bae5e9f55fe53c23c7bd78eec380",
     "web/test_projects_page.mjs": "5bf61b8b234be05dbbcffac7a14c787ae129f8f0",
     "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62",
     "web/test_midi_port_pairing.mjs": "a9bc22c45bae94262e244e0a49f97994656458f5"
@@ -627,6 +627,15 @@
       "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/55",
       "description": "EC025: latch ProjectMidiLink closure and refuse send/read/listener delivery on closed or disconnected links; retain valid live retry policy and require a fresh link after closure",
       "resultBlob": "b68f5bf50c5ca21f211412e758e240df7c3ebce7"
+    },
+    {
+      "path": "web/x0x_projects.js",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "eb21335dd040fe358694f79c0427f8310986919b",
+      "regressionCommit": "fa7392d6c9846871982cd6a430123e47d21660c5",
+      "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/57",
+      "description": "EC027: cap ProjectMidiLink receive buffering at 64 frames and 65536 wire bytes before copying; overflow closes with a sticky error, rejects pending or already-delivered acknowledgments and prevents retries or follow-on project commands; preserve valid FIFO and EC025 close/reconnect guards",
+      "resultBlob": "4e8da9de38e8d4502da61a8c8ada405894860bd8"
     }
   ]
 }
