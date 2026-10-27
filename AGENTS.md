@@ -10,7 +10,13 @@
 - **Production main is hardware proven.** No production firmware/installer behavior merge or selectable production package without exact affected-model owner-operated physical device PASS on the same firmware/controller hashes, complete automatic/backup/recovery checks, independent review and separate explicit production approval. Production `gobbajogger/X0X37-for-Loopy-Pro` `main` and `gh-pages` are separate; nightly approval is not production approval. Documentation-only production maintenance uses its applicable tests and may not introduce unproven behavior.
 - Preserve the single firmware integrator, independent QA, build owner, catalog owner, NIGHTLY PR merger and sole NIGHTLY Pages publisher. Never force-push, flash hardware, declare stable, bypass a security-denied Git operation or publish private vendor assets. Verify each remote SHA and distinguish branch, merged main, Pages git deployment and live HTTP bytes.
 
-For detailed gates read `docs/nightly-first-development-gate.md` at the relevant branch and the latest owner instructions.
+For detailed gates and continuation rules read `docs/nightly-first-development-gate.md` at the current target branch and the latest owner instructions. That maintained document governs current work; dated proposals, old PR dependencies and evidence snapshots record history and do not create new approval waits.
+
+## Automatic continuation and parallel work
+
+Reports accompany delivered work. After each verified stage, continue the next authorized action without waiting for an owner reply. Reuse standing action-specific authority and unchanged exact-input evidence. Run ready independent source, review, build and documentation work in parallel within actual executor capacity, using disjoint owned work areas and isolated branches. Keep dependent integration and shared-ref writes serialized under their assigned sole owner.
+
+A failed check, unavailable executor or actual tool denial blocks its affected action. Record the exact blocker, an accountable recovery owner and next action; continue unaffected authorized work. Unknown writer scope blocks new overlapping claims while accepted owners continue safe work or read-only ownership reconciliation. A report, queue entry or producer handoff is not consumer acceptance: verify the current input, named owner, durable handoff and the consumer's first substantive action. A bounded run checkpoints unfinished work and its continuation; it must not mark the task complete or disable itself merely because it produced a report. Source pushed, PR merged, Pages deployed, HTTP verified and device tested are separate outcomes.
 
 ## Public development context
 
