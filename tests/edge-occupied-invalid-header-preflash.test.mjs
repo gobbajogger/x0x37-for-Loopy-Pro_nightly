@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC-20261027-015: an occupied slot whose header disappears while being read
 // must not become a valid "empty" pre-OTA backup. Only synthetic MIDI is used.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
@@ -72,6 +73,7 @@ test('fail closed: occupied SMP_INFO with invalid read header never proceeds to 
     bind() {},
     async install(_image, product) { installs++; return product; },
   };
+  withInstallSnapshot(link, updater);
   // A package without a slot-map/loader is conservatively treated as writing
   // existing sample sectors, so a complete backup is mandatory first.
   await assert.rejects(

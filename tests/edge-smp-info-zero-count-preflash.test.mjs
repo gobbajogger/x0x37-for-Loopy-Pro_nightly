@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC-20261026-013: zero-slot SMP_INFO must not silently bypass a mandatory
 // preflash sample backup. This is source-only; no hardware or firmware write.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseInfo, installKeepingSlots } from '../web/x0x_breaks.js';
@@ -22,6 +23,7 @@ async function simulateInstall(info) {
     bind() {},
     async install() { events.push('OTA_STARTED'); return 'SMK-37 Pro_901'; },
   };
+  withInstallSnapshot(link, updater);
   let result = null, error = null;
   try {
     result = await installKeepingSlots(updater, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {

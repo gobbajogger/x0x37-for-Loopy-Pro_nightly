@@ -253,7 +253,7 @@ export class Updater {
   }
 
   // full install: running firmware -> loader -> new firmware
-  async install(image, product, onStep) {
+  async install(image, product, onStep, start = null) {
     const step = onStep || (() => {});
     const dev = await this.find((id) => !IS_OTA(id));
     if (!dev) throw fail("notfound", "FM-1 not found (USB cable, and no other app using it?)");
@@ -261,8 +261,15 @@ export class Updater {
     if (!sameKeyboard(dev.id.model, model)) { dev.link.close(); throw fail("model", `the device is ${dev.id.text}, the package is for ${product}`); }
     this.bind(dev);
     this.product = product;
+    // A snapshot COMMIT both checks freshness and enters OTA on the device.
+    // Do not send a second legacy UPGRADE, and do not drain queued OTA reads
+    // after the exact acknowledgement. A rejected/uncertain COMMIT is not retried.
+    if (start) {
+      try { await start(dev); }
+      catch (e) { dev.link.close(); throw e; }
+    }
     step("start", dev.id.text);
-    dev.link.send(UPGRADE);
+    if (!start) dev.link.send(UPGRADE);
     await sleep(2000);
     const s1 = await this.serve(dev.link, image, 0xE0000000, 8000, (n) => step("verify", n));
     dev.link.close();

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC020: malformed extension tails must not become legacy preservation maps.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseInfo, installKeepingSlots } from '../web/x0x_breaks.js';
@@ -61,6 +62,7 @@ test('malformed metadata closes the preflash link before backup/sample commands 
         async find() { return { link, id: { model: 'SMK-37 Pro', version } }; },
         bind() {}, async install() { events.push('OTA'); },
       };
+      withInstallSnapshot(link, up);
       await assert.rejects(installKeepingSlots(up, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
         save() { events.push('save'); return true; },
         progress() { events.push('progress'); },
