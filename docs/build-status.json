@@ -4216,6 +4216,103 @@
         "pro": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb"
       },
       "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"
+    },
+    {
+      "id": "nightly-pages-wbl1-0e77d923-dev-git-observation-20261027",
+      "title": "WBL1 Elite/Pro NIGHTLY DEV listing, device not tested",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_commit": "0e77d923dfee44a9b64a98c121fac55200b91f20",
+      "source_tree": "2b4c32cf531dd3402cc33895e9dbc66ad1aebace",
+      "date": "2026-10-27",
+      "status": "validation-evidence-only",
+      "models": [
+        "elite",
+        "pro"
+      ],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "exact_remote_native_build": false,
+      "artifact_distribution_approved": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_package_sha256": {
+        "elite": "afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725",
+        "pro": "d05bf2afb76039a2f74d6053afcb228495bb4d90fd87b5404d8bb90ce4dc26b4"
+      },
+      "reported_controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "reported_checks": {
+        "origin": "Website gh-pages Git c70a66d5a38c4397d3c93774c407f11cb8336acb / versions.json blob c7503b19c19de6c92892bdf8b3716d8801ef5262; firmware source Git commit/tree independently fetched; package bytes not fetched by Catalog.",
+        "command": null,
+        "result": "Git lists 9 DEV versions, latest nightly-0e77d923-dev with Elite/Pro bundled controller and DEVICE NOT TESTED. Upstream software checks are attributed; current package/host/physical qualification NOT RUN by Catalog."
+      },
+      "description": "Expected owner benefit: WBL1 MIDI Start/Continue/Stop transport remains responsive when the queue is full, and correct-model DEV candidates are clearly labeled. Current Pages Git metadata proves a listing, not measured musical/device behavior.",
+      "missing_gate": "Existing independent Website QA and sole Pages publisher must authenticate source/build closure, actual immutable model/controller bytes, CRC/budgets, backup/readback/restore/OTA/interruption and rights/notices/corresponding source, plus served HTTPS matching; hardware remains untested.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/0e77d923dfee44a9b64a98c121fac55200b91f20",
+      "evidence_commit": "c70a66d5a38c4397d3c93774c407f11cb8336acb",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/blob/c70a66d5a38c4397d3c93774c407f11cb8336acb/versions.json",
+      "source_identity_note": "Current Pages Git has nine DEV listings; original two Catalog historical build generations are distinct. WBL1 source commit/tree Git checked; no local package rehash or live HTTPS receipt from Catalog."
+    },
+    {
+      "id": "nightly-pages-ec015-occupied-slot-guard-source-20261027",
+      "title": "EC015 Pages Git guard refuses occupied sample slots with invalid headers",
+      "source_repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "source_ref": "gh-pages",
+      "source_commit": "c70a66d5a38c4397d3c93774c407f11cb8336acb",
+      "source_tree": "89f5f2405cabfc91e26753ad7761673355b51ae5",
+      "date": "2026-10-27",
+      "status": "validation-evidence-only",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "exact_remote_native_build": false,
+      "artifact_distribution_approved": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Pages Git commit c70a66d5a38c4397d3c93774c407f11cb8336acb changes installed/project/breaks HTML source; native and live HTTPS independent tests unrun.",
+        "command": null,
+        "result": "SCOPED SOURCE: nonempty slot with invalid header now throws instead of counting as absent. This is Pages Git inspection, NOT complete headless browser or device preservation PASS."
+      },
+      "description": "Intended musician effect: if a used sample-slot header is corrupt, installation or sample transfer should stop rather than silently skip material requiring preservation. Actual hardware behavior unmeasured.",
+      "missing_gate": "Existing installer/Independent Website QA owners must run current browser real-path malformed occupied-header, backup/restore/interruption/model negatives; sole Pages publisher must verify served HTML and package bytes. No hardware PASS.",
+      "url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/commit/c70a66d5a38c4397d3c93774c407f11cb8336acb",
+      "evidence_commit": "c70a66d5a38c4397d3c93774c407f11cb8336acb",
+      "evidence_url": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/commit/c70a66d5a38c4397d3c93774c407f11cb8336acb",
+      "source_identity_note": "Pages Git commit c70a66d5a38c4397d3c93774c407f11cb8336acb changes breaks/index.html, install/index.html and projects/index.html; read-only status is distinct from selectable Pages versions."
+    },
+    {
+      "id": "firmware-pr646-break-generator-host-errors-feature-merged-20261027",
+      "title": "BREAK generator output failures fail closed in PR638 draft stack",
+      "source_repo": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro",
+      "source_ref": "PR638 feature branch",
+      "source_commit": "55f631b2e9f64a8cafb01dbcbb22c83df0c05176",
+      "source_tree": "c7052b3f3474aead818b5e435b54da25de4d4c4e",
+      "date": "2026-10-27",
+      "status": "validation-evidence-only",
+      "models": [],
+      "firmware_product_version": null,
+      "build_id": null,
+      "installable": false,
+      "device_verified": false,
+      "exact_remote_native_build": false,
+      "artifact_distribution_approved": false,
+      "artifact_bytes_independently_verified": false,
+      "build_target_tests_independently_reexecuted": false,
+      "reported_checks": {
+        "origin": "Queue current-delivery 7ac6ef25e1e54b7c3715e6ad0c6876ee4b32879f blob ed7a3f63b3bf1ab7576eaad1b561fa535a1c7c66; PR646 exact source/tree and independent Sol round-1 review.",
+        "command": null,
+        "result": "Independent focused 6 tests, 10 export-error subcases, output byte parity and real wrapper sentinel preservation reportedly PASS. PR646 merged into DRAFT PR638 feature source only; Pro package SKIP, firmware/hardware NOT RUN."
+      },
+      "description": "Intended benefit: BREAK export should report errors when a WAV/header/ADPCM/manifest stream or close operation fails, instead of claiming completed export. Successful output bytes preserved in reported regression tests.",
+      "missing_gate": "PR638 remains draft, not firmware nightly/main. Existing feature owner, Independent QA and sole integrator must qualify combined source and affected model build if applicable. No new firmware package/public download.",
+      "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/646",
+      "evidence_commit": "55f631b2e9f64a8cafb01dbcbb22c83df0c05176",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/55f631b2e9f64a8cafb01dbcbb22c83df0c05176",
+      "source_identity_note": "PR646 tree c7052b3f3474aead818b5e435b54da25de4d4c4e normally merged into PR638 draft feature at a9681fc331de30dcdb278f26e602db71cc385c1d; no firmware NIGHTLY/main merge, device or publication acceptance."
     }
   ],
   "policy": {
@@ -4226,7 +4323,7 @@
   },
   "counts": {
     "actual_build_generations": 2,
-    "source_or_historical_checkpoints": 145
+    "source_or_historical_checkpoints": 148
   },
   "versioning": {
     "firmware_product_version": {

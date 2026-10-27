@@ -587,6 +587,18 @@
     {
       "id": "nightly-f05-pages-git-bf002-device-not-tested-20261025",
       "sha256": "f35dbd6113e8058e5346b93e4c7bc5b4c1a0877094ae7a17fec86c45c1a82a8a"
+    },
+    {
+      "id": "nightly-pages-wbl1-0e77d923-dev-git-observation-20261027",
+      "sha256": "67258e6d6234f84440495efe8aba6732688c232b8e2cc50a41c97ed867d26288"
+    },
+    {
+      "id": "nightly-pages-ec015-occupied-slot-guard-source-20261027",
+      "sha256": "5f2ff4452fec0ee84f24a90ba82bc81d75ea713c540f1a6c8d48cfec6a7aaac4"
+    },
+    {
+      "id": "firmware-pr646-break-generator-host-errors-feature-merged-20261027",
+      "sha256": "af63b9b13f572517230dc88f900a8f61b6acd183a6b8ebef8aad9cb5086b5c18"
     }
   ]
 }
