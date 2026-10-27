@@ -881,7 +881,7 @@ for(let n=0;n<4;n++){
 // R47 F05: evidence-only history must reject deletions, forged source and false download/device/rights grants.
 const r47SafeIds=["firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025","nightly-f05-pages-git-bf002-device-not-tested-20261025"];
 const r47Mutate=(n,fn)=>edit(j=>{const i=143+n,r=j.history[i];assert.equal(r.id,r47SafeIds[n]);fn(r,j);});
-run('r47-source-history-PASS',edit(j=>{assert.equal(j.history.length,145);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);assert.equal(j.builds.length,2);assert.equal(j.installable,false);for(let n=0;n<2;n++){const r=j.history[143+n];assert.equal(r.id,r47SafeIds[n]);for(const k of ['installable','device_verified','artifact_distribution_approved'])assert.equal(r[k],false);}}),true);
+run('r47-source-history-PASS',edit(j=>{assert.ok(j.history.length>=145, 'R47 sealed prefix survives later append-only rows');assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);assert.equal(j.builds.length,2);assert.equal(j.installable,false);for(let n=0;n<2;n++){const r=j.history[143+n];assert.equal(r.id,r47SafeIds[n]);for(const k of ['installable','device_verified','artifact_distribution_approved'])assert.equal(r[k],false);}}),true);
 for(let n=0;n<2;n++){
  run('r47-remove-'+n+'-REJECT',r47Mutate(n,(r,j)=>{j.history.splice(143+n,1);j.counts.source_or_historical_checkpoints--;}));
  run('r47-false-install-'+n+'-REJECT',r47Mutate(n,r=>r.installable=true));
