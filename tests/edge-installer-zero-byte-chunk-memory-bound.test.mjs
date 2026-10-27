@@ -51,7 +51,7 @@ let production = pinnedSource;
 let mode = 'exact pinned production excerpt';
 if (existsSync(sourcePath)) {
   const html = readFileSync(sourcePath, 'utf8');
-  const match = html.match(/async function readApprovedPackage\\([^]*?\\n}(?=\\s*async function loadSelectedPackage)/);
+  const match = html.match(/async function readApprovedPackage\([^]*?\n}(?=\s*async function loadSelectedPackage)/);
   assert.ok(match, 'production bounded reader must be available for checkout regression');
   production = match[0];
   mode = 'live repository production body';
@@ -63,7 +63,7 @@ class CountedBytes extends Uint8Array {
   set(source, offset) { CountedBytes.setCalls++; return super.set(source, offset); }
 }
 // Compile the genuine source function. No stubbed implementation of the function under test.
-const readApprovedPackage = new Function('Uint8Array', `${production}\\nreturn readApprovedPackage;`)(CountedBytes);
+const readApprovedPackage = new Function('Uint8Array', `${production}\nreturn readApprovedPackage;`)(CountedBytes);
 function mockResponse(zeroChunks) {
   let n = 0;
   let cancelled = false;
