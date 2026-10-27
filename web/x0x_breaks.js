@@ -775,7 +775,8 @@ export async function restoreMapped(link, todo, images, onPart) {
   const after = await readSlotLayout(link);
   for (const { k, j } of todo) {
     const got = await readSlotImage(link, j, after.slots[j].nz, undefined, slotSize(after, j));
-    if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]))
+    if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]) ||
+        !got.every((byte, i) => byte === images[k][i]))
       throw new Error(`slot ${j + 1}: read back differs from the backup of slot ${k + 1}`);
   }
 }
