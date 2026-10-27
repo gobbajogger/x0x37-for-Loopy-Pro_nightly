@@ -518,12 +518,16 @@ test("MIDI adapter ignores normal playing traffic and bounds idle SysEx bufferin
   const link = new ProjectMidiLink(input, { state: "connected", send() {} });
   for (let i = 0; i < 100; i++) listener({ data: [0x90, 60, 100] });
   assert.equal(link.queue.length, 0);
-  for (let i = 0; i < 100; i++) listener({ data: frame(9, [OP.QUERY, 0]) });
+  for (let i = 0; i < 64; i++) listener({ data: frame(9, [OP.QUERY, 0]) });
   assert.equal(link.queue.length, 64); link.drain();
   const waiting = link.read(100);
   listener({ data: [0xF8] }); assert.notEqual(link.pending, null);
   listener({ data: frame(9, [OP.ABORT, 0]) }); assert.deepEqual(await waiting, frame(9, [OP.ABORT, 0]));
-  link.close(); assert.equal(listener, null);
+  for (let i = 0; i < 65; i++) listener({ data: frame(9, [OP.QUERY, 0]) });
+  assert.equal(link.closed, true); assert.equal(listener, null);
+  assert.equal(link.queue.length, 0); assert.equal(link.rxBytes, 0);
+  await assert.rejects(link.read(100), e => e.code === "overflow");
+  link.close();
 });
 
 // Actual C project_capture_stage/project_file_header export, not a forged JS header.
