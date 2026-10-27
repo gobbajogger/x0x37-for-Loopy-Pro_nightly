@@ -2,6 +2,7 @@
 // Actual shipping Updater.install/write/resume and installKeepingSlots bodies.
 // Only discovery/serve/MIDI-link boundaries are mocked; no physical-unit claim.
 import { makePackage } from './fixtures/bundled-synthetic.mjs';
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import { logicalImage } from '../web/fm1pkg.js';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -10,7 +11,7 @@ const source = path => readFileSync(new URL('../'+path, import.meta.url), 'utf8'
 const otaContext = { setTimeout(fn) { fn(); return 0; }, clearTimeout() {}, TextEncoder };
 new Script(source('web/fm1ota.js')+'\nthis.api={Updater,sameKeyboard,pack7};').runInNewContext(otaContext);
 const { Updater, sameKeyboard, pack7 } = otaContext.api;
-const slotsContext = { TextEncoder, TextDecoder };
+const slotsContext = { TextEncoder, TextDecoder, crypto };
 new Script(source('web/x0x_breaks.js')+'\nthis.api={installKeepingSlots,crc32,userSlotRaw};').runInNewContext(slotsContext);
 const { installKeepingSlots } = slotsContext.api;
 let cases = 0, failed = 0;
@@ -117,6 +118,7 @@ for(const [name,text,mode,code] of [
   const up=new Updater(accessFor(dev),()=>{});
   up.find=async filter=>{assert.ok(filter(dev.id));return dev;};
   up.install=async()=>{installs++;return product;};
+  if (['short-reply','zero-count','backup-error','empty'].includes(mode)) withInstallSnapshot(dev.link, up);
   const result=installKeepingSlots(up,image,product,product.startsWith('FM-1')?'fm1':'smk',{sameKeyboard});
   if(code) {await assert.rejects(result,e=>e.code===code);assert.equal(installs,0,'no installer entry after unknown layout/failed backup');}
   else {assert.equal((await result).product,product);assert.equal(installs,1);}
@@ -213,9 +215,10 @@ for(const mode of ['positive','name-change','extra-port','archive-error','readba
  const io={layout:async link=>{if(link===dev.link)return oldLayout;postReads++;return newLayout();},
   backup:async()=>{events.push('backup');const img=sample.slice();if(mode==='archive-error')img[512]^=1;return{layout:oldLayout,images:[img]};},
   write:async()=>{writes++;events.push('restore');},read:async()=>{const img=sample.slice();if(mode==='readback-mismatch')img[512]^=1;return img;}};
- const context={TextEncoder,TextDecoder,io};new Script(source('web/x0x_breaks.js')+'\nreadSlotLayout=io.layout;backupSlots=io.backup;writeSlotImage=io.write;readSlotImage=io.read;this.run=installKeepingSlots;').runInNewContext(context);
+ const context={TextEncoder,TextDecoder,crypto,io};new Script(source('web/x0x_breaks.js')+'\nreadSlotLayout=io.layout;backupSlots=io.backup;writeSlotImage=io.write;readSlotImage=io.read;this.run=installKeepingSlots;').runInNewContext(context);
  up.find=async()=>dev;up.install=async()=>{assert.equal(saved,true,'verified archive saved before install');installs++;events.push('install');up.targetName=back.name;up.verified=true;portFor(up.access,back);if(mode==='name-change')up.access.inputs.set('in',{name:'SMK changed',state:'connected'});if(mode==='extra-port')up.access.inputs.set('extra',{name:'SMK extra',state:'connected'});return 'SMK-37 Pro_900';};
  up.waitFor=async()=>back;
+ withInstallSnapshot(dev.link, up);
  const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');return true; /* simulated retained backup */}});
  if(mode==='positive'){await result;assert.equal(installs,1);assert.equal(writes,1);assert.ok(postReads>0);assert.deepEqual(events,['backup','save','install','restore']);}
  else{await assert.rejects(result);if(mode==='archive-error'){assert.equal(installs,0);assert.equal(saved,false);}else if(mode==='readback-mismatch'){assert.equal(installs,1);assert.equal(writes,1);}else{assert.equal(installs,1);assert.equal(postReads,0);assert.equal(writes,0);}}

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC021: actual per-slot capacities bound backup and post-restore readback.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -147,6 +148,7 @@ test('oversized occupied backup aborts installer before save, progress, sample w
     async find() { return { link, id: { model: 'SMK-37 Pro', version: 900 } }; },
     bind() {}, async install() { events.push('OTA'); },
   };
+  withInstallSnapshot(link, up);
   await assert.rejects(installKeepingSlots(up, new Uint8Array(80), 'SMK-37 Pro_901', 'smk', {
     save() { events.push('save'); return true; }, progress() { events.push('progress'); },
   }), error => error.code === 'slotbackup' && capacityError.test(error.message));

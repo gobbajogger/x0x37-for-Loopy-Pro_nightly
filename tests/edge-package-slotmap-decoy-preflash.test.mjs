@@ -2,6 +2,7 @@
 // EC-20261027-016: preflash safety must ignore forged slot maps in package padding.
 // Source baseline: NIGHTLY main 08aed72e1b96db73dea08edca09c83ba22880e9c
 // Tested production module blob: dedd45cdd942bba2bb4e03e33603b6d8069242e2
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { packageSlotMap, atRisk, crc32, flashMap, parseInfo, installKeepingSlots }
@@ -69,6 +70,7 @@ async function preflight(image, empty = false) {
     bind() {},
     async install() { otaCalls++; return 'SMK-37 Pro_901'; }
   };
+  withInstallSnapshot(link, up);
   let errorCode = null;
   try {
     await installKeepingSlots(up, image, 'SMK-37 Pro_901', 'smk',

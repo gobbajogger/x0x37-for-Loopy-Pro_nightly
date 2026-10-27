@@ -933,6 +933,78 @@ function archiveStamp(t = new Date()) {
   return { created, name: `x0x-slots-before-install-${created.replace(/[-:]/g, "").replace("T", "-")}.x0xslots` };
 }
 
+const SNAPSHOT_COMMAND = 48, SNAPSHOT_TOKEN_SIZE = 16;
+const snapshotFail = (message) => Object.assign(new Error(message), { code: "slotbackup" });
+
+// Only an exact, read-only INFO capability permits a new command. Old X0X,
+// stock and other custom firmware must not receive an unknown write command.
+async function hasInstallSnapshot(link) {
+  let info;
+  try { info = await slotReq(link, 1, [], 1000, 1); }
+  catch (e) {
+    if (/did not answer \(slot command 1\)/.test(e.message)) return false;
+    throw e;
+  }
+  const z = info.indexOf(0);
+  if (z < 0 || !/^X0X [\x20-\x7e]{1,20}$/.test(String.fromCharCode(...info.slice(0, z)))) return false;
+  return info.length === z + 12 && info.slice(z + 7).every((b, k) => b === [0x58, 0x53, 0x47, 1, SNAPSHOT_COMMAND][k]);
+}
+
+// One request, never an authorization retry. Responses from another operation,
+// token or ticket cannot authorize this backup. Leave later queued OTA reads
+// untouched when returning the matching ACK.
+async function snapshotRequest(link, op, token, ticket = null) {
+  if (link.lost) throw snapshotFail("The USB connection was lost. Start a new install attempt.");
+  const encoded = ticket === null ? [] : Array.from({ length: 4 }, (_, k) => (ticket >>> (7 * k)) & 127);
+  link.drain();
+  if (!link.send([...ED, SNAPSHOT_COMMAND, op, ...token, ...encoded, 0xF7]))
+    throw snapshotFail("The USB connection was lost; no snapshot authorization was retried.");
+  const end = Date.now() + 3000;
+  while (Date.now() < end) {
+    const p = await link.read(end - Date.now());
+    if (!p) break;
+    if (p.length < 6 || p[0] !== 0xF0 || p.at(-1) !== 0xF7 ||
+        p[1] !== ED[1] || p[2] !== ED[2] || p[3] !== ED[3] || p[4] !== SNAPSHOT_COMMAND) continue;
+    const r = Array.from(p).slice(5, -1);
+    if (r[0] !== op) continue;
+    if (r.length !== 22 || r.some(b => !Number.isInteger(b) || b < 0 || b > 127) || r[1] > 5)
+      throw snapshotFail("The keyboard returned a malformed sample-snapshot acknowledgement.");
+    if (!token.every((b, k) => r[k + 2] === b)) continue;
+    const got = r.slice(18).reduce((n, b, k) => n + b * 2 ** (7 * k), 0);
+    if (ticket !== null && got !== ticket) continue;
+    if (r[1]) throw snapshotFail(r[1] === 4 ?
+      "The samples changed after this backup began. No update was started. Make and retain a fresh backup before retrying." :
+      "The sample snapshot is unavailable, busy or expired. No update was started. Finish other transfers and start a new install attempt.");
+    if (!got) throw snapshotFail("The keyboard returned an invalid sample-snapshot ticket.");
+    if (link.lost) throw snapshotFail("The USB connection was lost. The authorization was not retried.");
+    return got;
+  }
+  throw snapshotFail("The keyboard did not acknowledge the sample snapshot. The authorization was not retried.");
+}
+
+async function beginInstallSnapshot(link) {
+  if (!globalThis.crypto?.getRandomValues)
+    throw snapshotFail("Secure random tokens are unavailable. Use a supported secure browser; no update was started.");
+  const token = new Uint8Array(SNAPSHOT_TOKEN_SIZE);
+  do { crypto.getRandomValues(token); token.forEach((b, k) => { token[k] = b & 127; }); }
+  while (token.every(b => b === 0));
+  const ticket = await snapshotRequest(link, 1, token);
+  return { token, ticket, consumed: false };
+}
+
+async function commitInstallSnapshot(link, snapshot) {
+  if (snapshot.consumed) throw snapshotFail("This sample snapshot has already been consumed. Start a new install attempt.");
+  snapshot.consumed = true; // A lost reply may follow device admission. Never replay it.
+  await snapshotRequest(link, 3, snapshot.token, snapshot.ticket);
+}
+
+async function cancelInstallSnapshot(link, snapshot) {
+  if (!snapshot || snapshot.consumed) return;
+  snapshot.consumed = true;
+  try { await snapshotRequest(link, 2, snapshot.token, snapshot.ticket); }
+  catch (_) { /* A passive watch holds no audio, UI or storage; preserve the original error. */ }
+}
+
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
 // hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
@@ -944,12 +1016,21 @@ function archiveStamp(t = new Date()) {
 async function installKeepingSlots(up, image, product, board, hooks) {
   const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
-  let move = null;
+  let move = null, snapshot = null;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
-  if (dev && !h.sameKeyboard(dev.id.model, product.split("_")[0])) dev.link.close();   // install() refuses it
-  else if (dev) {
+  if (!dev) throw fail("notfound", "No running keyboard was found for sample preflight; no update was started.");
+  if (!h.sameKeyboard(dev.id.model, product.split("_")[0])) {
+    dev.link.close();
+    throw fail("model", "The keyboard does not match this package; no update was started.");
+  }
+  {
     up.bind(dev);
     try {
+      // Arm before FIRST layout/occupancy/risk reads, including empty slots.
+      // Otherwise empty-to-occupied and in-progress-import races escape backup.
+      try {
+        if (await hasInstallSnapshot(dev.link)) snapshot = await beginInstallSnapshot(dev.link);
+      } catch (e) { throw fail("slotbackup", `The sample snapshot could not be established (${e.message}). No update was started.`); }
       let layout;
       try { layout = await readSlotLayout(dev.link, 1000, 2); }
       catch (e) {
@@ -957,6 +1038,8 @@ async function installKeepingSlots(up, image, product, board, hooks) {
         if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
         else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
       }
+      if (layout && !snapshot)
+        throw fail("slotbackup", "This firmware cannot atomically protect the sample backup through update entry. No update was started. A separately verified preservation path is required for this older firmware.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
@@ -980,9 +1063,13 @@ async function installKeepingSlots(up, image, product, board, hooks) {
             layout: saved.layout, images: saved.images, name: st.name, todo: [], skipped: [] };
         }
       }
+    } catch (e) {
+      await cancelInstallSnapshot(dev.link, snapshot);
+      throw e;
     } finally { dev.link.close(); }
   }
-  const ran = await up.install(image, product, h.step);
+  const ran = await up.install(image, product, h.step,
+    snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot) : null);
   if (!move || !move.newMap.length) return { product: ran, move };
   h.say("slotback");
   const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);

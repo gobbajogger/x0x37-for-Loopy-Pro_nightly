@@ -6,6 +6,7 @@
 //   node --test tests/edge-backup-snapshot-stale-before-ota.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import { userSlotRaw, pack78, readArchive, installKeepingSlots } from '../web/x0x_breaks.js';
 
 const PREFIX = [0xF0, 0x7D, 0x46, 0x4C];
@@ -55,6 +56,7 @@ async function simulate({ mutateDuringConfirmation = false } = {}) {
       return 'SMK-37 Pro_901';
     },
   };
+  state.snapshot = withInstallSnapshot(link, updater);
   let result = null, error = null;
   try { result = await installKeepingSlots(updater, new Uint8Array(64),
     'SMK-37 Pro_901', 'smk', {
@@ -68,6 +70,7 @@ async function simulate({ mutateDuringConfirmation = false } = {}) {
           // External sample transfer changes real bytes but leaves SMP_INFO:
           // same slot number, occupied count, used KiB, name and capacity.
           state.current = replacement;
+          state.snapshot.changed(); // Firmware observes the external sample mutation.
           state.events.push('SAMPLE_CHANGED_WHILE_USER_CONFIRMED_BACKUP');
         }
         // The browser user confirms they retained the old recovery archive.
@@ -98,4 +101,5 @@ test('negative: new sample bytes after backup confirmation require fail-closed p
   assert.notDeepEqual(state.backup, state.current, 'same SMP_INFO does not prove bytes stayed unchanged');
   assert.equal(state.events.includes('OTA_START'), false,
     'FAIL_BEFORE_FIX: do not start irreversible OTA when the saved backup is stale');
+  assert.equal(state.snapshot.commits, 0);
 });
