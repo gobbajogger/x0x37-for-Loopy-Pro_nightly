@@ -39,19 +39,77 @@ test('control: valid 44.1 kHz mono WAV stays bounded and prepares normally', () 
   assert.equal(output.adpcm.length, 64);
 });
 
-test('EC046: 1 Hz WAV must not expand far beyond a physical BREAK slot', () => {
-  // 76-byte mono WAV, accepted by readWav. A 1-Hz 16-frame clip expands to
-  // 661,501 samples (~330,751 ADPCM bytes) without an up-front output cap,
-  // although SLOT_MAX_DATA is much smaller. Current production FAILS this test.
-  const wav = pcm16Wav(1, 16);
+// Negative acceptance must be EARLY, not a late RangeError that happens to
+// contain "length" or "memory". Monitor the actual import invocation for
+// resampling pushes and oversized typed-array allocations, and fail closed if
+// either starts before an intentional slot-capacity decision.
+function expectEarlyCapacityRejection(rate) {
+  const wav = pcm16Wav(rate, 16);
   const audio = readWav(wav);
   assert.equal(wav.length, 76);
-  assert.equal(audio.rate, 1);
+  assert.equal(audio.rate, rate);
   assert.equal(audio.x.length, 16);
-  assert.ok(SLOT_MAX_DATA < 330751);
-  assert.throws(
-    () => prepareLoopImport(audio.x, audio.rate, { bars: false, trim: false }),
-    /sample rate|capacity|size|too large|memory|length|limit|unsupported|too long/i,
-    'Reject an impossible per-loop output size before allocating the upsampled float and ADPCM arrays'
+
+  const originalPush = Array.prototype.push;
+  const originalArrays = new Map(
+    ['Float32Array', 'Int16Array', 'Uint8Array'].map((key) => [key, globalThis[key]])
   );
+  let resamplePushes = 0;
+  let oversizedArrays = 0;
+  let failure;
+  try {
+    Array.prototype.push = function (...items) {
+      if (items.length && items.every((value) => typeof value === 'number')) {
+        resamplePushes++;
+        throw new Error('EC046_TEST_TRAP_RESAMPLE_STARTED');
+      }
+      return Reflect.apply(originalPush, this, items);
+    };
+    for (const [key, NativeArray] of originalArrays) {
+      globalThis[key] = new Proxy(NativeArray, {
+        construct(target, args) {
+          if (typeof args[0] === 'number' && args[0] > 4096) {
+            oversizedArrays++;
+            throw new Error('EC046_TEST_TRAP_LARGE_ALLOCATION');
+          }
+          return Reflect.construct(target, args);
+        },
+      });
+    }
+    try {
+      prepareLoopImport(audio.x, audio.rate, { bars: false, trim: false });
+    } catch (error) {
+      failure = error;
+    }
+  } finally {
+    Array.prototype.push = originalPush;
+    for (const [key, NativeArray] of originalArrays) globalThis[key] = NativeArray;
+  }
+
+  assert.ok(failure, rate + ' Hz must be rejected before expanding beyond BREAK slot capacity');
+  assert.equal(resamplePushes, 0, 'No resampling work may start before capacity rejection');
+  assert.equal(oversizedArrays, 0, 'No oversized typed-array allocation may start before rejection');
+  const intentionalCapacityFailure = failure?.code === 'BREAK_SLOT_CAPACITY' ||
+    /\b(?:BREAK slot|slot capacity|capacity exceeded|exceeds? (?:the )?(?:slot|capacity)|loop too long)\b/i.test(String(failure?.message));
+  assert.ok(intentionalCapacityFailure,
+    'Expected deliberate slot-capacity error, not generic/late failure: ' + failure?.message);
+}
+
+test('control: legal low positive rate fitting slot stays available', () => {
+  // 16 frames at 8 Hz generate 82,688 stored samples, about 41,344 ADPCM
+  // bytes, well below SLOT_MAX_DATA. A blanket minimum-rate ban is not a fix.
+  const audio = readWav(pcm16Wav(8, 16));
+  const output = prepareLoopImport(audio.x, audio.rate, { bars: false, trim: false });
+  assert.equal(output.n, 82688);
+  assert.ok(output.adpcm.length < SLOT_MAX_DATA);
+});
+
+test('EC046: 4 Hz WAV just above slot capacity must reject before resampling', () => {
+  // 16 frames at 4 Hz generate ~82,688 ADPCM bytes, exceeding 81,408.
+  expectEarlyCapacityRejection(4);
+});
+
+test('EC046: 1 Hz WAV must reject before huge allocation or resampling', () => {
+  // The 76-byte WAV otherwise expands to 661,501 stored samples.
+  expectEarlyCapacityRejection(1);
 });
