@@ -571,8 +571,9 @@ async function applyRecoveryImport(device, file, originalLayout, progress) {
 // Minimal Web MIDI adapter. Device methods above also run against the host-test mock.
 export class ProjectMidiLink {
   constructor(input, output) {
-    this.input = input; this.output = output; this.queue = []; this.pending = null;
+    this.input = input; this.output = output; this.queue = []; this.pending = null; this.closed = false;
     this.listener = (event) => {
+      if (!this.connected()) return;
       const d = event.data;
       if (d.length < 6 || d[0] !== 0xF0 || d.at(-1) !== 0xF7 || d[1] !== 0x7D || d[2] !== 0x46 || d[3] !== 0x4C) return;
       if (this.pending) { const p = this.pending; this.pending = null; clearTimeout(p.timer); p.resolve(Array.from(event.data)); }
@@ -580,9 +581,11 @@ export class ProjectMidiLink {
     };
     input.addEventListener("midimessage", this.listener);
   }
+  connected() { return !this.closed && this.input.state !== "disconnected" && this.output.state !== "disconnected"; }
   drain() { this.queue.length = 0; }
-  send(frame) { try { if (this.output.state === "disconnected") return false; this.output.send(frame); return true; } catch { return false; } }
+  send(frame) { try { if (!this.connected()) return false; this.output.send(frame); return true; } catch { return false; } }
   read(ms) {
+    if (!this.connected()) return Promise.resolve(null);
     if (this.queue.length) return Promise.resolve(this.queue.shift());
     return new Promise((resolve) => {
       const timer = setTimeout(() => { this.pending = null; resolve(null); }, ms);
@@ -590,6 +593,8 @@ export class ProjectMidiLink {
     });
   }
   close() {
+    if (this.closed) return;
+    this.closed = true;
     this.input.removeEventListener("midimessage", this.listener);
     if (this.pending) { clearTimeout(this.pending.timer); this.pending.resolve(null); this.pending = null; }
     this.queue.length = 0;
