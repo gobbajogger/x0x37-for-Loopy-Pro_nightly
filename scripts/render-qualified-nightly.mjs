@@ -48,12 +48,27 @@ function denied(record) {
     (record.lifecycle !== undefined && record.lifecycle !== 'current');
 }
 
+// Exact firmware release_alloc / firmware_build_labels codec; catalog IDs remain labels.
+function nightlyProductIdentity(product) {
+  if (typeof product !== "string") return null;
+  const m = /^(SMK-37 Pro|SMK-37 Elite)_(900|9([0-9]{2})([0-9]{2})([0-9]{2}))$/.exec(product);
+  if (!m || m[0] !== product) return null;
+  return { model: m[1] === "SMK-37 Pro" ? "pro" : "elite",
+    version: m[2] === "900" ? null : m.slice(3).map(Number).join(".") };
+}
+function versionMetadataMatches(record, identity) {
+  if (!record || !identity) return false;
+  const version = identity.version, display = version === null ? null : `${version}_openbeta`;
+  return (!Object.hasOwn(record, "firmware_version") || record.firmware_version === version) &&
+    (!Object.hasOwn(record, "release_display") || record.release_display === display);
+}
+
 // Only the documented public catalog schema may reach public candidate files.
 const catalogKeys = ['schema', 'repo', 'pages', 'latest', 'versions', 'history'];
-const versionKeys = ['version', 'label', 'status', 'config', 'hardware_tested', 'source_commit', 'source_tree',
+const versionKeys = ['version', 'firmware_version', 'release_display', 'label', 'status', 'config', 'hardware_tested', 'source_commit', 'source_tree',
   'models', 'title', 'description', 'built_at', 'evidence_url', 'lifecycle', 'revoked', 'blocked', 'withdrawn',
   ...approvalKeys, 'fromRelease', 'device_verified'];
-const packageKeys = ['product', 'sha256', 'size', 'controller_sha256', 'controller_strategy', 'controller_size', 'pkg', 'status', 'lifecycle',
+const packageKeys = ['product', 'firmware_version', 'release_display', 'sha256', 'size', 'controller_sha256', 'controller_strategy', 'controller_size', 'pkg', 'status', 'lifecycle',
   'revoked', 'blocked', 'withdrawn', ...approvalKeys, 'fromRelease', 'device_verified', 'hardware_tested'];
 const record = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 function checkInputFields(catalog, qualification, need) {
@@ -84,7 +99,7 @@ function checkInputFields(catalog, qualification, need) {
       !record(qualification.packages)) { need(false, 'qualification/packages: object required'); return; }
   for (const [digest, r] of Object.entries(qualification.packages)) {
     need(hex64(digest), 'qualification/packages: SHA-256 key required');
-    if (!fields(r, ['source_commit', 'source_tree', 'size', 'product', 'url', 'integration', 'controller',
+    if (!fields(r, ['source_commit', 'source_tree', 'size', 'product', 'firmware_version', 'release_display', 'url', 'integration', 'controller',
       'budgets', 'gates', 'corresponding_source', 'notices'], 'receipt')) continue;
     fields(r.integration, ['ref', 'commit', 'tree', 'evidence_url'], 'integration');
     fields(r.controller, ['strategy', 'sha256', 'size'], 'controller');
@@ -136,14 +151,17 @@ export function validateCatalog(catalog, qualification, fingerprint = installerF
     need(models.length > 0, `${tag}: no models`);
     for (const [key, p] of models) {
       need(!denied(p) && (p?.status === undefined || p.status === 'dev-checked'), `${tag}/${key}: model revoked/unqualified`);
-      const name = { elite: 'SMK-37 Elite', pro: 'SMK-37 Pro' }[key];
+      const identity = nightlyProductIdentity(p?.product);
       const where = `${tag}/${key}`;
-      need(!!name && p?.product === `${name}_900`, `${where}: wrong DEV package/model identity`);
+      need(identity?.model === key, `${where}: wrong DEV package/model identity`);
+      need(versionMetadataMatches(v, identity) && versionMetadataMatches(p, identity),
+        `${where}: firmware version/display contradicts package identity`);
       need(hex64(p?.sha256), `${where}: SHA-256 required`);
       need(Number.isSafeInteger(p?.size) && p.size > 960 && p.size <= 2 * 1024 * 1024, `${where}: invalid size`);
       need(httpsUrl(p?.pkg) && new URL(p.pkg).pathname.includes(p.sha256), `${where}: immutable HTTPS digest-addressed package required`);
       need(p?.fromRelease !== true, `${where}: unreviewed Release import prohibited`);
       const r = qualification?.packages?.[p?.sha256];
+      need(versionMetadataMatches(r, identity), `${where}: receipt firmware version/display contradicts package identity`);
       need(r?.source_commit === v?.source_commit && r?.source_tree === v?.source_tree,
         `${where}: qualification must match exact source commit/tree`);
       need(r?.product === p?.product && r?.size === p?.size && r?.url === p?.pkg,

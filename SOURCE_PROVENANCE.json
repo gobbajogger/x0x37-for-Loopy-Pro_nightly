@@ -3,7 +3,7 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "aeb0ae959a40a10e274c28186db8305fd9305478",
+    "web/x0x_installer.html": "ba6f0c17952677420f75ad2c6ea57f5eb5b5e552",
     "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "cddeab7ed223efdccf5451dd0accccebf7f70454",
@@ -581,6 +581,32 @@
       "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/53",
       "description": "EC023: retain pending-link identity across await, recheck disconnected ports and ignore invalidated connection success/error; preserve workspace/recovery and project transaction guards",
       "resultBlob": "abf7cba575c50ba680a122c59ad66bfc8bf81209"
+    },
+    {
+      "path": "web/x0x_installer.html",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "85976ecaed11317de73718589693e034061447a8",
+      "sourceFiles": [
+        "tools/firmware_build_labels.py",
+        "tools/release_alloc.py",
+        "tools/package_nightly.py"
+      ],
+      "sourceBaseCommit": "30e54656b97ccfdab45dbe4d903d65465f500596",
+      "description": "Accept exact numeric Pro/Elite 9XXYYZZ codec and require supplied version/display metadata to agree; keep catalog ID semantics, optional metadata, legacy unversioned identities and all existing admission/integrity gates",
+      "resultBlob": "ba6f0c17952677420f75ad2c6ea57f5eb5b5e552"
+    },
+    {
+      "path": "scripts/render-qualified-nightly.mjs",
+      "sourceRepository": "gobbajogger/X0X37-for-Loopy-Pro",
+      "sourceCommit": "85976ecaed11317de73718589693e034061447a8",
+      "sourceFiles": [
+        "tools/firmware_build_labels.py",
+        "tools/release_alloc.py",
+        "tools/package_nightly.py"
+      ],
+      "sourceBaseCommit": "30e54656b97ccfdab45dbe4d903d65465f500596",
+      "description": "Accept exact numeric Pro/Elite 9XXYYZZ codec and require supplied version/display metadata to agree; keep catalog ID semantics, optional metadata, legacy unversioned identities and all existing admission/integrity gates",
+      "resultBlob": "732ee5ae061395cc27fff37af893e92270c12952"
     }
   ]
 }
