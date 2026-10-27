@@ -12,7 +12,7 @@ const script = html.match(/<script type="module">([\s\S]*?)<\/script>/)[1].repla
 
 function environment() {
   const ids = {}, downloads = [], calls = [], blobs = new Map(), confirmations = [];
-  const state = { identity: "X0X browser-test", invalidFile: false, failImport: false, consent: true, recovery: false, unsupported: false, exportWait: null };
+  const state = { identity: "X0X browser-test", invalidFile: false, failImport: false, consent: true, recovery: false, unsupported: false, exportWait: null, connectWait: null };
   function element(tag = "div") {
     const e = { tag, textContent: "", className: "", children: [], value: "", disabled: false, hidden: false,
       checked: false, files: [], attributes: {}, classList: { toggle() {} },
@@ -47,7 +47,7 @@ function environment() {
   class ProjectDevice {
     projectLength = 100;
     mode = 0;
-    async connect() { calls.push("connect"); if (state.unsupported) throw new Error("This X0X firmware does not provide the supported project protocol."); if (!state.identity.startsWith("X0X ")) throw new Error("This MIDI port is not running X0X."); this.mode = state.recovery ? 3 : 0; return { identity: state.identity, recovery: state.recovery }; }
+    async connect() { calls.push("connect"); if (state.connectWait) await state.connectWait; if (state.unsupported) throw new Error("This X0X firmware does not provide the supported project protocol."); if (!state.identity.startsWith("X0X ")) throw new Error("This MIDI port is not running X0X."); this.mode = state.recovery ? 3 : 0; return { identity: state.identity, recovery: state.recovery }; }
     async save() { calls.push("save"); }
     async load(c) { assert.equal(c, true); calls.push("load"); }
     async reset(c) { assert.equal(c, true); calls.push("reset"); }
@@ -223,4 +223,58 @@ test("empty chooser cancellation keeps checked file, preview and saved-backup co
   assert.equal(e.ids["file-info"].textContent, info);
   assert.equal(e.ids.preview.hidden, false); assert.equal(e.ids.import.disabled, false);
   assert.equal(e.ids["backup-saved"].checked, true);
+});
+
+
+for (const port of ["input", "output"]) for (const result of ["resolve", "reject"]) {
+  test(`pending connect ${result} after ${port} disconnect cannot revive actions or overwrite disconnect status`, async () => {
+    const e = environment(); let resolve, reject;
+    e.state.connectWait = new Promise((a, b) => { resolve = a; reject = b; });
+    const finding = e.ids.find.onclick(); await new Promise(setImmediate);
+    assert.equal(e.calls.filter(c => c === "connect").length, 1);
+    e[port].state = "disconnected"; e.midi.onstatechange();
+    const status = e.ids.status.textContent;
+    if (result === "resolve") resolve(); else reject(new Error("late identity timeout"));
+    await finding;
+    for (const id of ["save", "load", "reset", "export", "prepare", "import"]) assert.equal(e.ids[id].disabled, true);
+    assert.equal(e.ids.identity.textContent, "Disconnected"); assert.equal(e.ids.status.textContent, status);
+    assert.equal(e.calls.filter(c => c === "close").length, 1);
+    assert.equal(e.calls.some(c => ["save", "load", "reset", "snapshot", "prepare"].includes(c) || c.import), false);
+  });
+}
+
+test("final port-state check refuses connect when disconnect event has not arrived", async () => {
+  const e = environment(); let finish;
+  e.state.connectWait = new Promise(resolve => { finish = resolve; });
+  const finding = e.ids.find.onclick(); await new Promise(setImmediate);
+  e.output.state = "disconnected"; finish(); await finding;
+  assert.equal(e.ids.identity.textContent, "Disconnected"); assert.equal(e.ids.save.disabled, true);
+  assert.equal(e.calls.filter(c => c === "close").length, 1);
+});
+
+test("replug does not revive old pending connect; an explicit fresh retry remains usable", async () => {
+  const e = environment(); let finish;
+  e.state.connectWait = new Promise(resolve => { finish = resolve; });
+  const finding = e.ids.find.onclick(); await new Promise(setImmediate);
+  e.input.state = "disconnected"; e.midi.onstatechange();
+  e.input.state = "connected"; e.midi.onstatechange(); finish(); await finding;
+  assert.equal(e.ids.identity.textContent, "Disconnected"); assert.equal(e.ids.reset.disabled, true);
+  e.state.connectWait = null; await e.click("find");
+  assert.equal(e.ids.identity.textContent, "X0X browser-test"); assert.equal(e.ids.save.disabled, false);
+  assert.equal(e.calls.filter(c => c === "connect").length, 2);
+  assert.equal(e.calls.filter(c => c === "close").length, 1);
+});
+
+test("live delayed recovery connection preserves busy exclusion and recovery mutation hold", async () => {
+  const e = environment(); let finish; e.state.recovery = true;
+  e.state.connectWait = new Promise(resolve => { finish = resolve; });
+  const finding = e.ids.find.onclick(); await new Promise(setImmediate);
+  await e.ids.connect.onclick();
+  assert.equal(e.window.projectWorkspace.activate(false), false);
+  assert.equal(e.window.projectWorkspace.invalidate(), false);
+  finish(); await finding;
+  assert.equal(e.calls.filter(c => c === "connect").length, 1);
+  assert.equal(e.ids.identity.textContent, "X0X browser-test"); assert.match(e.ids.status.textContent, /holding audio and controls/);
+  for (const id of ["save", "load", "reset", "export"]) assert.equal(e.ids[id].disabled, true);
+  assert.equal(e.calls.includes("close"), false);
 });

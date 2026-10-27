@@ -1647,24 +1647,32 @@ async function connectSelected() {
   device = null; clearPreview(); $("identity").textContent = "Not connected";
   const input = midi.inputs.get($("midi-input").value), output = midi.outputs.get($("midi-output").value);
   if (!input || !output) throw new Error("Choose the keyboard’s MIDI input and output ports.");
-  link = new ProjectMidiLink(input, output);
-  const next = new ProjectDevice(link);
+  const pendingLink = link = new ProjectMidiLink(input, output);
+  const next = new ProjectDevice(pendingLink);
   try {
-    const info = await next.connect(); device = next; $("identity").textContent = info.identity;
+    const info = await next.connect();
+    invalidateDisconnectedLink();
+    if (link !== pendingLink) return; // A disconnect invalidates this completion, even after replug.
+    device = next; $("identity").textContent = info.identity;
     say(info.recovery ? `Connected to ${info.identity}. The keyboard is holding audio and controls after an interrupted sample transfer. Choose a portable recovery backup, then prepare recovery.` :
       `Connected to ${info.identity}. Ready for projects.`);
-  } catch (e) { link.close(); link = null; $("identity").textContent = "Projects unavailable on this connection"; throw e; }
+  } catch (e) {
+    invalidateDisconnectedLink();
+    if (link !== pendingLink) return;
+    pendingLink.close(); link = null; $("identity").textContent = "Projects unavailable on this connection"; throw e;
+  }
+}
+function invalidateDisconnectedLink() {
+  if (link && (link.input.state === "disconnected" || link.output.state === "disconnected")) {
+    link.close(); link = null; device = null; previewStale = !!prepared;
+    $("identity").textContent = "Disconnected";
+    say("USB disconnected. Reconnect and prepare a new preview before importing. Keep any recovery backup.", true); controls();
+  }
 }
 $("find").onclick = () => run("Finding USB MIDI ports…", async () => {
   if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable in this browser. Open this page in Chrome or Edge over HTTPS or localhost.");
   midi = await navigator.requestMIDIAccess({ sysex: true });
-  midi.onstatechange = () => {
-    if (link && (link.input.state === "disconnected" || link.output.state === "disconnected")) {
-      link.close(); link = null; device = null; previewStale = !!prepared;
-      $("identity").textContent = "Disconnected";
-      say("USB disconnected. Reconnect and prepare a new preview before importing. Keep any recovery backup.", true); controls();
-    }
-  };
+  midi.onstatechange = invalidateDisconnectedLink;
   const inputs = [...midi.inputs.values()].filter((p) => p.state !== "disconnected"), outputs = [...midi.outputs.values()].filter((p) => p.state !== "disconnected");
   for (const [id, ports] of [["midi-input", inputs], ["midi-output", outputs]]) {
     $(id).replaceChildren();

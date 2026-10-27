@@ -9,10 +9,10 @@
     "web/fm1ota.js": "cddeab7ed223efdccf5451dd0accccebf7f70454",
     "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
-    "web/x0x_projects.html": "57f93e754d08e77b6197835c92f208c1775832a0",
+    "web/x0x_projects.html": "abf7cba575c50ba680a122c59ad66bfc8bf81209",
     "web/x0x_projects.js": "60183ccf543d95d3d8909214f22f57979d222189",
     "web/test_projects.mjs": "207ad279478f1aa718b7d44e5b01ddfb9f608dc7",
-    "web/test_projects_page.mjs": "b5eb76b18b207ea22f8af0a1b8058bdd8b6c58cf",
+    "web/test_projects_page.mjs": "5bf61b8b234be05dbbcffac7a14c787ae129f8f0",
     "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62",
     "web/test_midi_port_pairing.mjs": "a9bc22c45bae94262e244e0a49f97994656458f5"
   },
@@ -572,6 +572,15 @@
       "sourceBaseCommit": "003cf088c0c434f28341d5121a53ec66db027c15",
       "description": "Integrate canonical byte-identical _portPairs helper; retain current singlePort/cross-family guards in find. Canonical regression adapted only for method-end delimiter and registered. PR52 duplicate proof not merged.",
       "resultBlob": "cddeab7ed223efdccf5451dd0accccebf7f70454"
+    },
+    {
+      "path": "web/x0x_projects.html",
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "1ff193839a03609112870c80f0eb339584a301d2",
+      "regressionCommit": "e842ca5cc3f8b903ced484170ffcf9e246d820f7",
+      "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/53",
+      "description": "EC023: retain pending-link identity across await, recheck disconnected ports and ignore invalidated connection success/error; preserve workspace/recovery and project transaction guards",
+      "resultBlob": "abf7cba575c50ba680a122c59ad66bfc8bf81209"
     }
   ]
 }
