@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenario_id": "EC-20261028-041",
+  "date_utc": "2026-10-27T18:19:31Z",
+  "role": "LoopyX0X37 Edge-Case Hunt",
+  "necessity": "Previously uncovered multi-client SMP_CLEAR ACK slot-correlation failure; exact scoped production source unchanged; prior EC001-EC040 tests reused rather than replayed.",
+  "title": "Sample Workspace falsely accepts slot-0 successful erase ACK for requested slot-1 failed erase",
+  "severity": "MEDIUM: false destructive-operation confirmation; physical sample loss not demonstrated",
+  "likelihood": "LOW/UNKNOWN, requires concurrent WebMIDI clients and out-of-order same-command replies",
+  "preconditions": "WebMIDI shared input; Sample Workspace requested clear slot1; peer requested clear slot0; peer result arrives first",
+  "expected": "Correlate requested slot and status; foreign ACK cannot complete the pending destructive write",
+  "actual": "Wrong-slot success resolved production Link.req and writeImage before slot1 failure arrived; negative assert.rejects failed",
+  "source": {
+    "site_repository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+    "site_main": "3735b1e41a6673675f9cb796b6ac7307308a4f6f",
+    "page": "web/x0x_breaks.html",
+    "page_blob": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
+    "firmware_main": "ef0ce103f1baf11ab537121181c0bf83f016ca2b",
+    "firmware_path": "firmware/src/app/editor.c",
+    "firmware_blob": "bcf3f7329d4bc55b3ea9cfcc21d70dc4fe40f10e",
+    "production_fragment_fingerprint": {
+      "Link": {
+        "length": 1586,
+        "fnv1a32": "302ed6c3"
+      },
+      "writeImage": {
+        "length": 852,
+        "fnv1a32": "4396ce7d"
+      }
+    }
+  },
+  "steps": [
+    "Request cmd14 slot1",
+    "Inject valid success cmd14 slot0 at t=0 ms",
+    "Inject valid failed cmd14 slot1 at t=5 ms",
+    "Assert foreign ACK ignored and own failure propagated"
+  ],
+  "native": {
+    "environment": "Node.js v22.16.0, exact production functions under simulated WebMIDI",
+    "command": "node --test tests/edge-sample-workspace-wrong-slot-clear-ack.test.mjs",
+    "fixture_command": "EC041_EXCERPTS=/mnt/data/edgecase_ec041/source-excerpts.js node --test /mnt/data/edgecase_ec041/edge-sample-workspace-wrong-slot-clear-ack.test.mjs",
+    "pass": 2,
+    "expected_negative_fail": 1,
+    "exit": 1,
+    "syntax_exit": 0,
+    "locally_tested_file_sha256": "9f4c7ed7725277d57464abb614a41265b8e2698504fe78f55b6e395077fc0f90"
+  },
+  "limits": "Full-checkout execution, browser, physical hardware and independent QA not performed",
+  "regression": {
+    "draft_pr": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/76",
+    "commit": "594604f96cbcb468b0b55df1421731d08fde1a80",
+    "blob": "bf8deb246e32a3056ed6d58367a3e7b01e47b604",
+    "remote_content_readback": true
+  },
+  "owner": "Existing Sample Workspace/sample-preservation specialist PR58",
+  "handoff": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/58#issuecomment-6450133608",
+  "status": "HANDOFF_DELIVERED_PENDING_SPECIALIST_REPAIR_AND_INDEPENDENT_QA",
+  "persist": {
+    "reason": "Files Library container_session_unavailable on all three requested uploads; do not retry unchanged upload",
+    "prior_private_matrix_file_id": "libfile_1d70a958060c8191ba539cc9c799c3fe",
+    "prior_private_matrix_findings": 40,
+    "local_pending_matrix_sha256": "2ded513796dc55ac73f56826baa190e9cd3e801de8bc6a65b6bb6d6a838aac1e",
+    "checkpoint_route": "This durable isolated PR branch ledger entry preserves the EC041 delta; reconcile private matrix on supported later session, without replaying unchanged tests."
+  }
+}
