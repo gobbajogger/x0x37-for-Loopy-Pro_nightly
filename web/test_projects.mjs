@@ -551,7 +551,7 @@ test("only explicit pattern/sound revision pairs are accepted", () => {
     const raw = rawProject(), v = new DataView(raw.buffer); v.setUint32(20, patternVersion, true); v.setUint32(24, soundRevision, true);
     assert.equal(parseProject(raw).patternVersion, patternVersion); assert.equal(parseProject(raw).soundRevision, soundRevision);
   }
-  for (const [pattern, sound] of [[2, 10], [3, 5], [3, 9], [3, 11], [4, 10], [5, 10], [6, 4], [6, 9], [7, 10], [999, 999]]) {
+  for (const [pattern, sound] of [[7, 11], [2, 10], [3, 5], [3, 9], [3, 11], [4, 10], [5, 10], [6, 4], [6, 9], [7, 10], [999, 999]]) {
     const raw = rawProject(), v = new DataView(raw.buffer); v.setUint32(20, pattern, true); v.setUint32(24, sound, true);
     assert.throws(() => parseProject(raw), /incompatible/);
   }
@@ -591,4 +591,33 @@ test("current stream-3 firmware refuses endpoint stream-6 data before any sample
   assert.equal(keyboard.projectCalls(OP.VALIDATE).length, 1);
   assert.equal(keyboard.projectCalls(OP.COMMIT).length, 0); assert.equal(keyboard.sampleWrites().length, 0);
   assert.deepEqual(keyboard.project, old); assert.equal(keyboard.mode, 0);
+});
+
+function adaptiveProject(stream) {
+  const b = rawProject(7,36452), v = new DataView(b.buffer);
+  v.setUint32(20,stream,true);v.setUint32(24,11,true);
+  return b;
+}
+test("adaptive BREAK stream8/9 containers preserve bytes and strict CRC/layout", async () => {
+  for (const stream of [8,9]) {
+    const raw=adaptiveProject(stream), archived=await bundle(raw,snapshot(),false);
+    assert.equal(parseProject(raw).patternVersion,stream);
+    const {keyboard,device}=await connected({project:raw});
+    const prepared=await prepareProjectImport(device,archived);
+    await applyProjectImport(device,prepared,{confirmed:true});
+    assert.deepEqual(keyboard.project,raw);assert.equal(keyboard.sampleWrites().length,0);
+    const bad=raw.slice();bad[100]^=1;assert.throws(()=>parseProject(bad),/CRC/);
+    assert.throws(()=>parseProject(raw.slice(0,-1)),/layout/);
+  }
+});
+test("old firmware rejects new count streams before any sample replacement", async () => {
+  for (const stream of [8,9]) {
+    const raw=adaptiveProject(stream),old=raw.slice();new DataView(old.buffer).setUint32(20,6,true);
+    const {keyboard,device}=await connected({project:old});
+    const prepared=await prepareProjectImport(device,await bundle(raw,snapshot([alternate,null,third])));
+    await assert.rejects(applyProjectImport(device,prepared,{confirmed:true,backupSaved:true}),/project version/);
+    assert.equal(keyboard.projectCalls(OP.VALIDATE).length,1);
+    assert.equal(keyboard.projectCalls(OP.COMMIT).length,0);assert.equal(keyboard.sampleWrites().length,0);
+    assert.deepEqual(keyboard.project,old);assert.equal(keyboard.mode,0);
+  }
 });

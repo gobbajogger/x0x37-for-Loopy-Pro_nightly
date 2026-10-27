@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Reused from gobbajogger/X0X37-for-Loopy-Pro 08d3164a265123cb4c84e5104642fd93257d63d7, web/x0x_projects.js.
 // Selective consumer port from firmware 144f4e042bdfb2cc52ed16a1cf2a26a1148a0101.
-// NOTE_SOUND stream 7 is intentionally unsupported by this NOTE0 website contract.
+// Adaptive BREAK companion: stream8/9 are reader schemas, not firmware or feature approval.
 // X0X projects: an exact project snapshot and the original sample slot images.
 // No audio decoder, encoder, resampler or slot remapping is used by this module.
 import { crc32, pack78, unpack78, parseHeader, parseInfo, makeArchive, readArchive, slotSize } from "./x0x_breaks.js";
@@ -45,10 +45,11 @@ export function parseProject(b, expectedLength = null) {
   if (v.getUint32(0, true) !== 0x50583058) throw fail("The project header is missing.");
   const patternVersion=v.getUint32(20,true), soundRevision=v.getUint32(24,true);
   const knownSchema=(patternVersion===3 && (soundRevision===4 || soundRevision===10)) ||
-    (patternVersion===6 && (soundRevision===10 || soundRevision===11));
+    ([6,8].includes(patternVersion) && (soundRevision===10 || soundRevision===11)) ||
+    (patternVersion===9 && soundRevision===11);
   if(v.getUint32(4,true)!==1 || v.getUint32(16,true)!==1 || !knownSchema || v.getUint32(28,true)!==0)
     throw fail("This project uses an incompatible file, project, pattern or sound version.","version");
-  if(patternVersion===6 && soundRevision===11 && b.length!==36452)
+  if([6,8,9].includes(patternVersion) && soundRevision===11 && b.length!==36452)
     throw fail("This tagged project has an unsupported structural layout.","version");
   if (v.getUint32(8, true) !== b.length - PROJECT_HEADER) throw fail("The project payload length is incorrect.");
   if (expectedLength !== null && b.length !== expectedLength) throw fail("The project size does not match this firmware.", "version");
