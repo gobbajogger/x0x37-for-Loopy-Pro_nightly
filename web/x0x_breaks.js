@@ -849,6 +849,14 @@ export async function beginInstallSnapshot(link) {
 export async function commitInstallSnapshot(link, snapshot) {
   if (snapshot.consumed) throw snapshotFail("This sample snapshot has already been consumed. Start a new install attempt.");
   snapshot.consumed = true; // A lost reply may follow device admission. Never replay it.
+  if (link.lost) throw snapshotFail("The USB connection was lost. Start a new install attempt.");
+  // The Updater reacquires a link after backup. Same keyboard family is not a
+  // capability promise: a restart/reconnect may expose older or stock firmware.
+  // Recheck read-only INFO here, but never START again with this older archive.
+  let capable;
+  try { capable = await hasInstallSnapshot(link); }
+  catch (e) { throw snapshotFail(`The final sample-snapshot capability check failed (${e.message}). No update was started.`); }
+  if (!capable) throw snapshotFail("The reconnected keyboard does not support atomic sample-snapshot admission. No update was started. Start a new install attempt.");
   await snapshotRequest(link, 3, snapshot.token, snapshot.ticket);
 }
 

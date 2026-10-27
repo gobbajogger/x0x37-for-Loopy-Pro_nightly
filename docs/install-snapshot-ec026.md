@@ -61,10 +61,13 @@ volatile watch; an old COMMIT alone is rejected.
 
 Successful enqueue does not prove ACK delivery. The host sends COMMIT once and
 never retries an uncertain authorization. The actual Updater binds the selected
-device first, sends this COMMIT instead of legacy UPGRADE, and preserves later
+device first, rechecks the exact read-only INFO capability on that fresh link,
+then sends this COMMIT instead of legacy UPGRADE and preserves later
 queued OTA reads. Missing/malformed/mismatched ACK or observed link loss stops
 the browser. Existing package/model, finish-ack, loader, application readback and
-sample-restore checks remain in place.
+sample-restore checks remain in place. A same-family reconnect alone is not a
+capability promise; absent final capability never receives command 48, and the
+host never sends a new START to rearm the old archive.
 
 ## Preservation and compatibility
 

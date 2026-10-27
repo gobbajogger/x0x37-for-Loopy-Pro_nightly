@@ -38,7 +38,7 @@ function image(marker) {
   const { hdr, data } = userSlotRaw('LOOP', [{ adpcm: new Uint8Array(64).fill(marker), n: 128, rate: 44100 }], 0x14000);
   const out = new Uint8Array(512 + data.length).fill(255); out.set(hdr); out.set(data, 512); return out;
 }
-function setup({ empty = false, lateMutation = false, rejectCommit = false, legacy = false } = {}) {
+function setup({ empty = false, lateMutation = false, rejectCommit = false, legacy = false, finalCapability = null } = {}) {
   const api = runtime(), panel = confirmation();
   const original = image(0x11), replacement = image(0x33), events = [];
   let current = empty ? null : original, stage, finds = 0, backup = null;
@@ -70,8 +70,16 @@ function setup({ empty = false, lateMutation = false, rejectCommit = false, lega
   const pre = link('preflight'), final = link('final'), external = link('external');
   const watch = legacy ? null : withInstallSnapshot(pre);
   if (watch) { withInstallSnapshot(final, null, watch); withInstallSnapshot(external, null, watch); }
-  const sendFinal = final.send;
+  const sendFinal = final.send, finalFrames = [];
   final.send = frame => {
+    finalFrames.push(Array.from(frame));
+    if (frame[4] === 1 && finalCapability) {
+      const payload = finalCapability === 'legacy' ? SNAPSHOT_INFO.slice(0, -5) :
+        finalCapability === 'malformed' ? [...SNAPSHOT_INFO, 0] :
+        [...new TextEncoder().encode('OTHER firmware'), 0, ...SNAPSHOT_INFO.slice(-11)];
+      if (finalCapability !== 'missing') final.q.push([...PREFIX, 1, ...payload, 0xF7]);
+      return true;
+    }
     assert.notEqual(frame[1], 0x22, 'guarded path must not send legacy UPGRADE');
     const result = sendFinal(frame);
     if (frame[4] === 48 && frame[5] === 3 && watch.commits) {
@@ -98,7 +106,7 @@ function setup({ empty = false, lateMutation = false, rejectCommit = false, lega
     step: k => events.push('STEP:' + k),
   }).then(value => ({ value }), error => ({ error }));
   return { run, panel, events, watch, original, replacement, external, final, pre,
-    info, get current() { return current; }, get backup() { return backup; } };
+    info, finalFrames, get current() { return current; }, get backup() { return backup; } };
 }
 
 test('real confirmation + real Updater preserves queued OTA read and sends no second UPGRADE', async () => {
@@ -111,9 +119,22 @@ test('real confirmation + real Updater preserves queued OTA read and sends no se
   const r = await pending;
   assert.equal(r.error?.code, 'noloader', 'test stops only after genuine first-stage completion');
   assert.deepEqual(f.watch.operations, [1, 3]);
+  assert.deepEqual(f.finalFrames.filter(p => p[1] === 0x7D).map(p => p[4]), [1, 48]);
   assert.ok(f.events.indexOf('preflight:close') < f.events.indexOf('DEVICE_OTA_ENTRY'));
   assert.ok(f.events.includes('OTA_FINISH_ACK') && f.events.includes('LOADER_DISCOVERY'));
   assert.equal(f.events.includes('LEGACY_UPGRADE'), false);
+});
+
+for (const finalCapability of ['legacy', 'malformed', 'unrelated', 'missing'])
+test(`final ${finalCapability} responder gets read-only INFO, never the unnegotiated COMMIT`, async () => {
+  const f = setup({ finalCapability }), pending = f.run(); await tick();
+  assert.equal(f.panel.ui['backup-confirmation'].hidden, false);
+  f.panel.ui['backup-retained'].onclick(); const r = await pending;
+  assert.equal(r.error?.code, 'slotbackup');
+  assert.deepEqual(f.finalFrames.map(p => p[4]), [1]);
+  assert.deepEqual(f.watch.operations, [1], 'do not rearm or commit an older backup');
+  assert.equal(f.events.includes('DEVICE_OTA_ENTRY'), false);
+  assert.equal(f.events.includes('STEP:start'), false);
 });
 
 test('normal external BEGIN/WRITE/END during real confirmation invalidates same-shape archive', async () => {
@@ -161,7 +182,9 @@ function ackLink(edit = r => [r]) {
   return { sent, lost: false, drain() { queue.length = 0; },
     async read() { return queue.shift() || null; },
     send(p) {
-      sent.push([...p]); const op = p[5], token = p.slice(6, 22);
+      sent.push([...p]);
+      if (p[4] === 1) { queue.push([...PREFIX, 1, ...SNAPSHOT_INFO, 0xF7]); return true; }
+      const op = p[5], token = p.slice(6, 22);
       const ticket = op === 1 ? [1, 0, 0, 0] : p.slice(22, 26);
       const ack = [...PREFIX, 48, op, 0, ...token, ...ticket, 0xF7];
       queue.push(...edit(ack)); return true;
@@ -172,7 +195,8 @@ test('stray token/ticket ACKs do not replace the requested snapshot, and COMMIT 
   const snapshot = await beginInstallSnapshot(link);
   await commitInstallSnapshot(link, snapshot);
   await assert.rejects(commitInstallSnapshot(link, snapshot), /already been consumed/);
-  assert.deepEqual(link.sent.map(p => p[5]), [1, 3]);
+  assert.deepEqual(link.sent.map(p => p[4]), [48, 1, 48]);
+  assert.deepEqual(link.sent.filter(p => p[4] === 48).map(p => p[5]), [1, 3]);
 });
 for (const mode of ['missing', 'short', 'high-bit', 'zero-ticket', 'wrong-ticket', 'wrong-op', 'bad-rc'])
 test(`COMMIT ${mode} acknowledgement refuses without retry`, async () => {
@@ -192,7 +216,8 @@ test(`COMMIT ${mode} acknowledgement refuses without retry`, async () => {
   const snapshot = await beginInstallSnapshot(link);
   await assert.rejects(commitInstallSnapshot(link, snapshot), { code: 'slotbackup' });
   await assert.rejects(commitInstallSnapshot(link, snapshot), /already been consumed/);
-  assert.equal(link.sent.length, 2);
+  assert.equal(link.sent.length, 3);
+  assert.deepEqual(link.sent.map(p => p[4]), [48, 1, 48]);
 });
 test('observed disconnect rejects before sending COMMIT', async () => {
   const link = ackLink(), snapshot = await beginInstallSnapshot(link); link.lost = true;
