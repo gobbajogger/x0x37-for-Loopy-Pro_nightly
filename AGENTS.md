@@ -12,6 +12,8 @@
 
 For detailed gates and continuation rules read `docs/nightly-first-development-gate.md` at the current target branch and the latest owner instructions. That maintained document governs current work; dated proposals, old PR dependencies and evidence snapshots record history and do not create new approval waits.
 
+For recurring and queued work, resolve the live `coordination/merge-queue` ref of `gobbajogger/X0X37-for-Loopy-Pro` and read the [shared automation contract](https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/coordination/merge-queue/coordination/automation/runtime-contract.md), `coordination/automation/roles.json` and relevant request/delivery records at that same commit. New authorized work updates the existing request and acceptance data; keep each role bootstrap stable. Actual permissions, role ownership and action-specific denials still govern.
+
 ## Automatic continuation and parallel work
 
 Reports accompany delivered work. After each verified stage, continue the next authorized action without waiting for an owner reply. Reuse standing action-specific authority and unchanged exact-input evidence. Run ready independent source, review, build and documentation work in parallel within actual executor capacity, using disjoint owned work areas and isolated branches. Keep dependent integration and shared-ref writes serialized under their assigned sole owner.
