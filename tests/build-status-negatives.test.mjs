@@ -881,7 +881,7 @@ for(let n=0;n<4;n++){
 // R47 F05: evidence-only history must reject deletions, forged source and false download/device/rights grants.
 const r47SafeIds=["firmware-f05-pr198-bf002-project-quickcheck-dev-checked-20261025","nightly-f05-pages-git-bf002-device-not-tested-20261025"];
 const r47Mutate=(n,fn)=>edit(j=>{const i=143+n,r=j.history[i];assert.equal(r.id,r47SafeIds[n]);fn(r,j);});
-run('r47-source-history-PASS',edit(j=>{assert.equal(j.history.length,145);assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);assert.equal(j.builds.length,2);assert.equal(j.installable,false);for(let n=0;n<2;n++){const r=j.history[143+n];assert.equal(r.id,r47SafeIds[n]);for(const k of ['installable','device_verified','artifact_distribution_approved'])assert.equal(r[k],false);}}),true);
+run('r47-source-history-PASS',edit(j=>{assert.ok(j.history.length>=145, 'R47 sealed prefix survives later append-only rows');assert.equal(j.counts.source_or_historical_checkpoints,j.history.length);assert.equal(j.builds.length,2);assert.equal(j.installable,false);for(let n=0;n<2;n++){const r=j.history[143+n];assert.equal(r.id,r47SafeIds[n]);for(const k of ['installable','device_verified','artifact_distribution_approved'])assert.equal(r[k],false);}}),true);
 for(let n=0;n<2;n++){
  run('r47-remove-'+n+'-REJECT',r47Mutate(n,(r,j)=>{j.history.splice(143+n,1);j.counts.source_or_historical_checkpoints--;}));
  run('r47-false-install-'+n+'-REJECT',r47Mutate(n,r=>r.installable=true));
@@ -890,3 +890,22 @@ for(let n=0;n<2;n++){
  run('r47-forged-source-'+n+'-REJECT',r47Mutate(n,r=>r.source_commit='f'.repeat(40)));
  run('r47-forged-package-'+n+'-REJECT',r47Mutate(n,r=>r.reported_package_sha256.elite='f'.repeat(64)));
 }
+
+// R48 current Git development receipts must reject false download/device/rights claims.
+const r48NegativeIds=["nightly-pages-wbl1-0e77d923-dev-git-observation-20261027","nightly-pages-ec015-occupied-slot-guard-source-20261027","firmware-pr646-break-generator-host-errors-feature-merged-20261027"];
+const r48Mutate=(n,fn)=>edit(j=>{const i=145+n,r=j.history[i];assert.equal(r.id,r48NegativeIds[n]);fn(r,j);});
+run('r48-real-noninstallable-history-positive',edit(j=>{
+ assert.ok(j.history.length>=148);assert.equal(j.history.length,j.counts.source_or_historical_checkpoints);
+ assert.equal(j.builds.length,2);assert.equal(j.installable,false);
+ for(let n=0;n<3;n++){const r=j.history[145+n];assert.equal(r.id,r48NegativeIds[n]);for(const k of ['installable','device_verified','artifact_distribution_approved','artifact_bytes_independently_verified','exact_remote_native_build'])assert.equal(r[k],false);}
+}),true);
+for(let n=0;n<3;n++){
+ run('r48-row-deletion-'+n,r48Mutate(n,(r,j)=>{j.history.splice(145+n,1);j.counts.source_or_historical_checkpoints--}));
+ run('r48-forged-source-'+n,r48Mutate(n,r=>{r.source_commit='f'.repeat(40)}));
+ run('r48-false-download-'+n,r48Mutate(n,r=>{r.installable=true}));
+ run('r48-false-device-'+n,r48Mutate(n,r=>{r.device_verified=true}));
+ run('r48-false-rights-'+n,r48Mutate(n,r=>{r.artifact_distribution_approved=true}));
+}
+run('r48-WBL1-forged-Pro-package',r48Mutate(0,r=>{r.reported_package_sha256.pro='f'.repeat(64)}));
+run('r48-WBL1-forged-controller',r48Mutate(0,r=>{r.reported_controller_sha256='f'.repeat(64)}));
+run('r48-unapproved-firmware-download-HREF',r48Mutate(0,r=>{r.download_url='https://evil.invalid/unapproved.fwsc'}));

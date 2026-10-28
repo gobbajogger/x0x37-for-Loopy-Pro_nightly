@@ -373,3 +373,20 @@ for(let n=0;n<2;n++){
 }
 assert.match(original[144].reported_checks.result,/DID NOT INDEPENDENTLY FETCH SERVED HTTPS/);
 console.log('PASS R47 145 immutable historical rows; F05 source nonflashable');
+
+// R48 Git-backed developer history may never authorize an installer download.
+const r48Ids=["nightly-pages-wbl1-0e77d923-dev-git-observation-20261027","nightly-pages-ec015-occupied-slot-guard-source-20261027","firmware-pr646-break-generator-host-errors-feature-merged-20261027"];
+const r48Shas=["0e77d923dfee44a9b64a98c121fac55200b91f20","c70a66d5a38c4397d3c93774c407f11cb8336acb","55f631b2e9f64a8cafb01dbcbb22c83df0c05176"];
+assert.ok(lock.rows.length>=148,'R48 148 historical seals required');
+for(let n=0;n<3;n++){
+ const index=145+n,row=original[index];assert.equal(row.id,r48Ids[n]);assert.equal(row.source_commit,r48Shas[n]);
+ for(const key of ['installable','device_verified','artifact_distribution_approved','artifact_bytes_independently_verified','exact_remote_native_build'])assert.equal(row[key],false);
+ mustReject('R48 removed '+n,h=>h.splice(index,1));
+ mustReject('R48 source forged '+n,h=>{h[index].source_commit='f'.repeat(40)});
+ mustReject('R48 false device '+n,h=>{h[index].device_verified=true});
+ mustReject('R48 false download '+n,h=>{h[index].installable=true});
+}
+assert.equal(original[145].reported_package_sha256.pro,'d05bf2afb76039a2f74d6053afcb228495bb4d90fd87b5404d8bb90ce4dc26b4');
+mustReject('R48 WBL1 Pro hash forged',h=>{h[145].reported_package_sha256.pro='f'.repeat(64)});
+mustReject('R48 WBL1 controller hash forged',h=>{h[145].reported_controller_sha256='f'.repeat(64)});
+console.log('PASS R48: 148 immutable records and 14 corruption/false-grant negatives');
