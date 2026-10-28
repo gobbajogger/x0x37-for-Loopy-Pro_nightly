@@ -3,7 +3,7 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "ba6f0c17952677420f75ad2c6ea57f5eb5b5e552",
+    "web/x0x_installer.html": "64cb58a10d6d1d18147e38cf688952bccf76c6cf",
     "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
     "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
     "web/fm1ota.js": "cddeab7ed223efdccf5451dd0accccebf7f70454",

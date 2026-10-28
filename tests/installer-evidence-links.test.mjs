@@ -15,7 +15,7 @@ for(const value of ['javascript:alert(1)','data:text/html,bad','http://example.o
  const safe=typeof value==='string'&&value.startsWith('https://github.com/');
  const elems={};const ctx={URL,$:id=>elems[id]||=element(),catalogLive:{latest:null},catalog:{history:[{id:'source-only',url:value}]},
  versions:()=>[],availableModels:()=>[],buildBadge:()=>element(),bundledController:()=>false,hasVerifiedNightlySelection:()=>false,
- t:k=>k,updateInstallGate(){},document:{createElement:()=>element()}};
+ buildDisplayLabel:v=>v.version,nightlyProductIdentity:()=>null,t:k=>k,updateInstallGate(){},document:{createElement:()=>element()}};
  new Script(evidenceHelper+'\n'+render+'\nglobalThis.info=renderBuildInfo;globalThis.history=renderBuildHistory;').runInNewContext(ctx);
  ctx.$('buildevidence').href='https://stale.example/evidence';
  ctx.info({version:'source-only',evidence_url:value},{sha256:'a'.repeat(64)});
