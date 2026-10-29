@@ -29,14 +29,14 @@ const uint64_t config_btctler_le_features = 0; /* SMC BLE-MIDI uses an unpaired 
 int config_btctler_mode = BT_NORMAL;
 int config_btctler_hci_standard = 1;
 
-/* Two central peers share three TX credits; leave heap for both link objects. */
-const int config_btctler_le_hw_nums = 2;
+/* A: one SMC central link, five controller ACL transmit buffers. */
+const int config_btctler_le_hw_nums = 1;
 const int config_btctler_le_rx_nums = 5;
 const int config_btctler_le_acl_packet_length = 27;
-const int config_btctler_le_acl_total_nums = 3;
+const int config_btctler_le_acl_total_nums = 5;
 const int config_btctler_le_slave_conn_update_winden = 2500;
 const int config_btctler_le_afh_en = 0;
-const int config_btctler_le_master_multilink = 1;
+const int config_btctler_le_master_multilink = 0;
 const int config_btctler_le_tws = 0;
 const int config_btctler_single_carrier_en = 0;
 const uint32_t config_vendor_le_bb = 0;
