@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Reused from gobbajogger/X0X37-for-Loopy-Pro 08d3164a265123cb4c84e5104642fd93257d63d7, web/x0x_projects.js.
 // Selective consumer port from firmware 144f4e042bdfb2cc52ed16a1cf2a26a1148a0101.
-// NOTE_SOUND stream 7 is intentionally unsupported by this NOTE0 website contract.
+// Adaptive BREAK companion: stream8/9 are reader schemas, not firmware or feature approval.
 // X0X projects: an exact project snapshot and the original sample slot images.
 // No audio decoder, encoder, resampler or slot remapping is used by this module.
 import { crc32, pack78, unpack78, parseHeader, parseInfo, makeArchive, readArchive, slotSize } from "./x0x_breaks.js";
@@ -45,10 +45,11 @@ export function parseProject(b, expectedLength = null) {
   if (v.getUint32(0, true) !== 0x50583058) throw fail("The project header is missing.");
   const patternVersion=v.getUint32(20,true), soundRevision=v.getUint32(24,true);
   const knownSchema=(patternVersion===3 && (soundRevision===4 || soundRevision===10)) ||
-    (patternVersion===6 && (soundRevision===10 || soundRevision===11));
+    ([6,8].includes(patternVersion) && (soundRevision===10 || soundRevision===11)) ||
+    (patternVersion===9 && soundRevision===11);
   if(v.getUint32(4,true)!==1 || v.getUint32(16,true)!==1 || !knownSchema || v.getUint32(28,true)!==0)
     throw fail("This project uses an incompatible file, project, pattern or sound version.","version");
-  if(patternVersion===6 && soundRevision===11 && b.length!==36452)
+  if([6,8,9].includes(patternVersion) && soundRevision===11 && b.length!==36452)
     throw fail("This tagged project has an unsupported structural layout.","version");
   if (v.getUint32(8, true) !== b.length - PROJECT_HEADER) throw fail("The project payload length is incorrect.");
   if (expectedLength !== null && b.length !== expectedLength) throw fail("The project size does not match this firmware.", "version");
@@ -321,9 +322,15 @@ export class ProjectDevice {
   async exportStart() {
     await this.query();
     if (this.mode !== 0) throw fail("Finish sample recovery before exporting a project.", "recovery");
-    // BEGIN can have succeeded even when its reply is lost, so the caller must ABORT in finally.
+    // Lost BEGIN replies remain ambiguous and require cleanup. A definitive
+    // refusal grants no transfer: ABORT would terminate another client's work.
     this.active = true; this.mode = 1;
-    const r = await this.command(PROJECT_OP.EXPORT, [], { length: 5 });
+    let r;
+    try { r = await this.command(PROJECT_OP.EXPORT, [], { length: 5 }); }
+    catch (e) {
+      if (Number.isInteger(e.rc)) { this.active = false; this.mode = 0; }
+      throw e;
+    }
     if (get21(r, 2) !== this.projectLength) throw fail("The exported project size changed.", "protocol");
     const b = new Uint8Array(this.projectLength);
     for (let off = 0; off < b.length;) {
@@ -340,8 +347,13 @@ export class ProjectDevice {
     const size=await this.query(), meta=parseProject(project);
     const legacy=this.projectProtocol===2 && size-project.length===24 && meta.soundRevision===10 && [3,6].includes(meta.patternVersion);
     if(!legacy)parseProject(project,size);
+    const priorMode = this.mode, priorActive = this.active;
     this.active = true; this.mode = 2;
-    await this.command(PROJECT_OP.IMPORT, u21(project.length));
+    try { await this.command(PROJECT_OP.IMPORT, u21(project.length)); }
+    catch (e) {
+      if (Number.isInteger(e.rc)) { this.active = priorActive; this.mode = priorMode; }
+      throw e;
+    }
     for (let off = 0; off < project.length;) {
       const n = Math.min(224, project.length - off);
       await this.command(PROJECT_OP.WRITE, [...u21(off), ...pack78(project.subarray(off, off + n))],
@@ -504,6 +516,13 @@ export async function applyProjectImport(device, prepared, { confirmed = false, 
   try {
     await device.stage(file.project);
     await device.validate(); // Firmware checks semantic validity and pattern capacity before any sample mutation.
+    // IMPORT snapshots the live samples when its hold is acquired. A peer may
+    // have changed them after the read-only preview check above. Refuse before
+    // our first write so rollback never restores a stale pre-hold snapshot.
+    const held = await device.snapshotSlots(progress);
+    if (JSON.stringify(held.layout) !== JSON.stringify(fresh.layout) || held.images.length !== backup.images.length ||
+        held.images.some((img, k) => !sameBytes(img, backup.images[k])))
+      throw fail("The samples changed before the import hold was acquired. Prepare the import again.", "changed");
     for (const { k } of plan.changes) {
       touched.push(k); // Include a write whose acknowledgement is lost.
       await device.writeSlot(k, file.images[k], slotSize(fresh.layout, k), (n, all) => progress(k, n, all));
@@ -538,7 +557,7 @@ export async function applyProjectImport(device, prepared, { confirmed = false, 
     }
     throw e;
   } finally {
-    if (!succeeded) {
+    if (!succeeded && device.active) {
       try { await device.abort(); }
       catch (cleanup) { if (error) error.message += ` Transfer cleanup failed: ${cleanup.message}`; else throw cleanup; }
     }
@@ -600,10 +619,15 @@ export class ProjectMidiLink {
   read(ms) {
     if (this.rxError) return Promise.reject(this.rxError);
     if (!this.connected()) return Promise.resolve(null);
+    if (this.pending) return Promise.reject(fail("A project MIDI read is already pending.", "busy"));
     if (this.queue.length) { const frame = this.queue.shift(); this.rxBytes -= frame.length; return Promise.resolve(frame); }
     return new Promise((resolve, reject) => {
-      const timer = setTimeout(() => { this.pending = null; resolve(null); }, ms);
-      this.pending = { resolve, reject, timer };
+      const pending = { resolve, reject, timer: null };
+      pending.timer = setTimeout(() => {
+        if (this.pending !== pending) return;
+        this.pending = null; resolve(null);
+      }, ms);
+      this.pending = pending;
     });
   }
   close() {

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC-20261027-017: a finish-address request must not claim OTA transfer
-// completion when its on-wire read length is nonzero.
+// completion unless its on-wire read length is exactly eight (EC028 correction).
 // This is test-only; all firmware bytes, MIDI ports, and device replies are synthetic.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -33,15 +33,15 @@ async function runScenario(finishLength, marker = 0xf0000000, finishAddr = marke
   return { result, error, transmissions };
 }
 
-test('baseline: zero-length finish after a valid data request completes OTA stage', async () => {
-  const { result, error, transmissions } = await runScenario(0);
+test('baseline: eight-byte finish after a valid data request completes OTA stage', async () => {
+  const { result, error, transmissions } = await runScenario(8);
   assert.equal(error, null);
   assert.equal(result.served, 1);
   assert.equal(result.finished, true);
   assert.equal(transmissions.length, 2);
 });
 
-test('negative: checksummed finish request with a nonzero read length must fail closed', async () => {
+test('negative: checksummed finish request with an invalid read length must fail closed', async () => {
   const { result, error, transmissions } = await runScenario(1);
   assert.ok(error || !result?.finished,
     'FAIL_BEFORE_FIX: the OTA server treated a finish-address request for one byte as transfer completion');
@@ -50,14 +50,14 @@ test('negative: checksummed finish request with a nonzero read length must fail 
   assert.equal(transmissions.length, 1, 'must reject before acknowledging invalid finish');
 });
 
-test('both finish markers require zero length, including an unexpected stage marker', async () => {
+test('both finish markers require eight bytes, including an unexpected stage marker', async () => {
   for (const marker of [0xe0000000, 0xf0000000]) {
-    const valid = await runScenario(0, marker);
+    const valid = await runScenario(8, marker);
     assert.equal(valid.error, null);
     assert.equal(valid.result.finished, true);
     assert.equal(valid.result.served, 1);
     assert.equal(valid.transmissions.length, 2);
-    for (const length of [1, 0x100, 0x10000, 0xffffff]) {
+    for (const length of [0, 1, 7, 9, 0x100, 0x10000, 0xffffff]) {
       for (const expected of [0xe0000000, 0xf0000000]) {
         const invalid = await runScenario(length, marker, expected);
         assert.equal(invalid.error?.code, 'badreq', `${marker.toString(16)}+${length}`);

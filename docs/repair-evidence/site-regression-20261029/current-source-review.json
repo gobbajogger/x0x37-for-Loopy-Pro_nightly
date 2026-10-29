@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "request_id": "LX-REQ-012",
+  "stage": "independent_current_source_candidate_review",
+  "reviewer": "/root/site_regression_audit",
+  "reviewed_at_utc": "2026-10-29 03:20:47 UTC",
+  "verdict": "APPROVE_SCOPED_SOURCE_COMPOSITION",
+  "source_commit": "bc88a73f70b07d2dbd681443d7b65019cc9ed4af",
+  "source_tree": "cde02140d9a561fd8798ca620dbd8d8850ac8f52",
+  "pages_base": "9c7ba81a83ef9b93735795b65d4856cf93c2b5e0",
+  "candidate_manifest_sha256": "f5b9f9717167ad0c6fcdadde4545f36610032a50ef33b27e3b609fc6471f3018",
+  "installer_git_blob": "9e05d320c9f1a7de547cc9e8f30ee6d85056ceca",
+  "installer_sha256": "67b4617b7adea8f763ebc4f869840bec91c61e32f26d40a2ea3fb74660707b35",
+  "executed_checks": [
+    {
+      "check": "Source HEAD/tree and clean status",
+      "result": "PASS",
+      "independent": true
+    },
+    {
+      "check": "All six candidate manifest entries checked against file bytes, Git blob and SHA256",
+      "result": "PASS",
+      "independent": true
+    },
+    {
+      "check": "419 candidate files: 417 exact pinned-main public files; installer exact existing renderInstaller with exact published catalog; versions.json exact published blob",
+      "result": "PASS",
+      "independent": true
+    },
+    {
+      "check": "Publication delta: 10 changed existing files, 149 already-public main evidence additions, zero deleted existing files",
+      "result": "PASS",
+      "independent": true
+    },
+    {
+      "check": "Actual composed installer version labels, descending/reordered catalog and mismatched source/model/package/controller rejection",
+      "assertions": 74,
+      "result": "PASS",
+      "independent": true
+    },
+    {
+      "check": "Structural single preparation block inside firmware after install controls, same-page import link and retained-backup UI",
+      "result": "PASS",
+      "independent": true
+    },
+    {
+      "check": "All installer internal file targets resolve in candidate",
+      "result": "PASS",
+      "independent": true
+    }
+  ],
+  "reused_evidence": [
+    {
+      "check": "Exact main full npm test and build",
+      "source": "baseline-npm-test-authorized.log",
+      "execution": "root/producer",
+      "review": "log inspected; not independently rerun; root reported native authorized execution PASS"
+    },
+    {
+      "check": "Existing sample relocation design and semantics",
+      "source": "PR44, commit fbf99e1adf305e930ceb6b7dd3b2395c74f52773, SOURCE_PROVENANCE.json",
+      "review": "Reuse unchanged agreed presentation; no new production-design code"
+    }
+  ],
+  "known_remaining": [
+    {
+      "scope": "current composed desktop/mobile/browser validation",
+      "status": "PENDING",
+      "evidence": "PR44 current-reconciled body explicitly records synthetic DOM checks only and fresh integrated rendered QA pending. Historical original-head browser reports and 2026-10-25 populated-browser receipts do not prove this composed candidate.",
+      "next_action": "Validate actual pinned populated candidate with allowed supported browser execution and inspect current desktop/mobile render and task navigation."
+    },
+    {
+      "scope": "current package/controller admission",
+      "status": "UNRESOLVED_EXISTING",
+      "evidence": "Current main pkHasSlotMap still requires three slots/CRC+44; root independently observed live bundled-controller rejection. Candidate retains this guard and does not claim firmware requalification.",
+      "next_action": "Existing installer owner completes the compatible two-slot admission fix with exact package/negative proof."
+    },
+    {
+      "scope": "manual recovery fragment",
+      "status": "UNRESOLVED_EXISTING",
+      "evidence": "Inherited ../manual/#recovering-an-fm-1-that-won-t-start points at a landing page without the fragment. Existing PR59 owns repair.",
+      "next_action": "Existing PR59 owner reconciles its ready source with current main and validates navigation."
+    }
+  ],
+  "claims": {
+    "source_edited": false,
+    "candidate_edited": false,
+    "remote_writes": false,
+    "hardware_access": false,
+    "firmware_requalified": false,
+    "browser_executed_by_reviewer": false,
+    "published": false,
+    "rollout_ready": false
+  },
+  "notes": [
+    "Initial reviewer parity assertion erroneously looked for the registry under docs/. Corrected its known origin to main package-version-assignments.json; exact blob matches. No candidate defect or edit resulted.",
+    "This is candidate/source acceptance only. It does not waive actual browser validation, sole-publisher ownership or server-byte verification. Unchanged catalog bytes do not establish new installability."
+  ]
+}

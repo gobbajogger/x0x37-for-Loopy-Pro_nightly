@@ -311,6 +311,42 @@ test("export aborts interrupted reads and uncertain BEGIN without blind BEGIN re
   }
 });
 
+test("definitively rejected IMPORT does not abort the peer transfer that won after QUERY", async () => {
+  const { device, keyboard } = await connected();
+  const prepared = await prepareProjectImport(device, await bundle(rawProject(2), snapshot([alternate, null, third])));
+  const handle = keyboard.handle.bind(keyboard);
+  keyboard.handle = (cmd, args) => {
+    if (cmd === 9 && args[0] === OP.IMPORT) {
+      keyboard.mode = 2; // A second client owns IMPORT before this BEGIN arrives.
+      return [OP.IMPORT, 2];
+    }
+    return handle(cmd, args);
+  };
+  await assert.rejects(applyProjectImport(device, prepared, { confirmed: true, backupSaved: true }), error => error.rc === 2);
+  const begin = keyboard.calls.findIndex(c => c.cmd === 9 && c.args[0] === OP.IMPORT);
+  assert.ok(begin >= 0);
+  assert.equal(keyboard.calls.slice(begin + 1).length, 0, "no ABORT or sample write follows a denied BEGIN");
+  assert.equal(keyboard.mode, 2); assert.equal(device.active, false);
+  assert.deepEqual(keyboard.images, snapshot().images);
+});
+
+test("stage-time sample change is refused before the first mutation and preserves the peer bytes", async () => {
+  const { device, keyboard } = await connected();
+  const prepared = await prepareProjectImport(device, await bundle(rawProject(2), snapshot([alternate, null, third])));
+  const handle = keyboard.handle.bind(keyboard);
+  keyboard.handle = (cmd, args) => {
+    if (cmd === 9 && args[0] === OP.IMPORT) {
+      keyboard.images[0] = third.slice();
+      keyboard.flash[0].fill(255); keyboard.flash[0].set(third);
+      keyboard.sampleBaseline = keyboard.images.map(clone);
+    }
+    return handle(cmd, args);
+  };
+  await assert.rejects(applyProjectImport(device, prepared, { confirmed: true, backupSaved: true }), error => error.code === "changed");
+  assert.equal(keyboard.sampleWrites().length, 0); assert.equal(keyboard.mode, 0);
+  assert.deepEqual(keyboard.images[0], third); assert.deepEqual(keyboard.project, rawProject());
+});
+
 test("READ/WRITE replies correlate operation and offset and validate exact byte lengths", async () => {
   let injected = false;
   const { device, keyboard } = await connected({ transform: (cmd, a, r) => {
@@ -551,7 +587,7 @@ test("only explicit pattern/sound revision pairs are accepted", () => {
     const raw = rawProject(), v = new DataView(raw.buffer); v.setUint32(20, patternVersion, true); v.setUint32(24, soundRevision, true);
     assert.equal(parseProject(raw).patternVersion, patternVersion); assert.equal(parseProject(raw).soundRevision, soundRevision);
   }
-  for (const [pattern, sound] of [[2, 10], [3, 5], [3, 9], [3, 11], [4, 10], [5, 10], [6, 4], [6, 9], [7, 10], [999, 999]]) {
+  for (const [pattern, sound] of [[7, 11], [2, 10], [3, 5], [3, 9], [3, 11], [4, 10], [5, 10], [6, 4], [6, 9], [7, 10], [999, 999]]) {
     const raw = rawProject(), v = new DataView(raw.buffer); v.setUint32(20, pattern, true); v.setUint32(24, sound, true);
     assert.throws(() => parseProject(raw), /incompatible/);
   }
@@ -591,4 +627,33 @@ test("current stream-3 firmware refuses endpoint stream-6 data before any sample
   assert.equal(keyboard.projectCalls(OP.VALIDATE).length, 1);
   assert.equal(keyboard.projectCalls(OP.COMMIT).length, 0); assert.equal(keyboard.sampleWrites().length, 0);
   assert.deepEqual(keyboard.project, old); assert.equal(keyboard.mode, 0);
+});
+
+function adaptiveProject(stream) {
+  const b = rawProject(7,36452), v = new DataView(b.buffer);
+  v.setUint32(20,stream,true);v.setUint32(24,11,true);
+  return b;
+}
+test("adaptive BREAK stream8/9 containers preserve bytes and strict CRC/layout", async () => {
+  for (const stream of [8,9]) {
+    const raw=adaptiveProject(stream), archived=await bundle(raw,snapshot(),false);
+    assert.equal(parseProject(raw).patternVersion,stream);
+    const {keyboard,device}=await connected({project:raw});
+    const prepared=await prepareProjectImport(device,archived);
+    await applyProjectImport(device,prepared,{confirmed:true});
+    assert.deepEqual(keyboard.project,raw);assert.equal(keyboard.sampleWrites().length,0);
+    const bad=raw.slice();bad[100]^=1;assert.throws(()=>parseProject(bad),/CRC/);
+    assert.throws(()=>parseProject(raw.slice(0,-1)),/layout/);
+  }
+});
+test("old firmware rejects new count streams before any sample replacement", async () => {
+  for (const stream of [8,9]) {
+    const raw=adaptiveProject(stream),old=raw.slice();new DataView(old.buffer).setUint32(20,6,true);
+    const {keyboard,device}=await connected({project:old});
+    const prepared=await prepareProjectImport(device,await bundle(raw,snapshot([alternate,null,third])));
+    await assert.rejects(applyProjectImport(device,prepared,{confirmed:true,backupSaved:true}),/project version/);
+    assert.equal(keyboard.projectCalls(OP.VALIDATE).length,1);
+    assert.equal(keyboard.projectCalls(OP.COMMIT).length,0);assert.equal(keyboard.sampleWrites().length,0);
+    assert.deepEqual(keyboard.project,old);assert.equal(keyboard.mode,0);
+  }
 });

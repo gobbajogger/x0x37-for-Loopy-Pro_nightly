@@ -30,8 +30,10 @@ function environment(){
   createBufferSource(){const node={playbackRate:{value:1},connect(){},disconnect(){},stop(){},start(){played.push({buffer:this.buffer,rate:this.playbackRate.value});}};return node;}
  }
  const window={},execute=new Function('document','window','parent','location','getComputedStyle','AudioContext','writes',...Object.keys(api),script+`
- writeImage=async(k,img)=>writes.push({k,img});readAll=async()=>{};
- return { seed(items=[]){loops=items;readOk=true;lay={count:1,size:81920,slots:[{size:81920,nz:0}]};dev=[null];acceptedSettings=importSettings();render();},
+ let live=[];
+ writeImage=async(k,img)=>{writes.push({k,img});live[k]=img?{image:img.slice()}:null;};readAll=async()=>{};
+ readSlots=async()=>({lay,dev:live.map(slot=>slot?{image:slot.image.slice()}:null)});
+ return { seed(items=[]){loops=items;readOk=true;lay={count:1,size:81920,slots:[{size:81920,nz:0}]};dev=[null];live=[null];acceptedSettings=importSettings();render();},
   state:()=>({loops,busy,readOk,auditionLoop,auditionSource}),chooseAuditionFile,addFiles,recutNewLoops,playLoopPreview,stopLoopPreview,
   decodeWith(x,sr=44100){decode=async()=>({x,rate:sr});},setDecoder(fn){decode=fn;},settings(){return importSettings();},setSettings(s){restoreSettings(s);acceptedSettings=importSettings();},
   prepare:(x,settings)=>prepareImportedLoop(Array.from(x),44100,'literal <file>.wav',settings),writes};`);

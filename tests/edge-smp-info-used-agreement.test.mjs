@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC022: firmware144 editor.c:884-921 emits min(127, used) plus full 14-bit used.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseInfo, flashMap, atRisk, backupSlots, installKeepingSlots } from '../web/x0x_breaks.js';
@@ -25,7 +26,9 @@ test('producer-compatible unsaturated and saturated usage remains valid without 
 test('both directions of disagreement are refused, including saturation boundary and empty descriptors', () => {
   for (const [kb, used, nz] of [[100, 0, 1], [0, 100, 1], [126, 128, 1], [127, 126, 1],
     [100, 99, 1], [100, 101, 1], [0, 1, 0], [1, 0, 0]])
-    assert.throws(() => parseInfo(reply(used, kb, nz)), disagreement, `${kb}/${used}/${nz}`);
+    assert.throws(() => parseInfo(reply(used, kb, nz)),
+      nz === 0 && kb !== 0 ? /empty SMP_INFO slot has occupied metadata/ : disagreement,
+      `${kb}/${used}/${nz}`);
 });
 
 test('genuine legacy and empty extension replies remain valid', () => {
@@ -62,6 +65,7 @@ test('actual installer refuses contradiction before backup, sample commands or O
       async find() { return { link, id: { model: 'SMK-37 Pro', version } }; },
       bind() {}, async install() { link.events.push('OTA'); },
     };
+    withInstallSnapshot(link, up);
     await assert.rejects(installKeepingSlots(up, new Uint8Array(80), 'SMK-37 Pro_901', 'smk', {
       save() { link.events.push('save'); return true; }, progress() { link.events.push('progress'); },
     }), e => e.code === 'slotbackup' && disagreement.test(e.message));

@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-29T05:06:07.282235+00:00",
+  "scope": "Local combined website source and generated-page candidate; no firmware mutation or hardware proof",
+  "source_base": "bc88a73f70b07d2dbd681443d7b65019cc9ed4af",
+  "reviewed_prior_composition_tree": "96a3eea61c8ffb44e72bc811040f026f26b694a9",
+  "production_sources": {
+    "web/fm1ota.js": {
+      "sha256": "7251e8663e3f4de1e5d4f3d930ebea5f9a1461282e2c0b179b60987daa105136",
+      "git_blob": "192344e4ceb0bd7423ebcd6c8e7ce3e6cc465db1"
+    },
+    "web/fm1pkg.js": {
+      "sha256": "1aa017465e46c76c73233f52be0f6235fe41d471592746bb1c04c3c4bc3ec334",
+      "git_blob": "bcc28ad1b4c62000840ad256f64e6ca7b956d2b5"
+    },
+    "web/x0x_breaks.html": {
+      "sha256": "3131dfa0249077e3c54e00f6d2c08b87ec43c97f95f995a1d8a98a58009e5758",
+      "git_blob": "71d44ae5568bae2f1ee9f7c7059d2819ee0fe9c3"
+    },
+    "web/x0x_breaks.js": {
+      "sha256": "dd04ea78140de74514f5c677a62f569f6110d4f363100d3ea9259a0468bb1f70",
+      "git_blob": "ee9ab4d92c909e8ef05b4e15b9ae8c55fafb790d"
+    },
+    "web/x0x_installer.html": {
+      "sha256": "e3fc7acead7c659a53e329cde04c9dc31973e003b5327d7879353bcf1d2af186",
+      "git_blob": "c88b9f9062a43325425e53b4e970c988d6e0a501"
+    },
+    "web/x0x_projects.html": {
+      "sha256": "d939c558ad2ced89fbf6d0f3ad1179eec332dce18da073bad56cd6906e5635aa",
+      "git_blob": "f10d6fdace6c2bbf99d7918111a85664e52826c8"
+    },
+    "web/x0x_projects.js": {
+      "sha256": "b2554c02f7fe9eabfd65a2e54514e9a9167029a72e2ea0c9dca31c1ba80aceb3",
+      "git_blob": "4c5f8fafa7c1267dc6aa399a2b2e7a332ee74092"
+    }
+  },
+  "historical_evidence": "../site-regression-20261029/ retains its original stage and bytes; it is not relabeled as this combined result",
+  "validation": [
+    {
+      "phase": "npm-full-integrated",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "finished_at": "2026-10-29T04:03:16.475819+00:00",
+      "log": "npm-full-integrated.log",
+      "log_sha256": "b7ac94e01d90eb5f038be931953a9d9de99be2e0fac09b694231282d01ee24ad",
+      "scope": "reviewed initial composition; reuse unchanged scopes, with changed OTA opening covered below"
+    },
+    {
+      "phase": "open01-regression-red",
+      "command": [
+        "node",
+        "tests/edge-ota-initial-open-lifecycle.test.mjs"
+      ],
+      "status": "FAIL",
+      "exit_code": 1,
+      "finished_at": "2026-10-29T05:04:00.731957+00:00",
+      "log": "open01-regression-red.log",
+      "log_sha256": "e270c7890444621e0ff6cb9151353861d7af821ca1b5a8636d5cd1e2148ff6e1",
+      "scope": "OPEN-01 actual-source affected scope"
+    },
+    {
+      "phase": "open01-regression-green",
+      "command": [
+        "node",
+        "tests/edge-ota-initial-open-lifecycle.test.mjs"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "finished_at": "2026-10-29T05:04:20.840674+00:00",
+      "log": "open01-regression-green.log",
+      "log_sha256": "fd78451527fa4d037e5851df159876acbdaa21f4e45202ccb0ba212833d9f00e",
+      "scope": "OPEN-01 actual-source affected scope"
+    },
+    {
+      "phase": "open01-affected",
+      "command": [
+        "node",
+        "--test",
+        "--test-concurrency=1",
+        "tests/edge-ota-initial-open-lifecycle.test.mjs",
+        "tests/edge-ota-session-continuity.test.mjs",
+        "tests/edge-ota-concurrent-scan-stale-close.test.mjs",
+        "tests/edge-ota-identity-frame-integrity.test.mjs",
+        "tests/edge-ota-identity-envelope.test.mjs",
+        "tests/edge-ota-resume-caller-completion.test.mjs",
+        "tests/installer-write-boundaries.test.mjs",
+        "web/test_midi_port_pairing.mjs",
+        "tests/edge-pages-source-parity.test.mjs",
+        "tests/nightly-preview.test.mjs",
+        "tests/installer-scan-order.test.mjs"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "finished_at": "2026-10-29T05:04:54.633760+00:00",
+      "log": "open01-affected.log",
+      "log_sha256": "f1e62d54d356544bed4181dc46ec3ef2ec340c746ee8086c8fdaae29a4c4acb0",
+      "scope": "OPEN-01 actual-source affected scope"
+    }
+  ],
+  "OPEN-01": {
+    "status": "CORRECTED",
+    "change": "Consume initial closed-to-open MIDI events before session binding, recheck exact port pair, retain all later/coalesced lifecycle invalidation. Existing Projects openProjectPort pattern reused.",
+    "regression": "tests/edge-ota-initial-open-lifecycle.test.mjs",
+    "before": {
+      "pass": 4,
+      "fail": 4
+    },
+    "after": {
+      "pass": 8,
+      "fail": 0
+    },
+    "affected_run": {
+      "pass": 74,
+      "fail": 0
+    },
+    "independent_counterexample_recheck": {
+      "pass": 3,
+      "fail": 0,
+      "scope": "actual source methods and simulated WebMIDI event ordering; no device flash"
+    }
+  },
+  "residuals": [
+    {
+      "id": "EC035",
+      "status": "INHERITED_RESIDUAL_NOT_CLOSED",
+      "path": "web/x0x_breaks.html",
+      "sha256": "3131dfa0249077e3c54e00f6d2c08b87ec43c97f95f995a1d8a98a58009e5758",
+      "description": "The fresh sample-slot reread detects changes visible before capture but is not an atomic client-bound write lease. A peer mutation after the final captured read can still be overwritten by Send. This website integration does not claim that race fixed and does not change firmware protocol or disable normal Send."
+    }
+  ],
+  "retained_catalog": {
+    "git_blob": "c7503b19c19de6c92892bdf8b3716d8801ef5262",
+    "sha256": "1862395fa364e185393bfe579928e5461fda5d0f01d2c7f45bd2472e0fc18ebc",
+    "bytes": 20071,
+    "versions": 9,
+    "unchanged": true
+  },
+  "delivery_checks": {
+    "package_command": "npm run verify:pages -- --candidate DIRECTORY --retained-catalog FILE",
+    "required_before_gh_pages": "exact-source candidate parity and retained catalog",
+    "required_after_gh_pages": "actual HTTPS-served bytes compared with candidate hashes",
+    "served_http_state": "not verified by this local producer"
+  }
+}

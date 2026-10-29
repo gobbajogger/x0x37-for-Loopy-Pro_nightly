@@ -15,11 +15,14 @@ function runtime() {
   new Script(source.replace(/^export\s+/gm, '') + '\nthis.api={Updater,pack7,unpack7};').runInNewContext(context);
   return context.api;
 }
-function fixture(api, { outcome = 'matching', failAck = false, loaderModel = 'ota-SMK-37 Pro', extraLoader = false } = {}) {
+function fixture(api, { outcome = 'matching', failAck = false, loaderModel = 'ota-SMK-37 Elite', extraLoader = false, replacePorts = false } = {}) {
   const { pack7, unpack7 } = api;
   const state = { upgrades: 0, dataReplies: 0, finishAcks: 0, appResponses: 0, loaderResponses: 0,
     returnedInputs: [], loader: null };
-  const access = { inputs: new Map(), outputs: new Map() };
+  const listeners = new Set();
+  const access = { inputs: new Map(), outputs: new Map(),
+    addEventListener(type, listener) { assert.equal(type, 'statechange'); listeners.add(listener); },
+    removeEventListener(type, listener) { assert.equal(type, 'statechange'); listeners.delete(listener); } };
   function frameIdentity(text) {
     const d = new Uint8Array(34); d[1] = 0x59; d[2] = 0x11; d[3] = 27;
     [...text].forEach((c, i) => { d[6 + i] = c.charCodeAt(0); });
@@ -43,19 +46,25 @@ function fixture(api, { outcome = 'matching', failAck = false, loaderModel = 'ot
       }
       if (pkt[1] === 0x22) {
         assert.equal(loader, true); state.upgrades++;
-        emit(request(0, 8)); emit(request(0xf0000000, 0)); return;
+        emit(request(0, 8)); emit(request(0xf0000000, 8)); return;
       }
       const d = unpack7(pkt.slice(1,-1)), addr = (d[7]|d[8]<<8|d[9]<<16|d[10]<<24)>>>0;
       if (addr !== 0xf0000000) { state.dataReplies++; return; }
       state.finishAcks++;
       if (failAck) throw Error('synthetic lost ACK while ports still report connected');
-      input.state = output.state = 'disconnected'; access.inputs.clear(); access.outputs.clear();
-      if (outcome === 'absent') return;
-      const text = outcome === 'loader' ? 'ota-SMK-37 Pro_900' : outcome === 'wrong-marker' ? 'SMK-37 Elite_899' :
+      const text = outcome === 'loader' ? 'ota-SMK-37 Elite_900' : outcome === 'wrong-marker' ? 'SMK-37 Elite_899' :
         outcome === 'cross-family' ? 'FM-1_900' : product;
-      const back = port('SMK Returned application', text, outcome === 'loader');
-      state.returnedInputs.push(back.input);
-      access.inputs.set('back', back.input); access.outputs.set('back', back.output);
+      if (outcome === 'absent' || replacePorts) {
+        input.state = output.state = 'disconnected'; access.inputs.clear(); access.outputs.clear();
+        for (const listener of listeners) listener({ port: input });
+        if (outcome === 'absent') return;
+        const back = port('SMK Returned application', text, outcome === 'loader');
+        state.returnedInputs.push(back.input);
+        access.inputs.set('back', back.input); access.outputs.set('back', back.output);
+      } else {
+        // The positive contract is the same continuously observed port pair.
+        marker = text; loader = outcome === 'loader';
+      }
       if (outcome === 'ambiguity') access.inputs.set('extra', { name: 'SMK other', state: 'connected' });
     } };
     return { input, output };
@@ -63,7 +72,7 @@ function fixture(api, { outcome = 'matching', failAck = false, loaderModel = 'ot
   const loader = port('SMK Original loader', loaderModel + '_900', true); state.loader = loader.input;
   access.inputs.set('loader', loader.input); access.outputs.set('loader', loader.output);
   if (extraLoader) access.inputs.set('extra', { name: 'SMK other', state: 'connected' });
-  return { state, access };
+  return { state, access, listeners };
 }
 function span(first, next) {
   const i = html.indexOf(first), j = html.indexOf(next, i);
@@ -105,21 +114,31 @@ for (const outcome of ['absent','loader','wrong-marker','cross-family','ambiguit
     assert.ok(r.state.returnedInputs.every(p => p.onmidimessage === null));
   });
 }
-test('actual resumed caller accepts renamed sole matching app after legitimate Pro-loader/Elite-package alias', async () => {
+test('actual resumed caller accepts the matching app on the uninterrupted Elite port pair', async () => {
   const r = await caller();
   assert.equal(r.instances[0].verified, true);
-  assert.equal(r.instances[0].targetName, 'SMK Returned application');
+  assert.equal(r.instances[0].targetName, 'SMK Original loader');
   assert.equal(r.state.finishAcks, 1);
   assert.ok(r.messages.some(m => m.key === 'done' && m.appResponses > 0));
   assert.ok(r.progress.filter(p => p.value === 100).every(p => p.appResponses > 0));
   assert.equal(r.ui.bar.value, 100);
   assert.equal(r.state.loader.onmidimessage, null);
   assert.ok(r.state.returnedInputs.every(p => p.onmidimessage === null));
+  assert.equal(r.listeners.size, 0);
 });
-test('foreign policy permits only observed same-family marker mismatch, without verified=true', async () => {
+test('actual resumed caller refuses completion after replacement by a matching renamed pair', async () => {
+  const r = await caller({ replacePorts: true });
+  assert.equal(r.state.finishAcks, 1); assert.equal(r.state.dataReplies, 1);
+  assert.equal(r.instances[0].verified, false);
+  assert.ok(!r.messages.some(m => ['done','stockdone'].includes(m.key)));
+  assert.ok(r.progress.every(p => p.value < 100));
+  assert.equal(r.listeners.size, 0);
+});
+test('foreign policy cannot turn an observed marker mismatch into Done/100', async () => {
   const r = await caller({ outcome: 'wrong-marker' }, true);
-  assert.ok(r.messages.some(m => m.key === 'stockdone' && m.appResponses > 0));
-  assert.equal(r.instances[0].verified, false); assert.equal(r.ui.bar.value, 100);
+  assert.ok(r.state.appResponses > 0);
+  assert.ok(!r.messages.some(m => ['done','stockdone'].includes(m.key)));
+  assert.equal(r.instances[0].verified, false); assert.ok(r.progress.every(p => p.value < 100));
   for (const outcome of ['absent','loader','cross-family','ambiguity','late-ambiguity']) {
     const bad = await caller({ outcome }, true);
     assert.ok(!bad.messages.some(m => ['done','stockdone'].includes(m.key)));
@@ -133,8 +152,8 @@ test('lost final ACK never attempts application readback or completion', async (
   assert.ok(!r.messages.some(m => ['done','stockdone','reboot'].includes(m.key)));
   assert.ok(r.progress.every(p => p.value < 100));
 });
-test('wrong-family loader and multiple compatible inputs still receive no UPGRADE', async () => {
-  for (const [options, code] of [[{loaderModel:'ota-FM-1'},'model'],[{extraLoader:true},'ambiguous']]) {
+test('wrong-family or Pro loader and multiple compatible inputs still receive no UPGRADE', async () => {
+  for (const [options, code] of [[{loaderModel:'ota-FM-1'},'model'],[{loaderModel:'ota-SMK-37 Pro'},'model'],[{extraLoader:true},'ambiguous']]) {
     const api = runtime(), f = fixture(api, options), up = new api.Updater(f.access);
     await assert.rejects(up.resume(image,()=>{},product), e => e.code === code);
     assert.equal(f.state.upgrades,0); assert.equal(f.state.loader.onmidimessage,null);

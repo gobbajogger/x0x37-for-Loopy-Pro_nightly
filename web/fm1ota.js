@@ -12,10 +12,14 @@ const MAXDATA = 512;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const IS_OTA = (id) => /^ota-/i.test(id.model);
 const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro|snoop|vector|vox|ota|composite|sinco|usb-midi/i;
-// the SMK-37 Pro, SMK-37 Elite, MKE-P37, Starrykey 37 Play and the SMK-37+VA mod: one keyboard under several model
-// names, so a package for one runs on all of them; an FM-1 is another device
-const SMK_FAMILY = /^(ota-)?(SMK-37[ +].*|MKE-P37|STARRYKEY-37.*)$/i;
-export const sameKeyboard = (a, b) => a === b || (SMK_FAMILY.test(a) && SMK_FAMILY.test(b));   // two models
+// Package models are distinct even when boards share a family. The verified
+// Starrykey stock identity names the Pro model; it is not an Elite alias.
+function keyboardModel(model) {
+  if (typeof model !== "string" || !model) return null;
+  const name = model.replace(/^ota-/i, "").toLowerCase();
+  return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
+}
+export const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
 
 // errors carry a code the pages translate: notfound, model, stopped, noloader, lost, noreturn,
 // mismatch (detail: the identity the device reports), badreq
@@ -87,9 +91,9 @@ function parseIdentity(pkt) {
 // one MIDI in/out pair with a SysEx queue
 class Link {
   constructor(input, output) {
-    this.input = input; this.output = output; this.q = []; this.waiter = null; this.rxBytes = 0; this.rxError = null;
-    input.onmidimessage = (ev) => {
-      if (this.rxError || ev.data[0] !== 0xF0) return;
+    this.input = input; this.output = output; this.q = []; this.waiter = null; this.rxBytes = 0; this.rxError = null; this.closed = false;
+    this.onMessage = (ev) => {
+      if (this.closed || this.rxError || ev.data[0] !== 0xF0) return;
       // Bound both frame count and bytes; overflow poisons this connection.
       // Never continue an OTA exchange with dropped or stale responses.
       if (this.q.length >= 64 || ev.data.length > 65536 - this.rxBytes) {
@@ -103,16 +107,19 @@ class Link {
       this.rxBytes += ev.data.length;
       if (this.waiter) { const w = this.waiter; this.waiter = null; w(); }
     };
+    input.onmidimessage = this.onMessage;
   }
-  get lost() { return this.input.state === "disconnected" || this.output.state === "disconnected"; }
+  get lost() { return this.closed || this.input.onmidimessage !== this.onMessage || this.input.state === "disconnected" || this.output.state === "disconnected"; }
   // false when the port is gone (unplugged): WebMIDI throws on a disconnected output
   send(bytes) {
     if (this.rxError) throw this.rxError;
+    if (this.lost) return false;
     try { this.output.send(bytes); return true; } catch (_) { return false; }
   }
   drain() { this.q.length = 0; this.rxBytes = 0; }
   async read(ms) {
     if (this.rxError) throw this.rxError;
+    if (this.lost) return null;
     if (!this.q.length) {
       let tm;
       await Promise.race([new Promise((r) => { this.waiter = r; }), new Promise((r) => { tm = setTimeout(r, ms); })]);
@@ -124,7 +131,12 @@ class Link {
     if (pkt) this.rxBytes -= pkt.length;
     return pkt || null;
   }
-  close() { this.input.onmidimessage = null; }
+  close() {
+    this.closed = true;
+    // A later scan can own this port now. Stale cleanup must not remove it.
+    if (this.input.onmidimessage === this.onMessage) this.input.onmidimessage = null;
+    if (this.waiter) { const w = this.waiter; this.waiter = null; w(); }
+  }
 }
 
 async function handshake(link, tries = 3) {
@@ -142,6 +154,21 @@ async function handshake(link, tries = 3) {
   return null;
 }
 
+async function openMidiPort(port) {
+  // Reuse the Projects workspace's initial-opening boundary: consume the
+  // closed -> open event before a new session installs its lifecycle guard.
+  // Later events remain observable by every existing bound updater.
+  if (port.connection !== "closed") { await port.open(); return; }
+  let changed, timer;
+  const transition = new Promise((resolve, reject) => {
+    changed = () => resolve();
+    timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), 3000);
+    port.addEventListener("statechange", changed, { once: true });
+  });
+  try { await Promise.all([port.open(), transition]); }
+  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+}
+
 export class Updater {
   constructor(access, log) {
     this.access = access;
@@ -150,6 +177,9 @@ export class Updater {
     this.targetName = null;
     this.verified = false;
     this.product = null;
+    this.binding = null;
+    this.onPortState = null;
+    this.admitted = null;
   }
 
   ports() {
@@ -175,6 +205,45 @@ export class Updater {
     } catch (e) { dev.link.close(); throw e; }
     this.target = dev.id;
     this.targetName = dev.name;
+    if (!this.binding) {
+      this.binding = { input: dev.link.input, output: dev.link.output, invalid: false,
+        observed: typeof this.access.addEventListener === "function" };
+      const binding = this.binding;
+      this.onPortState = (event) => {
+        const p = event.port;
+        // Event callbacks can lag a disconnect/reconnect. Current state alone
+        // cannot prove that this bound connection remained uninterrupted.
+        if (p && (p === binding.input || p === binding.output ||
+            (p.id && (p.id === binding.input?.id || p.id === binding.output?.id)))) binding.invalid = true;
+      };
+      if (binding.observed) this.access.addEventListener("statechange", this.onPortState);
+    }
+  }
+
+  assertContinuous(dev) {
+    const b = this.binding;
+    if (dev?.id && this.target && !sameKeyboard(dev.id.model, this.target.model))
+      throw fail("model", `The selected keyboard changed model during the update: ${dev.id.text}`);
+    if (!b || !b.observed || b.invalid || !b.input || !b.output ||
+        dev?.link?.input !== b.input || dev?.link?.output !== b.output ||
+        b.input.state !== "connected" || b.output.state !== "connected" ||
+        ![...this.access.inputs.values()].includes(b.input) ||
+        ![...this.access.outputs.values()].includes(b.output)) {
+      if (b) b.invalid = true;
+      throw fail("continuity", "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update.");
+    }
+  }
+
+  close() {
+    if (this.onPortState && typeof this.access.removeEventListener === "function")
+      this.access.removeEventListener("statechange", this.onPortState);
+    this.onPortState = null;
+    if (this.binding) this.binding.invalid = true;
+  }
+
+  assertAdmitted() {
+    if (this.admitted && !this.admitted())
+      throw fail("admission", "The selected firmware or its approval changed. Select and confirm the intended package again.");
   }
 
   _portPairs() {
@@ -196,15 +265,24 @@ export class Updater {
   // every in/out pair with the same port name that answers the handshake
   async find(filter) {
     if (this.target) this.singlePort();
+    if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
-      try { await input.open(); await output.open(); } catch (_) { continue; }
+      try { await openMidiPort(input); await openMidiPort(output); } catch (_) { continue; }
+      if (!this._portPairs().some((p) => p.input === input && p.output === output)) continue;
       const link = new Link(input, output);
-      const id = await handshake(link, 2);
+      let id;
+      try { id = await handshake(link, 2); }
+      catch (error) { link.close(); throw error; }
       if (id && this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), id.model.replace(/^ota-/i, ""))) {
         link.close();
         throw fail("model", `The selected keyboard changed model during the update: ${id.text}`);
       }
-      if (id && (!filter || filter(id))) return { link, id, name: input.name };
+      if (id && (!filter || filter(id))) {
+        const dev = { link, id, name: input.name };
+        try { if (this.binding) this.assertContinuous(dev); }
+        catch (error) { link.close(); throw error; }
+        return dev;
+      }
       link.close();
     }
     return null;
@@ -223,9 +301,10 @@ export class Updater {
   // serve read requests until the device asks for one of the finish addresses; stops early
   // when the port disappears (lost: true) instead of waiting out idleMs
   async serve(link, image, finishAddr, idleMs, onProgress) {
-    let served = 0, last = Date.now();
+    let served = 0, transferred = 0, startedAtHeader = false, last = Date.now();
     for (;;) {
       const pkt = await link.read(1000);
+      if (this.binding) this.assertContinuous({ link });
       if (!pkt) {
         if (link.lost) return { served, finished: false, lost: true };
         if (Date.now() - last > idleMs) return { served, finished: false };
@@ -235,25 +314,33 @@ export class Updater {
       if (!r) continue;
       last = Date.now();
       if (r.addr === 0xE0000000 || r.addr === 0xF0000000) {
-        if (r.len !== 0) throw fail("badreq", `bad finish request ${r.addr.toString(16)}+${r.len}`);
+        // App ota.c and loader ldr_core.c both read the eight-byte "success\0" token.
+        if (r.len !== 8) throw fail("badreq", `bad finish request ${r.addr.toString(16)}+${r.len}`);
+        if (r.addr !== finishAddr || transferred === 0 || !startedAtHeader)
+          throw fail("badreq", "Unexpected OTA completion before this stage transferred image data");
         if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
           return { served, finished: false, lost: true };
         }
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }
-      if (r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
+      if (r.len === 0 || r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
       await sleep(10);
+      if (this.binding) this.assertContinuous({ link });
+      if (finishAddr === 0xF0000000 && transferred === 0) this.assertAdmitted();
       if (!link.send(response(r.addr, Array.from(image.subarray(r.addr, r.addr + r.len)), r.fl))) {
         return { served, finished: false, lost: true };
       }
       served++;
+      transferred += r.len;
+      if (r.addr === 0) startedAtHeader = true;
       if (onProgress) onProgress(served, r.addr);
     }
   }
 
   // full install: running firmware -> loader -> new firmware
-  async install(image, product, onStep) {
+  async install(image, product, onStep, start = null, admitted = null) {
+    this.admitted = admitted;
     const step = onStep || (() => {});
     const dev = await this.find((id) => !IS_OTA(id));
     if (!dev) throw fail("notfound", "FM-1 not found (USB cable, and no other app using it?)");
@@ -261,11 +348,24 @@ export class Updater {
     if (!sameKeyboard(dev.id.model, model)) { dev.link.close(); throw fail("model", `the device is ${dev.id.text}, the package is for ${product}`); }
     this.bind(dev);
     this.product = product;
+    try { this.assertContinuous(dev); }
+    catch (error) { dev.link.close(); throw error; }
+    // A snapshot COMMIT both checks freshness and enters OTA on the device.
+    // Do not send a second legacy UPGRADE, and do not drain queued OTA reads
+    // after the exact acknowledgement. A rejected/uncertain COMMIT is not retried.
+    if (start) {
+      try { this.assertAdmitted(); await start(dev); }
+      catch (e) { dev.link.close(); throw e; }
+    }
     step("start", dev.id.text);
-    dev.link.send(UPGRADE);
-    await sleep(2000);
-    const s1 = await this.serve(dev.link, image, 0xE0000000, 8000, (n) => step("verify", n));
-    dev.link.close();
+    let s1;
+    try {
+      this.assertContinuous(dev);
+      this.assertAdmitted();
+      if (!start && !dev.link.send(UPGRADE)) throw fail("lost", "The keyboard disconnected before the update started.");
+      await sleep(2000);
+      s1 = await this.serve(dev.link, image, 0xE0000000, 8000, (n) => step("verify", n));
+    } finally { dev.link.close(); }
     if (!s1.finished) throw fail(s1.lost ? "lost" : "stopped", `the device ${s1.lost ? "was disconnected" : "stopped"} after ${s1.served} requests: nothing was written`);
     step("loader");
     await sleep(3000);
@@ -286,11 +386,12 @@ export class Updater {
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
       this.singlePort(back.name);
+      this.assertContinuous(back);
       if (IS_OTA(back.id)) throw fail("noreturn", "the device is still in update mode");
       if (!sameKeyboard(back.id.model, product.split("_")[0]))
         throw fail("model", `The selected keyboard changed model during the update: ${back.id.text}`);
       if (back.id.text !== product) throw fail("mismatch", `installed, but the device reports ${back.id.text}`, back.id.text);
-      this.targetName = back.name; // A sole keyboard may rename its port on reboot.
+      this.targetName = back.name;
     } finally { back.link.close(); }
     this.verified = true;
     step("done", back.id.text);
@@ -303,18 +404,22 @@ export class Updater {
       this.singlePort(ota.name);
       if (!this.product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), this.product.split("_")[0]))
         throw fail("model", `the loader is ${ota.id.text}, the package is for ${this.product || "an unknown model"}`);
+      if (!IS_OTA(ota.id)) throw fail("model", "The selected device is not an update loader");
+      this.assertContinuous(ota);
+      this.assertAdmitted();
     } catch (e) { ota.link.close(); throw e; }
-    ota.link.send(UPGRADE);
-    await sleep(2000);
-    const s2 = await this.serve(ota.link, image, 0xF0000000, 180000, (n) => step("write", n));
-    ota.link.close();
-    return s2;
+    try {
+      if (!ota.link.send(UPGRADE)) throw fail("lost", "The update loader disconnected before writing.");
+      await sleep(2000);
+      return await this.serve(ota.link, image, 0xF0000000, 180000, (n) => step("write", n));
+    } finally { ota.link.close(); }
   }
 
   // resume: loader -> true only after a fresh application response matches product. product: the
   // package's identity; the loader's model must match it by install()'s rule (sameKeyboard): an SMK's loader
   // never gets an FM-1 image, and without the identity nothing is written
-  async resume(image, onStep, product = "") {
+  async resume(image, onStep, product = "", admitted = null) {
+    this.admitted = admitted;
     const ota = await this.find(IS_OTA);
     if (!ota) return false;
     if (!product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), product.split("_")[0])) {

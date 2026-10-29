@@ -1,5 +1,5 @@
 // Fail-closed Web MIDI input/output pairing regression.
-// Adapted from firmware PR398; only the find-method end delimiter differs.
+// Adapted from firmware PR398; includes find's actual initial-opening helper.
 // Execute from this repository root: node web/test_midi_port_pairing.mjs
 // Runs the actual Updater._portPairs and Updater.find source methods against
 // simulated browser MIDI port maps. Does not prove physical USB device identity.
@@ -12,8 +12,11 @@ const methodStart = src.indexOf('  _portPairs() {');
 const methodEnd = src.indexOf('\n  // every in/out pair', methodStart);
 const findStart = src.indexOf('  async find(filter) {', methodEnd);
 const findEnd = src.indexOf('\n  async waitFor(', findStart);
+const openStart = src.indexOf('async function openMidiPort(port) {');
+const openEnd = src.indexOf('\nexport class Updater', openStart);
 assert.ok(methodStart > 0 && methodEnd > methodStart && findStart > methodEnd && findEnd > findStart,
   'Updater._portPairs and Updater.find must exist in their expected source positions');
+assert.ok(openStart > 0 && openEnd > openStart, 'find must use the actual initial-opening helper');
 
 let assertions = 0;
 const equal = (actual, expected, label) => { assert.deepEqual(actual, expected, label); assertions++; };
@@ -52,9 +55,9 @@ for (const spec of scenarios) {
     // to a different physical output. Simulated positive response only.
     return { model: 'SMK-37 Pro', text: 'SMK-37 Pro_900' };
   };
-  const Updater = runInNewContext(`class TestUpdater { constructor(access) { this.access = access; }
+  const Updater = runInNewContext(`${src.slice(openStart, openEnd)}\nclass TestUpdater { constructor(access) { this.access = access; }
     ${src.slice(methodStart, methodEnd)}\n${src.slice(findStart, findEnd)}\n}\nTestUpdater;`,
-    { Link: MockLink, handshake });
+    { Link: MockLink, handshake, setTimeout, clearTimeout });
   const access = { inputs: new Map(inputs.map((p,i) => [i,p])), outputs: new Map(outputs.map((p,i) => [i,p])) };
   const up = new Updater(access);
   const pairs = Array.from(up._portPairs(), ({input, output}) => `${input.unit}>${output.unit}`);

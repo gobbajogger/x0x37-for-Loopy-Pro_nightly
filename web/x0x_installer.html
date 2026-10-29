@@ -576,7 +576,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   </details>
 
   <details class="connection-help"><summary>Connection &amp; recovery help</summary><p class="small" data-t="direct"></p><p class="small" data-t="helptext"></p><p class="small"><a href="../manual/" data-t="helpmanual">Open the manual</a></p>  <p class="small" id="recovery"><span data-t="brick"></span>
-    <a href="../manual/#recovering-an-fm-1-that-won-t-start" style="color:inherit" data-t="bricklink"></a></p>
+    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#recovering-an-fm-1-that-wont-start" style="color:inherit" data-t="bricklink"></a></p>
   <p class="small" data-t="back"></p></details>
   <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
     <div class="prep-head"><div><h2 id="prep-title">Prepare a sample</h2><p>Listen first. Connect when you’re ready.</p></div><label class="prep-file" for="prep-file"><span >Choose your audio</span><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label></div>
@@ -855,6 +855,7 @@ let midi = null, connected = false, lastId = null, writing = false;
 let image = null, selectedProduct = null, ctl = null, stock = null;
 let chosenModel = null;
 let loadSerial = 0;
+let activeDownloadController = null;
 let scanSerial = 0;
 let workspaceActive = true, workspaceScanning = 0, workspaceTask = "firmware";
 let verifiedDownload = null;
@@ -887,6 +888,7 @@ $("download").addEventListener("click", (event) => {
     }
   } catch { /* Any catalog or cached-state exception denies this click. */ }
   loadSerial++; // Do not let an older async response restore denied admission.
+  cancelPackageDownload();
   discardVerifiedDownload();
   updateInstallGate();
 });
@@ -1077,6 +1079,7 @@ function refreshMeta() {
   const link = $("download");
   if (!isCatalogChecked(ver, pkg)) {
     $("pkgmeta").textContent = "";
+    cancelPackageDownload();
     discardVerifiedDownload();
     $("builddetail").hidden = true;
     updateInstallGate();
@@ -1262,7 +1265,12 @@ async function sha256Hex(buf) {
   return hex;
 }
 // Bounded reader ported from GPL firmware installer PR102 a48d745b59683eaaf2283aed5ec1ec2187799cfc.
-async function readApprovedPackage(response, expectedSize, isLatest) {
+function cancelPackageDownload() {
+  const previous = activeDownloadController;
+  activeDownloadController = null;
+  previous?.abort();
+}
+async function readApprovedPackage(response, expectedSize, isLatest, signal) {
   if (!response.body || typeof response.body.getReader !== "function") {
     // A non-streaming response cannot be bounded before allocation.
     // Fail closed rather than buffering potentially unbounded remote bytes.
@@ -1271,14 +1279,28 @@ async function readApprovedPackage(response, expectedSize, isLatest) {
   const reader = response.body.getReader();
   const chunks = [];
   let length = 0, reject = false;
+  let cancellation = null;
+  const cancel = () => {
+    reject = true;
+    if (!cancellation) {
+      try { cancellation = Promise.resolve(reader.cancel()).catch(() => {}); }
+      catch (_) { cancellation = Promise.resolve(); }
+    }
+    return cancellation;
+  };
+  const abort = () => { void cancel(); };
+  signal?.addEventListener("abort", abort, { once: true });
   try {
     while (true) {
+      if (signal?.aborted || !isLatest()) { reject = true; break; }
       const { done, value } = await reader.read();
-      if (!isLatest()) { reject = true; break; }
+      if (signal?.aborted || !isLatest()) { reject = true; break; }
       if (done) break;
       if (!(value instanceof Uint8Array) || value.byteLength > expectedSize - length) {
         reject = true; break;
       }
+      // Empty chunks carry no package bytes and must not retain array entries.
+      if (value.byteLength === 0) continue;
       chunks.push(value);
       length += value.byteLength;
     }
@@ -1286,7 +1308,8 @@ async function readApprovedPackage(response, expectedSize, isLatest) {
     reject = true;
     throw error;
   } finally {
-    if (reject) { try { await reader.cancel(); } catch (_) {} }
+    signal?.removeEventListener("abort", abort);
+    if (reject) await cancel();
     try { reader.releaseLock(); } catch (_) {}
   }
   if (reject || length !== expectedSize) return null;
@@ -1297,6 +1320,7 @@ async function readApprovedPackage(response, expectedSize, isLatest) {
 }
 
 async function loadSelectedPackage() {
+  cancelPackageDownload();
   const requestId = ++loadSerial;
   $("devagree").checked = false;
   discardVerifiedDownload();
@@ -1320,11 +1344,13 @@ async function loadSelectedPackage() {
         selectionIdentity(current,pkg) === identity;
     } catch { return false; }
   };
+  const controller = new AbortController();
+  activeDownloadController = controller;
   try {
-    const r = await fetch(pkg.pkg, {redirect: "error"});
+    const r = await fetch(pkg.pkg, {redirect: "error", signal: controller.signal});
     if (!isLatest()) { try { await r.body?.cancel(); } catch {} return; }
     if (!r.ok || r.redirected) throw new Error(`${pkg.pkg}: HTTP ${r.status}`);
-    const raw = await readApprovedPackage(r, pkg.size, isLatest);
+    const raw = await readApprovedPackage(r, pkg.size, isLatest, controller.signal);
     if (!isLatest()) return;
     if (!raw) { sayK("badpkg"); return; }
     // Approved downloads require a SHA and the exact product/model identity.
@@ -1347,7 +1373,10 @@ async function loadSelectedPackage() {
       href: URL.createObjectURL(new Blob([raw], {type: "application/octet-stream"})) };
     say(`${buildDisplayLabel(ver,pkg)} · ${MODELS[model] || model}`);
     refreshMeta();
-  } catch (e) { if (isLatest()) sayK("loadfail", e.message); }
+  } catch (e) { if (isLatest() && !controller.signal.aborted) sayK("loadfail", e.message); }
+  finally {
+    if (activeDownloadController === controller) activeDownloadController = null;
+  }
 }
 
 function versionOptionCaption(v) {
@@ -1364,6 +1393,7 @@ function refreshVersionLabels() {
   }
 }
 function fillVersions() {
+  cancelPackageDownload();
   loadSerial++;
   discardVerifiedDownload();
   const sel = $("version");
@@ -1551,7 +1581,7 @@ async function run(img, product, opts = {}) {
   $("go").disabled = $("stockgo").disabled = true;
   $("bar").value = 0;
   const foreign = !!opts.foreign;   // stock / other custom: identity text after reboot may differ
-  let access;
+  let access, up;
   try { access = await midiAccess(); }
   catch (e) {
     writing = false;
@@ -1562,7 +1592,7 @@ async function run(img, product, opts = {}) {
   led("busy");
   try {
     if (opts.admitted && !opts.admitted()) throw new Error(t("unapproved"));
-    const up = new Updater(access, log);
+    up = new Updater(access, log);
     const total = 74 + 1167;
     const step = (k, a) => {
       log(`${k} ${a ?? ""}`);
@@ -1578,12 +1608,12 @@ async function run(img, product, opts = {}) {
     if (ota) {
       // Interrupted upgrade/downgrade/stock write: finish with this package (same keyboard family).
       ota.link.close();
-      const ok = await up.resume(img, step, product);
+      const ok = await up.resume(img, step, product, opts.admitted);
       if (!ok) sayK("stopped"); // Successful completion is emitted only after application readback.
     } else {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
-        step, sameKeyboard,
+        step, sameKeyboard, admitted: opts.admitted,
         say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
         progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
         save: async (file, name) => {
@@ -1602,16 +1632,16 @@ async function run(img, product, opts = {}) {
     }
     await scan(true);
   } catch (e) {
-    // Stock / other custom firmware often reports a different identity string than the package marker.
-    if (foreign && e && e.code === "mismatch") { $("bar").value = 100; sayK("stockdone"); }
-    else if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
+    if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
     else sayK("error", e && e.message);
     log(String(e && e.stack || e));
     led("err");
+  } finally {
+    up?.close?.();
+    writing = false;
+    updateInstallGate();
+    $("stockgo").disabled = !stock || !$("stockconfirm").checked;
   }
-  writing = false;
-  updateInstallGate();
-  $("stockgo").disabled = !stock || !$("stockconfirm").checked;
 }
 
 $("go").addEventListener("click", async () => {

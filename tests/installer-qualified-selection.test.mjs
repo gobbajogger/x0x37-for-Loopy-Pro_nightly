@@ -12,7 +12,7 @@ function check(latest,versions,current,expected){
   append(o){this.children.push(o);if(!this._value)this._value=o.value;}};
  const ui={version:sel};let loads=0;
  const c={catalogLive:{latest},loadSerial:0,image:null,selectedProduct:null,versions:()=>versions,
-  availableModels:v=>v.eligible?['pro']:[],$:id=>ui[id]||={},discardVerifiedDownload(){},refreshModelUi(){},
+  availableModels:v=>v.eligible?['pro']:[],$:id=>ui[id]||={},discardVerifiedDownload(){},refreshModelUi(){},cancelPackageDownload(){},
   loadSelectedPackage(){loads++;},renderBuildHistory(){},say(){},t:k=>k,versionOptionCaption:v=>v.version,
   document:{createElement:()=>({})}};
  new Script(code+'\nfillVersions();').runInNewContext(c);

@@ -158,7 +158,7 @@
     about 86 KB; tick "22 kHz" to fit twice as many at a lower quality. Loops follow the tempo by playing faster or slower, so their pitch
     follows it too; the break's PITCH knob shifts it. Removing a loop renumbers the ones after it, so patterns
     that used them play the next loop instead.
-    <a href="../manual/#s8" style="color:inherit">The manual's BREAK section</a> says how X0X plays a loop.</p></details>
+    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#8-break" style="color:inherit">The manual's BREAK section</a> says how X0X plays a loop.</p></details>
   <p class="small">X0X is GPL-3.0, built on Felucca by Hügelton Instruments; the break generator is BB Gen's.
     <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro" style="color:inherit">github.com/gobbajogger/X0X37-for-Loopy-Pro</a></p>
 </main>
@@ -311,7 +311,8 @@ function restoreSettings(settings) {
   $("grit").value = (OLDSCHOOL_GRIT.find(g => g.factor === settings.gritFactor) || OLDSCHOOL_GRIT[0]).key;
 }
 function prepareImportedLoop(x, srcRate, file, settings) {
-  return { ...prepareLoopImport(x, srcRate, settings), file, isNew: true, srcRate, x };
+  const maxData = lay.count ? Math.max(...lay.slots.map((_, k) => slotMax(k))) : SLOT_MAX_DATA;
+  return { ...prepareLoopImport(x, srcRate, { ...settings, maxData }), file, isNew: true, srcRate, x };
 }
 let auditionSource = null, auditionLoop = null, auditionSerial = 0;
 function refreshAudition() {
@@ -418,6 +419,9 @@ class Link {
       // SMP_READ echoes slot + three offset bytes. A delayed retry must not
       // consume the next chunk's wait, even though both replies use command 16.
       if (w.readAddress && (d.length < 12 || !w.readAddress.every((a, i) => d[5 + i] === a))) return;
+      if (w.slot !== null && d[5] !== w.slot) return;
+      if (w.writeAddress && (d.length !== 11 || !w.writeAddress.every((a, i) => d[5 + i] === a))) return;
+      if (w.slot !== null && !w.writeAddress && d.length !== 8) return;
       this.wait = null;
       clearTimeout(w.timer);
       w.resolve([...d.slice(5, d.length - 1)]);
@@ -426,7 +430,10 @@ class Link {
   req(cmd, args, ms = 3000) {
     return new Promise((resolve, reject) => {
       // Own the timer by request identity so a failed send's timeout cannot clear a newer wait.
-      const entry = { cmd, resolve, timer: null, readAddress: cmd === 16 ? args.slice(0, 4) : null };
+      if (this.wait) { reject(new Error("A MIDI request is already in progress.")); return; }
+      const entry = { cmd, resolve, timer: null, readAddress: cmd === 16 ? args.slice(0, 4) : null,
+        slot: [11, 12, 13, 14].includes(cmd) ? args[0] : null,
+        writeAddress: cmd === 12 ? args.slice(0, 4) : null };
       entry.timer = setTimeout(() => {
         if (this.wait === entry) this.wait = null;
         reject(new Error("The FM-1 stopped answering."));
@@ -500,7 +507,10 @@ async function readSlots() {
       d.push(null);
       if (!l.slots[k].nz) continue;
       const area = await readBytes(k, 0, SLOT_DATA_OFF), hdr = area.slice(0, SLOT_HDR_LEN), h = parseSlot(hdr);
-      if (!h) continue;
+      const capacity = l.slots[k].size || l.size;
+      if (!h || h.nz !== l.slots[k].nz || !Number.isSafeInteger(capacity) || capacity < SLOT_DATA_OFF ||
+          !Number.isSafeInteger(h.dataLen) || h.dataLen < 1 || h.dataLen > capacity - SLOT_DATA_OFF)
+        throw new Error(`Slot ${k + 1}: invalid header or slot capacity.`);
       const data = await readBytes(k, SLOT_DATA_OFF, h.dataLen, (f) => { bar.value = (k + f) / l.count * 100; });
       if (crc32(data) !== new DataView(hdr.buffer).getUint32(20, true)) throw new Error("crc");
       const image = new Uint8Array(SLOT_DATA_OFF + data.length);
@@ -551,6 +561,28 @@ async function writeImage(k, img, onPart) {
   if (e[1]) throw new Error("The FM-1 didn't accept the loops.");
 }
 
+function sampleLayoutKey(layout) {
+  return JSON.stringify([layout.count, layout.size, layout.ext,
+    layout.slots.map(slot => [slot.size, slot.off])]);
+}
+function captureSampleSnapshot() {
+  return { layout: sampleLayoutKey(lay), images: dev.map(slot => slot ? slot.image.slice() : null) };
+}
+function requireFreshSampleSnapshot(expected, fresh) {
+  if (sampleLayoutKey(fresh.lay) !== expected.layout || fresh.dev.length !== expected.images.length ||
+      fresh.dev.some((slot, k) => {
+        const got = slot ? slot.image : null, want = expected.images[k];
+        return (got === null) !== (want === null) || got &&
+          (got.length !== want.length || !got.every((byte, i) => byte === want[i]));
+      })) {
+    readOk = false;
+    throw new Error("The device samples changed after they were read. No further samples were written. Read the device and review the changes again.");
+  }
+  // This detects stale previews, including same-size/CRC collisions. Legacy
+  // firmware has no client-bound atomic sample-write lease: a separate client
+  // could still race the following send. Do not call this an exclusive lock.
+}
+
 async function run(fn) {
   if (busy || !sampleActive) return;
   busy = true;
@@ -577,6 +609,7 @@ $("discard").onclick = () => run(readFromDevice);
 
 $("send").onclick = () => run(async () => {
   const plan = packLoops(), todo = changedSlots(plan), bar = $("progress");
+  const expected = captureSampleSnapshot();
   const review = todo.flatMap(({ k }) => plan[k]);
   if (!await reviewLoops(review, "Compare before sending — changed slots will be replaced", "Send to the device")) return;
   if (!sampleActive || !readOk) throw new Error("Read the device again before sending prepared loops.");
@@ -585,9 +618,12 @@ $("send").onclick = () => run(async () => {
   bar.hidden = false;
   bar.value = 0;
   for (const { k, im } of todo) {
+    requireFreshSampleSnapshot(expected, await readSlots());
+    if (!sampleActive || !readOk) throw new Error("Read the device again before sending prepared loops.");
     if (!im) {                                       // nothing left in this slot: clear it
       say("Clearing…");
       await writeImage(k, null);
+      expected.images[k] = null;
       sent += 1;
       continue;
     }
@@ -597,9 +633,11 @@ $("send").onclick = () => run(async () => {
     img.set(im.hdr);
     img.set(im.data, SLOT_DATA_OFF);
     await writeImage(k, img, (n) => { sent += n; bar.value = sent / total * 100; });
+    expected.images[k] = img;
   }
   bar.hidden = true;
   say("Reading back…");
+  requireFreshSampleSnapshot(expected, await readSlots());
   await readAll();
   say("Done. On the FM-1: BREAK, then EDIT, then LOOP A or LOOP B.");
 });
@@ -623,6 +661,7 @@ $("archive").onchange = (ev) => {
   ev.target.value = "";
   if (!f) return;
   run(async () => {
+    const expected = captureSampleSnapshot();
     const { meta, images } = readArchive(new Uint8Array(await f.arrayBuffer()));
     const { todo, skipped } = planRestore(lay, images);
     const what = meta.slots.map((e) => `slot ${e.slot}: ${e.empty ? "empty" : `${e.name || "-"}, ${e.zones} loop(s)`}`).join("\n");
@@ -633,8 +672,11 @@ $("archive").onchange = (ev) => {
     let sent = 0;
     bar.hidden = false;
     for (const { k, img } of todo) {
+      requireFreshSampleSnapshot(expected, await readSlots());
+      if (!sampleActive || !readOk) throw new Error("Read the device again before restoring samples.");
       say(`Restoring slot ${k + 1}…`);
       await writeImage(k, img, (n) => { sent += n; bar.value = sent / total * 100; });
+      expected.images[k] = img;
       if (!img) sent += 1;
     }
     bar.hidden = true;
@@ -642,7 +684,8 @@ $("archive").onchange = (ev) => {
     const back = await readSlots();
     for (const { k, img } of todo) {
       const got = back.dev[k] ? back.dev[k].image : null;
-      if ((got === null) !== (img === null) || (got && (got.length !== img.length || crc32(got) !== crc32(img))))
+      if ((got === null) !== (img === null) || (got && (got.length !== img.length || crc32(got) !== crc32(img) ||
+          !got.every((byte, i) => byte === img[i]))))
         throw new Error(`Slot ${k + 1} reads back different from the backup.`);
     }
     await readAll();

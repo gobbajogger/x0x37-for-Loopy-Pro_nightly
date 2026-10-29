@@ -98,10 +98,12 @@ export function ctlProblem(img) {
 const CTL_SLOTMAP = [..."X0X-SLOTMAP-1\0\0\0"].map((c) => c.charCodeAt(0));
 function pkHasSlotMap(flash) {
   const map = 0x9CF00; // Fixed SMK flash-map address, not a marker elsewhere in package padding.
-  return CTL_SLOTMAP.every((b, j) => flash[map + j] === b) && pkU32(flash, map + 16) === 3 &&
-    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]].every(([off, size], j) =>
+  // Current firmware owns exactly two sample slots. 0xB0000 is VM recovery
+  // spare, never a third sample slot. Require geometry as well as count/CRC.
+  return flash.length >= map + 40 && CTL_SLOTMAP.every((b, j) => flash[map + j] === b) && pkU32(flash, map + 16) === 2 &&
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000]].every(([off, size], j) =>
       pkU32(flash, map + 20 + j * 8) === off && pkU32(flash, map + 24 + j * 8) === size) &&
-    pkU32(flash, map + 44) === pkCrc32(flash, map, map + 44);
+    pkU32(flash, map + 36) === pkCrc32(flash, map, map + 36);
 }
 export const CTL_NO_BLOCK = "the app code of this package goes into the Bluetooth block (flash 0x8B000-0x9AFFF). "
   + "It is an X0X from before the block. It takes no controller image (install it without one)";
