@@ -749,7 +749,16 @@ static int read_project(project_t *pr)
         if (set.magic != PROJ_MAGIC || set.format != PROJ_FORMAT ||
             set.snd_rev != PROJ_SND_REV || set.stereo != PROJ_STEREO) goto unsupported;
         pr->set = set;
-    } else bad = 1;
+        device_bt = set.bt;                       /* retain saved Bluetooth role on partial-load fallback */
+    } else {
+        bad = 1;
+#if BOARD_SMK37
+        /* No stored device settings: connect an SMC on the very first boot.
+         * Valid saved OFF/DEVICE settings are never overwritten. */
+        if (rc == -1 && !(device_bt & PROJ_DEVICE_BT))
+            device_bt = (uint8_t)(1u | PROJ_BT_SMC_CENTRAL);
+#endif
+    }
     rc = load_sound(&pr->sound);
     if (rc == -9) goto unsupported;
     if (rc) bad = 1;
