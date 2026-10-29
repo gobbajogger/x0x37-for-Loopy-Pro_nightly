@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Updater, pack7 } from '../web/fm1ota.js';
 
-function request(addr, len = 0) {
+function request(addr, len = 8) {
   const body = [0, 0x59, 0x30, 8, 0, 0, 0,
     addr & 0xff, (addr >>> 8) & 0xff, (addr >>> 16) & 0xff,
     (addr >>> 24) & 0xff, len & 0xff, (len >>> 8) & 0xff,
@@ -27,7 +27,11 @@ function syntheticLink(packets, sendResult = () => true) {
 function updaterFor(link, loader = true) {
   const name = 'FM-1';
   const input = { name, state: 'connected' };
-  const updater = new Updater({ inputs: new Map([['input', input]]), outputs: new Map() });
+  const output = { name, state: 'connected' }, listeners = new Set();
+  link.input = input; link.output = output;
+  const updater = new Updater({ inputs: new Map([['input', input]]), outputs: new Map([['output', output]]),
+    addEventListener(type, fn) { assert.equal(type, 'statechange'); listeners.add(fn); },
+    removeEventListener(type, fn) { listeners.delete(fn); } });
   // Discovery is synthetic; bind, serve, write, install and resume stay production code.
   updater.find = async () => ({ name, link,
     id: { text: loader ? 'ota-FM-1_1' : 'FM-1_1', model: loader ? 'ota-FM-1' : 'FM-1', version: 1 } });
@@ -38,7 +42,14 @@ test('failed ACK for either finish marker stops both stages even before port sta
   for (const marker of [0xe0000000, 0xf0000000]) {
     for (const expected of [0xe0000000, 0xf0000000]) {
       const link = syntheticLink([request(0, 8), request(marker), request(expected)], n => n !== 2);
-      const result = await updaterFor(link).serve(link, new Uint8Array(32), expected, 20);
+      const attempt = updaterFor(link).serve(link, new Uint8Array(32), expected, 20);
+      if (marker !== expected) {
+        await assert.rejects(attempt, { code: 'badreq' });
+        assert.equal(link.reads, 2, 'other-stage completion must not consume the later request');
+        assert.equal(link.sent.length, 1, 'other-stage completion receives no ACK');
+        continue;
+      }
+      const result = await attempt;
       assert.deepEqual(result, { served: 1, finished: false, lost: true });
       assert.equal(link.reads, 2, 'failed ACK must not consume a later completion request');
       assert.equal(link.sent.length, 2, 'failed ACK must stop the exchange');
@@ -46,13 +57,13 @@ test('failed ACK for either finish marker stops both stages even before port sta
   }
 });
 
-test('acknowledged other-stage marker preserves the later valid expected finish', async () => {
+test('other-stage marker is refused before ACK or consuming the later expected finish', async () => {
   for (const expected of [0xe0000000, 0xf0000000]) {
     const other = expected === 0xe0000000 ? 0xf0000000 : 0xe0000000;
     const link = syntheticLink([request(0, 8), request(other), request(expected)]);
-    const result = await updaterFor(link).serve(link, new Uint8Array(32), expected, 20);
-    assert.deepEqual(result, { served: 1, finished: true });
-    assert.equal(link.sent.length, 3);
+    await assert.rejects(updaterFor(link).serve(link, new Uint8Array(32), expected, 20), { code: 'badreq' });
+    assert.equal(link.reads, 2);
+    assert.equal(link.sent.length, 1);
   }
 });
 
@@ -67,7 +78,8 @@ test('failed ordinary data reply still reports transport loss without progress',
 
 test('a latched receive error is propagated, not converted into successful completion', async () => {
   const overflow = Object.assign(new Error('MIDI receive overflow'), { code: 'overflow' });
-  const link = syntheticLink([request(0xf0000000)], () => { throw overflow; });
+  const link = syntheticLink([request(0xf0000000)]);
+  link.read = async () => { throw overflow; };
   await assert.rejects(updaterFor(link).serve(link, new Uint8Array(32), 0xf0000000, 20), error => error === overflow);
 });
 
@@ -82,13 +94,15 @@ test('resume returns false and closes the link when the loader finish ACK fails'
 });
 
 test('a fresh resume still succeeds after a previous failed finish ACK', async () => {
-  const failed = syntheticLink([request(0xf0000000)], n => n !== 2);
-  const updater = updaterFor(failed);
-  assert.equal(await updater.resume(new Uint8Array(32), null, 'FM-1_2'), false);
+  const failed = syntheticLink([request(0, 8), request(0xf0000000)], n => n !== 3);
+  const failedUpdater = updaterFor(failed);
+  assert.equal(await failedUpdater.resume(new Uint8Array(32), null, 'FM-1_2'), false);
   assert.equal(failed.closed, 1);
+  failedUpdater.close();
   const retry = syntheticLink([request(0, 8), request(0xf0000000)]);
-  updater.find = updaterFor(retry).find;
+  const updater = updaterFor(retry); // An explicit retry gets its own current connection binding.
   const back = syntheticLink([]);
+  back.input = retry.input; back.output = retry.output;
   updater.waitFor = async filter => {
     const id = { text: 'FM-1_2', model: 'FM-1', version: 2 };
     assert.equal(filter(id), true);

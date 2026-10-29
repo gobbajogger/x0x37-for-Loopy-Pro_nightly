@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-only
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseInfo, installKeepingSlots } from '../web/x0x_breaks.js';
@@ -32,6 +33,7 @@ test('zero count closes the preflash link with slotbackup and only an INFO reque
     async find() { return { link, id: { model: 'SMK-37 Pro', version: 900 } }; },
     bind() {}, async install() { events.push('OTA'); },
   };
+  withInstallSnapshot(link, updater);
   await assert.rejects(installKeepingSlots(updater, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
     save() { events.push('save'); },
   }), e => e.code === 'slotbackup' && /invalid SMP_INFO slot count/.test(e.message));

@@ -3,18 +3,18 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "9326a7a1c73278b848c446ac8bba4bcad20c43ab",
-    "web/x0x_breaks.html": "0c282c79a3f518b6b63affc1318dbb4b3996c119",
-    "web/fm1pkg.js": "7e0900b2c9bc11110fb01e535ff31a551d04f64b",
-    "web/fm1ota.js": "cddeab7ed223efdccf5451dd0accccebf7f70454",
-    "web/x0x_breaks.js": "88870f31d354e3e9e2f61f827e07bae22e5da1ad",
+    "web/x0x_installer.html": "c88b9f9062a43325425e53b4e970c988d6e0a501",
+    "web/x0x_breaks.html": "71d44ae5568bae2f1ee9f7c7059d2819ee0fe9c3",
+    "web/fm1pkg.js": "bcc28ad1b4c62000840ad256f64e6ca7b956d2b5",
+    "web/fm1ota.js": "192344e4ceb0bd7423ebcd6c8e7ce3e6cc465db1",
+    "web/x0x_breaks.js": "ee9ab4d92c909e8ef05b4e15b9ae8c55fafb790d",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
-    "web/x0x_projects.html": "bb5f1a4fbd45942f82c82289f81d745a7e99df13",
-    "web/x0x_projects.js": "4e8da9de38e8d4502da61a8c8ada405894860bd8",
-    "web/test_projects.mjs": "ba80d2eef457bae5e9f55fe53c23c7bd78eec380",
-    "web/test_projects_page.mjs": "5bf61b8b234be05dbbcffac7a14c787ae129f8f0",
-    "web/test_breaks_page.mjs": "70aed2b6a1af716420971b6e8d0eb0a9f6d8fc62",
-    "web/test_midi_port_pairing.mjs": "a9bc22c45bae94262e244e0a49f97994656458f5"
+    "web/x0x_projects.html": "f10d6fdace6c2bbf99d7918111a85664e52826c8",
+    "web/x0x_projects.js": "4c5f8fafa7c1267dc6aa399a2b2e7a332ee74092",
+    "web/test_projects.mjs": "66aea147b85435fd8c1f96eacd2a0b41f17b25ab",
+    "web/test_projects_page.mjs": "77009259730b943cfdcff3ef2d3649e72e8df414",
+    "web/test_breaks_page.mjs": "d992423c109e9006c64367d92893a10873cf0525",
+    "web/test_midi_port_pairing.mjs": "f66e909f15b889273ca9f3668acf6674d1d13e52"
   },
   "sourcePatches": [
     {
@@ -636,6 +636,45 @@
       "regressionPullRequest": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/57",
       "description": "EC027: cap ProjectMidiLink receive buffering at 64 frames and 65536 wire bytes before copying; overflow closes with a sticky error, rejects pending or already-delivered acknowledgments and prevents retries or follow-on project commands; preserve valid FIFO and EC025 close/reconnect guards",
       "resultBlob": "4e8da9de38e8d4502da61a8c8ada405894860bd8"
+    },
+    {
+      "paths": [
+        "web/fm1ota.js",
+        "web/fm1pkg.js",
+        "web/x0x_breaks.html",
+        "web/x0x_breaks.js",
+        "web/x0x_installer.html",
+        "web/x0x_projects.html",
+        "web/x0x_projects.js"
+      ],
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "bc88a73f70b07d2dbd681443d7b65019cc9ed4af",
+      "resultBlobs": {
+        "web/fm1ota.js": "b8b0cb10043b5a1b3d4dac69f1ce3cd48132881e",
+        "web/fm1pkg.js": "bcc28ad1b4c62000840ad256f64e6ca7b956d2b5",
+        "web/x0x_breaks.html": "71d44ae5568bae2f1ee9f7c7059d2819ee0fe9c3",
+        "web/x0x_breaks.js": "ee9ab4d92c909e8ef05b4e15b9ae8c55fafb790d",
+        "web/x0x_installer.html": "c88b9f9062a43325425e53b4e970c988d6e0a501",
+        "web/x0x_projects.html": "f10d6fdace6c2bbf99d7918111a85664e52826c8",
+        "web/x0x_projects.js": "4c5f8fafa7c1267dc6aa399a2b2e7a332ee74092"
+      },
+      "description": "Compose the prepared installer, OTA/package, sample and Project Workspace owner lanes at one base; retain exact producer source bytes and regenerate all browser pages from this combined source. Independent combined qualification and publication remain separate."
+    },
+    {
+      "paths": [
+        "web/fm1ota.js",
+        "web/test_midi_port_pairing.mjs"
+      ],
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "bc88a73f70b07d2dbd681443d7b65019cc9ed4af",
+      "reviewedCompositionTree": "96a3eea61c8ffb44e72bc811040f026f26b694a9",
+      "reuseSource": "web/x0x_projects.html: openProjectPort",
+      "resultBlobs": {
+        "web/fm1ota.js": "192344e4ceb0bd7423ebcd6c8e7ce3e6cc465db1",
+        "web/test_midi_port_pairing.mjs": "f66e909f15b889273ca9f3668acf6674d1d13e52"
+      },
+      "regression": "tests/edge-ota-initial-open-lifecycle.test.mjs",
+      "description": "REVIEW-OPEN-01: consume attributable initial closed-to-open events before creating/binding an OTA session; reuse the Projects opening boundary, recheck exact port pairing and preserve every later/coalesced lifecycle invalidation. Matching model and physical identity assumptions are unchanged."
     }
   ]
 }

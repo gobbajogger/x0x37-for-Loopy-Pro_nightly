@@ -119,7 +119,7 @@ for (const stream of [3, 6]) {
 }
 
 test('tagged unsupported streams, revisions, structural lengths and damaged payloads remain refused', () => {
-  for (const [stream, sound] of [[3,11],[4,11],[5,11],[7,11],[8,11],[6,12],[6,4]]) {
+  for (const [stream, sound] of [[3,11],[4,11],[5,11],[7,11],[10,11],[6,12],[6,4]]) {
     const bad = producers[0].slice(), view = new DataView(bad.buffer);
     view.setUint32(20, stream, true); view.setUint32(24, sound, true);
     assert.throws(() => parseProject(bad), e => e.code === 'version');

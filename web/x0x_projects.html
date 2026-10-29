@@ -199,6 +199,21 @@ function portPairs() {
   }
   return pairs;
 }
+async function openProjectPort(port) {
+  if (typeof port.open !== "function") return;
+  // Explicitly consume the initial closed -> open event before binding a
+  // session. Implicit opens would otherwise look like a later USB lifecycle
+  // transition and correctly revoke the new session below.
+  if (port.connection !== "closed") { await port.open(); return; }
+  let changed, timer;
+  const transition = new Promise((resolve, reject) => {
+    changed = () => resolve();
+    timer = setTimeout(() => reject(new Error("The MIDI port did not finish opening. Reconnect and try again.")), 3000);
+    port.addEventListener("statechange", changed, { once: true });
+  });
+  try { await Promise.all([port.open(), transition]); }
+  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+}
 async function connectSelected() {
   if (!workspaceActive) return;
   if (link) link.close(); link = null;
@@ -206,6 +221,8 @@ async function connectSelected() {
   const input = midi.inputs.get($("midi-input").value), output = midi.outputs.get($("midi-output").value);
   if (!input || !output) throw new Error("Choose the keyboard’s MIDI input and output ports.");
   if (!portPairs().some((p) => p.input === input && p.output === output)) throw new Error("Choose connected MIDI ports with one matching name. Disconnect duplicate or unrelated ports, then find ports again.");
+  await Promise.all([openProjectPort(input), openProjectPort(output)]);
+  if (!portPairs().some((p) => p.input === input && p.output === output)) throw new Error("The MIDI connection changed while opening. Find ports and connect again.");
   const pendingLink = link = new ProjectMidiLink(input, output);
   const next = new ProjectDevice(pendingLink);
   try {
@@ -221,8 +238,14 @@ async function connectSelected() {
     pendingLink.close(); link = null; $("identity").textContent = "Projects unavailable on this connection"; throw e;
   }
 }
-function invalidateDisconnectedLink() {
-  if (link && (link.input.state === "disconnected" || link.output.state === "disconnected")) {
+function invalidateDisconnectedLink(event) {
+  // MIDIPort objects are live. A queued unplug/replug event can arrive after
+  // state is connected again; any lifecycle event for this pair revokes its
+  // identity and preview. Events for unrelated ports leave this pair intact.
+  const port = event?.port;
+  const boundEvent = link && port && (port === link.input || port === link.output ||
+    [link.input, link.output].some(p => p.id && port.id === p.id && port.type === p.type));
+  if (link && (boundEvent || link.input.state === "disconnected" || link.output.state === "disconnected")) {
     link.close(); link = null; device = null; previewStale = !!prepared;
     $("identity").textContent = "Disconnected";
     say("USB disconnected. Reconnect and prepare a new preview before importing. Keep any recovery backup.", true); controls();

@@ -33,6 +33,18 @@ Stages retain their real dependencies; independent ready stages and disjoint tas
 5. **Preserve integration and publisher ownership.** The currently assigned sole firmware integrator assembles reviewed firmware work into firmware `nightly`; resolve the actual assignment instead of inferring it from a scheduler title. The NIGHTLY Main Merger integrates eligible PRs into this browser/status repository's `main`. Only the designated NIGHTLY Pages publisher writes its `gh-pages` through the approved nonforced route. Source pushed, PR merged, Pages Git updated and actual HTTP-served bytes verified are separate states.
 6. **Promote production only through its gate.** Firmware/installer behavior in production requires exact source/tree, NIGHTLY development evidence, complete automatic checks, attributable owner-operated physical PASS for each affected model on the same firmware/controller hashes, backed-up/read-back slot data and actual behavior, independent review and separate explicit production promotion authority. Documentation-only maintenance uses applicable review and tests without manufacturing a device flash. Development progress never implies a production release, production Pages publication or destructive device write.
 
+## Pages source and served-byte verification
+
+Before the designated publisher updates `gh-pages`, pin the reviewed source commit/tree, generate the candidate from that exact checkout with the retained public catalog, and require this check to pass from the same checkout:
+
+```sh
+npm run verify:pages -- --candidate /absolute/path/to/candidate --retained-catalog /absolute/path/to/retained-versions.json
+```
+
+The check compares the installer, sample and project pages with current source rendering, verifies package-version assignments and build status, and preserves existing catalog entries and package identities. Keep the retained `versions.json` bytes in the candidate; an empty preview or a page displaying a recent version number does not establish source parity. This is a browser/status publication check and does not add a firmware qualification or hardware gate.
+
+After the approved nonforced `gh-pages` update, verify the actual HTTPS-served installer, sample and project pages, package-version assignments, build status and catalog against the candidate hashes. Record served URLs, SHA-256 values and verification time. A source merge or Pages Git update alone is not evidence that the intended bytes are being served.
+
 ## Automatic continuation and parallel ownership
 
 Deliver the result and its evidence, report the completed stage, then continue the next authorized action without waiting for a user message. A progress report, preview, PR creation or queue entry is not task completion. Resolve findings and handoff gaps within current authority. Continue accepted independent work while another lane waits on its own dependency, failed check, unavailable executor or actual denial.

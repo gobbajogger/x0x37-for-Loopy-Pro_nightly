@@ -17,14 +17,18 @@ const { Updater } = context;
 test('OTA resume refuses completed-install success when application never returns', async () => {
   const product = 'SMK-37 Elite_900';
   const name = 'SMK-37 Elite';
+  const input = { name, state: 'connected' }, output = { name, state: 'connected' };
+  const listeners = new Set();
   const loader = {
     name,
-    id: { model: 'ota-SMK-37 Pro', version: 900, text: 'ota-SMK-37 Pro_900' },
-    link: { close() {} },
+    id: { model: 'ota-SMK-37 Elite', version: 900, text: 'ota-SMK-37 Elite_900' },
+    link: { input, output, close() {} },
   };
   const access = {
-    inputs: new Map([['keyboard', { name, state: 'connected' }]]),
-    outputs: new Map(),
+    inputs: new Map([['keyboard', input]]),
+    outputs: new Map([['keyboard', output]]),
+    addEventListener(type, listener) { assert.equal(type, 'statechange'); listeners.add(listener); },
+    removeEventListener(type, listener) { assert.equal(type, 'statechange'); listeners.delete(listener); },
   };
   const updater = new Updater(access);
   const image = new Uint8Array(128);
@@ -32,7 +36,7 @@ test('OTA resume refuses completed-install success when application never return
   let postBootChecks = 0;
 
   updater.find = async filter => {
-    assert.equal(filter(loader.id), true, 'fixture models a valid same-family OTA loader');
+    assert.equal(filter(loader.id), true, 'fixture models a valid matching-model OTA loader');
     return loader;
   };
   updater.write = async (_loader, bytes) => {
@@ -55,4 +59,8 @@ test('OTA resume refuses completed-install success when application never return
     'a successful loader ACK must be followed by a new application identity readback');
   assert.notEqual(result, true,
     'an absent application must not be reported to the installer UI as Done');
+  assert.equal(result?.code, 'noreturn');
+  assert.equal(updater.verified, false);
+  updater.close();
+  assert.equal(listeners.size, 0);
 });

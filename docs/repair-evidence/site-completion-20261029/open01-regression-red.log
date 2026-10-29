@@ -1,0 +1,78 @@
+✔ initial opening does not revoke a fresh binding (input closed=false, output closed=false) (7.058777ms)
+✖ initial opening does not revoke a fresh binding (input closed=true, output closed=false) (2.41931ms)
+✖ initial opening does not revoke a fresh binding (input closed=false, output closed=true) (1.586688ms)
+✖ initial opening does not revoke a fresh binding (input closed=true, output closed=true) (1.572447ms)
+✔ later observed disconnect/reconnect still revokes the bound pair (8.955374ms)
+✔ later coalesced disconnect/reconnect still revokes the bound pair (6.377149ms)
+✖ an unrelated lifecycle event preserves the freshly opened pair (0.659226ms)
+✔ failed initial open removes temporary listeners and sends no handshake (0.255869ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 4
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34.246796
+
+✖ failing tests:
+
+test at tests/edge-ota-initial-open-lifecycle.test.mjs:55:1
+✖ initial opening does not revoke a fresh binding (input closed=true, output closed=false) (2.41931ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update."
+      at TestContext.<anonymous> (file:///workspace/scratch/dcc2723193ba/site-complete/tests/edge-ota-initial-open-lifecycle.test.mjs:61:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Error],
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+
+test at tests/edge-ota-initial-open-lifecycle.test.mjs:55:1
+✖ initial opening does not revoke a fresh binding (input closed=false, output closed=true) (1.586688ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update."
+      at TestContext.<anonymous> (file:///workspace/scratch/dcc2723193ba/site-complete/tests/edge-ota-initial-open-lifecycle.test.mjs:61:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Error],
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+
+test at tests/edge-ota-initial-open-lifecycle.test.mjs:55:1
+✖ initial opening does not revoke a fresh binding (input closed=true, output closed=true) (1.572447ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update."
+      at TestContext.<anonymous> (file:///workspace/scratch/dcc2723193ba/site-complete/tests/edge-ota-initial-open-lifecycle.test.mjs:61:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Error],
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+
+test at tests/edge-ota-initial-open-lifecycle.test.mjs:90:1
+✖ an unrelated lifecycle event preserves the freshly opened pair (0.659226ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update."
+      at TestContext.<anonymous> (file:///workspace/scratch/dcc2723193ba/site-complete/tests/edge-ota-initial-open-lifecycle.test.mjs:96:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Error],
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }

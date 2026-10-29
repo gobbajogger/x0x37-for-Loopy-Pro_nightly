@@ -24,7 +24,7 @@ function readRequest(declaredLength, address = 0, requestedLength = 8) {
 async function serveOne(declaredLength) {
   const packets = [
     readRequest(declaredLength, 0, 8),
-    readRequest(8, 0xf0000000, 0), // Valid normal loader finish request.
+    readRequest(8, 0xf0000000, 8), // Valid normal loader finish request.
   ];
   const transmitted = [];
   const link = {
@@ -34,12 +34,15 @@ async function serveOne(declaredLength) {
   };
   const updater = new Updater({ inputs: new Map(), outputs: new Map() });
   const firmware = Uint8Array.from({ length: 16 }, (_, index) => index + 1);
-  const result = await updater.serve(link, firmware, 0xf0000000, 1000);
-  return { ...result, transmitted };
+  let result, error;
+  try { result = await updater.serve(link, firmware, 0xf0000000, 1000); }
+  catch (failure) { error = failure; }
+  return { ...result, error, transmitted };
 }
 
 test('positive: valid length-8 request reads one chunk then finishes', async () => {
   const result = await serveOne(8);
+  assert.equal(result.error, undefined);
   assert.equal(result.served, 1);
   assert.equal(result.finished, true);
   assert.equal(result.transmitted.length, 2, 'one data reply and one finish reply');
@@ -48,9 +51,9 @@ test('positive: valid length-8 request reads one chunk then finishes', async () 
 for (const length of [7, 0x010008]) {
   test(`negative: contradictory 24-bit length ${length} must not read firmware bytes`, async () => {
     const result = await serveOne(length);
-    assert.equal(result.served, 0,
-      'FAIL_BEFORE_FIX: parsed and serviced a malformed length-8 request header');
-    assert.equal(result.transmitted.length, 1,
-      'FAIL_BEFORE_FIX: sent firmware data in response to an invalid request');
+    assert.equal(result.error?.code, 'badreq',
+      'without a valid data request the terminal cannot complete the stage');
+    assert.equal(result.transmitted.length, 0,
+      'FAIL_BEFORE_FIX: invalid data and premature finish must receive no replies');
   });
 }

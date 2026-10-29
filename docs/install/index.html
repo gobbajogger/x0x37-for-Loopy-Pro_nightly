@@ -576,7 +576,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   </details>
 
   <details class="connection-help"><summary>Connection &amp; recovery help</summary><p class="small" data-t="direct"></p><p class="small" data-t="helptext"></p><p class="small"><a href="../manual/" data-t="helpmanual">Open the manual</a></p>  <p class="small" id="recovery"><span data-t="brick"></span>
-    <a href="../manual/#recovering-an-fm-1-that-won-t-start" style="color:inherit" data-t="bricklink"></a></p>
+    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#recovering-an-fm-1-that-wont-start" style="color:inherit" data-t="bricklink"></a></p>
   <p class="small" data-t="back"></p></details>
   <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
     <div class="prep-head"><div><h2 id="prep-title">Prepare a sample</h2><p>Listen first. Connect when you’re ready.</p></div><label class="prep-file" for="prep-file"><span >Choose your audio</span><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label></div>
@@ -718,10 +718,12 @@ function ctlProblem(img) {
 const CTL_SLOTMAP = [..."X0X-SLOTMAP-1\0\0\0"].map((c) => c.charCodeAt(0));
 function pkHasSlotMap(flash) {
   const map = 0x9CF00; // Fixed SMK flash-map address, not a marker elsewhere in package padding.
-  return CTL_SLOTMAP.every((b, j) => flash[map + j] === b) && pkU32(flash, map + 16) === 3 &&
-    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]].every(([off, size], j) =>
+  // Current firmware owns exactly two sample slots. 0xB0000 is VM recovery
+  // spare, never a third sample slot. Require geometry as well as count/CRC.
+  return flash.length >= map + 40 && CTL_SLOTMAP.every((b, j) => flash[map + j] === b) && pkU32(flash, map + 16) === 2 &&
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000]].every(([off, size], j) =>
       pkU32(flash, map + 20 + j * 8) === off && pkU32(flash, map + 24 + j * 8) === size) &&
-    pkU32(flash, map + 44) === pkCrc32(flash, map, map + 44);
+    pkU32(flash, map + 36) === pkCrc32(flash, map, map + 36);
 }
 const CTL_NO_BLOCK = "the app code of this package goes into the Bluetooth block (flash 0x8B000-0x9AFFF). "
   + "It is an X0X from before the block. It takes no controller image (install it without one)";
@@ -844,10 +846,14 @@ const MAXDATA = 512;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const IS_OTA = (id) => /^ota-/i.test(id.model);
 const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro|snoop|vector|vox|ota|composite|sinco|usb-midi/i;
-// the SMK-37 Pro, SMK-37 Elite, MKE-P37, Starrykey 37 Play and the SMK-37+VA mod: one keyboard under several model
-// names, so a package for one runs on all of them; an FM-1 is another device
-const SMK_FAMILY = /^(ota-)?(SMK-37[ +].*|MKE-P37|STARRYKEY-37.*)$/i;
-const sameKeyboard = (a, b) => a === b || (SMK_FAMILY.test(a) && SMK_FAMILY.test(b));   // two models
+// Package models are distinct even when boards share a family. The verified
+// Starrykey stock identity names the Pro model; it is not an Elite alias.
+function keyboardModel(model) {
+  if (typeof model !== "string" || !model) return null;
+  const name = model.replace(/^ota-/i, "").toLowerCase();
+  return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
+}
+const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
 
 // errors carry a code the pages translate: notfound, model, stopped, noloader, lost, noreturn,
 // mismatch (detail: the identity the device reports), badreq
@@ -919,9 +925,9 @@ function parseIdentity(pkt) {
 // one MIDI in/out pair with a SysEx queue
 class Link {
   constructor(input, output) {
-    this.input = input; this.output = output; this.q = []; this.waiter = null; this.rxBytes = 0; this.rxError = null;
-    input.onmidimessage = (ev) => {
-      if (this.rxError || ev.data[0] !== 0xF0) return;
+    this.input = input; this.output = output; this.q = []; this.waiter = null; this.rxBytes = 0; this.rxError = null; this.closed = false;
+    this.onMessage = (ev) => {
+      if (this.closed || this.rxError || ev.data[0] !== 0xF0) return;
       // Bound both frame count and bytes; overflow poisons this connection.
       // Never continue an OTA exchange with dropped or stale responses.
       if (this.q.length >= 64 || ev.data.length > 65536 - this.rxBytes) {
@@ -935,16 +941,19 @@ class Link {
       this.rxBytes += ev.data.length;
       if (this.waiter) { const w = this.waiter; this.waiter = null; w(); }
     };
+    input.onmidimessage = this.onMessage;
   }
-  get lost() { return this.input.state === "disconnected" || this.output.state === "disconnected"; }
+  get lost() { return this.closed || this.input.onmidimessage !== this.onMessage || this.input.state === "disconnected" || this.output.state === "disconnected"; }
   // false when the port is gone (unplugged): WebMIDI throws on a disconnected output
   send(bytes) {
     if (this.rxError) throw this.rxError;
+    if (this.lost) return false;
     try { this.output.send(bytes); return true; } catch (_) { return false; }
   }
   drain() { this.q.length = 0; this.rxBytes = 0; }
   async read(ms) {
     if (this.rxError) throw this.rxError;
+    if (this.lost) return null;
     if (!this.q.length) {
       let tm;
       await Promise.race([new Promise((r) => { this.waiter = r; }), new Promise((r) => { tm = setTimeout(r, ms); })]);
@@ -956,7 +965,12 @@ class Link {
     if (pkt) this.rxBytes -= pkt.length;
     return pkt || null;
   }
-  close() { this.input.onmidimessage = null; }
+  close() {
+    this.closed = true;
+    // A later scan can own this port now. Stale cleanup must not remove it.
+    if (this.input.onmidimessage === this.onMessage) this.input.onmidimessage = null;
+    if (this.waiter) { const w = this.waiter; this.waiter = null; w(); }
+  }
 }
 
 async function handshake(link, tries = 3) {
@@ -974,6 +988,21 @@ async function handshake(link, tries = 3) {
   return null;
 }
 
+async function openMidiPort(port) {
+  // Reuse the Projects workspace's initial-opening boundary: consume the
+  // closed -> open event before a new session installs its lifecycle guard.
+  // Later events remain observable by every existing bound updater.
+  if (port.connection !== "closed") { await port.open(); return; }
+  let changed, timer;
+  const transition = new Promise((resolve, reject) => {
+    changed = () => resolve();
+    timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), 3000);
+    port.addEventListener("statechange", changed, { once: true });
+  });
+  try { await Promise.all([port.open(), transition]); }
+  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+}
+
 class Updater {
   constructor(access, log) {
     this.access = access;
@@ -982,6 +1011,9 @@ class Updater {
     this.targetName = null;
     this.verified = false;
     this.product = null;
+    this.binding = null;
+    this.onPortState = null;
+    this.admitted = null;
   }
 
   ports() {
@@ -1007,6 +1039,45 @@ class Updater {
     } catch (e) { dev.link.close(); throw e; }
     this.target = dev.id;
     this.targetName = dev.name;
+    if (!this.binding) {
+      this.binding = { input: dev.link.input, output: dev.link.output, invalid: false,
+        observed: typeof this.access.addEventListener === "function" };
+      const binding = this.binding;
+      this.onPortState = (event) => {
+        const p = event.port;
+        // Event callbacks can lag a disconnect/reconnect. Current state alone
+        // cannot prove that this bound connection remained uninterrupted.
+        if (p && (p === binding.input || p === binding.output ||
+            (p.id && (p.id === binding.input?.id || p.id === binding.output?.id)))) binding.invalid = true;
+      };
+      if (binding.observed) this.access.addEventListener("statechange", this.onPortState);
+    }
+  }
+
+  assertContinuous(dev) {
+    const b = this.binding;
+    if (dev?.id && this.target && !sameKeyboard(dev.id.model, this.target.model))
+      throw fail("model", `The selected keyboard changed model during the update: ${dev.id.text}`);
+    if (!b || !b.observed || b.invalid || !b.input || !b.output ||
+        dev?.link?.input !== b.input || dev?.link?.output !== b.output ||
+        b.input.state !== "connected" || b.output.state !== "connected" ||
+        ![...this.access.inputs.values()].includes(b.input) ||
+        ![...this.access.outputs.values()].includes(b.output)) {
+      if (b) b.invalid = true;
+      throw fail("continuity", "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update.");
+    }
+  }
+
+  close() {
+    if (this.onPortState && typeof this.access.removeEventListener === "function")
+      this.access.removeEventListener("statechange", this.onPortState);
+    this.onPortState = null;
+    if (this.binding) this.binding.invalid = true;
+  }
+
+  assertAdmitted() {
+    if (this.admitted && !this.admitted())
+      throw fail("admission", "The selected firmware or its approval changed. Select and confirm the intended package again.");
   }
 
   _portPairs() {
@@ -1028,15 +1099,24 @@ class Updater {
   // every in/out pair with the same port name that answers the handshake
   async find(filter) {
     if (this.target) this.singlePort();
+    if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
-      try { await input.open(); await output.open(); } catch (_) { continue; }
+      try { await openMidiPort(input); await openMidiPort(output); } catch (_) { continue; }
+      if (!this._portPairs().some((p) => p.input === input && p.output === output)) continue;
       const link = new Link(input, output);
-      const id = await handshake(link, 2);
+      let id;
+      try { id = await handshake(link, 2); }
+      catch (error) { link.close(); throw error; }
       if (id && this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), id.model.replace(/^ota-/i, ""))) {
         link.close();
         throw fail("model", `The selected keyboard changed model during the update: ${id.text}`);
       }
-      if (id && (!filter || filter(id))) return { link, id, name: input.name };
+      if (id && (!filter || filter(id))) {
+        const dev = { link, id, name: input.name };
+        try { if (this.binding) this.assertContinuous(dev); }
+        catch (error) { link.close(); throw error; }
+        return dev;
+      }
       link.close();
     }
     return null;
@@ -1055,9 +1135,10 @@ class Updater {
   // serve read requests until the device asks for one of the finish addresses; stops early
   // when the port disappears (lost: true) instead of waiting out idleMs
   async serve(link, image, finishAddr, idleMs, onProgress) {
-    let served = 0, last = Date.now();
+    let served = 0, transferred = 0, startedAtHeader = false, last = Date.now();
     for (;;) {
       const pkt = await link.read(1000);
+      if (this.binding) this.assertContinuous({ link });
       if (!pkt) {
         if (link.lost) return { served, finished: false, lost: true };
         if (Date.now() - last > idleMs) return { served, finished: false };
@@ -1067,25 +1148,33 @@ class Updater {
       if (!r) continue;
       last = Date.now();
       if (r.addr === 0xE0000000 || r.addr === 0xF0000000) {
-        if (r.len !== 0) throw fail("badreq", `bad finish request ${r.addr.toString(16)}+${r.len}`);
+        // App ota.c and loader ldr_core.c both read the eight-byte "success\0" token.
+        if (r.len !== 8) throw fail("badreq", `bad finish request ${r.addr.toString(16)}+${r.len}`);
+        if (r.addr !== finishAddr || transferred === 0 || !startedAtHeader)
+          throw fail("badreq", "Unexpected OTA completion before this stage transferred image data");
         if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
           return { served, finished: false, lost: true };
         }
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }
-      if (r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
+      if (r.len === 0 || r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
       await sleep(10);
+      if (this.binding) this.assertContinuous({ link });
+      if (finishAddr === 0xF0000000 && transferred === 0) this.assertAdmitted();
       if (!link.send(response(r.addr, Array.from(image.subarray(r.addr, r.addr + r.len)), r.fl))) {
         return { served, finished: false, lost: true };
       }
       served++;
+      transferred += r.len;
+      if (r.addr === 0) startedAtHeader = true;
       if (onProgress) onProgress(served, r.addr);
     }
   }
 
   // full install: running firmware -> loader -> new firmware
-  async install(image, product, onStep) {
+  async install(image, product, onStep, start = null, admitted = null) {
+    this.admitted = admitted;
     const step = onStep || (() => {});
     const dev = await this.find((id) => !IS_OTA(id));
     if (!dev) throw fail("notfound", "FM-1 not found (USB cable, and no other app using it?)");
@@ -1093,11 +1182,24 @@ class Updater {
     if (!sameKeyboard(dev.id.model, model)) { dev.link.close(); throw fail("model", `the device is ${dev.id.text}, the package is for ${product}`); }
     this.bind(dev);
     this.product = product;
+    try { this.assertContinuous(dev); }
+    catch (error) { dev.link.close(); throw error; }
+    // A snapshot COMMIT both checks freshness and enters OTA on the device.
+    // Do not send a second legacy UPGRADE, and do not drain queued OTA reads
+    // after the exact acknowledgement. A rejected/uncertain COMMIT is not retried.
+    if (start) {
+      try { this.assertAdmitted(); await start(dev); }
+      catch (e) { dev.link.close(); throw e; }
+    }
     step("start", dev.id.text);
-    dev.link.send(UPGRADE);
-    await sleep(2000);
-    const s1 = await this.serve(dev.link, image, 0xE0000000, 8000, (n) => step("verify", n));
-    dev.link.close();
+    let s1;
+    try {
+      this.assertContinuous(dev);
+      this.assertAdmitted();
+      if (!start && !dev.link.send(UPGRADE)) throw fail("lost", "The keyboard disconnected before the update started.");
+      await sleep(2000);
+      s1 = await this.serve(dev.link, image, 0xE0000000, 8000, (n) => step("verify", n));
+    } finally { dev.link.close(); }
     if (!s1.finished) throw fail(s1.lost ? "lost" : "stopped", `the device ${s1.lost ? "was disconnected" : "stopped"} after ${s1.served} requests: nothing was written`);
     step("loader");
     await sleep(3000);
@@ -1118,11 +1220,12 @@ class Updater {
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
       this.singlePort(back.name);
+      this.assertContinuous(back);
       if (IS_OTA(back.id)) throw fail("noreturn", "the device is still in update mode");
       if (!sameKeyboard(back.id.model, product.split("_")[0]))
         throw fail("model", `The selected keyboard changed model during the update: ${back.id.text}`);
       if (back.id.text !== product) throw fail("mismatch", `installed, but the device reports ${back.id.text}`, back.id.text);
-      this.targetName = back.name; // A sole keyboard may rename its port on reboot.
+      this.targetName = back.name;
     } finally { back.link.close(); }
     this.verified = true;
     step("done", back.id.text);
@@ -1135,18 +1238,22 @@ class Updater {
       this.singlePort(ota.name);
       if (!this.product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), this.product.split("_")[0]))
         throw fail("model", `the loader is ${ota.id.text}, the package is for ${this.product || "an unknown model"}`);
+      if (!IS_OTA(ota.id)) throw fail("model", "The selected device is not an update loader");
+      this.assertContinuous(ota);
+      this.assertAdmitted();
     } catch (e) { ota.link.close(); throw e; }
-    ota.link.send(UPGRADE);
-    await sleep(2000);
-    const s2 = await this.serve(ota.link, image, 0xF0000000, 180000, (n) => step("write", n));
-    ota.link.close();
-    return s2;
+    try {
+      if (!ota.link.send(UPGRADE)) throw fail("lost", "The update loader disconnected before writing.");
+      await sleep(2000);
+      return await this.serve(ota.link, image, 0xF0000000, 180000, (n) => step("write", n));
+    } finally { ota.link.close(); }
   }
 
   // resume: loader -> true only after a fresh application response matches product. product: the
   // package's identity; the loader's model must match it by install()'s rule (sameKeyboard): an SMK's loader
   // never gets an FM-1 image, and without the identity nothing is written
-  async resume(image, onStep, product = "") {
+  async resume(image, onStep, product = "", admitted = null) {
+    this.admitted = admitted;
     const ota = await this.find(IS_OTA);
     if (!ota) return false;
     if (!product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), product.split("_")[0])) {
@@ -1313,18 +1420,29 @@ function loopPreviewPcm(s, playbackRate, roundTrip = true) {
 
 // Prepare from the retained decoded original, never from an already processed loop.
 // The baseline is the same bar/trim at 44.1 kHz; actual ADPCM bytes include odd-sample nibble padding.
-function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RATE, gritFactor = 1 } = {}) {
+function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RATE, gritFactor = 1, maxData = SLOT_MAX_DATA } = {}) {
   if (!Number.isFinite(sr) || sr <= 0 || !x.length || !Array.from(x).every(Number.isFinite))
     throw new Error("The source audio has invalid samples or sample rate.");
   if (storageRate !== RATE && storageRate !== RATE_HALF) throw new Error("Invalid import rate.");
   if (!Number.isFinite(gritFactor) || gritFactor < 1 || gritFactor > 8) throw new Error("Invalid oldschool factor.");
+  if (!Number.isSafeInteger(maxData) || maxData < 1 || maxData > 0x20000 - SLOT_DATA_OFF)
+    throw new Error("Invalid BREAK slot capacity.");
   const selected = selectLoopSource(x, sr, bars, trim);
+  // Bound the eventual ADPCM before either the reference or stored-rate
+  // resamplers allocate. Positive low rates remain valid when the result fits.
+  // Floor is a lower bound: floating-point stepping can add a sample at an
+  // exact boundary, which the final size check below also rejects.
+  const projected = storageRate === sr && gritFactor === 1 ? selected.length :
+    Math.floor(Math.max(0, selected.length - 1) * storageRate / sr / gritFactor);
+  const tooLong = () => Object.assign(new Error("This loop exceeds the BREAK slot capacity. Use a shorter cut, lower storage rate or stronger oldschool setting."), { code: "BREAK_SLOT_CAPACITY" });
+  if (!Number.isSafeInteger(projected) || Math.ceil(projected / 2) > maxData) throw tooLong();
   // A same-cut mono reference at the decoded source rate, before resampling/codec.
   // Match the import peak target, not perceived loudness; encoded playback stays exact.
   const scale = (30000 / 32768) / peak(selected);
   const reference = Float32Array.from(selected, v => v * scale);
   const baseline = cut(x, sr, bars, RATE, trim);
   const { s, rate } = cutLoop(x, sr, bars, storageRate, trim, gritFactor);
+  if (Math.ceil(s.length / 2) > maxData) throw tooLong();
   if (s.length < MIN_LOOP_SAMPLES) throw new Error("This loop is too short for BREAK playback (64 samples minimum).");
   const adpcm = imaEncode(s), baselineBytes = Math.ceil(baseline.length / 2);
   return { s, rate, n: s.length, adpcm, baselineSamples: baseline.length, baselineBytes,
@@ -1539,12 +1657,19 @@ function asciiName(b) {
 // offset (null if unknown) and used KiB come from X0X's extension ('X', 1, then per slot offset and size in
 // 4 KiB sectors and used KiB, 14 bits each); without it every slot has the one size.
 function parseInfo(r) {
-  if (r.length < 2) throw new Error("short SMP_INFO reply");
+  if (!r || r.length < 2) throw new Error("short SMP_INFO reply");
+  if (Array.from(r).some(b => !Number.isInteger(b) || b < 0 || b > 127))
+    throw new Error("invalid SMP_INFO MIDI data");
   const count = r[0], size = r[1] * 1024, slots = [];
-  if (count < 1) throw new Error("invalid SMP_INFO slot count");
+  if (count < 1 || count > 16 || !size) throw new Error("invalid SMP_INFO slot count or size");
   let i = 2;
   for (let k = 0; k < count; k++) {
+    if (i >= r.length || r[i] > 16) throw new Error("invalid SMP_INFO slot record");
     const nz = r[i], j = r.indexOf(0, i + 1);
+    if (j < 0 || j > i + 9 || j + 1 >= r.length)
+      throw new Error("truncated SMP_INFO slot record");
+    if (nz === 0 && (j !== i + 1 || r[j + 1] !== 0))
+      throw new Error(`slot ${k + 1}: empty SMP_INFO slot has occupied metadata`);
     slots.push({ nz, name: asciiName(r.slice(i + 1, j)), kb: r[j + 1], size, off: null, used: r[j + 1] });
     i = j + 2;
   }
@@ -1939,7 +2064,8 @@ async function restoreMapped(link, todo, images, onPart) {
   const after = await readSlotLayout(link);
   for (const { k, j } of todo) {
     const got = await readSlotImage(link, j, after.slots[j].nz, undefined, slotSize(after, j));
-    if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]))
+    if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]) ||
+        !got.every((byte, i) => byte === images[k][i]))
       throw new Error(`slot ${j + 1}: read back differs from the backup of slot ${k + 1}`);
   }
 }
@@ -1951,6 +2077,89 @@ function archiveStamp(t = new Date()) {
   return { created, name: `x0x-slots-before-install-${created.replace(/[-:]/g, "").replace("T", "-")}.x0xslots` };
 }
 
+const SNAPSHOT_COMMAND = 48, SNAPSHOT_TOKEN_SIZE = 16;
+const snapshotFail = (message) => Object.assign(new Error(message), { code: "slotbackup" });
+
+// Only an exact, read-only INFO capability permits a new command. Old X0X,
+// stock and other custom firmware must not receive an unknown write command.
+async function hasInstallSnapshot(link) {
+  let info;
+  try { info = await slotReq(link, 1, [], 1000, 1); }
+  catch (e) {
+    if (/did not answer \(slot command 1\)/.test(e.message)) return false;
+    throw e;
+  }
+  const z = info.indexOf(0);
+  if (z < 0 || !/^X0X [\x20-\x7e]{1,20}$/.test(String.fromCharCode(...info.slice(0, z)))) return false;
+  return info.length === z + 12 && info.slice(z + 7).every((b, k) => b === [0x58, 0x53, 0x47, 1, SNAPSHOT_COMMAND][k]);
+}
+
+// One request, never an authorization retry. Responses from another operation,
+// token or ticket cannot authorize this backup. Leave later queued OTA reads
+// untouched when returning the matching ACK.
+async function snapshotRequest(link, op, token, ticket = null) {
+  if (link.lost) throw snapshotFail("The USB connection was lost. Start a new install attempt.");
+  const encoded = ticket === null ? [] : Array.from({ length: 4 }, (_, k) => (ticket >>> (7 * k)) & 127);
+  link.drain();
+  if (!link.send([...ED, SNAPSHOT_COMMAND, op, ...token, ...encoded, 0xF7]))
+    throw snapshotFail("The USB connection was lost; no snapshot authorization was retried.");
+  const end = Date.now() + 3000;
+  while (Date.now() < end) {
+    const p = await link.read(end - Date.now());
+    if (!p) break;
+    if (p.length < 6 || p[0] !== 0xF0 || p.at(-1) !== 0xF7 ||
+        p[1] !== ED[1] || p[2] !== ED[2] || p[3] !== ED[3] || p[4] !== SNAPSHOT_COMMAND) continue;
+    const r = Array.from(p).slice(5, -1);
+    if (r[0] !== op) continue;
+    if (r.length !== 22 || r.some(b => !Number.isInteger(b) || b < 0 || b > 127) || r[1] > 5)
+      throw snapshotFail("The keyboard returned a malformed sample-snapshot acknowledgement.");
+    if (!token.every((b, k) => r[k + 2] === b)) continue;
+    const got = r.slice(18).reduce((n, b, k) => n + b * 2 ** (7 * k), 0);
+    if (ticket !== null && got !== ticket) continue;
+    if (r[1]) throw snapshotFail(r[1] === 4 ?
+      "The samples changed after this backup began. No update was started. Make and retain a fresh backup before retrying." :
+      "The sample snapshot is unavailable, busy or expired. No update was started. Finish other transfers and start a new install attempt.");
+    if (!got) throw snapshotFail("The keyboard returned an invalid sample-snapshot ticket.");
+    if (link.lost) throw snapshotFail("The USB connection was lost. The authorization was not retried.");
+    return got;
+  }
+  throw snapshotFail("The keyboard did not acknowledge the sample snapshot. The authorization was not retried.");
+}
+
+async function beginInstallSnapshot(link) {
+  if (!globalThis.crypto?.getRandomValues)
+    throw snapshotFail("Secure random tokens are unavailable. Use a supported secure browser; no update was started.");
+  const token = new Uint8Array(SNAPSHOT_TOKEN_SIZE);
+  do { crypto.getRandomValues(token); token.forEach((b, k) => { token[k] = b & 127; }); }
+  while (token.every(b => b === 0));
+  const ticket = await snapshotRequest(link, 1, token);
+  return { token, ticket, consumed: false };
+}
+
+async function commitInstallSnapshot(link, snapshot, admitted = () => true) {
+  if (snapshot.consumed) throw snapshotFail("This sample snapshot has already been consumed. Start a new install attempt.");
+  snapshot.consumed = true; // A lost reply may follow device admission. Never replay it.
+  if (link.lost) throw snapshotFail("The USB connection was lost. Start a new install attempt.");
+  // The Updater reacquires a link after backup. Same keyboard family is not a
+  // capability promise: a restart/reconnect may expose older or stock firmware.
+  // Recheck read-only INFO here, but never START again with this older archive.
+  let capable;
+  try { capable = await hasInstallSnapshot(link); }
+  catch (e) { throw snapshotFail(`The final sample-snapshot capability check failed (${e.message}). No update was started.`); }
+  if (!capable) throw snapshotFail("The reconnected keyboard does not support atomic sample-snapshot admission. No update was started. Start a new install attempt.");
+  // No await follows this last caller approval before COMMIT sends the
+  // token-bound atomic update command. Rechecking only before INFO is racy.
+  if (!admitted()) throw snapshotFail("The selected package is no longer approved. No update was started.");
+  await snapshotRequest(link, 3, snapshot.token, snapshot.ticket);
+}
+
+async function cancelInstallSnapshot(link, snapshot) {
+  if (!snapshot || snapshot.consumed) return;
+  snapshot.consumed = true;
+  try { await snapshotRequest(link, 2, snapshot.token, snapshot.ticket); }
+  catch (_) { /* A passive watch holds no audio, UI or storage; preserve the original error. */ }
+}
+
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
 // hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
@@ -1960,14 +2169,23 @@ function archiveStamp(t = new Date()) {
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 async function installKeepingSlots(up, image, product, board, hooks) {
-  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true }, hooks);
+  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
-  let move = null;
+  let move = null, snapshot = null;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
-  if (dev && !h.sameKeyboard(dev.id.model, product.split("_")[0])) dev.link.close();   // install() refuses it
-  else if (dev) {
+  if (!dev) throw fail("notfound", "No running keyboard was found for sample preflight; no update was started.");
+  if (!h.sameKeyboard(dev.id.model, product.split("_")[0])) {
+    dev.link.close();
+    throw fail("model", "The keyboard does not match this package; no update was started.");
+  }
+  {
     up.bind(dev);
     try {
+      // Arm before FIRST layout/occupancy/risk reads, including empty slots.
+      // Otherwise empty-to-occupied and in-progress-import races escape backup.
+      try {
+        if (await hasInstallSnapshot(dev.link)) snapshot = await beginInstallSnapshot(dev.link);
+      } catch (e) { throw fail("slotbackup", `The sample snapshot could not be established (${e.message}). No update was started.`); }
       let layout;
       try { layout = await readSlotLayout(dev.link, 1000, 2); }
       catch (e) {
@@ -1975,6 +2193,8 @@ async function installKeepingSlots(up, image, product, board, hooks) {
         if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
         else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
       }
+      if (layout && !snapshot)
+        throw fail("slotbackup", "This firmware cannot atomically protect the sample backup through update entry. No update was started. A separately verified preservation path is required for this older firmware.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
@@ -1998,9 +2218,14 @@ async function installKeepingSlots(up, image, product, board, hooks) {
             layout: saved.layout, images: saved.images, name: st.name, todo: [], skipped: [] };
         }
       }
+    } catch (e) {
+      await cancelInstallSnapshot(dev.link, snapshot);
+      throw e;
     } finally { dev.link.close(); }
   }
-  const ran = await up.install(image, product, h.step);
+  if (!h.admitted()) throw fail("slotbackup", "The selected package is no longer approved. No update was started.");
+  const ran = await up.install(image, product, h.step,
+    snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot, h.admitted) : null, h.admitted);
   if (!move || !move.newMap.length) return { product: ran, move };
   h.say("slotback");
   const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);
@@ -2257,6 +2482,7 @@ let midi = null, connected = false, lastId = null, writing = false;
 let image = null, selectedProduct = null, ctl = null, stock = null;
 let chosenModel = null;
 let loadSerial = 0;
+let activeDownloadController = null;
 let scanSerial = 0;
 let workspaceActive = true, workspaceScanning = 0, workspaceTask = "firmware";
 let verifiedDownload = null;
@@ -2289,6 +2515,7 @@ $("download").addEventListener("click", (event) => {
     }
   } catch { /* Any catalog or cached-state exception denies this click. */ }
   loadSerial++; // Do not let an older async response restore denied admission.
+  cancelPackageDownload();
   discardVerifiedDownload();
   updateInstallGate();
 });
@@ -2479,6 +2706,7 @@ function refreshMeta() {
   const link = $("download");
   if (!isCatalogChecked(ver, pkg)) {
     $("pkgmeta").textContent = "";
+    cancelPackageDownload();
     discardVerifiedDownload();
     $("builddetail").hidden = true;
     updateInstallGate();
@@ -2664,7 +2892,12 @@ async function sha256Hex(buf) {
   return hex;
 }
 // Bounded reader ported from GPL firmware installer PR102 a48d745b59683eaaf2283aed5ec1ec2187799cfc.
-async function readApprovedPackage(response, expectedSize, isLatest) {
+function cancelPackageDownload() {
+  const previous = activeDownloadController;
+  activeDownloadController = null;
+  previous?.abort();
+}
+async function readApprovedPackage(response, expectedSize, isLatest, signal) {
   if (!response.body || typeof response.body.getReader !== "function") {
     // A non-streaming response cannot be bounded before allocation.
     // Fail closed rather than buffering potentially unbounded remote bytes.
@@ -2673,14 +2906,28 @@ async function readApprovedPackage(response, expectedSize, isLatest) {
   const reader = response.body.getReader();
   const chunks = [];
   let length = 0, reject = false;
+  let cancellation = null;
+  const cancel = () => {
+    reject = true;
+    if (!cancellation) {
+      try { cancellation = Promise.resolve(reader.cancel()).catch(() => {}); }
+      catch (_) { cancellation = Promise.resolve(); }
+    }
+    return cancellation;
+  };
+  const abort = () => { void cancel(); };
+  signal?.addEventListener("abort", abort, { once: true });
   try {
     while (true) {
+      if (signal?.aborted || !isLatest()) { reject = true; break; }
       const { done, value } = await reader.read();
-      if (!isLatest()) { reject = true; break; }
+      if (signal?.aborted || !isLatest()) { reject = true; break; }
       if (done) break;
       if (!(value instanceof Uint8Array) || value.byteLength > expectedSize - length) {
         reject = true; break;
       }
+      // Empty chunks carry no package bytes and must not retain array entries.
+      if (value.byteLength === 0) continue;
       chunks.push(value);
       length += value.byteLength;
     }
@@ -2688,7 +2935,8 @@ async function readApprovedPackage(response, expectedSize, isLatest) {
     reject = true;
     throw error;
   } finally {
-    if (reject) { try { await reader.cancel(); } catch (_) {} }
+    signal?.removeEventListener("abort", abort);
+    if (reject) await cancel();
     try { reader.releaseLock(); } catch (_) {}
   }
   if (reject || length !== expectedSize) return null;
@@ -2699,6 +2947,7 @@ async function readApprovedPackage(response, expectedSize, isLatest) {
 }
 
 async function loadSelectedPackage() {
+  cancelPackageDownload();
   const requestId = ++loadSerial;
   $("devagree").checked = false;
   discardVerifiedDownload();
@@ -2722,11 +2971,13 @@ async function loadSelectedPackage() {
         selectionIdentity(current,pkg) === identity;
     } catch { return false; }
   };
+  const controller = new AbortController();
+  activeDownloadController = controller;
   try {
-    const r = await fetch(pkg.pkg, {redirect: "error"});
+    const r = await fetch(pkg.pkg, {redirect: "error", signal: controller.signal});
     if (!isLatest()) { try { await r.body?.cancel(); } catch {} return; }
     if (!r.ok || r.redirected) throw new Error(`${pkg.pkg}: HTTP ${r.status}`);
-    const raw = await readApprovedPackage(r, pkg.size, isLatest);
+    const raw = await readApprovedPackage(r, pkg.size, isLatest, controller.signal);
     if (!isLatest()) return;
     if (!raw) { sayK("badpkg"); return; }
     // Approved downloads require a SHA and the exact product/model identity.
@@ -2749,7 +3000,10 @@ async function loadSelectedPackage() {
       href: URL.createObjectURL(new Blob([raw], {type: "application/octet-stream"})) };
     say(`${buildDisplayLabel(ver,pkg)} · ${MODELS[model] || model}`);
     refreshMeta();
-  } catch (e) { if (isLatest()) sayK("loadfail", e.message); }
+  } catch (e) { if (isLatest() && !controller.signal.aborted) sayK("loadfail", e.message); }
+  finally {
+    if (activeDownloadController === controller) activeDownloadController = null;
+  }
 }
 
 function versionOptionCaption(v) {
@@ -2766,6 +3020,7 @@ function refreshVersionLabels() {
   }
 }
 function fillVersions() {
+  cancelPackageDownload();
   loadSerial++;
   discardVerifiedDownload();
   const sel = $("version");
@@ -2953,7 +3208,7 @@ async function run(img, product, opts = {}) {
   $("go").disabled = $("stockgo").disabled = true;
   $("bar").value = 0;
   const foreign = !!opts.foreign;   // stock / other custom: identity text after reboot may differ
-  let access;
+  let access, up;
   try { access = await midiAccess(); }
   catch (e) {
     writing = false;
@@ -2964,7 +3219,7 @@ async function run(img, product, opts = {}) {
   led("busy");
   try {
     if (opts.admitted && !opts.admitted()) throw new Error(t("unapproved"));
-    const up = new Updater(access, log);
+    up = new Updater(access, log);
     const total = 74 + 1167;
     const step = (k, a) => {
       log(`${k} ${a ?? ""}`);
@@ -2980,12 +3235,12 @@ async function run(img, product, opts = {}) {
     if (ota) {
       // Interrupted upgrade/downgrade/stock write: finish with this package (same keyboard family).
       ota.link.close();
-      const ok = await up.resume(img, step, product);
+      const ok = await up.resume(img, step, product, opts.admitted);
       if (!ok) sayK("stopped"); // Successful completion is emitted only after application readback.
     } else {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
-        step, sameKeyboard,
+        step, sameKeyboard, admitted: opts.admitted,
         say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
         progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
         save: async (file, name) => {
@@ -3004,16 +3259,16 @@ async function run(img, product, opts = {}) {
     }
     await scan(true);
   } catch (e) {
-    // Stock / other custom firmware often reports a different identity string than the package marker.
-    if (foreign && e && e.code === "mismatch") { $("bar").value = 100; sayK("stockdone"); }
-    else if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
+    if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
     else sayK("error", e && e.message);
     log(String(e && e.stack || e));
     led("err");
+  } finally {
+    up?.close?.();
+    writing = false;
+    updateInstallGate();
+    $("stockgo").disabled = !stock || !$("stockconfirm").checked;
   }
-  writing = false;
-  updateInstallGate();
-  $("stockgo").disabled = !stock || !$("stockconfirm").checked;
 }
 
 $("go").addEventListener("click", async () => {

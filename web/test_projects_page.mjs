@@ -186,6 +186,53 @@ test("disconnect disables mutation and invalidates preview while preserving reco
   assert.deepEqual(new Uint8Array(await e.downloads.at(-1).blob.arrayBuffer()), e.backupBytes);
 });
 
+test("queued bound-port reconnect revokes preview and requires an explicit fresh identity handshake", async () => {
+  const e = environment(); await e.click("find"); await e.choose(); await e.click("prepare"); await e.click("backup");
+  e.input.state = "disconnected";
+  const event = { type: "statechange", port: e.input };
+  e.input.state = "connected";
+  e.midi.onstatechange(event);
+  assert.equal(e.ids.reset.disabled, true); assert.equal(e.ids.import.disabled, true);
+  assert.equal(e.ids.backup.disabled, false, "the prepared backup download survives revocation");
+  assert.equal(e.calls.filter(c => c === "connect").length, 1);
+  await e.click("connect");
+  assert.equal(e.calls.filter(c => c === "connect").length, 2, "fresh protocol and identity handshake is required");
+  assert.equal(e.ids.reset.disabled, false); assert.equal(e.ids.import.disabled, true, "old import preview stays invalid");
+});
+
+test("unrelated port lifecycle event preserves the current verified session", async () => {
+  const e = environment(); await e.click("find"); await e.choose(); await e.click("prepare");
+  const prior = e.ids.identity.textContent;
+  e.midi.onstatechange({ type: "statechange", port: { id: "unrelated", type: "input", state: "disconnected" } });
+  assert.equal(e.ids.reset.disabled, false); assert.equal(e.ids.identity.textContent, prior);
+  assert.equal(e.ids.preview.hidden, false);
+});
+
+test("initial explicit open events are consumed before the new session is bound", async () => {
+  const e = environment(), observed = [];
+  for (const port of [e.input, e.output]) {
+    const listeners = new Set();
+    port.connection = "closed";
+    port.addEventListener = (name, listener) => { assert.equal(name, "statechange"); listeners.add(listener); };
+    port.removeEventListener = (name, listener) => { assert.equal(name, "statechange"); listeners.delete(listener); };
+    port.open = async () => {
+      port.connection = "open";
+      setImmediate(() => {
+        assert.equal(e.calls.includes("connect"), false, "the identity request waits for both port-open events");
+        const event = { type: "statechange", port };
+        e.midi.onstatechange(event); for (const listener of listeners) listener(event);
+        observed.push(port.id);
+      });
+      return port;
+    };
+  }
+  await e.click("find");
+  assert.deepEqual(observed.sort(), ["i", "o"]);
+  assert.equal(e.ids.reset.disabled, false); assert.match(e.ids.identity.textContent, /X0X browser-test/);
+  assert.equal(e.calls.filter(c => c === "connect").length, 1);
+  assert.equal(e.calls.filter(c => c === "close").length, 0);
+});
+
 test("busy export refuses repeat clicks and task switching without discarding draft state", async () => {
   const e = environment(); await e.click("find");
   let finish; e.state.exportWait = new Promise(resolve => { finish = resolve; });

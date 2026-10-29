@@ -12,7 +12,7 @@ function enc(b,key=65535){for(let i=0;i<b.length;i++){b[i]^=key&255;key=((key<<1
 function sfc(b){for(let o=0;o<b.length;o+=32)enc(b.subarray(o,Math.min(o+32,b.length)),65535^(o>>>2));return b;}
 function entry(dcrc,off,size,name){const b=Buffer.alloc(32,255);u16(b,2,dcrc);u32(b,4,off);u32(b,8,size);b[12]=0x82;b[13]=255;u16(b,14,0);b.fill(255,16);b.write(name+'\0',16,'ascii');u16(b,0,crc16(b.subarray(2)));return b;}
 export function makeController(edit){const b=Buffer.alloc(4096);for(let i=68;i<b.length;i++)b[i]=(i*13+7)&255;u32(b,0,0x43423058);u16(b,4,2);u16(b,6,68);u32(b,8,0x20000);u32(b,12,b.length);u32(b,20,2);u32(b,24,0x02087080);u32(b,28,0x02087090);u32(b,32,0x01c06e80);u32(b,36,0x01c07680);u32(b,40,0x01c01800);u32(b,44,0x01c07680);u32(b,48,1<<29);u32(b,52,1<<8);if(edit)edit(b);u32(b,16,0);u32(b,16,crc32(b));return b;}
-export function makePackage(model='pro',{controller=makeController(),tail=false,appCrc=false,outerCrc=false,noMap=false,slotMap=[[0xc2000,0x14000],[0xd6000,0x1e000],[0xb0000,0xb000]],flashOffset=0x400,slotMapOffset=0x9cf00,extraFiles=[]}={}){
+export function makePackage(model='pro',{controller=makeController(),tail=false,appCrc=false,outerCrc=false,noMap=false,slotMap=[[0xc2000,0x14000],[0xd6000,0x1e000]],flashOffset=0x400,slotMapOffset=0x9cf00,extraFiles=[]}={}){
  const slot=0x97400,blk=0x120+slot,area=Buffer.alloc(blk,255),flash=Buffer.alloc(0x9d000,255);
  area.write('SYNTHETIC NONEXECUTABLE APPLICATION',0x120,'ascii');
  if(controller)controller.copy(area,0x120+0x86ee0);

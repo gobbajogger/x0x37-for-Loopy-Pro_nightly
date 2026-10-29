@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC-012: exercise the production parser and preflash path using synthetic replies.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseInfo, flashMap, atRisk, installKeepingSlots } from '../web/x0x_breaks.js';
@@ -76,6 +77,7 @@ test('invalid ranges fail before sample reads, backup save or OTA on the actual 
       async find() { return { link, id: { model: 'SMK-37 Pro', version: 900 } }; },
       bind() {}, async install() { events.push('OTA'); },
     };
+    withInstallSnapshot(link, up);
     await assert.rejects(installKeepingSlots(up, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
       save() { events.push('save'); },
     }), e => e.code === 'slotbackup' && /overlapping SMP_INFO/.test(e.message));
