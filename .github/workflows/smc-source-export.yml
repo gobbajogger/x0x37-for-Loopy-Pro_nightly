@@ -1,0 +1,42 @@
+name: Transfer pinned SMC source to native builder
+on:
+  push:
+    branches:
+      - chat/smc-source-export
+permissions:
+  contents: read
+jobs:
+  export:
+    name: Export source and git bundle without firmware
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 979dc017ae39ac9423274633c6f08ea95066b164
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify immutable source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "979dc017ae39ac9423274633c6f08ea95066b164"
+          test "$(git rev-parse HEAD^{tree})" = "272031791b0726d2d46fba8fa2e8b02583809012"
+          test -z "$(git status --porcelain)"
+          git cat-file -e "77b1ba80102d9d8c9e2dfcebb439c4703fc51cba^{commit}"
+      - name: Create pinned source archive and delta bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p output
+          git archive --format=tar --prefix=source/ HEAD | gzip -9 > output/smc-source-979dc017.tar.gz
+          git bundle create output/smc-connection-979dc017.bundle HEAD ^77b1ba80102d9d8c9e2dfcebb439c4703fc51cba
+          git bundle verify output/smc-connection-979dc017.bundle
+          printf 'source_commit=%s\ntree=%s\nbase=%s\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" "77b1ba80102d9d8c9e2dfcebb439c4703fc51cba" > output/source-identity.txt
+          (cd output && sha256sum smc-source-979dc017.tar.gz smc-connection-979dc017.bundle > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smc-979dc017-source-transfer
+          path: output/
+          retention-days: 1
+          if-no-files-found: error
