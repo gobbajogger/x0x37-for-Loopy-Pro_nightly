@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "stage": "RETAINED_MAP_COMPATIBILITY_SOURCE_FOLLOWUP",
+  "base_commit": "bdc311638a719d8b22651b239158fa91662402dd",
+  "base_tree": "ad1aa5d1a3757f0fac74db5f0fffca4803bad3b2",
+  "reason": "The integrated two-slot-only validator rejected 14 previously selectable bundled packages. Their authenticated bytes contain the exact historical three-slot map.",
+  "source_sha256": {
+    "web/fm1pkg.js": "53d650eff1a8fde57bf0e1df89e5eee70b2fa89166833021ceabd63f9d79db93",
+    "tests/edge-controller-two-slot-map.test.mjs": "02f39d424cf109bc35467799daf12c20e609b8674c12e717c9b4f784bbbf933d",
+    "tests/fixtures/bundled-synthetic.mjs": "fe67ce47f7ca30a3942f5a5251ffd6daec15abec3d637f830c9adeacf62175b1"
+  },
+  "regression_before": {
+    "pass": 30,
+    "fail": 2,
+    "failed_controls": [
+      "retained legacy Elite map",
+      "retained legacy Pro map"
+    ]
+  },
+  "focused_after": {
+    "pass": 46,
+    "fail": 0,
+    "skip": 0,
+    "bundled_assertions": 62
+  },
+  "independent_package_review": "package-review.json",
+  "full_gate": {
+    "status": "PASS",
+    "build": {
+      "command": "npm run build",
+      "exit_code": 0,
+      "log_sha256": "a0ba2670330186b148f408331c794c7462d4a94fc00e7175a8488440f117e0b0"
+    },
+    "test": {
+      "command": "NODE_OPTIONS=--test-isolation=none npm test",
+      "exit_code": 0,
+      "log_sha256": "9697c13503847d1b671823f35e2bd2801397385e98f7bcff0f4bd3830ea62f49",
+      "edge_tests": 431,
+      "edge_pass": 431,
+      "edge_fail": 0,
+      "edge_skipped": 0,
+      "project_module_tests": 37,
+      "project_page_tests": 23,
+      "sample_page_tests": 12,
+      "write_boundary_cases": 47,
+      "bundled_controller_assertions": 62
+    },
+    "runtime_note": "Initial sandbox execution could not launch an unchanged native subprocess (EPERM) before its assertions. The supported authorized execution context ran the unchanged full suite successfully; no test was weakened or bypassed."
+  },
+  "preserved": [
+    "Current newer OTA lifecycle/source",
+    "Fixed DN Box 0.0.1\u20130.0.9 assignments",
+    "All18 catalog packages and controller strategies",
+    "Sample/project source and guards",
+    "No third slot in current two-slot packages"
+  ],
+  "publication": "Source follow-up only. Reviewed Pages publication and live HTTPS readback remain separate.",
+  "observed_at_utc": "2026-10-29T05:20:31.937829+00:00"
+}
