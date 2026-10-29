@@ -1,0 +1,76 @@
+{
+  "candidate": "6ca7fd18e9b4bbbdbd151febbe2f7f46c00c86c9",
+  "tree": "ecbcd2b42cb5bb3f090358282b04951492656208",
+  "parents": [
+    "57124e472b96d01917770b55529df69cc20d94d7",
+    "a17487fe7657d891f73ad9aa369dc8cb6b0a43d9"
+  ],
+  "node": "v24.14.1",
+  "npm": "11.11.0",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "checks": [
+    {
+      "name": "combined-npm",
+      "argv": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "duration_s": 25.031,
+      "log_sha256": "8884143f7bd92db63f62a11833d50bf228df67586efaf68b1db2f1cd3803f8ac"
+    },
+    {
+      "name": "generated",
+      "argv": [
+        "node",
+        "scripts/build-preview.mjs",
+        "--check"
+      ],
+      "exit": 0,
+      "duration_s": 0.045,
+      "log_sha256": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41"
+    },
+    {
+      "name": "provenance",
+      "argv": [
+        "node",
+        "tests/nightly-preview.test.mjs"
+      ],
+      "exit": 0,
+      "duration_s": 0.034,
+      "log_sha256": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337"
+    },
+    {
+      "name": "source-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "5ba8596579fc3649aa205cd927cf8d03a327ff2c..HEAD",
+        "--",
+        ".",
+        ":!evidence/**",
+        ":!docs/repair-evidence/**"
+      ],
+      "exit": 0,
+      "duration_s": 0.016,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "no_gui_device_publication": true,
+  "pushed": false,
+  "full_diff_check": {
+    "exit": 2,
+    "scope": "Inherited authentic before-fix/diff evidence log whitespace; no implementation whitespace errors",
+    "log_sha256": "8ec2d31bbf25153c934add99a588be3291a490cefa03f3eccee0f064d0ae84a4"
+  },
+  "merge_conflicts": [
+    "SOURCE_PROVENANCE.json"
+  ],
+  "resolution": "Union of both unchanged sourcePatch histories, current actual public source blob pins, then existing npm build regenerated docs/install/index.html",
+  "input_retention_manifest_sha256": "b0d0e4e229a015182a30a53c0a12c5695473bd20bc32d8c22664c9b2da5a9cba",
+  "source_ready_for_independent_review": true,
+  "combined_edge_tests": 73,
+  "independent_review": "PENDING; implementation-stage checks only",
+  "remote_main_observation": "5ba8596579fc3649aa205cd927cf8d03a327ff2c"
+}

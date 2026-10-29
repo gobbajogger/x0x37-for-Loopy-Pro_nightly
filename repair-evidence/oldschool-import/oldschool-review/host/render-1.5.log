@@ -1,0 +1,11 @@
+actual importer slot 117600 samples at stored 29400 Hz, engine bars=2
+  90 BPM in order: max |dy| 0.0767, straight-playback reference 0.0767
+  90 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  90 BPM generated: max |dy| 0.0767 (bound 1.25 x 0.0767)
+  120 BPM in order: max |dy| 0.1022, straight-playback reference 0.1022
+  120 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  120 BPM generated: max |dy| 0.1022 (bound 1.25 x 0.1022)
+  170 BPM in order: max |dy| 0.1434, straight-playback reference 0.1406
+  170 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  170 BPM generated: max |dy| 0.1434 (bound 1.25 x 0.1406)
+20 passed, 0 failed

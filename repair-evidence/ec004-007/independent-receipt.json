@@ -1,0 +1,54 @@
+{
+  "head": "e4e3d42c3573e73629c03b0a1dd819bc47c80c7e",
+  "tree": "ac86bbf18049f53cc30274d0b56f3f84fa13dcd9",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "node": "v24.14.1",
+  "checks": [
+    {
+      "name": "edge",
+      "command": [
+        "node",
+        "--test",
+        "tests/edge-archive-aliased-payload.test.mjs",
+        "tests/edge-archive-duplicate-slot-id.test.mjs",
+        "tests/edge-archive-integrity.test.mjs",
+        "tests/edge-archive-metadata-name.test.mjs",
+        "tests/edge-archive-slot-identity.test.mjs",
+        "tests/edge-midi-offset-correlation.test.mjs",
+        "tests/edge-sample-midi-stale-timeout.test.mjs"
+      ],
+      "exit": 0,
+      "log_sha256": "a6cf4cf47aa5644d85d27873e34be5d52ec9e5d9a41dbd907853d1e9abe1ed99"
+    },
+    {
+      "name": "generated",
+      "command": [
+        "node",
+        "scripts/build-preview.mjs",
+        "--check"
+      ],
+      "exit": 0,
+      "log_sha256": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41"
+    },
+    {
+      "name": "python-archive",
+      "command": [
+        "node",
+        "../review-evidence/python-archive-compat.mjs"
+      ],
+      "exit": 0,
+      "log_sha256": "95e37b18ef9718b10c5c08411aaef153265a51cd522aca6f8ab192c791dfbe91"
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "2b11200..HEAD"
+      ],
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

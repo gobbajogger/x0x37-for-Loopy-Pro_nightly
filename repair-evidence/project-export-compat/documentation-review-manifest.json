@@ -1,0 +1,28 @@
+{
+  "kind": "documentation-only independent review delivery",
+  "source_review_heads": {
+    "site": "c87db70733e8261155f18a6c1b8202ddbf879a69",
+    "firmware_web_mirror": "ad37e35dc1131c63c9eede69e5c6f83f1d64fd5c"
+  },
+  "fixture_generation_pin_unchanged": "6ddea31d6040d6735989e64adbe11630fc1ee7ec",
+  "files_sha256": {
+    "independent-review/README.md": "a355dfef7a4e7d29e448a575d72bebb43a81694ceb929260d7923240e09bb111",
+    "independent-review/commands.json": "c99ddfc9073b236b0c722c775caa2513ec918a969bd60ef203f54a7d83b11f82",
+    "independent-review/firmware-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "independent-review/firmware-page.log": "57b9f5e960e3d840974343292c8da01c9a49a56d548aff6e742adeaac3f178ad",
+    "independent-review/firmware-projects.log": "3eca7d736670292cb5e3e5475eb3eb88cc4e3d001cfb1ea4b6ca623d9c26caf1",
+    "independent-review/producer-verification.json": "4c1383a9ca7cbd1344abc28aec25fd4316563b0f37cbd60f1bf143e936b63f62",
+    "independent-review/receipt.json": "5aefb4b3ab98558cab2843cb22e12f0a31c9edff28433137537e72d64e017d55",
+    "independent-review/site-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "independent-review/site-generated.log": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41",
+    "independent-review/site-page.log": "8e568fda11b09759c7bb9f98d7172d5c14200a9ada29ad4c348a8abd932d98ca",
+    "independent-review/site-projects.log": "ee235a10e80c8de541a3f0f080bada4b12a827af834313a2a1cc06fa0518a029",
+    "independent-review/site-provenance.log": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337",
+    "README.md": "504d4bbefaa68f7d9ed861f0cc6ca7160a26552f6885e452cdf76cf7a0cc4c7d"
+  },
+  "limits": [
+    "No source/test/fixture byte changes",
+    "No REC qualification",
+    "No merge/publication/device action"
+  ]
+}

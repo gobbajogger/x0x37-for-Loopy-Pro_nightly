@@ -1,0 +1,13 @@
+test_actual_backed_up_flash_map_overrides_stale_preflight_offsets (__main__.BackupSnapshotTest) ... ok
+test_archive_save_failure_is_not_claimed_successful (__main__.BackupSnapshotTest) ... ok
+test_backup_read_failure_stops_before_archive (__main__.BackupSnapshotTest) ... ok
+test_new_at_risk_slot_between_probe_and_backup_is_included (__main__.BackupSnapshotTest) ... ok
+test_restore_uses_the_refreshed_risk_and_preserves_both_samples (__main__.BackupSnapshotTest) ... ok
+test_skipped_middle_slot_never_reaches_restore_writes (__main__.BackupSnapshotTest) ... ok
+test_slot_emptied_before_backup_is_not_rewritten (__main__.BackupSnapshotTest) ... ok
+test_unchanged_smp_info_retains_original_migration_plan (__main__.BackupSnapshotTest) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK

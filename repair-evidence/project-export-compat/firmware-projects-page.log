@@ -1,0 +1,15 @@
+✔ page checks a file before connecting and keeps keyboard actions disabled (3.043292ms)
+✔ wrong identity and damaged file leave mutation controls unavailable (1.08425ms)
+✔ export defaults portable and project-only option is explicit (1.38525ms)
+✔ collision import requires downloaded recovery, saved acknowledgement and explicit import consent (2.366333ms)
+✔ failed import retains recovery download and requires a new preview before retry (0.75625ms)
+✔ load/reset decline sends no action; accepted action invalidates the import preview (0.603958ms)
+✔ mode3 recovery explains the hold, disables normal actions and confirms the portable recovery source (0.394834ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11.996292

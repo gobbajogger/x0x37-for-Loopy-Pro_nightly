@@ -1,0 +1,10 @@
+{
+  "source_commit": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+  "source_tree": "001b61dcdc81dd566b4653da9e7fcb2e8de846b3",
+  "artifact": "/Users/mac/Documents/Codex/2026-10-26/task-6/previews/sample-oldschool-import.html",
+  "artifact_sha256": "36262401736da3bed1c2fa09c5ff6435ab33b653d75d1c2ce72a6a4849f6ca93",
+  "actual_compiled_importer_prefix_exact": true,
+  "extra_script": "Synthetic local source + Medium2x seed, banner, disabled device-action handlers; no alternate processing algorithm",
+  "selfcontained_no_external_scripts_styles": true,
+  "browser_gui_audio_execution": "NOT_RUN"
+}

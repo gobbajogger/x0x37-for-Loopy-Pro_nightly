@@ -1,0 +1,92 @@
+[
+  {
+    "factor": 1,
+    "variant": 0,
+    "n": 176400,
+    "rate": 44100,
+    "payload": 88200,
+    "sha256": "3bcf2feed9aa9711c8812a606cbe007b06e5c87cbd88a19e7b25592394d95a41",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-1-0.bin"
+  },
+  {
+    "factor": 1,
+    "variant": 1,
+    "n": 176400,
+    "rate": 44100,
+    "payload": 88200,
+    "sha256": "24758c53abf6a6a40ffabb584df991746a47ff05717b0d87f3002adaeb8d8c2e",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-1-1.bin"
+  },
+  {
+    "factor": 1.5,
+    "variant": 0,
+    "n": 117600,
+    "rate": 29400,
+    "payload": 58800,
+    "sha256": "e9250ea47414e774922e0f1153f42e33b5e7eefa905f4268678c2845c35ed74b",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-1.5-0.bin"
+  },
+  {
+    "factor": 1.5,
+    "variant": 1,
+    "n": 117600,
+    "rate": 29400,
+    "payload": 58800,
+    "sha256": "abac101121845d4d912ee9388abe966501f7fee9be584695d535f7c60bdae4ec",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-1.5-1.bin"
+  },
+  {
+    "factor": 2,
+    "variant": 0,
+    "n": 88200,
+    "rate": 22050,
+    "payload": 44100,
+    "sha256": "0f7770f3ad075f3effcfa836aef4ed6c299a40e60d834afd718c2fccd585fdfe",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-2-0.bin"
+  },
+  {
+    "factor": 2,
+    "variant": 1,
+    "n": 88200,
+    "rate": 22050,
+    "payload": 44100,
+    "sha256": "37804fd8431d0271d27227d4ecaa3459c358152199d905b994a6ed8d0f310ada",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-2-1.bin"
+  },
+  {
+    "factor": 3,
+    "variant": 0,
+    "n": 58800,
+    "rate": 14700,
+    "payload": 29400,
+    "sha256": "cddb039670c1a62390b142a0d92a936212f868c4414c5d13ff34430c4f4b6df1",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-3-0.bin"
+  },
+  {
+    "factor": 3,
+    "variant": 1,
+    "n": 58800,
+    "rate": 14700,
+    "payload": 29400,
+    "sha256": "d5249c482abc5a35c4ebe89e3e18137ff1e0c183cd28fed11f9b85584df29ffb",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-3-1.bin"
+  },
+  {
+    "factor": 4,
+    "variant": 0,
+    "n": 44100,
+    "rate": 11025,
+    "payload": 22050,
+    "sha256": "0fbcd55d94d5448306936a92a8c2bb155c292fdfb9953ad25965162a0f751425",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-4-0.bin"
+  },
+  {
+    "factor": 4,
+    "variant": 1,
+    "n": 44100,
+    "rate": 11025,
+    "payload": 22050,
+    "sha256": "902c9d139f3d8eefdb26863ad21c48fa1ccb41c88ea61a0601852598c8ffd925",
+    "file": "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/factor-4-1.bin"
+  }
+]

@@ -1,0 +1,14 @@
+test_keeps_risk_order_in_write_plan (__main__.MigrationMatchingTest) ... ok
+test_large_image_gets_its_only_fitting_slot (__main__.MigrationMatchingTest) ... ok
+test_never_overwrite_kept_slot (__main__.MigrationMatchingTest) ... ok
+test_no_destinations_means_no_writes (__main__.MigrationMatchingTest) ... ok
+test_no_risk_is_noop (__main__.MigrationMatchingTest) ... ok
+test_occupied_destination_is_not_selected (__main__.MigrationMatchingTest) ... ok
+test_oversized_image_is_skipped_without_blocking_smaller (__main__.MigrationMatchingTest) ... ok
+test_prefer_same_slot_on_equal_capacity (__main__.MigrationMatchingTest) ... ok
+test_randomized_assignment_has_optimal_cardinality_and_is_safe (__main__.MigrationMatchingTest) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.006s
+
+OK
