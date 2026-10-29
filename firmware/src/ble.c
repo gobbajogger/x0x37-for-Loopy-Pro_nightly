@@ -169,8 +169,9 @@ static void ble_sx_answer(bleh_t *h)
         ble_sx_reply = 0;                         /* sent (or refused): busy only waits */
 }
 
-/* power-on, before core 1 starts (plat_cpu2_set): the image check, and with BLUETOOTH ON core 1's
- * stacks and the PC limits for it */
+/* Power-on: initialize a valid controller even if Bluetooth is OFF, but
+ * preserve the requested radio state. RF initialization cannot run from a
+ * live UI setter, and only TIMER5 starts advertising or SMC scanning. */
 static void ble_prepare(int on)
 {
     const xb_header_t *h = FM1_BLE_HDR;
@@ -187,8 +188,9 @@ static void ble_prepare(int on)
         ble_guard.wait_end = fm1_c1_wait_end;   /* how core 0's wait ended (RAM code) */
         ble_wait_record();
     }
-    if (!ble_guard_boot(&ble_guard, ble_img == BLE_IMG_OK, on)) {
-        if (ble_img == BLE_IMG_OK && on && ble_guard.blocked) {
+    /* Preserve the real boot guard even for a saved OFF preference. */
+    if (!ble_guard_boot(&ble_guard, ble_img == BLE_IMG_OK, 1)) {
+        if (ble_img == BLE_IMG_OK && ble_guard.blocked) {
             ble_blocked = 1;                    /* the last start failed: not now (STATUS FAILED) */
             ble_dead = 1;
         }
@@ -582,10 +584,10 @@ const char *plat_ble_name(void)
 }
 int plat_ble_smc_send_slot(unsigned slot, const uint8_t *msg, uint8_t len)
 {
-    if (slot >= 2u) return 0;
+    if (slot >= 1u) return 0; /* A: peer zero is the sole SMC central */
     uint32_t f = irq_save();
     int sent = ble_central_role && smc_ble_role_get() && ble_up && ble_host_on && ble_want &&
-               blec_midi_send(slot ? &ble_r.host.c2 : &ble_r.host.c, msg, len);
+               blec_midi_send(&ble_r.host.c, msg, len);
     irq_restore(f);                             /* TIMER5 must not replace the host union mid-enqueue */
     return sent;
 }

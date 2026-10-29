@@ -2374,8 +2374,11 @@ static void fm1_main(void)
     project_apply_io();                             /* clock and notes out, the MIDI channels, the output */
     engine_brk_loops();
 #if X0X_BLE
-    ble_prepare(proj.set.bt & 1u);                  /* a controller image, BLUETOOTH ON: core 1 starts ready for it */
-    ble_start();                                    /* its init on core 0, before core 1 starts (about 0.6 s) */
+    /* Start A's guarded BLE controller before audio, keeping the actual
+     * stored (or validated fallback) ON/OFF and SMC role. No later setter is
+     * needed and the live UI can enable the initialized radio without restart. */
+    ble_prepare(proj.set.bt & 1u);
+    ble_start();
 #endif
     plat_cpu2_set(1);                               /* the second core: at power-on, before the audio and the
                                                      * timers, as Melodee starts it (started later, it does not
