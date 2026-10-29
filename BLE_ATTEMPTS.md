@@ -355,3 +355,24 @@ No RF power, Bluetooth flash address, bootloader, calibration, sample layout,
 UI, Chicago or Miami behaviour changes. Native compilation and host checks are
 separate from an SMC radio hardware test; no device write or publication is
 performed by this settings repair.
+
+## 2026-10-29: SMC boot remains inactive after A port, repaired in isolated lane
+
+Hardware report on 80de61ac: BLE controller flash readback matched the package
+(CRC32 b919f4ca); the SMC-Mixer continued advertising, and no SMC connection
+was observed. A keyboard in SMC central role does **not** advertise as X0X-*;
+its job is to scan and connect to the mixer. The absence of both activities
+is consistent with the radio being left OFF after project fallback.
+
+The original revision-13 loader rejected old settings with -9 before applying
+the new SMC-first-boot default. With zero initial device state it therefore
+restored BT OFF and DEVICE role, and the subsequent plat_ble_set() switched
+the prepared controller OFF. Move the SMC startup default to the shared
+failure path, while preserving every valid revision-13 saved OFF/DEVICE choice
+and never loading or rewriting unsupported music. Follow the previously
+working A initialization contract: pass the requested ON/OFF directly to
+ble_prepare(), initialize the checked controller regardless of OFF, and do
+not call a UI setter during boot (which could reset the boot-loop guard).
+
+Host tests reproduce the old -9 fallback failure and verify the new behavior.
+This is source/host evidence, not a new hardware connection PASS.
