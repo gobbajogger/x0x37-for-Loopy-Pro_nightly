@@ -21,6 +21,8 @@ const installerLibraries = ['web/fm1pkg.js', 'web/fm1ota.js', 'web/x0x_breaks.js
   .map((name) => stripModule(read(name))).join('\n');
 let installer = replaceOnce(read('web/x0x_installer.html'), '/*LIB*/', installerLibraries, 'installer');
 installer = replaceOnce(installer, '/*CATALOG*/', JSON.stringify(catalog), 'installer');
+installer = replaceOnce(installer, '/*PACKAGE_VERSION_ASSIGNMENTS*/[]',
+  JSON.stringify(JSON.parse(read('package-version-assignments.json')).assignments).replace(/</g, '\\u003c'), 'installer');
 const sampleImporter = replaceOnce(read('web/x0x_breaks.html'), '/*LIB*/',
   stripModule(read('web/x0x_breaks.js')), 'sample importer');
 const projects = read('web/x0x_projects.html').replace(

@@ -630,7 +630,7 @@ const TEXT = {
     verlegacy: "旧 DEV（番号未割当）", vermixed: "モデルごとに異なるバージョン", verlatest: "最新 DEV", verolder: "旧 DEV", verdev: "DEV", verrelease: "リリース", verunverified: "未検証",
     eyebrow: "デバイスファームウェア / Web MIDI", journey1: "機器を接続", journey2: "ファームウェアを選択", journey3: "確認して書き込む",
     stage1: "手順 01 / 接続", stage2: "手順 02 / ファームウェア", stage3: "手順 03 / インストール",
-    pickheading: "ビルドを選択", versionlabel: "ファームウェアのバージョン", modelheading: "機種を選択",
+    pickheading: "ビルドを選択", versionlabel: "パッケージのバージョン", modelheading: "機種を選択",
     diagnostics: "技術情報・動作ログ", guidelabel: "始める前に", guideheading: "サンプルを安全に保管",
     guide1: "PC の Chrome または Edge と USB データケーブルを使用してください。",
     guide2: "大切なサンプルは先に個別に書き出してください。必要時に自動バックアップしますが、別のコピーも推奨します。",
@@ -731,7 +731,7 @@ const TEXT = {
     verlegacy: "Legacy DEV (unnumbered)", vermixed: "Version varies by model", verlatest: "Latest development build", verolder: "Earlier development build", verdev: "Development build", verrelease: "Release", verunverified: "Unverified",
     eyebrow: "DEVICE SOFTWARE / WEB MIDI", journey1: "Connect keyboard", journey2: "Select firmware", journey3: "Review and install",
     stage1: "Step 01 / Connection", stage2: "Step 02 / Firmware", stage3: "Step 03 / Install",
-    pickheading: "Choose your build", versionlabel: "Firmware version", modelheading: "Choose your keyboard model",
+    pickheading: "Choose your build", versionlabel: "Package version", modelheading: "Choose your keyboard model",
     diagnostics: "Details: activity log", guidelabel: "Before you begin", guideheading: "Keep your samples safe",
     guide1: "Use Chrome or Edge on a computer with a USB data cable.",
     guide2: "Export important samples first. Automatic slot backup runs when needed, but keep a separate copy.",
@@ -976,7 +976,7 @@ function versions() {
     if (!Array.isArray(list) || list.some(v => !isRecord(v) ||
         typeof v.version !== "string" || !isRecord(v.models)) ||
         new Set(list.map(v => v.version)).size !== list.length) return [];
-    return list.slice().sort((a, b) => b.version.localeCompare(a.version, undefined, { numeric: true }));
+    return list.slice().sort(compareVersionChoices);
   } catch { return []; }
 }
 function currentVersion() {
@@ -1142,8 +1142,8 @@ function updateInstallGate() {
 function buildBadge(txt,kind) {
   const x = document.createElement("span"); x.className="build-badge"+(kind?" "+kind:""); x.textContent=txt;return x;
 }
-// Presentation only: the package product remains the authoritative issued identity.
-// Never infer a release number from catalog order or a historical filename.
+// Presentation only: assigned package versions identify the exact retained bytes.
+// Embedded firmware identities, qualification and write guards stay independent.
 function buildDisplayLabel(v, selectedPackage) {
   const packages = selectedPackage ? [selectedPackage] : Object.values(v.models || {});
   const identities = packages.map(p => p && typeof p === "object" ? nightlyProductIdentity(p.product) : null);
@@ -1151,6 +1151,8 @@ function buildDisplayLabel(v, selectedPackage) {
     versionMetadataMatches(v, identities[i]) && versionMetadataMatches(p, identities[i]));
   const title = typeof v.title === "string" ? v.title.trim().replace(/^DEV \/ HARDWARE TEST — /, "") : "";
   if (!valid) return t("verunverified") + " · " + v.version;
+  const assigned = assignedPackageVersion(v, selectedPackage);
+  if (assigned) return assigned.valid ? "DN Box " + assigned.version : t("verunverified") + " · " + v.version;
   const values = [...new Set(identities.map(i => i.version))];
   if (values.length !== 1) return t("vermixed") + " · " + (title || v.version);
   const version = values[0];
@@ -1159,6 +1161,39 @@ function buildDisplayLabel(v, selectedPackage) {
   // that deliberately share the same issued firmware identity.
   const variantId = version !== null && v.version !== version ? " [" + v.version + "]" : "";
   return identity + (title ? " · " + title : version === null ? " · " + v.version : "") + variantId;
+}
+// Fixed owner assignments; built from package-version-assignments.json.
+// A title, list position or unbound package_version value cannot assign a number.
+function assignedPackageVersion(v, selectedPackage) {
+  const assignments = /*PACKAGE_VERSION_ASSIGNMENTS*/[];
+  if (!v || typeof v !== "object" || Array.isArray(v)) return null;
+  const models = v.models && typeof v.models === "object" && !Array.isArray(v.models) ? v.models : {};
+  const declared = Object.hasOwn(v, "package_version") || Object.values(models).some(p =>
+    p && typeof p === "object" && Object.hasOwn(p, "package_version"));
+  const matching = assignments.filter(a => a.catalog_id === v.version);
+  if (!matching.length) return declared ? { valid: false } : null;
+  if (matching.length !== 1) return { valid: false };
+  const a = matching[0], keys = Object.keys(models).sort();
+  const fields = ["product", "sha256", "size", "controller_sha256", "controller_strategy", "controller_size"];
+  const metadataMatches = record => !Object.hasOwn(record, "package_version") || record.package_version === a.package_version;
+  const valid = /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$/.test(a.package_version) &&
+    v.source_commit === a.source_commit && v.source_tree === a.source_tree && metadataMatches(v) &&
+    keys.join(",") === Object.keys(a.models).sort().join(",") &&
+    keys.every(key => {
+      const p = models[key], expected = a.models[key], identity = nightlyProductIdentity(p?.product);
+      return p && typeof p === "object" && !Array.isArray(p) && identity?.model === key &&
+        versionMetadataMatches(v, identity) && versionMetadataMatches(p, identity) && metadataMatches(p) &&
+        fields.every(field => p[field] === expected[field] && Object.hasOwn(p, field) === Object.hasOwn(expected, field));
+    }) && (!selectedPackage || keys.some(key => models[key] === selectedPackage));
+  return valid ? { valid: true, version: a.package_version } : { valid: false };
+}
+function compareVersionChoices(a, b) {
+  const av = assignedPackageVersion(a), bv = assignedPackageVersion(b);
+  if (av?.valid && bv?.valid) {
+    const x = av.version.split(".").map(Number), y = bv.version.split(".").map(Number);
+    for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return y[i] - x[i];
+  } else if (!!av?.valid !== !!bv?.valid) return av?.valid ? -1 : 1;
+  return b.version.localeCompare(a.version, undefined, { numeric: true });
 }
 function evidenceUrl(value) {
   if (typeof value !== "string") return null;
@@ -1178,8 +1213,10 @@ function renderBuildInfo(v,p) {
   if(v.lifecycle==="superseded") b.append(buildBadge(t("superseded"),"blocked"));
   $("buildsummary").textContent=buildDisplayLabel(v,p)+" · "+(nightlyProductIdentity(p.product)?.model || "")+
     (v.description ? " — "+v.description : "");
-  $("buildprovenance").textContent="Build: "+v.version+" · Source: "+(v.source_commit||"unknown")+
-    " · "+(v.built_at||"undated")+" · SHA-256: "+(p.sha256||"not recorded");
+  const assigned = assignedPackageVersion(v,p);
+  $("buildprovenance").textContent=(assigned?.valid ? t("versionlabel")+": "+assigned.version+" · " : "")+
+    "Build: "+v.version+" · Source: "+(v.source_commit||"unknown")+
+    " · "+(v.built_at||"undated")+" · Product: "+(p.product||"unknown")+" · SHA-256: "+(p.sha256||"not recorded");
   const link=$("buildevidence"), evidence=evidenceUrl(v.evidence_url);link.hidden=!evidence;
   if(evidence)link.href=evidence;else link.removeAttribute("href");
   $("devagreewrap").hidden=v.status!=="dev-checked";

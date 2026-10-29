@@ -232,7 +232,7 @@ const raceDir = mkdtempSync(join(tmpdir(), 'nightly-output-rebind-'));
 try {
   const replica=join(raceDir,'repo');mkdirSync(replica);
   const root=fileURLToPath(new URL('../',import.meta.url));
-  for(const name of ['web','scripts','docs'])cpSync(join(root,name),join(replica,name),{recursive:true});
+  for(const name of ['web','scripts','docs','package-version-assignments.json'])cpSync(join(root,name),join(replica,name),{recursive:true});
   writeFileSync(join(replica,'package.json'),'{"type":"module"}');
   const inside=join(replica,'review-preview');mkdirSync(inside);
   writeFileSync(join(inside,'keep.txt'),'source sentinel');
