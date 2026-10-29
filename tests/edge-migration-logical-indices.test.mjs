@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-only
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { planMigration, migrationReordersLoopMenu, guardMigrationLoopMenu, installKeepingSlots,
@@ -48,6 +49,7 @@ test('production installer retains verified archive and emits no restoration wri
   response=[0xf0,0x7d,0x46,0x4c,cmd,...body,0xf7];return true;},async read(){return response;}};
  const dev={link,id:{text:'SMK-37 Pro_900',model:'SMK-37 Pro',version:900}};
  const up={async find(){return dev;},bind(){},async install(){installed=true;return 'SMK-37 Pro_901';},async waitFor(){return dev;},async reconnectAfter(){return dev;}};
+ withInstallSnapshot(link, up);
  const raw=legacyPackage();
  const result=await installKeepingSlots(up,raw,'SMK-37 Pro_901','smk',{save(bytes,name){saved.push({bytes,name});return true; /* simulated retained backup */}});
  assert.equal(installed,true,'guard is after firmware installation, not a preflash claim');
@@ -64,6 +66,7 @@ function info(){infos++;const map=installed?newMap:oldMap,occupied=installed?[nu
 const link={close(){},drain(){},send(frame){const cmd=frame[4],a=frame.slice(5,-1);commands.push([installed,cmd]);let body;if(cmd===15)body=info();else if(cmd===16){const off=a[1]|a[2]<<7|a[3]<<14;body=[...a.slice(0,4),...pack78(images[a[0]].slice(off,off+a[4]*2))];}else throw Error('RESTORE_WRITE '+cmd);response=[0xf0,0x7d,0x46,0x4c,cmd,...body,0xf7];return true;},async read(){return response;}};
 const dev={link,id:{text:'SMK-37 Pro_900',model:'SMK-37 Pro',version:900}};
 const up={async find(){return dev;},bind(){},async install(){installed=true;return 'SMK-37 Pro_901';},async waitFor(){return dev;},async reconnectAfter(){return dev;}};
+withInstallSnapshot(link, up);
 let error,result;try{result=await installKeepingSlots(up,legacyPackage(),'SMK-37 Pro_901','smk',{save(bytes,name){saved.push({bytes,name});return true; /* simulated retained backup */}});}catch(e){error=e;}
 assert.equal(saved.length,1);assert.deepEqual(readArchive(saved[0].bytes).images,images);
 assert.equal(error,undefined);assert.equal(installed,true);assert.deepEqual(result.move.risk,[0,1]);assert.deepEqual(result.move.todo,[]);assert.equal(result.move.skipped.length,2);

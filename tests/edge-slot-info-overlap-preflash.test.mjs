@@ -3,6 +3,7 @@
 // mandatory pre-update sample backup. Run in NIGHTLY checkout:
 // node --test tests/edge-slot-info-overlap-preflash.test.mjs
 // No physical hardware or actual firmware transfer: updater and MIDI transport are mocked.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { crc32, userSlotRaw, pack78, readArchive, parseInfo, flashMap, atRisk,
@@ -79,6 +80,7 @@ async function simulateInstall(secondOffset) {
     },
     async waitFor() { return device; },
   };
+  withInstallSnapshot(link, updater);
   let result = null, error = null;
   try {
     result = await installKeepingSlots(updater, replacementFirmware(),

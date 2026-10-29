@@ -5,6 +5,7 @@
 //   node --test tests/edge-backup-download-confirmation-preflash.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import { userSlotRaw, pack78, readArchive, installKeepingSlots, packageSlotMap } from '../web/x0x_breaks.js';
 
 import { makePackage } from './fixtures/bundled-synthetic.mjs';
@@ -65,6 +66,7 @@ async function simulate(save, { image = new Uint8Array(64), info = occupiedLayou
       return 'SMK-37 Pro_901';
     },
   };
+  state.snapshot = withInstallSnapshot(link, updater);
   let result = null, error = null;
   try {
     // A non-current 64-byte synthetic image has no preserving slot map;

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // EC022: firmware144 editor.c:884-921 emits min(127, used) plus full 14-bit used.
+import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseInfo, flashMap, atRisk, backupSlots, installKeepingSlots } from '../web/x0x_breaks.js';
@@ -62,6 +63,7 @@ test('actual installer refuses contradiction before backup, sample commands or O
       async find() { return { link, id: { model: 'SMK-37 Pro', version } }; },
       bind() {}, async install() { link.events.push('OTA'); },
     };
+    withInstallSnapshot(link, up);
     await assert.rejects(installKeepingSlots(up, new Uint8Array(80), 'SMK-37 Pro_901', 'smk', {
       save() { link.events.push('save'); return true; }, progress() { link.events.push('progress'); },
     }), e => e.code === 'slotbackup' && disagreement.test(e.message));
