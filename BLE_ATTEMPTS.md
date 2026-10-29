@@ -340,3 +340,18 @@ and one command owner serializes HCI commands across both peers. Native mock
 transport tests are not physical radio evidence. Fresh corresponding controller
 and application builds and exact resource checks are required before a package
 qualifies. No hardware observation, flash, RF claim or publication is recorded here.
+
+## 2026-10-29: match the lock to A's single-SMC controller (979dc017)
+
+The owner-selected A connection port uses one central peer. The controller
+configuration already sets `config_btctler_le_hw_nums=1`,
+`config_btctler_le_acl_total_nums=5`, and
+`config_btctler_le_master_multilink=0`, but the hardware-settings lock still
+expected the earlier two-peer values (2, 3, 1). This prevented the standard Pro,
+Elite and controller builds before compilation. Update only those three locked
+values (1, 5, 0) so the guard accurately enforces the ported configuration.
+
+No RF power, Bluetooth flash address, bootloader, calibration, sample layout,
+UI, Chicago or Miami behaviour changes. Native compilation and host checks are
+separate from an SMC radio hardware test; no device write or publication is
+performed by this settings repair.
