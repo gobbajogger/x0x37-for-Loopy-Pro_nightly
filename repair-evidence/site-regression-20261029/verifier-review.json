@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "request_id": "LX-REQ-012",
+  "stage": "independent_pages_source_parity_verifier_review",
+  "reviewer": "/root/site_regression_audit",
+  "verdict": "APPROVE",
+  "base_commit": "bc88a73f70b07d2dbd681443d7b65019cc9ed4af",
+  "reviewed_files": {
+    "scripts/verify-pages-source-parity.mjs": "3476f3656a8ef58f11306818a815d456ded33831943da795864a8bf3e7151859",
+    "tests/edge-pages-source-parity.test.mjs": "4131c2f425c0628ba04a3a8525b5fa3087e94786b749b1bb44c4d6d7bb76bc41"
+  },
+  "findings": [],
+  "contract_review": [
+    "Matches the observed incident: installer, Breaks and Projects must be generated from current web sources, not stale generated docs.",
+    "Retained-catalog comparison prevents an empty preview, latest-selection drift or coherent package-metadata changes from passing; caller must supply the independently authenticated retained catalog.",
+    "Version assignments and build-status history are source matched.",
+    "Read-only verifier performs filesystem reads and computation only; no device/network/Git/publication mutation.",
+    "Report explicitly says source-parity-only. No firmware eligibility, approval or HTTP proof is granted.",
+    "Tests are automatically selected by existing tests/edge-*.test.mjs pattern. The publication owner must explicitly run the CLI as part of delivery; this change does not intercept Git or automatically enforce publication."
+  ],
+  "independent_checks": [
+    {
+      "command": "node --test tests/edge-pages-source-parity.test.mjs",
+      "sandbox": "authorized native execution",
+      "exit": 0,
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "result": "PASS; includes positive and negative CLI statuses and child-process assert.ifError"
+    },
+    {
+      "command": "node scripts/verify-pages-source-parity.mjs --candidate /workspace/scratch/dcc2723193ba/candidate --retained-catalog tests/fixtures/published-dev-catalog-c7503b19.json",
+      "exit": 0,
+      "result": "PASS; six checked paths and nine retained versions"
+    },
+    {
+      "command": "Independent in-process exact-old-Pages negative using authenticated three HTML blobs with all other candidate inputs preserved",
+      "exit": 0,
+      "result": "PASS; verifier rejects exactly install/index.html, breaks/index.html and projects/index.html; original candidate byte hashes unchanged"
+    }
+  ],
+  "actual_stale_page_blobs": {
+    "install/index.html": "1098c9c1e1a94e4a554f2b72b37236f4aee6956e",
+    "breaks/index.html": "a58bc03d9ffb36d910435fa03670195b55dab590",
+    "projects/index.html": "677e14a1215f8f6b8df8458d0d2b47268657b4ea"
+  },
+  "limits": [
+    "Candidate rendered browser validation and known package/controller admission issue remain as described in current-source-candidate-review.json.",
+    "No new complete firmware qualification, protected-ref update, publication or live HTTP claim.",
+    "Only the two frozen source files were reviewed; any later source delta needs its affected review."
+  ],
+  "source_edits_by_reviewer": false
+}

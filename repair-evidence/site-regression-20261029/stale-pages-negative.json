@@ -1,0 +1,51 @@
+{
+  "verdict": "PASS_REAL_STALE_PAGES_NEGATIVE",
+  "stale": [
+    {
+      "path": "install/index.html",
+      "authenticated_pages_blob": "1098c9c1e1a94e4a554f2b72b37236f4aee6956e"
+    },
+    {
+      "path": "breaks/index.html",
+      "authenticated_pages_blob": "a58bc03d9ffb36d910435fa03670195b55dab590"
+    },
+    {
+      "path": "projects/index.html",
+      "authenticated_pages_blob": "677e14a1215f8f6b8df8458d0d2b47268657b4ea"
+    }
+  ],
+  "result": {
+    "ok": false,
+    "scope": "source-parity-only",
+    "retained_versions": 9,
+    "checked_paths": [
+      "versions.json",
+      "install/index.html",
+      "breaks/index.html",
+      "projects/index.html",
+      "package-version-assignments.json",
+      "build-status.json"
+    ],
+    "mismatches": [
+      {
+        "path": "install/index.html",
+        "reason": "differs from current source rendering",
+        "expected_sha256": "67b4617b7adea8f763ebc4f869840bec91c61e32f26d40a2ea3fb74660707b35",
+        "actual_sha256": "bc1ffe581d0ac032054b8f675008a77621d1971757f227be6a11ebf02d9b20d6"
+      },
+      {
+        "path": "breaks/index.html",
+        "reason": "differs from current source rendering",
+        "expected_sha256": "647529cb1057276f290621d529e4156badf66192942bcd925fc9b20d1dc045e8",
+        "actual_sha256": "9930a4535905c22f51913181188820111b69d2f80db29285beb9ef2959f13f6a"
+      },
+      {
+        "path": "projects/index.html",
+        "reason": "differs from current source rendering",
+        "expected_sha256": "5df37f0cb56e0439ac0981583eeb1a137cc961da07762302fa71c7049a72cc97",
+        "actual_sha256": "2a6c4ca8ac4d09a661a641713de2eeacd6437f6608d03050d47ff1d8d85d9c32"
+      }
+    ]
+  },
+  "candidate_unchanged": true
+}

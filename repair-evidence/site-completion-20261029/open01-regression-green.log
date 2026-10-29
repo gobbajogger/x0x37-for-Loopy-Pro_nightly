@@ -1,0 +1,16 @@
+✔ initial opening does not revoke a fresh binding (input closed=false, output closed=false) (4.188606ms)
+✔ initial opening does not revoke a fresh binding (input closed=true, output closed=false) (2.389268ms)
+✔ initial opening does not revoke a fresh binding (input closed=false, output closed=true) (0.685906ms)
+✔ initial opening does not revoke a fresh binding (input closed=true, output closed=true) (2.744575ms)
+✔ later observed disconnect/reconnect still revokes the bound pair (8.227707ms)
+✔ later coalesced disconnect/reconnect still revokes the bound pair (9.102397ms)
+✔ an unrelated lifecycle event preserves the freshly opened pair (2.685715ms)
+✔ failed initial open removes temporary listeners and sends no handshake (0.208846ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35.896304
