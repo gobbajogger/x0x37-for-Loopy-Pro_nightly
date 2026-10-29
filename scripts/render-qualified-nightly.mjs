@@ -25,7 +25,7 @@ export const requiredGates = ['package-integrity', 'model-controller',
 const gateNames = ['native-build', ...requiredGates, ...retiredLicenseGates];
 
 export function installerFingerprint() {
-  return sha256(JSON.stringify([...inputs, 'web/x0x_breaks.html', 'web/x0x_projects.html', 'web/x0x_projects.js', 'scripts/build-preview.mjs', 'scripts/render-qualified-nightly.mjs', 'scripts/legacy-controller-packages.json']
+  return sha256(JSON.stringify([...inputs, 'web/x0x_breaks.html', 'web/x0x_projects.html', 'web/x0x_projects.js', 'scripts/build-preview.mjs', 'scripts/render-qualified-nightly.mjs', 'scripts/legacy-controller-packages.json', 'package-version-assignments.json']
     .map(p => [p, sha256(readFileSync(join(root, p)))])));
 }
 
@@ -232,7 +232,8 @@ export function renderInstaller(catalog) {
   const strip = s => s.replace(/^export\s+/gm, '').replace(/^import .*?;\r?\n/gm, '');
   let html = readFileSync(join(root, inputs[0]), 'utf8');
   for (const [marker, content] of [['/*LIB*/', inputs.slice(1).map(p => strip(readFileSync(join(root, p), 'utf8'))).join('\n')],
-    ['/*CATALOG*/', JSON.stringify(publicCatalog(catalog)).replace(/</g, '\\u003c')]]) {
+    ['/*CATALOG*/', JSON.stringify(publicCatalog(catalog)).replace(/</g, '\\u003c')],
+    ['/*PACKAGE_VERSION_ASSIGNMENTS*/[]', JSON.stringify(JSON.parse(readFileSync(join(root, 'package-version-assignments.json'), 'utf8')).assignments).replace(/</g, '\\u003c')]]) {
     if (html.split(marker).length !== 2) throw new Error(`expected one ${marker}`);
     html = html.replace(marker, () => content);
   }
