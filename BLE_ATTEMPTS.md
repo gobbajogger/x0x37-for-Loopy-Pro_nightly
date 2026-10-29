@@ -340,3 +340,5 @@ and one command owner serializes HCI commands across both peers. Native mock
 transport tests are not physical radio evidence. Fresh corresponding controller
 and application builds and exact resource checks are required before a package
 qualifies. No hardware observation, flash, RF claim or publication is recorded here.
+
+| 2026-10-29 | smc-mixer-bluetooth-connect-fix | Lock A single-peer controller settings: config_btctler_le_hw_nums 1, config_btctler_le_acl_total_nums 5, config_btctler_le_master_multilink 0 (A, PR #679, connected one SMC mixer). Hardware result pending. |
