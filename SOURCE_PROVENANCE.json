@@ -5,7 +5,7 @@
   "publicSourceBlobs": {
     "web/x0x_installer.html": "c88b9f9062a43325425e53b4e970c988d6e0a501",
     "web/x0x_breaks.html": "71d44ae5568bae2f1ee9f7c7059d2819ee0fe9c3",
-    "web/fm1pkg.js": "bcc28ad1b4c62000840ad256f64e6ca7b956d2b5",
+    "web/fm1pkg.js": "d20fa623d6052f665c4f819aac6e156a57deaf8f",
     "web/fm1ota.js": "192344e4ceb0bd7423ebcd6c8e7ce3e6cc465db1",
     "web/x0x_breaks.js": "ee9ab4d92c909e8ef05b4e15b9ae8c55fafb790d",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
@@ -675,6 +675,23 @@
       },
       "regression": "tests/edge-ota-initial-open-lifecycle.test.mjs",
       "description": "REVIEW-OPEN-01: consume attributable initial closed-to-open events before creating/binding an OTA session; reuse the Projects opening boundary, recheck exact port pairing and preserve every later/coalesced lifecycle invalidation. Matching model and physical identity assumptions are unchanged."
+    },
+    {
+      "paths": [
+        "web/fm1pkg.js",
+        "tests/edge-controller-two-slot-map.test.mjs",
+        "tests/fixtures/bundled-synthetic.mjs"
+      ],
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "bdc311638a719d8b22651b239158fa91662402dd",
+      "sourceBaseTree": "ad1aa5d1a3757f0fac74db5f0fffca4803bad3b2",
+      "resultBlobs": {
+        "web/fm1pkg.js": "d20fa623d6052f665c4f819aac6e156a57deaf8f",
+        "tests/edge-controller-two-slot-map.test.mjs": "e226defd7ff94ca33d25382abacc6d7b440a5e38",
+        "tests/fixtures/bundled-synthetic.mjs": "e60ddb3e204389ea751881934d158aab836d7a59"
+      },
+      "evidence": "docs/repair-evidence/retained-map-compatibility-20261029/package-review.json",
+      "description": "Retain exactly the two CRC-protected slot-map geometries verified across all 18 immutable catalog packages. Accept current two-slot and retained legacy three-slot only, with exact ordered offsets/sizes and complete table/CRC bounds. Preserve controller CRC/model/hash checks, current VM spare exclusion and historical owner-supplied controller path."
     }
   ]
 }

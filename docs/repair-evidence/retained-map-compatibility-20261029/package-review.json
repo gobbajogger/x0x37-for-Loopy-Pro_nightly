@@ -1,0 +1,556 @@
+{
+  "schema": 1,
+  "stage": "INDEPENDENT_RETAINED_PACKAGE_BYTE_VALIDATION",
+  "reviewer": "independent package review agent",
+  "observed_at_utc": "2026-10-29T05:11:13.081Z",
+  "result": "PASS",
+  "catalog_entries": 18,
+  "validated": 18,
+  "pass": 18,
+  "bundled_entries": 16,
+  "owner_supplied_entries": 2,
+  "metadata_mismatch_negatives_passed": 32,
+  "strict_expected_slot_maps": {
+    "current": [
+      {
+        "off": 794624,
+        "size": 81920
+      },
+      {
+        "off": 876544,
+        "size": 122880
+      }
+    ],
+    "legacy": [
+      {
+        "off": 794624,
+        "size": 81920
+      },
+      {
+        "off": 876544,
+        "size": 122880
+      },
+      {
+        "off": 720896,
+        "size": 45056
+      }
+    ]
+  },
+  "source_sha256": {
+    "web/fm1pkg.js": "53d650eff1a8fde57bf0e1df89e5eee70b2fa89166833021ceabd63f9d79db93",
+    "web/x0x_breaks.js": "dd04ea78140de74514f5c677a62f569f6110d4f363100d3ea9259a0468bb1f70",
+    "web/x0x_installer.html": "e3fc7acead7c659a53e329cde04c9dc31973e003b5327d7879353bcf1d2af186"
+  },
+  "manifest_sha256": "583cf994024599d52c9eb26b62cbe868571e67314c0a22ce1ef86f15e6ccf16c",
+  "package_results": [
+    {
+      "version": "nightly-0e77d923-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/5f48ec6541ca670739574ce3dae217b4b39d223e/artifacts/nightly/dev-20261026-0e77d923/afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725/x0x37-elite-dev.fwsc",
+      "expected_sha256": "afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725",
+      "size": 651414,
+      "sha256": "afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-0e77d923-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/5f48ec6541ca670739574ce3dae217b4b39d223e/artifacts/nightly/dev-20261026-0e77d923/d05bf2afb76039a2f74d6053afcb228495bb4d90fd87b5404d8bb90ce4dc26b4/x0x37-pro-dev.fwsc",
+      "expected_sha256": "d05bf2afb76039a2f74d6053afcb228495bb4d90fd87b5404d8bb90ce4dc26b4",
+      "size": 651414,
+      "sha256": "d05bf2afb76039a2f74d6053afcb228495bb4d90fd87b5404d8bb90ce4dc26b4",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-b48cd800-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/646631f5a8b534a483f2fe484054440ea03c8228/artifacts/nightly/dev-20261025-b48cd800/81aaf361cb11717ad0bcee325453e361064506e4d6720781e8eb8ffcc1dadae2/x0x37-elite-dev.fwsc",
+      "expected_sha256": "81aaf361cb11717ad0bcee325453e361064506e4d6720781e8eb8ffcc1dadae2",
+      "size": 651396,
+      "sha256": "81aaf361cb11717ad0bcee325453e361064506e4d6720781e8eb8ffcc1dadae2",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-b48cd800-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/646631f5a8b534a483f2fe484054440ea03c8228/artifacts/nightly/dev-20261025-b48cd800/e0ac6b68e117ac42eac97944430d1a7ed2cacfba38336676096fa8a09f57319a/x0x37-pro-dev.fwsc",
+      "expected_sha256": "e0ac6b68e117ac42eac97944430d1a7ed2cacfba38336676096fa8a09f57319a",
+      "size": 651392,
+      "sha256": "e0ac6b68e117ac42eac97944430d1a7ed2cacfba38336676096fa8a09f57319a",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-092589b8-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/bb8543371761e75b7a89a422f00f9fe501bb338f/artifacts/nightly/dev-20261025-092589b8/3d107710cde229d7faf3e007ae14e324d7ea5ce209a802642dacf40608b2895e/x0x37-elite-dev.fwsc",
+      "expected_sha256": "3d107710cde229d7faf3e007ae14e324d7ea5ce209a802642dacf40608b2895e",
+      "size": 651396,
+      "sha256": "3d107710cde229d7faf3e007ae14e324d7ea5ce209a802642dacf40608b2895e",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-092589b8-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/bb8543371761e75b7a89a422f00f9fe501bb338f/artifacts/nightly/dev-20261025-092589b8/60dc7fda13fdaa3ee456736588e18b2d9e7e50cc34a800504bde678e14ba12d3/x0x37-pro-dev.fwsc",
+      "expected_sha256": "60dc7fda13fdaa3ee456736588e18b2d9e7e50cc34a800504bde678e14ba12d3",
+      "size": 651392,
+      "sha256": "60dc7fda13fdaa3ee456736588e18b2d9e7e50cc34a800504bde678e14ba12d3",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-b42bcba4-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/d8a03d45881ea0d26eedddcc30ffd71a94f42374/artifacts/nightly/dev-20261026-b42bcba4/82ee29d3ede1c17427f2689fbcdd2ab7e2eca7c72df73dcd7694078c9e313b14/x0x37-elite-dev.fwsc",
+      "expected_sha256": "82ee29d3ede1c17427f2689fbcdd2ab7e2eca7c72df73dcd7694078c9e313b14",
+      "size": 651396,
+      "sha256": "82ee29d3ede1c17427f2689fbcdd2ab7e2eca7c72df73dcd7694078c9e313b14",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-b42bcba4-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/d8a03d45881ea0d26eedddcc30ffd71a94f42374/artifacts/nightly/dev-20261026-b42bcba4/bc6c04229840c6342f6b8a696939bab7763a934b41d90a95f201250a42bfad34/x0x37-pro-dev.fwsc",
+      "expected_sha256": "bc6c04229840c6342f6b8a696939bab7763a934b41d90a95f201250a42bfad34",
+      "size": 651392,
+      "sha256": "bc6c04229840c6342f6b8a696939bab7763a934b41d90a95f201250a42bfad34",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-de11b6d7-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/02f4f4f48408db96e01b143d5410b7fb00a5a70a/artifacts/nightly/dev-20261025-4f96b0d9/4841110a274e2212d56abf9234cf0d921b45d915d1ff25fad0727e52edb7d18a/x0x37-elite-dev.fwsc",
+      "expected_sha256": "4841110a274e2212d56abf9234cf0d921b45d915d1ff25fad0727e52edb7d18a",
+      "size": 651396,
+      "sha256": "4841110a274e2212d56abf9234cf0d921b45d915d1ff25fad0727e52edb7d18a",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-de11b6d7-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/02f4f4f48408db96e01b143d5410b7fb00a5a70a/artifacts/nightly/dev-20261025-4f96b0d9/b35d587557d9f1d4c72b2c81bc944a1dd129bee625e98ae35f06fe7f653fc720/x0x37-pro-dev.fwsc",
+      "expected_sha256": "b35d587557d9f1d4c72b2c81bc944a1dd129bee625e98ae35f06fe7f653fc720",
+      "size": 651392,
+      "sha256": "b35d587557d9f1d4c72b2c81bc944a1dd129bee625e98ae35f06fe7f653fc720",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-af494784-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/2363c07f334747208831923a4f9fa4332cbbe472/artifacts/nightly/dev-20261025-d0d00da2/9cba1f3d0bebc2113d59b9bbb3f1ca1a67bb396183be279b74486319ddae8e11/x0x37-elite-dev.fwsc",
+      "expected_sha256": "9cba1f3d0bebc2113d59b9bbb3f1ca1a67bb396183be279b74486319ddae8e11",
+      "size": 651396,
+      "sha256": "9cba1f3d0bebc2113d59b9bbb3f1ca1a67bb396183be279b74486319ddae8e11",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-af494784-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/2363c07f334747208831923a4f9fa4332cbbe472/artifacts/nightly/dev-20261025-d0d00da2/5dda4eecd74d96237a3d457a026d7bc04eb3ed570705179ab8e6c15a198fa739/x0x37-pro-dev.fwsc",
+      "expected_sha256": "5dda4eecd74d96237a3d457a026d7bc04eb3ed570705179ab8e6c15a198fa739",
+      "size": 651392,
+      "sha256": "5dda4eecd74d96237a3d457a026d7bc04eb3ed570705179ab8e6c15a198fa739",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-8a74ff52-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/82622c1f9561bd23bbf785c165d66e11e68820ca/artifacts/nightly/dev-20261025-8a74ff52/d7767bebf1413b5d6fb918ba3893335a7b9fae86078ce895aa3b72df48bedb93/x0x37-elite-dev.fwsc",
+      "expected_sha256": "d7767bebf1413b5d6fb918ba3893335a7b9fae86078ce895aa3b72df48bedb93",
+      "size": 651396,
+      "sha256": "d7767bebf1413b5d6fb918ba3893335a7b9fae86078ce895aa3b72df48bedb93",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-8a74ff52-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/82622c1f9561bd23bbf785c165d66e11e68820ca/artifacts/nightly/dev-20261025-8a74ff52/b0cecbcff42589cdc71231a16098b7cfc8301a8562aba25362d552b3dcdc5fa0/x0x37-pro-dev.fwsc",
+      "expected_sha256": "b0cecbcff42589cdc71231a16098b7cfc8301a8562aba25362d552b3dcdc5fa0",
+      "size": 651392,
+      "sha256": "b0cecbcff42589cdc71231a16098b7cfc8301a8562aba25362d552b3dcdc5fa0",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-6df0f81f-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f917b636ba00d7dbef18fd00d1f0af15299a0a24/artifacts/nightly/dev-20261025-4ee8f377/8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278/x0x37-elite-dev.fwsc",
+      "expected_sha256": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+      "size": 651396,
+      "sha256": "8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-6df0f81f-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f917b636ba00d7dbef18fd00d1f0af15299a0a24/artifacts/nightly/dev-20261025-4ee8f377/d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb/x0x37-pro-dev.fwsc",
+      "expected_sha256": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb",
+      "size": 651392,
+      "sha256": "d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": true,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "bundled",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-54f2ffbc-dev",
+      "model": "elite",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/172d99d6d417d72bbd8f473ec1c66d5994c3d0c3/artifacts/nightly/dev-20261024-dc466908/d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c/x0x37-elite-dev.fwsc",
+      "expected_sha256": "d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c",
+      "size": 651396,
+      "sha256": "d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c",
+      "product": "SMK-37 Elite_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": false,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "legacy-owner-supplied-unchanged",
+      "embedded_controller": "absent-erased-block",
+      "owner_supplied_test_controller_source": "afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725",
+      "owner_supplied_roundtrip": "PASS",
+      "result": "PASS"
+    },
+    {
+      "version": "nightly-54f2ffbc-dev",
+      "model": "pro",
+      "url": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/172d99d6d417d72bbd8f473ec1c66d5994c3d0c3/artifacts/nightly/dev-20261024-dc466908/cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c/x0x37-pro-dev.fwsc",
+      "expected_sha256": "cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c",
+      "size": 651392,
+      "sha256": "cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c",
+      "product": "SMK-37 Pro_900",
+      "slot_map": [
+        {
+          "off": 794624,
+          "size": 81920
+        },
+        {
+          "off": 876544,
+          "size": 122880
+        },
+        {
+          "off": 720896,
+          "size": 45056
+        }
+      ],
+      "bundled_admission": false,
+      "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+      "controller_size": 65492,
+      "strategy": "legacy-owner-supplied-unchanged",
+      "embedded_controller": "absent-erased-block",
+      "owner_supplied_test_controller_source": "afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725",
+      "owner_supplied_roundtrip": "PASS",
+      "result": "PASS"
+    }
+  ],
+  "base_commit": "bdc311638a719d8b22651b239158fa91662402dd",
+  "scope": "Independent native read-only validation of all 18 retained immutable package bytes and their unchanged controller strategies.",
+  "limits": [
+    "No firmware/controller/catalog bytes changed.",
+    "Oldest two owner-supplied controller paths checked in memory with the exact expected controller; no user file or device write.",
+    "Host parser and integrity proof only; no physical-device or live-HTTPS claim."
+  ]
+}
