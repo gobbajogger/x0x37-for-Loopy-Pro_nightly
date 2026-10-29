@@ -1,0 +1,10 @@
+✔ independent cleanup: replacing, natural end and workspace invalidation release owned nodes only (29.863958ms)
+✔ independent settings/cancel: audio is stopped before transactional recut review and source remains untouched (23.835542ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.8345

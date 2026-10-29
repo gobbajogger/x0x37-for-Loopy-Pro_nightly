@@ -1,0 +1,6 @@
+todo [(2, 1)] skipped ['slot 2 (100000 B): no free slot of that size on the new firmware']
+guarded [(2, 1)] ['slot 2 (100000 B): no free slot of that size on the new firmware']
+Traceback (most recent call last):
+  File "/tmp/restore-guard-repro.py", line 13, in <module>
+    assert not guarded, 'saved B index would resolve to restored C after a skipped middle slot'
+AssertionError: saved B index would resolve to restored C after a skipped middle slot

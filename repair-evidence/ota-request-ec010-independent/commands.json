@@ -1,0 +1,43 @@
+[
+  {
+    "name": "site-focused",
+    "cwd": "ota-request-site",
+    "args": [
+      "node",
+      "--test",
+      "tests/edge-ota-read-declared-length.test.mjs",
+      "tests/edge-ota-read-envelope.test.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "firmware-focused",
+    "cwd": "ota-request-firmware",
+    "args": [
+      "node",
+      "--test",
+      "tests/edge-ota-read-declared-length.test.mjs",
+      "tests/edge-ota-read-envelope.test.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "python-focused",
+    "cwd": "ota-request-firmware",
+    "args": [
+      "python3",
+      "tests/fm1_install_request_integrity_test.py"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "site-generated",
+    "cwd": "ota-request-site",
+    "args": [
+      "node",
+      "scripts/build-preview.mjs",
+      "--check"
+    ],
+    "exit": 0
+  }
+]

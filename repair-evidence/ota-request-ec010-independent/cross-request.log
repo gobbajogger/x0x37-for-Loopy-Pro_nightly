@@ -1,0 +1,3 @@
+PASS /Users/mac/Documents/Codex/2026-10-26/task-6/ota-request-site/web/fm1ota.js: 533 parser cases; malformed batch serves no data/progress; real canonical two-chunk replies equal Python
+PASS /Users/mac/Documents/Codex/2026-10-26/task-6/ota-request-firmware/web/fm1ota.js: 533 parser cases; malformed batch serves no data/progress; real canonical two-chunk replies equal Python
+PASS Python actual parser: 533 primary-encoder cases (105 valid/428 refused); actual serve refuses entire malformed batch before any data; canonical two-chunk field/data fidelity and finish PASS

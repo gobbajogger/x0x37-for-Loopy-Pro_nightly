@@ -1,0 +1,41 @@
+{
+  "request_id": "LX-REQ-012",
+  "outcome": "Restore sample preparation within the firmware installer and publish coherent current-source installer, Samples and Projects pages while retaining issued package versions.",
+  "completion_criterion": "Exact corrected candidate passes current desktop/mobile interaction validation, is published by the existing sole NIGHTLY publisher, and the served pages/catalog identities are verified.",
+  "policy_commit": "57a692d79e1c1253af649b10eb4d5922566fa567",
+  "source_commit": "bc88a73f70b07d2dbd681443d7b65019cc9ed4af",
+  "pages_base": "9c7ba81a83ef9b93735795b65d4856cf93c2b5e0",
+  "candidate_commit": "fef705b6dc9635a992d226e679a20159d2551016",
+  "candidate_tree": "fea17566994b65abe6ade3cbbe4e8c29f134172c",
+  "candidate_pull_request": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/89",
+  "consultation": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly/pull/58#issuecomment-6486899682",
+  "ownership": {
+    "implementation": "root thread, new parity verifier and isolated website artifact only",
+    "independent_review": "site_regression_audit",
+    "integration": "existing website_main_merger",
+    "publication": "existing website_publisher",
+    "runtime_source": "existing PR58/61/64 owner",
+    "manual_links": "existing PR59 owner"
+  },
+  "evidence": {
+    "main_native_build": "PASS",
+    "main_full_npm_test": "PASS; 294 edge cases plus configured suites",
+    "verifier_focused_tests": "PASS; 7/7, independent and producer",
+    "actual_candidate_parity": "PASS; six paths, nine retained versions",
+    "actual_old_pages_negative": "PASS; rejected all three stale runtime pages",
+    "candidate_browser": "PENDING",
+    "shared_ref_publication": "PENDING",
+    "live_fix_verification": "PENDING"
+  },
+  "next_action": "Existing publisher consumes PR89 and performs current populated-candidate desktop/mobile browser checks, runs the reviewed parity verifier with authenticated current published catalog, then authorized publication and live readback. Reconcile changed input refs before applying.",
+  "receiver_consumption": "Not yet observed",
+  "capability_limits": [
+    "Registered website role automation IDs are not readable in this context; no direct arbitrary ChatGPT-thread messaging tool is exposed. GitHub handoff delivery is verified but receiver action is not.",
+    "Cloud browser rejects file:// candidate URLs by policy. No workaround attempted; public live page inspection works. Native environment has no installed browser runtime for the existing Python browser suite."
+  ],
+  "remaining_separate_work": [
+    "Existing two-slot controller admission error remains owned by installer producer.",
+    "Existing PR59 manual fragment correction remains owned by its producer."
+  ],
+  "status": "PENDING_PUBLISHER_BROWSER_ACCEPTANCE"
+}

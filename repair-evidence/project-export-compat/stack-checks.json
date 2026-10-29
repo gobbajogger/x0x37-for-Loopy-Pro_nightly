@@ -1,0 +1,42 @@
+[
+  {
+    "name": "combined-site-npm",
+    "argv": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/project-compat-site",
+    "exit": 0,
+    "log_sha256": "addfdc23f13094d679b928f4693eba7672b49bc68433d4ab27a7b9eff434c455"
+  },
+  {
+    "name": "stack-firmware-projects-web",
+    "argv": [
+      "node",
+      "web/test_projects.mjs"
+    ],
+    "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/project-compat-firmware",
+    "exit": 0,
+    "log_sha256": "f9096ec8d005b8b4e11f6821aedfcf380dd724c125da22c01abeec5e4641fc54"
+  },
+  {
+    "name": "stack-firmware-projects-page",
+    "argv": [
+      "node",
+      "web/test_projects_page.mjs"
+    ],
+    "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/project-compat-firmware",
+    "exit": 0,
+    "log_sha256": "384f39cc5c7785c250a03cbe2c538ba8c4e03817be3c20dd7bdbc75962c1be47"
+  },
+  {
+    "name": "stack-before-after",
+    "argv": [
+      "node",
+      "../project-compat-evidence/before-after.mjs"
+    ],
+    "cwd": "/Users/mac/Documents/Codex/2026-10-26/task-6/project-compat-site",
+    "exit": 0,
+    "log_sha256": "f3e095818f5591e243f7f82038791afedbaa67b6f31108b5cb4f494d9f5aa556"
+  }
+]

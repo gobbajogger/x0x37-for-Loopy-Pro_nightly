@@ -1,0 +1,12 @@
+{
+  "author_manifest_entries_verified": 20,
+  "d633_reference_tree": "442b8e3d1d0e785d2f7b6d7517777da727f70dd0",
+  "real_renderer_and_fixture_source_blobs": {
+    "firmware/src/dsp/breaks.c": "d48a5b1c9a851f362d5632ced0a9acb36eecce3e",
+    "tests/host/breaks_test.c": "1adcedfe82540c7a6093c07d530877acb996c757",
+    "firmware/src/app/engine.c": "2be5775315b9f24cb5a815dd723573ab42c32b66"
+  },
+  "loop_bars_copied_function_byte_identical": true,
+  "full_npm": "Author exact-head record+log hash verified, not independently rerun",
+  "generated_provenance": "Author exact-head record+log hashes verified, preview artifact source independently reconstructed"
+}

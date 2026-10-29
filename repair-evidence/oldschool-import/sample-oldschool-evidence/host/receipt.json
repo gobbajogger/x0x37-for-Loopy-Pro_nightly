@@ -1,0 +1,128 @@
+{
+  "firmware_source": "d633833ac369f8466bc2563791614206070e87d1",
+  "tests": "Actual JS importer bank images through real BREAK C renderer + exact loop_bars helper; 90/120/170 BPM musical slice/pitch/timing and gate/live checks",
+  "results": [
+    {
+      "factor": 1,
+      "compile_exit": 0,
+      "argv": [
+        "cc",
+        "-O2",
+        "-ffp-contract=off",
+        "-Wall",
+        "-Wextra",
+        "-Wdouble-promotion",
+        "-Werror",
+        "-DSRC_FS=44100",
+        "-DLOOP_N=176400",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/imported-playback.c",
+        "-lm",
+        "-o",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/render-1"
+      ],
+      "render_exit": 0,
+      "log_sha256": "45c6cd70330125a71eb54bb0f6a91e9cd7cc7697f625be6eae64c855df936ca6"
+    },
+    {
+      "factor": 1.5,
+      "compile_exit": 0,
+      "argv": [
+        "cc",
+        "-O2",
+        "-ffp-contract=off",
+        "-Wall",
+        "-Wextra",
+        "-Wdouble-promotion",
+        "-Werror",
+        "-DSRC_FS=29400",
+        "-DLOOP_N=117600",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/imported-playback.c",
+        "-lm",
+        "-o",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/render-1.5"
+      ],
+      "render_exit": 0,
+      "log_sha256": "2a1c75baffcf26f0dc47711b9c6623551c7bbce2182987a87a122746475320aa"
+    },
+    {
+      "factor": 2,
+      "compile_exit": 0,
+      "argv": [
+        "cc",
+        "-O2",
+        "-ffp-contract=off",
+        "-Wall",
+        "-Wextra",
+        "-Wdouble-promotion",
+        "-Werror",
+        "-DSRC_FS=22050",
+        "-DLOOP_N=88200",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/imported-playback.c",
+        "-lm",
+        "-o",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/render-2"
+      ],
+      "render_exit": 0,
+      "log_sha256": "156a941ad3353bc4068e3682a3b1a237d277d874b67a93f740beb8a4f5dd8f6d"
+    },
+    {
+      "factor": 3,
+      "compile_exit": 0,
+      "argv": [
+        "cc",
+        "-O2",
+        "-ffp-contract=off",
+        "-Wall",
+        "-Wextra",
+        "-Wdouble-promotion",
+        "-Werror",
+        "-DSRC_FS=14700",
+        "-DLOOP_N=58800",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/imported-playback.c",
+        "-lm",
+        "-o",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/render-3"
+      ],
+      "render_exit": 0,
+      "log_sha256": "1d6816dc9d891918d9a8dcee64d31eedbfa021d80c90ab1e1d10b943da7cd4be"
+    },
+    {
+      "factor": 4,
+      "compile_exit": 0,
+      "argv": [
+        "cc",
+        "-O2",
+        "-ffp-contract=off",
+        "-Wall",
+        "-Wextra",
+        "-Wdouble-promotion",
+        "-Werror",
+        "-DSRC_FS=11025",
+        "-DLOOP_N=44100",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/imported-playback.c",
+        "-lm",
+        "-o",
+        "/Users/mac/Documents/Codex/2026-10-26/task-6/sample-oldschool-evidence/host/render-4"
+      ],
+      "render_exit": 0,
+      "log_sha256": "a1116eb0fb8701e6895ee76c80a44b2c9f887317befc4c2fd0343fa571d0d006"
+    }
+  ],
+  "firmware_tree": "442b8e3d1d0e785d2f7b6d7517777da727f70dd0",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+  "website_module_blob": "ac39c7236dee13aceba4f8b7c3139cb2d41667d5",
+  "source_blobs": {
+    "tests/host/breaks_test.c": "1adcedfe82540c7a6093c07d530877acb996c757",
+    "firmware/src/dsp/breaks.c": "d48a5b1c9a851f362d5632ced0a9acb36eecce3e",
+    "firmware/src/dsp/breaks.h": "b617d7a16352689c207e77345a454f6ee8d002b4",
+    "firmware/src/app/engine.c": "2be5775315b9f24cb5a815dd723573ab42c32b66",
+    "firmware/src/app/plat_fm1.c": "ad4ebd9feb598977ddf5559dc1bbfb25dc3deb73"
+  },
+  "harness_sha256": "fcf88fe1d4b33bc3aa3cdf40ce284d42216fc02a5e8a8f6d3538c8cb2e1f63f1",
+  "js_bank_generator_sha256": "25716fe6c9cb7edb32fb77ebba269da41e53619ff5322e47ad407d06a4d90771",
+  "limitations": [
+    "Synthetic actual importer slot images and host C playback only",
+    "No native Elite/Pro qualification, hardware or auditory owner acceptance",
+    "Local .bin images and executables are test outputs, not distribution artifacts"
+  ]
+}

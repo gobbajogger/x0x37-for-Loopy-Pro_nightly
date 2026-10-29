@@ -1,0 +1,117 @@
+[
+  {
+    "factor": 1,
+    "argv": [
+      "cc",
+      "-O2",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-ffp-contract=off",
+      "-Wall",
+      "-Wextra",
+      "-Wdouble-promotion",
+      "-Werror",
+      "-DSRC_FS=44100",
+      "-DLOOP_N=176400",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/imported-playback.c",
+      "-lm",
+      "-o",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/render-1"
+    ],
+    "compile_exit": 0,
+    "render_exit": 0,
+    "log_sha256": "45c6cd70330125a71eb54bb0f6a91e9cd7cc7697f625be6eae64c855df936ca6"
+  },
+  {
+    "factor": 1.5,
+    "argv": [
+      "cc",
+      "-O2",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-ffp-contract=off",
+      "-Wall",
+      "-Wextra",
+      "-Wdouble-promotion",
+      "-Werror",
+      "-DSRC_FS=29400",
+      "-DLOOP_N=117600",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/imported-playback.c",
+      "-lm",
+      "-o",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/render-1.5"
+    ],
+    "compile_exit": 0,
+    "render_exit": 0,
+    "log_sha256": "2a1c75baffcf26f0dc47711b9c6623551c7bbce2182987a87a122746475320aa"
+  },
+  {
+    "factor": 2,
+    "argv": [
+      "cc",
+      "-O2",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-ffp-contract=off",
+      "-Wall",
+      "-Wextra",
+      "-Wdouble-promotion",
+      "-Werror",
+      "-DSRC_FS=22050",
+      "-DLOOP_N=88200",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/imported-playback.c",
+      "-lm",
+      "-o",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/render-2"
+    ],
+    "compile_exit": 0,
+    "render_exit": 0,
+    "log_sha256": "156a941ad3353bc4068e3682a3b1a237d277d874b67a93f740beb8a4f5dd8f6d"
+  },
+  {
+    "factor": 3,
+    "argv": [
+      "cc",
+      "-O2",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-ffp-contract=off",
+      "-Wall",
+      "-Wextra",
+      "-Wdouble-promotion",
+      "-Werror",
+      "-DSRC_FS=14700",
+      "-DLOOP_N=58800",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/imported-playback.c",
+      "-lm",
+      "-o",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/render-3"
+    ],
+    "compile_exit": 0,
+    "render_exit": 0,
+    "log_sha256": "1d6816dc9d891918d9a8dcee64d31eedbfa021d80c90ab1e1d10b943da7cd4be"
+  },
+  {
+    "factor": 4,
+    "argv": [
+      "cc",
+      "-O2",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-ffp-contract=off",
+      "-Wall",
+      "-Wextra",
+      "-Wdouble-promotion",
+      "-Werror",
+      "-DSRC_FS=11025",
+      "-DLOOP_N=44100",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/imported-playback.c",
+      "-lm",
+      "-o",
+      "/Users/mac/Documents/Codex/2026-10-26/task-6/oldschool-review/host/render-4"
+    ],
+    "compile_exit": 0,
+    "render_exit": 0,
+    "log_sha256": "a1116eb0fb8701e6895ee76c80a44b2c9f887317befc4c2fd0343fa571d0d006"
+  }
+]

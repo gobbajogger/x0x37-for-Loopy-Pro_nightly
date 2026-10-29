@@ -1,0 +1,5 @@
+  skip SMK-37 Pro package tests (needs build/smk37 app/loader and AC79_SDK; run ./build.sh --board smk37)
+  ok   slot-migration-indices-web
+  ok   slot-break-menu-migration
+  ok   installer-backup-snapshot
+all tests passed

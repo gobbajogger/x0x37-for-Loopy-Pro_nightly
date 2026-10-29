@@ -1,0 +1,70 @@
+{
+  "schema": "x0x37-catalog-sync-evidence-v1",
+  "role": "sole NIGHTLY status/history/catalog SOURCE producer",
+  "revision": "R48 2026-10-27",
+  "musician_reason": "WBL1 NIGHTLY DEV labeling, EC015 sample-preservation source guard and reviewed BREAK output failure handling must be visible without false installation or hardware readiness.",
+  "contract": {
+    "pin": "218dbf80cc61384947d6bb2b02e41fc1f3556048",
+    "sha256": "c41776551668119ce561c9e03fe9eb55d4fa03e52e0eda198e32c43fde75a9df",
+    "status": "reviewed draft, not default"
+  },
+  "inputs": {
+    "website_main": "008163ee39b3c962b2bcac3fc5c5b7fdd8898bca",
+    "website_main_tree": "c1722fd7d7f3e8296a2c023f8fcbc9d621b31fa4",
+    "website_status_blob": "459452c6fc6eb587b820b5d88030ea48ceae0d84",
+    "website_lock_blob": "15a722be48486184e53c8095f42f4491736ba46c",
+    "pages_git": "c70a66d5a38c4397d3c93774c407f11cb8336acb",
+    "pages_tree": "89f5f2405cabfc91e26753ad7761673355b51ae5",
+    "pages_versions_blob": "c7503b19c19de6c92892bdf8b3716d8801ef5262",
+    "pages_latest": "nightly-0e77d923-dev",
+    "pages_version_count": 9,
+    "queue_git": "7ac6ef25e1e54b7c3715e6ad0c6876ee4b32879f",
+    "queue_delivery_blob": "ed7a3f63b3bf1ab7576eaad1b561fa535a1c7c66",
+    "firmware_wbl1": "0e77d923dfee44a9b64a98c121fac55200b91f20",
+    "firmware_wbl1_tree": "2b4c32cf531dd3402cc33895e9dbc66ad1aebace",
+    "PR646": "55f631b2e9f64a8cafb01dbcbb22c83df0c05176",
+    "PR646_tree": "c7052b3f3474aead818b5e435b54da25de4d4c4e",
+    "PR646_feature_merge": "a9681fc331de30dcdb278f26e602db71cc385c1d"
+  },
+  "change": {
+    "from_rows": 145,
+    "to_rows": 148,
+    "original_historical_DEV_generations": 2,
+    "source_picker_selectable": 0,
+    "new_rows": [
+      {
+        "id": "nightly-pages-wbl1-0e77d923-dev-git-observation-20261027",
+        "sha256": "67258e6d6234f84440495efe8aba6732688c232b8e2cc50a41c97ed867d26288",
+        "installable": false
+      },
+      {
+        "id": "nightly-pages-ec015-occupied-slot-guard-source-20261027",
+        "sha256": "5f2ff4452fec0ee84f24a90ba82bc81d75ea713c540f1a6c8d48cfec6a7aaac4",
+        "installable": false
+      },
+      {
+        "id": "firmware-pr646-break-generator-host-errors-feature-merged-20261027",
+        "sha256": "af63b9b13f572517230dc88f900a8f61b6acd183a6b8ebef8aad9cb5086b5c18",
+        "installable": false
+      }
+    ]
+  },
+  "checks": {
+    "sha256_known_answer": "PASS 3",
+    "prior_records": "PASS 145 unchanged",
+    "current_records": "PASS 148 sealed",
+    "scoped_corruption_negatives": "PASS 16",
+    "permanent_node_regressions": "COMMITTED_AS_SOURCE_NOT_RUN",
+    "status_docs_parity": "IDENTICAL_SOURCE_BLOB",
+    "exact_native_npm_test": "NOT_RUN DNS",
+    "exact_native_build": "NOT_RUN",
+    "headless_browser": "NOT_RUN",
+    "independent_R48_QA": "PENDING",
+    "live_package_bytes": "NOT_VERIFIED",
+    "hardware": "NOT_TESTED"
+  },
+  "next": {
+    "owner": "Existing Independent NIGHTLY Website QA",
+    "action": "Run exact R48 full-native npm/build and relevant programmatic browser, history/parity/corruption tests, then pass scoped verdict to sole Website Main Merger. Sole Pages publisher owns legal and served-byte gates."
+  }
+}

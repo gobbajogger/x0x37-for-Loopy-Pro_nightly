@@ -1,0 +1,97 @@
+{
+  "kind": "source compatibility and Node contract proof",
+  "site_base": "5ba8596579fc3649aa205cd927cf8d03a327ff2c",
+  "firmware_base": "d633833ac369f8466bc2563791614206070e87d1",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "node": "v24.14.1",
+  "explicit_pairs": [
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      10
+    ],
+    [
+      6,
+      10
+    ]
+  ],
+  "fixture_sha256": {
+    "current-v3-sound10.json": "2c47e1459cdef8db8eec73b96ce58d3a9c67b8c0abaeb3065a46141c2f911d3a",
+    "endpoint-v6-sound10.json": "c169f42d80c362a1f0a62ffd66baeb7aa6af41c3254a9f702280f67c987331df"
+  },
+  "checks": {
+    "site_build": 0,
+    "site_full_npm": 0,
+    "site_projects_web": {
+      "exit": 0,
+      "tests": 33
+    },
+    "firmware_projects_web": {
+      "exit": 0,
+      "tests": 33
+    },
+    "firmware_projects_page": {
+      "exit": 0,
+      "tests": 7
+    },
+    "actual_fixture_before_after": 0,
+    "site_provenance": 0
+  },
+  "limits": [
+    "Initial endpoint producer closure was dirty; superseded by exact clean 6ddea31d producer regeneration in producer-rebind.json. Native/device qualification remains separate.",
+    "Firmware decides semantic compatibility before sample mutation.",
+    "No engine identity is inferred or migrated.",
+    "No GUI/headless/device/native build performed."
+  ],
+  "log_sha256": {
+    "before-after.log": "f3e095818f5591e243f7f82038791afedbaa67b6f31108b5cb4f494d9f5aa556",
+    "firmware-projects-page.log": "11cb3597a1ea4895ba04c1b4ff8d3a8c4e831f5bae7dac0c28537f4ce8859b96",
+    "firmware-projects-web.log": "8f49aae1cca56aac90d32415264d4d27083590ca07c23d9eb3726d592241a55d",
+    "site-build.log": "84ebc50ac461bbd6395a55ebad7a2b461aeb1384d50f06710dfe33265adfa52a",
+    "site-npm.log": "7f7bd80f662c0a8a31b4374a6118b16108330d9cb226a596f7646a2847f7b310",
+    "site-projects-web.log": "21170cb2584562e052fd4fcfe8040b38a0d6f284062e68c32d95e49209247d8b",
+    "site-provenance.log": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337"
+  },
+  "direct_commands": [
+    {
+      "name": "firmware-projects-web",
+      "argv": [
+        "node",
+        "web/test_projects.mjs"
+      ],
+      "cwd": "project-compat-firmware",
+      "exit": 0,
+      "log_sha256": "8f49aae1cca56aac90d32415264d4d27083590ca07c23d9eb3726d592241a55d"
+    },
+    {
+      "name": "firmware-projects-page",
+      "argv": [
+        "node",
+        "web/test_projects_page.mjs"
+      ],
+      "cwd": "project-compat-firmware",
+      "exit": 0,
+      "log_sha256": "11cb3597a1ea4895ba04c1b4ff8d3a8c4e831f5bae7dac0c28537f4ce8859b96"
+    },
+    {
+      "name": "before-after",
+      "argv": [
+        "node",
+        "../project-compat-evidence/before-after.mjs"
+      ],
+      "cwd": "project-compat-site",
+      "exit": 0,
+      "log_sha256": "f3e095818f5591e243f7f82038791afedbaa67b6f31108b5cb4f494d9f5aa556"
+    }
+  ],
+  "initial_stage_only": true,
+  "superseded_by": {
+    "producer": "producer-rebind.json",
+    "combined_checks": "stack-checks.json",
+    "site_stack_base": "1b2b687b0c572602debbe2bba4cde9dfa647f774",
+    "firmware_stack_base": "d049682cccc31a7ce5285edaa5f968869aaef2d9"
+  }
+}

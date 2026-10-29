@@ -1,0 +1,67 @@
+{
+  "head": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+  "tree": "001b61dcdc81dd566b4653da9e7fcb2e8de846b3",
+  "base": "cd6a4b92bcb39c594c371d58ab39e77fdcd80b2b",
+  "disposition": "PASS_BOUNDED_SOURCE_IMPORT_SERIALIZATION_PREVIEW_LIFECYCLE_AND_ARTIFACT_PROVENANCE",
+  "source_edits_by_reviewer": false,
+  "source_status": "",
+  "source_blobs": {
+    "web/x0x_breaks.js": "ac39c7236dee13aceba4f8b7c3139cb2d41667d5",
+    "web/x0x_breaks.html": "b23c54993f0ba0514616591674d73840cb71ce5e",
+    "web/test_breaks_page.mjs": "c3e546e2f3143f728818702fff73b021aaeb55a2",
+    "tests/edge-sample-oldschool-import.test.mjs": "d9be3f1a17e9959e4694f56fb52f836c71b99883",
+    "SOURCE_PROVENANCE.json": "f1f7afd9f875015fd88618f5db9cf0539cfeaf86"
+  },
+  "executed": [
+    {
+      "command": "node --test tests/edge-sample-oldschool-import.test.mjs web/test_breaks_page.mjs",
+      "exit": 0,
+      "result": "16tests16pass0fail",
+      "log": "focused.log"
+    },
+    {
+      "command": "node --test ../oldschool-review/cleanup-boundaries.test.mjs",
+      "exit": 0,
+      "result": "2independent actual-page lifecycle tests pass; stop/disconnect on replacement/natural end/settings/source invalidation, late ended event cannot clear successor",
+      "log": "cleanup-boundaries.log"
+    },
+    {
+      "command": "Copy exact JS bank generator and real d633 BREAK wrapper into reviewer-owned host directory; freshly generate all5factors x2banks; cc originalflags +ASan/UBSan; execute all5renderers",
+      "exit": 0,
+      "result": "All5factors20musical/gate/live checks each PASS at90/120/170BPM;10newbankhashes reproduce authorbankshashes",
+      "details": "host/independent-receipt.json"
+    }
+  ],
+  "author_records_checked": "source-evidence-check.json;20manifesttextentries SHA256 independently matched, exact-head fullnpm author log inspected notrerun",
+  "artifact": "preview-provenance.json",
+  "ui_claims_verified": [
+    "ProductdefaultOff, syntheticartifactexplicitMedium2x",
+    "Real n, ceil(n/2)ADPCMbytes and peroccupied-slot512byteheadersavings",
+    "Matching serialized rate with fewer samples preserves intended prepared timing/pitch at source/reference tempo; no independent time-stretch claim",
+    "Actual saved encode/decode preview; originalfilepreview retains originalsource",
+    "Transactional local recut andCancel/escape0writes; source arrays unchanged",
+    "Generationserial prevents stale suspendedresume audio, lifecycle stop/disconnect verified"
+  ],
+  "limits": [
+    "No GUI/headless/browser execution or visual rendering/listening performed",
+    "UI/audio owner review required before rollout",
+    "No device/native-package/hardware-equivalence or publication/merge claim",
+    "Firmware/browser source mirror parity remains separately coordinated follow-up"
+  ],
+  "blockers": [],
+  "log_sha256": {
+    "cleanup-boundaries.log": "fab4f8281af9523018d339f468ddb040af9b6ef16b5c74e92330facd98716abe",
+    "focused.log": "ad56ce5f188e8ac751f4b6a846a93af97f18026b24641ae40d2fed998c00056b",
+    "host/render-1.5.log": "2a1c75baffcf26f0dc47711b9c6623551c7bbce2182987a87a122746475320aa",
+    "host/build-1.5.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/render-4.log": "a1116eb0fb8701e6895ee76c80a44b2c9f887317befc4c2fd0343fa571d0d006",
+    "host/render-1.log": "45c6cd70330125a71eb54bb0f6a91e9cd7cc7697f625be6eae64c855df936ca6",
+    "host/render-3.log": "1d6816dc9d891918d9a8dcee64d31eedbfa021d80c90ab1e1d10b943da7cd4be",
+    "host/render-2.log": "156a941ad3353bc4068e3682a3b1a237d277d874b67a93f740beb8a4f5dd8f6d",
+    "host/build-3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/build-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/build-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/build-4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "preview_sha256": "36262401736da3bed1c2fa09c5ff6435ab33b653d75d1c2ce72a6a4849f6ca93"
+}

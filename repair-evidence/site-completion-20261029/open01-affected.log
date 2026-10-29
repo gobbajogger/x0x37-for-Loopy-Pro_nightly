@@ -1,0 +1,268 @@
+✔ control: a single scan can identify the keyboard and receive a later packet (4.224479ms)
+✔ negative: earlier timed-out scan cannot unregister a newer successful scan (1001.401374ms)
+✔ valid current/legacy identity FM-1_015 remains accepted (1.537934ms)
+✔ valid current/legacy identity FM-1_016 remains accepted (0.370267ms)
+✔ valid current/legacy identity SMK-37 Pro_016 remains accepted (0.126948ms)
+✔ valid current/legacy identity SMK-37 Elite_016 remains accepted (0.165024ms)
+✔ valid current/legacy identity SMK-37 Elite_900 remains accepted (0.105556ms)
+✔ valid current/legacy identity ota-SMK-37 Elite_900 remains accepted (0.241277ms)
+✔ valid current/legacy identity MKE-P37_900 remains accepted (0.101881ms)
+✔ valid current/legacy identity Felucca_000 remains accepted (0.105767ms)
+✔ contradictory 24-bit payload length 0 is rejected (0.151494ms)
+✔ contradictory 24-bit payload length 26 is rejected (0.817359ms)
+✔ contradictory 24-bit payload length 28 is rejected (0.19576ms)
+✔ contradictory 24-bit payload length 283 is rejected (0.075452ms)
+✔ contradictory 24-bit payload length 65563 is rejected (0.049544ms)
+✔ missing F0 is rejected before identity admission (0.119978ms)
+✔ missing F7 is rejected before identity admission (0.199025ms)
+✔ interior status byte is rejected before identity admission (3.434819ms)
+✔ nonzero packed padding is rejected before identity admission (0.085877ms)
+✔ truncated frame is rejected before identity admission (0.089132ms)
+✔ extra packed octet is rejected before identity admission (0.076513ms)
+✔ a different version with a correct checksum is valid framing, not authenticated identity (0.076874ms)
+✔ malformed identity followed by valid identity does not poison discovery (2.793386ms)
+✔ positive: checksummed identity frame discovers the correct model and version (2.132714ms)
+✔ negative: corrupt identity checksum must not bind a keyboard (2009.526129ms)
+✔ negative: corrupted version byte with unchanged checksum must not bind (2003.319062ms)
+✔ negative: contradictory identity length header must not bind (2004.155164ms)
+✔ initial opening does not revoke a fresh binding (input closed=false, output closed=false) (3.445759ms)
+✔ initial opening does not revoke a fresh binding (input closed=true, output closed=false) (4.099089ms)
+✔ initial opening does not revoke a fresh binding (input closed=false, output closed=true) (1.950096ms)
+✔ initial opening does not revoke a fresh binding (input closed=true, output closed=true) (1.958239ms)
+✔ later observed disconnect/reconnect still revokes the bound pair (8.828736ms)
+✔ later coalesced disconnect/reconnect still revokes the bound pair (7.156539ms)
+✔ an unrelated lifecycle event preserves the freshly opened pair (2.953831ms)
+✔ failed initial open removes temporary listeners and sends no handshake (0.370713ms)
+✔ actual resumed caller refuses Done/100 after successful ACK but absent (6.672883ms)
+✔ actual resumed caller refuses Done/100 after successful ACK but loader (7.290412ms)
+✔ actual resumed caller refuses Done/100 after successful ACK but wrong-marker (2.298658ms)
+✔ actual resumed caller refuses Done/100 after successful ACK but cross-family (2.106792ms)
+✔ actual resumed caller refuses Done/100 after successful ACK but ambiguity (2.149784ms)
+✔ actual resumed caller refuses Done/100 after successful ACK but late-ambiguity (1.77906ms)
+✔ actual resumed caller accepts the matching app on the uninterrupted Elite port pair (2.777578ms)
+✔ actual resumed caller refuses completion after replacement by a matching renamed pair (3.253091ms)
+✔ foreign policy cannot turn an observed marker mismatch into Done/100 (12.418262ms)
+✔ lost final ACK never attempts application readback or completion (2.045443ms)
+✔ wrong-family or Pro loader and multiple compatible inputs still receive no UPGRADE (3.516821ms)
+✔ actual caller cannot turn transfer boolean or pre-app progress into Done/100 (2.975442ms)
+✔ uninterrupted matching-model pair completes: none (17.725209ms)
+✔ uninterrupted matching-model pair completes: unrelated (14.075516ms)
+✔ foreign Pro loader cannot replace selected Elite even on the same MIDI pair (7.561763ms)
+✔ replaced or interrupted bound pair cannot enter loader writes: replace (7.085236ms)
+✔ replaced or interrupted bound pair cannot enter loader writes: rename (6.906319ms)
+✔ replaced or interrupted bound pair cannot enter loader writes: disconnect (7.027434ms)
+✔ replaced or interrupted bound pair cannot enter loader writes: deferred-reconnect (6.965143ms)
+✔ post-write lifecycle change cannot authorize automatic restore or report verified (13.683322ms)
+✔ fresh explicit matching-loader resume is separate from prior continuity (7.463831ms)
+✔ wrong-model fresh resume refuses before any UPGRADE (0.648293ms)
+✔ a rejected atomic start sends no fallback legacy UPGRADE (0.363534ms)
+✔ atomic start callback owns OTA entry with no second UPGRADE (13.420995ms)
+✔ approval revoked during discovery blocks first legacy UPGRADE (0.342573ms)
+✔ approval revoked after loader starts blocks first image response (4.764327ms)
+✔ a returned wrong version is not verified completion (13.403153ms)
+✔ verified Starry alias stays Pro, while Elite and other model names stay distinct (0.184455ms)
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+✔ current source-generated pages retain all nine published versions and pass read-only parity (108.62156ms)
+✔ sample preparation moved above the installer is refused even with current libraries and catalog (39.477411ms)
+✔ stale generated docs cannot hide changed Breaks and Projects source (27.267494ms)
+✔ self-consistent empty preview pages cannot replace a retained catalog (40.142022ms)
+✔ coherently altered package metadata still fails retained-catalog comparison (86.270898ms)
+✔ renumbered assignments and stale history are reported by their exact paths (26.864269ms)
+✔ a missing staged page is a failing path instead of a partial pass (24.350528ms)
+PASS stale not-found scan cannot replace new connected result
+PASS stale disconnect error cannot replace new connected result
+PASS older Elite scan cannot overwrite newer Pro selection
+PASS in-flight scan does not disturb active flashing status
+PASS latest error, not-found and OTA result still work
+PASS scan-race regression (5 scenarios; production function, simulated MIDI)
+✔ tests/installer-scan-order.test.mjs (38.544125ms)
+PASS install rejects ota-FM-1 before loader write for Elite package
+PASS install rejects ota-SMK before loader write for FM-1 package
+PASS install rejects Pro loader for Elite package
+PASS install rejects Elite loader for Pro package
+PASS install preserves matching Elite loader positive
+PASS install preserves matching Pro loader positive
+PASS install preserves FM-1 loader positive
+PASS write cross-family refusal
+PASS write requires a known package identity
+PASS write rejects Pro loader for Elite package
+PASS write allows matching Elite loader
+PASS resume preserves matching Elite loader on the same port pair
+PASS X0X no slot response blocks install
+PASS USB send failure blocks install
+PASS USB read failure blocks install
+PASS malformed SMP_INFO blocks install
+PASS zero-slot SMP_INFO blocks install
+PASS stock corrupt reply is not unsupported
+PASS stock USB loss is not unsupported
+PASS unclassified no response is not unsupported
+PASS stock Elite016 no SMP_INFO retains supported path
+PASS stock MKE016 no SMP_INFO retains supported path
+PASS stock Starry016 no SMP_INFO retains supported path
+PASS stock FM1_015 no SMP_INFO retains supported path
+PASS required slot backup failure blocks install
+PASS known stock Pro016 no SMP_INFO retains existing manual path
+PASS valid empty slot layout retains install
+PASS resume refuses foreign/missing package SMK-37 Elite_900/ota-FM-1
+PASS resume refuses foreign/missing package SMK-37 Elite_900/ota-SMK-37 Pro
+PASS resume refuses foreign/missing package FM-1_900/ota-SMK-37 Pro
+PASS resume refuses foreign/missing package /ota-SMK-37 Elite
+PASS sameKeyboard preserves exact models and only the verified Starrykey-to-Pro alias
+PASS bind single selected observable port positive
+PASS bind ambiguity refuses before app UPGRADE
+PASS selected port name change refuses before app UPGRADE
+PASS real find/wait refuses replacement with a matching-model loader
+PASS real find/wait accepts matching-model loader on the uninterrupted pair
+PASS real bound find refuses changed family
+PASS real bound wait refuses observable ambiguity before handshake
+PASS verified find blocks name-change before readback
+PASS verified find blocks extra-port before readback
+PASS binding ambiguity blocks sample-layout query and backup
+PASS post-install restore binding positive
+PASS post-install restore binding name-change
+PASS post-install restore binding extra-port
+PASS post-install restore binding archive-error
+PASS post-install restore binding readback-mismatch
+{"cases":47,"failed":0,"scope":"actual browser shipping bodies; synthetic discovery/serve/MIDI boundaries, no hardware"}
+✔ tests/installer-write-boundaries.test.mjs (595.67722ms)
+PASS: upstream public-blob identity, generated scripts, accessibility, safeguards, empty firmware catalog, site links
+PASS: Nightly versus production gates, history read-only and renderer syntax
+✔ tests/nightly-preview.test.mjs (62.281174ms)
+{
+  "status": "PASS",
+  "assertions": 51,
+  "scenarios": 14,
+  "scope": "exact Updater method windows / synthetic Web MIDI maps / no physical device",
+  "observed": [
+    {
+      "scenario": "one correctly named device",
+      "pairs": [
+        "A>A"
+      ],
+      "probes": [
+        "A>A"
+      ],
+      "writes": [
+        "SEND:A"
+      ]
+    },
+    {
+      "scenario": "unique device among unrelated ports",
+      "pairs": [
+        "A>A"
+      ],
+      "probes": [
+        "A>A"
+      ],
+      "writes": [
+        "SEND:A"
+      ]
+    },
+    {
+      "scenario": "two uniquely named models",
+      "pairs": [
+        "A>A",
+        "F>F"
+      ],
+      "probes": [
+        "A>A"
+      ],
+      "writes": [
+        "SEND:A"
+      ]
+    },
+    {
+      "scenario": "two identically named outputs",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "two identically named inputs",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "two identical devices with reversed outputs",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "mismatched sole output",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "disconnected matching output",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "disconnected duplicate output ignored",
+      "pairs": [
+        "A>A"
+      ],
+      "probes": [
+        "A>A"
+      ],
+      "writes": [
+        "SEND:A"
+      ]
+    },
+    {
+      "scenario": "disconnected duplicate input ignored",
+      "pairs": [
+        "A>A"
+      ],
+      "probes": [
+        "A>A"
+      ],
+      "writes": [
+        "SEND:A"
+      ]
+    },
+    {
+      "scenario": "non-keyboard input never probed",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "different names of sole in/out",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "two identically named OTA devices",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    },
+    {
+      "scenario": "case-only name mismatch",
+      "pairs": [],
+      "probes": [],
+      "writes": []
+    }
+  ]
+}
+✔ web/test_midi_port_pairing.mjs (40.619199ms)
+ℹ tests 74
+ℹ suites 0
+ℹ pass 74
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8714.896347

@@ -1,0 +1,16 @@
+{
+  "ota-request-site": {
+    "site-before.log": true,
+    "site-after.log": true,
+    "site-focused.log": true,
+    "site-build.log": true,
+    "site-full.log": true
+  },
+  "ota-request-firmware": {
+    "firmware-before.log": true,
+    "firmware-focused.log": true,
+    "python-before.log": true,
+    "python-after.log": true,
+    "installer-integration.log": true
+  }
+}

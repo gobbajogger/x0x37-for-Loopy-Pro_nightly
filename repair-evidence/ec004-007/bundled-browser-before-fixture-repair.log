@@ -1,0 +1,63 @@
+Chromium 148.0.7778.96
+PASS elite bundled package needs no separate file
+PASS elite verified download available while DEV consent blocks install
+FAIL elite bundled bytes install with no ctl.img and stale local input ignored
+PASS elite actual install boundary receives unchanged complete package image
+PASS elite page has no script exceptions
+PASS elite/blank denies package before download or MIDI
+PASS elite/blank refusal reports without script exception
+PASS elite/app-crc denies package before download or MIDI
+PASS elite/app-crc refusal reports without script exception
+PASS elite/outer-crc denies package before download or MIDI
+PASS elite/outer-crc refusal reports without script exception
+PASS elite/tail denies package before download or MIDI
+PASS elite/tail refusal reports without script exception
+PASS elite/abi denies package before download or MIDI
+PASS elite/abi refusal reports without script exception
+PASS elite/ctl-crc denies package before download or MIDI
+PASS elite/ctl-crc refusal reports without script exception
+PASS elite/no-map denies package before download or MIDI
+PASS elite/no-map refusal reports without script exception
+PASS elite/controller_sha256 mismatch rejected despite correct package SHA
+PASS elite/controller_size mismatch rejected despite correct package SHA
+PASS elite malformed controller strategy None denied
+PASS elite malformed controller strategy False denied
+PASS elite malformed controller strategy hosted denied
+PASS elite malformed controller strategy {} denied
+PASS elite malformed controller strategy  denied
+PASS elite wrong model package rejected despite correct downloaded hash
+PASS elite legacy metadata retains local controller input
+PASS elite missing legacy controller refuses before MIDI
+FAIL elite matching local controller preserves legacy install path
+PASS pro bundled package needs no separate file
+PASS pro verified download available while DEV consent blocks install
+FAIL pro bundled bytes install with no ctl.img and stale local input ignored
+PASS pro actual install boundary receives unchanged complete package image
+PASS pro page has no script exceptions
+PASS pro/blank denies package before download or MIDI
+PASS pro/blank refusal reports without script exception
+PASS pro/app-crc denies package before download or MIDI
+PASS pro/app-crc refusal reports without script exception
+PASS pro/outer-crc denies package before download or MIDI
+PASS pro/outer-crc refusal reports without script exception
+PASS pro/tail denies package before download or MIDI
+PASS pro/tail refusal reports without script exception
+PASS pro/abi denies package before download or MIDI
+PASS pro/abi refusal reports without script exception
+PASS pro/ctl-crc denies package before download or MIDI
+PASS pro/ctl-crc refusal reports without script exception
+PASS pro/no-map denies package before download or MIDI
+PASS pro/no-map refusal reports without script exception
+PASS pro/controller_sha256 mismatch rejected despite correct package SHA
+PASS pro/controller_size mismatch rejected despite correct package SHA
+PASS pro malformed controller strategy None denied
+PASS pro malformed controller strategy False denied
+PASS pro malformed controller strategy hosted denied
+PASS pro malformed controller strategy {} denied
+PASS pro malformed controller strategy  denied
+PASS pro wrong model package rejected despite correct downloaded hash
+PASS pro legacy metadata retains local controller input
+PASS pro missing legacy controller refuses before MIDI
+FAIL pro matching local controller preserves legacy install path
+PASS model change during embedded hash refuses stale install before MIDI
+{"checks": 61, "failed": 4, "failures": ["elite bundled bytes install with no ctl.img and stale local input ignored", "elite matching local controller preserves legacy install path", "pro bundled bytes install with no ctl.img and stale local input ignored", "pro matching local controller preserves legacy install path"]}

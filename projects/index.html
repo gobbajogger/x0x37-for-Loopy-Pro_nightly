@@ -295,18 +295,29 @@ function loopPreviewPcm(s, playbackRate, roundTrip = true) {
 
 // Prepare from the retained decoded original, never from an already processed loop.
 // The baseline is the same bar/trim at 44.1 kHz; actual ADPCM bytes include odd-sample nibble padding.
-function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RATE, gritFactor = 1 } = {}) {
+function prepareLoopImport(x, sr, { bars = true, trim = false, storageRate = RATE, gritFactor = 1, maxData = SLOT_MAX_DATA } = {}) {
   if (!Number.isFinite(sr) || sr <= 0 || !x.length || !Array.from(x).every(Number.isFinite))
     throw new Error("The source audio has invalid samples or sample rate.");
   if (storageRate !== RATE && storageRate !== RATE_HALF) throw new Error("Invalid import rate.");
   if (!Number.isFinite(gritFactor) || gritFactor < 1 || gritFactor > 8) throw new Error("Invalid oldschool factor.");
+  if (!Number.isSafeInteger(maxData) || maxData < 1 || maxData > 0x20000 - SLOT_DATA_OFF)
+    throw new Error("Invalid BREAK slot capacity.");
   const selected = selectLoopSource(x, sr, bars, trim);
+  // Bound the eventual ADPCM before either the reference or stored-rate
+  // resamplers allocate. Positive low rates remain valid when the result fits.
+  // Floor is a lower bound: floating-point stepping can add a sample at an
+  // exact boundary, which the final size check below also rejects.
+  const projected = storageRate === sr && gritFactor === 1 ? selected.length :
+    Math.floor(Math.max(0, selected.length - 1) * storageRate / sr / gritFactor);
+  const tooLong = () => Object.assign(new Error("This loop exceeds the BREAK slot capacity. Use a shorter cut, lower storage rate or stronger oldschool setting."), { code: "BREAK_SLOT_CAPACITY" });
+  if (!Number.isSafeInteger(projected) || Math.ceil(projected / 2) > maxData) throw tooLong();
   // A same-cut mono reference at the decoded source rate, before resampling/codec.
   // Match the import peak target, not perceived loudness; encoded playback stays exact.
   const scale = (30000 / 32768) / peak(selected);
   const reference = Float32Array.from(selected, v => v * scale);
   const baseline = cut(x, sr, bars, RATE, trim);
   const { s, rate } = cutLoop(x, sr, bars, storageRate, trim, gritFactor);
+  if (Math.ceil(s.length / 2) > maxData) throw tooLong();
   if (s.length < MIN_LOOP_SAMPLES) throw new Error("This loop is too short for BREAK playback (64 samples minimum).");
   const adpcm = imaEncode(s), baselineBytes = Math.ceil(baseline.length / 2);
   return { s, rate, n: s.length, adpcm, baselineSamples: baseline.length, baselineBytes,
@@ -521,16 +532,25 @@ function asciiName(b) {
 // offset (null if unknown) and used KiB come from X0X's extension ('X', 1, then per slot offset and size in
 // 4 KiB sectors and used KiB, 14 bits each); without it every slot has the one size.
 function parseInfo(r) {
-  if (r.length < 2) throw new Error("short SMP_INFO reply");
+  if (!r || r.length < 2) throw new Error("short SMP_INFO reply");
+  if (Array.from(r).some(b => !Number.isInteger(b) || b < 0 || b > 127))
+    throw new Error("invalid SMP_INFO MIDI data");
   const count = r[0], size = r[1] * 1024, slots = [];
-  if (count < 1) throw new Error("invalid SMP_INFO slot count");
+  if (count < 1 || count > 16 || !size) throw new Error("invalid SMP_INFO slot count or size");
   let i = 2;
   for (let k = 0; k < count; k++) {
+    if (i >= r.length || r[i] > 16) throw new Error("invalid SMP_INFO slot record");
     const nz = r[i], j = r.indexOf(0, i + 1);
+    if (j < 0 || j > i + 9 || j + 1 >= r.length)
+      throw new Error("truncated SMP_INFO slot record");
+    if (nz === 0 && (j !== i + 1 || r[j + 1] !== 0))
+      throw new Error(`slot ${k + 1}: empty SMP_INFO slot has occupied metadata`);
     slots.push({ nz, name: asciiName(r.slice(i + 1, j)), kb: r[j + 1], size, off: null, used: r[j + 1] });
     i = j + 2;
   }
   const ext = r[i] === 0x58;
+  // Unknown metadata after the descriptors cannot become a legacy preservation map.
+  if (i < r.length && !ext) throw new Error("unknown SMP_INFO trailing metadata");
   if (ext && (r[i + 1] !== 1 || r.length !== i + 2 + 6 * count))
     throw new Error("truncated or unsupported SMP_INFO flash-map extension");
   if (ext) {
@@ -543,6 +563,9 @@ function parseInfo(r) {
       if (!off || size < SLOT_HDR_AREA || v[2] * 1024 > size ||
           ranges.some(([lo, hi]) => off < hi && lo < end))
         throw new Error(`slot ${k + 1}: invalid or overlapping SMP_INFO flash range`);
+      // Firmware saturates only the legacy byte; both fields describe the same used KiB.
+      if (sl.kb !== Math.min(127, v[2]))
+        throw new Error(`slot ${k + 1}: legacy/extended used-size disagreement`);
       ranges.push([off, end]);
       Object.assign(sl, { off, size, used: v[2] });
     });
@@ -689,20 +712,65 @@ function flashMap(layout, board = "smk") {
   return layout.slots.map((_, k) => ({ off: LEGACY_BASE[board] + k * layout.size, size: layout.size }));
 }
 
+// Read only CRC-checked package files, never trust markers in header/padding.
+function slotPackageFiles(image) {
+  const crc16 = b => {
+    let c = 0;
+    for (const x of b) {
+      c ^= x << 8;
+      for (let k = 0; k < 8; k++) c = c & 0x8000 ? ((c << 1) ^ 0x1021) & 0xFFFF : (c << 1) & 0xFFFF;
+    }
+    return c;
+  };
+  const decode = b => {
+    const out = Uint8Array.from(b); let key = 0xFFFF;
+    for (let j = 0; j < out.length; j++) {
+      out[j] ^= key & 0xFF;
+      key = ((key << 1) ^ (key & 0x8000 ? 0x1021 : 0)) & 0xFFFF;
+    }
+    return out;
+  };
+  if (image.length < 64) return null;
+  const hdr = decode(image.subarray(0, 64)), h = new DataView(hdr.buffer, hdr.byteOffset, hdr.byteLength);
+  const count = h.getUint16(8, true), end = 64 + count * 80;
+  if (crc16(hdr.subarray(2)) !== h.getUint16(0, true) || h.getUint32(4, true) !== image.length ||
+      count < 1 || count > 8 || end > image.length || crc16(image.subarray(64, end)) !== h.getUint16(2, true)) return null;
+  const files = {}; let priorEnd = end;
+  for (let j = 0; j < count; j++) {
+    const entry = decode(image.subarray(64 + j * 80, 144 + j * 80));
+    const v = new DataView(entry.buffer, entry.byteOffset, entry.byteLength);
+    const off = v.getUint32(8, true), size = v.getUint32(12, true);
+    if (!size || off < priorEnd || off + size > image.length) return null;
+    const data = image.subarray(off, off + size);
+    if (crc16(data) !== v.getUint16(4, true)) return null;
+    for (const [name, type] of [["flash.bin", 0], ["ota.bin", 100]]) {
+      if (v.getUint16(0, true) === type) {
+        if (files[name] || findBytes(entry.subarray(64), name + "\0") !== 0) return null;
+        files[name] = data;
+      }
+    }
+    priorEnd = off + size;
+  }
+  return files["flash.bin"] ? files : null;
+}
+
 // the slot map of a package's logical image (fm1pkg_make.slotmap_of): its slot map record; for an older X0X
 // (Felucca loader, no record) the equal 80 KiB slots of that time; [] for any other package (stock firmware)
 function packageSlotMap(image, board = "smk") {
-  const i = findBytes(image, SLOTMAP_MAGIC);
-  if (i >= 0 && i + 24 <= image.length) {
-    const v = new DataView(image.buffer, image.byteOffset, image.byteLength), n = v.getUint32(i + 16, true);
+  const files = slotPackageFiles(image);
+  if (!files) return [];
+  const flash = files["flash.bin"], i = board === "fm1" ? 0x92F00 : 0x9CF00;
+  if (i + 24 <= flash.length && findBytes(flash.subarray(i, i + 16), SLOTMAP_MAGIC) === 0) {
+    const v = new DataView(flash.buffer, flash.byteOffset, flash.byteLength), n = v.getUint32(i + 16, true);
     const end = i + 20 + 8 * n;
-    if (n <= 16 && end + 4 <= image.length && v.getUint32(end, true) === crc32(image.subarray(i, end))) {
+    if (n <= 16 && end + 4 <= flash.length && v.getUint32(end, true) === crc32(flash.subarray(i, end))) {
       const m = [];
       for (let k = 0; k < n; k++) m.push({ off: v.getUint32(i + 20 + 8 * k, true), size: v.getUint32(i + 24 + 8 * k, true) });
       return m;
     }
+    return []; // A damaged current record cannot claim the legacy layout.
   }
-  if (findBytes(image, LOADER_MARK) < 0) return [];
+  if (!files["ota.bin"] || findBytes(files["ota.bin"], LOADER_MARK) < 0) return [];
   return Array.from({ length: board === "smk" ? 2 : 3 }, (_, k) => ({ off: LEGACY_BASE[board] + k * 0x14000, size: 0x14000 }));
 }
 
@@ -822,10 +890,15 @@ async function readSlotBytes(link, k, off, n, onPart) {
 }
 
 // slot k as an image (the 512-byte header area, then the data), or null if it is empty. Reads only.
-async function readSlotImage(link, k, nz, onPart) {
+// Layout-aware callers pass the actual capacity; standalone legacy reads retain the 80 KiB default.
+async function readSlotImage(link, k, nz, onPart, capacity = SLOT_SIZE) {
   if (!nz) return null;
+  if (!Number.isSafeInteger(capacity) || capacity < SLOT_HDR_AREA)
+    throw new Error(`slot ${k + 1}: invalid sample slot capacity`);
   const area = await readSlotBytes(link, k, 0, SLOT_HDR_AREA), h = parseHeader(area.subarray(0, SLOT_HDR_LEN));
   if (!h) throw new Error(`slot ${k + 1}: occupied sample slot has an invalid header; backup stopped`);
+  if (h.dataLen > capacity - SLOT_HDR_AREA)
+    throw new Error(`slot ${k + 1}: sample data exceeds slot capacity`);
   const data = await readSlotBytes(link, k, SLOT_HDR_AREA, h.dataLen, onPart);
   if (crc32(data) !== h.crc) throw new Error(`slot ${k + 1}: the data read back does not match its CRC`);
   const img = new Uint8Array(SLOT_HDR_AREA + data.length);
@@ -838,7 +911,7 @@ async function readSlotImage(link, k, nz, onPart) {
 async function backupSlots(link, onPart) {
   const layout = await readSlotLayout(link), images = [];
   for (let k = 0; k < layout.count; k++)
-    images.push(await readSlotImage(link, k, layout.slots[k].nz, onPart && ((d, n) => onPart(k, d, n))));
+    images.push(await readSlotImage(link, k, layout.slots[k].nz, onPart && ((d, n) => onPart(k, d, n)), slotSize(layout, k)));
   return { layout, images };
 }
 
@@ -865,8 +938,9 @@ async function restoreMapped(link, todo, images, onPart) {
   for (const { k, j } of todo) await writeSlotImage(link, j, images[k], onPart && ((d, n) => onPart(j, d, n)));
   const after = await readSlotLayout(link);
   for (const { k, j } of todo) {
-    const got = await readSlotImage(link, j, after.slots[j].nz);
-    if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]))
+    const got = await readSlotImage(link, j, after.slots[j].nz, undefined, slotSize(after, j));
+    if (!got || got.length !== images[k].length || crc32(got) !== crc32(images[k]) ||
+        !got.every((byte, i) => byte === images[k][i]))
       throw new Error(`slot ${j + 1}: read back differs from the backup of slot ${k + 1}`);
   }
 }
@@ -878,22 +952,115 @@ function archiveStamp(t = new Date()) {
   return { created, name: `x0x-slots-before-install-${created.replace(/[-:]/g, "").replace("T", "-")}.x0xslots` };
 }
 
+const SNAPSHOT_COMMAND = 48, SNAPSHOT_TOKEN_SIZE = 16;
+const snapshotFail = (message) => Object.assign(new Error(message), { code: "slotbackup" });
+
+// Only an exact, read-only INFO capability permits a new command. Old X0X,
+// stock and other custom firmware must not receive an unknown write command.
+async function hasInstallSnapshot(link) {
+  let info;
+  try { info = await slotReq(link, 1, [], 1000, 1); }
+  catch (e) {
+    if (/did not answer \(slot command 1\)/.test(e.message)) return false;
+    throw e;
+  }
+  const z = info.indexOf(0);
+  if (z < 0 || !/^X0X [\x20-\x7e]{1,20}$/.test(String.fromCharCode(...info.slice(0, z)))) return false;
+  return info.length === z + 12 && info.slice(z + 7).every((b, k) => b === [0x58, 0x53, 0x47, 1, SNAPSHOT_COMMAND][k]);
+}
+
+// One request, never an authorization retry. Responses from another operation,
+// token or ticket cannot authorize this backup. Leave later queued OTA reads
+// untouched when returning the matching ACK.
+async function snapshotRequest(link, op, token, ticket = null) {
+  if (link.lost) throw snapshotFail("The USB connection was lost. Start a new install attempt.");
+  const encoded = ticket === null ? [] : Array.from({ length: 4 }, (_, k) => (ticket >>> (7 * k)) & 127);
+  link.drain();
+  if (!link.send([...ED, SNAPSHOT_COMMAND, op, ...token, ...encoded, 0xF7]))
+    throw snapshotFail("The USB connection was lost; no snapshot authorization was retried.");
+  const end = Date.now() + 3000;
+  while (Date.now() < end) {
+    const p = await link.read(end - Date.now());
+    if (!p) break;
+    if (p.length < 6 || p[0] !== 0xF0 || p.at(-1) !== 0xF7 ||
+        p[1] !== ED[1] || p[2] !== ED[2] || p[3] !== ED[3] || p[4] !== SNAPSHOT_COMMAND) continue;
+    const r = Array.from(p).slice(5, -1);
+    if (r[0] !== op) continue;
+    if (r.length !== 22 || r.some(b => !Number.isInteger(b) || b < 0 || b > 127) || r[1] > 5)
+      throw snapshotFail("The keyboard returned a malformed sample-snapshot acknowledgement.");
+    if (!token.every((b, k) => r[k + 2] === b)) continue;
+    const got = r.slice(18).reduce((n, b, k) => n + b * 2 ** (7 * k), 0);
+    if (ticket !== null && got !== ticket) continue;
+    if (r[1]) throw snapshotFail(r[1] === 4 ?
+      "The samples changed after this backup began. No update was started. Make and retain a fresh backup before retrying." :
+      "The sample snapshot is unavailable, busy or expired. No update was started. Finish other transfers and start a new install attempt.");
+    if (!got) throw snapshotFail("The keyboard returned an invalid sample-snapshot ticket.");
+    if (link.lost) throw snapshotFail("The USB connection was lost. The authorization was not retried.");
+    return got;
+  }
+  throw snapshotFail("The keyboard did not acknowledge the sample snapshot. The authorization was not retried.");
+}
+
+async function beginInstallSnapshot(link) {
+  if (!globalThis.crypto?.getRandomValues)
+    throw snapshotFail("Secure random tokens are unavailable. Use a supported secure browser; no update was started.");
+  const token = new Uint8Array(SNAPSHOT_TOKEN_SIZE);
+  do { crypto.getRandomValues(token); token.forEach((b, k) => { token[k] = b & 127; }); }
+  while (token.every(b => b === 0));
+  const ticket = await snapshotRequest(link, 1, token);
+  return { token, ticket, consumed: false };
+}
+
+async function commitInstallSnapshot(link, snapshot, admitted = () => true) {
+  if (snapshot.consumed) throw snapshotFail("This sample snapshot has already been consumed. Start a new install attempt.");
+  snapshot.consumed = true; // A lost reply may follow device admission. Never replay it.
+  if (link.lost) throw snapshotFail("The USB connection was lost. Start a new install attempt.");
+  // The Updater reacquires a link after backup. Same keyboard family is not a
+  // capability promise: a restart/reconnect may expose older or stock firmware.
+  // Recheck read-only INFO here, but never START again with this older archive.
+  let capable;
+  try { capable = await hasInstallSnapshot(link); }
+  catch (e) { throw snapshotFail(`The final sample-snapshot capability check failed (${e.message}). No update was started.`); }
+  if (!capable) throw snapshotFail("The reconnected keyboard does not support atomic sample-snapshot admission. No update was started. Start a new install attempt.");
+  // No await follows this last caller approval before COMMIT sends the
+  // token-bound atomic update command. Rechecking only before INFO is racy.
+  if (!admitted()) throw snapshotFail("The selected package is no longer approved. No update was started.");
+  await snapshotRequest(link, 3, snapshot.token, snapshot.ticket);
+}
+
+async function cancelInstallSnapshot(link, snapshot) {
+  if (!snapshot || snapshot.consumed) return;
+  snapshot.consumed = true;
+  try { await snapshotRequest(link, 2, snapshot.token, snapshot.ticket); }
+  catch (_) { /* A passive watch holds no audio, UI or storage; preserve the original error. */ }
+}
+
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
-// hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) (the download), progress(f),
+// hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
 // 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
-//    save it. 2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
+//    await explicit retained-backup acknowledgement (only boolean true permits OTA).
+//    2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 async function installKeepingSlots(up, image, product, board, hooks) {
-  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true }, hooks);
+  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
-  let move = null;
+  let move = null, snapshot = null;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
-  if (dev && !h.sameKeyboard(dev.id.model, product.split("_")[0])) dev.link.close();   // install() refuses it
-  else if (dev) {
+  if (!dev) throw fail("notfound", "No running keyboard was found for sample preflight; no update was started.");
+  if (!h.sameKeyboard(dev.id.model, product.split("_")[0])) {
+    dev.link.close();
+    throw fail("model", "The keyboard does not match this package; no update was started.");
+  }
+  {
     up.bind(dev);
     try {
+      // Arm before FIRST layout/occupancy/risk reads, including empty slots.
+      // Otherwise empty-to-occupied and in-progress-import races escape backup.
+      try {
+        if (await hasInstallSnapshot(dev.link)) snapshot = await beginInstallSnapshot(dev.link);
+      } catch (e) { throw fail("slotbackup", `The sample snapshot could not be established (${e.message}). No update was started.`); }
       let layout;
       try { layout = await readSlotLayout(dev.link, 1000, 2); }
       catch (e) {
@@ -901,6 +1068,8 @@ async function installKeepingSlots(up, image, product, board, hooks) {
         if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
         else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
       }
+      if (layout && !snapshot)
+        throw fail("slotbackup", "This firmware cannot atomically protect the sample backup through update entry. No update was started. A separately verified preservation path is required for this older firmware.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
@@ -911,8 +1080,12 @@ async function installKeepingSlots(up, image, product, board, hooks) {
             saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
           } catch (e) { throw fail("slotbackup", e.message); }
           const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
-          readArchive(file);                                  // what was saved reads back
-          h.save(file, st.name);
+          readArchive(file);                                  // verify the in-memory archive
+          let retained;
+          try { retained = await h.save(file, st.name); }
+          catch (e) { throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name); }
+          if (retained !== true)
+            throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
           // snapshot for preservation, just as the Python SlotMove.backup does.
           const savedMap = flashMap(saved.layout, board);
@@ -920,9 +1093,14 @@ async function installKeepingSlots(up, image, product, board, hooks) {
             layout: saved.layout, images: saved.images, name: st.name, todo: [], skipped: [] };
         }
       }
+    } catch (e) {
+      await cancelInstallSnapshot(dev.link, snapshot);
+      throw e;
     } finally { dev.link.close(); }
   }
-  const ran = await up.install(image, product, h.step);
+  if (!h.admitted()) throw fail("slotbackup", "The selected package is no longer approved. No update was started.");
+  const ran = await up.install(image, product, h.step,
+    snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot, h.admitted) : null, h.admitted);
   if (!move || !move.newMap.length) return { product: ran, move };
   h.say("slotback");
   const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);
@@ -945,17 +1123,19 @@ async function installKeepingSlots(up, image, product, board, hooks) {
 
 // SPDX-License-Identifier: GPL-3.0-only
 // Reused from gobbajogger/X0X37-for-Loopy-Pro 08d3164a265123cb4c84e5104642fd93257d63d7, web/x0x_projects.js.
+// Selective consumer port from firmware 144f4e042bdfb2cc52ed16a1cf2a26a1148a0101.
+// Adaptive BREAK companion: stream8/9 are reader schemas, not firmware or feature approval.
 // X0X projects: an exact project snapshot and the original sample slot images.
 // No audio decoder, encoder, resampler or slot remapping is used by this module.
 
 const PROJECT_OP = Object.freeze({ QUERY: 64, EXPORT: 65, READ: 66, IMPORT: 67, WRITE: 68,
-  COMMIT: 69, ABORT: 70, SAVE: 71, LOAD: 72, RESET: 73, VALIDATE: 74 });
+  COMMIT: 69, ABORT: 70, SAVE: 71, LOAD: 72, RESET: 73, VALIDATE: 74, ADOPT_BASS: 75 });
 const PROJECT_MAX_FILE = 4 * 1024 * 1024;
 const PROJECT_MAGIC = "X0XPROJ\0", PROJECT_META_MAX = 16384, PROJECT_HEADER = 32;
 const PROJECT_ED = [0xF0, 0x7D, 0x46, 0x4C], PROJECT_CONFIRM = [0x58, 0x30];
 const PROJECT_ERRORS = ["", "Unsupported arguments or project version.", "Stop playback, recording and performance mode first.",
   "The project transfer offset is incorrect.", "The project checksum did not match.", "The project contains invalid settings or patterns.",
-  "This project does not fit the keyboard.", "The keyboard could not access project storage.", "Confirmation is required."];
+  "This project does not fit the keyboard.", "The keyboard could not access project storage.", "Confirmation is required.", "Choose and explicitly confirm both legacy bass engine identities before adoption."];
 const fail = (message, code = "invalid") => Object.assign(new Error(message), { code });
 const bytes = (b) => b instanceof Uint8Array ? b : new Uint8Array(b);
 const view = (b) => new DataView(b.buffer, b.byteOffset, b.byteLength);
@@ -985,14 +1165,19 @@ function parseProject(b, expectedLength = null) {
   if (b.length < PROJECT_HEADER || b.length > 0x1FFFFF) throw fail("Invalid project file size.");
   const v = view(b);
   if (v.getUint32(0, true) !== 0x50583058) throw fail("The project header is missing.");
-  if (v.getUint32(4, true) !== 1 || v.getUint32(16, true) !== 1 || v.getUint32(20, true) !== 3 ||
-      v.getUint32(24, true) !== 4 || v.getUint32(28, true) !== 0)
-    throw fail("This project uses an incompatible file, project, pattern or sound version.", "version");
+  const patternVersion=v.getUint32(20,true), soundRevision=v.getUint32(24,true);
+  const knownSchema=(patternVersion===3 && (soundRevision===4 || soundRevision===10)) ||
+    ([6,8].includes(patternVersion) && (soundRevision===10 || soundRevision===11)) ||
+    (patternVersion===9 && soundRevision===11);
+  if(v.getUint32(4,true)!==1 || v.getUint32(16,true)!==1 || !knownSchema || v.getUint32(28,true)!==0)
+    throw fail("This project uses an incompatible file, project, pattern or sound version.","version");
+  if([6,8,9].includes(patternVersion) && soundRevision===11 && b.length!==36452)
+    throw fail("This tagged project has an unsupported structural layout.","version");
   if (v.getUint32(8, true) !== b.length - PROJECT_HEADER) throw fail("The project payload length is incorrect.");
   if (expectedLength !== null && b.length !== expectedLength) throw fail("The project size does not match this firmware.", "version");
   if (v.getUint32(12, true) !== crc32(b.subarray(PROJECT_HEADER))) throw fail("The project payload is damaged (CRC).");
   return { length: b.length, payloadLength: b.length - PROJECT_HEADER, fileVersion: 1, projectVersion: 1,
-    patternVersion: 3, soundRevision: 4 };
+    patternVersion, soundRevision };
 }
 
 function validateSlotImage(img, capacity) {
@@ -1193,6 +1378,8 @@ class ProjectDevice {
       const deadline = this.now() + timeout;
       while (this.now() < deadline) {
         const p = await this.link.read(Math.max(1, deadline - this.now()));
+        // A receive burst may poison the link after resolving this read.
+        if (this.link.rxError) throw this.link.rxError;
         if (!p) break;
         if (p.length < 6 || p[0] !== 0xF0 || p.at(-1) !== 0xF7 || p[1] !== 0x7D || p[2] !== 0x46 || p[3] !== 0x4C || p[4] !== cmd) continue;
         const r = Array.from(p).slice(5, -1);
@@ -1206,7 +1393,7 @@ class ProjectDevice {
   async command(op, args = [], { length = 2, offset = null, tries = 1, timeout = this.timeout } = {}) {
     const r = await this.request(9, [op, ...args], { tries, timeout, accept: (r) => {
       if (r[0] !== op) return false;
-      if (r.length < 2 || r[1] > 8 || r[1] && r.length !== 2 || !r[1] && r.length !== length)
+      if (r.length < 2 || r[1] > 9 || r[1] && r.length !== 2 || !r[1] && r.length !== length)
         throw fail(`Malformed project reply for operation ${op}.`, "protocol");
       if (!r[1] && offset !== null && get21(r, 2) !== offset) return false;
       return true;
@@ -1231,12 +1418,13 @@ class ProjectDevice {
   }
   async query({ acceptModeChange = false, allowRecovery = false } = {}) {
     const r = await this.command(PROJECT_OP.QUERY, [], { length: 7, tries: 2 });
-    if (r[2] !== 1 || !integer(get21(r, 3), PROJECT_HEADER, 0x1FFFFF) || !integer(r[6], 0, 3)) throw fail("Unsupported project protocol version or file size.", "version");
+    if (![1,2].includes(r[2]) || r[2]===2 && get21(r,3)!==36452 || !integer(get21(r, 3), PROJECT_HEADER, 0x1FFFFF) || !integer(r[6], 0, 3)) throw fail("Unsupported project protocol version or file size.", "version");
     if (acceptModeChange || allowRecovery && r[6] === 3) { this.mode = r[6]; this.active = this.mode !== 0; }
     if (r[6] !== this.mode) throw fail(this.active ? "The project transfer expired or changed. Sample writes have stopped." :
       "Another project transfer is active. Close the other editor and reconnect after it finishes.", this.active ? "expired" : "busy");
     const size = get21(r, 3);
     if (this.projectLength !== null && this.projectLength !== size) throw fail("The connected firmware changed. Reconnect before continuing.", "version");
+    this.projectProtocol=r[2];
     this.projectLength = size;
     return size;
   }
@@ -1256,9 +1444,15 @@ class ProjectDevice {
   async exportStart() {
     await this.query();
     if (this.mode !== 0) throw fail("Finish sample recovery before exporting a project.", "recovery");
-    // BEGIN can have succeeded even when its reply is lost, so the caller must ABORT in finally.
+    // Lost BEGIN replies remain ambiguous and require cleanup. A definitive
+    // refusal grants no transfer: ABORT would terminate another client's work.
     this.active = true; this.mode = 1;
-    const r = await this.command(PROJECT_OP.EXPORT, [], { length: 5 });
+    let r;
+    try { r = await this.command(PROJECT_OP.EXPORT, [], { length: 5 }); }
+    catch (e) {
+      if (Number.isInteger(e.rc)) { this.active = false; this.mode = 0; }
+      throw e;
+    }
     if (get21(r, 2) !== this.projectLength) throw fail("The exported project size changed.", "protocol");
     const b = new Uint8Array(this.projectLength);
     for (let off = 0; off < b.length;) {
@@ -1272,9 +1466,16 @@ class ProjectDevice {
     return b;
   }
   async stage(project, onProgress = () => {}) {
-    parseProject(project, await this.query());
+    const size=await this.query(), meta=parseProject(project);
+    const legacy=this.projectProtocol===2 && size-project.length===24 && meta.soundRevision===10 && [3,6].includes(meta.patternVersion);
+    if(!legacy)parseProject(project,size);
+    const priorMode = this.mode, priorActive = this.active;
     this.active = true; this.mode = 2;
-    await this.command(PROJECT_OP.IMPORT, u21(project.length));
+    try { await this.command(PROJECT_OP.IMPORT, u21(project.length)); }
+    catch (e) {
+      if (Number.isInteger(e.rc)) { this.active = priorActive; this.mode = priorMode; }
+      throw e;
+    }
     for (let off = 0; off < project.length;) {
       const n = Math.min(224, project.length - off);
       await this.command(PROJECT_OP.WRITE, [...u21(off), ...pack78(project.subarray(off, off + n))],
@@ -1283,6 +1484,12 @@ class ProjectDevice {
     }
   }
   async validate() { await this.command(PROJECT_OP.VALIDATE); }
+  async adoptLegacyBass(engines,{confirmed=false}={}) {
+    if(confirmed!==true || this.projectProtocol!==2 || !Array.isArray(engines) || engines.length!==2 ||
+       !integer(engines[0],0,1) || !integer(engines[1],0,1) || engines[0]===1 && engines[1]===1)
+      throw fail("Explicit valid engine choices for both bass slots are required.","identity");
+    await this.command(PROJECT_OP.ADOPT_BASS,[...engines,...PROJECT_CONFIRM]);
+  }
   async commit() { await this.command(PROJECT_OP.COMMIT, PROJECT_CONFIRM); this.active = false; this.mode = 0; }
   async save() { await this.command(PROJECT_OP.SAVE, [], { timeout: Math.max(10000, this.timeout) }); }
   async load(confirmed) {
@@ -1431,6 +1638,13 @@ async function applyProjectImport(device, prepared, { confirmed = false, backupS
   try {
     await device.stage(file.project);
     await device.validate(); // Firmware checks semantic validity and pattern capacity before any sample mutation.
+    // IMPORT snapshots the live samples when its hold is acquired. A peer may
+    // have changed them after the read-only preview check above. Refuse before
+    // our first write so rollback never restores a stale pre-hold snapshot.
+    const held = await device.snapshotSlots(progress);
+    if (JSON.stringify(held.layout) !== JSON.stringify(fresh.layout) || held.images.length !== backup.images.length ||
+        held.images.some((img, k) => !sameBytes(img, backup.images[k])))
+      throw fail("The samples changed before the import hold was acquired. Prepare the import again.", "changed");
     for (const { k } of plan.changes) {
       touched.push(k); // Include a write whose acknowledgement is lost.
       await device.writeSlot(k, file.images[k], slotSize(fresh.layout, k), (n, all) => progress(k, n, all));
@@ -1465,7 +1679,7 @@ async function applyProjectImport(device, prepared, { confirmed = false, backupS
     }
     throw e;
   } finally {
-    if (!succeeded) {
+    if (!succeeded && device.active) {
       try { await device.abort(); }
       catch (cleanup) { if (error) error.message += ` Transfer cleanup failed: ${cleanup.message}`; else throw cleanup; }
     }
@@ -1500,28 +1714,54 @@ async function applyRecoveryImport(device, file, originalLayout, progress) {
 // Minimal Web MIDI adapter. Device methods above also run against the host-test mock.
 class ProjectMidiLink {
   constructor(input, output) {
-    this.input = input; this.output = output; this.queue = []; this.pending = null;
+    this.input = input; this.output = output; this.queue = []; this.pending = null; this.closed = false;
+    this.rxBytes = 0; this.rxError = null;
     this.listener = (event) => {
+      if (!this.connected()) return;
       const d = event.data;
       if (d.length < 6 || d[0] !== 0xF0 || d.at(-1) !== 0xF7 || d[1] !== 0x7D || d[2] !== 0x46 || d[3] !== 0x4C) return;
+      // Bound frame size and aggregate wire bytes before copying. Never drop
+      // replies and then continue a project transaction on the same link.
+      if (this.queue.length >= 64 || d.length > 65536 - this.rxBytes) {
+        this.rxError = fail("MIDI receive overflow. Reconnect before continuing.", "overflow");
+        this.close();
+        return;
+      }
       if (this.pending) { const p = this.pending; this.pending = null; clearTimeout(p.timer); p.resolve(Array.from(event.data)); }
-      else { if (this.queue.length === 64) this.queue.shift(); this.queue.push(Array.from(event.data)); }
+      else { this.queue.push(Array.from(d)); this.rxBytes += d.length; }
     };
     input.addEventListener("midimessage", this.listener);
   }
-  drain() { this.queue.length = 0; }
-  send(frame) { try { if (this.output.state === "disconnected") return false; this.output.send(frame); return true; } catch { return false; } }
+  connected() { return !this.closed && this.input.state !== "disconnected" && this.output.state !== "disconnected"; }
+  drain() { this.queue.length = 0; this.rxBytes = 0; }
+  send(frame) {
+    if (this.rxError) throw this.rxError;
+    try { if (!this.connected()) return false; this.output.send(frame); return true; } catch { return false; }
+  }
   read(ms) {
-    if (this.queue.length) return Promise.resolve(this.queue.shift());
-    return new Promise((resolve) => {
-      const timer = setTimeout(() => { this.pending = null; resolve(null); }, ms);
-      this.pending = { resolve, timer };
+    if (this.rxError) return Promise.reject(this.rxError);
+    if (!this.connected()) return Promise.resolve(null);
+    if (this.pending) return Promise.reject(fail("A project MIDI read is already pending.", "busy"));
+    if (this.queue.length) { const frame = this.queue.shift(); this.rxBytes -= frame.length; return Promise.resolve(frame); }
+    return new Promise((resolve, reject) => {
+      const pending = { resolve, reject, timer: null };
+      pending.timer = setTimeout(() => {
+        if (this.pending !== pending) return;
+        this.pending = null; resolve(null);
+      }, ms);
+      this.pending = pending;
     });
   }
   close() {
+    if (this.closed) return;
+    this.closed = true;
     this.input.removeEventListener("midimessage", this.listener);
-    if (this.pending) { clearTimeout(this.pending.timer); this.pending.resolve(null); this.pending = null; }
-    this.queue.length = 0;
+    if (this.pending) {
+      clearTimeout(this.pending.timer);
+      if (this.rxError) this.pending.reject(this.rxError); else this.pending.resolve(null);
+      this.pending = null;
+    }
+    this.drain();
   }
 }
 
@@ -1566,30 +1806,77 @@ function progress(k, n, all) {
   if (all) $("progress").value = Math.min(1, n / all);
   $("progress").setAttribute("aria-label", `Reading or writing sample slot ${k + 1}`);
 }
+function portPairs() {
+  const ins = [...midi.inputs.values()].filter((p) => p.state !== "disconnected");
+  const outs = [...midi.outputs.values()].filter((p) => p.state !== "disconnected");
+  const pairs = [];
+  for (const input of ins) {
+    // Canonical PR398 pairing rule: labels are not physical identity; never guess.
+    if (!input.name || ins.filter((p) => p.name === input.name).length !== 1) continue;
+    const matching = outs.filter((p) => p.name === input.name);
+    if (matching.length !== 1) continue;
+    pairs.push({ input, output: matching[0], name: input.name });
+  }
+  return pairs;
+}
+async function openProjectPort(port) {
+  if (typeof port.open !== "function") return;
+  // Explicitly consume the initial closed -> open event before binding a
+  // session. Implicit opens would otherwise look like a later USB lifecycle
+  // transition and correctly revoke the new session below.
+  if (port.connection !== "closed") { await port.open(); return; }
+  let changed, timer;
+  const transition = new Promise((resolve, reject) => {
+    changed = () => resolve();
+    timer = setTimeout(() => reject(new Error("The MIDI port did not finish opening. Reconnect and try again.")), 3000);
+    port.addEventListener("statechange", changed, { once: true });
+  });
+  try { await Promise.all([port.open(), transition]); }
+  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+}
 async function connectSelected() {
   if (!workspaceActive) return;
-  if (link) link.close();
+  if (link) link.close(); link = null;
   device = null; clearPreview(); $("identity").textContent = "Not connected";
   const input = midi.inputs.get($("midi-input").value), output = midi.outputs.get($("midi-output").value);
   if (!input || !output) throw new Error("Choose the keyboard’s MIDI input and output ports.");
-  link = new ProjectMidiLink(input, output);
-  const next = new ProjectDevice(link);
+  if (!portPairs().some((p) => p.input === input && p.output === output)) throw new Error("Choose connected MIDI ports with one matching name. Disconnect duplicate or unrelated ports, then find ports again.");
+  await Promise.all([openProjectPort(input), openProjectPort(output)]);
+  if (!portPairs().some((p) => p.input === input && p.output === output)) throw new Error("The MIDI connection changed while opening. Find ports and connect again.");
+  const pendingLink = link = new ProjectMidiLink(input, output);
+  const next = new ProjectDevice(pendingLink);
   try {
-    const info = await next.connect(); device = next; $("identity").textContent = info.identity;
+    const info = await next.connect();
+    invalidateDisconnectedLink();
+    if (link !== pendingLink) return; // A disconnect invalidates this completion, even after replug.
+    device = next; $("identity").textContent = info.identity;
     say(info.recovery ? `Connected to ${info.identity}. The keyboard is holding audio and controls after an interrupted sample transfer. Choose a portable recovery backup, then prepare recovery.` :
       `Connected to ${info.identity}. Ready for projects.`);
-  } catch (e) { link.close(); link = null; $("identity").textContent = "Projects unavailable on this connection"; throw e; }
+  } catch (e) {
+    invalidateDisconnectedLink();
+    if (link !== pendingLink) return;
+    pendingLink.close(); link = null; $("identity").textContent = "Projects unavailable on this connection"; throw e;
+  }
+}
+function invalidateDisconnectedLink(event) {
+  // MIDIPort objects are live. A queued unplug/replug event can arrive after
+  // state is connected again; any lifecycle event for this pair revokes its
+  // identity and preview. Events for unrelated ports leave this pair intact.
+  const port = event?.port;
+  const boundEvent = link && port && (port === link.input || port === link.output ||
+    [link.input, link.output].some(p => p.id && port.id === p.id && port.type === p.type));
+  if (link && (boundEvent || link.input.state === "disconnected" || link.output.state === "disconnected")) {
+    link.close(); link = null; device = null; previewStale = !!prepared;
+    $("identity").textContent = "Disconnected";
+    say("USB disconnected. Reconnect and prepare a new preview before importing. Keep any recovery backup.", true); controls();
+  }
 }
 $("find").onclick = () => run("Finding USB MIDI ports…", async () => {
+  if (link) link.close(); link = null;
+  device = null; clearPreview(); $("identity").textContent = "Not connected";
   if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable in this browser. Open this page in Chrome or Edge over HTTPS or localhost.");
   midi = await navigator.requestMIDIAccess({ sysex: true });
-  midi.onstatechange = () => {
-    if (link && (link.input.state === "disconnected" || link.output.state === "disconnected")) {
-      link.close(); link = null; device = null; previewStale = !!prepared;
-      $("identity").textContent = "Disconnected";
-      say("USB disconnected. Reconnect and prepare a new preview before importing. Keep any recovery backup.", true); controls();
-    }
-  };
+  midi.onstatechange = invalidateDisconnectedLink;
   const inputs = [...midi.inputs.values()].filter((p) => p.state !== "disconnected"), outputs = [...midi.outputs.values()].filter((p) => p.state !== "disconnected");
   for (const [id, ports] of [["midi-input", inputs], ["midi-output", outputs]]) {
     $(id).replaceChildren();
@@ -1597,9 +1884,9 @@ $("find").onclick = () => run("Finding USB MIDI ports…", async () => {
   }
   $("ports").hidden = false;
   if (!inputs.length || !outputs.length) throw new Error("No MIDI input/output pair was found. Connect the keyboard by USB, then find ports again.");
-  const known = inputs.filter((i) => /x0x|smk-37|mke-p37|fm-1|felucca/i.test(i.name) && outputs.some((o) => o.name === i.name));
-  if (inputs.length === 1 && outputs.length === 1 || known.length === 1) {
-    const input = known.length === 1 ? known[0] : inputs[0], output = outputs.find((o) => o.name === input.name) || outputs[0];
+  const pairs = portPairs(), known = pairs.filter((p) => /x0x|smk-37|mke-p37|fm-1|felucca/i.test(p.name));
+  if (inputs.length === 1 && outputs.length === 1 && pairs.length === 1 || known.length === 1) {
+    const { input, output } = known.length === 1 ? known[0] : pairs[0];
     $("midi-input").value = input.id; $("midi-output").value = output.id; await connectSelected();
   } else say("Choose the keyboard’s MIDI input and output, then connect the selected ports.");
 });

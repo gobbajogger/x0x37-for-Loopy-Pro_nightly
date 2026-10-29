@@ -1,0 +1,32 @@
+{
+  "candidate": "7828b564c7f24b3c6e2d6616ef1df597aef286ee",
+  "tree": "001b61dcdc81dd566b4653da9e7fcb2e8de846b3",
+  "text_evidence_sha256": {
+    "README.md": "72dd329f3ba3cd759de67e3a597179594e3402e3581c8bb6770d4f44b5cc61a5",
+    "full-npm.log": "41b5eb6484bf9952513db0a144911d27afae6ac68bf1bae6d5ae448a35270893",
+    "generated.log": "7174ea9b1d13fe24ca1aae4b1b6770cf7981ceda9fa05a55628e5f3f12363c41",
+    "host/banks.json": "3a9d4c58f23169f7b877133f9579e2daff43035147335161b9cc34e1625eac89",
+    "host/build-1.5.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/build-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/build-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/build-3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/build-4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host/export-banks.mjs": "25716fe6c9cb7edb32fb77ebba269da41e53619ff5322e47ad407d06a4d90771",
+    "host/imported-playback.c": "fcf88fe1d4b33bc3aa3cdf40ce284d42216fc02a5e8a8f6d3538c8cb2e1f63f1",
+    "host/receipt.json": "766d5a24888c1043807f735d974b72e2a88b21926680ee057b14b567924610b9",
+    "host/render-1.5.log": "2a1c75baffcf26f0dc47711b9c6623551c7bbce2182987a87a122746475320aa",
+    "host/render-1.log": "45c6cd70330125a71eb54bb0f6a91e9cd7cc7697f625be6eae64c855df936ca6",
+    "host/render-2.log": "156a941ad3353bc4068e3682a3b1a237d277d874b67a93f740beb8a4f5dd8f6d",
+    "host/render-3.log": "1d6816dc9d891918d9a8dcee64d31eedbfa021d80c90ab1e1d10b943da7cd4be",
+    "host/render-4.log": "a1116eb0fb8701e6895ee76c80a44b2c9f887317befc4c2fd0343fa571d0d006",
+    "provenance.log": "8a3e288c2eee1f7f2db0e83de4b30e4abcfa7cffbce765de880ecdfd1d9c7337",
+    "receipt.json": "06ba8899f95e2b2e86932dac8c74002f8b8bb0346bff6b63e883da74fb56e9bd",
+    "source-diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_preview": {
+    "path": "previews/sample-oldschool-import.html",
+    "sha256": "36262401736da3bed1c2fa09c5ff6435ab33b653d75d1c2ce72a6a4849f6ca93",
+    "status": "Actual compiled source + synthetic read-only seed; not browser-executed by agent; user-open for UI/audio review"
+  },
+  "binary_outputs": "Synthetic .bin images and host executables remain local and excluded from delivery"
+}
