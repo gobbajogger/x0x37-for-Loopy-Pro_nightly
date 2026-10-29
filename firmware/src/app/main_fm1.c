@@ -2374,11 +2374,11 @@ static void fm1_main(void)
     project_apply_io();                             /* clock and notes out, the MIDI channels, the output */
     engine_brk_loops();
 #if X0X_BLE
-    /* Initialize the checked controller at boot even if the saved radio setting is OFF.
-     * Keep the image/boot-loop guards: an OFF-to-ON toggle later needs no restart. */
-    ble_prepare(1);
+    /* Start A's guarded BLE controller before audio, keeping the actual
+     * stored (or validated fallback) ON/OFF and SMC role. No later setter is
+     * needed and the live UI can enable the initialized radio without restart. */
+    ble_prepare(proj.set.bt & 1u);
     ble_start();
-    plat_ble_set(proj.set.bt & 1u);                 /* OFF stays idle until explicitly enabled */
 #endif
     plat_cpu2_set(1);                               /* the second core: at power-on, before the audio and the
                                                      * timers, as Melodee starts it (started later, it does not
