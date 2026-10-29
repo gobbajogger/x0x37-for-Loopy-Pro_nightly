@@ -582,10 +582,10 @@ const char *plat_ble_name(void)
 }
 int plat_ble_smc_send_slot(unsigned slot, const uint8_t *msg, uint8_t len)
 {
-    if (slot >= 2u) return 0;
+    if (slot >= 1u) return 0; /* A: peer zero is the sole SMC central */
     uint32_t f = irq_save();
     int sent = ble_central_role && smc_ble_role_get() && ble_up && ble_host_on && ble_want &&
-               blec_midi_send(slot ? &ble_r.host.c2 : &ble_r.host.c, msg, len);
+               blec_midi_send(&ble_r.host.c, msg, len);
     irq_restore(f);                             /* TIMER5 must not replace the host union mid-enqueue */
     return sent;
 }
