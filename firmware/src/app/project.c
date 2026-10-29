@@ -740,6 +740,9 @@ static int read_project(project_t *pr)
 {
 #if X0X_ORIGINAL_SYNTH
     uint8_t device_bt = proj.set.bt;
+#if BOARD_SMK37
+    uint8_t device_bt_valid = 0;  /* set only after revision-13 settings validate */
+#endif
     project_defaults_for(pr, device_bt);
     packed_len = 0;
     settings_t set = pr->set;
@@ -749,16 +752,11 @@ static int read_project(project_t *pr)
         if (set.magic != PROJ_MAGIC || set.format != PROJ_FORMAT ||
             set.snd_rev != PROJ_SND_REV || set.stereo != PROJ_STEREO) goto unsupported;
         pr->set = set;
-        device_bt = set.bt;                       /* retain saved Bluetooth role on partial-load fallback */
-    } else {
-        bad = 1;
+        device_bt = set.bt;                       /* retain explicit ON/OFF and role */
 #if BOARD_SMK37
-        /* No stored device settings: connect an SMC on the very first boot.
-         * Valid saved OFF/DEVICE settings are never overwritten. */
-        if (rc == -1 && !(device_bt & PROJ_DEVICE_BT))
-            device_bt = (uint8_t)(1u | PROJ_BT_SMC_CENTRAL);
+        device_bt_valid = 1;
 #endif
-    }
+    } else bad = 1;
     rc = load_sound(&pr->sound);
     if (rc == -9) goto unsupported;
     if (rc) bad = 1;
@@ -779,6 +777,15 @@ static int read_project(project_t *pr)
 unsupported:
     rc = -9;
 failed:
+#if BOARD_SMK37
+    /* An incompatible older project is NOT a valid device setting. The old
+     * settings path returns -9 before the missing-settings default could run.
+     * Enable the single SMC central on this safe fallback, without loading or
+     * migrating any legacy project bytes. Respect every valid revision-13 OFF
+     * or DEVICE selection, even if its sound/pattern object was damaged. */
+    if (!device_bt_valid && !(device_bt & PROJ_DEVICE_BT))
+        device_bt = (uint8_t)(1u | PROJ_BT_SMC_CENTRAL);
+#endif
     project_defaults_for(pr, device_bt);
     packed_len = 0;
     return rc;
