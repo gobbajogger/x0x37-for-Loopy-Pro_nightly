@@ -1,0 +1,46 @@
+{
+  "request_id": "LX-REQ-012",
+  "source_commit": "bc88a73f70b07d2dbd681443d7b65019cc9ed4af",
+  "source_tree": "cde02140d9a561fd8798ca620dbd8d8850ac8f52",
+  "pages_base": "9c7ba81a83ef9b93735795b65d4856cf93c2b5e0",
+  "catalog_blob": "c7503b19c19de6c92892bdf8b3716d8801ef5262",
+  "catalog_versions": 9,
+  "claims": {
+    "website_candidate": true,
+    "published": false,
+    "device_tested": false,
+    "firmware_requalified": false
+  },
+  "files": {
+    "install/index.html": {
+      "bytes": 526214,
+      "git_blob": "9e05d320c9f1a7de547cc9e8f30ee6d85056ceca",
+      "sha256": "67b4617b7adea8f763ebc4f869840bec91c61e32f26d40a2ea3fb74660707b35"
+    },
+    "breaks/index.html": {
+      "bytes": 82928,
+      "git_blob": "05717df632b7dc1bda3aa0800262b3c847f900d5",
+      "sha256": "647529cb1057276f290621d529e4156badf66192942bcd925fc9b20d1dc045e8"
+    },
+    "projects/index.html": {
+      "bytes": 106280,
+      "git_blob": "8315ad2bcca1a162654bdab26a9d71ac09105365",
+      "sha256": "5df37f0cb56e0439ac0981583eeb1a137cc961da07762302fa71c7049a72cc97"
+    },
+    "build-status.json": {
+      "bytes": 275938,
+      "git_blob": "47622519bba0c305f7997ec8093b8f08e0ba1285",
+      "sha256": "4e1a0a08cde92dd39058232a5f4d0069dd70070622d38cc3fb661745ea0ff3da"
+    },
+    "versions.json": {
+      "bytes": 20071,
+      "git_blob": "c7503b19c19de6c92892bdf8b3716d8801ef5262",
+      "sha256": "1862395fa364e185393bfe579928e5461fda5d0f01d2c7f45bd2472e0fc18ebc"
+    },
+    "package-version-assignments.json": {
+      "bytes": 8761,
+      "git_blob": "c0cb0e85a25c45072fe1bb981a2e53cab740437f",
+      "sha256": "1b3d2b604a4785f54cb7f48f81bb88ab99f793611350161887352bd4674a737e"
+    }
+  }
+}
