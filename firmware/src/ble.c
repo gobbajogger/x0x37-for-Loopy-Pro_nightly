@@ -169,8 +169,9 @@ static void ble_sx_answer(bleh_t *h)
         ble_sx_reply = 0;                         /* sent (or refused): busy only waits */
 }
 
-/* power-on, before core 1 starts (plat_cpu2_set): the image check, and with BLUETOOTH ON core 1's
- * stacks and the PC limits for it */
+/* Power-on: initialize a valid controller even if Bluetooth is OFF, but
+ * preserve the requested radio state. RF initialization cannot run from a
+ * live UI setter, and only TIMER5 starts advertising or SMC scanning. */
 static void ble_prepare(int on)
 {
     const xb_header_t *h = FM1_BLE_HDR;
@@ -187,8 +188,9 @@ static void ble_prepare(int on)
         ble_guard.wait_end = fm1_c1_wait_end;   /* how core 0's wait ended (RAM code) */
         ble_wait_record();
     }
-    if (!ble_guard_boot(&ble_guard, ble_img == BLE_IMG_OK, on)) {
-        if (ble_img == BLE_IMG_OK && on && ble_guard.blocked) {
+    /* Preserve the real boot guard even for a saved OFF preference. */
+    if (!ble_guard_boot(&ble_guard, ble_img == BLE_IMG_OK, 1)) {
+        if (ble_img == BLE_IMG_OK && ble_guard.blocked) {
             ble_blocked = 1;                    /* the last start failed: not now (STATUS FAILED) */
             ble_dead = 1;
         }
