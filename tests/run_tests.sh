@@ -358,6 +358,7 @@ run smc-ble-payload python3 tests/host/smc_ble_payload_test.py
 run smc-link python3 tests/host/smc_link_test.py
 run smc-reconnect-epoch python3 tests/host/smc_ble_reconnect_epoch_test.py   # prevent stale central MIDI after BLE reconnect
 run ble-central-first-notification python3 tests/host/ble_central_first_notification_test.py
+run ble-boot-intent python3 tests/host/ble_boot_intent_test.py   # rejected v12 settings must start the SMC central at boot
 run ble-dual-peer sh tests/host/ble_dual_peer_test.sh
 run ble-command-credit sh tests/host/ble_command_credit_event_test.sh
 run ble-controller-heap python3 tests/host/ble_controller_heap_test.py
