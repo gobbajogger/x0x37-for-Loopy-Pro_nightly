@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-ed85f5a6-dev",
+  "latest": "nightly-bed393e1-dev",
   "versions": [
+    {
+      "version": "nightly-bed393e1-dev",
+      "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "bed393e1b45c9b5057f976613c6f8a853b416671",
+      "source_tree": "81560ebc87c447d9a1005d3f0d17819f37d1ef6e",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "33ae9075cd8bea7df3b0c193aa62b3e950b77d11da8b2dc8c65038ddcfd88dc6",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/1cb839c85654510f3645946cbe765f1050f77ab9/artifacts/nightly/dev-20261031-bed393e1/33ae9075cd8bea7df3b0c193aa62b3e950b77d11da8b2dc8c65038ddcfd88dc6/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "3e5b606c9a382e015c321d0684954d34e9874e89f414da312bc509d918ba90ef",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/1cb839c85654510f3645946cbe765f1050f77ab9/artifacts/nightly/dev-20261031-bed393e1/3e5b606c9a382e015c321d0684954d34e9874e89f414da312bc509d918ba90ef/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST \u2014 Elite and Pro (0.0.20 bed393e1: Miami pulse widths precomputed, lighter peaks)",
+      "description": "DEV firmware bed393e1: on 0.0.19 ed85f5a6: Miami pulse widths are precomputed outside note/control ticks, lighter spike path (#774, sound bit-identical). SMK-37 Elite PASS, Pro PASS. Bundled controller a334208b (61,552 B, BT reset fix). Page serves bundled bytes: Elite CRC32 2C34C436, Pro CRC32 47DD7E41 (blank E4CCBD00/8F250777). DEVICE NOT TESTED. Supersedes nightly-ed85f5a6-dev. Production unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/777"
+    },
     {
       "version": "nightly-ed85f5a6-dev",
       "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
