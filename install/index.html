@@ -152,7 +152,7 @@ select:hover { border-color: #718769; }
 .flash-action .step-kicker { margin: 0 0 13px; }
 #go { width: 100%; min-height: 59px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 8px; font: 800 14px var(--mono); text-transform: uppercase; letter-spacing: .055em; padding: 13px 20px; }
 #go:hover:not(:disabled) { filter: brightness(1.1); }
-#go:disabled { filter: saturate(.45); }
+#go:disabled { filter: saturate(.45); opacity: .55; cursor: not-allowed; pointer-events: none; }
 #go::after { content: '  ↗'; margin-left: 15px; font-size: 18px; line-height: 1; }
 .install-hint { color: var(--dim); font-size: 11px; margin: 12px 0 4px; }
 progress { width: 100%; display: block; height: 7px; border-radius: 8px; overflow: hidden; accent-color: var(--accent); margin-top: 12px; }
@@ -3204,7 +3204,7 @@ async function saveSlotBackup(file, name) {
 }
 
 async function run(img, product, opts = {}) {
-  if (writing || !workspaceActive) return;
+  if (writing || !workspaceActive) { $("status").textContent = writing ? "An install is already running." : "Open the Firmware tab, then press Install again."; updateInstallGate(); return; }
   getSampleWorkspace()?.invalidate();
   getProjectWorkspace()?.invalidate();
   writing = true;
@@ -3276,9 +3276,20 @@ async function run(img, product, opts = {}) {
   }
 }
 
+// Never ignore an Install press silently: say why it did not start.
+const installBlocked = (why) => { $("status").textContent = why; $("installhint").textContent = why; log("install not started: " + why); };
+$("go").parentElement.addEventListener("click", (e) => {
+  if (e.target !== $("go") && !(e.target.contains && e.target.contains($("go")))) return;
+  if (!$("go").disabled || writing) return;
+  installBlocked(!$("devagree").checked ? "Install is locked: tick the development-firmware consent box above, then press Install."
+    : "Install is locked: the selected package is not downloaded and verified yet. Choose the model/version again and wait for 'Ready to install'.");
+});
 $("go").addEventListener("click", async () => {
-  if (writing || $("go").disabled || !hasCurrentVerifiedSelection() || !$("devagree").checked) return;
-  if (!confirmWrite(selectedProduct)) return;
+  if (writing) { installBlocked("An install is already running."); return; }
+  if (!$("devagree").checked) { installBlocked("Tick the development-firmware consent box above, then press Install."); return; }
+  if ($("go").disabled || !hasCurrentVerifiedSelection()) { installBlocked("The selected package is not verified yet. Choose the model/version again and wait for 'Ready to install'."); return; }
+  $("status").textContent = "Starting install…";
+  if (!confirmWrite(selectedProduct)) { installBlocked("Install cancelled (the confirmation dialog was dismissed or blocked by the browser). Press Install again and choose OK."); return; }
   const { version: ver, pkg } = currentSelection();
   const selectedImage = image, product = selectedProduct, controller = ctl, serial = loadSerial;
   $("go").disabled = true;
