@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-2456968b-dev",
+  "latest": "nightly-bb190749-dev",
   "versions": [
+    {
+      "version": "nightly-bb190749-dev",
+      "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "bb1907494b8d1b52d52ac220dfeb9a0663ea3ee2",
+      "source_tree": "e340d89d180879b8d8a2fea07c56800a2feaac5c",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "cf89c1e4d4845644e1ca834f9a3f6e04a89e5650c5c4fa41f58c68f0ae5b384e",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/28da4323c2f14b0741dcf9b51ec3e5af10cf3ee3/artifacts/nightly/dev-20261031-bb190749/cf89c1e4d4845644e1ca834f9a3f6e04a89e5650c5c4fa41f58c68f0ae5b384e/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "cf9312a418e38cb65af3697fbcb23f8a30fbf8096770faaea7e51d0851beb52f",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/28da4323c2f14b0741dcf9b51ec3e5af10cf3ee3/artifacts/nightly/dev-20261031-bb190749/cf9312a418e38cb65af3697fbcb23f8a30fbf8096770faaea7e51d0851beb52f/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST \u2014 Elite and Pro (0.0.23 bb190749: BLE handle-0 + 2 KiB RAM)",
+      "description": "DEV firmware bb190749: on 0.0.22 2456968b: BLE connection handle 0 is now treated as a valid peer (#782); the 808 scratch buffers live in the engine out window, freeing 2048 B static RAM (#784, audio bit-identical to 0.0.22). 2352 B static RAM free. SMK-37 Elite PASS, Pro PASS. Bundled controller a334208b (61,552 B, BT reset fix). Page serves bundled bytes: Elite CRC32 E4EDF63A, Pro CRC32 F2ACE7EE (blank 2C158F0C/3A549ED8). DEVICE NOT TESTED. Supersedes nightly-2456968b-dev. Production unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/785"
+    },
     {
       "version": "nightly-2456968b-dev",
       "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
