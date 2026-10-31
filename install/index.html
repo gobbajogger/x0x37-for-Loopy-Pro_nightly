@@ -518,6 +518,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
           <p class="action-safety">First install replaces previous working data. <a href="#samples">Back up important samples</a> before switching. Keep USB connected until installation finishes.</p>
           <label id="devagreewrap" hidden><input type="checkbox" id="devagree"> <span data-t="devagree">I accept hardware-untested development firmware for my selected keyboard model.</span></label>
           <button id="go" disabled data-t="install">Install</button>
+          <div id="inconfirm" role="alertdialog" aria-live="assertive" hidden style="border:2px solid #c80;padding:8px;margin:6px 0;white-space:pre-wrap"><div id="inconfirmtext"></div><button id="inconfirmok" type="button">OK — write firmware</button> <button id="inconfirmno" type="button">Cancel</button></div>
           <p class="install-hint" id="installhint" aria-live="polite"></p>
           <progress id="bar" max="100" value="0" aria-label="Firmware installation progress"></progress>
           <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -3063,9 +3064,17 @@ function fillVersions() {
   renderBuildHistory();
 }
 
+// In-page confirmation: iOS Web MIDI app webviews block or auto-dismiss window.confirm(), which made Install always "cancelled".
 function confirmWrite(product) {
   const from = lastId ? lastId.text : "(not connected yet — Connect first if you can)";
-  return window.confirm(t("confirm") + from + t("confirmto") + product + t("confirmrisk"));
+  const box = $("inconfirm");
+  $("inconfirmtext").textContent = t("confirm") + from + t("confirmto") + product + t("confirmrisk");
+  box.hidden = false; box.scrollIntoView && box.scrollIntoView({ block: "center" });
+  return new Promise((resolve) => {
+    const done = (v) => { box.hidden = true; $("inconfirmok").onclick = $("inconfirmno").onclick = null; resolve(v); };
+    $("inconfirmok").onclick = () => done(true);
+    $("inconfirmno").onclick = () => done(false);
+  });
 }
 $("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
 $("devagree").addEventListener("change", updateInstallGate);
@@ -3289,7 +3298,10 @@ $("go").addEventListener("click", async () => {
   if (!$("devagree").checked) { installBlocked("Tick the development-firmware consent box above, then press Install."); return; }
   if ($("go").disabled || !hasCurrentVerifiedSelection()) { installBlocked("The selected package is not verified yet. Choose the model/version again and wait for 'Ready to install'."); return; }
   $("status").textContent = "Starting install…";
-  if (!confirmWrite(selectedProduct)) { installBlocked("Install cancelled (the confirmation dialog was dismissed or blocked by the browser). Press Install again and choose OK."); return; }
+  $("status").textContent = "Confirm below: press OK — write firmware.";
+  const confirmProduct = selectedProduct, confirmSerial = loadSerial;
+  if (!(await confirmWrite(selectedProduct))) { installBlocked("Install cancelled. Press Install again and choose OK — write firmware."); return; }
+  if (writing || loadSerial !== confirmSerial || selectedProduct !== confirmProduct || !$("devagree").checked || !hasCurrentVerifiedSelection()) { installBlocked("Selection changed while confirming. Press Install again."); return; }
   const { version: ver, pkg } = currentSelection();
   const selectedImage = image, product = selectedProduct, controller = ctl, serial = loadSerial;
   $("go").disabled = true;
@@ -3322,9 +3334,10 @@ $("go").addEventListener("click", async () => {
     image === selectedImage && (bundled || ctl === controller) && $("devagree").checked &&
     hasCurrentVerifiedSelection() });
 });
-$("stockgo").addEventListener("click", () => {
+$("stockgo").addEventListener("click", async () => {
   if (!stock || !$("stockconfirm").checked || writing) return;
-  if (!confirmWrite(stock.product)) return;
+  const st = stock;
+  if (!(await confirmWrite(st.product)) || stock !== st || writing || !$("stockconfirm").checked) return;
   $("stockgo").disabled = true;
   run(stock.image, stock.product, { foreign: true });
 });
