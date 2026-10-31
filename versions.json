@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-dffd05f0-dev",
+  "latest": "nightly-ed85f5a6-dev",
   "versions": [
+    {
+      "version": "nightly-ed85f5a6-dev",
+      "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "ed85f5a6fdd2ead6c2b3dd3bd3226d9263edf9d6",
+      "source_tree": "ed46a568ae04d929b35145937e854cf68799e72c",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "426667e3488773f4f55e6955354553cd10a0eb0fc8bf6a944c4cf0ff035dc6f0",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/45a6100d7294bd3ea87d9ce1a4c18d8e1b7cb0f3/artifacts/nightly/dev-20261031-ed85f5a6/426667e3488773f4f55e6955354553cd10a0eb0fc8bf6a944c4cf0ff035dc6f0/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "98629a8dd0a53d09547ed9ae43ee27e2877f5df65d07edb417d94f4407a096ac",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/45a6100d7294bd3ea87d9ce1a4c18d8e1b7cb0f3/artifacts/nightly/dev-20261031-ed85f5a6/98629a8dd0a53d09547ed9ae43ee27e2877f5df65d07edb417d94f4407a096ac/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST \u2014 Elite and Pro (0.0.19 ed85f5a6: wobble shape pads, SMC lock banks, lighter output)",
+      "description": "DEV firmware ed85f5a6: on 0.0.18 dffd05f0: Free Play bottom pads pick the Miami wobble shape (#773); locked SMC bank buttons retarget faders and knobs (#775); lighter Chicago/Miami output chains and master (#776, sound bit-identical). SMK-37 Elite PASS, Pro PASS. Bundled controller a334208b (61,552 B, BT reset fix). Page serves bundled bytes: Elite CRC32 8DD49E6D, Pro CRC32 7CEB5047 (blank 452CE75B/B4132971). DEVICE NOT TESTED. Supersedes nightly-dffd05f0-dev. Production unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/776"
+    },
     {
       "version": "nightly-dffd05f0-dev",
       "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
