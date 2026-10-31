@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-0e77d923-dev",
+  "latest": "nightly-5bff28ca-dev",
   "versions": [
+    {
+      "version": "nightly-5bff28ca-dev",
+      "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "5bff28caba24568cd5070acb99aaf37729cd8323",
+      "source_tree": "0a6cf3b5668fb9c7bb68ef645cb4a3fcf30af7cc",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "b9a2370557e73ea9373a642f0e67d776e9e0d0dd84813f76fa532fb967c07dcf",
+          "size": 651457,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/a03bb93f97786bdd9fa71d8a80351489ea915aac/artifacts/nightly/dev-20261031-5bff28ca/b9a2370557e73ea9373a642f0e67d776e9e0d0dd84813f76fa532fb967c07dcf/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "965ca2a0eb9a51e295742e78ca9ffb39f5972405a67f184525e8255ec63cef9b",
+          "size": 651457,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/a03bb93f97786bdd9fa71d8a80351489ea915aac/artifacts/nightly/dev-20261031-5bff28ca/965ca2a0eb9a51e295742e78ca9ffb39f5972405a67f184525e8255ec63cef9b/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST \u2014 Elite and Pro (wip/one-build 5bff28ca)",
+      "description": "Software-checked DEV firmware from wip/one-build 5bff28ca (#748 lost-release Note-Off fix on rev13 integration). Host suite: no new failures vs known set; SMK-37 Elite PASS, Pro PASS. Bundled controller. Page serves bundled bytes: Elite CRC32 C1FC30BC, Pro CRC32 727F27DD (blank Pro F1C92F3A). DEVICE NOT TESTED. Supersedes nightly-0e77d923-dev. Production unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/698"
+    },
     {
       "version": "nightly-0e77d923-dev",
       "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
