@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-6319ffec-dev",
+  "latest": "nightly-dffd05f0-dev",
   "versions": [
+    {
+      "version": "nightly-dffd05f0-dev",
+      "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "dffd05f0923304e26ac1e93b02fd640118e8d2a0",
+      "source_tree": "9a62ecdff23c3a3ecb8dc8fea3bea1251044b73b",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "cf21ce1c901ca22dc4f2a671c82ebe86d1fa26090e1f4f4fb90fb99cea7fa990",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/e7f5f96ce468a26ae26656074ebcc8296695e7f2/artifacts/nightly/dev-20261031-dffd05f0/cf21ce1c901ca22dc4f2a671c82ebe86d1fa26090e1f4f4fb90fb99cea7fa990/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "ee2c99755331c49135e62348c61a0aaae00b64038b81833324e9143faf0a78ae",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/e7f5f96ce468a26ae26656074ebcc8296695e7f2/artifacts/nightly/dev-20261031-dffd05f0/ee2c99755331c49135e62348c61a0aaae00b64038b81833324e9143faf0a78ae/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST \u2014 Elite and Pro (0.0.18 dffd05f0: pads work under settings/HELP)",
+      "description": "DEV firmware dffd05f0: on 0.0.17 6319ffec: pads keep working under settings lists and HELP, as their labels show (PR #772). Includes faster synths from #769 (host vs 0.0.13: Miami 2.25x, Chicago 1.62x). SMK-37 Elite PASS, Pro PASS. Bundled controller a334208b (61,552 B, BT reset fix). Page serves bundled bytes: Elite CRC32 D51C2984, Pro CRC32 3C4F9089 (blank 1DE450B2/F4B7E9BF). DEVICE NOT TESTED. Supersedes nightly-6319ffec-dev. Production unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/769"
+    },
     {
       "version": "nightly-6319ffec-dev",
       "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
