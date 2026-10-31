@@ -237,6 +237,30 @@
           "controller_size": 65492
         }
       }
+    },
+    {
+      "package_version": "0.0.11",
+      "catalog_id": "nightly-02cc7d10-dev",
+      "source_commit": "02cc7d104254b4427f257c310fb366bfc16a8e02",
+      "source_tree": "35dc4eaadfb9ac45c37043e84058640081d8f252",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "61c9e8be681be2442b47f3e1184661b7a0afb6bbd61dd6f364d727b553207b34",
+          "size": 651457,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "92c43ac0efd2450a5929da0eef4aa25c1f287076e2b817b775569bb5a8d91fad",
+          "size": 651457,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492
+        }
+      }
     }
   ]
 }
