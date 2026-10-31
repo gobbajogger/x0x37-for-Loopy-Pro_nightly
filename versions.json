@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-5ae6265e-dev",
+  "latest": "nightly-2ad1b517-dev",
   "versions": [
+    {
+      "version": "nightly-2ad1b517-dev",
+      "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "2ad1b5171c8425011a9bdfb24b6f63c3d86986c8",
+      "source_tree": "67edc1c361687e1e69b6bd187c9169e5400c4d0b",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "2093edc109136fc58b1a51e1f94da3f3fbe18c7b620de73e5b50e73d8f6c462d",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/46323823a65ecc1c65269f6ece2937df9abc0ba8/artifacts/nightly/dev-20261031-2ad1b517/2093edc109136fc58b1a51e1f94da3f3fbe18c7b620de73e5b50e73d8f6c462d/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "cf57c7c1fc67809e9f3f7a201ddcf291a3a29df118e56c8b41e8390739ae6d78",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/46323823a65ecc1c65269f6ece2937df9abc0ba8/artifacts/nightly/dev-20261031-2ad1b517/cf57c7c1fc67809e9f3f7a201ddcf291a3a29df118e56c8b41e8390739ae6d78/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST \u2014 Elite and Pro (0.0.16 2ad1b517: faster Miami/Chicago synths)",
+      "description": "DEV firmware 2ad1b517: on 0.0.15 5ae6265e: faster synths round 4 (PR #769: Chicago span voice render, Miami scheduler skip, exact fast conversions; host vs 0.0.14: Miami 1.92x, Chicago 1.64x). Host A/B vs 0.0.15: bit-identical. SMK-37 Elite PASS, Pro PASS. Bundled controller a334208b (61,552 B, BT reset fix). Page serves bundled bytes: Elite CRC32 327B5343, Pro CRC32 BB6F8A69 (blank FA832A75/7397F35F). DEVICE NOT TESTED. Supersedes nightly-5ae6265e-dev. Production unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/769"
+    },
     {
       "version": "nightly-5ae6265e-dev",
       "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
