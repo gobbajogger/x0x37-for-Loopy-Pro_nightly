@@ -213,6 +213,22 @@
           "controller_size": 65492
         }
       }
+    },
+    {
+      "package_version": "0.0.10",
+      "catalog_id": "nightly-5bff28ca-dev",
+      "source_commit": "5bff28caba24568cd5070acb99aaf37729cd8323",
+      "source_tree": "0a6cf3b5668fb9c7bb68ef645cb4a3fcf30af7cc",
+      "models": {
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "965ca2a0eb9a51e295742e78ca9ffb39f5972405a67f184525e8255ec63cef9b",
+          "size": 651457,
+          "controller_sha256": "956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a",
+          "controller_strategy": "bundled",
+          "controller_size": 65492
+        }
+      }
     }
   ]
 }
