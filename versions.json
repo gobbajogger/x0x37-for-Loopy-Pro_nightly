@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-bed393e1-dev",
+  "latest": "nightly-dd442625-dev",
   "versions": [
+    {
+      "version": "nightly-dd442625-dev",
+      "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "dd4426250797cf102716f142d7f4b785b9bb7ee0",
+      "source_tree": "2c46532d86cdef8424655f3c368d9973ddbdeecf",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "4b7e46fd758327cf17fdab818a30afa24c21e06c0d37f81abc2bd61e449b39ba",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/7b572ba76aa46ccf947a0994fe1c364c901afe0e/artifacts/nightly/dev-20261031-dd442625/4b7e46fd758327cf17fdab818a30afa24c21e06c0d37f81abc2bd61e449b39ba/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "5608eab00eb47fd34a2c9cd14a1b276215854b7877231038a7da300447a13f9c",
+          "size": 651457,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/7b572ba76aa46ccf947a0994fe1c364c901afe0e/artifacts/nightly/dev-20261031-dd442625/5608eab00eb47fd34a2c9cd14a1b276215854b7877231038a7da300447a13f9c/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST \u2014 Elite and Pro (0.0.21 dd442625: lower Free Play key latency on synth EDIT)",
+      "description": "DEV firmware dd442625: on 0.0.20 bed393e1: knob strip sends only changed rectangles, so Free Play keys no longer wait ~26 ms behind the screen transfer (Miami EDIT host-model latency mean 37.7->21.5 ms, worst 58.7->35.7 ms; #778, sound bit-identical). SMK-37 Elite PASS, Pro PASS. Bundled controller a334208b (61,552 B, BT reset fix). Page serves bundled bytes: Elite CRC32 DB4914BB, Pro CRC32 A12ADFCF (blank 13B16D8D/69D2A6F9). DEVICE NOT TESTED. Supersedes nightly-bed393e1-dev. Production unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/778"
+    },
     {
       "version": "nightly-bed393e1-dev",
       "label": "DEV / HARDWARE TEST \u2014 DEVICE NOT TESTED",
