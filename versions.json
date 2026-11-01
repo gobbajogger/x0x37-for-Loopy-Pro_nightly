@@ -2,8 +2,41 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-179ab384-dev",
+  "latest": "nightly-8be16486-dev",
   "versions": [
+    {
+      "version": "nightly-8be16486-dev",
+      "label": "DEV / HARDWARE TEST — QA IN PROGRESS — DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "8be16486e33f65b31c76710e1d825b6aa701c2c9",
+      "source_tree": "f952ab4455723e4a1a68fdb3a8eea22d2da59710",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "d0080061064a66b9d203dd9e75956cd59ab9372c2f4fd15769fa9b06b5f2073f",
+          "size": 651570,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f857ffbb369e0ab7e4aca5109b8334cb3a490557/artifacts/nightly/dev-20261101-8be16486/d0080061064a66b9d203dd9e75956cd59ab9372c2f4fd15769fa9b06b5f2073f/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "9ae7214baa0dd79a3709f3845da4481b15311d40c37a8be033dce07c95475dcd",
+          "size": 651566,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/f857ffbb369e0ab7e4aca5109b8334cb3a490557/artifacts/nightly/dev-20261101-8be16486/9ae7214baa0dd79a3709f3845da4481b15311d40c37a8be033dce07c95475dcd/x0x37-pro-dev.fwsc"
+        }
+      },
+      "display_version": "0.0.24.5",
+      "title": "QA IN PROGRESS — Elite and Pro (0.0.24.5: bounded LCD and SMC repaint)",
+      "description": "QA IN PROGRESS — DEVICE NOT TESTED. Owner explicitly authorized early 0.0.24.5 NIGHTLY publication while qualification continues. Exact firmware source build/0.0.24.5 8be16486e33f65b31c76710e1d825b6aa701c2c9 (tree f952ab4455723e4a1a68fdb3a8eea22d2da59710). Includes #821 bounded LCD/key dispatch, SMC alignment, #820 decorative/SMC popup repaint and cold hash fix. SDK V1.2.1 Elite and Pro native builds exit 0 with X0X_DEV_PADCAL=0, strict Elite_900/Pro_900 model identities, bundled Bluetooth controller a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984 (61,552 bytes, block CRC32 564a8f55), package_nightly --check exit 0, and 8,328 B pool headroom each (8,192 B minimum). Existing 15-round interleaved ABBA plus same-binary A/A compares the final production renderer with 0.0.24.3: 32 metrics, zero SLOWER beyond A/A spread; no real-device latency measured. Known host-suite failures remain: 0.0.24.3 baseline 350 PASS/34 FAIL/0 NOT_RUN, earlier candidate before test-only fixture repairs 357 PASS/35 FAIL/0 NOT_RUN; the two candidate-only fixture failures were repaired but the exact-final-source complete host suite is still being tested independently in cloud task 01a1972f-3ebb-70c0-86fb-c574af261037. Do NOT treat these failures as passing. Recovered audio hashes match 17 scenarios/50 files, but the final ui.c compilation input differs: exact-final-source audio bit-identity is PENDING. ROADMAP #822 completeness proof is INCOMPLETE (last review: 2 PRESENT, 144 MISSING, 62 QUEUED); queued features remain queued. Physical-device qualification, installer/hardware tests and release approval remain NOT_RUN/PENDING. This is an owner-operated testing candidate, NOT production and NOT device verified. Embedded firmware reports 0.0.24; 0.0.24.5 is a NIGHTLY catalog/build-branch label only. Installer backup warning, no-force policy and prior firmware versions remain unchanged.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/8be16486e33f65b31c76710e1d825b6aa701c2c9"
+    },
     {
       "version": "nightly-179ab384-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
