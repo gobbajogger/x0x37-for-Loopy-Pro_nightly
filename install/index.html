@@ -2170,9 +2170,9 @@ async function cancelInstallSnapshot(link, snapshot) {
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 async function installKeepingSlots(up, image, product, board, hooks) {
-  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true }, hooks);
+  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true, allowUnprotected: async () => false }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
-  let move = null, snapshot = null;
+  let move = null, snapshot = null, unprotected = false;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
   if (!dev) throw fail("notfound", "No running keyboard was found for sample preflight; no update was started.");
   if (!h.sameKeyboard(dev.id.model, product.split("_")[0])) {
@@ -2205,11 +2205,15 @@ async function installKeepingSlots(up, image, product, board, hooks) {
           try {
             saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
           } catch (e) { throw fail("slotbackup", e.message); }
-          const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
-          readArchive(file);                                  // verify the in-memory archive
+          const st = archiveStamp();
+          let file;
+          try {
+            file = makeArchive(saved.layout, saved.images, st.created);
+            readArchive(file);                                // verify the in-memory archive
+          } catch (e) { throw fail("slotbackup", e.message); }
           let retained;
           try { retained = await h.save(file, st.name); }
-          catch (e) { throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name); }
+          catch (e) { throw fail("slotbackup", "The recovery backup could not be downloaded (" + e.message + ")."); }
           if (retained !== true)
             throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
@@ -2221,13 +2225,23 @@ async function installKeepingSlots(up, image, product, board, hooks) {
       }
     } catch (e) {
       await cancelInstallSnapshot(dev.link, snapshot);
-      throw e;
+      // Older firmware, including 0.9, may lack SMP_INFO or atomic snapshot
+      // admission. Never silently sacrifice samples: require a second,
+      // in-page confirmation and preserve all package/model admission checks.
+      if (e?.code !== "slotbackup" || dev.link.lost || !h.admitted()) throw e;
+      let accepted = false;
+      try { accepted = await h.allowUnprotected(e.message); }
+      catch (_) { /* An unavailable confirmation is a denial. */ }
+      if (accepted !== true || !h.admitted()) throw fail("slotbackupcancel", e.message);
+      snapshot = null;
+      move = null; // No reliable archive exists, so never restore unknown slots.
+      unprotected = true;
     } finally { dev.link.close(); }
   }
   if (!h.admitted()) throw fail("slotbackup", "The selected package is no longer approved. No update was started.");
   const ran = await up.install(image, product, h.step,
     snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot, h.admitted) : null, h.admitted);
-  if (!move || !move.newMap.length) return { product: ran, move };
+  if (!move || !move.newMap.length) return { product: ran, move, unprotected };
   h.say("slotback");
   const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);
   if (!back) throw fail("slots", "the keyboard did not answer after the install", move.name);
@@ -2244,7 +2258,7 @@ async function installKeepingSlots(up, image, product, board, hooks) {
   } catch (e) {
     throw fail("slots", e.message, move.name);
   } finally { back.link.close(); }
-  return { product: ran, move };
+  return { product: ran, move, unprotected };
 }
 
 const $ = (id) => document.getElementById(id);
@@ -2313,7 +2327,7 @@ const TEXT = {
     stockdone: "完了。デバイスは新しいファームウェアで起動しました。",
     confirm: "書き込みますか？\n\n接続中: ",
     confirmto: "\n書き込む: ",
-    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は、先にバックアップを保存し、保存できたことを確認してください。USB を抜かないでください。",
+    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプルのバックアップを試みます。旧ファームウェアが非対応の場合、バックアップなしで続行するか再確認します。サンプルが永久に失われる可能性があります。USB を抜かないでください。",
     nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
     start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
     reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
@@ -2343,6 +2357,11 @@ const TEXT = {
     slotstock: "完了。純正ファームウェアには X0X のスロットがありません。サンプルは次のファイルにあります（X0X を入れ直した後にブレークループのページの「Restore」で戻せます）: ",
     slots: "インストールは終わりましたが、スロットを書き戻せませんでした。ブレークループのページの「Restore」か tools/x0x_slots.py restore で、このファイルから戻してください: ",
     slotbackup: "スロットを保存できなかったため、何も書き込んでいません。先にブレークループのページでバックアップしてください。 ",
+    slotbackupcancel: "バックアップがないためインストールをキャンセルしました。何も書き込んでいません。 ",
+    slotunprotectedwarning: "警告：サンプルスロットのバックアップに失敗しました。続行するとサンプルや保存したブレークループが永久に失われる可能性があります。インストーラーで復元できません。別の場所に保存済みか、失ってもよい場合だけ続行してください。\n\nバックアップのエラー：",
+    slotunprotectedquestion: "\n\nバックアップなしでインストールを続行しますか？",
+    slotunprotectedcontinue: "バックアップなしで続行",
+    slotunprotecteddone: "バックアップなしでインストールが完了しました。以前のサンプルスロットは失われた可能性があります。",
     license: "GPL-3.0、無保証。ソース:",
     blewhy: "この旧パッケージには、ble/ctl/build_ctl.sh で作成した一致する ctl.img が必要です。選択するまでインストールできません。検証済みの一体型 NIGHTLY には Bluetooth が含まれ、別ファイルは不要です。",
     ctlreading: "コントローラー画像を読み込み、確認しています…",
@@ -2414,7 +2433,7 @@ const TEXT = {
     stockdone: "Done. The device has restarted with the new firmware.",
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
-    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, you must save and confirm a recovery backup first. Keep USB connected until Done.",
+    confirmrisk: "\n\nCalibration and pairing are never touched. The installer will try to back up affected samples; if the old firmware cannot provide a backup, a SECOND warning will ask whether to continue without one. Samples may be lost permanently. Keep USB connected until Done.",
     nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
@@ -2444,6 +2463,11 @@ const TEXT = {
     slotstock: "Done. The stock firmware has no X0X slots. Your samples are in this file (after you install X0X again, restore it with Restore on the break loops page): ",
     slots: "Installed, but the slots were not written back. Restore them from this file with Restore on the break loops page, or with tools/x0x_slots.py restore: ",
     slotbackup: "The slots could not be saved, so nothing was installed. Back them up on the break loops page first. ",
+    slotbackupcancel: "Install cancelled: sample recovery backup unavailable or not retained. Nothing was installed. ",
+    slotunprotectedwarning: "WARNING: Your sample slots could NOT be backed up. Continuing may permanently erase your samples and saved break loops. The installer cannot restore them. Only proceed if you saved them elsewhere or accept losing them.\n\nBackup error: ",
+    slotunprotectedquestion: "\n\nContinue installing WITHOUT a sample backup?",
+    slotunprotectedcontinue: "Continue WITHOUT backup",
+    slotunprotecteddone: "Installation completed WITHOUT a sample backup. Previous sample slots may be permanently lost.",
     license: "GPL-3.0, no warranty. Source:",
     blewhy: "This legacy package requires the exact matching ctl.img built on your computer with ble/ctl/build_ctl.sh. Installation is blocked until it is supplied. Qualified bundled NIGHTLY packages include Bluetooth and need no separate file.",
     ctlreading: "Reading and checking the controller image…",
@@ -3083,6 +3107,28 @@ function confirmWrite(product) {
     $("inconfirmno").onclick = () => done(false);
   });
 }
+// In-page approval: iPhone WebMIDI webviews can auto-dismiss native confirm().
+function confirmUnprotectedInstall(reason) {
+  const box = $("inconfirm"), ok = $("inconfirmok"), no = $("inconfirmno");
+  const priorOk = ok.textContent, priorNo = no.textContent;
+  $("inconfirmtext").textContent = t("slotunprotectedwarning") + String(reason) + t("slotunprotectedquestion");
+  ok.textContent = t("slotunprotectedcontinue");
+  no.textContent = t("slotcancel");
+  box.hidden = false;
+  box.scrollIntoView?.({ block: "center" });
+  no.focus();
+  return new Promise((resolve) => {
+    const done = (answer) => {
+      box.hidden = true;
+      ok.onclick = no.onclick = null;
+      ok.textContent = priorOk;
+      no.textContent = priorNo;
+      resolve(answer);
+    };
+    ok.onclick = () => done(true);
+    no.onclick = () => done(false);
+  });
+}
 $("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
 $("devagree").addEventListener("change", updateInstallGate);
 
@@ -3229,7 +3275,7 @@ async function run(img, product, opts = {}) {
   $("go").disabled = $("stockgo").disabled = true;
   $("bar").value = 0;
   const foreign = !!opts.foreign;   // stock / other custom: identity text after reboot may differ
-  let access, up;
+  let access, up, unprotected = false;
   try { access = await midiAccess(); }
   catch (e) {
     writing = false;
@@ -3269,7 +3315,12 @@ async function run(img, product, opts = {}) {
           // The user may change/revoke a NIGHTLY selection while checking the file.
           return retained === true && (!opts.admitted || opts.admitted());
         },
+        allowUnprotected: (reason) => {
+          log("Sample recovery backup unavailable: " + reason);
+          return confirmUnprotectedInstall(reason);
+        },
       });
+      unprotected = r.unprotected === true;
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);
       else if (r.move) {
         $("bar").value = 100;
@@ -3279,6 +3330,10 @@ async function run(img, product, opts = {}) {
       }
     }
     await scan(true);
+    if (unprotected) {
+      sayK("slotunprotecteddone");
+      log("Firmware installed without a recoverable sample-slot backup.");
+    }
   } catch (e) {
     if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
     else sayK("error", e && e.message);
