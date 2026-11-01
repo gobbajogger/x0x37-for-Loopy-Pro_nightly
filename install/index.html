@@ -522,15 +522,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
           <p class="install-hint" id="installhint" aria-live="polite"></p>
           <progress id="bar" max="100" value="0" aria-label="Firmware installation progress"></progress>
           <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
-          <section id="backup-confirmation" class="backup-confirmation" aria-labelledby="backup-heading" hidden>
-            <p id="backup-heading"><strong data-t="slotconfirm">Confirm your recovery backup before installing.</strong></p>
-            <p class="small" data-t="slotconfirmhelp">The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.</p>
-            <p><code id="backup-name"></code></p>
-            <div class="backup-actions">
-              <button type="button" class="quiet" id="backup-cancel" data-t="slotcancel">Cancel installation</button>
-              <button type="button" class="quiet" id="backup-retained" data-t="slotretained">I have saved this backup — continue</button>
-            </div>
-          </section>
+          <p id="backup-warning" class="backup-confirmation" role="alert" aria-live="assertive" hidden></p>
           <details class="diagnostics">
             <summary data-t="diagnostics">Technical details / activity log</summary>
             <pre id="log"></pre>
@@ -2164,13 +2156,13 @@ async function cancelInstallSnapshot(link, snapshot) {
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
 // hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
-// 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
-//    await explicit retained-backup acknowledgement (only boolean true permits OTA).
+// 1. If slots are at risk, attempt an .x0xslots archive and download.
+//    Backup errors warn but never prevent OTA.
 //    2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 async function installKeepingSlots(up, image, product, board, hooks) {
-  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true, allowUnprotected: async () => false }, hooks);
+  const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
   let move = null, snapshot = null, unprotected = false;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
@@ -2195,7 +2187,7 @@ async function installKeepingSlots(up, image, product, board, hooks) {
         else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
       }
       if (layout && !snapshot)
-        throw fail("slotbackup", "This firmware cannot atomically protect the sample backup through update entry. No update was started. A separately verified preservation path is required for this older firmware.");
+        throw fail("slotbackup", "This firmware cannot atomically protect a sample backup through update entry.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
@@ -2215,7 +2207,7 @@ async function installKeepingSlots(up, image, product, board, hooks) {
           try { retained = await h.save(file, st.name); }
           catch (e) { throw fail("slotbackup", "The recovery backup could not be downloaded (" + e.message + ")."); }
           if (retained !== true)
-            throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
+            throw fail("slotbackupconfirm", "The browser could not confirm saving the recovery backup.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
           // snapshot for preservation, just as the Python SlotMove.backup does.
           const savedMap = flashMap(saved.layout, board);
@@ -2224,21 +2216,17 @@ async function installKeepingSlots(up, image, product, board, hooks) {
         }
       }
     } catch (e) {
+      // Sample preservation is best effort on legacy firmware. Never bypass
+      // keyboard model or package/controller admission: those remain enforced
+      // independently by Updater.install() and admitted().
       await cancelInstallSnapshot(dev.link, snapshot);
-      // Older firmware, including 0.9, may lack SMP_INFO or atomic snapshot
-      // admission. Never silently sacrifice samples: require a second,
-      // in-page confirmation and preserve all package/model admission checks.
-      if (e?.code !== "slotbackup" || dev.link.lost || !h.admitted()) throw e;
-      let accepted = false;
-      try { accepted = await h.allowUnprotected(e.message); }
-      catch (_) { /* An unavailable confirmation is a denial. */ }
-      if (accepted !== true || !h.admitted()) throw fail("slotbackupcancel", e.message);
       snapshot = null;
-      move = null; // No reliable archive exists, so never restore unknown slots.
+      move = null; // No verified recovery archive exists.
       unprotected = true;
+      h.say("slotunprotectedwarning", e?.message || String(e));
     } finally { dev.link.close(); }
   }
-  if (!h.admitted()) throw fail("slotbackup", "The selected package is no longer approved. No update was started.");
+  if (!h.admitted()) throw fail("unapproved", "The selected package is no longer approved. No update was started.");
   const ran = await up.install(image, product, h.step,
     snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot, h.admitted) : null, h.admitted);
   if (!move || !move.newMap.length) return { product: ran, move, unprotected };
@@ -2327,7 +2315,7 @@ const TEXT = {
     stockdone: "完了。デバイスは新しいファームウェアで起動しました。",
     confirm: "書き込みますか？\n\n接続中: ",
     confirmto: "\n書き込む: ",
-    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプルのバックアップを試みます。旧ファームウェアが非対応の場合、バックアップなしで続行するか再確認します。サンプルが永久に失われる可能性があります。USB を抜かないでください。",
+    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。バックアップに失敗しても警告を表示して自動的にインストールを続行します。サンプルが永久に失われる可能性があります。USB を抜かないでください。",
     nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
     start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
     reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
@@ -2343,7 +2331,7 @@ const TEXT = {
     leave: "書き込み中です。ページを閉じないでください。",
     slotsave: "新しいファームウェアではスロットのサンプルが消えます（スロット ",
     slotsave2: "）。先に全スロットをファイルに保存します。",
-    slotdownload: "バックアップのダウンロードを要求しました（保存は未確認）: ",
+    slotdownload: "バックアップのダウンロードを要求しました。保存できたかは確認できないため、ダウンロード先を確認してください: ",
     slotsaved: "バックアップを保管したことをユーザーが確認しました: ",
     slotconfirm: "インストールする前にバックアップの保存を確認してください。",
     slotconfirmhelp: "ブラウザにこのファイルのダウンロードを要求しましたが、保存できたかは確認できません。ダウンロード先でファイルを見つけ、安全な場所に保管してください。ファイルを保管できた場合だけ続行し、それ以外はキャンセルしてください。ファームウェアはまだ書き込んでいません。",
@@ -2358,7 +2346,7 @@ const TEXT = {
     slots: "インストールは終わりましたが、スロットを書き戻せませんでした。ブレークループのページの「Restore」か tools/x0x_slots.py restore で、このファイルから戻してください: ",
     slotbackup: "スロットを保存できなかったため、何も書き込んでいません。先にブレークループのページでバックアップしてください。 ",
     slotbackupcancel: "バックアップがないためインストールをキャンセルしました。何も書き込んでいません。 ",
-    slotunprotectedwarning: "警告：サンプルスロットのバックアップに失敗しました。続行するとサンプルや保存したブレークループが永久に失われる可能性があります。インストーラーで復元できません。別の場所に保存済みか、失ってもよい場合だけ続行してください。\n\nバックアップのエラー：",
+    slotunprotectedwarning: "警告：サンプルのバックアップに失敗しました。インストールは自動的に続行します。以前のサンプルや保存したブレークループが永久に失われる可能性があります。保存できなかったスロットは復元できません。エラー：",
     slotunprotectedquestion: "\n\nバックアップなしでインストールを続行しますか？",
     slotunprotectedcontinue: "バックアップなしで続行",
     slotunprotecteddone: "バックアップなしでインストールが完了しました。以前のサンプルスロットは失われた可能性があります。",
@@ -2433,7 +2421,7 @@ const TEXT = {
     stockdone: "Done. The device has restarted with the new firmware.",
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
-    confirmrisk: "\n\nCalibration and pairing are never touched. The installer will try to back up affected samples; if the old firmware cannot provide a backup, a SECOND warning will ask whether to continue without one. Samples may be lost permanently. Keep USB connected until Done.",
+    confirmrisk: "\n\nCalibration and pairing are never touched. Sample backup is attempted but cannot block installation. If it fails, a warning will appear and saved samples may be lost permanently. Keep USB connected until Done.",
     nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
@@ -2449,7 +2437,7 @@ const TEXT = {
     leave: "Writing. Do not close the page.",
     slotsave: "The new firmware does not keep the samples in slot ",
     slotsave2: ". Saving every slot to a file first.",
-    slotdownload: "Backup download requested (not yet confirmed): ",
+    slotdownload: "Backup download requested; check Downloads because the browser cannot verify it was saved: ",
     slotsaved: "User confirmed retained recovery backup: ",
     slotconfirm: "Confirm your recovery backup before installing.",
     slotconfirmhelp: "The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.",
@@ -2464,7 +2452,7 @@ const TEXT = {
     slots: "Installed, but the slots were not written back. Restore them from this file with Restore on the break loops page, or with tools/x0x_slots.py restore: ",
     slotbackup: "The slots could not be saved, so nothing was installed. Back them up on the break loops page first. ",
     slotbackupcancel: "Install cancelled: sample recovery backup unavailable or not retained. Nothing was installed. ",
-    slotunprotectedwarning: "WARNING: Your sample slots could NOT be backed up. Continuing may permanently erase your samples and saved break loops. The installer cannot restore them. Only proceed if you saved them elsewhere or accept losing them.\n\nBackup error: ",
+    slotunprotectedwarning: "WARNING: Sample backup failed. Installation continues automatically, but existing samples and saved break loops may be permanently lost. The installer cannot restore unbacked-up slots. Backup error: ",
     slotunprotectedquestion: "\n\nContinue installing WITHOUT a sample backup?",
     slotunprotectedcontinue: "Continue WITHOUT backup",
     slotunprotecteddone: "Installation completed WITHOUT a sample backup. Previous sample slots may be permanently lost.",
@@ -3107,29 +3095,7 @@ function confirmWrite(product) {
     $("inconfirmno").onclick = () => done(false);
   });
 }
-// In-page approval: iPhone WebMIDI webviews can auto-dismiss native confirm().
-function confirmUnprotectedInstall(reason) {
-  const box = $("inconfirm"), ok = $("inconfirmok"), no = $("inconfirmno");
-  const priorOk = ok.textContent, priorNo = no.textContent;
-  $("inconfirmtext").textContent = t("slotunprotectedwarning") + String(reason) + t("slotunprotectedquestion");
-  ok.textContent = t("slotunprotectedcontinue");
-  no.textContent = t("slotcancel");
-  box.hidden = false;
-  box.scrollIntoView?.({ block: "center" });
-  no.focus();
-  return new Promise((resolve) => {
-    const done = (answer) => {
-      box.hidden = true;
-      ok.onclick = no.onclick = null;
-      ok.textContent = priorOk;
-      no.textContent = priorNo;
-      resolve(answer);
-    };
-    ok.onclick = () => done(true);
-    no.onclick = () => done(false);
-  });
-}
-$("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
+ $("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
 $("devagree").addEventListener("change", updateInstallGate);
 
 // NIGHTLY is catalog-only. Never import unreviewed GitHub Releases or their direct links.
@@ -3231,10 +3197,9 @@ drop.addEventListener("drop", async (e) => {
   await selectStockFile(f);
 });
 
-// A download request is not proof of a filesystem write. Keep OTA waiting for
-// this archive's explicit user acknowledgement, without a blocking browser dialog.
+// Best effort only: a requested download is not proof it was saved. Do not
+// wait for a backup confirmation or prevent OTA if the browser refuses it.
 async function saveSlotBackup(file, name) {
-  const panel = $("backup-confirmation"), retained = $("backup-retained"), cancel = $("backup-cancel");
   const a = document.createElement("a");
   const url = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
   a.href = url;
@@ -3247,22 +3212,7 @@ async function saveSlotBackup(file, name) {
     setTimeout(() => URL.revokeObjectURL(url), 60000);
   }
   log(t("slotdownload") + name);
-  $("backup-name").textContent = name;
-  try {
-    const confirmation = new Promise((resolve) => {
-      retained.onclick = () => resolve(true);
-      cancel.onclick = () => resolve(false);
-    });
-    panel.hidden = false;
-    sayK("slotconfirm");
-    cancel.focus(); // Enter must not accidentally confirm the irreversible step.
-    const confirmed = await confirmation;
-    if (confirmed === true) log(t("slotsaved") + name);
-    return confirmed;
-  } finally {
-    retained.onclick = cancel.onclick = null;
-    panel.hidden = true;
-  }
+  return true; // Requested only; the browser cannot prove the file was retained.
 }
 
 async function run(img, product, opts = {}) {
@@ -3274,6 +3224,8 @@ async function run(img, product, opts = {}) {
   ctlLoadSerial++; stockLoadSerial++;
   $("go").disabled = $("stockgo").disabled = true;
   $("bar").value = 0;
+  $("backup-warning").hidden = true;
+  $("backup-warning").textContent = "";
   const foreign = !!opts.foreign;   // stock / other custom: identity text after reboot may differ
   let access, up, unprotected = false;
   try { access = await midiAccess(); }
@@ -3308,17 +3260,17 @@ async function run(img, product, opts = {}) {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
         step, sameKeyboard, admitted: opts.admitted,
-        say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
+        say: (k, a) => {
+          if (k === "slotsave") sayK("slotsave", a + t("slotsave2"));
+          else if (k === "slotunprotectedwarning") {
+            $("backup-warning").textContent = t(k) + (a ?? "");
+            $("backup-warning").hidden = false;
+            sayK(k, a || "");
+          } else sayK(k);
+          log(k + " " + (a ?? ""));
+        },
         progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
-        save: async (file, name) => {
-          const retained = await saveSlotBackup(file, name);
-          // The user may change/revoke a NIGHTLY selection while checking the file.
-          return retained === true && (!opts.admitted || opts.admitted());
-        },
-        allowUnprotected: (reason) => {
-          log("Sample recovery backup unavailable: " + reason);
-          return confirmUnprotectedInstall(reason);
-        },
+        save: (file, name) => saveSlotBackup(file, name),
       });
       unprotected = r.unprotected === true;
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);
