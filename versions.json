@@ -2,8 +2,41 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-3d8131f7-dev",
+  "latest": "nightly-179ab384-dev",
   "versions": [
+    {
+      "version": "nightly-179ab384-dev",
+      "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "dev",
+      "hardware_tested": false,
+      "source_commit": "179ab3840b8db7f5c5fc80fe5dc507ecdba42bf5",
+      "source_tree": "ad99a31b04f1f2ef9f8e374b380f6c4cea9ee590",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "7187cdf57161f21aecb1cd576f27fe21d1094212be0fffe3dd491d05ecc07679",
+          "size": 651570,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/8200d95c9cb116e54d5a31a1a6b7c4d95fe505d2/artifacts/nightly/dev-20261101-179ab384/7187cdf57161f21aecb1cd576f27fe21d1094212be0fffe3dd491d05ecc07679/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "8ae1ee345d1324968e563af45b97c6a95ba8cea83a1500b372415ca41d16f18c",
+          "size": 651566,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://raw.githubusercontent.com/gobbajogger/X0X37-for-Loopy-Pro/8200d95c9cb116e54d5a31a1a6b7c4d95fe505d2/artifacts/nightly/dev-20261101-179ab384/8ae1ee345d1324968e563af45b97c6a95ba8cea83a1500b372415ca41d16f18c/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "DEV / HARDWARE TEST — Elite and Pro (0.0.24.3: bounded LCD input dispatch)",
+      "description": "Owner-approved 0.0.24.3 testing candidate from build/0.0.24.1 plus bounded 16x16 LCD tiles, foreground key/MIDI dispatch, fixed opt-in trace RAM and faster full-row DMA. SDK V1.2.1 Elite/Pro builds PASS with PADCAL=0, strict model identities, BT a334208b, package_nightly --check and pool headroom 8,328 B each. Fifteen alternating host benchmark pairs show full-frame aggregate median 6.94% faster and steady-frame median 0.48% faster; three individual case medians had small positive differences up to 1.4%. The owner explicitly waived audio identity and framebuffer comparisons for this version. These were not performed for the candidate. Default hardware trace is off. No alignment commit included. Internal firmware VERSION reports 0.0.24; NIGHTLY catalog labels this package 0.0.24.3. DEVICE NOT TESTED; use hardware-test workflow with full backup and strict model checks.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/821",
+      "display_version": "0.0.24.3"
+    },
     {
       "version": "nightly-3d8131f7-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
