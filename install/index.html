@@ -2182,12 +2182,11 @@ async function installKeepingSlots(up, image, product, board, hooks) {
       let layout;
       try { layout = await readSlotLayout(dev.link, 1000, 2); }
       catch (e) {
-        const stock = dev.id.text === "FM-1_015" || (dev.id.version === 16 && /^(SMK-37[ +].*|MKE-P37|STARRYKEY-37.*)$/i.test(dev.id.model));
-        if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
-        else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
+        // Any unsupported/failed slot INFO uses the outer warning-only path.
+        throw fail("slotbackup", `Sample layout unavailable (${e.message}); continuing without backup.`);
       }
       if (layout && !snapshot)
-        throw fail("slotbackup", "This firmware cannot atomically protect a sample backup through update entry.");
+        throw fail("slotbackup", "Atomic sample backup unsupported; continuing without backup.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
