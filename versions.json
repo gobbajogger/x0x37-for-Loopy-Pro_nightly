@@ -34,7 +34,8 @@
       },
       "title": "DEV / HARDWARE TEST — Elite and Pro (0.0.24.1: #809 performance revert)",
       "description": "Owner-accepted NIGHTLY 0.0.24.1, reverting the #809 UI regression; same tree as e3e82141. Elite/Pro native SDK V1.2.1 builds, exact model identities, bundled BT a334208b, nightly package checks and 8,328-byte pool headroom passed. Host suite 348 PASS / 33 FAIL / 2 NOT_RUN, unchanged from 0.0.24 and expressly accepted for this owner-operated hardware test. Audio identity 17 scenarios / 50 files passed. DEVICE NOT TESTED. Firmware displays 0.0.24 internally; package version here is 0.0.24.1. Prior version 0.0.24 remains selectable.",
-      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/tree/build/0.0.24.1/docs/evidence/build-0.0.24.1"
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/tree/build/0.0.24.1/docs/evidence/build-0.0.24.1",
+      "display_version": "0.0.24.1"
     },
     {
       "version": "nightly-d8086cc0-dev",

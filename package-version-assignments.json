@@ -599,7 +599,7 @@
       }
     },
     {
-      "package_version": "0.0.24.1",
+      "package_version": "0.0.24",
       "catalog_id": "nightly-3d8131f7-dev",
       "source_commit": "3d8131f744b9c740ffa19de5518d1759e6b52142",
       "source_tree": "85030022e17d816ea18219523321375975b92640",
