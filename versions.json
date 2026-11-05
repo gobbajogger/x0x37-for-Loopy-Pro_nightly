@@ -7,7 +7,7 @@
     {
       "version": "nightly-ce278129-dev",
       "label": "UNREVIEWED · DEVICE NOT TESTED",
-      "status": "unreviewed",
+      "status": "dev-checked",
       "config": "X0X_DEV_PADCAL=0",
       "hardware_tested": false,
       "source_commit": "ce27812951555ff7ed9694bf99d20a65dd5f410b",
