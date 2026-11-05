@@ -1,3 +1,5 @@
+> **HISTORICAL (reconciliation note).** Standing ownership and rules live in the firmware repository's [current owner contract](https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/rules/current-owner-contract.md) and this repo's root `AGENTS.md` (the contract link resolves after the firmware rules contract is merged). Kept as an archive; the text below is not active instruction.
+
 # Controller licensing description correction — 2026-11-05
 
 Trigger: The owner asked dot to reconcile DnBOX's contradictory rules while Grok
