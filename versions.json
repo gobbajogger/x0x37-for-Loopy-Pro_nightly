@@ -6,7 +6,7 @@
   "versions": [
     {
       "version": "nightly-ce278129-dev",
-      "label": "UNREVIEWED · DEVICE NOT TESTED",
+      "label": "DEV · HOST-CHECKED · NOT TESTED ON DEVICE",
       "status": "dev-checked",
       "config": "X0X_DEV_PADCAL=0",
       "hardware_tested": false,
@@ -33,8 +33,8 @@
         }
       },
       "display_version": "0.0.24.5",
-      "title": "UNREVIEWED · DEVICE NOT TESTED",
-      "description": "UNREVIEWED · DEVICE NOT TESTED. Host run measured 391 ok, 6 FAIL, 0 NOT_RUN. FAIL: original-release-ui, smc-ui, offline-sequencer-browser, ui-feedback, ui-glyph-polish, scenario-plock. NOT_RUN: none. package_nightly --check was NOT_RUN: there is no canonical X.Y.Z version for this build, and there is no installer and no package_check digest. The firmware images show \"DnBOX DEV\". display_version 0.0.24.5 is a carried catalog label only. It is not the firmware's own string.",
+      "title": "DEV · HOST-CHECKED · NOT TESTED ON DEVICE",
+      "description": "DEV · HOST-CHECKED · NOT TESTED ON DEVICE. Host run measured 391 ok, 6 FAIL, 0 NOT_RUN. FAIL: original-release-ui, smc-ui, offline-sequencer-browser, ui-feedback, ui-glyph-polish, scenario-plock. NOT_RUN: none. package_nightly --check was NOT_RUN: there is no canonical X.Y.Z version for this build, and there is no installer and no package_check digest. The firmware images show \"DnBOX DEV\". display_version 0.0.24.5 is a carried catalog label only. It is not the firmware's own string.",
       "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/ce27812951555ff7ed9694bf99d20a65dd5f410b"
     },
     {
