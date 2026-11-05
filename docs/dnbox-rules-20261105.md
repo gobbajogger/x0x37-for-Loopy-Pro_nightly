@@ -18,6 +18,7 @@ bounded independent review of the documentation patch. No firmware/npm/browser
 or device check is needed for this prose-only correction. Raw evidence, checks,
 review and exact source pins remain in the durable DnBOX docs cleanup handoff.
 
-Grok retains delivery ownership. Dot remains this cleanup's sole writer until
-handoff; DnBOX Docs is the intended future rules-maintenance owner. No original
+Grok retains delivery ownership. After the 2026-11-05 handoff (~07:22Z) and owner
+immediate-start (~08:19Z), DnBOX Docs is the rules-maintenance owner under Grok Bot
+as primary coordinator; no one waits on dot. No original
 review, role registry, queue, scheduler or review budget was changed.
