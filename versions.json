@@ -6,7 +6,7 @@
   "versions": [
     {
       "version": "nightly-ce278129-dev",
-      "label": "UNREVIEWED · DEVICE NOT TESTED",
+      "label": "DEV · HOST-CHECKED · NOT TESTED ON DEVICE",
       "status": "dev-checked",
       "config": "X0X_DEV_PADCAL=0",
       "hardware_tested": false,
