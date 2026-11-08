@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-ce278129-dev",
+  "latest": "nightly-2287f113-dev",
   "versions": [
+    {
+      "version": "nightly-2287f113-dev",
+      "label": "UNREVIEWED · DEVICE NOT TESTED — 2287f113",
+      "status": "unreviewed",
+      "config": "X0X_DEV_PADCAL=0",
+      "hardware_tested": false,
+      "source_commit": "2287f113fa4bf74757b4e6d758c2e5464eb47036",
+      "source_tree": "fc4ac8ba6145451dfa8886e7050759cf848da2d5",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "df0b1f82ffd374ee1628e7cd1b9f0276a761abeb45770f06616bbceb7838560a",
+          "size": 651457,
+          "controller_sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+          "controller_strategy": "bundled",
+          "controller_size": 61088,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/df0b1f82ffd374ee1628e7cd1b9f0276a761abeb45770f06616bbceb7838560a/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "2a7ddfcab3299367354f4263efa5ec93710c494f9895362f9f418948b033a770",
+          "size": 651457,
+          "controller_sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+          "controller_strategy": "bundled",
+          "controller_size": 61088,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/2a7ddfcab3299367354f4263efa5ec93710c494f9895362f9f418948b033a770/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "UNREVIEWED · DEVICE NOT TESTED — combined UI+PANIC D6-N preview",
+      "description": "UNREVIEWED · DEVICE NOT TESTED — Host 344 ok / 1 FAIL / 3 NOT_RUN (raw runner 2, conditional omissions 1). Host FAIL: optimization-equivalence. Host NOT_RUN: drum909, drum808, smk-build-package-mke. Device: NOT_RUN. D6-N preview of combined UI+PANIC source 2287f113 (parent e3a48f3e UI/ask-idle-poll + #853 PANIC from fc0669cc). Decision (A): 6ccc91ca and b01fb2d6 not applied. PR #698 / wip/one-build not updated. No numeric openbeta allocation.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/2287f113fa4bf74757b4e6d758c2e5464eb47036"
+    },
     {
       "version": "nightly-ce278129-dev",
       "label": "DEV · HOST-CHECKED · NOT TESTED ON DEVICE",
