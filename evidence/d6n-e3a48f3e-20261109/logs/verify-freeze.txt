@@ -1,0 +1,6 @@
+PASS head lane/build-698-ask-idle-poll-20261109 = e3a48f3e
+PASS tree b829b2c2
+PASS author 255244738+gobbajogger@users.noreply.github.com
+PASS no trailers
+
+exit_code=0

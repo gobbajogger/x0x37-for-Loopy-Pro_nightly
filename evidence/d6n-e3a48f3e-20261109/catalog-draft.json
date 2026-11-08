@@ -1,0 +1,177 @@
+{
+  "title": "UNREVIEWED · DEVICE NOT TESTED · D6-N frozen-source preview evidence",
+  "label": "UNREVIEWED · DEVICE NOT TESTED · e3a48f3e D6-N preview",
+  "description": "UNREVIEWED · DEVICE NOT TESTED · D6-N local evidence draft only; NOT published; hardware_tested=false. Host 331 ok / 1 FAIL / 14 NOT_RUN (includes 9 conditional omissions and 3 absent panic tests). FAIL: optimization-equivalence. NOT_RUN: drum909, drum808, smk-package, smk-ota-entry, smk-ota-entry-model1, smk-ota-entry-model2, smk-update-loader, smk-build-package, smk-build-package-elite, smk-build-package-mke, ble-package, panic-clear, panic-route, panic-notes, device. Native PASS. this evidence package documents the frozen UI/ask-idle-poll tree e3a48f3e5f284d7b36b8623137919436bbbfd4ed ONLY. It is NOT the combined 0.0.25 NIGHTLY candidate — it lacks #853 PANIC firmware and tests from fc0669ccbabf9a7def1e3a4ba6b7660c7ad12249.",
+  "hardware_tested": false,
+  "status": "local-evidence-draft-not-published",
+  "source_commit": "e3a48f3e5f284d7b36b8623137919436bbbfd4ed",
+  "source_tree": "b829b2c2184cbbbfc107cdb80614cba895ed2800",
+  "source_parent": "c97587c8cea40a8f6e534ec13d9690feb555486d",
+  "source_refs": [
+    "lane/build-698-ask-idle-poll-20261109",
+    "lane/dev-ui-ask-idle-poll-20261109"
+  ],
+  "created_at": "2026-11-09 04:57:20 Asia/Vladivostok",
+  "pkg": null,
+  "artifacts": [
+    {
+      "path": "/workspace/plan-all/wt/build/x0x-smk37-elite.fwsc",
+      "sha256": "f48527b7fec97bacf80b160e0999efa4fff9753a10c1d5e717b6e127a6bd0484",
+      "size": 651457
+    },
+    {
+      "path": "/workspace/plan-all/wt/build/x0x-smk37.fwsc",
+      "sha256": "7fddd143a346ac0787ccb3d4e1948a96f0aae8084c80d8c6580a53fe774f8d00",
+      "size": 651457
+    },
+    {
+      "path": "/workspace/plan-all/wt/build/x0x-smk37-elite-ble.fwsc",
+      "sha256": "630f433ca8b1b4b8e71147d412ac8e1de2fecaa0e9ba31cb26492ea3836da8e0",
+      "size": 651457
+    },
+    {
+      "path": "/workspace/plan-all/wt/build/x0x-smk37-ble.fwsc",
+      "sha256": "c477d930e619784e6c501e987c4bca5ae641123a2555da95b7e067f7d336528e",
+      "size": 651457
+    },
+    {
+      "path": "/workspace/plan-all/wt/ble/ctl/out/ctl.img",
+      "sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+      "size": 61088
+    }
+  ],
+  "host": {
+    "ok": 331,
+    "FAIL": 1,
+    "runner_NOT_RUN": 2,
+    "conditional_NOT_RUN": 9,
+    "NOT_RUN_including_absent_panic": 14,
+    "exit_code": 1,
+    "failures": [
+      {
+        "status": "FAIL",
+        "name": "optimization-equivalence",
+        "detail": "(see build/host/optimization-equivalence.log); required host compiler missing: clang (host clang, not the cached pi32v2 cross compiler)",
+        "full_log": "logs/host-fail-optimization-equivalence.txt"
+      }
+    ],
+    "not_run": [
+      {
+        "status": "not-run",
+        "name": "drum909",
+        "detail": "(../schwung-9W9/src/dsp/er99_engine.c)"
+      },
+      {
+        "status": "not-run",
+        "name": "drum808",
+        "detail": "(../schwung-8W8/src/dsp/sc808_engine.cpp)"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-package",
+        "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-ota-entry",
+        "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-ota-entry-model1",
+        "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-ota-entry-model2",
+        "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-update-loader",
+        "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-build-package",
+        "detail": "Conditional test not admitted in host suite; required build/x0x-smk37.fwsc did not satisfy runner file guard then (native build followed host suite)"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-build-package-elite",
+        "detail": "Conditional test not admitted in host suite; required build/x0x-smk37-elite.fwsc did not satisfy runner file guard then (native build followed host suite)"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "smk-build-package-mke",
+        "detail": "Conditional test not admitted in host suite; required build/x0x-smk37-mke.fwsc did not satisfy runner file guard then (native build followed host suite)"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "ble-package",
+        "detail": "Conditional test not admitted in host suite; required build/x0x-smk37.fwsc did not satisfy runner file guard then (native build followed host suite)"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "panic-clear",
+        "detail": "Absent on frozen lineage; not registered in tests/run_tests.sh"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "panic-route",
+        "detail": "Absent on frozen lineage; not registered in tests/run_tests.sh"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "panic-notes",
+        "detail": "Absent on frozen lineage; not registered in tests/run_tests.sh"
+      }
+    ]
+  },
+  "native": [
+    {
+      "name": "locked-settings",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "native-elite",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "native-pro",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "ARM-ctl",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "compose-pro",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "compose-elite",
+      "status": "PASS",
+      "exit_code": 0
+    }
+  ],
+  "package_checks": [
+    {
+      "model": "elite",
+      "exit_code": 0,
+      "stdout": "{\n  \"controller\": {\n    \"abi\": 2,\n    \"block_crc32\": \"012bf7ea\",\n    \"block_size\": 65536,\n    \"bundled\": true,\n    \"crc32\": \"9aa7f77f\",\n    \"flash_offset\": 569344,\n    \"header_version\": 2,\n    \"sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n    \"size\": 61088,\n    \"strategy\": \"bundled\"\n  },\n  \"controller_sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n  \"controller_size\": 61088,\n  \"controller_strategy\": \"bundled\",\n  \"firmware_version\": null,\n  \"model\": \"elite\",\n  \"product\": \"SMK-37 Elite_900\",\n  \"release_display\": null,\n  \"schema\": \"x0x37-bundled-controller-v1\",\n  \"sha256\": \"630f433ca8b1b4b8e71147d412ac8e1de2fecaa0e9ba31cb26492ea3836da8e0\",\n  \"size\": 651457\n}\n",
+      "stderr": ""
+    },
+    {
+      "model": "pro",
+      "exit_code": 0,
+      "stdout": "{\n  \"controller\": {\n    \"abi\": 2,\n    \"block_crc32\": \"012bf7ea\",\n    \"block_size\": 65536,\n    \"bundled\": true,\n    \"crc32\": \"9aa7f77f\",\n    \"flash_offset\": 569344,\n    \"header_version\": 2,\n    \"sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n    \"size\": 61088,\n    \"strategy\": \"bundled\"\n  },\n  \"controller_sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n  \"controller_size\": 61088,\n  \"controller_strategy\": \"bundled\",\n  \"firmware_version\": null,\n  \"model\": \"pro\",\n  \"product\": \"SMK-37 Pro_900\",\n  \"release_display\": null,\n  \"schema\": \"x0x37-bundled-controller-v1\",\n  \"sha256\": \"c477d930e619784e6c501e987c4bca5ae641123a2555da95b7e067f7d336528e\",\n  \"size\": 651457\n}\n",
+      "stderr": ""
+    }
+  ]
+}

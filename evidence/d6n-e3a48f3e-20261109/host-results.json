@@ -1,0 +1,88 @@
+{
+  "ok": 331,
+  "FAIL": 1,
+  "runner_NOT_RUN": 2,
+  "conditional_NOT_RUN": 9,
+  "NOT_RUN_including_absent_panic": 14,
+  "exit_code": 1,
+  "failures": [
+    {
+      "status": "FAIL",
+      "name": "optimization-equivalence",
+      "detail": "(see build/host/optimization-equivalence.log); required host compiler missing: clang (host clang, not the cached pi32v2 cross compiler)",
+      "full_log": "logs/host-fail-optimization-equivalence.txt"
+    }
+  ],
+  "not_run": [
+    {
+      "status": "not-run",
+      "name": "drum909",
+      "detail": "(../schwung-9W9/src/dsp/er99_engine.c)"
+    },
+    {
+      "status": "not-run",
+      "name": "drum808",
+      "detail": "(../schwung-8W8/src/dsp/sc808_engine.cpp)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-package",
+      "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-ota-entry",
+      "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-ota-entry-model1",
+      "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-ota-entry-model2",
+      "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-update-loader",
+      "detail": "Runner skipped SMK-37 Pro package block: needs build/smk37 app/loader and AC79_SDK at host-suite time; native build was intentionally later"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-build-package",
+      "detail": "Conditional test not admitted in host suite; required build/x0x-smk37.fwsc did not satisfy runner file guard then (native build followed host suite)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-build-package-elite",
+      "detail": "Conditional test not admitted in host suite; required build/x0x-smk37-elite.fwsc did not satisfy runner file guard then (native build followed host suite)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "smk-build-package-mke",
+      "detail": "Conditional test not admitted in host suite; required build/x0x-smk37-mke.fwsc did not satisfy runner file guard then (native build followed host suite)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "ble-package",
+      "detail": "Conditional test not admitted in host suite; required build/x0x-smk37.fwsc did not satisfy runner file guard then (native build followed host suite)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "panic-clear",
+      "detail": "Absent on frozen lineage; not registered in tests/run_tests.sh"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "panic-route",
+      "detail": "Absent on frozen lineage; not registered in tests/run_tests.sh"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "panic-notes",
+      "detail": "Absent on frozen lineage; not registered in tests/run_tests.sh"
+    }
+  ]
+}

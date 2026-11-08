@@ -1,0 +1,14 @@
+[
+  {
+    "model": "elite",
+    "exit_code": 0,
+    "stdout": "{\n  \"controller\": {\n    \"abi\": 2,\n    \"block_crc32\": \"012bf7ea\",\n    \"block_size\": 65536,\n    \"bundled\": true,\n    \"crc32\": \"9aa7f77f\",\n    \"flash_offset\": 569344,\n    \"header_version\": 2,\n    \"sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n    \"size\": 61088,\n    \"strategy\": \"bundled\"\n  },\n  \"controller_sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n  \"controller_size\": 61088,\n  \"controller_strategy\": \"bundled\",\n  \"firmware_version\": null,\n  \"model\": \"elite\",\n  \"product\": \"SMK-37 Elite_900\",\n  \"release_display\": null,\n  \"schema\": \"x0x37-bundled-controller-v1\",\n  \"sha256\": \"630f433ca8b1b4b8e71147d412ac8e1de2fecaa0e9ba31cb26492ea3836da8e0\",\n  \"size\": 651457\n}\n",
+    "stderr": ""
+  },
+  {
+    "model": "pro",
+    "exit_code": 0,
+    "stdout": "{\n  \"controller\": {\n    \"abi\": 2,\n    \"block_crc32\": \"012bf7ea\",\n    \"block_size\": 65536,\n    \"bundled\": true,\n    \"crc32\": \"9aa7f77f\",\n    \"flash_offset\": 569344,\n    \"header_version\": 2,\n    \"sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n    \"size\": 61088,\n    \"strategy\": \"bundled\"\n  },\n  \"controller_sha256\": \"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7\",\n  \"controller_size\": 61088,\n  \"controller_strategy\": \"bundled\",\n  \"firmware_version\": null,\n  \"model\": \"pro\",\n  \"product\": \"SMK-37 Pro_900\",\n  \"release_display\": null,\n  \"schema\": \"x0x37-bundled-controller-v1\",\n  \"sha256\": \"c477d930e619784e6c501e987c4bca5ae641123a2555da95b7e067f7d336528e\",\n  \"size\": 651457\n}\n",
+    "stderr": ""
+  }
+]
