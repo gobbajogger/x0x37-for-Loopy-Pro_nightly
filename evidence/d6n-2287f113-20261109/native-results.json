@@ -1,0 +1,32 @@
+[
+  {
+    "name": "locked-settings",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  {
+    "name": "native-elite",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  {
+    "name": "native-pro",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  {
+    "name": "ARM-ctl",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  {
+    "name": "compose-pro",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  {
+    "name": "compose-elite",
+    "status": "PASS",
+    "exit_code": 0
+  }
+]

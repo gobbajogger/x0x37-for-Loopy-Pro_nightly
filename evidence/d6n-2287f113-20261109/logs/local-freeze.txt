@@ -1,0 +1,12 @@
+HEAD: 2287f113fa4bf74757b4e6d758c2e5464eb47036 PASS
+HEAD^{tree}: fc4ac8ba6145451dfa8886e7050759cf848da2d5 PASS
+HEAD^: e3a48f3e5f284d7b36b8623137919436bbbfd4ed PASS
+origin/wip/one-build: 48e92b76c2f476cf40771e00a04e1838136bb55d PASS
+origin/main: 1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83 PASS
+origin/lane/build-25-m1-port-20261106: b2b929f46f1b7868dfa569d0d0989f5ab91aa16e PASS
+status --porcelain: empty
+PANIC donor: local remote-tracking ref is stale b2b929f4; sanctioned GitHub get_branch read confirms live branch fc0669ccbabf9a7def1e3a4ba6b7660c7ad12249 PASS. No donor ref update performed.
+author=gobbajogger <255244738+gobbajogger@users.noreply.github.com>
+committer=gobbajogger <255244738+gobbajogger@users.noreply.github.com>
+subject=Add panic chords that silence sounding notes and keep HOME+PLAY redo
+trailers=

@@ -1,0 +1,1775 @@
+{
+  "ok": 344,
+  "FAIL": 1,
+  "NOT_RUN": 3,
+  "runner_NOT_RUN": 2,
+  "conditional_NOT_RUN": 1,
+  "exit_code": 1,
+  "failures": [
+    {
+      "status": "FAIL",
+      "name": "optimization-equivalence",
+      "detail": "(see build/host/optimization-equivalence.log); ENV: missing host clang (no installation attempted)"
+    }
+  ],
+  "not_run": [
+    {
+      "status": "NOT_RUN",
+      "name": "drum909",
+      "detail": "(../schwung-9W9/src/dsp/er99_engine.c)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "drum808",
+      "detail": "(../schwung-8W8/src/dsp/sc808_engine.cpp)"
+    },
+    {
+      "name": "smk-build-package-mke",
+      "status": "NOT_RUN",
+      "detail": "Conditional package guard not satisfied; MKE was not built"
+    }
+  ],
+  "inventory": [
+    {
+      "status": "ok",
+      "name": "dsp-host-linkage",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "fastmath",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "fastmath-ubsan",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "play-question",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "play-question-ui",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "sound-reset",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "sound-reset-ui",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "held-step-release",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-perf-identity",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "home-tie-semantics",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "sequencer",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "bass-prob-midi",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "seq-tb3po-bars",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "seq-random-swing",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "seq-random-clock-handoff",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "seq-long-notes",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "seq-pingpong-resize",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "clk-lock",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "seq-random-tie-preview",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "encoder",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "bass-midi-pending-native",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "uac",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "trs",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "undo",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "undo-capacity",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "lz",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "lz-max-match",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "motion",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "host-build",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "original-release-integration",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "original-release-ui",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "original-build",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "freeplay-rate-pads",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "boot-screen",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-theme",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "project-protocol",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "project-save-preflight",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "editor-ota-dispatch",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "storage-scratch",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "project-stage",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "project-runtime",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "save-note-quiet",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "font-pack",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-protocol",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-fader",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-buttons",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-select-mode",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-mixer-edges",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-action-source",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-caption",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-page-port",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-peer-view",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-preset-preserve",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-queue",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-solo-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-rec-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-isr-preemption",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-boff-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-brk-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-bon-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-drum-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "midi-mq-noteoff-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "midi-mq-rt-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "midi-overflow-order",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "midi-out-mq-noteoff-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-out-noteoff-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-out-rt-overflow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "usb-sxq-sticky-apc",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-host-data7",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-host-overflow-data7",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-sender-isolation",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-ble-payload",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-link",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-reconnect-epoch",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-boot-saved-roles",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-central-first-notification",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-active-peer-contract",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-smc-outbound-slots",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-one-peer-command",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-dual-peer",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-command-credit",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-controller-heap",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-midi-receive",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-capture-replay",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-acl-start-flags",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-hci-completed",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-acl-zero-credit",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-link-epoch-reset",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-disconnect-status",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-reachability",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-pickup-acceptance",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-lock",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-lock-beat",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-multi-peer",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-multi-peer-negative",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-pause-loss",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-wheel-mode",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "miami-table-interpolation",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "legacy-303-project",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-interaction-negative",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "corner-coverage",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "part-order",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui-popup",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-mode-page",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-mixer-page",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-shared-glyph",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-drum-mix-material",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-waveform-truth",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui-bounds",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui-negative",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-mapping",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-drum-mutes",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-drum-rs",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-performance-abort",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-filter",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-feedback",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-record-feedback",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-part-select",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smc-clip-visibility",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "drum-pan",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "stereo",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "master",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "drum-kit-identity",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "drum909-adpcm",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "breaks",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "break-suite-registration",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-dsp",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-controls",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-storage",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-midi-pair",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "break-performance",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "brk-loops-seamless",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "brk-outline",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "brk-outline-gate",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "chicago-fx-bridge",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "au-compare-align",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "au-compare-battery",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "install-gate-guard",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "queue-guard",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "install-guards",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "install-head",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "release-tree",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "prepush-trim",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "prepush-allow",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "gate-configs",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "gate-trap",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "quickcheck-plan",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "host-failure-summary",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ctl-compile",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "host-setup",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "gen-nonfont-tables",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "stereo-alone-gen",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "runner-admission",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "update-names",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "gate-reason",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "validation-inputs",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "stage-handoff",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "dev-validate",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "dev-validate-composed",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "nightly-publish",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "gen-cache",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-update-contract",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "gen-order",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "quickcheck-devbug",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "status-lanes",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "status-isolation",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "loop-bars",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-f02-bind",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-f02-bind-web",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "locked-settings",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-flash",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-storage",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-apc40-map",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-apc40",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-ble-clear",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-keys",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-chord-recognize",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-chord-display",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-ck-page-layout",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-arrows",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-arrows-owner",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "apc40-tables",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-idle",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-idle-pad",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "apc40-pad-owner",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-padcal",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "padcal-view",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-padcal-export",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-padcal-wiring",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "pad-placement-doc",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "padcal-flag",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "apc40-lcd565-csv",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "apc-palette",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-targets",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "diag-size",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-inlog",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-central-diag",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-role-switch",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "inlog-tool",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-pad-inputs",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-ble-notify",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-dark",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-usb-clear",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-isolation",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-knob",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-fader-pickup",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-wait",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-apc40-violet",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-package",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-ota-entry",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-ota-entry-model1",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-ota-entry-model2",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-update-loader",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-build-package",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smk-build-package-elite",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-sysex-bounds",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ble-package",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "upload-images",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "upload-tools",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "builtin-break-output",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "break-pack",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "break-pack-web",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "breaks-web",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "breaks-page",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "project-adoption-identities",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "projects-web",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-project-handoff",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "projects-page",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "install-slots-web",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-backup-selection",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-build-safe",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "wav-import-integrity",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-backup",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-begin-cancel",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "smp-begin-cancel",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-backup-durable",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-archive-zone",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-verify-order",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-read-reply",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-ack-integrity",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-echo-7bit",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-migration-matching",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "slot-break-menu-migration",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-slots",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-restore-status",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-ota-finish-ack",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-backup-snapshot",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "installer-ctl",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ctl-read-framing",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ctl-publish-atomic",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "panic-chord",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "panic-notes",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "panic-clear",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "panic-route",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "panic-mutants",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "rec-held-duration",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "original-stale-release",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "rec-endpoint-lifecycle",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "rec-endpoint-storage",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "rec-nonforward-guard",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "rec-live-smk",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ext-midi-rec-smk",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "copy-semantics",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "song-actions",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-feedback",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "remaining-feature-proof-selftest",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "home-pattern-glyph",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "home-overview",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "sound-matrix",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "sound-layout",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "perf-wheel-motion",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "chicago-presentation",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "chicago-readout",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-drum-glyph",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-glyph-polish",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-chicago-env-motion",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "matrix-knob-caption",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "preset-navigation-noop",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "ui-303-entry",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "roadmap-evidence-check",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "roadmap-evidence-check-selftest",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-arrows",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-autosave",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-bleclock",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-blenotes",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-brkslice",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-brkslice_mode_toggle",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-brkslice_trs_overlap",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clip-arrow-menu",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clklock",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clkmove",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clocksrc",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-drum_bass_ch_consume",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-edit_midi_rec_guard",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-edit_oct_no_hidden",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-extclock",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-freeplay",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-getting_started",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-groove",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-guard",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-help",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-jam",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-keysound",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-knobs",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-midiowner",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-migrate",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-migrate0102",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-patterns",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-perf",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-perfsave",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-plock",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-prob",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-probcond",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-probreset",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-roll_continuation",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-roll_short_tie",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-savefeedback",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-savewait",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-showcase",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-slices",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-song",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-song_live_mute_save",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-songrep",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_chicago",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_chicago_idle",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_drum",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_lock",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_miami",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_page_split",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-step303",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-steps64",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-stereo",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-tb3po",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-tour",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-trackmute",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-undo",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-upload",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-upload44",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "scenario-usbnotes",
+      "detail": ""
+    },
+    {
+      "status": "ok",
+      "name": "perf-scratch",
+      "detail": ""
+    },
+    {
+      "status": "FAIL",
+      "name": "optimization-equivalence",
+      "detail": "(see build/host/optimization-equivalence.log); ENV: missing host clang (no installation attempted)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "drum909",
+      "detail": "(../schwung-9W9/src/dsp/er99_engine.c)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "drum808",
+      "detail": "(../schwung-8W8/src/dsp/sc808_engine.cpp)"
+    },
+    {
+      "name": "smk-build-package-mke",
+      "status": "NOT_RUN",
+      "detail": "Conditional package guard not satisfied; MKE was not built"
+    }
+  ],
+  "absent_required_panic_selectors": []
+}

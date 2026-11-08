@@ -1,0 +1,13 @@
+  ok   project-protocol
+  ok   project-save-preflight
+  ok   project-stage
+  ok   project-runtime
+  ok   smc-drum-mutes
+  ok   panic-chord
+  ok   panic-notes
+  ok   panic-clear
+  ok   panic-route
+  ok   panic-mutants
+all tests passed
+
+exit_code=0

@@ -1,0 +1,87 @@
+
+=== locked-settings: python3 tools/check_locked_settings.py ===
+check_locked_settings: 20 settings ok
+
+=== locked-settings exit_code=0 ===
+
+=== native-elite: MODEL=elite ./build.sh --board smk37 ===
+check_locked_settings: 20 settings ok
+experiments/wobble/miami_decimator_adapter.c:7:39: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+    miami_decimator_adapter_t next = {0};
+                                      ^
+                                      {}
+1 warning generated.
+font T: BarlowSemiCondensed-SemiBold.ttf 10px h 12, digit adv 5, 2316 B
+font XS: BarlowSemiCondensed-SemiBold.ttf 12px h 15, digit adv 6, 3288 B
+font S: BarlowSemiCondensed-Medium.ttf 15px h 16, digit adv 7, 4280 B
+font B: BarlowSemiCondensed-Bold.ttf 15px h 16, digit adv 8, 4374 B
+font M: BarlowSemiCondensed-SemiBold.ttf 23px h 24, digit adv 12, 4863 B
+font L: BarlowSemiCondensed-Bold.ttf 31px h 32, digit adv 16, 3584 B
+font set barlow: 23179 B (approx)
+gen_drum_samples: 110549 frames (55275 bytes of ADPCM, 221098 as int16) -> x0x_drum_samples.h; tanh 1026 packed 4104->3046 B + 19 pot curves -> x0x_drum_tables.h
+break bank: none (factory loops are an optional install)
+loader: image 8412 B at 0x1c0a800, bss end 0x1c0f700
+loader: ota.bin 7341 B
+  ok    .ram_text: 844 insns, no calls
+  ok    app code area 552672 B, 70200 B free (Bluetooth block at app.bin 0x86ee0)
+  ok    no soft-double routines (single-precision FPU only)
+  ok    image 482472 B; RAM .data+.bss 95380 B of 98304; pool 335464 B of 344064
+  ok    register access: hal/ only (src/, loader/ clean)
+app      /workspace/plan-all/wt/build/smk37-elite/x0x.bin  482472 B
+loader   /workspace/plan-all/wt/build/smk37-elite/loader/ota.bin  7341 B
+package  /workspace/plan-all/wt/build/x0x-smk37-elite.fwsc  651457 B, identity SMK-37 Elite_900, board smk37
+
+=== native-elite exit_code=0 ===
+
+=== native-pro: MODEL=pro ./build.sh --board smk37 ===
+check_locked_settings: 20 settings ok
+experiments/wobble/miami_decimator_adapter.c:7:39: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+    miami_decimator_adapter_t next = {0};
+                                      ^
+                                      {}
+1 warning generated.
+generate: cached font, drums, and break bank
+loader: image 8412 B at 0x1c0a800, bss end 0x1c0f700
+loader: ota.bin 7341 B
+  ok    .ram_text: 844 insns, no calls
+  ok    app code area 552672 B, 70216 B free (Bluetooth block at app.bin 0x86ee0)
+  ok    no soft-double routines (single-precision FPU only)
+  ok    image 482456 B; RAM .data+.bss 95380 B of 98304; pool 335464 B of 344064
+  ok    register access: hal/ only (src/, loader/ clean)
+app      /workspace/plan-all/wt/build/smk37/x0x.bin  482456 B
+loader   /workspace/plan-all/wt/build/smk37/loader/ota.bin  7341 B
+package  /workspace/plan-all/wt/build/x0x-smk37.fwsc  651457 B, identity SMK-37 Pro_900, board smk37
+
+=== native-pro exit_code=0 ===
+
+=== ARM-ctl: SDK_LOCAL=$AC79_SDK CTL_NATIVE=1 sh ble/ctl/build_ctl.sh ===
+check_locked_settings: 20 settings ok
+ok    cpu/wl82/liba/btctrler.a
+ok    cpu/wl82/liba/wl_rf_common.a
+ok    cpu/wl82/liba/crypto_toolbox_Osize.a
+ok    cpu/wl82/liba/lib_ccm_aes.a
+ok    include_lib/newlib/pi32v2-lib/libc.a
+ok    include_lib/newlib/pi32v2-lib/libcompiler_rt.a
+ok    apps/common/net/wifi_conf.c
+ok    LICENSE
+rf_tables.c: 294 lines
+LTO IR exit 0, undefined symbols: 0
+  load 02087000  vma 02087000      68 B
+  load 02087044  vma 02087044   51388 B
+  load 02093900  vma 02093900    4304 B
+  load 020949d0  vma 01c01800    3516 B
+  load 0209578c  vma 01c025bc    1812 B
+/workspace/plan-all/wt/ble/ctl/out/ctl.img: 61088 B of 65536, crc32 9aa7f77f, RAM 0x1c01800..0x1c07ee0 (26336 B of 26368)
+Done: /workspace/plan-all/wt/ble/ctl/out/ctl.img
+
+=== ARM-ctl exit_code=0 ===
+
+=== compose-pro: python3 tools/add_ctl.py build/x0x-smk37.fwsc ble/ctl/out/ctl.img -o build/x0x-smk37-ble.fwsc ===
+build/x0x-smk37-ble.fwsc: with ble/ctl/out/ctl.img
+
+=== compose-pro exit_code=0 ===
+
+=== compose-elite: python3 tools/add_ctl.py build/x0x-smk37-elite.fwsc ble/ctl/out/ctl.img -o build/x0x-smk37-elite-ble.fwsc ===
+build/x0x-smk37-elite-ble.fwsc: with ble/ctl/out/ctl.img
+
+=== compose-elite exit_code=0 ===

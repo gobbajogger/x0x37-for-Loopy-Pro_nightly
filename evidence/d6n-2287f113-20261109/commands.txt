@@ -1,0 +1,28 @@
+# Commands in /workspace/plan-all/wt; helpers adapted outside evidence directory.
+git fetch origin lane/dev-combined-ui-panic-20261109
+git checkout --detach 2287f113fa4bf74757b4e6d758c2e5464eb47036
+git clean -fdX build ble/ctl/out
+
+# Native runner environment (all inputs cached):
+cd /workspace/plan-all/wt
+export JIELI_TOOLCHAIN=/workspace/build-inputs/jieli/toolchain
+export AC79_SDK=/workspace/build-inputs/fw-AC79_AIoT_SDK
+export JIELI_DOCKER=0
+export X0X_DEV_PADCAL=0
+export CTL_NO_CACHE=1
+export CC=cc
+export CXX=c++
+python3 tools/check_locked_settings.py
+MODEL=elite ./build.sh --board smk37
+MODEL=pro ./build.sh --board smk37
+SDK_LOCAL=$AC79_SDK CTL_NATIVE=1 sh ble/ctl/build_ctl.sh
+python3 tools/add_ctl.py build/x0x-smk37.fwsc ble/ctl/out/ctl.img -o build/x0x-smk37-ble.fwsc
+python3 tools/add_ctl.py build/x0x-smk37-elite.fwsc ble/ctl/out/ctl.img -o build/x0x-smk37-elite-ble.fwsc
+python3 tools/package_nightly.py build/x0x-smk37-elite-ble.fwsc --check --model elite --controller-sha256 aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7 --controller-size 61088
+python3 tools/package_nightly.py build/x0x-smk37-ble.fwsc --check --model pro --controller-sha256 aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7 --controller-size 61088
+sh tests/run_tests.sh play-question-ui play-question smc-lock-beat
+X0X_TEST_JOBS=2 sh tests/run_tests.sh panic-clear panic-route panic-notes panic-chord panic-mutants smc-drum-mutes project-protocol project-save-preflight project-stage project-runtime
+sh tests/run_tests.sh
+git rev-parse HEAD HEAD^{tree} HEAD^
+git status --porcelain
+sha256sum -c SHA256SUMS # from evidence directory

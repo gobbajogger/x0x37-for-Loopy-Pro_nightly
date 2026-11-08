@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/workspace/plan-all/wt/build/x0x-smk37-elite.fwsc",
+    "sha256": "afd16eb3bf4cbb4371ea79cae70943579952abad4e6d6f1da1b921825d759990",
+    "size": 651457
+  },
+  {
+    "path": "/workspace/plan-all/wt/build/x0x-smk37.fwsc",
+    "sha256": "2655eb272fc21d1ba8261f18f5c7c2d3776729a9c4ed07810cdea080c643890d",
+    "size": 651457
+  },
+  {
+    "path": "/workspace/plan-all/wt/build/x0x-smk37-elite-ble.fwsc",
+    "sha256": "df0b1f82ffd374ee1628e7cd1b9f0276a761abeb45770f06616bbceb7838560a",
+    "size": 651457
+  },
+  {
+    "path": "/workspace/plan-all/wt/build/x0x-smk37-ble.fwsc",
+    "sha256": "2a7ddfcab3299367354f4263efa5ec93710c494f9895362f9f418948b033a770",
+    "size": 651457
+  },
+  {
+    "path": "/workspace/plan-all/wt/ble/ctl/out/ctl.img",
+    "sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+    "size": 61088
+  }
+]

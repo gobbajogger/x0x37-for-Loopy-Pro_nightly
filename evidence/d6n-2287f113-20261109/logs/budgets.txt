@@ -1,0 +1,5 @@
+  ok    app code area 552672 B, 70200 B free (Bluetooth block at app.bin 0x86ee0)
+  ok    image 482472 B; RAM .data+.bss 95380 B of 98304; pool 335464 B of 344064
+  ok    app code area 552672 B, 70216 B free (Bluetooth block at app.bin 0x86ee0)
+  ok    image 482456 B; RAM .data+.bss 95380 B of 98304; pool 335464 B of 344064
+/workspace/plan-all/wt/ble/ctl/out/ctl.img: 61088 B of 65536, crc32 9aa7f77f, RAM 0x1c01800..0x1c07ee0 (26336 B of 26368)

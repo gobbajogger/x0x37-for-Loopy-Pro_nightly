@@ -1,0 +1,6 @@
+  ok   play-question
+  ok   play-question-ui
+  ok   smc-lock-beat
+all tests passed
+
+exit_code=0

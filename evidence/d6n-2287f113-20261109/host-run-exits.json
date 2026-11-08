@@ -1,0 +1,14 @@
+[
+  {
+    "name": "target-ui",
+    "exit_code": 0
+  },
+  {
+    "name": "target-panic",
+    "exit_code": 0
+  },
+  {
+    "name": "host-suite",
+    "exit_code": 1
+  }
+]
