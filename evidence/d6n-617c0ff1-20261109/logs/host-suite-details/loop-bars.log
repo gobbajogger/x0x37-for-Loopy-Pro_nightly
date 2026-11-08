@@ -1,0 +1,8 @@
+  ok   one bar at 110 BPM, 44.1 kHz                     96218 samples at 44100 Hz: 1 bar(s)
+  ok   one bar at 110 BPM, 22.05 kHz                    48109 samples at 22050 Hz: 1 bar(s)
+  ok   two bars at 96 BPM, 44.1 kHz                    220500 samples at 44100 Hz: 2 bar(s)
+  ok   two bars at 96 BPM, 22.05 kHz                   110250 samples at 22050 Hz: 2 bar(s)
+  ok   four bars at 120 BPM, 44.1 kHz                  352800 samples at 44100 Hz: 4 bar(s)
+  ok   the same samples read as 22.05 kHz               96218 samples at 22050 Hz: 2 bar(s)
+  ok   rate 0: 22.05 kHz assumed (old headers)          48109 samples at     0 Hz: 1 bar(s)
+loop bars: the guess follows the loop's rate

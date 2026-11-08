@@ -1,0 +1,34 @@
+  ok clksrc == 0
+  ok clksrc == 2
+  ok clkext == 1
+  ok playing == 1
+  ok waiting == 1
+  ok msgwait == 1
+  leds: buttons SAVE SEQ PLAY | white....#...#...#... black#..........
+  ok clocks_out == 0
+  ok transport_out == 0
+  ok waiting == 0
+  ok playing == 1
+  ok clocks_out == 0
+  ok transport_out == 0
+  ok playing == 1
+  ok waiting == 1
+  ok tempo == 136 (>130)
+  ok playing == 0
+  ok transport_out == 0
+  ok clksrc == 1
+  ok playing == 0
+  ok clkext == 0
+  ok playing == 1
+  ok clkext == 0
+  ok clocks_out == 83 (>60)
+  ok transport_out == 1
+  ok playing == 0
+  ok transport_out == 2
+  ok clksrc == 1
+  ok storeset31 == 10
+  ok clksrc == 0
+  ok clksrc == 2
+  ok clksrc == 0
+  ok clksrc == 0
+host: 12810 ms simulated, 81 blits, render 0.2% of real time (host CPU)

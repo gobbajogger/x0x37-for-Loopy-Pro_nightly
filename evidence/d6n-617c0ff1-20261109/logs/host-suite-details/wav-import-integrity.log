@@ -1,0 +1,20 @@
+test_bad_format_tags_and_depths_rejected (__main__.WavImportSafety.test_bad_format_tags_and_depths_rejected) ... ok
+test_bad_or_truncated_fmt_rejected_cleanly (__main__.WavImportSafety.test_bad_or_truncated_fmt_rejected_cleanly) ... ok
+test_extensible_extension_contract_rejected (__main__.WavImportSafety.test_extensible_extension_contract_rejected) ... ok
+test_extensible_standard_guids_allowed (__main__.WavImportSafety.test_extensible_standard_guids_allowed) ... ok
+test_finite_mix_preserves_order_and_values (__main__.WavImportSafety.test_finite_mix_preserves_order_and_values) ... ok
+test_float64_multichannel_mix_overflow_rejected (__main__.WavImportSafety.test_float64_multichannel_mix_overflow_rejected) ... ok
+test_float64_stereo_mix_overflow_rejected (__main__.WavImportSafety.test_float64_stereo_mix_overflow_rejected) ... ok
+test_float_payload_nonfinite_rejected (__main__.WavImportSafety.test_float_payload_nonfinite_rejected) ... ok
+test_float_positive_formats (__main__.WavImportSafety.test_float_positive_formats) ... ok
+test_frame_alignment_rejected (__main__.WavImportSafety.test_frame_alignment_rejected) ... ok
+test_normal_resampling_unmodified (__main__.WavImportSafety.test_normal_resampling_unmodified) ... ok
+test_pcm_positive_formats (__main__.WavImportSafety.test_pcm_positive_formats) ... ok
+test_resampling_overflow_rejected (__main__.WavImportSafety.test_resampling_overflow_rejected) ... ok
+test_truncated_data_allowed (__main__.WavImportSafety.test_truncated_data_allowed) ... ok
+test_zero_channels_and_rate_rejected (__main__.WavImportSafety.test_zero_channels_and_rate_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.018s
+
+OK

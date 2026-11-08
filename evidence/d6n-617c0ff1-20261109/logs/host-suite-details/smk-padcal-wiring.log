@@ -1,0 +1,23 @@
+PASS menu: PAD COLOURS is in GLOBAL > SYSTEM, not in clip mode
+PASS menu: the row closes the list and starts the mode
+PASS enter: not in clip mode; start values from the LCD table; held buttons and pads give no edge
+PASS UI: no buttons in the mode
+PASS UI: no knobs in the mode
+PASS UI: no keys in the mode
+PASS LCD: the page draws before the clip grid
+PASS frame: a project hold returns before pad calibration dispatch
+PASS frame: pad calibration runs before normal arrows, faders and clip mode
+PASS keys: PATCH or GLOBE ends the mode on the release
+PASS keys: PLAY marks ok
+PASS keys: OCT- / OCT+ change the page
+PASS pads: a press selects the pad
+PASS knobs: K2 / K3 / K4 nudge R / G / B, the other knob turns are dropped
+PASS pads: each pad shows its entry at half level (as a lit clip pad), on the corrected pad
+PASS orientation: only reading position 0 lit white; a pad press goes through the correction
+PASS orientation: K2 moves the light, SEQ PLAY confirms (no mark)
+PASS orientation: the LCD asks 'pad 1 top-left?'
+PASS LCD: the ok dot has the contrast colour of its square as drawn (smk_padcal_dot565, boost included)
+PASS LCD: the target colours, the ok dots and the entry number
+PASS RAM only: no settings byte, no flash save
+PASS export: INLOG args 2-5 give 32 entries each (tests/smk_padcal_export_test.py decodes them)
+smk_padcal_wiring_test: ok

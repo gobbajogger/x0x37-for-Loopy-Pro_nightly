@@ -1,0 +1,2 @@
+COMPILE cc -std=c99 -O1 -g -Wall -Wextra -Werror -I/workspace/plan-all/wt-617c0ff1/firmware/src -I/workspace/plan-all/wt-617c0ff1/tests/host /workspace/plan-all/wt-617c0ff1/build/host/iso/smc-solo-overflow/tmp/smc-r10-combined-ohkr4lhn/test.c -o /workspace/plan-all/wt-617c0ff1/build/host/iso/smc-solo-overflow/tmp/smc-r10-combined-ohkr4lhn/test
+SMC combined source-window Solo overflow: 24/24 PASS

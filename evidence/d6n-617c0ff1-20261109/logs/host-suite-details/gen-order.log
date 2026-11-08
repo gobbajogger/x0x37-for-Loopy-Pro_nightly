@@ -1,0 +1,7 @@
+ok   jobs=8: drum_pan_test gen=yes host=yes
+ok   jobs=8: stereo_test gen=yes host=yes
+ok   jobs=8: run_tests.sh passed
+ok   jobs=1: drum_pan_test gen=yes host=yes
+ok   jobs=1: stereo_test gen=yes host=yes
+ok   jobs=1: run_tests.sh passed
+gen order: all passed

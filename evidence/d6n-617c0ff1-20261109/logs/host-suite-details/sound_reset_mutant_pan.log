@@ -1,0 +1,20 @@
+FAIL mixer pan changed part 0
+FAIL part 0 mixer plane changed
+FAIL mixer pan changed part 0 after redo
+FAIL mixer pan changed part 1
+FAIL part 1 mixer plane changed
+FAIL mixer pan changed part 1 after redo
+FAIL mixer pan changed part 2
+FAIL part 2 mixer plane changed
+FAIL mixer pan changed part 2 after redo
+FAIL mixer pan changed part 3
+FAIL part 3 mixer plane changed
+FAIL mixer pan changed part 3 after redo
+FAIL mixer pan changed part 4
+FAIL part 4 mixer plane changed
+FAIL mixer pan changed part 4 after redo
+FAIL last-parameter moved the mixer
+FAIL bass-tag moved the mixer
+FAIL part 0 oversize diff changed the mixer
+FAIL part 2 oversize diff changed the mixer
+sound-reset: 19 FAILED

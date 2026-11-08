@@ -1,0 +1,39 @@
+PING before editor: exactly once, ownership intact   ok
+PING between consumers: retained unchanged           ok
+PING next loop: exactly once, ownership intact       ok
+PING after services: exactly once                    ok
+CTL offset63392/count224 before editor: exactly once, ownership intact ok
+CTL offset63392/count224 between consumers: retained unchanged ok
+CTL offset63392/count224 next loop: exactly once, ownership intact ok
+CTL offset63392/count224 after services: exactly once ok
+PROJECT before editor: exactly once, ownership intact ok
+PROJECT between consumers: retained unchanged        ok
+PROJECT next loop: exactly once, ownership intact    ok
+PROJECT after services: exactly once                 ok
+SMP_WRITE before editor: exactly once, ownership intact ok
+SMP_WRITE between consumers: retained unchanged      ok
+SMP_WRITE next loop: exactly once, ownership intact  ok
+SMP_WRITE after services: exactly once               ok
+BOOT_WRITE before editor: exactly once, ownership intact ok
+BOOT_WRITE between consumers: retained unchanged     ok
+BOOT_WRITE next loop: exactly once, ownership intact ok
+BOOT_WRITE after services: exactly once              ok
+unknown editor command before editor: exactly once, ownership intact ok
+unknown editor command between consumers: retained unchanged ok
+unknown editor command next loop: exactly once, ownership intact ok
+unknown editor command after services: exactly once  ok
+late CTL after PING release remains pending          ok
+PING then late CTL each dispatch once                ok
+OTA identity routed once with exact model            ok
+late OTA identity progresses next loop               ok
+short editor prefix drains as before                 ok
+bad OTA checksum drains without reply                ok
+unknown traffic drains; subsequent identity works    ok
+project hold discards OTA without polling scratch    ok
+editor PING still dispatches under project hold      ok
+recovery hold keeps OTA blocked                      ok
+safe-mode OTA drains editor and answers next identity ok
+session consumer still drains unrelated editor frame ok
+session consumer accepts next valid OTA frame        ok
+no session/flash/reset/platform operation invoked    ok
+EDITOR/OTA DISPATCH PASS (host source routing only)

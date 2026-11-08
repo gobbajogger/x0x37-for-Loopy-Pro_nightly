@@ -1,0 +1,5 @@
+ok   stereo alone jobs=1
+ok   stereo alone jobs=8
+ok   drum-pan alone jobs=1
+ok   drum-pan alone jobs=8
+stereo-alone-gen: ok

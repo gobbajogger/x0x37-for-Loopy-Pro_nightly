@@ -1,0 +1,10 @@
+ok   device bug, good replay test: QUICK PASS a0f72bb 0 s (device bug step only)
+ok   device bug, no inlog test: QUICK FAIL 2c6c340 0 s DEVICE BUG: 2c6c340 adds no tests/*inlog* replay test
+ok   device bug, owner INLOG skip: QUICK PASS c329daf 1 s (device bug step only)
+ok   device bug, test passes on the parent: QUICK FAIL 1c34056 0 s DEVICE BUG: 1c34056: the replay test weak-inlog does not fail on the parent 1c34056^ (rc 0)
+ok   device bug, inlog file that no test uses: QUICK FAIL e51738b 0 s DEVICE BUG: e51738b: no run_tests.sh test uses tests/fixtures/x_inlog.txt
+ok   device bug, inlog log read by a test: QUICK PASS 9e8b54d 0 s (device bug step only)
+ok   source-proven bug with regression: QUICK PASS 1eb04b4 0 s (device bug step only)
+ok   source evidence is not a test: QUICK FAIL ff3e1c9 0 s DEVICE BUG: ff3e1c9: Bug evidence must name an added or changed tests/ file
+ok   no device bug: QUICK PASS debf26e 0 s (device bug step only)
+quickcheck device bug: 9 of 9 ok

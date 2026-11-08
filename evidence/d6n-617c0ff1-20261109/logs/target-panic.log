@@ -1,0 +1,17 @@
+# 2026-11-09 08:14:31 Asia/Vladivostok
+# cwd=/workspace/plan-all/wt-617c0ff1
+$ X0X_TEST_JOBS=2 sh tests/run_tests.sh panic-clear panic-route panic-notes panic-chord panic-mutants smc-drum-mutes project-protocol project-save-preflight project-stage project-runtime
+  ok   project-protocol
+  ok   project-save-preflight
+  ok   project-stage
+  ok   project-runtime
+  ok   smc-drum-mutes
+  ok   panic-chord
+  ok   panic-notes
+  ok   panic-clear
+  ok   panic-route
+  ok   panic-mutants
+all tests passed
+
+# exit_code=0
+# finished 2026-11-09 08:18:08 Asia/Vladivostok

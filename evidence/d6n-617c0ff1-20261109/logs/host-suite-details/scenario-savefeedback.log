@@ -1,0 +1,12 @@
+  ok savestate == 0
+  ok savestate == 1
+  ok savestate == 3
+  ok store_writes == 0
+  ok savestate == 3
+  ok savestate == 0
+  ok store_writes == 6 (>0)
+  ok savestate == 1
+  ok savestate == 2
+  ok savestate == 2
+  ok savestate == 0
+host: 8950 ms simulated, 34 blits, render 0.2% of real time (host CPU)

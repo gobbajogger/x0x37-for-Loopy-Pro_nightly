@@ -1,0 +1,7 @@
+# 2026-11-09 08:13:44 Asia/Vladivostok
+# cwd=/workspace/plan-all/wt-617c0ff1
+$ python3 tools/check_locked_settings.py
+check_locked_settings: 20 settings ok
+
+# exit_code=0
+# finished 2026-11-09 08:13:44 Asia/Vladivostok

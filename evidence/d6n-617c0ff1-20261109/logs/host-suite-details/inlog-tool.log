@@ -1,0 +1,32 @@
+INLOG: 5 entries, the oldest first (time before the read, fm1_ms now 2000)
+     -1.000 s  EDGE         link up, notify on
+     -0.500 s  BLE          note on  ch  1 (steady) note  32 (cell row 4 col 0) vel 69 (0x45, blue, pad table 060078)
+     -0.490 s  BLE          note on  ch 15 (blink) note  33 (cell row 4 col 1) vel 11 (0x0B, dim red, pad table 050100)
+     -0.400 s  BLE NO CELL  note off ch  1 (steady) note  32 (cell row 4 col 0) vel 0 (off)
+     -0.300 s  USB          note on  ch  1 (steady) note   5 (cell row 0 col 5) vel 69 (0x45, blue, pad table 060078)
+Stored clip cells (APC row 4 = top Loopy row; velocity/channel; '.' = off):
+  row 4:  69/0   11/14    .      .      .      .      .      .  
+  row 3:    .      .      .      .      .      .      .      .  
+  row 2:    .      .      .      .      .      .      .      .  
+  row 1:    .      .      .      .      .      .      .      .  
+  row 0:    .      .      .      .      .      .      .      .  
+Colours in the cells: vel 11 (0x0B, dim red, pad table 050100); vel 69 (0x45, blue, pad table 060078)
+PADS: the LED output (hardware pads 0-7 top row, 8-15 bottom row; R,G,B; a frame waits to go out: no)
+  pad  0: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad  1: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad  2: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad  3: to send   0,  0,127 (blue)  sent   0,  0,127 (blue)
+  pad  4: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad  5: to send   0,  0,  0 (off)  sent 127,  0,  0 (red)  MISMATCH: the pad shows a colour that the firmware did not ask for
+  pad  6: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad  7: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad  8: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad  9: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad 10: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad 11: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad 12: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad 13: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad 14: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  pad 15: to send   0,  0,  0 (off)  sent   0,  0,  0 (off)
+  WARNING: all clip cells are off, but 2 pads show a colour
+PASS INLOG reply decode and text

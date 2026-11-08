@@ -1,0 +1,10 @@
+# 2026-11-09 08:14:06 Asia/Vladivostok
+# cwd=/workspace/plan-all/wt-617c0ff1
+$ sh tests/run_tests.sh play-question-ui play-question smc-lock-beat
+  ok   play-question
+  ok   play-question-ui
+  ok   smc-lock-beat
+all tests passed
+
+# exit_code=0
+# finished 2026-11-09 08:14:31 Asia/Vladivostok

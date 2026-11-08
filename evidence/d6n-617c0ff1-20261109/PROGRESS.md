@@ -1,0 +1,37 @@
+- 2026-11-09 08:13:41 Asia/Vladivostok: Codex read-only attempt hit usage limit; proceeding directly on box with cached toolchain (no downloads).
+- 2026-11-09 08:13:44 Asia/Vladivostok: All frozen source / protected tracking and live refs match; evidence branch absent; pinned schwung sources match.
+- 2026-11-09 08:13:44 Asia/Vladivostok: START build-inputs
+- 2026-11-09 08:13:44 Asia/Vladivostok: build-inputs: exit 0
+- 2026-11-09 08:13:44 Asia/Vladivostok: START locked-settings
+- 2026-11-09 08:13:44 Asia/Vladivostok: locked-settings: exit 0
+- 2026-11-09 08:13:44 Asia/Vladivostok: START native-elite
+- 2026-11-09 08:13:50 Asia/Vladivostok: native-elite: exit 0
+- 2026-11-09 08:13:50 Asia/Vladivostok: START native-pro
+- 2026-11-09 08:13:55 Asia/Vladivostok: native-pro: exit 0
+- 2026-11-09 08:13:55 Asia/Vladivostok: START ARM-ctl
+- 2026-11-09 08:13:59 Asia/Vladivostok: ARM-ctl: exit 0
+- 2026-11-09 08:13:59 Asia/Vladivostok: START compose-pro
+- 2026-11-09 08:13:59 Asia/Vladivostok: compose-pro: exit 0
+- 2026-11-09 08:13:59 Asia/Vladivostok: START compose-elite
+- 2026-11-09 08:13:59 Asia/Vladivostok: compose-elite: exit 0
+- 2026-11-09 08:13:59 Asia/Vladivostok: START native-mke
+- 2026-11-09 08:14:05 Asia/Vladivostok: native-mke: exit 0
+- 2026-11-09 08:14:05 Asia/Vladivostok: START artifact-sha256-size
+- 2026-11-09 08:14:05 Asia/Vladivostok: artifact-sha256-size: exit 0
+- 2026-11-09 08:14:05 Asia/Vladivostok: START package-elite
+- 2026-11-09 08:14:06 Asia/Vladivostok: package-elite: exit 0
+- 2026-11-09 08:14:06 Asia/Vladivostok: START package-pro
+- 2026-11-09 08:14:06 Asia/Vladivostok: package-pro: exit 0
+- 2026-11-09 08:14:06 Asia/Vladivostok: Native and package phase complete; starting measured host tests AFTER native with AC79_SDK retained.
+- 2026-11-09 08:14:06 Asia/Vladivostok: START target-ui
+- 2026-11-09 08:14:31 Asia/Vladivostok: target-ui: exit 0
+- 2026-11-09 08:14:31 Asia/Vladivostok: START target-panic
+- 2026-11-09 08:18:08 Asia/Vladivostok: target-panic: exit 0
+- 2026-11-09 08:18:08 Asia/Vladivostok: START host-suite
+- 2026-11-09 08:37:23 Asia/Vladivostok: host-suite: exit 0
+- 2026-11-09 08:37:23 Asia/Vladivostok: Host runs complete. Device NOT_RUN (no device connected / no device testing authorized); hardware_tested=false.
+- 2026-11-09 08:37:23 Asia/Vladivostok: START source-final
+- 2026-11-09 08:37:23 Asia/Vladivostok: source-final: exit 0
+- 2026-11-09 08:37:23 Asia/Vladivostok: Final source HEAD/tree match, porcelain empty. Ready for evidence finalization.
+- 2026-11-09 08:37:29 Asia/Vladivostok: Finalization: source and artifacts unchanged after host; protected refs unchanged; metadata complete; manifest generated and sha256sum -c verification follows (check output in SHA256SUMS.check.log).
+- 2026-11-09 08:37:48 Asia/Vladivostok: Evidence complete: sha256sum -c passed, 401 named text files OK, exit 0. No firmware/controller/toolchain binaries included. Manifest regenerated after this final milestone; same verification repeated successfully. No external actions taken.

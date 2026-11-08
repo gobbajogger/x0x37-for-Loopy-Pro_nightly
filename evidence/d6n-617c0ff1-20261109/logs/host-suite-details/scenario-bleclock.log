@@ -1,0 +1,6 @@
+  ok playing == 1
+  ok playing == 1
+  ok playing == 1
+  ok playing == 0
+  ok tempo == 120
+host: 7780 ms simulated, 110 blits, render 0.3% of real time (host CPU)

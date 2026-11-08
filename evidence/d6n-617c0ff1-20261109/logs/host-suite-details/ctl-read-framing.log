@@ -1,0 +1,24 @@
+test_check_ctl_rejects_aliased_address_even_with_matching_crc (__main__.ControllerReadTests.test_check_ctl_rejects_aliased_address_even_with_matching_crc) ... ok
+test_install_gate_accepts_valid_complete_readback (__main__.ControllerReadTests.test_install_gate_accepts_valid_complete_readback) ... ok
+test_install_gate_rejects_oversize_response_even_with_matching_crc (__main__.ControllerReadTests.test_install_gate_rejects_oversize_response_even_with_matching_crc) ... ok
+test_malformed_second_frame_stops_before_third (__main__.ControllerReadTests.test_malformed_second_frame_stops_before_third) ... ok
+test_reject_nonsevenbit_high_address_byte (__main__.ControllerReadTests.test_reject_nonsevenbit_high_address_byte) ... ok
+test_reject_nonsevenbit_low_address_alias_second_frame (__main__.ControllerReadTests.test_reject_nonsevenbit_low_address_alias_second_frame) ... ok
+test_reject_nonsevenbit_middle_address_alias_high_offset (__main__.ControllerReadTests.test_reject_nonsevenbit_middle_address_alias_high_offset) ... ok
+test_reject_nonsevenbit_wire_data (__main__.ControllerReadTests.test_reject_nonsevenbit_wire_data) ... ok
+test_reject_orphan_pack7_mask (__main__.ControllerReadTests.test_reject_orphan_pack7_mask) ... ok
+test_reject_overlong_canonical_frame (__main__.ControllerReadTests.test_reject_overlong_canonical_frame) ... ok
+test_reject_short_data (__main__.ControllerReadTests.test_reject_short_data) ... ok
+test_reject_truncated_address (__main__.ControllerReadTests.test_reject_truncated_address) ... ok
+test_reject_unused_mask_bits (__main__.ControllerReadTests.test_reject_unused_mask_bits) ... ok
+test_reject_wrong_address (__main__.ControllerReadTests.test_reject_wrong_address) ... ok
+test_valid_highbit_and_multiframe (__main__.ControllerReadTests.test_valid_highbit_and_multiframe) ... ok
+test_valid_odd_final_pair_rounding (__main__.ControllerReadTests.test_valid_odd_final_pair_rounding) ... ok
+test_valid_two_byte_reply (__main__.ControllerReadTests.test_valid_two_byte_reply) ... ok
+test_zero_read_sends_no_commands (__main__.ControllerReadTests.test_zero_read_sends_no_commands) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.027s
+
+OK
+Bluetooth controller block read back: 65536 B, unit CRC32 33c3a18b, expected block CRC32 33c3a18b

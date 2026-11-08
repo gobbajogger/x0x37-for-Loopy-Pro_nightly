@@ -1,0 +1,46 @@
+PASS K0 clip mode, no host: the knobs send on Bluetooth (USB CC48 0 CC51 0, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K1 Loopy on the Mac (USB, mode 0x41): the knobs send CC 48 and CC 51 (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K2 both links up, clip colours on both: the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K2 5 s later: the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K3 the introduction with mode 0x42: the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K4 the introduction with mode 0x40 (generic): the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K5 Bluetooth notify off (Loopy closed on the iPhone): the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K5 Bluetooth link end: the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K6 the Mac sleeps (USB suspend): the knobs send on Bluetooth (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K6 the Mac wakes (resume): the knobs send on USB again (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K7 the cable in again (bus reset, enumeration): the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K7 10 s later: the knobs send (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K8 a menu or a help card on the screen: the knobs send no CC (0 CC)
+PASS K8 the menu and the help card closed: the knobs send again (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K9 ARP opens on a press and stays off
+PASS K9 ON is selected
+PASS K9 knob 3 enables ARP
+PASS K9 knob 2 selects ORDER
+PASS K9 knob 3 edits ORDER (field 0 -> 1, want 1; CC 0)
+PASS K9 > steps selected ORDER
+PASS K9 < steps selected ORDER
+PASS K9 second press closes page and keeps ARP on
+PASS K9 SCALE opens without enabling
+PASS K9 SCALE ON can be edited
+PASS K9 keybed still plays while SCALE page is open
+PASS K9 CHORD replaces SCALE page, stages unchanged
+PASS K9 CHORD page closes
+PASS K9 no page: CC controls resume (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS K11 outer C6 blocks autosave before key polling
+PASS K11 held outer C6 keeps autosave quiet
+PASS K11 release starts the quiet interval
+PASS K11 autosave resumes after the quiet interval
+PASS K11 clip CC turn starts the quiet interval
+PASS K11 autosave resumes after the CC turn
+PASS K11 queued SAVE waits during a held clip note
+PASS K11 queued SAVE remains pending through the held note
+PASS K11 queued SAVE waits after key release
+PASS K11 queued SAVE waits for a pending clip CC turn
+PASS K11 queued SAVE waits after the CC turn
+PASS K11 queued SAVE runs once performance is quiet
+PASS K12 project hold suppresses key, stage and knob MIDI/edits
+PASS K12 project hold consumes raw key edges and stale start
+PASS K12 project hold blocks queued SAVE
+PASS K12 held key and stage button do not retrigger on release
+PASS K12 fresh knob turns resume after project hold (USB CC48 1 CC51 1, BT CC48 1 CC51 1, clip 1 owned 1)
+PASS 0 fail

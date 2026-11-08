@@ -1,0 +1,2 @@
+source: /workspace/plan-all/wt-617c0ff1/firmware/src/app/smc_mixer.c compiler: cc -std=c11 -O1 -g -Wall -Wextra -Werror /tmp/smc-ble-payload-v7pc__ee/test.c -o /tmp/smc-ble-payload-v7pc__ee/test
+checks=26 failed=0

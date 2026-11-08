@@ -1,0 +1,4 @@
+PASS disconnect clears the clip pads
+PASS reconnect with new feedback shows the colours again
+PASS CCCD 0 clears the clip pads; notify on again with feedback shows them
+PASS a steady link keeps the clip feedback

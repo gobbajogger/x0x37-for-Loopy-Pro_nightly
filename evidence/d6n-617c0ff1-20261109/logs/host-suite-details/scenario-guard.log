@@ -1,0 +1,17 @@
+  ok guard == 0
+  ok guard == 1
+  ok guardcount == 1
+  ok peak -8.2 dBFS
+  ok guard == 1
+  ok guard == 0
+  ok guard == 0
+  ok guard == 1
+  ok guardcount == 2
+  ok guard == 1
+  ok listsel == 23
+  ok view == 7
+  ok perftest == 0
+  ok guard == 0
+  ok perftest == -1
+  ok guard == 1
+host: 20990 ms simulated, 265 blits, render 0.9% of real time (host CPU)

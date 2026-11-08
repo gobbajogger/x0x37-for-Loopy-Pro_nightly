@@ -1,0 +1,11 @@
+ok   no queue file: GATE OK 64e5d7c /workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/res/6be6540590fc49dac2717148954849f23e7764dc.md (config dev)
+ok   open lines in the history, done line outside: GATE OK 64e5d7c /workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/res/6be6540590fc49dac2717148954849f23e7764dc.md (config dev; queue: 2 open lines in 64e5d7c)
+ok   open line not an ancestor: REFUSED 64e5d7c: open queue line 970cb8b is not in the install commit 64e5d7c: install only the full set (/workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/queue.b39F7P)
+ok   open line with an unknown commit: REFUSED 64e5d7c: open queue line, commit 0123456789abcdef0123 is not in /workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/repo (/workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/queue.b39F7P)
+ok   open line with no commit: REFUSED 64e5d7c: open queue line with no commit in /workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/queue.b39F7P: - [ ] a change with no commit
+ok   fixture no-commit.txt: open lines with no commit (exit 3): REFUSED 64e5d7c: open queue line with no commit in /workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/queue.b39F7P: - [ ] pending Knob regression fix (Firmware Main Builder). No commit yet. This line blocks the install.
+ok   sync copies QUEUE.md
+ok   guard on the Mac copy, open line not an ancestor: REFUSED 64e5d7c: open queue line 970cb8b556aa3fdb86a79cc02fe5317122d05f81 is not in the install commit 64e5d7c: install only the full set (/workspace/plan-all/wt-617c0ff1/build/host/iso/queue-guard/tmp/qguard.DvC64p/mac/QUEUE.md)
+ok   scan flags the bad fixture leaky_test.sh
+ok   scan: each test that runs require_gate_pass.sh sets X0X_QUEUE_FILE
+queue guard: 10 of 10 ok

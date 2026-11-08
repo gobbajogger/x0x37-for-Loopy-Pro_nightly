@@ -1,0 +1,17 @@
+test_failure_after_first_file_rolls_back (__main__.OfflineSlotBuilder.test_failure_after_first_file_rolls_back) ... ok
+test_fdopen_failure_closes_raw_descriptor (__main__.OfflineSlotBuilder.test_fdopen_failure_closes_raw_descriptor) ... ok
+test_identify_after_fstat_failure (__main__.OfflineSlotBuilder.test_identify_after_fstat_failure) ... ok
+test_normal_pair_and_repeat_no_clobber (__main__.OfflineSlotBuilder.test_normal_pair_and_repeat_no_clobber) ... ok
+test_parent_swap_cannot_write_elsewhere (__main__.OfflineSlotBuilder.test_parent_swap_cannot_write_elsewhere) ... ok
+test_preexisting_bin_prevents_header_write (__main__.OfflineSlotBuilder.test_preexisting_bin_prevents_header_write) ... ok
+test_real_cli_build_dispatch_no_overwrite (__main__.OfflineSlotBuilder.test_real_cli_build_dispatch_no_overwrite) ... ok
+test_second_collision_after_preflight_preserves_foreign (__main__.OfflineSlotBuilder.test_second_collision_after_preflight_preserves_foreign) ... ok
+test_short_write_does_not_leave_header (__main__.OfflineSlotBuilder.test_short_write_does_not_leave_header) ... ok
+test_symlink_destination_preserves_owner_file (__main__.OfflineSlotBuilder.test_symlink_destination_preserves_owner_file) ... ok
+test_unidentified_first_new_file_requires_explicit_manual_recovery (__main__.OfflineSlotBuilder.test_unidentified_first_new_file_requires_explicit_manual_recovery) ... ok
+test_unidentified_second_new_file_keeps_foreign_safe_and_explains_recovery (__main__.OfflineSlotBuilder.test_unidentified_second_new_file_keeps_foreign_safe_and_explains_recovery) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.015s
+
+OK

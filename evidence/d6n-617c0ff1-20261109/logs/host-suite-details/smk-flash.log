@@ -1,0 +1,19 @@
+smk flash: no protected sector passes the app's allow-list (erase, page)                  ok
+smk flash: no protected sector passes the loader's allow-list                             ok
+smk flash: the RAM driver's own net (FL_PROTECTED) covers every protected sector          ok
+smk flash: straddling ranges refused: 0xBF000+0x2000, 0xF3000+0x2000, 0x3000+0x2000       ok
+smk flash: wrapping ranges refused (off + n past 4 GiB)                                   ok
+smk flash: app windows: FL_DATA 0x9D000-0xAFFFF, FL_SMPV 0xB0000-0xBAFFF, FL_OTA 0xBB000-0xBFFFF, FL_SMP 0xC2000-0xF3FFF ok
+smk flash: FL_DATA (the store) and FL_SMPV (VM spare) do not overlap: no store sector in 0xB0000-0xBAFFF ok
+smk flash: Bluetooth block 0x8B000-0x9AFFF: 64 KiB, one piece, sector aligned, in FL_APP below the app slot end ok
+smk flash: loader: app area 0x4000-0x9CFFF, records 0x9D000-0xBFFFF only                  ok
+smk flash: storage.c: every object (A/B) in FL_DATA below the owner tag, no two share a sector ok
+smk flash: storage.c: settings 0x9D000/0x9E000, motion up to 0xAAFFF                      ok
+smk flash: boot screen A/B follows the objects, inside the store, short of the owner tag  ok
+smk flash: store owner tag 0xAF000: in FL_DATA, the convention of every SMK port          ok
+smk flash: slots.c: 2 slots, 0xC2000 80 KiB, 0xD6000 120 KiB: allowed, apart, outside the store ok
+smk flash: slots 1 and 2 keep the offsets of the 2 x 80 KiB layout (their data stays valid) ok
+smk flash: no slot in the install range [0x4000, 0x9D000) or in the VM spare 0xB0000-0xBAFFF ok
+smk flash: FL_PLAIN_LO = the VM start 0x9D000                                             ok
+smk flash: FL_JEDEC_OK: the SMK part 0xEB6014 and 0x856014 only                           ok
+smk flash test passed

@@ -1,0 +1,5 @@
+PASS export: the orientation correction 8 (the test sets 8)
+PASS export: entries marked ok [81, 127] (the test marks 81 and 127)
+PASS generator: carries the correction and warns (warning: /workspace/plan-all/wt-617c0ff1/build/host/iso/smk-padcal-export/tmp/tmpaktj88z4/export.txt: padcal_orient 8: the pad order of the firmware is not as assumed (BEHAVIOR.md CLP-79))
+PASS round trip: the header has the edited 81 (105, 0, 0) and 127 (17, 1, 0), the other 126 entries at the rule
+smk_padcal_export_test: ok

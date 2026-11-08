@@ -1,0 +1,7 @@
+PASS PAD_MAP.md has the section "Physical pad placement"
+PASS status: ASSUMED, or CONFIRMED with a date and a build hash
+PASS index table: 0-7 top row, 8-15 bottom row ([[0, 1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14, 15]])
+PASS firmware: the step grid puts white key w on pad w, the orientation rule is i XOR tl
+PASS LED slot table = PADLED_SLOT [0, 15, 14, 13, 12, 11, 10, 9, 1, 2, 3, 4, 5, 6, 7, 8]
+PASS mux address table = SMK_PADMUX [1, 2, 3, 0, 4, 7, 5, 6] (pad p at the address a with SMK_PADMUX[a] = p mod 8)
+pad_placement_doc_test: ok

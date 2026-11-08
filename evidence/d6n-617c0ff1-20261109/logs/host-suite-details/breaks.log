@@ -1,0 +1,31 @@
+source loop: 88200 samples at 22050 Hz
+sizeof(breaks_t) = 11216 bytes (bank 2200, voice 1096)
+  90 BPM in order: max |dy| 0.0475, straight-playback reference 0.0475
+  90 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  90 BPM generated: max |dy| 0.0475 (bound 1.25 x 0.0475)
+  170 BPM in order: max |dy| 0.0897, straight-playback reference 0.0897
+  170 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  170 BPM generated: max |dy| 0.0897 (bound 1.25 x 0.0897)
+  wrote build/breaks_demo.wav: 11.34 s, 32 triggers, Phrase 4 Fill 70 Roll 40 Rtg2x/4x 30 (Cmplx 50, B chance 50)
+89 passed, 0 failed
+source loop: 176400 samples at 44100 Hz
+sizeof(breaks_t) = 11216 bytes (bank 2200, voice 1096)
+  90 BPM in order: max |dy| 0.0531, straight-playback reference 0.0531
+  90 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  90 BPM generated: max |dy| 0.0531 (bound 1.25 x 0.0531)
+  170 BPM in order: max |dy| 0.0893, straight-playback reference 0.0890
+  170 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  170 BPM generated: max |dy| 0.0893 (bound 1.25 x 0.0890)
+89 passed, 0 failed
+source loop: 88200 samples at 22050 Hz
+sizeof(breaks_t) = 11216 bytes (bank 2200, voice 1096)
+positive control: BRK_FADE = 1 (crossfade off)
+  90 BPM in order: max |dy| 0.0475, straight-playback reference 0.0475
+  90 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  90 BPM generated: max |dy| 0.1238 (bound 1.25 x 0.0475)
+  170 BPM in order: max |dy| 0.0897, straight-playback reference 0.0897
+  170 BPM generated: 128/128 8ths match, 64 triggers, 11 retriggered, 43 out-of-order
+  170 BPM generated: max |dy| 0.1360 (bound 1.25 x 0.0897)
+control: click check FIRED (as it must)
+control ok: click check fires without the crossfade
+breaks: all ok

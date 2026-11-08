@@ -1,0 +1,21 @@
+PASS host build of smk_clip_pad_level
+PASS 128 velocities x R, G, B x brightness 255 and 0
+PASS idle shades 7-59: the pad sends the full table level (2 x old) []
+  vel  7: table (4, 0, 0) old (2, 0, 0) new (4, 0, 0)
+  vel 11: table (5, 1, 0) old (2, 0, 0) new (5, 1, 0)
+  vel 15: table (8, 10, 0) old (4, 5, 0) new (8, 10, 0)
+  vel 19: table (0, 8, 0) old (0, 4, 0) new (0, 8, 0)
+  vel 23: table (3, 7, 0) old (1, 3, 0) new (3, 7, 0)
+  vel 27: table (0, 4, 0) old (0, 2, 0) new (0, 4, 0)
+  vel 31: table (0, 10, 2) old (0, 5, 1) new (0, 10, 2)
+  vel 35: table (4, 8, 5) old (2, 4, 2) new (4, 8, 5)
+  vel 39: table (0, 2, 6) old (0, 1, 3) new (0, 2, 6)
+  vel 43: table (1, 0, 4) old (0, 0, 2) new (1, 0, 4)
+  vel 47: table (0, 0, 5) old (0, 0, 2) new (0, 0, 5)
+  vel 51: table (2, 4, 8) old (1, 2, 4) new (2, 4, 8)
+  vel 55: table (4, 0, 4) old (2, 0, 2) new (4, 0, 4)
+  vel 59: table (4, 4, 2) old (2, 2, 1) new (4, 4, 2)
+PASS all other velocities (0-6, other shades, 60-127, 63): level x 255 / 510, byte-exact
+PASS brightness 0: all 0
+PASS smk_pads sends smk_clip_pad_level of APC40_PAD_OWNER[v] R, G, B
+smk-clip-idle-pad: 0 fail(s)

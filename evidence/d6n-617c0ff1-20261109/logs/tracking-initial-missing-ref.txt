@@ -1,0 +1,40 @@
+---
+pid: 103193
+cwd: "/workspace/plan-all/wt"
+command: "set -e\ngit -C /workspace/nightly remote -v\ngit -C /workspace/nightly fetch origin main gh-pages\npython3 - <<'PY'\nimport subprocess\nchecks={'/workspace/plan-all/wt':{'origin/main':'1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83','origin/wip/one-build':'48e92b76c2f476cf40771e00a04e1838136bb55d','origin/lane/dev-combined-ui-panic-20261109':'2287f113fa4bf74757b4e6d758c2e5464eb47036','origin/lane/dev-v3-panic-rearm-20261109':'617c0ff1d49ccfdd789d358dc962fbfea5f94c15'},'/workspace/nightly':{'origin/main':'a8205aff483dce09414093defdc19cf79d57b719','origin/main^{tree}':'75ac6de0061d62c5f93e66c02bf13938f8dc0c56','origin/gh-pages':'24c46a8938798f0d1c74e666193ff3c39cedf57d','origin/gh-pages^{tree}':'eefacd18c851807cfe2b15d5b5e935beb21e366e'}}\nfor repo,refs in checks.items():\n for ref,expected in refs.items():\n  value=subprocess.check_output(['git','-C',repo,'rev-parse',ref],text=True).strip(); print(repo,ref,value,'PASS' if value==expected else 'MISMATCH'); assert value==expected\nPY\nmkdir -p /workspace/d6n-617c0ff1-20261109/logs\ncp /home/box/.cursor/projects/workspace/terminals/172432.txt /workspace/d6n-617c0ff1-20261109/logs/initial-fetch-tests.txt\ngit -C /workspace/plan-all/wt worktree add --detach /workspace/plan-all/wt-617c0ff1 617c0ff1d49ccfdd789d358dc962fbfea5f94c15\nexport PATH=/home/box/.local/bin:$PATH\ncodex exec --sandbox read-only -C /workspace/plan-all/wt-617c0ff1 'Do not modify files or run builds. Reply only READY for local evidence build.' > /workspace/d6n-617c0ff1-20261109/logs/codex-attempt.log 2>&1"
+title: "Protected tracking refs, exact new worktree, and Codex attempt"
+status: failed   
+started_at: 2026-11-08T22:13:01.050Z
+running_for_ms: 1166     
+---
+origin	https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly (fetch) [blob:none]
+origin	https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly (push)
+From https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly
+ * branch            main       -> FETCH_HEAD
+ * branch            gh-pages   -> FETCH_HEAD
+fatal: ambiguous argument 'origin/gh-pages': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+/workspace/plan-all/wt origin/main 1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83 PASS
+/workspace/plan-all/wt origin/wip/one-build 48e92b76c2f476cf40771e00a04e1838136bb55d PASS
+/workspace/plan-all/wt origin/lane/dev-combined-ui-panic-20261109 2287f113fa4bf74757b4e6d758c2e5464eb47036 PASS
+/workspace/plan-all/wt origin/lane/dev-v3-panic-rearm-20261109 617c0ff1d49ccfdd789d358dc962fbfea5f94c15 PASS
+/workspace/nightly origin/main a8205aff483dce09414093defdc19cf79d57b719 PASS
+/workspace/nightly origin/main^{tree} 75ac6de0061d62c5f93e66c02bf13938f8dc0c56 PASS
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/usr/lib/python3.13/subprocess.py", line 472, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', '-C', '/workspace/nightly', 'rev-parse', 'origin/gh-pages']' returned non-zero exit status 128.
+
+---
+exit_code: 1
+elapsed_ms: 1166
+ended_at: 2026-11-08T22:13:02.216Z
+---

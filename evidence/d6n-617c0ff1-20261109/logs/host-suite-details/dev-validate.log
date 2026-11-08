@@ -1,0 +1,13 @@
+........REFUSED: --dev-record needs --config dev and explicit --ctl or --no-ctl
+REFUSED: --dev-record needs --config dev and explicit --ctl or --no-ctl
+..........Preparing worktree (detached HEAD 4fbe8e2)
+HEAD is now at 4fbe8e2 fixture
+.Preparing worktree (detached HEAD 4fbe8e2)
+HEAD is now at 4fbe8e2 fixture
+.
+----------------------------------------------------------------------
+Ran 20 tests in 10.864s
+
+OK
+DEV CHECKED 175e455f6b432a3279cdf8f6f4c07ae672cb366b
+DEV OK 175e455 /workspace/plan-all/wt-617c0ff1/build/host/iso/dev-validate/tmp/tmp1gjasl34/result/record.json (config dev; queue: 0 open lines in 175e455)

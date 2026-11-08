@@ -1,0 +1,18 @@
+  ok store_writes == 0
+  ok store_writes == 0
+  ok store_writes == 6
+  ok hit0.0.0 == 1
+  ok hit0.0.8 == 1
+  ok store_writes == 7
+  ok store_writes == 7
+  ok store_writes == 7
+  ok store_writes == 8
+  ok hit0.0.12 == 1
+  ok listsel == 19
+  ok rowval == 1
+  ok rowval == 0
+  ok store_writes == 9
+  ok store_writes == 9
+  ok hit0.0.2 == 0
+  ok store_writes == 9
+host: 129030 ms simulated, 150 blits, render 0.4% of real time (host CPU)

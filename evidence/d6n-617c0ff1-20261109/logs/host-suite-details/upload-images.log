@@ -1,0 +1,10 @@
+4 test loops in build/test_loops
+2 slot(s) of 80/80 KiB, 22050 Hz
+USR1: 3 loop(s), 70.5 KiB: BR1.1=LOOP1, BR1.2=LOOP2, BR1.3=LOOP3
+USR2: 1 loop(s), 23.5 KiB: BR2=LOOP4
+dry run: images in build/test_upload
+2 slot(s) of 80/120 KiB, 44100 Hz
+USR1: 1 loop(s), 47.0 KiB: BR1=LOOP1
+USR2: 2 loop(s), 94.0 KiB: BR2.1=LOOP2, BR2.2=LOOP3
+did not fit (skipped): LOOP4
+dry run: images in build/test_upload44

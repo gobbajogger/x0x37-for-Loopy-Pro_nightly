@@ -1,0 +1,20 @@
+[
+  {
+    "name": "target-ui",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/target-ui.log"
+  },
+  {
+    "name": "target-panic",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/target-panic.log"
+  },
+  {
+    "name": "host-suite",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/host-suite.log"
+  }
+]

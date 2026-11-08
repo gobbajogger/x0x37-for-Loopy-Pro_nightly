@@ -1,0 +1,98 @@
+[
+  {
+    "name": "target-ui",
+    "ok": 3,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "exit_code": 0,
+    "inventory": [
+      {
+        "status": "ok",
+        "name": "play-question",
+        "detail": "",
+        "runner_line": "  ok   play-question"
+      },
+      {
+        "status": "ok",
+        "name": "play-question-ui",
+        "detail": "",
+        "runner_line": "  ok   play-question-ui"
+      },
+      {
+        "status": "ok",
+        "name": "smc-lock-beat",
+        "detail": "",
+        "runner_line": "  ok   smc-lock-beat"
+      }
+    ]
+  },
+  {
+    "name": "target-panic",
+    "ok": 10,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "exit_code": 0,
+    "inventory": [
+      {
+        "status": "ok",
+        "name": "project-protocol",
+        "detail": "",
+        "runner_line": "  ok   project-protocol"
+      },
+      {
+        "status": "ok",
+        "name": "project-save-preflight",
+        "detail": "",
+        "runner_line": "  ok   project-save-preflight"
+      },
+      {
+        "status": "ok",
+        "name": "project-stage",
+        "detail": "",
+        "runner_line": "  ok   project-stage"
+      },
+      {
+        "status": "ok",
+        "name": "project-runtime",
+        "detail": "",
+        "runner_line": "  ok   project-runtime"
+      },
+      {
+        "status": "ok",
+        "name": "smc-drum-mutes",
+        "detail": "",
+        "runner_line": "  ok   smc-drum-mutes"
+      },
+      {
+        "status": "ok",
+        "name": "panic-chord",
+        "detail": "",
+        "runner_line": "  ok   panic-chord"
+      },
+      {
+        "status": "ok",
+        "name": "panic-notes",
+        "detail": "",
+        "runner_line": "  ok   panic-notes"
+      },
+      {
+        "status": "ok",
+        "name": "panic-clear",
+        "detail": "",
+        "runner_line": "  ok   panic-clear"
+      },
+      {
+        "status": "ok",
+        "name": "panic-route",
+        "detail": "",
+        "runner_line": "  ok   panic-route"
+      },
+      {
+        "status": "ok",
+        "name": "panic-mutants",
+        "detail": "",
+        "runner_line": "  ok   panic-mutants"
+      }
+    ]
+  }
+]

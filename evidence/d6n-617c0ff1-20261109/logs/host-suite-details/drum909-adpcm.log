@@ -1,0 +1,16 @@
+cymbal references: own decoder (no A/B study found)
+  ok   hh     20250 samples, 10125 B ADPCM (int16  40500 B), max |decode - ref| 0 LSB, SNR 16.5 dB
+  ok   hh    pitch 0.250: 81000 samples, 0 differ, 20250 decodes (0.25 per output sample)
+  ok   hh    pitch 4.000: 5063 samples, 0 differ, 20250 decodes (4.00 per output sample)
+  ok   hh    retrigger at 1280 samples: 0 differ
+  ok   ride   46999 samples, 23500 B ADPCM (int16  93998 B), max |decode - ref| 0 LSB, SNR 18.3 dB
+  ok   ride  pitch 0.250: 187996 samples, 0 differ, 46999 decodes (0.25 per output sample)
+  ok   ride  pitch 4.000: 11750 samples, 0 differ, 46998 decodes (4.00 per output sample)
+  ok   ride  retrigger at 1280 samples: 0 differ
+  ok   crash  43300 samples, 21650 B ADPCM (int16  86600 B), max |decode - ref| 0 LSB, SNR 17.6 dB
+  ok   crash pitch 0.250: 173200 samples, 0 differ, 43300 decodes (0.25 per output sample)
+  ok   crash pitch 4.000: 10825 samples, 0 differ, 43298 decodes (4.00 per output sample)
+  ok   crash retrigger at 1280 samples: 0 differ
+  cymbals: 55275 B of ADPCM in flash, 221098 B as int16, 165823 B saved
+  host: 2.67 ns per decode (0)
+drum909 adpcm: decode and streaming ok

@@ -1,0 +1,5 @@
+  ok listsel == 21
+  ok overlay == 2
+  ok overlay == 1
+  ok listsel == 21
+host: 20394 ms simulated, 902 blits, render 1.5% of real time (host CPU)

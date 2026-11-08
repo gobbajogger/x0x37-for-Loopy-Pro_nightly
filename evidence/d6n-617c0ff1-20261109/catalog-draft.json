@@ -1,0 +1,22 @@
+{
+  "title": "UNREVIEWED \u00b7 DEVICE NOT TESTED \u2014 V3-PANIC-REARM-01 D6-N preview",
+  "label": "UNREVIEWED \u00b7 DEVICE NOT TESTED \u2014 617c0ff1",
+  "description": "UNREVIEWED \u00b7 DEVICE NOT TESTED \u2014 D6-N preview: host 348 ok / 0 FAIL / 0 NOT_RUN. Device NOT_RUN (no device testing performed or authorized for this local package). Not a publish, not a 0.0.25 freeze.",
+  "hardware_tested": false,
+  "status": "local-evidence-draft-not-published",
+  "pkg": null,
+  "source_commit": "617c0ff1d49ccfdd789d358dc962fbfea5f94c15",
+  "source_tree": "0c346e5bee8ec20cac7e59ded175085594079e42",
+  "source_parent": "2287f113fa4bf74757b4e6d758c2e5464eb47036",
+  "host_summary": {
+    "ok": 348,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "exit_code": 0
+  },
+  "device": {
+    "status": "NOT_RUN",
+    "reason": "No device testing performed or authorized for local package"
+  },
+  "created_at": "2026-11-09 08:37:29 Asia/Vladivostok"
+}

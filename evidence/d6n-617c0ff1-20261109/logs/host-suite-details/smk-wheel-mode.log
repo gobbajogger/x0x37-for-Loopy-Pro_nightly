@@ -1,0 +1,194 @@
+In file included from /workspace/plan-all/wt-617c0ff1/host/x0x_host.c:292,
+                 from /workspace/plan-all/wt-617c0ff1/tests/host/smk_wheel_mode_test.c:7:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘pref_set’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:740:57: warning: operand of ‘?:’ changes signedness from ‘int’ to ‘unsigned int’ due to unsignedness of other operand [-Wsign-compare]
+  740 |     case R_MIDICH: seq.ch[r.a % NPARTS] = (uint8_t)(v ? v - 1 : SEQ_CH_OFF); break;
+      |                                                         ^~~~~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘prob_turn’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:2832:43: warning: operand of ‘?:’ changes signedness from ‘int’ to ‘unsigned int’ due to unsignedness of other operand [-Wsign-compare]
+ 2832 |         l->val[s] = (uint8_t)(nv != 100 ? nv : MOT_NONE);
+      |                                           ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘draw_home’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:5559:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 5559 |                 if(tx<4)tx=4;if(tx+w>236)tx=236-w;
+      |                 ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:5559:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 5559 |                 if(tx<4)tx=4;if(tx+w>236)tx=236-w;
+      |                              ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘draw_adsr_inline’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:6881:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 6881 |             if(level<0)level=0; if(level>1)level=1;
+      |             ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:6881:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 6881 |             if(level<0)level=0; if(level>1)level=1;
+      |                                 ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘og_wave’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7164:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7164 |         if(v>1)v=1; if(v<-1)v=-1;
+      |         ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7164:21: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7164 |         if(v>1)v=1; if(v<-1)v=-1;
+      |                     ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘og_gnaw’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7175:5: warning: this ‘while’ clause does not guard... [-Wmisleading-indentation]
+ 7175 |     while(v>1||v<-1) v=v>1?2-v:-2-v; return v;}             /* wavefolder */
+      |     ^~~~~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7175:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+ 7175 |     while(v>1||v<-1) v=v>1?2-v:-2-v; return v;}             /* wavefolder */
+      |                                      ^~~~~~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘orig_strip_glyph’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7192:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7192 |     if(q<0)q=0; if(q>1)q=1;
+      |     ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7192:17: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7192 |     if(q<0)q=0; if(q>1)q=1;
+      |                 ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7195:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7195 |     if(amp<0)amp=0; if(amp>1)amp=1;
+      |     ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7195:21: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7195 |     if(amp<0)amp=0; if(amp>1)amp=1;
+      |                     ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7213:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7213 |         if(eg<0)eg=0; if(eg>1)eg=1;
+      |         ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7213:23: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7213 |         if(eg<0)eg=0; if(eg>1)eg=1;
+      |                       ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7274:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7274 |             if(mod<0)mod=0; if(mod>1)mod=1;
+      |             ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7274:29: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7274 |             if(mod<0)mod=0; if(mod>1)mod=1;
+      |                             ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘dg_tail’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7335:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7335 |     if(xe<2)xe=2; if(xe>OG_W-1)xe=OG_W-1;
+      |     ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7335:19: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7335 |     if(xe<2)xe=2; if(xe>OG_W-1)xe=OG_W-1;
+      |                   ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘drum_strip_glyph’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7379:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7379 |     if(q<0)q=0; if(q>1)q=1;
+      |     ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7379:17: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7379 |     if(q<0)q=0; if(q>1)q=1;
+      |                 ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7434:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 7434 |             if(i<1)i=1; if(i>OG_W-2)i=OG_W-2; /* 3px marker stays in the cell */
+      |             ^~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:7434:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 7434 |             if(i<1)i=1; if(i>OG_W-2)i=OG_W-2; /* 3px marker stays in the cell */
+      |                         ^~
+/workspace/plan-all/wt-617c0ff1/host/x0x_host.c: In function ‘simulator_main’:
+/workspace/plan-all/wt-617c0ff1/host/x0x_host.c:1023:44: warning: operand of ‘?:’ changes signedness from ‘int’ to ‘unsigned int’ due to unsignedness of other operand [-Wsign-compare]
+ 1023 |             seq.ch[part] = (uint8_t)(chn ? chn - 1 : SEQ_CH_OFF);
+      |                                            ^~~~~~~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: In function ‘unit_value’:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:1030:25: warning: this statement may fall through [-Wimplicit-fallthrough=]
+ 1030 |     case X0X_U_RATIO: x = 12.0f * fm_log2f(x); /* fall through: semitones */
+      |                       ~~^~~~~~~~~~~~~~~~~~~~~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:1031:5: note: here
+ 1031 |     case X0X_U_ST: put_d1(num, x, 1); put_s(unit, "st"); return;
+      |     ^~~~
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c: At top level:
+/workspace/plan-all/wt-617c0ff1/host/../firmware/src/app/ui.c:3233:38: warning: ‘smk_mute_known’ defined but not used [-Wunused-variable]
+ 3233 | static uint8_t smk_mute_intended[4], smk_mute_known, smk_mute_active, smk_mute_edit, smk_mute_bank;
+      |                                      ^~~~~~~~~~~~~~
+PASS play=0 locks=0 SMC=0 part=0 gesture=0 audio=14fb0bf1883d1ace live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=0 SMC=0 part=0 gesture=1 audio=c163a05c3ae04124 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=0 SMC=0 part=0 gesture=2 audio=85e64ce4deee9c04 live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=0 SMC=0 part=0 gesture=3 audio=79c2d26a4cd6cd23 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=0 SMC=0 part=1 gesture=0 audio=8e3ad7ff19aecd13 live=3ea14285 base=40 commands=0
+PASS play=0 locks=0 SMC=0 part=1 gesture=1 audio=2b82c7850481fd2f live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=0 SMC=0 part=1 gesture=2 audio=52e2613ccdc9ab7d live=3ea14285 base=40 commands=0
+PASS play=0 locks=0 SMC=0 part=1 gesture=3 audio=f16aa32b207661b3 live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=0 SMC=1 part=0 gesture=0 audio=14fb0bf1883d1ace live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=0 SMC=1 part=0 gesture=1 audio=c163a05c3ae04124 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=0 SMC=1 part=0 gesture=2 audio=85e64ce4deee9c04 live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=0 SMC=1 part=0 gesture=3 audio=79c2d26a4cd6cd23 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=0 SMC=1 part=1 gesture=0 audio=8e3ad7ff19aecd13 live=3ea14285 base=40 commands=0
+PASS play=0 locks=0 SMC=1 part=1 gesture=1 audio=2b82c7850481fd2f live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=0 SMC=1 part=1 gesture=2 audio=52e2613ccdc9ab7d live=3ea14285 base=40 commands=0
+PASS play=0 locks=0 SMC=1 part=1 gesture=3 audio=f16aa32b207661b3 live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=1 SMC=0 part=0 gesture=0 audio=14fb0bf1883d1ace live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=1 SMC=0 part=0 gesture=1 audio=c163a05c3ae04124 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=1 SMC=0 part=0 gesture=2 audio=85e64ce4deee9c04 live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=1 SMC=0 part=0 gesture=3 audio=79c2d26a4cd6cd23 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=1 SMC=0 part=1 gesture=0 audio=8e3ad7ff19aecd13 live=3ea14285 base=40 commands=0
+PASS play=0 locks=1 SMC=0 part=1 gesture=1 audio=2b82c7850481fd2f live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=1 SMC=0 part=1 gesture=2 audio=52e2613ccdc9ab7d live=3ea14285 base=40 commands=0
+PASS play=0 locks=1 SMC=0 part=1 gesture=3 audio=f16aa32b207661b3 live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=1 SMC=1 part=0 gesture=0 audio=14fb0bf1883d1ace live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=1 SMC=1 part=0 gesture=1 audio=c163a05c3ae04124 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=1 SMC=1 part=0 gesture=2 audio=85e64ce4deee9c04 live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=1 SMC=1 part=0 gesture=3 audio=79c2d26a4cd6cd23 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=1 SMC=1 part=1 gesture=0 audio=8e3ad7ff19aecd13 live=3ea14285 base=40 commands=0
+PASS play=0 locks=1 SMC=1 part=1 gesture=1 audio=2b82c7850481fd2f live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=1 SMC=1 part=1 gesture=2 audio=52e2613ccdc9ab7d live=3ea14285 base=40 commands=0
+PASS play=0 locks=1 SMC=1 part=1 gesture=3 audio=f16aa32b207661b3 live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=2 SMC=0 part=0 gesture=0 audio=14fb0bf1883d1ace live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=2 SMC=0 part=0 gesture=1 audio=c163a05c3ae04124 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=2 SMC=0 part=0 gesture=2 audio=85e64ce4deee9c04 live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=2 SMC=0 part=0 gesture=3 audio=79c2d26a4cd6cd23 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=2 SMC=0 part=1 gesture=0 audio=8e3ad7ff19aecd13 live=3ea14285 base=40 commands=0
+PASS play=0 locks=2 SMC=0 part=1 gesture=1 audio=2b82c7850481fd2f live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=2 SMC=0 part=1 gesture=2 audio=52e2613ccdc9ab7d live=3ea14285 base=40 commands=0
+PASS play=0 locks=2 SMC=0 part=1 gesture=3 audio=f16aa32b207661b3 live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=2 SMC=1 part=0 gesture=0 audio=14fb0bf1883d1ace live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=2 SMC=1 part=0 gesture=1 audio=c163a05c3ae04124 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=2 SMC=1 part=0 gesture=2 audio=85e64ce4deee9c04 live=3e71e3c8 base=30 commands=0
+PASS play=0 locks=2 SMC=1 part=0 gesture=3 audio=79c2d26a4cd6cd23 live=3ee5cb97 base=30 commands=0
+PASS play=0 locks=2 SMC=1 part=1 gesture=0 audio=8e3ad7ff19aecd13 live=3ea14285 base=40 commands=0
+PASS play=0 locks=2 SMC=1 part=1 gesture=1 audio=2b82c7850481fd2f live=3ee5cb97 base=40 commands=0
+PASS play=0 locks=2 SMC=1 part=1 gesture=2 audio=52e2613ccdc9ab7d live=3ea14285 base=40 commands=0
+PASS play=0 locks=2 SMC=1 part=1 gesture=3 audio=f16aa32b207661b3 live=3ee5cb97 base=40 commands=0
+PASS play=1 locks=0 SMC=0 part=0 gesture=0 audio=81f652ed2c6998d9 live=3e71e3c8 base=30 commands=0
+PASS play=1 locks=0 SMC=0 part=0 gesture=1 audio=32e6fe11beee0f6c live=3ee5cb97 base=30 commands=0
+PASS play=1 locks=0 SMC=0 part=0 gesture=2 audio=f34a94e987c789df live=3e71e3c8 base=30 commands=0
+PASS play=1 locks=0 SMC=0 part=0 gesture=3 audio=117fffb981e71951 live=3ee5cb97 base=30 commands=0
+PASS play=1 locks=0 SMC=0 part=1 gesture=0 audio=cb21596dff3982cf live=3ea14285 base=40 commands=0
+PASS play=1 locks=0 SMC=0 part=1 gesture=1 audio=ae6d945de40b5e5b live=3ee5cb97 base=40 commands=0
+PASS play=1 locks=0 SMC=0 part=1 gesture=2 audio=bec021b56fb1d5d7 live=3ea14285 base=40 commands=0
+PASS play=1 locks=0 SMC=0 part=1 gesture=3 audio=538038cf1022ae51 live=3ee5cb97 base=40 commands=0
+PASS play=1 locks=0 SMC=1 part=0 gesture=0 audio=81f652ed2c6998d9 live=3e71e3c8 base=30 commands=0
+PASS play=1 locks=0 SMC=1 part=0 gesture=1 audio=32e6fe11beee0f6c live=3ee5cb97 base=30 commands=0
+PASS play=1 locks=0 SMC=1 part=0 gesture=2 audio=f34a94e987c789df live=3e71e3c8 base=30 commands=0
+PASS play=1 locks=0 SMC=1 part=0 gesture=3 audio=117fffb981e71951 live=3ee5cb97 base=30 commands=0
+PASS play=1 locks=0 SMC=1 part=1 gesture=0 audio=cb21596dff3982cf live=3ea14285 base=40 commands=0
+PASS play=1 locks=0 SMC=1 part=1 gesture=1 audio=ae6d945de40b5e5b live=3ee5cb97 base=40 commands=0
+PASS play=1 locks=0 SMC=1 part=1 gesture=2 audio=bec021b56fb1d5d7 live=3ea14285 base=40 commands=0
+PASS play=1 locks=0 SMC=1 part=1 gesture=3 audio=538038cf1022ae51 live=3ee5cb97 base=40 commands=0
+PASS play=1 locks=1 SMC=0 part=0 gesture=0 audio=3884e42b60b54809 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=0 part=0 gesture=1 audio=3884e42b60b54809 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=0 part=0 gesture=2 audio=4db2e0e607a544f5 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=0 part=0 gesture=3 audio=4db2e0e607a544f5 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=0 part=1 gesture=0 audio=c6f06d481a268f1b live=3f1b366d base=40 commands=0
+PASS play=1 locks=1 SMC=0 part=1 gesture=1 audio=c6f06d481a268f1b live=3f1b366d base=40 commands=0
+PASS play=1 locks=1 SMC=0 part=1 gesture=2 audio=8a3a1acbb3724cbd live=3f1b366d base=40 commands=0
+PASS play=1 locks=1 SMC=0 part=1 gesture=3 audio=8a3a1acbb3724cbd live=3f1b366d base=40 commands=0
+PASS play=1 locks=1 SMC=1 part=0 gesture=0 audio=3884e42b60b54809 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=1 part=0 gesture=1 audio=3884e42b60b54809 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=1 part=0 gesture=2 audio=4db2e0e607a544f5 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=1 part=0 gesture=3 audio=4db2e0e607a544f5 live=3f1b366d base=30 commands=0
+PASS play=1 locks=1 SMC=1 part=1 gesture=0 audio=c6f06d481a268f1b live=3f1b366d base=40 commands=0
+PASS play=1 locks=1 SMC=1 part=1 gesture=1 audio=c6f06d481a268f1b live=3f1b366d base=40 commands=0
+PASS play=1 locks=1 SMC=1 part=1 gesture=2 audio=8a3a1acbb3724cbd live=3f1b366d base=40 commands=0
+PASS play=1 locks=1 SMC=1 part=1 gesture=3 audio=8a3a1acbb3724cbd live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=0 part=0 gesture=0 audio=28bedab24a4bc0d2 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=0 part=0 gesture=1 audio=28bedab24a4bc0d2 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=0 part=0 gesture=2 audio=c1b60f0b4644f248 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=0 part=0 gesture=3 audio=c1b60f0b4644f248 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=0 part=1 gesture=0 audio=de64ad9ada6a3666 live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=0 part=1 gesture=1 audio=de64ad9ada6a3666 live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=0 part=1 gesture=2 audio=dc6b4893097b80be live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=0 part=1 gesture=3 audio=dc6b4893097b80be live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=1 part=0 gesture=0 audio=28bedab24a4bc0d2 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=1 part=0 gesture=1 audio=28bedab24a4bc0d2 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=1 part=0 gesture=2 audio=c1b60f0b4644f248 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=1 part=0 gesture=3 audio=c1b60f0b4644f248 live=3f1b366d base=30 commands=0
+PASS play=1 locks=2 SMC=1 part=1 gesture=0 audio=de64ad9ada6a3666 live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=1 part=1 gesture=1 audio=de64ad9ada6a3666 live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=1 part=1 gesture=2 audio=dc6b4893097b80be live=3f1b366d base=40 commands=0
+PASS play=1 locks=2 SMC=1 part=1 gesture=3 audio=dc6b4893097b80be live=3f1b366d base=40 commands=0

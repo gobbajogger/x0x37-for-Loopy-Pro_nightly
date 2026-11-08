@@ -1,0 +1,18 @@
+  ok hit0.0.63 == 1
+  ok hit0.0.0 == 1
+  ok hit0.0.62 == 1
+  ok hit0.0.32 == 1
+  ok playhead0 == 64
+  ok pattern == 20
+  ok hit0.0.2 == 1
+  ok pattern == 31
+  ok hit0.0.2 == 1
+  ok pattern == 20
+  ok hit0.0.2 == 1
+  ok pattern == 1
+  ok hit0.0.63 == 1
+  ok hit0.0.32 == 1
+  ok pattern == 1
+  ok hit0.0.63 == 1
+  ok hit0.0.32 == 1
+host: 11195 ms simulated, 179 blits, render 0.2% of real time (host CPU)

@@ -1,0 +1,6 @@
+  ok midiheld == 0
+  ok midiheld == 0
+  ok midiheld == 0
+  ok midiheld == 1
+  ok midiheld == 0
+host: 130 ms simulated, 3 blits, render 0.6% of real time (host CPU)

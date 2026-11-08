@@ -1,0 +1,21 @@
+font T: BarlowSemiCondensed-SemiBold.ttf 10px h 12, digit adv 5, 2316 B
+font XS: BarlowSemiCondensed-SemiBold.ttf 12px h 15, digit adv 6, 3288 B
+font S: BarlowSemiCondensed-Medium.ttf 15px h 16, digit adv 7, 4280 B
+font B: BarlowSemiCondensed-Bold.ttf 15px h 16, digit adv 8, 4374 B
+font M: BarlowSemiCondensed-SemiBold.ttf 23px h 24, digit adv 12, 4863 B
+font L: BarlowSemiCondensed-Bold.ttf 31px h 32, digit adv 16, 3584 B
+font set barlow: 23179 B (approx)
+gen_drum_samples: 110549 frames (55275 bytes of ADPCM, 221098 as int16) -> x0x_drum_samples.h; tanh 1026 packed 4104->3046 B + 19 pot curves -> x0x_drum_tables.h
+break bank: none (factory loops are an optional install)
+generate: cached font, drums, and break bank
+gen-cache cold 0.221s warm 0.005s
+font T: ter-u12n.bdf 12px h 12, digit adv 6, 2169 B
+font XS: ter-u12n.bdf 12px h 12, digit adv 6, 2577 B
+font S: ter-u16n.bdf 16px h 16, digit adv 8, 3435 B
+font B: ter-u16b.bdf 16px h 16, digit adv 8, 3570 B
+font M: ter-u24b.bdf 24px h 24, digit adv 12, 4062 B
+font L: ter-u32b.bdf 32px h 32, digit adv 16, 2756 B
+font set terminus: 18957 B (approx)
+gen_drum_samples: 110549 frames (55275 bytes of ADPCM, 221098 as int16) -> x0x_drum_samples.h; tanh 1026 packed 4104->3046 B + 19 pot curves -> x0x_drum_tables.h
+break bank: none (factory loops are an optional install)
+PASS gen cache

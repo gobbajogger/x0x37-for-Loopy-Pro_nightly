@@ -1,0 +1,24 @@
+ok   new branch lane/mb-clock: 
+ok   new branch lane/sb-scale-2: 
+ok   new branch lane/opt-pool: 
+ok   new branch lane/btr-checks: 
+ok   new branch lane/dk-rules-pointers: 
+ok   new branch archive/ble-a60: 
+ok   new branch feature-x: update hook: REJECTED refs/heads/feature-x: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integration,
+ok   new branch ble-a99: update hook: REJECTED refs/heads/ble-a99: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integration, s
+ok   new branch wip/clip-keys: update hook: REJECTED refs/heads/wip/clip-keys: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integrat
+ok   new branch test-speed-2: update hook: REJECTED refs/heads/test-speed-2: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integrati
+ok   new branch lane/foo-x: update hook: REJECTED refs/heads/lane/foo-x: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integration
+ok   new branch lane/btr: update hook: REJECTED refs/heads/lane/btr: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integration, 
+ok   new branch lane/mb-: update hook: REJECTED refs/heads/lane/mb-: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integration, 
+ok   new branch lane/MB-clock: update hook: REJECTED refs/heads/lane/MB-clock: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integrat
+ok   new branch archive: update hook: REJECTED refs/heads/archive: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integration, s
+ok   new branch archives/x: update hook: REJECTED refs/heads/archives/x: a new branch must be lane/<mb|sb|opt|btr|dk>-<topic>, integration
+ok   an old branch (ble-old) moves: 
+ok   an old branch (ble-old) is deleted: 
+ok   integration with no push option: update hook: REJECTED refs/heads/integration: only Merge Integrator moves integration: push with git push -o b
+ok   integration with -o by=second-builder: update hook: REJECTED refs/heads/integration: only Merge Integrator moves integration: push with git push -o b
+ok   integration with -o by=merge-integrator: update hook: quick check of 42b4247 (base 1c0e81e) for refs/heads/integration        
+ok   integration with only a skip option: update hook: REJECTED refs/heads/integration: only Merge Integrator moves integration: push with git push -o b
+ok   integration with -o by=merge-integrator and a skip: update hook: quick check SKIPPED for aa6b9e6 (push option): test (logged in /workspace/plan-all/wt-617c0ff1/bu
+update names: 23 of 23 ok

@@ -1,0 +1,17 @@
+  ok store_writes == 0
+  ok store_writes == 0
+  ok listsel == 23
+  ok view == 7
+  ok store_writes == 6 (>0)
+  ok perftest == 0
+  ok patptr == 0
+  ok perftest == 3
+  ok perfres0 == 14 (>0)
+  ok perfres1 == 19 (>0)
+  ok perfres2 == 30 (>0)
+  ok patptr == 1
+  ok playing == 0
+  ok hit0.0.0 == 1
+  ok peak -7.9 dBFS
+  ok peak -7.9 dBFS
+host: 19490 ms simulated, 212 blits, render 1.5% of real time (host CPU)

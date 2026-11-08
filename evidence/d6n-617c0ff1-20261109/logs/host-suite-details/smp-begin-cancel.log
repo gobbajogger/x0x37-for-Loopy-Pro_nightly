@@ -1,0 +1,5 @@
+smp begin-cancel: BEGIN alone keeps last-good ok
+smp begin-cancel: END without WRITE refuses ok
+smp begin-cancel: mid-WRITE abandon restores last-good ok
+smp begin-cancel: failed END restores last-good ok
+smp begin-cancel: higher-sector mid-WRITE abandon fail-closed ok

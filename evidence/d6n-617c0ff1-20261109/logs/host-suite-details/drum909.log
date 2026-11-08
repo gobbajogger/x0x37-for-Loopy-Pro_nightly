@@ -1,0 +1,420 @@
+gen_drum_samples: 110549 frames (55275 bytes of ADPCM, 221098 as int16) -> x0x_drum_samples.h; tanh 1026 packed 4104->3046 B + 19 pot curves -> x0x_drum_tables.h
+sizeof(drum909_t) 7648, sizeof(fxbus_t) 18320, delay line 176400 bytes (int16 x 88200), samples 55275 bytes flash (ADPCM)
+
+== tables ==
+noise: 0 of 200000 samples differ from 9W9's generator
+pot curves: 2 of 2432 EXP values differ from 9W9's powf (worst rel 1.10e-07)
+pot defaults: 0 of 96 differ from 9W9's seeded positions
+
+== voices: default pots, then every pot at 0 / 64 / 127 (switches: every position) ==
+BD default vel127          peak 0.7492 rms 0.15395 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD default vel80           peak 0.4719 rms 0.09698 | port 0.4719 | maxdiff 1.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Tune=0                  peak 0.7489 rms 0.15321 | port 0.7488 | maxdiff 1.9e-04 rel 2.62e-04 ( -71.6 dB) self 2.66e-04 env 0.0049 dB ok
+BD Tune=64                 peak 0.7443 rms 0.15454 | port 0.7444 | maxdiff 1.8e-04 rel 2.45e-04 ( -72.2 dB) self 1.95e-04 env 0.0083 dB ok
+BD Tune=127                peak 0.7345 rms 0.15551 | port 0.7345 | maxdiff 3.1e-04 rel 3.38e-04 ( -69.4 dB) self 1.90e-04 env 0.0049 dB ok
+BD Attack=0                peak 0.7492 rms 0.15395 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Attack=64               peak 0.7492 rms 0.15397 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Attack=127              peak 0.7492 rms 0.15402 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Decay=0                 peak 0.7492 rms 0.10239 | port 0.7492 | maxdiff 2.7e-04 rel 2.61e-04 ( -71.7 dB) self 1.04e-04 env 0.0034 dB ok
+BD Decay=64                peak 0.7492 rms 0.12668 | port 0.7492 | maxdiff 2.8e-04 rel 2.83e-04 ( -71.0 dB) self 1.50e-04 env 0.0045 dB ok
+BD Decay=127               peak 0.7492 rms 0.22528 | port 0.7492 | maxdiff 3.5e-04 rel 3.60e-04 ( -68.9 dB) self 2.12e-04 env 0.0063 dB ok
+BD Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+BD Level=64                peak 0.5097 rms 0.10474 | port 0.5097 | maxdiff 1.9e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Level=127               peak 1.0114 rms 0.20783 | port 1.0114 | maxdiff 3.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD P.Dpth=0                peak 0.7492 rms 0.15395 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD P.Dpth=64               peak 0.7429 rms 0.15420 | port 0.7429 | maxdiff 2.7e-04 rel 3.36e-04 ( -69.5 dB) self 2.08e-04 env 0.0051 dB ok
+BD P.Dpth=127              peak 0.7368 rms 0.15434 | port 0.7368 | maxdiff 3.6e-04 rel 3.66e-04 ( -68.7 dB) self 1.72e-04 env 0.0051 dB ok
+BD Pitch=0                 peak 0.7492 rms 0.15395 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Pitch=64                peak 0.7492 rms 0.15395 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Pitch=127               peak 0.7492 rms 0.15395 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Drive=0                 peak 0.7312 rms 0.16220 | port 0.7312 | maxdiff 3.1e-04 rel 2.91e-04 ( -70.7 dB) self 1.60e-04 env 0.0030 dB ok
+BD Drive=64                peak 0.7008 rms 0.19709 | port 0.7008 | maxdiff 7.7e-04 rel 3.09e-04 ( -70.2 dB) self 1.69e-04 env 0.0009 dB ok
+BD Drive=127               peak 0.7006 rms 0.21525 | port 0.7006 | maxdiff 2.9e-03 rel 5.39e-04 ( -65.4 dB) self 2.95e-04 env 0.0007 dB ok
+BD Dist=Diode              peak 0.7492 rms 0.15395 | port 0.7492 | maxdiff 2.8e-04 rel 3.24e-04 ( -69.8 dB) self 1.78e-04 env 0.0043 dB ok
+BD Dist=Clip               peak 0.6762 rms 0.12972 | port 0.6762 | maxdiff 2.7e-04 rel 3.37e-04 ( -69.5 dB) self 1.83e-04 env 0.0041 dB ok
+BD Dist=SAT                peak 0.7537 rms 0.15654 | port 0.7537 | maxdiff 2.8e-04 rel 3.23e-04 ( -69.8 dB) self 1.78e-04 env 0.0044 dB ok
+BD Dist=BFZ                peak 0.7506 rms 0.15339 | port 0.7506 | maxdiff 2.8e-04 rel 3.27e-04 ( -69.7 dB) self 1.80e-04 env 0.0044 dB ok
+BD Dist=PDIST              peak 0.1517 rms 0.03038 | port 0.1516 | maxdiff 5.7e-05 rel 3.26e-04 ( -69.7 dB) self 1.80e-04 env 0.0041 dB ok
+BD Dist=Fold               peak 0.7506 rms 0.15339 | port 0.7506 | maxdiff 2.8e-04 rel 3.27e-04 ( -69.7 dB) self 1.80e-04 env 0.0044 dB ok
+BD Dist=Crush              peak 0.7527 rms 0.15343 | port 0.7527 | maxdiff 1.5e-02 rel 2.87e-03 ( -50.9 dB) self 2.19e-03 env 0.0039 dB ok(<=2x self) [flips 0.306% of samples, rest rel 9.6e-05, self env 0.003 dB]
+SD default vel127          peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+SD default vel80           peak 0.4746 rms 0.03082 | port 0.4746 | maxdiff 1.2e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+SD Tune=0                  peak 0.7915 rms 0.04906 | port 0.7915 | maxdiff 1.4e-05 rel 1.55e-05 ( -96.2 dB) self 1.53e-06 env 0.0000 dB ok
+SD Tune=64                 peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 2.3e-05 rel 2.73e-05 ( -91.3 dB) self 1.53e-06 env 0.0000 dB ok
+SD Tune=127                peak 0.7387 rms 0.04868 | port 0.7387 | maxdiff 3.8e-05 rel 4.43e-05 ( -87.1 dB) self 1.54e-06 env 0.0000 dB ok
+SD Tone=0                  peak 0.7534 rms 0.04463 | port 0.7534 | maxdiff 1.9e-05 rel 2.49e-05 ( -92.1 dB) self 1.31e-06 env 0.0000 dB ok
+SD Tone=64                 peak 0.7534 rms 0.04849 | port 0.7534 | maxdiff 1.9e-05 rel 2.29e-05 ( -92.8 dB) self 1.52e-06 env 0.0000 dB ok
+SD Tone=127                peak 0.7534 rms 0.06065 | port 0.7534 | maxdiff 1.9e-05 rel 1.83e-05 ( -94.7 dB) self 1.85e-06 env 0.0000 dB ok
+SD Snappy=0                peak 0.4166 rms 0.03877 | port 0.4166 | maxdiff 1.9e-05 rel 2.86e-05 ( -90.9 dB) self 0.00e+00 env 0.0000 dB ok
+SD Snappy=64               peak 0.7560 rms 0.04907 | port 0.7560 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.54e-06 env 0.0000 dB ok
+SD Snappy=127              peak 1.0902 rms 0.07121 | port 1.0902 | maxdiff 1.9e-05 rel 1.58e-05 ( -96.0 dB) self 2.11e-06 env 0.0000 dB ok
+SD Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+SD Level=64                peak 0.8267 rms 0.05368 | port 0.8267 | maxdiff 2.1e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+SD Level=127               peak 1.6404 rms 0.10652 | port 1.6404 | maxdiff 4.1e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+SD Drive=0                 peak 0.7420 rms 0.04454 | port 0.7420 | maxdiff 1.2e-05 rel 2.04e-05 ( -93.8 dB) self 1.68e-06 env 0.0000 dB ok
+SD Drive=64                peak 0.7583 rms 0.05391 | port 0.7583 | maxdiff 3.2e-05 rel 2.69e-05 ( -91.4 dB) self 1.39e-06 env 0.0000 dB ok
+SD Drive=127               peak 0.7971 rms 0.05932 | port 0.7971 | maxdiff 1.2e-04 rel 4.74e-05 ( -86.5 dB) self 1.26e-06 env 0.0000 dB ok
+SD Dist=Diode              peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+SD Dist=Clip               peak 0.6543 rms 0.04513 | port 0.6543 | maxdiff 1.6e-05 rel 2.20e-05 ( -93.2 dB) self 1.66e-06 env 0.0000 dB ok
+SD Dist=SAT                peak 0.7147 rms 0.04389 | port 0.7147 | maxdiff 1.9e-05 rel 2.05e-05 ( -93.8 dB) self 1.71e-06 env 0.0000 dB ok
+SD Dist=BFZ                peak 0.6387 rms 0.04639 | port 0.6387 | maxdiff 4.0e-05 rel 2.48e-05 ( -92.1 dB) self 1.61e-06 env 0.0000 dB ok
+SD Dist=PDIST              peak 0.6058 rms 0.04273 | port 0.6058 | maxdiff 1.8e-05 rel 2.27e-05 ( -92.9 dB) self 1.75e-06 env 0.0000 dB ok
+SD Dist=Fold               peak 0.6861 rms 0.04687 | port 0.6861 | maxdiff 1.8e-05 rel 2.88e-05 ( -90.8 dB) self 1.60e-06 env 0.0001 dB ok
+SD Dist=Crush              peak 0.7265 rms 0.04259 | port 0.7265 | maxdiff 1.9e-06 rel 2.28e-06 (-112.8 dB) self 1.76e-06 env 0.0000 dB ok
+SD Rev=0                   peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+SD Rev=64                  peak 0.7534 rms 0.05123 | port 0.7534 | maxdiff 7.3e-05 rel 1.08e-04 ( -79.3 dB) self 7.72e-05 env 0.0021 dB ok
+SD Rev=127                 peak 0.7534 rms 0.05706 | port 0.7534 | maxdiff 1.0e-04 rel 1.45e-04 ( -76.8 dB) self 1.12e-04 env 0.0012 dB ok
+SD Dly=0                   peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+SD Dly=64                  peak 0.7534 rms 0.05230 | port 0.7534 | maxdiff 6.9e-05 rel 7.61e-05 ( -82.4 dB) self 5.57e-05 env 0.0031 dB ok
+SD Dly=127                 peak 0.7534 rms 0.06119 | port 0.7534 | maxdiff 1.4e-04 rel 9.21e-05 ( -80.7 dB) self 6.34e-05 env 0.0006 dB ok
+LT default vel127          peak 0.4444 rms 0.07845 | port 0.4443 | maxdiff 2.2e-04 rel 4.65e-04 ( -66.7 dB) self 4.17e-04 env 0.0522 dB ok
+LT default vel80           peak 0.2799 rms 0.04942 | port 0.2799 | maxdiff 1.4e-04 rel 4.65e-04 ( -66.7 dB) self 4.17e-04 env 0.0522 dB ok
+LT Tune=0                  peak 0.4323 rms 0.07794 | port 0.4323 | maxdiff 1.6e-04 rel 3.96e-04 ( -68.0 dB) self 3.82e-04 env 0.0471 dB ok
+LT Tune=64                 peak 0.4442 rms 0.07844 | port 0.4443 | maxdiff 2.1e-04 rel 4.98e-04 ( -66.1 dB) self 2.82e-04 env 0.0514 dB ok
+LT Tune=127                peak 0.4436 rms 0.07853 | port 0.4435 | maxdiff 2.2e-04 rel 5.19e-04 ( -65.7 dB) self 3.42e-04 env 0.0490 dB ok
+LT Decay=0                 peak 0.3118 rms 0.02060 | port 0.3118 | maxdiff 7.2e-05 rel 4.37e-04 ( -67.2 dB) self 3.25e-04 env 0.0202 dB ok
+LT Decay=64                peak 0.4237 rms 0.04137 | port 0.4236 | maxdiff 9.4e-05 rel 2.85e-04 ( -70.9 dB) self 4.22e-04 env 0.0287 dB ok
+LT Decay=127               peak 0.4470 rms 0.09688 | port 0.4470 | maxdiff 1.6e-04 rel 3.64e-04 ( -68.8 dB) self 1.96e-04 env 0.0097 dB ok
+LT Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+LT Level=64                peak 0.5497 rms 0.09704 | port 0.5496 | maxdiff 2.7e-04 rel 4.65e-04 ( -66.7 dB) self 4.17e-04 env 0.0522 dB ok
+LT Level=127               peak 1.0907 rms 0.19256 | port 1.0906 | maxdiff 5.4e-04 rel 4.65e-04 ( -66.7 dB) self 4.17e-04 env 0.0522 dB ok
+LT Attack=0                peak 0.4444 rms 0.07845 | port 0.4444 | maxdiff 1.5e-04 rel 4.36e-04 ( -67.2 dB) self 3.81e-04 env 0.0538 dB ok
+LT Attack=64               peak 0.4441 rms 0.07844 | port 0.4442 | maxdiff 2.0e-04 rel 5.13e-04 ( -65.8 dB) self 2.95e-04 env 0.0555 dB ok
+LT Attack=127              peak 0.4439 rms 0.07844 | port 0.4438 | maxdiff 1.4e-04 rel 3.79e-04 ( -68.4 dB) self 2.64e-04 env 0.0548 dB ok
+LT Drive=0                 peak 0.3351 rms 0.05208 | port 0.3351 | maxdiff 8.8e-05 rel 3.26e-04 ( -69.7 dB) self 3.47e-04 env 0.0341 dB ok
+LT Drive=64                peak 0.5250 rms 0.10606 | port 0.5250 | maxdiff 2.4e-04 rel 5.29e-04 ( -65.5 dB) self 4.06e-04 env 0.0543 dB ok
+LT Drive=127               peak 0.6428 rms 0.18631 | port 0.6428 | maxdiff 4.6e-04 rel 4.57e-04 ( -66.8 dB) self 2.37e-04 env 0.0529 dB ok
+LT Dist=Diode              peak 0.4444 rms 0.07845 | port 0.4443 | maxdiff 2.2e-04 rel 4.65e-04 ( -66.7 dB) self 4.17e-04 env 0.0522 dB ok
+LT Dist=Clip               peak 0.4105 rms 0.06617 | port 0.4104 | maxdiff 1.9e-04 rel 5.83e-04 ( -64.7 dB) self 3.90e-04 env 0.0662 dB ok
+LT Dist=SAT                peak 0.3491 rms 0.06325 | port 0.3491 | maxdiff 1.5e-04 rel 4.26e-04 ( -67.4 dB) self 2.33e-04 env 0.0517 dB ok
+LT Dist=BFZ                peak 0.4404 rms 0.09525 | port 0.4404 | maxdiff 1.9e-04 rel 4.50e-04 ( -66.9 dB) self 2.52e-04 env 0.0542 dB ok
+LT Dist=PDIST              peak 0.3895 rms 0.07247 | port 0.3895 | maxdiff 1.5e-04 rel 3.77e-04 ( -68.5 dB) self 2.53e-04 env 0.0562 dB ok
+LT Dist=Fold               peak 0.5123 rms 0.08403 | port 0.5122 | maxdiff 1.9e-04 rel 4.16e-04 ( -67.6 dB) self 2.87e-04 env 0.0524 dB ok
+LT Dist=Crush              peak 0.3064 rms 0.04491 | port 0.3064 | maxdiff 6.4e-02 rel 1.18e-02 ( -38.6 dB) self 1.78e-04 env 0.0835 dB ok(flips) [flips 0.785% of samples, rest rel 4.8e-04, self env 0.056 dB]
+LT Rev=0                   peak 0.4444 rms 0.07845 | port 0.4443 | maxdiff 2.2e-04 rel 4.65e-04 ( -66.7 dB) self 4.17e-04 env 0.0522 dB ok
+LT Rev=64                  peak 0.4444 rms 0.08189 | port 0.4443 | maxdiff 2.2e-04 rel 4.86e-04 ( -66.3 dB) self 4.08e-04 env 0.0640 dB ok
+LT Rev=127                 peak 0.4444 rms 0.08567 | port 0.4443 | maxdiff 2.3e-04 rel 5.00e-04 ( -66.0 dB) self 4.00e-04 env 0.1581 dB ok
+LT Dly=0                   peak 0.4444 rms 0.07845 | port 0.4443 | maxdiff 2.2e-04 rel 4.65e-04 ( -66.7 dB) self 4.17e-04 env 0.0522 dB ok
+LT Dly=64                  peak 0.4444 rms 0.07884 | port 0.4443 | maxdiff 2.2e-04 rel 4.78e-04 ( -66.4 dB) self 4.18e-04 env 0.0245 dB ok
+LT Dly=127                 peak 0.4444 rms 0.08013 | port 0.4443 | maxdiff 2.2e-04 rel 4.85e-04 ( -66.3 dB) self 4.17e-04 env 0.0103 dB ok
+MT default vel127          peak 0.4383 rms 0.06181 | port 0.4383 | maxdiff 1.4e-04 rel 3.63e-04 ( -68.8 dB) self 2.91e-04 env 0.0316 dB ok
+MT default vel80           peak 0.2761 rms 0.03893 | port 0.2761 | maxdiff 8.7e-05 rel 3.63e-04 ( -68.8 dB) self 2.91e-04 env 0.0316 dB ok
+MT Tune=0                  peak 0.4411 rms 0.06183 | port 0.4411 | maxdiff 1.5e-04 rel 4.48e-04 ( -67.0 dB) self 2.72e-04 env 0.0362 dB ok
+MT Tune=64                 peak 0.4386 rms 0.06181 | port 0.4386 | maxdiff 1.6e-04 rel 4.17e-04 ( -67.6 dB) self 3.11e-04 env 0.0227 dB ok
+MT Tune=127                peak 0.4332 rms 0.06178 | port 0.4332 | maxdiff 3.0e-04 rel 6.47e-04 ( -63.8 dB) self 3.42e-04 env 0.0274 dB ok
+MT Decay=0                 peak 0.3481 rms 0.01936 | port 0.3481 | maxdiff 4.3e-05 rel 2.00e-04 ( -74.0 dB) self 1.46e-04 env 0.0108 dB ok
+MT Decay=64                peak 0.4269 rms 0.03839 | port 0.4270 | maxdiff 9.1e-05 rel 2.96e-04 ( -70.6 dB) self 2.61e-04 env 0.0282 dB ok
+MT Decay=127               peak 0.4419 rms 0.08929 | port 0.4419 | maxdiff 2.0e-04 rel 4.13e-04 ( -67.7 dB) self 3.36e-04 env 0.0048 dB ok
+MT Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+MT Level=64                peak 0.5422 rms 0.07645 | port 0.5422 | maxdiff 1.7e-04 rel 3.63e-04 ( -68.8 dB) self 2.91e-04 env 0.0316 dB ok
+MT Level=127               peak 1.0759 rms 0.15171 | port 1.0759 | maxdiff 3.4e-04 rel 3.63e-04 ( -68.8 dB) self 2.91e-04 env 0.0316 dB ok
+MT Attack=0                peak 0.4383 rms 0.06181 | port 0.4383 | maxdiff 1.6e-04 rel 4.45e-04 ( -67.0 dB) self 2.99e-04 env 0.0312 dB ok
+MT Attack=64               peak 0.4382 rms 0.06180 | port 0.4382 | maxdiff 2.4e-04 rel 4.87e-04 ( -66.2 dB) self 2.86e-04 env 0.0312 dB ok
+MT Attack=127              peak 0.4377 rms 0.06179 | port 0.4378 | maxdiff 3.0e-04 rel 5.64e-04 ( -65.0 dB) self 2.57e-04 env 0.0316 dB ok
+MT Drive=0                 peak 0.3419 rms 0.04125 | port 0.3419 | maxdiff 1.1e-04 rel 4.56e-04 ( -66.8 dB) self 2.97e-04 env 0.0310 dB ok
+MT Drive=64                peak 0.5022 rms 0.08342 | port 0.5022 | maxdiff 2.4e-04 rel 4.33e-04 ( -67.3 dB) self 2.50e-04 env 0.0525 dB ok
+MT Drive=127               peak 0.5836 rms 0.14684 | port 0.5836 | maxdiff 5.7e-04 rel 5.29e-04 ( -65.5 dB) self 2.33e-04 env 0.1460 dB ok
+MT Dist=Diode              peak 0.4383 rms 0.06181 | port 0.4383 | maxdiff 1.4e-04 rel 3.63e-04 ( -68.8 dB) self 2.91e-04 env 0.0316 dB ok
+MT Dist=Clip               peak 0.4274 rms 0.05218 | port 0.4274 | maxdiff 1.2e-04 rel 3.63e-04 ( -68.8 dB) self 1.87e-04 env 0.0348 dB ok
+MT Dist=SAT                peak 0.3474 rms 0.04993 | port 0.3474 | maxdiff 1.7e-04 rel 5.55e-04 ( -65.1 dB) self 3.29e-04 env 0.0508 dB ok
+MT Dist=BFZ                peak 0.4351 rms 0.07500 | port 0.4352 | maxdiff 2.4e-04 rel 4.30e-04 ( -67.3 dB) self 2.76e-04 env 0.0665 dB ok
+MT Dist=PDIST              peak 0.3835 rms 0.05691 | port 0.3834 | maxdiff 1.1e-04 rel 3.58e-04 ( -68.9 dB) self 2.95e-04 env 0.0446 dB ok
+MT Dist=Fold               peak 0.4994 rms 0.06573 | port 0.4994 | maxdiff 1.3e-04 rel 2.76e-04 ( -71.2 dB) self 2.40e-04 env 0.0308 dB ok
+MT Dist=Crush              peak 0.3336 rms 0.03535 | port 0.3336 | maxdiff 6.5e-05 rel 3.46e-04 ( -69.2 dB) self 1.59e-04 env 0.0425 dB ok
+MT Rev=0                   peak 0.4383 rms 0.06181 | port 0.4383 | maxdiff 1.4e-04 rel 3.63e-04 ( -68.8 dB) self 2.91e-04 env 0.0316 dB ok
+MT Rev=64                  peak 0.4383 rms 0.06134 | port 0.4383 | maxdiff 1.9e-04 rel 4.39e-04 ( -67.1 dB) self 3.05e-04 env 0.0637 dB ok
+MT Rev=127                 peak 0.4383 rms 0.06131 | port 0.4383 | maxdiff 2.1e-04 rel 4.95e-04 ( -66.1 dB) self 3.17e-04 env 0.0364 dB ok
+MT Dly=0                   peak 0.4383 rms 0.06181 | port 0.4383 | maxdiff 1.4e-04 rel 3.63e-04 ( -68.8 dB) self 2.91e-04 env 0.0316 dB ok
+MT Dly=64                  peak 0.4383 rms 0.06314 | port 0.4383 | maxdiff 1.5e-04 rel 3.95e-04 ( -68.1 dB) self 2.90e-04 env 0.0193 dB ok
+MT Dly=127                 peak 0.4383 rms 0.06689 | port 0.4383 | maxdiff 1.5e-04 rel 4.08e-04 ( -67.8 dB) self 2.79e-04 env 0.0217 dB ok
+HT default vel127          peak 0.4317 rms 0.06322 | port 0.4316 | maxdiff 1.6e-04 rel 4.13e-04 ( -67.7 dB) self 2.99e-04 env 0.0138 dB ok
+HT default vel80           peak 0.2719 rms 0.03982 | port 0.2719 | maxdiff 1.0e-04 rel 4.13e-04 ( -67.7 dB) self 2.99e-04 env 0.0138 dB ok
+HT Tune=0                  peak 0.4369 rms 0.06324 | port 0.4368 | maxdiff 1.7e-04 rel 4.20e-04 ( -67.5 dB) self 2.38e-04 env 0.0242 dB ok
+HT Tune=64                 peak 0.4306 rms 0.06321 | port 0.4305 | maxdiff 3.8e-04 rel 7.67e-04 ( -62.3 dB) self 5.12e-04 env 0.0221 dB ok
+HT Tune=127                peak 0.4233 rms 0.06320 | port 0.4233 | maxdiff 1.7e-04 rel 4.51e-04 ( -66.9 dB) self 2.76e-04 env 0.0159 dB ok
+HT Decay=0                 peak 0.3569 rms 0.01840 | port 0.3569 | maxdiff 3.8e-05 rel 1.80e-04 ( -74.9 dB) self 1.37e-04 env 0.0034 dB ok
+HT Decay=64                peak 0.4221 rms 0.03610 | port 0.4221 | maxdiff 9.2e-05 rel 3.32e-04 ( -69.6 dB) self 3.07e-04 env 0.0267 dB ok
+HT Decay=127               peak 0.4337 rms 0.08514 | port 0.4337 | maxdiff 3.5e-04 rel 6.16e-04 ( -64.2 dB) self 2.66e-04 env 0.0095 dB ok
+HT Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+HT Level=64                peak 0.5340 rms 0.07819 | port 0.5339 | maxdiff 2.0e-04 rel 4.13e-04 ( -67.7 dB) self 2.99e-04 env 0.0138 dB ok
+HT Level=127               peak 1.0596 rms 0.15517 | port 1.0595 | maxdiff 3.9e-04 rel 4.13e-04 ( -67.7 dB) self 2.99e-04 env 0.0138 dB ok
+HT Attack=0                peak 0.4317 rms 0.06322 | port 0.4317 | maxdiff 2.5e-04 rel 6.62e-04 ( -63.6 dB) self 4.55e-04 env 0.0141 dB ok
+HT Attack=64               peak 0.4316 rms 0.06321 | port 0.4316 | maxdiff 1.5e-04 rel 3.75e-04 ( -68.5 dB) self 2.14e-04 env 0.0132 dB ok
+HT Attack=127              peak 0.4311 rms 0.06319 | port 0.4311 | maxdiff 1.3e-04 rel 3.61e-04 ( -68.9 dB) self 3.10e-04 env 0.0146 dB ok
+HT Drive=0                 peak 0.3448 rms 0.04212 | port 0.3449 | maxdiff 1.5e-04 rel 5.61e-04 ( -65.0 dB) self 3.28e-04 env 0.0149 dB ok
+HT Drive=64                peak 0.4854 rms 0.08539 | port 0.4854 | maxdiff 2.7e-04 rel 5.51e-04 ( -65.2 dB) self 3.37e-04 env 0.0265 dB ok
+HT Drive=127               peak 0.5486 rms 0.15038 | port 0.5487 | maxdiff 7.8e-04 rel 7.49e-04 ( -62.5 dB) self 3.49e-04 env 0.1213 dB ok
+HT Dist=Diode              peak 0.4317 rms 0.06322 | port 0.4316 | maxdiff 1.6e-04 rel 4.13e-04 ( -67.7 dB) self 2.99e-04 env 0.0138 dB ok
+HT Dist=Clip               peak 0.4353 rms 0.05355 | port 0.4353 | maxdiff 1.5e-04 rel 4.29e-04 ( -67.4 dB) self 1.55e-04 env 0.0263 dB ok
+HT Dist=SAT                peak 0.3452 rms 0.05104 | port 0.3452 | maxdiff 1.2e-04 rel 4.38e-04 ( -67.2 dB) self 3.26e-04 env 0.0250 dB ok
+HT Dist=BFZ                peak 0.4305 rms 0.07684 | port 0.4305 | maxdiff 3.2e-04 rel 5.87e-04 ( -64.6 dB) self 3.52e-04 env 0.0454 dB ok
+HT Dist=PDIST              peak 0.3749 rms 0.05831 | port 0.3749 | maxdiff 1.6e-04 rel 5.07e-04 ( -65.9 dB) self 4.03e-04 env 0.0274 dB ok
+HT Dist=Fold               peak 0.4826 rms 0.06718 | port 0.4825 | maxdiff 2.5e-04 rel 6.17e-04 ( -64.2 dB) self 2.41e-04 env 0.0156 dB ok
+HT Dist=Crush              peak 0.3274 rms 0.03599 | port 0.3274 | maxdiff 6.4e-02 rel 1.47e-02 ( -36.7 dB) self 2.68e-04 env 0.0656 dB ok(flips) [flips 0.730% of samples, rest rel 5.6e-04, self env 0.066 dB]
+HT Rev=0                   peak 0.4317 rms 0.06322 | port 0.4316 | maxdiff 1.6e-04 rel 4.13e-04 ( -67.7 dB) self 2.99e-04 env 0.0138 dB ok
+HT Rev=64                  peak 0.4317 rms 0.06351 | port 0.4316 | maxdiff 2.3e-04 rel 5.04e-04 ( -65.9 dB) self 3.10e-04 env 0.0136 dB ok
+HT Rev=127                 peak 0.4317 rms 0.06469 | port 0.4316 | maxdiff 2.4e-04 rel 5.57e-04 ( -65.1 dB) self 3.21e-04 env 0.0192 dB ok
+HT Dly=0                   peak 0.4317 rms 0.06322 | port 0.4316 | maxdiff 1.6e-04 rel 4.13e-04 ( -67.7 dB) self 2.99e-04 env 0.0138 dB ok
+HT Dly=64                  peak 0.4317 rms 0.06573 | port 0.4316 | maxdiff 1.6e-04 rel 4.53e-04 ( -66.9 dB) self 2.93e-04 env 0.0086 dB ok
+HT Dly=127                 peak 0.4317 rms 0.07265 | port 0.4316 | maxdiff 1.6e-04 rel 4.54e-04 ( -66.9 dB) self 2.70e-04 env 0.0063 dB ok
+RS default vel127          peak 0.6946 rms 0.02618 | port 0.6946 | maxdiff 9.4e-06 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+RS default vel80           peak 0.4376 rms 0.01649 | port 0.4376 | maxdiff 5.9e-06 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+RS Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+RS Level=64                peak 0.4296 rms 0.01619 | port 0.4296 | maxdiff 5.8e-06 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+RS Level=127               peak 0.8525 rms 0.03213 | port 0.8525 | maxdiff 1.1e-05 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+RS Tune=0                  peak 0.5820 rms 0.02061 | port 0.5820 | maxdiff 1.0e-05 rel 2.66e-05 ( -91.5 dB) self 2.77e-05 env 0.0003 dB ok
+RS Tune=64                 peak 0.6984 rms 0.02639 | port 0.6984 | maxdiff 1.0e-05 rel 2.41e-05 ( -92.4 dB) self 1.95e-05 env 0.0001 dB ok
+RS Tune=127                peak 0.7765 rms 0.03144 | port 0.7765 | maxdiff 8.0e-06 rel 1.13e-05 ( -99.0 dB) self 2.06e-05 env 0.0001 dB ok
+RS Drive=0                 peak 0.6665 rms 0.02183 | port 0.6665 | maxdiff 1.4e-05 rel 3.05e-05 ( -90.3 dB) self 1.90e-05 env 0.0002 dB ok
+RS Drive=64                peak 0.8733 rms 0.04160 | port 0.8733 | maxdiff 1.3e-05 rel 1.96e-05 ( -94.1 dB) self 3.31e-05 env 0.0002 dB ok
+RS Drive=127               peak 1.3481 rms 0.07230 | port 1.3481 | maxdiff 3.5e-05 rel 3.69e-05 ( -88.7 dB) self 3.07e-05 env 0.0002 dB ok
+RS Dist=Diode              peak 0.6946 rms 0.02618 | port 0.6946 | maxdiff 9.4e-06 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+RS Dist=Clip               peak 0.4072 rms 0.01955 | port 0.4072 | maxdiff 7.2e-06 rel 2.21e-05 ( -93.1 dB) self 1.74e-05 env 0.0051 dB ok
+RS Dist=SAT                peak 0.5858 rms 0.02164 | port 0.5858 | maxdiff 8.9e-06 rel 2.58e-05 ( -91.8 dB) self 2.18e-05 env 0.0002 dB ok
+RS Dist=BFZ                peak 0.5466 rms 0.02427 | port 0.5466 | maxdiff 8.3e-06 rel 1.88e-05 ( -94.5 dB) self 2.00e-05 env 0.0001 dB ok
+RS Dist=PDIST              peak 0.4650 rms 0.02191 | port 0.4650 | maxdiff 1.2e-05 rel 3.24e-05 ( -89.8 dB) self 3.44e-05 env 0.0001 dB ok
+RS Dist=Fold               peak 0.7206 rms 0.02531 | port 0.7206 | maxdiff 9.0e-06 rel 2.32e-05 ( -92.7 dB) self 2.90e-05 env 0.0002 dB ok
+RS Dist=Crush              peak 0.6486 rms 0.01900 | port 0.6486 | maxdiff 2.2e-06 rel 1.03e-05 ( -99.8 dB) self 8.26e-06 env 0.0003 dB ok
+RS Rev=0                   peak 0.6946 rms 0.02618 | port 0.6946 | maxdiff 9.4e-06 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+RS Rev=64                  peak 0.6946 rms 0.02829 | port 0.6946 | maxdiff 8.5e-05 rel 1.02e-04 ( -79.8 dB) self 9.71e-05 env 0.0006 dB ok
+RS Rev=127                 peak 0.6946 rms 0.03371 | port 0.6946 | maxdiff 7.3e-05 rel 1.24e-04 ( -78.2 dB) self 1.03e-04 env 0.0010 dB ok
+RS Dly=0                   peak 0.6946 rms 0.02618 | port 0.6946 | maxdiff 9.4e-06 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+RS Dly=64                  peak 0.6946 rms 0.02820 | port 0.6946 | maxdiff 1.4e-04 rel 6.62e-05 ( -83.6 dB) self 5.34e-05 env 0.0006 dB ok
+RS Dly=127                 peak 0.6946 rms 0.03346 | port 0.6946 | maxdiff 6.9e-05 rel 8.53e-05 ( -81.4 dB) self 6.97e-05 env 0.0005 dB ok
+CP default vel127          peak 0.7045 rms 0.02621 | port 0.7045 | maxdiff 5.9e-06 rel 1.03e-05 ( -99.7 dB) self 3.50e-06 env 0.0001 dB ok
+CP default vel80           peak 0.4438 rms 0.01651 | port 0.4438 | maxdiff 3.7e-06 rel 1.03e-05 ( -99.7 dB) self 3.50e-06 env 0.0001 dB ok
+CP Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+CP Level=64                peak 0.3687 rms 0.01372 | port 0.3687 | maxdiff 3.1e-06 rel 1.03e-05 ( -99.7 dB) self 3.50e-06 env 0.0001 dB ok
+CP Level=127               peak 0.7316 rms 0.02722 | port 0.7316 | maxdiff 6.1e-06 rel 1.03e-05 ( -99.7 dB) self 3.50e-06 env 0.0001 dB ok
+CP Tune=0                  peak 0.5588 rms 0.02214 | port 0.5588 | maxdiff 5.7e-06 rel 1.02e-05 ( -99.9 dB) self 3.62e-06 env 0.0001 dB ok
+CP Tune=64                 peak 0.7050 rms 0.02627 | port 0.7050 | maxdiff 7.9e-06 rel 1.20e-05 ( -98.4 dB) self 5.54e-06 env 0.0001 dB ok
+CP Tune=127                peak 0.7606 rms 0.02976 | port 0.7606 | maxdiff 6.3e-06 rel 9.69e-06 (-100.3 dB) self 3.30e-06 env 0.0001 dB ok
+CP Tail=0                  peak 0.7045 rms 0.02421 | port 0.7045 | maxdiff 5.9e-06 rel 1.02e-05 ( -99.8 dB) self 3.27e-06 env 0.0001 dB ok
+CP Tail=64                 peak 0.7045 rms 0.02624 | port 0.7045 | maxdiff 5.9e-06 rel 1.05e-05 ( -99.5 dB) self 3.79e-06 env 0.0001 dB ok
+CP Tail=127                peak 0.7045 rms 0.03060 | port 0.7045 | maxdiff 5.9e-06 rel 1.02e-05 ( -99.8 dB) self 3.36e-06 env 0.0001 dB ok
+CP Drive=0                 peak 0.5400 rms 0.01897 | port 0.5400 | maxdiff 3.6e-06 rel 7.75e-06 (-102.2 dB) self 3.48e-06 env 0.0001 dB ok
+CP Drive=64                peak 1.0230 rms 0.04552 | port 1.0230 | maxdiff 8.8e-06 rel 9.38e-06 (-100.6 dB) self 4.19e-06 env 0.0001 dB ok
+CP Drive=127               peak 1.5218 rms 0.11102 | port 1.5218 | maxdiff 1.8e-05 rel 7.99e-06 (-101.9 dB) self 4.28e-06 env 0.0001 dB ok
+CP Dist=Diode              peak 0.7045 rms 0.02621 | port 0.7045 | maxdiff 5.9e-06 rel 1.03e-05 ( -99.7 dB) self 3.50e-06 env 0.0001 dB ok
+CP Dist=Clip               peak 0.6307 rms 0.02101 | port 0.6307 | maxdiff 6.6e-06 rel 2.60e-05 ( -91.7 dB) self 3.13e-06 env 0.0125 dB ok
+CP Dist=SAT                peak 0.5583 rms 0.02301 | port 0.5583 | maxdiff 2.0e-06 rel 5.34e-06 (-105.5 dB) self 3.72e-06 env 0.0000 dB ok
+CP Dist=BFZ                peak 0.6923 rms 0.03087 | port 0.6923 | maxdiff 2.8e-06 rel 5.19e-06 (-105.7 dB) self 3.62e-06 env 0.0000 dB ok
+CP Dist=PDIST              peak 0.6690 rms 0.02420 | port 0.6690 | maxdiff 1.9e-06 rel 5.43e-06 (-105.3 dB) self 3.25e-06 env 0.0000 dB ok
+CP Dist=Fold               peak 0.7269 rms 0.02491 | port 0.7269 | maxdiff 2.8e-06 rel 5.48e-06 (-105.2 dB) self 4.60e-06 env 0.0000 dB ok
+CP Dist=Crush              peak 0.4312 rms 0.01583 | port 0.4312 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 2.94e-06 env 0.0000 dB ok
+CP Rev=0                   peak 0.7045 rms 0.02621 | port 0.7045 | maxdiff 5.9e-06 rel 1.03e-05 ( -99.7 dB) self 3.50e-06 env 0.0001 dB ok
+CP Rev=64                  peak 0.7045 rms 0.02826 | port 0.7045 | maxdiff 5.2e-05 rel 1.17e-04 ( -78.6 dB) self 7.35e-05 env 0.0009 dB ok
+CP Rev=127                 peak 0.7045 rms 0.03313 | port 0.7045 | maxdiff 7.8e-05 rel 1.35e-04 ( -77.4 dB) self 1.12e-04 env 0.0023 dB ok
+CP Dly=0                   peak 0.7045 rms 0.02621 | port 0.7045 | maxdiff 5.9e-06 rel 1.03e-05 ( -99.7 dB) self 3.50e-06 env 0.0001 dB ok
+CP Dly=64                  peak 0.7045 rms 0.02839 | port 0.7045 | maxdiff 6.9e-05 rel 8.16e-05 ( -81.8 dB) self 3.99e-05 env 0.0016 dB ok
+CP Dly=127                 peak 0.7045 rms 0.03401 | port 0.7045 | maxdiff 6.9e-05 rel 8.27e-05 ( -81.6 dB) self 7.04e-05 env 0.0023 dB ok
+CH default vel127          peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH default vel80           peak 0.1378 rms 0.00440 | port 0.1378 | maxdiff 4.8e-07 rel 2.83e-06 (-111.0 dB) self 0.00e+00 env 0.0000 dB ok
+CH Decay=0                 peak 0.0253 rms 0.00046 | port 0.0253 | maxdiff 4.5e-08 rel 1.43e-06 (-116.9 dB) self 0.00e+00 env 0.0000 dB ok
+CH Decay=64                peak 0.1750 rms 0.00431 | port 0.1750 | maxdiff 2.4e-07 rel 1.39e-06 (-117.1 dB) self 0.00e+00 env 0.0000 dB ok
+CH Decay=127               peak 0.3509 rms 0.01367 | port 0.3509 | maxdiff 1.4e-06 rel 3.43e-06 (-109.3 dB) self 0.00e+00 env 0.0000 dB ok
+CH Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 1.7e-12 rel 2.71e-06 (-111.4 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+CH Level=64                peak 0.1560 rms 0.00496 | port 0.1560 | maxdiff 3.4e-07 rel 1.80e-06 (-114.9 dB) self 0.00e+00 env 0.0000 dB ok
+CH Level=127               peak 0.3038 rms 0.00938 | port 0.3038 | maxdiff 2.7e-07 rel 7.04e-07 (-123.0 dB) self 0.00e+00 env 0.0000 dB ok
+CH Tune=0                  peak 0.0783 rms 0.00253 | port 0.0783 | maxdiff 1.5e-07 rel 1.76e-06 (-115.1 dB) self 0.00e+00 env 0.0000 dB ok
+CH Tune=64                 peak 0.1668 rms 0.00605 | port 0.1668 | maxdiff 4.5e-07 rel 1.84e-06 (-114.7 dB) self 0.00e+00 env 0.0000 dB ok
+CH Tune=127                peak 0.3720 rms 0.00894 | port 0.3720 | maxdiff 8.0e-07 rel 1.66e-06 (-115.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Drive=0                 peak 0.3208 rms 0.01135 | port 0.3208 | maxdiff 2.1e-06 rel 6.99e-06 (-103.1 dB) self 0.00e+00 env 0.0001 dB ok
+CH Drive=64                peak 0.3511 rms 0.03043 | port 0.3511 | maxdiff 2.5e-06 rel 6.13e-06 (-104.3 dB) self 0.00e+00 env 0.0002 dB ok
+CH Drive=127               peak 0.3500 rms 0.05679 | port 0.3500 | maxdiff 2.7e-06 rel 3.66e-06 (-108.7 dB) self 0.00e+00 env 0.0002 dB ok
+CH Dist=Diode              peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dist=Clip               peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dist=SAT                peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dist=BFZ                peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dist=PDIST              peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dist=Fold               peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dist=Crush              peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Rev=0                   peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Rev=64                  peak 0.2159 rms 0.00714 | port 0.2159 | maxdiff 3.8e-05 rel 9.56e-05 ( -80.4 dB) self 0.00e+00 env 0.0002 dB ok
+CH Rev=127                 peak 0.2159 rms 0.00816 | port 0.2159 | maxdiff 6.8e-05 rel 3.29e-04 ( -69.7 dB) self 2.52e-04 env 0.0022 dB ok
+CH Dly=0                   peak 0.2159 rms 0.00676 | port 0.2159 | maxdiff 5.1e-07 rel 1.86e-06 (-114.6 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dly=64                  peak 0.2159 rms 0.00715 | port 0.2159 | maxdiff 6.9e-05 rel 6.44e-05 ( -83.8 dB) self 0.00e+00 env 0.0000 dB ok
+CH Dly=127                 peak 0.2159 rms 0.00818 | port 0.2159 | maxdiff 1.4e-04 rel 2.03e-04 ( -73.9 dB) self 1.59e-04 env 0.0006 dB ok
+OH default vel127          peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH default vel80           peak 0.2352 rms 0.00968 | port 0.2352 | maxdiff 5.4e-07 rel 1.83e-06 (-114.8 dB) self 0.00e+00 env 0.0000 dB ok
+OH Decay=0                 peak 0.0429 rms 0.00074 | port 0.0429 | maxdiff 4.8e-08 rel 9.76e-07 (-120.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Decay=64                peak 0.2144 rms 0.00811 | port 0.2144 | maxdiff 5.8e-07 rel 2.16e-06 (-113.3 dB) self 0.00e+00 env 0.0000 dB ok
+OH Decay=127               peak 0.4557 rms 0.02135 | port 0.4557 | maxdiff 1.5e-06 rel 2.50e-06 (-112.0 dB) self 0.00e+00 env 0.0000 dB ok
+OH Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 9.4e-14 rel 3.04e-06 (-110.3 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+OH Level=64                peak 0.2970 rms 0.01218 | port 0.2970 | maxdiff 1.5e-06 rel 4.28e-06 (-107.4 dB) self 0.00e+00 env 0.0000 dB ok
+OH Level=127               peak 0.5789 rms 0.02355 | port 0.5789 | maxdiff 2.9e-06 rel 4.16e-06 (-107.6 dB) self 0.00e+00 env 0.0000 dB ok
+OH Tune=0                  peak 0.1952 rms 0.01124 | port 0.1952 | maxdiff 5.5e-07 rel 2.78e-06 (-111.1 dB) self 0.00e+00 env 0.0000 dB ok
+OH Tune=64                 peak 0.2928 rms 0.01356 | port 0.2928 | maxdiff 1.2e-06 rel 2.76e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Tune=127                peak 0.4838 rms 0.01241 | port 0.4838 | maxdiff 1.6e-06 rel 2.63e-06 (-111.6 dB) self 0.00e+00 env 0.0000 dB ok
+OH Drive=0                 peak 0.4333 rms 0.02432 | port 0.4333 | maxdiff 2.5e-06 rel 6.89e-06 (-103.2 dB) self 0.00e+00 env 0.0001 dB ok
+OH Drive=64                peak 0.3511 rms 0.05667 | port 0.3511 | maxdiff 2.7e-06 rel 5.86e-06 (-104.6 dB) self 0.00e+00 env 0.0002 dB ok
+OH Drive=127               peak 0.3500 rms 0.09856 | port 0.3500 | maxdiff 2.8e-06 rel 3.78e-06 (-108.4 dB) self 0.00e+00 env 0.0002 dB ok
+OH Dist=Diode              peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Dist=Clip               peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Dist=SAT                peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Dist=BFZ                peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Dist=PDIST              peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Dist=Fold               peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Dist=Crush              peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Rev=0                   peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Rev=64                  peak 0.3689 rms 0.01590 | port 0.3689 | maxdiff 6.8e-05 rel 1.65e-04 ( -75.6 dB) self 1.30e-04 env 0.0049 dB ok
+OH Rev=127                 peak 0.3689 rms 0.01811 | port 0.3689 | maxdiff 6.0e-05 rel 2.12e-04 ( -73.5 dB) self 1.93e-04 env 0.0046 dB ok
+OH Dly=0                   peak 0.3689 rms 0.01509 | port 0.3689 | maxdiff 1.3e-06 rel 2.75e-06 (-111.2 dB) self 0.00e+00 env 0.0000 dB ok
+OH Dly=64                  peak 0.3689 rms 0.01596 | port 0.3689 | maxdiff 6.9e-05 rel 9.12e-05 ( -80.8 dB) self 9.99e-05 env 0.0006 dB ok
+OH Dly=127                 peak 0.3689 rms 0.01830 | port 0.3689 | maxdiff 1.4e-04 rel 1.23e-04 ( -78.2 dB) self 1.07e-04 env 0.0007 dB ok
+CR default vel127          peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR default vel80           peak 0.1622 rms 0.01256 | port 0.1622 | maxdiff 8.9e-07 rel 3.94e-06 (-108.1 dB) self 0.00e+00 env 0.0000 dB ok
+CR Tune=0                  peak 0.1937 rms 0.01832 | port 0.1937 | maxdiff 3.3e-07 rel 1.01e-06 (-119.9 dB) self 0.00e+00 env 0.0000 dB ok
+CR Tune=64                 peak 0.2328 rms 0.01848 | port 0.2328 | maxdiff 3.6e-07 rel 9.63e-07 (-120.3 dB) self 0.00e+00 env 0.0000 dB ok
+CR Tune=127                peak 0.2970 rms 0.01555 | port 0.2970 | maxdiff 4.0e-07 rel 9.55e-07 (-120.4 dB) self 0.00e+00 env 0.0000 dB ok
+CR Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 3.3e-14 rel 6.60e-06 (-103.6 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+CR Level=64                peak 0.3435 rms 0.02636 | port 0.3435 | maxdiff 8.6e-07 rel 1.71e-06 (-115.3 dB) self 0.00e+00 env 0.0000 dB ok
+CR Level=127               peak 0.6697 rms 0.05102 | port 0.6697 | maxdiff 2.4e-07 rel 1.41e-07 (-137.0 dB) self 0.00e+00 env 0.0000 dB ok
+CR Decay=0                 peak 0.1203 rms 0.00351 | port 0.1203 | maxdiff 1.6e-07 rel 1.28e-06 (-117.9 dB) self 0.00e+00 env 0.0000 dB ok
+CR Decay=64                peak 0.2020 rms 0.01083 | port 0.2020 | maxdiff 9.5e-07 rel 3.56e-06 (-109.0 dB) self 0.00e+00 env 0.0000 dB ok
+CR Decay=127               peak 0.2868 rms 0.02399 | port 0.2868 | maxdiff 3.0e-07 rel 7.47e-07 (-122.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Drive=0                 peak 0.3580 rms 0.03322 | port 0.3580 | maxdiff 1.6e-06 rel 5.46e-06 (-105.3 dB) self 0.00e+00 env 0.0001 dB ok
+CR Drive=64                peak 0.3511 rms 0.09741 | port 0.3511 | maxdiff 2.1e-06 rel 5.13e-06 (-105.8 dB) self 0.00e+00 env 0.0002 dB ok
+CR Drive=127               peak 0.3500 rms 0.19200 | port 0.3500 | maxdiff 2.1e-06 rel 2.79e-06 (-111.1 dB) self 0.00e+00 env 0.0001 dB ok
+CR Dist=Diode              peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Dist=Clip               peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Dist=SAT                peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Dist=BFZ                peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Dist=PDIST              peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Dist=Fold               peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Dist=Crush              peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Rev=0                   peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Rev=64                  peak 0.2622 rms 0.02071 | port 0.2622 | maxdiff 5.7e-05 rel 1.90e-04 ( -74.4 dB) self 1.59e-04 env 0.0010 dB ok
+CR Rev=127                 peak 0.2698 rms 0.02392 | port 0.2698 | maxdiff 6.9e-05 rel 2.51e-04 ( -72.0 dB) self 1.99e-04 env 0.0036 dB ok
+CR Dly=0                   peak 0.2545 rms 0.01959 | port 0.2545 | maxdiff 3.4e-07 rel 9.42e-07 (-120.5 dB) self 0.00e+00 env 0.0000 dB ok
+CR Dly=64                  peak 0.2545 rms 0.02092 | port 0.2545 | maxdiff 6.9e-05 rel 1.12e-04 ( -79.0 dB) self 7.94e-05 env 0.0054 dB ok
+CR Dly=127                 peak 0.2545 rms 0.02442 | port 0.2545 | maxdiff 1.4e-04 rel 1.68e-04 ( -75.5 dB) self 1.35e-04 env 0.0012 dB ok
+RD default vel127          peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD default vel80           peak 0.1583 rms 0.01189 | port 0.1583 | maxdiff 3.4e-07 rel 1.62e-06 (-115.8 dB) self 0.00e+00 env 0.0000 dB ok
+RD Tune=0                  peak 0.2295 rms 0.02095 | port 0.2295 | maxdiff 4.2e-07 rel 1.27e-06 (-117.9 dB) self 0.00e+00 env 0.0000 dB ok
+RD Tune=64                 peak 0.2358 rms 0.01729 | port 0.2358 | maxdiff 4.2e-07 rel 1.28e-06 (-117.9 dB) self 0.00e+00 env 0.0000 dB ok
+RD Tune=127                peak 0.2567 rms 0.01261 | port 0.2567 | maxdiff 3.3e-07 rel 1.22e-06 (-118.2 dB) self 0.00e+00 env 0.0000 dB ok
+RD Level=0                 peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 2.6e-14 rel 6.46e-06 (-103.8 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+RD Level=64                peak 0.3791 rms 0.02787 | port 0.3791 | maxdiff 7.7e-07 rel 1.70e-06 (-115.4 dB) self 0.00e+00 env 0.0000 dB ok
+RD Level=127               peak 0.7510 rms 0.05433 | port 0.7510 | maxdiff 2.4e-07 rel 1.46e-07 (-136.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Decay=0                 peak 0.2105 rms 0.00607 | port 0.2105 | maxdiff 7.5e-07 rel 2.89e-06 (-110.8 dB) self 0.00e+00 env 0.0000 dB ok
+RD Decay=64                peak 0.2348 rms 0.01217 | port 0.2348 | maxdiff 7.7e-07 rel 1.97e-06 (-114.1 dB) self 0.00e+00 env 0.0000 dB ok
+RD Decay=127               peak 0.2541 rms 0.02152 | port 0.2541 | maxdiff 1.3e-06 rel 3.94e-06 (-108.1 dB) self 0.00e+00 env 0.0000 dB ok
+RD Drive=0                 peak 0.3549 rms 0.03140 | port 0.3549 | maxdiff 2.0e-06 rel 6.69e-06 (-103.5 dB) self 0.00e+00 env 0.0001 dB ok
+RD Drive=64                peak 0.3511 rms 0.08883 | port 0.3511 | maxdiff 2.5e-06 rel 6.13e-06 (-104.3 dB) self 0.00e+00 env 0.0002 dB ok
+RD Drive=127               peak 0.3500 rms 0.17831 | port 0.3500 | maxdiff 2.4e-06 rel 3.70e-06 (-108.6 dB) self 0.00e+00 env 0.0002 dB ok
+RD Dist=Diode              peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Dist=Clip               peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Dist=SAT                peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Dist=BFZ                peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Dist=PDIST              peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Dist=Fold               peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Dist=Crush              peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Rev=0                   peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Rev=64                  peak 0.2510 rms 0.01968 | port 0.2510 | maxdiff 7.7e-05 rel 2.02e-04 ( -73.9 dB) self 1.85e-04 env 0.0033 dB ok
+RD Rev=127                 peak 0.2510 rms 0.02272 | port 0.2510 | maxdiff 7.4e-05 rel 2.12e-04 ( -73.5 dB) self 1.73e-04 env 0.0053 dB ok
+RD Dly=0                   peak 0.2510 rms 0.01864 | port 0.2510 | maxdiff 4.5e-07 rel 1.31e-06 (-117.7 dB) self 0.00e+00 env 0.0000 dB ok
+RD Dly=64                  peak 0.2510 rms 0.01984 | port 0.2510 | maxdiff 6.9e-05 rel 1.09e-04 ( -79.3 dB) self 8.99e-05 env 0.0009 dB ok
+RD Dly=127                 peak 0.2510 rms 0.02301 | port 0.2510 | maxdiff 1.4e-04 rel 1.33e-04 ( -77.5 dB) self 1.27e-04 env 0.0022 dB ok
+
+== kit: accent / velocity depth ==
+KIT Accent=0 SD vel60      peak 0.1780 rms 0.01156 | port 0.1780 | maxdiff 4.4e-06 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Accent=0 SD vel127     peak 0.3767 rms 0.02446 | port 0.3767 | maxdiff 9.4e-06 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Accent=64 SD vel60     peak 0.4470 rms 0.02903 | port 0.4470 | maxdiff 1.1e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Accent=64 SD vel127    peak 0.9462 rms 0.06144 | port 0.9462 | maxdiff 2.4e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Accent=127 SD vel60    peak 0.7119 rms 0.04623 | port 0.7119 | maxdiff 1.8e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Accent=127 SD vel127   peak 1.5068 rms 0.09784 | port 1.5068 | maxdiff 3.7e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Veloc=0 SD vel60       peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Veloc=0 SD vel127      peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Veloc=64 SD vel60      peak 0.5531 rms 0.03592 | port 0.5531 | maxdiff 1.4e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Veloc=64 SD vel127     peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Veloc=127 SD vel60     peak 0.3559 rms 0.02311 | port 0.3559 | maxdiff 8.9e-06 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+KIT Veloc=127 SD vel127    peak 0.7534 rms 0.04892 | port 0.7534 | maxdiff 1.9e-05 rel 2.27e-05 ( -92.9 dB) self 1.53e-06 env 0.0000 dB ok
+
+== kit: every voice at once, CH then OH (choke) ==
+all 11 voices vel127       peak 2.4145 rms 0.20733 | port 2.4146 | maxdiff 6.0e-04 rel 3.63e-04 ( -68.8 dB) self 2.24e-04 env 0.0201 dB ok
+
+== send reverb (SD and CP sends 127; each reverb pot 0/64/127) ==
+REV RvDec=0                peak 0.9819 rms 0.06808 | port 0.9819 | maxdiff 9.6e-05 rel 9.42e-05 ( -80.5 dB) self 7.06e-05 env 0.0005 dB ok
+REV RvDec=64               peak 0.9819 rms 0.07040 | port 0.9819 | maxdiff 1.2e-04 rel 1.13e-04 ( -79.0 dB) self 8.47e-05 env 0.0018 dB ok
+REV RvDec=127              peak 0.9819 rms 0.09581 | port 0.9819 | maxdiff 1.3e-04 rel 2.14e-04 ( -73.4 dB) self 1.52e-04 env 0.0026 dB ok
+REV RvTone=0               peak 0.9819 rms 0.07027 | port 0.9819 | maxdiff 1.1e-04 rel 1.21e-04 ( -78.3 dB) self 8.49e-05 env 0.0025 dB ok
+REV RvTone=64              peak 0.9819 rms 0.07137 | port 0.9819 | maxdiff 9.7e-05 rel 1.26e-04 ( -78.0 dB) self 9.24e-05 env 0.0021 dB ok
+REV RvTone=127             peak 0.9819 rms 0.07213 | port 0.9819 | maxdiff 1.1e-04 rel 1.29e-04 ( -77.8 dB) self 9.26e-05 env 0.0028 dB ok
+REV RvHPF=0                peak 0.9819 rms 0.07276 | port 0.9819 | maxdiff 2.9e-04 rel 5.04e-04 ( -66.0 dB) self 4.71e-04 env 0.0061 dB ok
+REV RvHPF=64               peak 0.9819 rms 0.07113 | port 0.9819 | maxdiff 1.1e-04 rel 1.14e-04 ( -78.9 dB) self 8.94e-05 env 0.0032 dB ok
+REV RvHPF=127              peak 0.9819 rms 0.06736 | port 0.9819 | maxdiff 7.0e-05 rel 5.69e-05 ( -84.9 dB) self 3.23e-05 env 0.0002 dB ok
+REV RvLvl=0                peak 0.9819 rms 0.05945 | port 0.9819 | maxdiff 1.9e-05 rel 1.89e-05 ( -94.5 dB) self 1.93e-06 env 0.0000 dB ok
+REV RvLvl=64               peak 0.9819 rms 0.06662 | port 0.9819 | maxdiff 9.4e-05 rel 9.80e-05 ( -80.2 dB) self 7.15e-05 env 0.0011 dB ok
+REV RvLvl=127              peak 0.9819 rms 0.08324 | port 0.9819 | maxdiff 1.9e-04 rel 1.54e-04 ( -76.3 dB) self 1.13e-04 env 0.0038 dB ok
+
+== send delay (RS send 127; each delay pot 0/64/127, every division) ==
+DLY DlFdbk=0               peak 0.6946 rms 0.02317 | port 0.6946 | maxdiff 6.9e-05 rel 7.36e-05 ( -82.7 dB) self 6.23e-05 env 0.0003 dB ok
+DLY DlFdbk=64              peak 0.6946 rms 0.02405 | port 0.6946 | maxdiff 1.4e-04 rel 8.71e-05 ( -81.2 dB) self 7.38e-05 env 0.0005 dB ok
+DLY DlFdbk=127             peak 0.6946 rms 0.02959 | port 0.6946 | maxdiff 1.4e-04 rel 9.56e-05 ( -80.4 dB) self 8.71e-05 env 0.0004 dB ok
+DLY DlTone=0               peak 0.6946 rms 0.02348 | port 0.6946 | maxdiff 6.9e-05 rel 7.65e-05 ( -82.3 dB) self 7.30e-05 env 0.0007 dB ok
+DLY DlTone=64              peak 0.6946 rms 0.02373 | port 0.6946 | maxdiff 1.4e-04 rel 9.74e-05 ( -80.2 dB) self 7.96e-05 env 0.0042 dB ok
+DLY DlTone=127             peak 0.6946 rms 0.02374 | port 0.6946 | maxdiff 6.9e-05 rel 8.16e-05 ( -81.8 dB) self 6.95e-05 env 0.0010 dB ok
+DLY DlLvl=0                peak 0.6946 rms 0.01851 | port 0.6946 | maxdiff 9.4e-06 rel 2.11e-05 ( -93.5 dB) self 1.47e-05 env 0.0001 dB ok
+DLY DlLvl=64               peak 0.6946 rms 0.02164 | port 0.6946 | maxdiff 5.2e-05 rel 7.59e-05 ( -82.4 dB) self 6.35e-05 env 0.0005 dB ok
+DLY DlLvl=127              peak 0.7639 rms 0.02894 | port 0.7639 | maxdiff 1.0e-04 rel 1.10e-04 ( -79.2 dB) self 9.29e-05 env 0.0005 dB ok
+DLY DlHPF=0                peak 0.6946 rms 0.02430 | port 0.6946 | maxdiff 1.4e-04 rel 1.89e-04 ( -74.5 dB) self 2.32e-04 env 0.0025 dB ok
+DLY DlHPF=64               peak 0.6946 rms 0.02364 | port 0.6946 | maxdiff 1.4e-04 rel 8.86e-05 ( -81.0 dB) self 8.78e-05 env 0.0037 dB ok
+DLY DlHPF=127              peak 0.6946 rms 0.01929 | port 0.6946 | maxdiff 6.9e-05 rel 4.91e-05 ( -86.2 dB) self 4.68e-05 env 0.0020 dB ok
+DLY time=1/32              peak 0.7534 rms 0.04121 | port 0.7534 | maxdiff 1.4e-04 rel 1.10e-04 ( -79.2 dB) self 8.00e-05 env 0.0052 dB ok
+DLY time=1/16T             peak 0.7534 rms 0.04202 | port 0.7534 | maxdiff 1.4e-04 rel 1.11e-04 ( -79.1 dB) self 7.17e-05 env 0.0024 dB ok
+DLY time=1/16              peak 0.7534 rms 0.04323 | port 0.7534 | maxdiff 1.4e-04 rel 1.17e-04 ( -78.7 dB) self 8.01e-05 env 0.0022 dB ok
+DLY time=1/8T              peak 0.7534 rms 0.04346 | port 0.7534 | maxdiff 1.4e-04 rel 1.13e-04 ( -78.9 dB) self 7.48e-05 env 0.0030 dB ok
+DLY time=1/16.             peak 0.7534 rms 0.04340 | port 0.7534 | maxdiff 1.4e-04 rel 1.00e-04 ( -80.0 dB) self 6.84e-05 env 0.0030 dB ok
+DLY time=1/8               peak 0.7534 rms 0.04336 | port 0.7534 | maxdiff 1.4e-04 rel 1.04e-04 ( -79.6 dB) self 7.06e-05 env 0.0054 dB ok
+DLY time=1/4T              peak 0.7534 rms 0.04338 | port 0.7534 | maxdiff 1.4e-04 rel 9.87e-05 ( -80.1 dB) self 7.17e-05 env 0.0028 dB ok
+DLY time=1/8.              peak 0.7534 rms 0.04334 | port 0.7534 | maxdiff 1.4e-04 rel 9.73e-05 ( -80.2 dB) self 6.80e-05 env 0.0018 dB ok
+DLY time=1/4               peak 0.7534 rms 0.04347 | port 0.7534 | maxdiff 1.4e-04 rel 1.06e-04 ( -79.5 dB) self 7.06e-05 env 0.0015 dB ok
+DLY time=1/2T              peak 0.7534 rms 0.04341 | port 0.7534 | maxdiff 1.4e-04 rel 1.07e-04 ( -79.4 dB) self 7.50e-05 env 0.0004 dB ok
+DLY time=1/4.              peak 0.7534 rms 0.04328 | port 0.7534 | maxdiff 1.4e-04 rel 9.63e-05 ( -80.3 dB) self 6.39e-05 env 0.0020 dB ok
+DLY time=1/2               peak 0.7534 rms 0.04263 | port 0.7534 | maxdiff 1.4e-04 rel 8.38e-05 ( -81.5 dB) self 5.65e-05 env 0.0003 dB ok
+DLY time=1/2.              peak 0.7534 rms 0.04286 | port 0.7534 | maxdiff 1.4e-04 rel 1.01e-04 ( -79.9 dB) self 6.93e-05 env 0.0003 dB ok
+
+== master: every distortion type at drive 0/64/127, comp, volume (kit hit BD+SD+CH) ==
+MASTER Off drive=0         peak 1.2585 rms 0.16204 | port 1.2585 | maxdiff 2.9e-04 rel 3.08e-04 ( -70.2 dB) self 1.69e-04 env 0.0043 dB ok
+MASTER Off drive=64        peak 1.2585 rms 0.16204 | port 1.2585 | maxdiff 2.9e-04 rel 3.08e-04 ( -70.2 dB) self 1.69e-04 env 0.0043 dB ok
+MASTER Off drive=127       peak 1.2585 rms 0.16204 | port 1.2585 | maxdiff 2.9e-04 rel 3.08e-04 ( -70.2 dB) self 1.69e-04 env 0.0043 dB ok
+MASTER Diode drive=0       peak 0.3506 rms 0.08826 | port 0.3506 | maxdiff 2.0e-04 rel 3.12e-04 ( -70.1 dB) self 1.71e-04 env 0.0061 dB ok
+MASTER Diode drive=64      peak 0.2458 rms 0.14466 | port 0.2458 | maxdiff 1.9e-03 rel 5.34e-04 ( -65.5 dB) self 3.01e-04 env 0.0061 dB ok
+MASTER Diode drive=127     peak 0.2450 rms 0.19885 | port 0.2450 | maxdiff 1.6e-02 rel 1.44e-03 ( -56.8 dB) self 8.20e-04 env 0.0059 dB ok(<=2x self) [flips 1.508% of samples, rest rel 1.5e-04, self env 0.004 dB]
+MASTER Clip drive=0        peak 0.3565 rms 0.06598 | port 0.3565 | maxdiff 1.6e-04 rel 3.28e-04 ( -69.7 dB) self 1.80e-04 env 0.0231 dB ok
+MASTER Clip drive=64       peak 0.3137 rms 0.14332 | port 0.3137 | maxdiff 1.8e-03 rel 5.27e-04 ( -65.6 dB) self 2.96e-04 env 0.0075 dB ok
+MASTER Clip drive=127      peak 0.3137 rms 0.19954 | port 0.3137 | maxdiff 2.1e-02 rel 1.53e-03 ( -56.3 dB) self 8.31e-04 env 0.0065 dB ok(<=2x self) [flips 1.111% of samples, rest rel 1.6e-04, self env 0.005 dB]
+MASTER SAT drive=0         peak 0.4993 rms 0.07981 | port 0.4993 | maxdiff 1.8e-04 rel 3.03e-04 ( -70.4 dB) self 1.67e-04 env 0.0036 dB ok
+MASTER SAT drive=64        peak 1.2071 rms 0.21682 | port 1.2071 | maxdiff 1.7e-03 rel 3.38e-04 ( -69.4 dB) self 1.88e-04 env 0.0061 dB ok
+MASTER SAT drive=127       peak 3.9148 rms 0.54783 | port 3.9148 | maxdiff 2.0e-02 rel 5.11e-04 ( -65.8 dB) self 2.88e-04 env 0.0052 dB ok
+MASTER BFZ drive=0         peak 0.7488 rms 0.09642 | port 0.7488 | maxdiff 1.7e-04 rel 3.08e-04 ( -70.2 dB) self 1.69e-04 env 0.0043 dB ok
+MASTER BFZ drive=64        peak 0.3005 rms 0.14836 | port 0.3005 | maxdiff 4.2e-03 rel 6.37e-04 ( -63.9 dB) self 3.50e-04 env 0.0064 dB ok
+MASTER BFZ drive=127       peak 0.3034 rms 0.20711 | port 0.3034 | maxdiff 1.9e-02 rel 1.32e-03 ( -57.6 dB) self 8.08e-04 env 0.0046 dB ok(<=2x self) [flips 1.163% of samples, rest rel 1.6e-04, self env 0.005 dB]
+MASTER PDIST drive=0       peak 0.1953 rms 0.05512 | port 0.1953 | maxdiff 1.4e-04 rel 3.35e-04 ( -69.5 dB) self 1.83e-04 env 0.0062 dB ok
+MASTER PDIST drive=64      peak 0.1953 rms 0.10804 | port 0.1953 | maxdiff 1.9e-03 rel 6.50e-04 ( -63.7 dB) self 3.66e-04 env 0.0062 dB ok
+MASTER PDIST drive=127     peak 0.1953 rms 0.14339 | port 0.1953 | maxdiff 1.7e-02 rel 1.88e-03 ( -54.5 dB) self 1.07e-03 env 0.0061 dB ok(<=2x self) [flips 1.367% of samples, rest rel 1.4e-04, self env 0.004 dB]
+MASTER Fold drive=0        peak 0.2882 rms 0.07632 | port 0.2882 | maxdiff 1.7e-04 rel 3.64e-04 ( -68.8 dB) self 2.00e-04 env 0.0062 dB ok
+MASTER Fold drive=64       peak 3.9587 rms 0.27919 | port 3.9587 | maxdiff 1.9e-03 rel 8.50e-04 ( -61.4 dB) self 4.69e-04 env 0.0081 dB ok
+MASTER Fold drive=127      peak 76.9200 rms 9.43851 | port 76.9202 | maxdiff 2.6e-02 rel 3.31e-04 ( -69.6 dB) self 1.83e-04 env 0.0113 dB ok
+MASTER Crush drive=0       peak 0.7499 rms 0.09651 | port 0.7499 | maxdiff 2.0e-02 rel 5.66e-03 ( -44.9 dB) self 4.12e-03 env 0.0350 dB ok(<=2x self) [flips 0.073% of samples, rest rel 2.4e-08, self env 0.021 dB]
+MASTER Crush drive=64      peak 2.6278 rms 0.36426 | port 2.6278 | maxdiff 5.7e-02 rel 5.74e-03 ( -44.8 dB) self 4.54e-03 env 0.0573 dB ok(<=2x self) [flips 0.134% of samples, rest rel 0.0e+00, self env 0.159 dB]
+MASTER Crush drive=127     peak 9.4733 rms 1.34521 | port 9.4733 | maxdiff 1.1e-01 rel 4.17e-03 ( -47.6 dB) self 3.82e-03 env 0.0579 dB ok(<=2x self) [flips 0.265% of samples, rest rel 2.8e-08, self env 0.058 dB]
+MASTER comp=1              peak 1.2431 rms 0.15644 | port 1.2431 | maxdiff 2.8e-04 rel 3.09e-04 ( -70.2 dB) self 1.71e-04 env 0.0043 dB ok
+MASTER comp=64             peak 1.4363 rms 0.12638 | port 1.4363 | maxdiff 1.9e-04 rel 3.23e-04 ( -69.8 dB) self 1.79e-04 env 0.0043 dB ok
+MASTER comp=127            peak 2.3640 rms 0.12459 | port 2.3640 | maxdiff 1.6e-04 rel 2.93e-04 ( -70.7 dB) self 1.67e-04 env 0.0042 dB ok
+MASTER volume=0            peak 0.0000 rms 0.00000 | port 0.0000 | maxdiff 0.0e+00 rel 0.00e+00 (-999.0 dB) self 0.00e+00 env 0.0000 dB ok(silent)
+MASTER volume=64           peak 1.8120 rms 0.23331 | port 1.8120 | maxdiff 4.2e-04 rel 3.08e-04 ( -70.2 dB) self 1.69e-04 env 0.0043 dB ok
+MASTER volume=127          peak 3.5956 rms 0.46298 | port 3.5957 | maxdiff 8.3e-04 rel 3.08e-04 ( -70.2 dB) self 1.69e-04 env 0.0043 dB ok
+ALL fx on, kit hit         peak 0.4893 rms 0.11338 | port 0.4893 | maxdiff 6.9e-04 rel 3.58e-04 ( -68.9 dB) self 2.06e-04 env 0.0071 dB ok
+
+== delay TYPE=TAPE (no reference: stability) ==
+TAPE wear=  0 fdbk=127: peak over 20 s 0.753, peak in last second 0.204 (self-oscillation held)
+TAPE wear= 64 fdbk=127: peak over 20 s 0.753, peak in last second 0.114 (self-oscillation held)
+TAPE wear=127 fdbk=127: peak over 20 s 0.753, peak in last second 0.075 (self-oscillation held)
+
+== the demo pattern, port vs 9W9 (4 bars + 2 s tails, sends, choke, glue) ==
+demo pattern               peak 0.9432 rms 0.14815 | port 0.9432 | maxdiff 2.3e-04 rel 3.14e-04 ( -70.1 dB) env 0.0140 dB ok
+wrote build/drum909_demo.wav: 429619 frames (9.74 s, 124 BPM, 4 bars + tails), 16-bit stereo, peak 0.943, 0 clipped samples
+
+PASS: 0 failure(s)

@@ -1,0 +1,3 @@
+SOURCE /workspace/plan-all/wt-617c0ff1/firmware/src/ble.c
+COMMAND cc -std=c11 -O1 -g -Wall -Wextra -Werror /tmp/ble-first-notification-vt479zoc/test.c -o /tmp/ble-first-notification-vt479zoc/test
+BLE TRANSPORT CALLBACK CHECKS 95 FAILURES 0\n

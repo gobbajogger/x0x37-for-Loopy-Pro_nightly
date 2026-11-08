@@ -1,0 +1,24 @@
+ok   no row: REFUSED 7d97072: no index row for tree 644a24f07d16 in /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/res/index.md
+ok   manual row, no result file: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (row PASS: no result file /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/res/644a24f07d16b1118cc1250baa63d5daaa6536d2.md; 1 gate-PASS rows checked)
+ok   hand-written PASS text: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (newest row result "PASS (backfill)" is not a gate PASS; 0 gate-PASS rows checked)
+ok   TRIAL PASS: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (newest row result "TRIAL PASS" is not a gate PASS; 0 gate-PASS rows checked)
+ok   VOID: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (newest row result "VOID (setup error: no toolchain; not a test result)" is not a gate PASS; 0 gate-PASS rows checked)
+ok   FAIL and KILLED: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (newest row result "KILLED" is not a gate PASS; 0 gate-PASS rows checked)
+ok   PASS row, result file of another tree: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (0123456789abcdef0123456789abcdef01234567.md: the tree is not 644a24f07d16b1118cc1250baa63d5daaa6536d2; 1 gate-PASS rows checked)
+ok   gate.log without gate lines: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (644a24f07d16b1118cc1250baa63d5daaa6536d2.md: /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/work/7d97072.logs/gate.log has no gate lines; 1 gate-PASS rows checked)
+ok   CRC mismatch: REFUSED 7d97072: bad.fwsc crc32 09607e6e is not a gate-built dev .fwsc of tree 644a24f07d16 (CRC manifest of 644a24f07d16b1118cc1250baa63d5daaa6536d2.md)
+ok   gate PASS: GATE OK 7d97072 /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/res/644a24f07d16b1118cc1250baa63d5daaa6536d2.md (config dev; queue: 0 open lines in 7d97072)
+ok   PASS (result used again): GATE OK 7d97072 /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/res/644a24f07d16b1118cc1250baa63d5daaa6536d2.md (config dev; queue: 0 open lines in 7d97072)
+ok   sync pack + unpack, guard on the copy: GATE OK 7d97072 /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/mac/644a24f07d16b1118cc1250baa63d5daaa6536d2.md (config dev; queue: 0 open lines in 7d97072)
+ok   fm1_install.py without --commit: exit 9
+ok   two configs: dev fwsc, --config dev: GATE OK 7d97072 /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/res/644a24f07d16b1118cc1250baa63d5daaa6536d2-2.md (config dev; queue: 0 open lines in 7d97072)
+ok   two configs: dev fwsc, no --config (dev): GATE OK 7d97072 /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/res/644a24f07d16b1118cc1250baa63d5daaa6536d2-2.md (config dev; queue: 0 open lines in 7d97072)
+ok   two configs: rel fwsc, --config rel: GATE OK 7d97072 /workspace/plan-all/wt-617c0ff1/build/host/iso/install-gate-guard/tmp/igg.S1aQw4/res/644a24f07d16b1118cc1250baa63d5daaa6536d2-2.md (config rel; queue: 0 open lines in 7d97072)
+ok   two configs: rel fwsc, --config dev (swapped): REFUSED 7d97072: rel.fwsc crc32 9a78aa48 is the rel build, not the dev build, of tree 644a24f07d16 (CRC manifest of 644a24f07d16b1118cc1250baa63d5daaa6536d2-2.md)
+ok   two configs: dev fwsc, --config rel (swapped): REFUSED 7d97072: good.fwsc crc32 60fcc366 is the dev build, not the rel build, of tree 644a24f07d16 (CRC manifest of 644a24f07d16b1118cc1250baa63d5daaa6536d2-2.md)
+ok   two configs: unknown CRC, --config rel: REFUSED 7d97072: bad.fwsc crc32 09607e6e is not a gate-built rel .fwsc of tree 644a24f07d16 (CRC manifest of 644a24f07d16b1118cc1250baa63d5daaa6536d2-2.md)
+ok   one-config result, --config rel: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (644a24f07d16b1118cc1250baa63d5daaa6536d2.md: a result with one config (dev only), no rel build; 1 gate-PASS rows checked)
+ok   --config beta: exit 2
+ok   missing validation identity: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (644a24f07d16b1118cc1250baa63d5daaa6536d2.md: missing or invalid validation-input provenance; 1 gate-PASS rows checked)
+ok   damaged validation identity: REFUSED 7d97072: no valid gate PASS for tree 644a24f07d16 (644a24f07d16b1118cc1250baa63d5daaa6536d2.md: missing or invalid validation-input provenance; 1 gate-PASS rows checked)
+install gate guard: 23 of 23 ok

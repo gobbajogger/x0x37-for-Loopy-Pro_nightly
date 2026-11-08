@@ -1,0 +1,16 @@
+test_ack_good_canonical_offsets_and_no_address (__main__.Echo7Bit.test_ack_good_canonical_offsets_and_no_address) ... ok
+test_ack_reject_noncanonical_low_echo_alias (__main__.Echo7Bit.test_ack_reject_noncanonical_low_echo_alias) ... ok
+test_ack_reject_noncanonical_middle_echo_alias (__main__.Echo7Bit.test_ack_reject_noncanonical_middle_echo_alias) ... ok
+test_ack_reject_status_outside_midi_data_byte (__main__.Echo7Bit.test_ack_reject_status_outside_midi_data_byte) ... ok
+test_ack_wrong_offset_and_length_still_rejected (__main__.Echo7Bit.test_ack_wrong_offset_and_length_still_rejected) ... ok
+test_read_reject_negative_echo_even_when_address_matches (__main__.Echo7Bit.test_read_reject_negative_echo_even_when_address_matches) ... ok
+test_read_reject_noncanonical_low_echo_even_when_address_matches (__main__.Echo7Bit.test_read_reject_noncanonical_low_echo_even_when_address_matches) ... ok
+test_read_reject_noncanonical_middle_echo_even_when_address_matches (__main__.Echo7Bit.test_read_reject_noncanonical_middle_echo_even_when_address_matches) ... ok
+test_read_valid_canonical_high_addresses (__main__.Echo7Bit.test_read_valid_canonical_high_addresses) ... ok
+test_read_valid_even_odd_roundup_and_partial_replies (__main__.Echo7Bit.test_read_valid_even_odd_roundup_and_partial_replies) ... ok
+test_read_wrong_slot_still_rejected (__main__.Echo7Bit.test_read_wrong_slot_still_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK

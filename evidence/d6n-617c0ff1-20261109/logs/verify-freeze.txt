@@ -1,0 +1,20 @@
+/workspace/plan-all/wt-617c0ff1: HEAD: 617c0ff1d49ccfdd789d358dc962fbfea5f94c15: PASS
+/workspace/plan-all/wt-617c0ff1: HEAD^{tree}: 0c346e5bee8ec20cac7e59ded175085594079e42: PASS
+/workspace/plan-all/wt-617c0ff1: HEAD^: 2287f113fa4bf74757b4e6d758c2e5464eb47036: PASS
+/workspace/plan-all/wt-617c0ff1: origin/main: 1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83: PASS
+/workspace/plan-all/wt-617c0ff1: origin/wip/one-build: 48e92b76c2f476cf40771e00a04e1838136bb55d: PASS
+/workspace/plan-all/wt-617c0ff1: origin/lane/dev-combined-ui-panic-20261109: 2287f113fa4bf74757b4e6d758c2e5464eb47036: PASS
+/workspace/plan-all/wt-617c0ff1: origin/lane/dev-v3-panic-rearm-20261109: 617c0ff1d49ccfdd789d358dc962fbfea5f94c15: PASS
+/workspace/nightly: origin/main: a8205aff483dce09414093defdc19cf79d57b719: PASS
+/workspace/nightly: origin/main^{tree}: 75ac6de0061d62c5f93e66c02bf13938f8dc0c56: PASS
+/workspace/nightly: origin/gh-pages: 24c46a8938798f0d1c74e666193ff3c39cedf57d: PASS
+/workspace/nightly: origin/gh-pages^{tree}: eefacd18c851807cfe2b15d5b5e935beb21e366e: PASS
+/workspace/plan-all/schwung-9W9: HEAD: 10cbe5c1e1c9e65b0818bb34644ab1a13092082c: PASS
+/workspace/plan-all/schwung-8W8: HEAD: 94aa2716d4c2e5851fc7c5dbb4c17adfd133c997: PASS
+2287f113fa4bf74757b4e6d758c2e5464eb47036	refs/heads/lane/dev-combined-ui-panic-20261109
+617c0ff1d49ccfdd789d358dc962fbfea5f94c15	refs/heads/lane/dev-v3-panic-rearm-20261109
+1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83	refs/heads/main
+48e92b76c2f476cf40771e00a04e1838136bb55d	refs/heads/wip/one-build
+24c46a8938798f0d1c74e666193ff3c39cedf57d	refs/heads/gh-pages
+a8205aff483dce09414093defdc19cf79d57b719	refs/heads/main
+evidence branch absent: True

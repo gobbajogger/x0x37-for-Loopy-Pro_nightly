@@ -1,0 +1,16 @@
+default header has no loop bytes                                 ok
+pack keeps the whole ADPCM                                       ok
+pack keeps length and bars                                       ok
+a cut pack does not parse                                        ok
+the image and its tail mark stay                                 ok
+place stays inside the code region                               ok
+the pack sits in the free tail                                   ok
+no write past code_max                                           ok
+a pack bigger than the tail is refused                           ok
+factory names                                                    ok
+factory loops are 5 seconds, 2 bars                              ok
+the two loops do not share a prefix                              ok
+pack is the generator's ADPCM                                    ok
+the saved factory pack matches                                   ok
+C parser compiles                                                ok
+C parser reads the same pack                                     ok

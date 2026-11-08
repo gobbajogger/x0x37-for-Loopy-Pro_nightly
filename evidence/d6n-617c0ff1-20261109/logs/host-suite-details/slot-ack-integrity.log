@@ -1,0 +1,21 @@
+test_begin_extra_ack_bytes_refused (__main__.AckTests.test_begin_extra_ack_bytes_refused) ... ok
+test_begin_truncated_fails_before_payload (__main__.AckTests.test_begin_truncated_fails_before_payload) ... ok
+test_begin_wrong_slot_fails_before_any_payload (__main__.AckTests.test_begin_wrong_slot_fails_before_any_payload) ... ok
+test_device_end_error_still_aborts (__main__.AckTests.test_device_end_error_still_aborts) ... ok
+test_device_erase_error_still_aborts (__main__.AckTests.test_device_erase_error_still_aborts) ... ok
+test_device_write_error_still_aborts (__main__.AckTests.test_device_write_error_still_aborts) ... ok
+test_end_empty_ack_is_sloterror (__main__.AckTests.test_end_empty_ack_is_sloterror) ... ok
+test_end_wrong_slot_is_not_success (__main__.AckTests.test_end_wrong_slot_is_not_success) ... ok
+test_erase_short_ack_refused (__main__.AckTests.test_erase_short_ack_refused) ... ok
+test_erase_wrong_slot_never_reports_success (__main__.AckTests.test_erase_wrong_slot_never_reports_success) ... ok
+test_second_write_replayed_prior_ack_fails_before_end (__main__.AckTests.test_second_write_replayed_prior_ack_fails_before_end) ... ok
+test_valid_erase (__main__.AckTests.test_valid_erase) ... ok
+test_valid_two_frame_write_and_end (__main__.AckTests.test_valid_two_frame_write_and_end) ... ok
+test_write_truncated_ack_is_sloterror_not_indexerror (__main__.AckTests.test_write_truncated_ack_is_sloterror_not_indexerror) ... ok
+test_write_wrong_offset_fails_before_end (__main__.AckTests.test_write_wrong_offset_fails_before_end) ... ok
+test_write_wrong_slot_fails_before_end (__main__.AckTests.test_write_wrong_slot_fails_before_end) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.001s
+
+OK

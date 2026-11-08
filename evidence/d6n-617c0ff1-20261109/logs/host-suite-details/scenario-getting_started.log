@@ -1,0 +1,27 @@
+  ok view == 8
+  ok part == 0
+  ok peak -11.3 dBFS
+  ok hit0.0.0 == 1
+  ok hit0.0.12 == 1
+  ok playing == 1
+  ok hit0.6.4 == 1
+  ok hit0.6.12 == 1
+  ok hit0.8.2 == 1
+  ok hit0.8.14 == 1
+  ok part == 2
+  ok view == 2
+  ok view == 1
+  ok page == 2
+  ok rowval == 58
+  ok rowval == 90
+  ok part == 4
+  ok brk0 == 1
+  ok brk15 == 1
+  ok view == 0
+  ok mute == 16777216
+  ok mute == 0
+  ok part == 2
+  ok view == 1
+  ok lanes == 1
+  ok store_writes == 6
+host: 9372 ms simulated, 353 blits, render 1.0% of real time (host CPU)

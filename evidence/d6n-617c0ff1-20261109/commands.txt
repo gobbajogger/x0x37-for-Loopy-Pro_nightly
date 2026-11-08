@@ -1,0 +1,33 @@
+# Rebuilt locally; no source changes; no remote writes.
+cd /workspace/plan-all/wt-617c0ff1
+export JIELI_TOOLCHAIN=/workspace/build-inputs/jieli/toolchain
+export AC79_SDK=/workspace/build-inputs/fw-AC79_AIoT_SDK
+export JIELI_DOCKER=0
+export X0X_DEV_PADCAL=0
+export CTL_NO_CACHE=1
+export CC=cc
+export CXX=c++
+command -v clang c++; clang --version; c++ --version; sha256sum "$JIELI_TOOLCHAIN/pi32v2/bin/clang" "$AC79_SDK/cpu/wl82/tools/uboot.boot" "$AC79_SDK/cpu/wl82/tools/cfg_tool.bin" "$AC79_SDK/cpu/wl82/tools/cfg/eq_cfg_hw.bin"; "$JIELI_TOOLCHAIN/pi32v2/bin/clang" --version
+python3 tools/check_locked_settings.py
+MODEL=elite ./build.sh --board smk37
+MODEL=pro ./build.sh --board smk37
+SDK_LOCAL=$AC79_SDK CTL_NATIVE=1 sh ble/ctl/build_ctl.sh
+python3 tools/add_ctl.py build/x0x-smk37.fwsc ble/ctl/out/ctl.img -o build/x0x-smk37-ble.fwsc
+python3 tools/add_ctl.py build/x0x-smk37-elite.fwsc ble/ctl/out/ctl.img -o build/x0x-smk37-elite-ble.fwsc
+MODEL=mke ./build.sh --board smk37
+sha256sum ble/ctl/out/ctl.img build/*.fwsc; wc -c ble/ctl/out/ctl.img build/*.fwsc
+python3 tools/package_nightly.py build/x0x-smk37-elite-ble.fwsc --check --model elite --controller-sha256 aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7 --controller-size 61088
+python3 tools/package_nightly.py build/x0x-smk37-ble.fwsc --check --model pro --controller-sha256 aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7 --controller-size 61088
+sh tests/run_tests.sh play-question-ui play-question smc-lock-beat
+X0X_TEST_JOBS=2 sh tests/run_tests.sh panic-clear panic-route panic-notes panic-chord panic-mutants smc-drum-mutes project-protocol project-save-preflight project-stage project-runtime
+sh tests/run_tests.sh
+git rev-parse HEAD 'HEAD^{tree}' HEAD^; git status --porcelain
+
+# Read-only optimization classifier
+python3 /workspace/opt-equiv-distinguish/classify-optimization-equivalence.py /workspace/d6n-617c0ff1-20261109/logs/host-suite-details/optimization-equivalence.log
+# Three authorized post-fetch tests (actual initial execution in logs/initial-fetch-tests.txt)
+git -C /workspace/plan-all/wt fetch origin lane/dev-v3-panic-rearm-20261109 && git -C /workspace/plan-all/wt fetch --deepen=1 origin lane/dev-v3-panic-rearm-20261109
+test "$(git -C /workspace/plan-all/wt rev-parse FETCH_HEAD)" = 617c0ff1d49ccfdd789d358dc962fbfea5f94c15
+test "$(git -C /workspace/plan-all/wt rev-parse 'FETCH_HEAD^{tree}')" = 0c346e5bee8ec20cac7e59ded175085594079e42
+test "$(git -C /workspace/plan-all/wt rev-parse 'FETCH_HEAD^')" = 2287f113fa4bf74757b4e6d758c2e5464eb47036
+(cd /workspace/d6n-617c0ff1-20261109 && sha256sum -c SHA256SUMS)

@@ -1,0 +1,46 @@
+---
+pid: 102932
+cwd: "/workspace"
+command: "set -e\ncd /workspace/plan-all/wt\ngit fetch origin lane/dev-v3-panic-rearm-20261109 && git fetch --deepen=1 origin lane/dev-v3-panic-rearm-20261109\ntest $(git rev-parse FETCH_HEAD) = 617c0ff1d49ccfdd789d358dc962fbfea5f94c15\ntest $(git rev-parse 'FETCH_HEAD^{tree}') = 0c346e5bee8ec20cac7e59ded175085594079e42\ntest $(git rev-parse FETCH_HEAD^) = 2287f113fa4bf74757b4e6d758c2e5464eb47036\nprintf 'SOURCE THREE TESTS exit 0\\n'\ngit ls-remote origin refs/heads/main refs/heads/wip/one-build refs/heads/lane/dev-combined-ui-panic-20261109 refs/heads/lane/dev-v3-panic-rearm-20261109\ngit ls-remote https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly.git refs/heads/main refs/heads/gh-pages refs/heads/evidence/d6n-617c0ff1-20261109\ngit status --porcelain; git rev-parse HEAD 'HEAD^{tree}'\nls -d /workspace/*nightly* /workspace/plan-all/*; command -v codex clang c++; git -C /workspace/plan-all/schwung-9W9 rev-parse HEAD; git -C /workspace/plan-all/schwung-8W8 rev-parse HEAD"
+title: "Frozen source fetch tests and live protected ref verification"
+status: succeeded
+started_at: 2026-11-08T22:12:45.166Z
+running_for_ms: 3686     
+---
+From https://github.com/gobbajogger/X0X37-for-Loopy-Pro
+ * branch              lane/dev-v3-panic-rearm-20261109 -> FETCH_HEAD
+ * [new branch]        lane/dev-v3-panic-rearm-20261109 -> origin/lane/dev-v3-panic-rearm-20261109
+From https://github.com/gobbajogger/X0X37-for-Loopy-Pro
+ * branch              lane/dev-v3-panic-rearm-20261109 -> FETCH_HEAD
+SOURCE THREE TESTS exit 0
+2287f113fa4bf74757b4e6d758c2e5464eb47036	refs/heads/lane/dev-combined-ui-panic-20261109
+617c0ff1d49ccfdd789d358dc962fbfea5f94c15	refs/heads/lane/dev-v3-panic-rearm-20261109
+1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83	refs/heads/main
+48e92b76c2f476cf40771e00a04e1838136bb55d	refs/heads/wip/one-build
+24c46a8938798f0d1c74e666193ff3c39cedf57d	refs/heads/gh-pages
+a8205aff483dce09414093defdc19cf79d57b719	refs/heads/main
+2287f113fa4bf74757b4e6d758c2e5464eb47036
+fc4ac8ba6145451dfa8886e7050759cf848da2d5
+/workspace/nightly
+/workspace/nightly-err.txt
+/workspace/nightly-heads.txt
+/workspace/nightly-pages
+/workspace/plan-all/PLAN.md
+/workspace/plan-all/all-opt-bundle.tar.gz
+/workspace/plan-all/all-opt.bundle
+/workspace/plan-all/build25-common.md
+/workspace/plan-all/schwung-8W8
+/workspace/plan-all/schwung-9W9
+/workspace/plan-all/wt
+/workspace/qa2-receipt-nightly-prep.md
+/home/box/.local/bin/codex
+/usr/bin/clang
+/usr/bin/c++
+10cbe5c1e1c9e65b0818bb34644ab1a13092082c
+94aa2716d4c2e5851fc7c5dbb4c17adfd133c997
+
+---
+exit_code: 0
+elapsed_ms: 3685
+ended_at: 2026-11-08T22:12:48.851Z
+---

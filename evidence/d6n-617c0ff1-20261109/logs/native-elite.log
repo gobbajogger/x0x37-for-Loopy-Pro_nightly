@@ -1,0 +1,31 @@
+# 2026-11-09 08:13:44 Asia/Vladivostok
+# cwd=/workspace/plan-all/wt-617c0ff1
+$ MODEL=elite ./build.sh --board smk37
+check_locked_settings: 20 settings ok
+experiments/wobble/miami_decimator_adapter.c:7:39: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+    miami_decimator_adapter_t next = {0};
+                                      ^
+                                      {}
+1 warning generated.
+font T: BarlowSemiCondensed-SemiBold.ttf 10px h 12, digit adv 5, 2316 B
+font XS: BarlowSemiCondensed-SemiBold.ttf 12px h 15, digit adv 6, 3288 B
+font S: BarlowSemiCondensed-Medium.ttf 15px h 16, digit adv 7, 4280 B
+font B: BarlowSemiCondensed-Bold.ttf 15px h 16, digit adv 8, 4374 B
+font M: BarlowSemiCondensed-SemiBold.ttf 23px h 24, digit adv 12, 4863 B
+font L: BarlowSemiCondensed-Bold.ttf 31px h 32, digit adv 16, 3584 B
+font set barlow: 23179 B (approx)
+loader: image 8412 B at 0x1c0a800, bss end 0x1c0f700
+loader: ota.bin 7341 B
+gen_drum_samples: 110549 frames (55275 bytes of ADPCM, 221098 as int16) -> x0x_drum_samples.h; tanh 1026 packed 4104->3046 B + 19 pot curves -> x0x_drum_tables.h
+break bank: none (factory loops are an optional install)
+  ok    .ram_text: 844 insns, no calls
+  ok    app code area 552672 B, 70152 B free (Bluetooth block at app.bin 0x86ee0)
+  ok    no soft-double routines (single-precision FPU only)
+  ok    image 482520 B; RAM .data+.bss 95380 B of 98304; pool 335464 B of 344064
+  ok    register access: hal/ only (src/, loader/ clean)
+app      /workspace/plan-all/wt-617c0ff1/build/smk37-elite/x0x.bin  482520 B
+loader   /workspace/plan-all/wt-617c0ff1/build/smk37-elite/loader/ota.bin  7341 B
+package  /workspace/plan-all/wt-617c0ff1/build/x0x-smk37-elite.fwsc  651457 B, identity SMK-37 Elite_900, board smk37
+
+# exit_code=0
+# finished 2026-11-09 08:13:50 Asia/Vladivostok

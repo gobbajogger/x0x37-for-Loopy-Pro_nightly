@@ -1,0 +1,19 @@
+# 2026-11-09 08:14:05 Asia/Vladivostok
+# cwd=/workspace/plan-all/wt-617c0ff1
+$ sha256sum ble/ctl/out/ctl.img build/*.fwsc; wc -c ble/ctl/out/ctl.img build/*.fwsc
+aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7  ble/ctl/out/ctl.img
+a4f93edb6a963e6797e3e12aabc3cca62cc653e6fa8f2a23f3017425de823752  build/x0x-smk37-ble.fwsc
+a79a26b7b2bd14e3e32e2234c076fcd8275788ec2d8f77dfa371ac46c8be570f  build/x0x-smk37-elite-ble.fwsc
+15df8a4466e7fff3ae87e4278a37bc21bc27b8317d7229580aa0adc5e602b49b  build/x0x-smk37-elite.fwsc
+397b179d95176d3f68f39de0a53881d3b3a3869feed2aaa835297f2127f62f5d  build/x0x-smk37-mke.fwsc
+271dcd2b0961ad5d96c9969f0354138d4b3bc6c75e254303f28ab87b92fa11cc  build/x0x-smk37.fwsc
+  61088 ble/ctl/out/ctl.img
+ 651457 build/x0x-smk37-ble.fwsc
+ 651457 build/x0x-smk37-elite-ble.fwsc
+ 651457 build/x0x-smk37-elite.fwsc
+ 651453 build/x0x-smk37-mke.fwsc
+ 651457 build/x0x-smk37.fwsc
+3318369 total
+
+# exit_code=0
+# finished 2026-11-09 08:14:05 Asia/Vladivostok

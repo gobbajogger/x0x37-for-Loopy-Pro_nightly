@@ -1,0 +1,30 @@
+empty flash loads nothing                      ok
+save A                                         ok
+load returns A                                 ok
+save B                                         ok
+load returns B (newer seq)                     ok
+torn save keeps B                              ok
+header not written keeps B                     ok
+save A again                                   ok
+load returns A                                 ok
+both copies corrupt -> nothing                 ok
+other objects untouched                        ok
+settings save/load                             ok
+CRC-32 is zlib's (check value 0xCBF43926)      ok
+newer copy rotten -> the older one loads       ok
+save over the rotten copy                      ok
+... loads the new data                         ok
+both headers broken -> nothing                 ok
+save from the store buffer                     ok
+store-buffer save loads back                   ok
+second copy from a separate buffer             ok
+rotten newer copy does not replace the store-buffer bytes ok
+store-buffer bytes load back                   ok
+boot stage uses the existing store buffer      ok
+save refused while the boot stage holds the buffer ok
+refused save leaves the staged bytes           ok
+load refused while the boot stage holds the buffer ok
+refused load leaves the staged bytes           ok
+save works after the boot stage releases the buffer ok
+objects in data regions, clear of the sample slots ok
+storage test passed

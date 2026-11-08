@@ -1,0 +1,6 @@
+  ok view == 1
+  ok gate0.0 == 0
+  ok gate0.0 == 0
+  ok gate0.0 == 0
+  ok gate0.0 == 2
+host: 1112 ms simulated, 27 blits, render 0.2% of real time (host CPU)

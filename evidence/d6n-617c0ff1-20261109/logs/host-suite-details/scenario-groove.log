@@ -1,0 +1,14 @@
+  ok part == 0
+  ok hit0.0.0 == 1
+  ok hit0.0.4 == 1
+  leds: buttons SAVE SEQ | white...............# blackoo.....o#..
+  ok part == 1
+  ok part == 2
+  ok view == 2
+  ok part == 4
+  ok brk15 == 1
+  ok tempo == 128
+  ok playing == 1
+  ok playing == 0
+  ok peak -7.9 dBFS
+host: 17448 ms simulated, 322 blits, render 1.0% of real time (host CPU)

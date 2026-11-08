@@ -1,0 +1,5 @@
+  ok laneval7.0.0.0 == 106
+  ok view == 0
+  ok ppat0 == 2
+  ok noteons == 3
+host: 18308 ms simulated, 1127 blits, render 0.2% of real time (host CPU)

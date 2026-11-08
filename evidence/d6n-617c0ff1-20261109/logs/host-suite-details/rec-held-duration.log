@@ -1,0 +1,5 @@
+take clock=internal held=30 ms: replay_gate=41 ms, PCMbytes=370688 hash=51f9ffa7 peak=0.157709, cell4 note=51 flags=81
+take clock=internal held=300 ms: replay_gate=314 ms, PCMbytes=370688 hash=a3270248 peak=0.154468, cell4 note=51 flags=1
+take clock=BLE-jitter held=30 ms: replay_gate=46 ms, PCMbytes=371712 hash=4a73c289 peak=0.159776, cell4 note=51 flags=97
+take clock=BLE-jitter held=300 ms: replay_gate=296 ms, PCMbytes=370688 hash=3e55cfd4 peak=0.155297, cell4 note=51 flags=1
+rec_held_duration: PASS

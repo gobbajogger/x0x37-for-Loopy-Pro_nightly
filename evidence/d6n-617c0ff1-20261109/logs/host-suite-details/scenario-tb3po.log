@@ -1,0 +1,6 @@
+  ok part == 2
+  ok linechg0 == 0
+  ok linechg0 == 0
+  ok linechg0 == 1
+  ok linechg0 == 1
+host: 7680 ms simulated, 151 blits, render 0.2% of real time (host CPU)

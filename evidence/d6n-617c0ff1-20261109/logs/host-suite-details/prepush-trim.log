@@ -1,0 +1,10 @@
+ok   box, same update hook: skip
+ok   box as file:// URL: skip
+ok   box, X0X_QC_CLIENT=1: run
+ok   other repository: run
+ok   box, not integration: none
+ok   box, other update hook sha: run
+ok   box, no update hook: run
+ok   box, no pre-receive hook: run
+ok   box, update hook not executable: run
+prepush trim: 0 FAIL

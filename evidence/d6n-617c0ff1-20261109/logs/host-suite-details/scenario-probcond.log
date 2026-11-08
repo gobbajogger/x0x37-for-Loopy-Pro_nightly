@@ -1,0 +1,9 @@
+  ok laneval7.0.0.0 == 106
+  ok laneval7.0.0.8 == 102
+  ok laneval7.0.0.12 == 135
+  ok laneval7.0.0.12 == 255
+  ok hit0.0.0 == 1
+  ok hit0.0.8 == 1
+  ok noteons == 0
+  ok noteons == 22
+host: 29686 ms simulated, 969 blits, render 0.3% of real time (host CPU)
