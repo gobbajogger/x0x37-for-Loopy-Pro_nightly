@@ -2,8 +2,40 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-2287f113-dev",
+  "latest": "nightly-617c0ff1-dev",
   "versions": [
+    {
+      "version": "nightly-617c0ff1-dev",
+      "label": "UNREVIEWED · DEVICE NOT TESTED — 617c0ff1",
+      "status": "unreviewed",
+      "config": "X0X_DEV_PADCAL=0",
+      "hardware_tested": false,
+      "source_commit": "617c0ff1d49ccfdd789d358dc962fbfea5f94c15",
+      "source_tree": "0c346e5bee8ec20cac7e59ded175085594079e42",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "a79a26b7b2bd14e3e32e2234c076fcd8275788ec2d8f77dfa371ac46c8be570f",
+          "size": 651457,
+          "controller_sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+          "controller_strategy": "bundled",
+          "controller_size": 61088,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/a79a26b7b2bd14e3e32e2234c076fcd8275788ec2d8f77dfa371ac46c8be570f/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "a4f93edb6a963e6797e3e12aabc3cca62cc653e6fa8f2a23f3017425de823752",
+          "size": 651457,
+          "controller_sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+          "controller_strategy": "bundled",
+          "controller_size": 61088,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/a4f93edb6a963e6797e3e12aabc3cca62cc653e6fa8f2a23f3017425de823752/x0x37-pro-dev.fwsc"
+        }
+      },
+      "title": "UNREVIEWED · DEVICE NOT TESTED — V3-PANIC-REARM-01 D6-N preview",
+      "description": "UNREVIEWED · DEVICE NOT TESTED — Host 348 ok / 0 FAIL / 0 NOT_RUN. Device: NOT_RUN. D6-N preview of V3-PANIC-REARM-01 source 617c0ff1 (parent 2287f113). Native six steps and MKE ok. Decision (A): 6ccc91ca and b01fb2d6 not applied. PR #698 / wip/one-build not updated. No numeric openbeta allocation.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/617c0ff1d49ccfdd789d358dc962fbfea5f94c15"
+    },
     {
       "version": "nightly-2287f113-dev",
       "label": "UNREVIEWED · DEVICE NOT TESTED — 2287f113",
