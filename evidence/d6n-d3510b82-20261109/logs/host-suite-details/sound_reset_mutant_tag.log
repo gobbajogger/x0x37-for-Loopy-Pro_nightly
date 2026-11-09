@@ -1,0 +1,6 @@
+FAIL bass-tag reset status 1
+FAIL bass-tag stayed NO_SAVED
+FAIL bass-tag was not reset
+FAIL bass-tag stored no undo
+FAIL bass-tag undo failed
+sound-reset: 5 FAILED

@@ -1,0 +1,3 @@
+PASS actual writer: 528 copy collisions + 1563 serialization IRQs, wrap, bounded BUSY, scratch bounds, no state writes
+PASS strict v1 decode: all 16 pads, extremes, malformed/legacy/BUSY replies
+PASS --pad-inputs sends only INLOG 6; unsupported/BUSY fail closed, no reset or calibration writes

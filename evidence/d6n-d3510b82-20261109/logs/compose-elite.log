@@ -1,0 +1,2 @@
+$ python3 tools/add_ctl.py build/x0x-smk37-elite.fwsc ble/ctl/out/ctl.img -o build/x0x-smk37-elite-ble.fwsc
+build/x0x-smk37-elite-ble.fwsc: with ble/ctl/out/ctl.img

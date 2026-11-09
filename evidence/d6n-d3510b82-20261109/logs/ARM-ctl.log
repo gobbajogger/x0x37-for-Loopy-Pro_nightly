@@ -1,0 +1,19 @@
+$ SDK_LOCAL=$AC79_SDK CTL_NATIVE=1 CTL_NO_CACHE=1 sh ble/ctl/build_ctl.sh
+check_locked_settings: 20 settings ok
+local cpu/wl82/liba/btctrler.a
+local cpu/wl82/liba/wl_rf_common.a
+local cpu/wl82/liba/crypto_toolbox_Osize.a
+local cpu/wl82/liba/lib_ccm_aes.a
+local include_lib/newlib/pi32v2-lib/libc.a
+local include_lib/newlib/pi32v2-lib/libcompiler_rt.a
+local apps/common/net/wifi_conf.c
+local LICENSE
+rf_tables.c: 294 lines
+LTO IR exit 0, undefined symbols: 0
+  load 02087000  vma 02087000      68 B
+  load 02087044  vma 02087044   51388 B
+  load 02093900  vma 02093900    4304 B
+  load 020949d0  vma 01c01800    3516 B
+  load 0209578c  vma 01c025bc    1812 B
+/workspace/plan-all/wt-d3510b82/ble/ctl/out/ctl.img: 61088 B of 65536, crc32 9aa7f77f, RAM 0x1c01800..0x1c07ee0 (26336 B of 26368)
+Done: /workspace/plan-all/wt-d3510b82/ble/ctl/out/ctl.img

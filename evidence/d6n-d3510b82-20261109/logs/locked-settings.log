@@ -1,0 +1,2 @@
+$ python3 tools/check_locked_settings.py
+check_locked_settings: 20 settings ok

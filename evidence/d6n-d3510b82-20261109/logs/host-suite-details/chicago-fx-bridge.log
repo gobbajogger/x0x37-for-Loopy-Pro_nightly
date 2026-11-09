@@ -1,0 +1,4 @@
+firmware/src/app/chicago_param_tables.c:18:1: warning: ‘minsize’ attribute directive ignored [-Wattributes]
+   18 | {
+      | ^
+PASS chicago_fx_bridge

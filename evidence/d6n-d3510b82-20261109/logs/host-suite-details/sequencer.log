@@ -1,0 +1,35 @@
+(no schwung-tb3po checkout at ../schwung-tb3po/src/dsp/tb3po.c: the TB-3PO comparison is skipped)
+tests/host/seq_test.c:32:1: warning: missing initializer for field ‘transport’ of ‘seq_sink_t’ [-Wmissing-field-initializers]
+   32 | static const seq_sink_t SINK = {s_drum, s_on, s_off, s_brk, s_brkstop, s_midi, 0, 0};
+      | ^~~~~~
+In file included from tests/host/seq_test.c:8:
+tests/host/../../firmware/src/seq/sequencer.h:88:12: note: ‘transport’ declared here
+   88 |     void (*transport)(void *ctx, int running); /* ordered with following input */
+      |            ^~~~~~~~~
+tests/host/seq_test.c:34:1: warning: missing initializer for field ‘transport’ of ‘seq_sink_t’ [-Wmissing-field-initializers]
+   34 | static const seq_sink_t SINK_STEP = {s_drum, s_on, s_off, s_brk, s_brkstop, s_midi, s_step, 0};   /* + the 909's steps */
+      | ^~~~~~
+tests/host/../../firmware/src/seq/sequencer.h:88:12: note: ‘transport’ declared here
+   88 |     void (*transport)(void *ctx, int running); /* ordered with following input */
+      |            ^~~~~~~~~
+  chain endpoints: valid, reversed, disabled and eight invalid ranges checked
+  drum timing: 8 BD, 16 CH on the sample
+  drum step velocity: recorded 40, legacy 88
+  swing 75%, 1/16T unswung: checked
+  303 gate / slide / tie / transpose: checked
+  polymeter, cue on the bar, chain 4-6: checked
+  a part's own cue: checked
+  song: playback, loop, mutes, record, overdub: checked
+  external clock follow + tempo, MIDI clock out: checked
+  external clock in Bluetooth bursts: tempo, tempo kept after the link end: checked
+  Start, Stop, Continue with the clock in Bluetooth bursts: checked
+  external clock, two or more step boundaries in one block: no step lost
+  live record: the nearest step, no second sound on the pass of the hit: checked
+  external 1/32 recording midpoint: 909, 808, 303 and 16-step wrap checked
+  recording midpoint follows swung internal step durations: checked
+  clock source INTERNAL: clock in ignored, clock out, PLAY: checked
+  clock source EXTERNAL: wait, pause on a lost clock, transport, Bluetooth bursts: checked
+  clock source: 6 switches while playing, with and without a clock: checked
+  PLAY note: PLAY with Loopy as the clock, no second start: checked
+  break clock: 35 16ths, bars counted, step mask honoured
+seq: ok

@@ -1,0 +1,6 @@
+$ X0X_TEST_JOBS=2 sh tests/run_tests.sh optimization-equivalence drum909 drum808 smk-build-package-mke
+  ok   optimization-equivalence
+  ok   drum909
+  ok   drum808
+  ok   smk-build-package-mke
+all tests passed

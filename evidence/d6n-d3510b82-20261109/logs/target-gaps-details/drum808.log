@@ -1,0 +1,47 @@
+drum808 vs 8W8: 1 s per case, rel = rms(port - ref) / rms(ref), PASS < 1e-03
+sizeof(drum808_t) = 3680 bytes
+[defaults and pots at 0/64/127] (failures only; -v for all)
+[velocity 0.3 / 0.7 / 1.0 (38, 89, 127 of 127)]
+  BD default v38             peak  0.13217  rms  0.02348  maxdiff 1.346e-05  rel 9.857e-05  env -0.0022 dB  PASS
+  BD default v89             peak  0.29527  rms  0.05361  maxdiff 4.549e-05  rel 1.722e-04  env -0.0016 dB  PASS
+  BD default v127            peak  0.41390  rms  0.07513  maxdiff 3.551e-05  rel 7.991e-05  env +0.0017 dB  PASS
+  SD default v38             peak  0.19759  rms  0.01279  maxdiff 1.254e-05  rel 1.523e-04  env -0.0029 dB  PASS
+  SD default v89             peak  0.43567  rms  0.02851  maxdiff 3.181e-05  rel 1.073e-04  env -0.0028 dB  PASS
+  SD default v127            peak  0.58743  rms  0.03895  maxdiff 3.407e-05  rel 9.953e-05  env -0.0029 dB  PASS
+  CP default v38             peak  0.22969  rms  0.01318  maxdiff 4.224e-06  rel 2.513e-05  env +0.0009 dB  PASS
+  CP default v89             peak  0.53795  rms  0.03087  maxdiff 9.879e-06  rel 2.510e-05  env +0.0009 dB  PASS
+  CP default v127            peak  0.76763  rms  0.04405  maxdiff 1.413e-05  rel 2.514e-05  env +0.0009 dB  PASS
+  CH default v38             peak  0.13229  rms  0.00448  maxdiff 4.036e-06  rel 3.940e-05  env +0.0073 dB  PASS
+  CH default v89             peak  0.30983  rms  0.01050  maxdiff 9.440e-06  rel 3.937e-05  env +0.0073 dB  PASS
+  CH default v127            peak  0.44212  rms  0.01498  maxdiff 1.348e-05  rel 3.938e-05  env +0.0073 dB  PASS
+[drive 64 through each distortion]
+  SD drive=64 dist=DIODE     peak  0.40151  rms  0.06387  maxdiff 8.429e-05  rel 1.123e-04  env -0.0033 dB  PASS
+  SD drive=64 dist=CLIP      peak  0.26978  rms  0.05272  maxdiff 6.994e-05  rel 1.222e-04  env -0.0033 dB  PASS
+  SD drive=64 dist=SAT       peak  0.36677  rms  0.04638  maxdiff 7.753e-05  rel 1.130e-04  env -0.0034 dB  PASS
+  SD drive=64 dist=BFZ       peak  0.28058  rms  0.04867  maxdiff 1.523e-04  rel 1.316e-04  env -0.0036 dB  PASS
+  SD drive=64 dist=PDIST     peak  0.28168  rms  0.05351  maxdiff 9.152e-05  rel 1.248e-04  env -0.0035 dB  PASS
+  SD drive=64 dist=FOLD      peak  0.32288  rms  0.05247  maxdiff 8.374e-05  rel 1.815e-04  env -0.0035 dB  PASS
+  SD drive=64 dist=CRUSH     peak  0.53080  rms  0.03934  maxdiff 0.000e+00  rel 0.000e+00  env +0.0000 dB  PASS
+  CL drive=64 dist=DIODE     peak  0.39497  rms  0.02781  maxdiff 2.049e-06  rel 4.476e-06  env -0.0000 dB  PASS
+  CL drive=64 dist=CLIP      peak  0.26978  rms  0.02273  maxdiff 1.684e-06  rel 4.771e-06  env -0.0000 dB  PASS
+  CL drive=64 dist=SAT       peak  0.30552  rms  0.01973  maxdiff 1.897e-06  rel 4.981e-06  env -0.0000 dB  PASS
+  CL drive=64 dist=BFZ       peak  0.27125  rms  0.01992  maxdiff 3.859e-06  rel 6.578e-06  env -0.0000 dB  PASS
+  CL drive=64 dist=PDIST     peak  0.28168  rms  0.02234  maxdiff 2.161e-06  rel 5.520e-06  env -0.0000 dB  PASS
+  CL drive=64 dist=FOLD      peak  0.32286  rms  0.02093  maxdiff 2.027e-06  rel 6.691e-06  env -0.0000 dB  PASS
+  CL drive=64 dist=CRUSH     peak  0.26540  rms  0.01700  maxdiff 0.000e+00  rel 0.000e+00  env +0.0000 dB  PASS
+  CH drive=64 dist=DIODE     peak  0.71057  rms  0.03422  maxdiff 3.171e-05  rel 4.072e-05  env +0.0073 dB  PASS
+  CH drive=64 dist=CLIP      peak  0.53743  rms  0.02981  maxdiff 2.767e-05  rel 4.015e-05  env +0.0073 dB  PASS
+  CH drive=64 dist=SAT       peak  0.47868  rms  0.02610  maxdiff 2.089e-05  rel 4.216e-05  env +0.0073 dB  PASS
+  CH drive=64 dist=BFZ       peak  0.50568  rms  0.03237  maxdiff 2.910e-05  rel 4.577e-05  env +0.0073 dB  PASS
+  CH drive=64 dist=PDIST     peak  0.56114  rms  0.03332  maxdiff 2.876e-05  rel 4.239e-05  env +0.0073 dB  PASS
+  CH drive=64 dist=FOLD      peak  0.64297  rms  0.03488  maxdiff 3.314e-05  rel 4.162e-05  env +0.0073 dB  PASS
+  CH drive=64 dist=CRUSH     peak  0.52871  rms  0.01552  maxdiff 5.960e-08  rel 1.127e-07  env +0.0000 dB  PASS
+[sequences: retriggers over a ringing voice, the hat choke]
+  kit sequence (non-metal)   peak  0.97368  rms  0.12222  maxdiff 9.432e-05  rel 1.559e-04  env -0.0049 dB  PASS
+  OH choked by CH, retriggers peak  0.54837  rms  0.05509  maxdiff 9.507e-05  rel 6.423e-05  env +0.0075 dB  PASS
+  CY + CB + CH on one bank   peak  1.20307  rms  0.05266  maxdiff 7.778e-05  rel 1.520e-04  env +0.0019 dB  PASS
+[port only: the panel]
+  SD Tone 0 / 64 / 127: rms 0.0449 / (= default, bit-exact) / 0.0326
+  11 tracks + kit: names <= 6, labels <= 5, defaults, set/get, per-sound pots: ok
+436 cases, 0 over 1e-03; worst rel 6.135e-04 (BD tune=0)
+demo: build/drum808_demo.wav, 4 bars at 112 BPM, kit Level 56, 9.57 s, peak 0.909 (-0.8 dBFS)

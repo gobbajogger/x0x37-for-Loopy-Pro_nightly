@@ -1,0 +1,15 @@
+PASS negative drum-seq-numbered: FAIL tests/host/smc_ui_test.c:579: !memcmp(active_fb + MAIN_Y * 240, fb + MAIN_Y * 240, 13 * 240 * sizeof *fb)
+PASS negative drum-seq-wrong-kit: FAIL tests/host/smc_ui_test.c:579: !memcmp(active_fb + MAIN_Y * 240, fb + MAIN_Y * 240, 13 * 240 * sizeof *fb)
+PASS negative drum-seq-ignores-captured-view: FAIL tests/host/smc_ui_test.c:579: !memcmp(active_fb + MAIN_Y * 240, fb + MAIN_Y * 240, 13 * 240 * sizeof *fb)
+PASS negative filter-shows-false-solo: FAIL tests/host/smc_ui_test.c:602: !strcmp(smc_button_caption(15), "PART")
+PASS negative static-knob-arc: FAIL tests/host/smc_ui_test.c:645: pixels > 0
+PASS negative cryptic-footer-returned: FAIL tests/host/smc_ui_test.c:665: !footer_pixels
+PASS negative selection-follows-touch: FAIL tests/host/smc_ui_test.c:523: fb[MAIN_Y * 240 + n * 30 + 2] == swap16(n == selected ? C_WHITE : C_BLACK)
+PASS negative visible-kit-requires-part: FAIL tests/host/smc_ui_test.c:523: fb[MAIN_Y * 240 + n * 30 + 2] == swap16(n == selected ? C_WHITE : C_BLACK)
+PASS negative main-mix-ignores-channel: FAIL tests/host/smc_ui_test.c:523: fb[MAIN_Y * 240 + n * 30 + 2] == swap16(n == selected ? C_WHITE : C_BLACK)
+PASS negative duplicate-opens-overlay: FAIL tests/host/smc_ui_test.c:288: smc_ui.until == until
+PASS negative timeout-disabled: FAIL tests/host/smc_ui_test.c:131: !smc_ui_active()
+PASS negative cancel-disabled: FAIL tests/host/smc_ui_test.c:290: !smc_ui_active()
+PASS negative clip-redraw-disabled: FAIL tests/host/smc_ui_test.c:243: !memcmp(before_fb, fb, sizeof fb)
+PASS negative yellow-notice-returned: FAIL tests/host/smc_ui_test.c:96: !memcmp(&before, &after, sizeof before)
+smc_ui_negative: PASS (14 runtime failures detected; compile failures excluded)

@@ -1,0 +1,25 @@
+  ok tempo == 120
+  ok mute == 4194304
+  ok listsel == 23
+  ok view == 7
+  ok perftest == 0
+  ok patptr == 0
+  ok perftest == 3
+  ok perfres0 == 10 (>0)
+  ok perfres1 == 18 (>0)
+  ok perfres2 == 28 (>0)
+  ok patptr == 1
+  ok playing == 0
+  ok tempo == 120
+  ok mute == 4194304
+  ok hit0.0.8 == 1
+  ok sound2.0.0 == 127
+  ok view == 7
+  ok perftest == 0
+  ok patptr == 0
+  ok perftest == -1
+  ok patptr == 1
+  ok playing == 0
+  ok tempo == 120
+  ok mute == 4194304
+host: 28864 ms simulated, 177 blits, render 1.2% of real time (host CPU)

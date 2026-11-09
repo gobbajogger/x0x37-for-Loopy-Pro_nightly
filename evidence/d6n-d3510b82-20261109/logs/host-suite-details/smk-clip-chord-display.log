@@ -1,0 +1,14 @@
+font T: BarlowSemiCondensed-SemiBold.ttf 10px h 12, digit adv 5, 2316 B
+font XS: BarlowSemiCondensed-SemiBold.ttf 12px h 15, digit adv 6, 3288 B
+font S: BarlowSemiCondensed-Medium.ttf 15px h 16, digit adv 7, 4280 B
+font B: BarlowSemiCondensed-Bold.ttf 15px h 16, digit adv 8, 4374 B
+font M: BarlowSemiCondensed-SemiBold.ttf 23px h 24, digit adv 12, 4863 B
+font L: BarlowSemiCondensed-Bold.ttf 31px h 32, digit adv 16, 3584 B
+font set barlow: 23179 B (approx)
+In file included from tests/host/smk_clip_knob_test.c:102,
+                 from tests/host/smk_clip_chord_display_test.c:4:
+build/host/clip_chord/ck_a.inc:38:1: warning: ‘minsize’ attribute directive ignored [-Wattributes]
+   38 | {
+      | ^
+cc1: note: unrecognized command-line option ‘-Wno-unknown-attributes’ may have been intended to silence earlier diagnostics
+clip chord display: 7049 checks, 7050 captured chord draws passed

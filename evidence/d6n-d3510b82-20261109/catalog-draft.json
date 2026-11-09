@@ -1,0 +1,22 @@
+{
+  "title": "UNREVIEWED · DEVICE NOT TESTED — REC pattern-cell cutover D6-N preview",
+  "label": "UNREVIEWED · DEVICE NOT TESTED — d3510b82",
+  "description": "UNREVIEWED · DEVICE NOT TESTED — D6-N preview: host 348 ok / 0 FAIL / 0 NOT_RUN. Device NOT_RUN (no device testing performed or authorized for this local package). Not a publish, not a 0.0.25 freeze.",
+  "hardware_tested": false,
+  "status": "local-evidence-draft-not-published",
+  "pkg": null,
+  "source_commit": "d3510b8274d5c737e1a1aab93f65081b9e28b5e8",
+  "source_tree": "0310ab1bb5469c4992302b57a11eb880f8118de2",
+  "source_parent": "617c0ff1d49ccfdd789d358dc962fbfea5f94c15",
+  "host_summary": {
+    "ok": 348,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "exit_code": 0
+  },
+  "device": {
+    "status": "NOT_RUN",
+    "reason": "No device testing performed or authorized for local package"
+  },
+  "created_at": "2026-11-09 11:18:02 Asia/Vladivostok"
+}

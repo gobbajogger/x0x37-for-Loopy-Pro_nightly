@@ -1,0 +1,15 @@
+  ok view == 6
+  ok songlen == 2
+  ok songbar1.0 == 1
+  ok songon == 1
+  ok songpos == 1
+  ok songpos == 1
+  ok songpos == 1
+  ok songpos == 2
+  ok ppat0 == 2
+  ok songpos == 1
+  ok ppat0 == 1
+  ok songon == 1
+  ok songpos == 1
+  ok songon == 0
+host: 9790 ms simulated, 78 blits, render 0.2% of real time (host CPU)

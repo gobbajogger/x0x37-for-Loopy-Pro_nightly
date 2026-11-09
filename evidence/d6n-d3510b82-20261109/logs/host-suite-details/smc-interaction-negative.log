@@ -1,0 +1,9 @@
+PASS rejected runtime mutation: pause-unbound
+PASS rejected runtime mutation: pause-no-release
+PASS rejected runtime mutation: pause-no-drop-recovery
+PASS rejected runtime mutation: pause-old-stop-led
+PASS rejected runtime mutation: play-no-pause
+PASS rejected runtime mutation: fx-button-navigates
+PASS rejected runtime mutation: lock-redirect-fader
+PASS rejected runtime mutation: lock-redirect-knob
+PASS rejected runtime mutation: select-led-fx-only

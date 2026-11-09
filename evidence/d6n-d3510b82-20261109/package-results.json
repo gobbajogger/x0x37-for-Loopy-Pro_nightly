@@ -1,0 +1,14 @@
+[
+  {
+    "name": "package-elite",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/package-elite.log"
+  },
+  {
+    "name": "package-pro",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/package-pro.log"
+  }
+]

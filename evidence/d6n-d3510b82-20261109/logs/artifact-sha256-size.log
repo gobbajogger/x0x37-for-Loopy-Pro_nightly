@@ -1,0 +1,14 @@
+$ sha256sum ble/ctl/out/ctl.img build/*.fwsc; wc -c ble/ctl/out/ctl.img build/*.fwsc
+aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7  ble/ctl/out/ctl.img
+d997fea7b95e157f5c35271c95087d37abab7904668714631162250e8ea867db  build/x0x-smk37-ble.fwsc
+1e6d56a3c4d4bf8d90c8a04f32abadb0b7ca58f5523f45c3036a7d05f8cefbb7  build/x0x-smk37-elite-ble.fwsc
+57dfcd9aec92f568480201c686618f049a33c1cdce5904266160eca06ab9a321  build/x0x-smk37-elite.fwsc
+98634bf107a35284ff853f24fd847d8489e628488923c054dc85c5923f2deac8  build/x0x-smk37-mke.fwsc
+83f4b574002f309f6f32542393f836dd9fb0584760c9cd3eaec0efb79b684a09  build/x0x-smk37.fwsc
+  61088 ble/ctl/out/ctl.img
+ 651457 build/x0x-smk37-ble.fwsc
+ 651457 build/x0x-smk37-elite-ble.fwsc
+ 651457 build/x0x-smk37-elite.fwsc
+ 651453 build/x0x-smk37-mke.fwsc
+ 651457 build/x0x-smk37.fwsc
+3318369 total

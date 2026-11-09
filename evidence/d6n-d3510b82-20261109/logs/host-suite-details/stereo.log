@@ -1,0 +1,14 @@
+  ok   master: centred stereo == mono, bit for bit (comp, PUMP, filter, limiter)
+  ok   fx: centred stereo, no reverb == mono, bit for bit (dist, delay, glue comp)
+  ok   reverb: the left is 9W9's mono reverb exactly
+       L/R correlation -0.03, R/L level -0.09 dB
+  ok   reverb: the right is decorrelated, as loud
+       first echo: left at 16537, right at 33075 samples (time 16538)
+  ok   ping: left at T, right at 2T
+  ok   fx tempo: default 120 BPM gives 375 ms dotted-eighth delay
+  ok   fx tempo: supported minimum 20 BPM accepted
+  ok   fx tempo: 20 BPM dotted-eighth delay folds to 1125 ms
+  ok   fx tempo: subdivision change at 20 BPM remains synchronized
+  ok   fx tempo: below-minimum input rejected
+  ok   fx tempo: higher supported tempo still updates delay
+stereo: ok

@@ -1,0 +1,25 @@
+$ python3 tools/package_nightly.py build/x0x-smk37-elite-ble.fwsc --check --model elite --controller-sha256 aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7 --controller-size 61088
+{
+  "controller": {
+    "abi": 2,
+    "block_crc32": "012bf7ea",
+    "block_size": 65536,
+    "bundled": true,
+    "crc32": "9aa7f77f",
+    "flash_offset": 569344,
+    "header_version": 2,
+    "sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+    "size": 61088,
+    "strategy": "bundled"
+  },
+  "controller_sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+  "controller_size": 61088,
+  "controller_strategy": "bundled",
+  "firmware_version": null,
+  "model": "elite",
+  "product": "SMK-37 Elite_900",
+  "release_display": null,
+  "schema": "x0x37-bundled-controller-v1",
+  "sha256": "1e6d56a3c4d4bf8d90c8a04f32abadb0b7ca58f5523f45c3036a7d05f8cefbb7",
+  "size": 651457
+}

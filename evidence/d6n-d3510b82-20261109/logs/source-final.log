@@ -1,0 +1,5 @@
+$ git rev-parse HEAD 'HEAD^{tree}' HEAD^; git status --porcelain; git diff --exit-code; git diff --cached --exit-code; git -C /workspace/plan-all/wt-617c0ff1 rev-parse HEAD
+d3510b8274d5c737e1a1aab93f65081b9e28b5e8
+0310ab1bb5469c4992302b57a11eb880f8118de2
+617c0ff1d49ccfdd789d358dc962fbfea5f94c15
+617c0ff1d49ccfdd789d358dc962fbfea5f94c15

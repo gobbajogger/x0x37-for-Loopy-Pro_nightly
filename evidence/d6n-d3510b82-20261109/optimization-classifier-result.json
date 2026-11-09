@@ -1,0 +1,7 @@
+{
+  "name": "optimization-classifier",
+  "status": "ok",
+  "exit_code": 0,
+  "log": "logs/optimization-classifier.log",
+  "classification": "PASS: clang sanitizer IMA check printed PASS"
+}

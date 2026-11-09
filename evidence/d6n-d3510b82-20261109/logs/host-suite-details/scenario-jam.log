@@ -1,0 +1,9 @@
+  ok part == 4
+  ok sound5.2.2 == 0
+  ok sound5.2.2 == 10
+  ok sound5.3.2 == 30
+  ok sound5.2.2 == 10
+  ok sound5.4.1 == 55
+  ok tempo == 135
+  ok peak -7.9 dBFS
+host: 30714 ms simulated, 603 blits, render 0.9% of real time (host CPU)

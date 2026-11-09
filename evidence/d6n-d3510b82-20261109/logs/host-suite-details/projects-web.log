@@ -1,0 +1,42 @@
+✔ portable and project-only containers preserve raw project, all slots and full header bytes (7.765233ms)
+✔ inner project rejects corrupt, truncated, oversized and incompatible schemas (1.133055ms)
+✔ outer CRC, version, flags, metadata size and raw unmanifested files are rejected (1.256572ms)
+✔ strict metadata rejects duplicated entries, overlapping ranges and unreferenced bytes (3.028354ms)
+✔ sample metadata must match the original header even when both JSON copies and CRCs agree (2.712891ms)
+✔ sample image rejects data CRC, impossible zone boundaries and rate corruption (0.365832ms)
+✔ project-only matching checks every occupied and empty slot and never remaps (2.090637ms)
+✔ portable plans fills, identical skips and backed-up clear/replacement collisions (2.344254ms)
+✔ non-X0X identity is rejected before any project command (0.923144ms)
+✔ unsupported or malformed query replies are explained clearly (0.863708ms)
+✔ export snapshots project plus every original sample and always aborts; no sample writes (4.407883ms)
+✔ export aborts interrupted reads and uncertain BEGIN without blind BEGIN retry (0.57799ms)
+✔ READ/WRITE replies correlate operation and offset and validate exact byte lengths (2.59546ms)
+✔ sample reads correlate slot and offset and reject a short reply (1.991716ms)
+✔ project chunk replay recovers a lost WRITE acknowledgement exactly once (1.064224ms)
+✔ complete project-only import preserves every sample byte with zero sample write commands (16.478557ms)
+✔ confirmation or missing verified recovery acknowledgement refuses all sample mutations (4.024238ms)
+✔ firmware semantic validation fails before sample writes and keeps the previous live project (6.049318ms)
+✔ portable import fills and clears exact positions, skips identical images and preserves 512-byte headers (6.991363ms)
+✔ a changed keyboard invalidates the preview before any sample writes (5.179232ms)
+✔ sample readback mismatch rolls back exact original bytes before aborting adoption (6.398922ms)
+✔ lost sample-write acknowledgement is not blindly retried and rollback uses its backup (5.225178ms)
+✔ failed rollback reports recovery failure concretely and does not claim restoration (5.369902ms)
+✔ lost COMMIT reply restores the previous project as well as samples without repeating adoption (6.397088ms)
+✔ QUERY detects retained recovery mode after expiry and rollback restages without releasing its hold (6.799833ms)
+✔ failed recovery retains mode3; reconnect restores a portable backup without reading partial sample images (6.358949ms)
+✔ mode3 refuses project-only recovery and keeps the hold on a failed portable recovery (2.348585ms)
+✔ save/load/reset use confirmation tokens, do not touch samples and never retry SAVE blindly (0.351088ms)
+✔ MIDI adapter ignores normal playing traffic and bounds idle SysEx buffering (0.436254ms)
+✔ only explicit pattern/sound revision pairs are accepted (0.304005ms)
+✔ actual current firmware export retains its 3/10 header and every payload byte (6.997249ms)
+✔ current and endpoint-revision exports pass the real frontend transaction without sample changes (68.443919ms)
+✔ current stream-3 firmware refuses endpoint stream-6 data before any sample replacement or adoption (23.137993ms)
+✔ adaptive BREAK stream 8/9 project schemas keep exact bytes and CRC checks (0.758812ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 218.708595

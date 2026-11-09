@@ -1,0 +1,8 @@
+PASS ring size 64 entries
+PASS encoding
+PASS filter
+PASS edge: no change, no entry
+PASS fewer than 64 entries, oldest first
+PASS full ring: 64 entries, the first one stays
+PASS ring wrap keeps the last 64 entries, oldest first
+PASS many wraps

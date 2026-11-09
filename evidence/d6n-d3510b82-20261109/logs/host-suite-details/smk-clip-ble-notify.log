@@ -1,0 +1,10 @@
+PASS A0 Loopy colours on the pads (lit 2)
+PASS A1 CCCD 0 clears the pads (lit 0)
+PASS A2 after CCCD 0 a Loopy feedback write does not light the pads again (lit 0)
+PASS A3 the pads stay dark while notify stays off (lit 0)
+PASS B  CCCD 0 and feedback in one poll: the pads stay dark (lit 0)
+PASS C1 disconnect clears the pads (lit 0)
+PASS C2 reconnect without notify: a feedback write does not light the pads (lit 0)
+PASS D  notify on again with new feedback shows the colours (lit 2)
+PASS E  a steady link keeps the colours (lit 2)
+PASS 0 fail

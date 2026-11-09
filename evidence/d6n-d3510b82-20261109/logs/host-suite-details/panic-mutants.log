@@ -1,0 +1,7 @@
+MUTANT KILLED: notes-off-empty
+MUTANT KILLED: transport-stops
+MUTANT KILLED: queued-note-kept
+MUTANT KILLED: silence-skipped
+MUTANT KILLED: chord-not-consumed
+MUTANT KILLED: user-mode-fires
+panic mutants: 6 killed

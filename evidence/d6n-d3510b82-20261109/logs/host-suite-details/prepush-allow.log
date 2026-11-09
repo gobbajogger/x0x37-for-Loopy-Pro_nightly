@@ -1,0 +1,14 @@
+ok   allowed: BOX
+ok   allowed: file:BOX
+ok   allowed: T/box-link.git
+ok   allowed: MAC/x0x37
+ok   allowed: MAC/sub/../x0x37
+ok   refused: https://github.com/genkigenki/x0x37.git: BLOCKED: push URL https://github.com/genkigenki/x0x37.git is not allowed: no network push. Allowed: 
+ok   refused: git@github.com:genkigenki/x0x37.git: BLOCKED: push URL git@github.com:genkigenki/x0x37.git is not allowed: no network push. Allowed: /wor
+ok   refused: ssh://box/workspace/x0x37.git: BLOCKED: push URL ssh://box/workspace/x0x37.git is not allowed: no network push. Allowed: /workspace
+ok   refused: DISABLED-no-push-outside-box: BLOCKED: push URL DISABLED-no-push-outside-box is not a path on this computer. Allowed: /workspace/p
+ok   refused: MAC/x0x37/../../escape.git: BLOCKED: push URL /workspace/plan-all/wt-d3510b82/build/host/iso/prepush-allow/tmp/ppallow.jJuBpV/ma
+ok   refused: MAC/other.git: BLOCKED: push URL /workspace/plan-all/wt-d3510b82/build/host/iso/prepush-allow/tmp/ppallow.jJuBpV/ma
+ok   refused: MAC/missing.git: BLOCKED: push URL /workspace/plan-all/wt-d3510b82/build/host/iso/prepush-allow/tmp/ppallow.jJuBpV/ma
+ok   no x0x37.allowedRemote: the Mac path is refused
+prepush allow: 13 of 13 ok

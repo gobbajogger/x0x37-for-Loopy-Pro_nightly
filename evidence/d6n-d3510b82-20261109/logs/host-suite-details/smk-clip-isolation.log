@@ -1,0 +1,4 @@
+PASS clip isolation, pad velocity and mode ownership (BLE=0)
+PASS clip isolation, pad velocity and mode ownership (BLE=1)
+PASS sequencer MIDI flush preserves playback and ends both slide notes
+PASS clip ownership changes before both UI dispatch paths

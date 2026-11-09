@@ -1,0 +1,17 @@
+  ok pattern == 2
+  ok hit0.1.4 == 1
+  ok tempo == 120
+  ok cue == 1
+  ok pattern == 2
+  ok pattern == 1
+  ok pattern == 1
+  ok pattern == 2
+  ok pattern == 1
+  ok part == 2
+  ok gate0.0 == 1
+  ok store_writes == 6
+  ok pattern == 1
+  ok hit0.0.0 == 1
+  ok hit0.0.8 == 1
+  ok hit0.1.4 == 1
+host: 11480 ms simulated, 615 blits, render 0.4% of real time (host CPU)

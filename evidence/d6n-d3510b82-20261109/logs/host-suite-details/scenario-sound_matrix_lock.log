@@ -1,0 +1,7 @@
+  ok page == 7
+  ok sound2.0.29 == 0
+  ok page == 3
+  ok lanes == 1
+  ok sound2.0.7 == 51
+  ok laneval2.0.7.0 == 61
+host: 3127 ms simulated, 111 blits, render 0.4% of real time (host CPU)

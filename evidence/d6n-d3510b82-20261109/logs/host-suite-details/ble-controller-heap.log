@@ -1,0 +1,4 @@
+controller heap: A first-peer PASS; old B first-peer FAIL; both partial fixes FAIL reserve; corrected two-peer lifecycle x100 with 512-byte transient reserve PASS
+full HCI/ATT discovery: legacy=0 base=0, 11 checks passed
+full HCI/ATT discovery: legacy=0 base=1, 11 checks passed
+full HCI/ATT discovery: legacy=0 base=64, 11 checks passed

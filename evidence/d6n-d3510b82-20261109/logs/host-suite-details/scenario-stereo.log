@@ -1,0 +1,8 @@
+  ok sound5.0.3 == 24
+  ok sound5.2.3 == 94
+  ok part == 0
+  ok page == 1
+  ok sound0.0.10 == 40
+  ok part == 1
+  ok part == 2
+host: 11070 ms simulated, 223 blits, render 0.2% of real time (host CPU)

@@ -1,0 +1,11 @@
+ok   no queue file: GATE OK bf18bdb /workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/res/6be6540590fc49dac2717148954849f23e7764dc.md (config dev)
+ok   open lines in the history, done line outside: GATE OK bf18bdb /workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/res/6be6540590fc49dac2717148954849f23e7764dc.md (config dev; queue: 2 open lines in bf18bdb)
+ok   open line not an ancestor: REFUSED bf18bdb: open queue line c9f4092 is not in the install commit bf18bdb: install only the full set (/workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/queue.SjGAbZ)
+ok   open line with an unknown commit: REFUSED bf18bdb: open queue line, commit 0123456789abcdef0123 is not in /workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/repo (/workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/queue.SjGAbZ)
+ok   open line with no commit: REFUSED bf18bdb: open queue line with no commit in /workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/queue.SjGAbZ: - [ ] a change with no commit
+ok   fixture no-commit.txt: open lines with no commit (exit 3): REFUSED bf18bdb: open queue line with no commit in /workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/queue.SjGAbZ: - [ ] pending Knob regression fix (Firmware Main Builder). No commit yet. This line blocks the install.
+ok   sync copies QUEUE.md
+ok   guard on the Mac copy, open line not an ancestor: REFUSED bf18bdb: open queue line c9f40920c3ed2d06309f415f81cd3e348cf7340d is not in the install commit bf18bdb: install only the full set (/workspace/plan-all/wt-d3510b82/build/host/iso/queue-guard/tmp/qguard.dDwihu/mac/QUEUE.md)
+ok   scan flags the bad fixture leaky_test.sh
+ok   scan: each test that runs require_gate_pass.sh sets X0X_QUEUE_FILE
+queue guard: 10 of 10 ok

@@ -1,0 +1,9 @@
+  ok sound0.0.0 == 34
+  ok sound0.0.0 == 39
+  ok sound0.0.0 == 98
+  ok sound0.0.0 == 95
+  ok sound0.0.0 == 0
+  ok sound0.0.0 == 2
+  ok tempo == 128
+  ok tempo == 147
+host: 3174 ms simulated, 34 blits, render 0.2% of real time (host CPU)

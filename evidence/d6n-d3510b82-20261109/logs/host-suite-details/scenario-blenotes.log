@@ -1,0 +1,14 @@
+  ok midiheld == 0
+  ok midiheld == 0
+  ok midiheld == 771
+  ok midiheld == 514
+  ok midiheld == 0
+  ok midiheld == 1
+  ok midiheld == 0
+  ok midiheld == 0
+  ok midiheld == 32769
+  ok midiheld == 0
+  ok midiheld == 0
+  ok midiheld == 65283
+  ok midiheld == 0
+host: 1340 ms simulated, 10 blits, render 1.0% of real time (host CPU)

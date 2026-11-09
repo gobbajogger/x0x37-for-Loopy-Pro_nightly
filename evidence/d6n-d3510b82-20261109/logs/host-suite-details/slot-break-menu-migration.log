@@ -1,0 +1,13 @@
+ok planner moves slot 3 -> slot 1: [(2, 0)]
+ok empty slot 1 + A in 2 + B in 3 reorders LOOP menu
+ok guard blocks automatic restore
+ok dropping only slot 3 does not reorder remaining LOOP entries
+ok oversized middle B leaves C as the only proposed write
+ok absolute zone indices prevent skipped B from resolving to restored C
+ok each zone has its own original identity
+ok identical CRCs do not hide distinct original slot identities
+ok same absolute menu permits physical relocation
+ok safe restored prefix with trailing omission remains allowed
+ok new trailing occupied loop does not shift existing indices
+ok unknown occupied prefix cannot silently shift a restored loop
+x0x_slots_break_menu_migration_test: passed

@@ -1,0 +1,32 @@
+{
+  "ctl.img": {
+    "path": "/workspace/plan-all/wt-d3510b82/ble/ctl/out/ctl.img",
+    "sha256": "aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7",
+    "bytes": 61088
+  },
+  "x0x-smk37-ble.fwsc": {
+    "path": "/workspace/plan-all/wt-d3510b82/build/x0x-smk37-ble.fwsc",
+    "sha256": "d997fea7b95e157f5c35271c95087d37abab7904668714631162250e8ea867db",
+    "bytes": 651457
+  },
+  "x0x-smk37-elite-ble.fwsc": {
+    "path": "/workspace/plan-all/wt-d3510b82/build/x0x-smk37-elite-ble.fwsc",
+    "sha256": "1e6d56a3c4d4bf8d90c8a04f32abadb0b7ca58f5523f45c3036a7d05f8cefbb7",
+    "bytes": 651457
+  },
+  "x0x-smk37-elite.fwsc": {
+    "path": "/workspace/plan-all/wt-d3510b82/build/x0x-smk37-elite.fwsc",
+    "sha256": "57dfcd9aec92f568480201c686618f049a33c1cdce5904266160eca06ab9a321",
+    "bytes": 651457
+  },
+  "x0x-smk37-mke.fwsc": {
+    "path": "/workspace/plan-all/wt-d3510b82/build/x0x-smk37-mke.fwsc",
+    "sha256": "98634bf107a35284ff853f24fd847d8489e628488923c054dc85c5923f2deac8",
+    "bytes": 651453
+  },
+  "x0x-smk37.fwsc": {
+    "path": "/workspace/plan-all/wt-d3510b82/build/x0x-smk37.fwsc",
+    "sha256": "83f4b574002f309f6f32542393f836dd9fb0584760c9cd3eaec0efb79b684a09",
+    "bytes": 651457
+  }
+}

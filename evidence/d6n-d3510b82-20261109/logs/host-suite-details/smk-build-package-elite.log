@@ -1,0 +1,6 @@
+smk pkg: identity SMK-37 Elite_900, 20 blocks, CRCs ok                          ok
+smk pkg: flash.bin 0x9d000 B (stock PRCT 0x9D000)                               ok
+smk pkg: app.bin, cfg_tool.bin first                                            ok
+smk pkg: region table == stock v016 (VM, PRCT, BTIF, USRTRIM, USRFLASH, USR)    ok
+smk pkg: head present (never written by the loader, checked against the device) ok
+smk package test passed

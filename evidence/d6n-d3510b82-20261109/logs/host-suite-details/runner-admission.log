@@ -1,0 +1,6 @@
+runner admission: 13 cases passed
+candidate jobs=1 selected='fastmath': 0.189s, scenario mkdir=0, scratch writes=0, key formats=0
+candidate jobs=1 selected='install-slots-web host-build stereo smc-reachability fastmath installer rec-live rec-live-smk scenario-alpha scenario-dash-name scenario-multi.x0x scenario-perfsave perf-scratch': 1.582s, scenario mkdir=4, scratch writes=1, key formats=0
+candidate jobs=4 selected='fastmath': 0.231s, scenario mkdir=0, scratch writes=0, key formats=2
+candidate jobs=4 selected='install-slots-web host-build stereo smc-reachability fastmath installer rec-live rec-live-smk scenario-alpha scenario-dash-name scenario-multi.x0x scenario-perfsave perf-scratch': 1.147s, scenario mkdir=4, scratch writes=1, key formats=14
+candidate jobs=2 selected='install-slots-web host-build stereo smc-reachability fastmath installer rec-live rec-live-smk scenario-alpha scenario-dash-name scenario-multi.x0x scenario-perfsave perf-scratch': 1.128s, scenario mkdir=4, scratch writes=1, key formats=14

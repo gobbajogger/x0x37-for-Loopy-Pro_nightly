@@ -1,0 +1,139 @@
+PASS BLE DAW page 1: visible stage edits its first field
+PASS BLE DAW page 1: menu owns encoders without editing covered clip fields
+PASS BLE DAW page 1: covered encoder events are drained
+PASS BLE DAW page 1: closing the overlay does not replay turns
+PASS BLE DAW page 1: help leaves encoders working under the card
+PASS BLE DAW page 1: covered encoder events are drained
+PASS BLE DAW page 1: closing the overlay does not replay turns
+PASS BLE DAW page 1: confirmation blocks clip fields and X0X fallback
+PASS BLE DAW page 1: covered encoder events are drained
+PASS BLE DAW page 1: closing the overlay does not replay turns
+PASS BLE DAW page 1: visible stage resumes editing
+PASS BLE DAW page 2: visible stage edits its first field
+PASS BLE DAW page 2: menu owns encoders without editing covered clip fields
+PASS BLE DAW page 2: covered encoder events are drained
+PASS BLE DAW page 2: closing the overlay does not replay turns
+PASS BLE DAW page 2: help leaves encoders working under the card
+PASS BLE DAW page 2: covered encoder events are drained
+PASS BLE DAW page 2: closing the overlay does not replay turns
+PASS BLE DAW page 2: confirmation blocks clip fields and X0X fallback
+PASS BLE DAW page 2: covered encoder events are drained
+PASS BLE DAW page 2: closing the overlay does not replay turns
+PASS BLE DAW page 2: visible stage resumes editing
+PASS BLE DAW page 3: visible stage edits its first field
+PASS BLE DAW page 3: menu owns encoders without editing covered clip fields
+PASS BLE DAW page 3: covered encoder events are drained
+PASS BLE DAW page 3: closing the overlay does not replay turns
+PASS BLE DAW page 3: help leaves encoders working under the card
+PASS BLE DAW page 3: covered encoder events are drained
+PASS BLE DAW page 3: closing the overlay does not replay turns
+PASS BLE DAW page 3: confirmation blocks clip fields and X0X fallback
+PASS BLE DAW page 3: covered encoder events are drained
+PASS BLE DAW page 3: closing the overlay does not replay turns
+PASS BLE DAW page 3: visible stage resumes editing
+PASS BLE DAW page 0: menu owns encoders without editing covered clip fields
+PASS BLE DAW page 0: covered encoder events are drained
+PASS BLE DAW page 0: closing the overlay does not replay turns
+PASS BLE DAW page 0: help leaves clip-grid encoders inactive
+PASS BLE DAW page 0: covered encoder events are drained
+PASS BLE DAW page 0: closing the overlay does not replay turns
+PASS BLE DAW page 1: menu owns encoders without editing covered clip fields
+PASS BLE DAW page 1: covered encoder events are drained
+PASS BLE DAW page 1: closing the overlay does not replay turns
+PASS BLE DAW page 1: help leaves encoders working under the card
+PASS BLE DAW page 1: covered encoder events are drained
+PASS BLE DAW page 1: closing the overlay does not replay turns
+PASS BLE DAW page 1: visible X0X fallback still edits
+PASS BLE USER page 1: visible stage edits its first field
+PASS BLE USER page 1: menu owns encoders without editing covered clip fields
+PASS BLE USER page 1: covered encoder events are drained
+PASS BLE USER page 1: closing the overlay does not replay turns
+PASS BLE USER page 1: help leaves encoders working under the card
+PASS BLE USER page 1: covered encoder events are drained
+PASS BLE USER page 1: closing the overlay does not replay turns
+PASS BLE USER page 1: confirmation blocks clip fields and X0X fallback
+PASS BLE USER page 1: covered encoder events are drained
+PASS BLE USER page 1: closing the overlay does not replay turns
+PASS BLE USER page 1: visible stage resumes editing
+PASS BLE USER page 2: visible stage edits its first field
+PASS BLE USER page 2: menu owns encoders without editing covered clip fields
+PASS BLE USER page 2: covered encoder events are drained
+PASS BLE USER page 2: closing the overlay does not replay turns
+PASS BLE USER page 2: help leaves encoders working under the card
+PASS BLE USER page 2: covered encoder events are drained
+PASS BLE USER page 2: closing the overlay does not replay turns
+PASS BLE USER page 2: confirmation blocks clip fields and X0X fallback
+PASS BLE USER page 2: covered encoder events are drained
+PASS BLE USER page 2: closing the overlay does not replay turns
+PASS BLE USER page 2: visible stage resumes editing
+PASS BLE USER page 3: visible stage edits its first field
+PASS BLE USER page 3: menu owns encoders without editing covered clip fields
+PASS BLE USER page 3: covered encoder events are drained
+PASS BLE USER page 3: closing the overlay does not replay turns
+PASS BLE USER page 3: help leaves encoders working under the card
+PASS BLE USER page 3: covered encoder events are drained
+PASS BLE USER page 3: closing the overlay does not replay turns
+PASS BLE USER page 3: confirmation blocks clip fields and X0X fallback
+PASS BLE USER page 3: covered encoder events are drained
+PASS BLE USER page 3: closing the overlay does not replay turns
+PASS BLE USER page 3: visible stage resumes editing
+PASS BLE USER page 0: menu owns encoders without editing covered clip fields
+PASS BLE USER page 0: covered encoder events are drained
+PASS BLE USER page 0: closing the overlay does not replay turns
+PASS BLE USER page 0: help leaves clip-grid encoders inactive
+PASS BLE USER page 0: covered encoder events are drained
+PASS BLE USER page 0: closing the overlay does not replay turns
+PASS BLE USER page 1: menu owns encoders without editing covered clip fields
+PASS BLE USER page 1: covered encoder events are drained
+PASS BLE USER page 1: closing the overlay does not replay turns
+PASS BLE USER page 1: help leaves encoders working under the card
+PASS BLE USER page 1: covered encoder events are drained
+PASS BLE USER page 1: closing the overlay does not replay turns
+PASS BLE USER page 1: visible X0X fallback still edits
+PASS host USER page 1: visible stage edits its first field
+PASS host USER page 1: menu owns encoders without editing covered clip fields
+PASS host USER page 1: covered encoder events are drained
+PASS host USER page 1: closing the overlay does not replay turns
+PASS host USER page 1: help leaves encoders working under the card
+PASS host USER page 1: covered encoder events are drained
+PASS host USER page 1: closing the overlay does not replay turns
+PASS host USER page 1: confirmation blocks clip fields and X0X fallback
+PASS host USER page 1: covered encoder events are drained
+PASS host USER page 1: closing the overlay does not replay turns
+PASS host USER page 1: visible stage resumes editing
+PASS host USER page 2: visible stage edits its first field
+PASS host USER page 2: menu owns encoders without editing covered clip fields
+PASS host USER page 2: covered encoder events are drained
+PASS host USER page 2: closing the overlay does not replay turns
+PASS host USER page 2: help leaves encoders working under the card
+PASS host USER page 2: covered encoder events are drained
+PASS host USER page 2: closing the overlay does not replay turns
+PASS host USER page 2: confirmation blocks clip fields and X0X fallback
+PASS host USER page 2: covered encoder events are drained
+PASS host USER page 2: closing the overlay does not replay turns
+PASS host USER page 2: visible stage resumes editing
+PASS host USER page 3: visible stage edits its first field
+PASS host USER page 3: menu owns encoders without editing covered clip fields
+PASS host USER page 3: covered encoder events are drained
+PASS host USER page 3: closing the overlay does not replay turns
+PASS host USER page 3: help leaves encoders working under the card
+PASS host USER page 3: covered encoder events are drained
+PASS host USER page 3: closing the overlay does not replay turns
+PASS host USER page 3: confirmation blocks clip fields and X0X fallback
+PASS host USER page 3: covered encoder events are drained
+PASS host USER page 3: closing the overlay does not replay turns
+PASS host USER page 3: visible stage resumes editing
+PASS host USER page 0: menu owns encoders without editing covered clip fields
+PASS host USER page 0: covered encoder events are drained
+PASS host USER page 0: closing the overlay does not replay turns
+PASS host USER page 0: help leaves clip-grid encoders inactive
+PASS host USER page 0: covered encoder events are drained
+PASS host USER page 0: closing the overlay does not replay turns
+PASS host USER page 1: menu owns encoders without editing covered clip fields
+PASS host USER page 1: covered encoder events are drained
+PASS host USER page 1: closing the overlay does not replay turns
+PASS host USER page 1: help leaves encoders working under the card
+PASS host USER page 1: covered encoder events are drained
+PASS host USER page 1: closing the overlay does not replay turns
+PASS host USER page 1: visible X0X fallback still edits
+smc_clip_visibility: ok (0 failures)

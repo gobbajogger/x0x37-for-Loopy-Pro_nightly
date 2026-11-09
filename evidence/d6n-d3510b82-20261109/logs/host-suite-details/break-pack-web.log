@@ -1,0 +1,5 @@
+JS pack matches Python                                           ok
+place leaves the image                                           ok
+pack is in the free tail                                         ok
+tail bytes are the pack                                          ok
+a pack bigger than the tail is refused                           ok

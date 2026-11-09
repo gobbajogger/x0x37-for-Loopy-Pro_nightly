@@ -1,0 +1,14 @@
+PASS: regular: first readback mismatch reported
+PASS: regular: mismatch must not erase/write second slot
+PASS: regular: verify first slot after its END
+PASS: regular: successful restore writes both slots
+PASS: regular: first readback precedes second BEGIN
+PASS: migration: first readback mismatch reported
+PASS: migration: mismatch must not erase/write second slot
+PASS: migration: verify first slot after its END
+PASS: migration: successful restore writes both slots
+PASS: migration: first readback precedes second BEGIN
+PASS: explicit verify=False retains legacy no-readback behavior
+PASS: selected slot restore leaves unselected first slot untouched
+PASS: second-slot mismatch detected after first verified
+FAILED_ASSERTIONS=0

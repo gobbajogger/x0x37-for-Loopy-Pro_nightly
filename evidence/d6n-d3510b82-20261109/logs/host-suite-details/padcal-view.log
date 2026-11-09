@@ -1,0 +1,12 @@
+PASS host build of the boost helpers and the names
+PASS app/apc40_pad_names.h == tools/apc_pad_colors.py --names-h
+PASS boost: each field << s, in range, s the largest (0-3) for all 128 entries [] (s: [(0, 76), (1, 31), (2, 12), (3, 9)])
+PASS names: 128 entries, the firmware name == tools/apc_colour_model.py entry_name_text
+PASS docs/padcal-names.csv == tools/apc_pad_colors.py --names-csv
+PASS pads: the calibration pad loop is the same text as before (no boost)
+PASS SEQ REC toggles the real level of the selected square
+PASS LCD: only the selected square is boosted, the others are APC40_LCD565[n]
+PASS the draw and the frame do not write padcal.rgb or padcal.ok (stored values unchanged)
+PASS LCD: the name and the boost of the selected entry
+PASS the export word is the stored value (smk_padcal_word unchanged)
+padcal-view: 0 fail(s)

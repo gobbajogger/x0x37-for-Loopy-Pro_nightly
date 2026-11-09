@@ -1,0 +1,9 @@
+  ok loops == 2
+  slot 0: 3 zone(s) from the image
+  ok loops == 5
+  slot 1: 1 zone(s) from the image
+  ok loops == 6
+  ok part == 4
+  ok loop_a == 2
+  ok peak -7.9 dBFS
+host: 6000 ms simulated, 96 blits, render 0.9% of real time (host CPU)

@@ -1,0 +1,44 @@
+PASS GREEN (exit=0)
+#1: PRESENT_OK
+#2: UNPROVEN
+TOTALS present_ok=1 present_bad=0 UNPROVEN=1 MISSING=1 rows=2
+ROADMAP_PIN blob=a204a54c989d6f323d619e70f799427603756541 commit=5f578fc0642a1200a5163802bcd69277c511bfc7
+PASS RED_missing_path (exit=1)
+MUTANT RED_missing_path: drop the os.path.isfile(code_path) check -> RED would exit 0; this case catches it.
+PASS RED_empty_result (exit=1)
+MUTANT RED_empty_result: treat empty result as PASS (or skip result validation) -> RED would exit 0; this case catches it.
+PASS RED_disagreeing_pin (exit=1)
+MUTANT RED_disagreeing_pin: keep only the first file's pin and never compare later files -> RED would exit 0; this case catches it.
+PASS RED_malformed_json (exit=1)
+MUTANT RED_malformed_json: wrap json.load in a bare except that continues as UNPROVEN/OK -> RED would exit 0; this case catches it.
+PASS STRICT_GREEN (exit=0)
+PASS LEGACY_FAIL (exit=0)
+PASS STRICT_RED_FAIL (strict exit=1; result_not_PASS)
+PASS LEGACY_NOT_RUN (exit=0)
+PASS STRICT_RED_NOT_RUN (strict exit=1; result_not_PASS)
+PASS LEGACY_UNPROVEN (exit=0)
+PASS STRICT_RED_UNPROVEN (strict exit=1; status_not_PRESENT)
+PASS LEGACY_missing_test_file (exit=0)
+PASS STRICT_RED_missing_test_file (strict exit=1; missing_or_outside_test_file)
+PASS STRICT_CONTRACT_missing_row (strict exit=1; missing_required_json)
+PASS STRICT_CONTRACT_extra_row (strict exit=1; unexpected_json)
+PASS STRICT_CONTRACT_wrong_sha (strict exit=1; source_sha_mismatch)
+PASS STRICT_CONTRACT_missing_refs (strict exit=1; missing_test_refs)
+PASS STRICT_CONTRACT_forged_test (strict exit=1; unknown_run_test)
+PASS STRICT_CONTRACT_missing_code_path (strict exit=1; missing_or_outside_code_path)
+PASS STRICT_CONTRACT_bad_status (strict exit=1; status_not_PRESENT)
+PASS STRICT_CONTRACT_bad_pin (strict exit=1; pin_disagree)
+PASS STRICT_CONTRACT_malformed_json (strict exit=1; malformed_json)
+PASS STRICT_RUNNER_quoted_separator (strict exit=1; unknown_run_test)
+PASS STRICT_RUNNER_heredoc (strict exit=1; unknown_run_test)
+PASS STRICT_RUNNER_multiline_quote (strict exit=1; unknown_run_test)
+PASS STRICT_RUNNER_continued_argument (strict exit=1; unknown_run_test)
+PASS STRICT_RUNNER_escaped_quote (strict exit=1; unknown_run_test)
+PASS STRICT_RUNNER_embedded_brace (strict exit=1; unknown_run_test)
+PASS STRICT_RUNNER_quoted_keyword (strict exit=1; unknown_run_test)
+PASS STRICT_RUNNER_escaped_keyword (strict exit=1; unknown_run_test)
+PASS STRICT_GREEN_env (exit=0)
+PASS STRICT_candidate_setup (value='' exit=2)
+PASS STRICT_candidate_setup (value='not-a-sha' exit=2)
+----
+SELFTEST pass=34 fail=0

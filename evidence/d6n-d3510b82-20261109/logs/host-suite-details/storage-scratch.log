@@ -1,0 +1,4 @@
+storage scratch: 162789 checks; shared source, exhaustive hook faults, partial I/O, unchanged external failure destination and protected ranges PASS
+441 successful interleaved object saves/loads PASS
+441 successful interleaved object saves/loads PASS
+Baseline/current complete synthetic NOR byte comparison PASS; sha256=04d9058a3d7c687cac97647c2effcdc84625fb3e5ab603749c08a0b7359a8b9a

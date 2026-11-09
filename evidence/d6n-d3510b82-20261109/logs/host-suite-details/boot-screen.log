@@ -1,0 +1,44 @@
+factory subtitle fits the record                                         ok
+sectors differ and are 4 KiB                                             ok
+FM-1 boot sectors are not the settings pair                              ok
+FM-1 picture sector is not a sample slot                                 ok
+SMK boot sectors sit in the spare after the objects                      ok
+empty buffer is not a boot record                                        ok
+original-words record is accepted                                        ok
+empty top line is refused                                                ok
+empty second line is refused                                             ok
+top line over 12 characters is refused                                   ok
+second line over 21 characters is refused                                ok
+ordinary letters are accepted                                            ok
+a control character in the text is refused                               ok
+wrong picture size is refused                                            ok
+picture flag with no bitmap bytes is refused                             ok
+240 by 96 picture is accepted                                            ok
+a longer buffer than the picture is refused                              ok
+begin does not erase                                                     ok
+writing an empty-line record does not erase                              ok
+end of a bad record does not touch flash                                 ok
+blank flash shows the original words                                     ok
+factory words are DnBOX and the engine line                              ok
+a skipped chunk is refused and disarms                                   ok
+end after a skipped chunk does not erase                                 ok
+begin before an overrun does not erase                                   ok
+filling the record does not erase                                        ok
+a one-byte overrun is refused                                            ok
+first save stores the lines                                              ok
+second save keeps a picture and new lines                                ok
+the newer copy is the one shown                                          ok
+header program failure reports flash and keeps the previous lines        ok
+the failed copy is not a valid boot record                               ok
+a sector full of payload and no header is ignored                        ok
+original-words save replaces the picture                                 ok
+original-words record has no picture flag                                ok
+unreadable flash is refused before erase                                 ok
+previous original-words record still wins                                ok
+abort drops the stage and does not erase                                 ok
+a stalled upload times out without erasing                               ok
+a write after the timeout does not erase                                 ok
+repeating an accepted write chunk is ok                                  ok
+a repeated end after commit is ok                                        ok
+CRC-32 matches zlib's check value                                        ok
+boot screen test passed

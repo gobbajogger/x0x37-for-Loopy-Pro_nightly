@@ -1,0 +1,10 @@
+HEAD d3510b8274d5c737e1a1aab93f65081b9e28b5e8
+TREE 0310ab1bb5469c4992302b57a11eb880f8118de2
+PARENTS 617c0ff1d49ccfdd789d358dc962fbfea5f94c15
+AUTHOR gobbajogger <255244738+gobbajogger@users.noreply.github.com>
+COMMITTER gobbajogger <255244738+gobbajogger@users.noreply.github.com>
+SUBJECT Keep a bass step when panic silences a new record press
+10	3	firmware/src/app/engine.c
+214	1	tests/host/panic_clear_test.c
+d728de1ef269774f7fe9fc1c28f0a7412a3ccf27
+9214f905cca1b658a4eab99a55c8d28a707da90d

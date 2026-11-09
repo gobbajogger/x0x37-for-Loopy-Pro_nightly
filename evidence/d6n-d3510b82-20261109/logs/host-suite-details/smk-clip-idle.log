@@ -1,0 +1,22 @@
+PASS host build of app/smk_clip_colour.h
+PASS app/apc40_lcd_idle.h == tools/apc_pad_colors.py --lcd-idle-h
+PASS 128 velocities
+  vel  7: Akai 190000 -> half of  5 (FF0000) = 800000 -> 0x8000 (was 0x1800)
+  vel 11: Akai 271B00 -> half of  9 (FF5400) = 802A00 -> 0x8140 (was 0x28E0)
+  vel 15: Akai 191900 -> half of 13 (FFFF00) = 808000 -> 0x8400 (was 0x18C0)
+  vel 19: Akai 142B00 -> half of 17 (54FF00) = 2A8000 -> 0x2C00 (was 0x1160)
+  vel 23: Akai 001900 -> half of 21 (00FF00) = 008000 -> 0x0400 (was 0x00C0)
+  vel 27: Akai 001902 -> half of 25 (00FF19) = 00800D -> 0x0402 (was 0x00C0)
+  vel 31: Akai 001F12 -> half of 29 (00FF55) = 00802B -> 0x0405 (was 0x0102)
+  vel 35: Akai 001912 -> half of 33 (00FF99) = 00804D -> 0x0409 (was 0x00C2)
+  vel 39: Akai 001019 -> half of 37 (00A9FF) = 005580 -> 0x02B0 (was 0x0083)
+  vel 43: Akai 000819 -> half of 41 (0055FF) = 002B80 -> 0x0170 (was 0x0043)
+  vel 47: Akai 000019 -> half of 45 (0000FF) = 000080 -> 0x0010 (was 0x0003)
+  vel 51: Akai 0F0030 -> half of 49 (5400FF) = 2A0080 -> 0x2810 (was 0x1006)
+  vel 55: Akai 190019 -> half of 53 (FF00FF) = 800080 -> 0x8010 (was 0x1803)
+  vel 59: Akai 220013 -> half of 57 (FF0054) = 80002A -> 0x8005 (was 0x2002)
+PASS idle shades 7-59: LCD == half of the group full shade, per channel []
+PASS all other velocities (0-6, other shades, 60-127, 63) == APC40_LCD565[v], byte-exact
+PASS 63 is not in an Akai shade group (groups are 4-59): no change
+PASS smk_clip_lcd_draw draws smk_clip_lcd565(v)
+smk-clip-idle: 0 fail(s)

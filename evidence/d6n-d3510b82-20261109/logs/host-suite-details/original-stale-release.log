@@ -1,0 +1,10 @@
+gcc 
+original_runtime_lost_off: 164 checks 0 failures
+clang 
+original_runtime_lost_off: 164 checks 0 failures
+gcc -fsanitize=undefined -fno-sanitize-recover=all
+original_runtime_lost_off: 164 checks 0 failures
+clang -fsanitize=undefined -fno-sanitize-recover=all
+original_runtime_lost_off: 164 checks 0 failures
+clang -fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer
+original_runtime_lost_off: 164 checks 0 failures

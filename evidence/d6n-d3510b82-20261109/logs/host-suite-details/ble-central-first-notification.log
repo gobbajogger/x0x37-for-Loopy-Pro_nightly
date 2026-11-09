@@ -1,0 +1,3 @@
+SOURCE /workspace/plan-all/wt-d3510b82/firmware/src/ble.c
+COMMAND cc -std=c11 -O1 -g -Wall -Wextra -Werror /tmp/ble-first-notification-5b1hoks4/test.c -o /tmp/ble-first-notification-5b1hoks4/test
+BLE TRANSPORT CALLBACK CHECKS 95 FAILURES 0\n

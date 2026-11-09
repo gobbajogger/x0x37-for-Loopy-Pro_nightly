@@ -1,0 +1,5 @@
+PASS 1080 production CQ ISR scenarios +4 nested source/global-state cases
+FAIL type=8 drain=1 offset=0 victim=0 site=3 delivered=0 hook=1 depth=0
+FAIL type=8 drain=1 offset=0 victim=0 site=1 delivered=0 hook=1 depth=0
+PASS omitted-source-mask mutant rejected
+PASS omitted-live-revalidation mutant rejected

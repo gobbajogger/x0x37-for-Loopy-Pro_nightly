@@ -1,0 +1,15 @@
+ok   clean base: TREE OK a1288f8: no refs/jieli or refs/oscuro path, none of 0 refs-oscuro commits is in it
+ok   path refs/jieli/include/sdk.h: TREE REFUSED c04ec45: the tree has refs/jieli or refs/oscuro paths: refs/jieli/include/sdk.h 
+ok   path refs/oscuro/fw.bin: TREE REFUSED 888cde9: the tree has refs/jieli or refs/oscuro paths: refs/oscuro/fw.bin 
+ok   path tools/vendor/refs/oscuro/notes.txt: TREE REFUSED 90f9566: the tree has refs/jieli or refs/oscuro paths: tools/vendor/refs/oscuro/notes.txt 
+ok   path REFS/JieLi/readme.txt: TREE REFUSED 3933008: the tree has refs/jieli or refs/oscuro paths: REFS/JieLi/readme.txt 
+ok   path docs/refs-oscuro-map.txt: TREE REFUSED 36e38b9: the tree has refs/jieli or refs/oscuro paths: docs/refs-oscuro-map.txt 
+ok   path docs/refs/other.txt: TREE OK 8f48974: no refs/jieli or refs/oscuro path, none of 0 refs-oscuro commits is in it
+ok   path tools/jieli_notes.txt: TREE OK dc26f5e: no refs/jieli or refs/oscuro path, none of 0 refs-oscuro commits is in it
+ok   path firmware/src/oscuro_free.c: TREE OK a63e453: no refs/jieli or refs/oscuro path, none of 0 refs-oscuro commits is in it
+ok   the refs-oscuro tip itself: TREE REFUSED 55a375d: it contains the refs-oscuro commit 55a375d
+ok   a merge of refs-oscuro: TREE REFUSED 6638702: it contains the refs-oscuro commit 55a375d
+ok   base with a refs-oscuro branch in the repository: TREE OK a1288f8: no refs/jieli or refs/oscuro path, none of 1 refs-oscuro commits is in it
+ok   X0X_OSCURO_COMMITS names the commit (no branch): TREE REFUSED 6638702: it contains the refs-oscuro commit 55a375d
+ok   unknown commit: exit 2
+release tree: 14 of 14 ok

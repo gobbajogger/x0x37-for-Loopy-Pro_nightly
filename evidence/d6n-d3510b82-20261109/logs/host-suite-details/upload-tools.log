@@ -1,0 +1,11 @@
+  ok   3 x 120 KiB device: 2 + 1 loops of 44.1 kHz (two 43 KiB loops fit one 120 KiB slot; layout from SMP_INFO)
+  ok   upload_breaks.py asks SMP_INFO first
+  ok   2 x 80 KiB device, --rate 22050: three 22.05 kHz loops in slot 1, slot 2 untouched
+  ok   --slots 2: only slot 2 written
+  ok   one-shot: trimmed by default (28665 -> 6746 samples)
+  ok   loops: not trimmed by default (57330 samples), --trim cuts (13493)
+  ok   --oldschool: playback 22050 Hz, fewer samples (57330 -> 28665)
+  ok   --oldschool upload: zone rate 22050, sped-up sample count
+  ok   --oldschool-grit heavy: lower playback rate, fewer samples
+  ok   --oldschool-grit heavy upload: zone playback rate
+upload tools: all ok

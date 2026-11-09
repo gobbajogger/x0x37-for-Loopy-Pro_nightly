@@ -1,0 +1,4 @@
+  ok   909: every voice centred: stereo == mono, bit for bit
+  ok   808: every track centred: stereo == mono, bit for bit
+  ok   pan hard left: all on the left, nothing on the right
+drum pan: ok

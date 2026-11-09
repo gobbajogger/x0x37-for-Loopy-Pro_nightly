@@ -1,0 +1,9 @@
+PASS canonical header accepted
+PASS reject zone offset beyond data
+PASS reject ADPCM n exceeds data
+PASS reject zero Q16 rate
+PASS reject excessive Q16 rate
+PASS reject invalid ADPCM predictor index
+PASS bad archive refused before any destructive mock command
+PASS outer CRC still enforced
+CHECKS=8 FAILURES=0

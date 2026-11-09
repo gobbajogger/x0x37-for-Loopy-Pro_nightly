@@ -1,0 +1,5 @@
+  ok page == 5
+  ok page == 7
+  ok sound2.0.29 == 0
+  ok page == 0
+host: 3055 ms simulated, 55 blits, render 0.2% of real time (host CPU)

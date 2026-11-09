@@ -1,0 +1,15 @@
+  ok   Connect: the page reads the slots
+  ok   room text from SMP_INFO: "2 loops, 24 KB of 159 KB (2 slots: 80 KB, 80 KB)."
+  ok   Back up sends only SMP_INFO and SMP_READ
+  ok   Back up leaves the flash unchanged
+  ok   Back up: archive x0x-slots-20261109-111518.x0xslots, slot 1 exact, slot 2 empty
+  ok   Restore: "Complete restore: all 2 archive slots verified byte for byte."
+  ok   Restore: slot 1 equals the backup, slot 2 erased
+  ok   3 x 120 KB layout: "2 loops, 24 KB of 359 KB (3 slots: 120 KB, 120 KB, 120 KB)."
+  ok   3 x 120 KB layout: backup holds 3 slots, slot 3 used
+  ok   Send: the new loop is zone 3 at 44.1 kHz (26460 samples)
+  ok   Send with "22 kHz": rates 44100,44100,44100,22050 (read-back loops keep theirs)
+  ok   SMK-37 layout: "2 loops, 24 KB of 243 KB (3 slots: 80 KB, 120 KB, 44 KB)."
+  ok   SMK-37 layout: the backup records each slot's size and flash offset
+  ok   SMK-37 layout: the two loops read back go into slot 1, the long new one into the 120 KB slot 2 (83790 B; "Done. On the FM-1: BREAK, then EDIT, then LOOP A or LOOP B.")
+breaks page: connect, backup, restore, send ok against the mocked device

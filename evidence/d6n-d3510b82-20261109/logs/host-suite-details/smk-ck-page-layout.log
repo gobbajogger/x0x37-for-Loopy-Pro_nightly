@@ -1,0 +1,8 @@
+PASS page draws its selectable fields, including ON
+PASS page marks the selected field
+PASS page does not show editable key zones or value keys
+PASS page labels its keyboard as playable and lights held keys
+PASS KEYS strip retains stage names and ON state
+PASS help line names the knob and arrow controls
+PASS fields, keyboard label, keyboard and help line do not overlap
+smk_ck_page_layout_test: 0 fail(s)

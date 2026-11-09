@@ -1,0 +1,20 @@
+  ok view == 1
+  ok gate0.0 == 0
+  ok gate0.1 == 1
+  ok note0.1 == 48
+  ok view == 8
+  ok view == 1
+  ok gate0.4 == 1
+  ok gate0.5 == 2
+  ok gate0.7 == 2
+  ok gate0.8 == 1
+  ok note0.8 == 50
+  ok gate0.9 == 2
+  ok gate0.10 == 0
+  ok rec == 0
+  ok gate0.12 == 0
+  ok gate0.13 == 0
+  ok rec == 1
+  ok gate0.14 == 0
+  ok gate0.15 == 0
+host: 2544 ms simulated, 86 blits, render 0.7% of real time (host CPU)
