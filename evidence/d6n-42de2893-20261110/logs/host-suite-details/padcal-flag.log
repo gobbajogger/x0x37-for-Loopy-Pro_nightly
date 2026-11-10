@@ -1,0 +1,14 @@
+PASS app/x0x.h: the default is 1 (dev build)
+PASS tools/build.py: X0X_DEV_PADCAL=0 or 1 from the environment goes to the compiler
+PASS BUILDING.md: the release build command, the dev value and the tag padcal-v1
+PASS app/apc40_pad_owner.h (generated): the owner-calibrated pad table is the pad table of both builds
+PASS main_fm1.c, flag 0: no pad calibration code ([])
+PASS main_fm1.c, flag 1: all the pad calibration code stays
+PASS ui.c, flag 0: no pad calibration code ([])
+PASS ui.c, flag 1: all the pad calibration code stays
+PASS plat_fm1.c, flag 0: no pad calibration code ([])
+PASS plat_fm1.c, flag 1: all the pad calibration code stays
+PASS main_fm1.c, flag 0: INLOG has args 0 and 1 only (args 2-5 get the entries reply)
+PASS ui.c, flag 0: key_event keeps the clip mode guard
+PASS plat_fm1.c, flag 0: the clip mode knob and button paths stay
+padcal_flag_test: ok

@@ -1,0 +1,17 @@
+PASS distant 909 target stays saved after a one-count movement
+PASS pickup shows direction
+PASS within two counts takes over
+PASS after pickup, normal absolute movement works
+PASS bank B distant target waits
+PASS bank B hints downward movement
+PASS crossing fifth displayed part target takes over
+PASS equal-value tolerance takes over REV return
+PASS bipolar filter remains off before centre crossing
+PASS bipolar filter takes over across centre
+PASS knob target change re-arms pickup
+PASS re-armed filter takes over at new target
+PASS accepted moves touched automation
+PASS project hold consumes faders and bank button without edits
+PASS held bank button and fader position do not replay after release
+PASS project hold re-arms pickup at the saved target
+PASS fresh target crossing resumes fader writes

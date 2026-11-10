@@ -1,0 +1,2 @@
+$ python3 /workspace/opt-equiv-distinguish/classify-optimization-equivalence.py /workspace/d6n-42de2893-20261110/evidence/logs/host-suite-details/optimization-equivalence.log
+PASS: clang sanitizer IMA check printed PASS

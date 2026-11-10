@@ -1,0 +1,157 @@
+[
+  {
+    "name": "target-ui",
+    "ok": 3,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "exit_code": 0,
+    "log": "logs/target-ui.log",
+    "inventory": [
+      {
+        "status": "ok",
+        "name": "play-question",
+        "detail": "",
+        "runner_line": "  ok   play-question"
+      },
+      {
+        "status": "ok",
+        "name": "play-question-ui",
+        "detail": "",
+        "runner_line": "  ok   play-question-ui"
+      },
+      {
+        "status": "ok",
+        "name": "smc-lock-beat",
+        "detail": "",
+        "runner_line": "  ok   smc-lock-beat"
+      }
+    ]
+  },
+  {
+    "name": "target-panic",
+    "ok": 10,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "exit_code": 0,
+    "log": "logs/target-panic.log",
+    "inventory": [
+      {
+        "status": "ok",
+        "name": "project-protocol",
+        "detail": "",
+        "runner_line": "  ok   project-protocol"
+      },
+      {
+        "status": "ok",
+        "name": "project-save-preflight",
+        "detail": "",
+        "runner_line": "  ok   project-save-preflight"
+      },
+      {
+        "status": "ok",
+        "name": "project-stage",
+        "detail": "",
+        "runner_line": "  ok   project-stage"
+      },
+      {
+        "status": "ok",
+        "name": "project-runtime",
+        "detail": "",
+        "runner_line": "  ok   project-runtime"
+      },
+      {
+        "status": "ok",
+        "name": "smc-drum-mutes",
+        "detail": "",
+        "runner_line": "  ok   smc-drum-mutes"
+      },
+      {
+        "status": "ok",
+        "name": "panic-chord",
+        "detail": "",
+        "runner_line": "  ok   panic-chord"
+      },
+      {
+        "status": "ok",
+        "name": "panic-notes",
+        "detail": "",
+        "runner_line": "  ok   panic-notes"
+      },
+      {
+        "status": "ok",
+        "name": "panic-clear",
+        "detail": "",
+        "runner_line": "  ok   panic-clear"
+      },
+      {
+        "status": "ok",
+        "name": "panic-route",
+        "detail": "",
+        "runner_line": "  ok   panic-route"
+      },
+      {
+        "status": "ok",
+        "name": "panic-mutants",
+        "detail": "",
+        "runner_line": "  ok   panic-mutants"
+      }
+    ]
+  },
+  {
+    "name": "target-gaps",
+    "ok": 1,
+    "FAIL": 0,
+    "NOT_RUN": 2,
+    "exit_code": 0,
+    "log": "logs/target-gaps.log",
+    "inventory": [
+      {
+        "status": "ok",
+        "name": "optimization-equivalence",
+        "detail": "",
+        "runner_line": "  ok   optimization-equivalence"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "drum909",
+        "detail": "(../schwung-9W9/src/dsp/er99_engine.c)",
+        "runner_line": "  not-run drum909 (../schwung-9W9/src/dsp/er99_engine.c)"
+      },
+      {
+        "status": "NOT_RUN",
+        "name": "drum808",
+        "detail": "(../schwung-8W8/src/dsp/sc808_engine.cpp)",
+        "runner_line": "  not-run drum808 (../schwung-8W8/src/dsp/sc808_engine.cpp)"
+      }
+    ]
+  },
+  {
+    "name": "target-gaps-donors",
+    "ok": 3,
+    "FAIL": 0,
+    "NOT_RUN": 0,
+    "exit_code": 0,
+    "log": "logs/target-gaps-donors.log",
+    "inventory": [
+      {
+        "status": "ok",
+        "name": "optimization-equivalence",
+        "detail": "",
+        "runner_line": "  ok   optimization-equivalence"
+      },
+      {
+        "status": "ok",
+        "name": "drum909",
+        "detail": "",
+        "runner_line": "  ok   drum909"
+      },
+      {
+        "status": "ok",
+        "name": "drum808",
+        "detail": "",
+        "runner_line": "  ok   drum808"
+      }
+    ],
+    "note": "drum909/drum808 rerun with NINEW9_DIR/EIGHTW8_DIR set to the cached donor heads (logs/donor-heads.log); exit 0 from logs/target-gaps-donors.log"
+  }
+]

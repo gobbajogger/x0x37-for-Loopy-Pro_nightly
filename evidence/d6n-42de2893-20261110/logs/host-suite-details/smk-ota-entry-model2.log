@@ -1,0 +1,16 @@
+handshake answered                                   ok
+identity frame is MKE-P37_900                        ok
+  20 requests
+session commits                                      ok
+headers + loader + confirm, no head reads            ok
+staged body == the package's loader                  ok
+LOADER.BIN head CRC                                  ok
+record at the area end - 256 == RAM record           ok
+parm identity ota-MKE-P37_016, zero to +0x27         ok
+record CRC / type / magic / ota_addr                 ok
+nothing written outside the staging area             ok
+boot cleanup erases the area                         ok
+second boot: nothing to do                           ok
+host gone -> no commit, area clean                   ok
+no 'success' -> -13, no commit, area clean           ok
+ota test passed

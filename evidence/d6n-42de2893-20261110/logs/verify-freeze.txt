@@ -1,0 +1,21 @@
+Remote read-only git ls-remote checks before worktree creation and evidence writes. All match supplied pins (Build re-check 2026-11-10 18:41 Asia/Vladivostok).
+2026-11-10 18:41:31 +10
+# firmware
+42de289338e3fb718423b4eafbefd567115b81bf	refs/heads/lane/build-025-candidate-20261110
+1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83	refs/heads/main
+337a02fa2a7bbb03a6996bdc10e91a2d7f737b42	refs/heads/wip/one-build
+# nightly
+3d23c85f8ec346853d1cefeda7520a1c5c3f09f7	refs/heads/evidence/d6n-d3510b82-20261109
+5988d83ee8ef366f2f60ce9538b7eee6ef521d9a	refs/heads/evidence/d6n-d3510b82-catalog-dryrun-20261109
+2a2e81466cce0af635440f9cf62f0e909fb6d2a3	refs/heads/gh-pages
+a8205aff483dce09414093defdc19cf79d57b719	refs/heads/main
+
+Trees (from local fetch of the same commits): source cd0e967f410dd5e11c97f2c6c0743baf3c03679f; nightly main tree 75ac6de0061d62c5f93e66c02bf13938f8dc0c56; gh-pages tree 26cc3e61a7a99c4c05501c2da273c68047520619.
+evidence/d6n-42de2893-20261110 and evidence/d6n-42de2893-catalog-dryrun-20261110: absent (no ls-remote match).
+
+/workspace/dnbox-workflow-final/verify-freeze.sh gobbajogger/X0X37-for-Loopy-Pro lane/build-025-candidate-20261110 42de289338e3fb718423b4eafbefd567115b81bf cd0e967f410dd5e11c97f2c6c0743baf3c03679f:
+PASS head lane/build-025-candidate-20261110 = 42de2893
+PASS tree cd0e967f
+PASS author 255244738+gobbajogger@users.noreply.github.com
+PASS no trailers
+exit 0

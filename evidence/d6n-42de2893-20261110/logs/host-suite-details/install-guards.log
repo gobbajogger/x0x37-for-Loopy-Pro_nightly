@@ -1,0 +1,21 @@
+REFUSED: stdin is not a terminal and STY and TMUX are empty. Run the install in the foreground or in a named screen session (screen -S x0x-install), never with nohup or & (rule 7)
+REFUSED: stdin is not a terminal and STY and TMUX are empty. Run the install in the foreground or in a named screen session (screen -S x0x-install), never with nohup or & (rule 7)
+REFUSED: give --commit HASH (the gate guard needs the commit of the package)
+REFUSED: stdin is not a terminal and STY and TMUX are empty. Run the install in the foreground or in a named screen session (screen -S x0x-install), never with nohup or & (rule 7)
+bootloader guard: no reference head (--head-ref, X0X_HEAD_REF or ~/.config/x0x/flash-head.bin); not checked
+error: stub backend: no device
+REFUSED: another install or device run holds the hardware lock /workspace/d6n-42de2893-20261110/src/build/host/iso/install-guards/tmp/instguard.Il8kEG/hw.lock. Run one hardware job at a time (rule 3)
+REFUSED: another install or device run holds the hardware lock /workspace/d6n-42de2893-20261110/src/build/host/iso/install-guards/tmp/instguard.Il8kEG/hw.lock. Run one hardware job at a time (rule 3)
+error: stub backend: no device
+ok   foreground guard, nohup or background, no screen: rc 10, want REFUSED
+ok   foreground guard, agent shell, no screen: rc 10, want REFUSED
+ok   foreground guard, named screen session: rc 0, want OK
+ok   foreground guard, tmux session: rc 0, want OK
+ok   foreground guard, foreground terminal: rc 0, want OK
+ok   main: no --commit -> gate guard exit 9 (first step)
+ok   main: no TTY, no screen -> exit 10
+ok   main: screen session, free lock -> continues (stub: exit 3)
+ok   main: lock held by another process -> install exit 10
+ok   main: lock held by another process -> --info exit 10
+ok   main: lock free again -> --info continues (stub: exit 3)
+install guards: 11 of 11 ok

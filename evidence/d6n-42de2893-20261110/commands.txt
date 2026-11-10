@@ -1,0 +1,41 @@
+# Local evidence measurement; no source edits, commit, push, PR or publish.
+# Fresh clean detached local worktree; cached machine-only SDK V1.2.14 (commit 5fa84a9b, tag AC79NN_SDK_V1.2.14_2026-10-13) and toolchain; in-tree SDK pins, NO local override.
+git -C /workspace/plan-all/wt-617c0ff1 fetch --no-write-fetch-head origin lane/build-025-candidate-20261110
+git -C /workspace/plan-all/wt-617c0ff1 worktree add --detach /workspace/d6n-42de2893-20261110/src 42de289338e3fb718423b4eafbefd567115b81bf
+cd /workspace/d6n-42de2893-20261110/src
+export JIELI_TOOLCHAIN=/workspace/build-inputs/jieli/toolchain
+export AC79_SDK=/workspace/build-inputs/fw-AC79_AIoT_SDK-V1.2.14
+export JIELI_DOCKER=0
+export X0X_DEV_PADCAL=0
+export BOARD=smk37
+export CC=cc
+export CXX=c++
+# Codex is usage-limited until 2026-11-13 05:06 Asia/Vladivostok (recorded earlier); not re-attempted. Established local-Shell fallback below.
+test "$(git rev-parse HEAD)" = 42de289338e3fb718423b4eafbefd567115b81bf && test "$(git rev-parse 'HEAD^{tree}')" = cd0e967f410dd5e11c97f2c6c0743baf3c03679f && test "$(git rev-parse HEAD^1)" = 7af8dca112331f6d796a24d2580ad9d4bece629d && test "$(git rev-parse HEAD^2)" = 71c0a932bbbe7b22dd5b22ddcf9cfe223e4a1403 && test -z "$(git status --porcelain --ignored)" && git rev-parse HEAD 'HEAD^{tree}' HEAD^1 HEAD^2 && git status --porcelain --ignored && echo porcelain-empty
+echo X0X_DEV_PADCAL=$X0X_DEV_PADCAL JIELI_DOCKER=$JIELI_DOCKER BOARD=$BOARD; command -v clang c++; clang --version; c++ --version; git -C "$AC79_SDK" rev-parse HEAD; git -C "$AC79_SDK" tag --points-at HEAD; git -C "$AC79_SDK" status --porcelain | wc -l; sha256sum "$JIELI_TOOLCHAIN/pi32v2/bin/clang" "$AC79_SDK/cpu/wl82/tools/uboot.boot" "$AC79_SDK/cpu/wl82/tools/cfg_tool.bin" "$AC79_SDK/cpu/wl82/tools/cfg/eq_cfg_hw.bin" /workspace/build-ce278129-out/ctl.img; wc -c /workspace/build-ce278129-out/ctl.img; "$JIELI_TOOLCHAIN/pi32v2/bin/clang" --version; grep -n "SDK_TAG\|SDK_SHA256\|AC79NN_SDK" tools/build.py | head -20
+python3 tools/check_locked_settings.py
+rm -rf build && MODEL=elite ./build.sh --board smk37 && ls -la build/*.fwsc && mkdir -p /workspace/d6n-42de2893-20261110/bin/elite && cp build/x0x-smk37-elite.fwsc /workspace/d6n-42de2893-20261110/bin/elite/
+rm -rf build && MODEL=pro ./build.sh --board smk37 && ls -la build/*.fwsc && mkdir -p /workspace/d6n-42de2893-20261110/bin/pro && cp build/x0x-smk37.fwsc /workspace/d6n-42de2893-20261110/bin/pro/
+python3 tools/add_ctl.py /workspace/build-ce278129-out/ctl.img --check; sha256sum /workspace/build-ce278129-out/ctl.img; wc -c /workspace/build-ce278129-out/ctl.img
+python3 tools/add_ctl.py /workspace/d6n-42de2893-20261110/bin/elite/x0x-smk37-elite.fwsc /workspace/build-ce278129-out/ctl.img -o /workspace/d6n-42de2893-20261110/bin/elite/x0x-smk37-elite-ble.fwsc
+python3 tools/add_ctl.py /workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37.fwsc /workspace/build-ce278129-out/ctl.img -o /workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37-ble.fwsc
+sha256sum /workspace/build-ce278129-out/ctl.img /workspace/d6n-42de2893-20261110/bin/elite/*.fwsc /workspace/d6n-42de2893-20261110/bin/pro/*.fwsc; wc -c /workspace/build-ce278129-out/ctl.img /workspace/d6n-42de2893-20261110/bin/elite/*.fwsc /workspace/d6n-42de2893-20261110/bin/pro/*.fwsc
+python3 tools/package_nightly.py /workspace/d6n-42de2893-20261110/bin/elite/x0x-smk37-elite-ble.fwsc --check --model elite --controller-sha256 a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984 --controller-size 61552
+python3 tools/package_nightly.py /workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37-ble.fwsc --check --model pro --controller-sha256 a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984 --controller-size 61552
+sh tests/run_tests.sh play-question-ui play-question smc-lock-beat
+X0X_TEST_JOBS=2 sh tests/run_tests.sh panic-clear panic-route panic-notes panic-chord panic-mutants smc-drum-mutes project-protocol project-save-preflight project-stage project-runtime
+X0X_TEST_JOBS=2 sh tests/run_tests.sh optimization-equivalence drum909 drum808 smk-build-package-mke
+X0X_TEST_JOBS=2 sh tests/run_tests.sh
+python3 /workspace/opt-equiv-distinguish/classify-optimization-equivalence.py /workspace/d6n-42de2893-20261110/evidence/logs/host-suite-details/optimization-equivalence.log
+git rev-parse HEAD 'HEAD^{tree}' HEAD^1 HEAD^2; git status --porcelain; test -z "$(git status --porcelain)" && echo porcelain-empty; git diff --exit-code; git diff --cached --exit-code; git status --porcelain --ignored
+# The worktree is not a sibling of the cached donor heads, so drum909/drum808 printed not-run above. Rerun those selectors with explicit donor paths:
+export NINEW9_DIR=/workspace/plan-all/schwung-9W9 EIGHTW8_DIR=/workspace/plan-all/schwung-8W8
+for d in $NINEW9_DIR $EIGHTW8_DIR; do echo $d; git -C $d rev-parse HEAD; git -C $d status --porcelain | wc -l; done; sha256sum $NINEW9_DIR/src/dsp/er99_engine.c $EIGHTW8_DIR/src/dsp/sc808_engine.cpp
+X0X_TEST_JOBS=2 sh tests/run_tests.sh optimization-equivalence drum909 drum808
+git rev-parse HEAD 'HEAD^{tree}' HEAD^1 HEAD^2; git status --porcelain; test -z "$(git status --porcelain)" && echo porcelain-empty; git diff --exit-code; git diff --cached --exit-code; git status --porcelain --ignored
+
+# Local evidence assembly (README, catalog draft and measured result summaries)
+python3 /workspace/d6n-42de2893-20261110/assemble-d6n-42de2893.py
+# Scan all evidence paths for forbidden firmware/toolchain names and binary data.
+# Manifest excludes itself and its check output to avoid self-reference.
+(cd evidence/d6n-42de2893-20261110 && sha256sum -c SHA256SUMS > SHA256SUMS.check.log)

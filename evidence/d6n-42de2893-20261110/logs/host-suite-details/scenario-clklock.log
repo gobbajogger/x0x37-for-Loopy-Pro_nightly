@@ -1,0 +1,35 @@
+  ok clksrc == 0
+  ok playing == 1
+  ok playing == 1
+  ok clkext == 1
+  ok exttempo == 119 (>116)
+  ok exttempo == 119 (<122)
+  ok playing == 1
+  ok playing == 1
+  ok clkext == 1
+  ok playing == 1
+  ok clkext == 1
+  ok playing == 1
+  ok clkext == 1
+  ok exttempo == 119 (>116)
+  ok exttempo == 119 (<122)
+  ok playing == 1
+  ok playing == 0
+  ok playing == 0
+  ok playing == 1
+  ok playing == 1
+  ok playing == 0
+  ok tempo == 119 (>116)
+  ok tempo == 119 (<122)
+  ok playing == 1
+  ok playing == 0
+  ok playing == 1
+  ok playing == 0
+  ok clksrc == 1
+  ok playing == 0
+  ok clkext == 0
+  ok clksrc == 0
+  ok playing == 1
+  ok playing == 0
+  ok setsize == 40
+host: 9510 ms simulated, 119 blits, render 0.3% of real time (host CPU)

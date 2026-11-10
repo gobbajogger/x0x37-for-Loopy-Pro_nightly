@@ -1,0 +1,11 @@
+$ git rev-parse HEAD 'HEAD^{tree}' HEAD^1 HEAD^2; git status --porcelain; test -z "$(git status --porcelain)" && echo porcelain-empty; git diff --exit-code; git diff --cached --exit-code; git status --porcelain --ignored
+42de289338e3fb718423b4eafbefd567115b81bf
+cd0e967f410dd5e11c97f2c6c0743baf3c03679f
+7af8dca112331f6d796a24d2580ad9d4bece629d
+71c0a932bbbe7b22dd5b22ddcf9cfe223e4a1403
+porcelain-empty
+!! build/
+!! tests/__pycache__/
+!! tests/host/__pycache__/
+!! tools/__pycache__/
+!! web/__pycache__/

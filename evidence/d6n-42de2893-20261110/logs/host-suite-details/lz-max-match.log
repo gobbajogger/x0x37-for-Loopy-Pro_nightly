@@ -1,0 +1,9 @@
+  ok empty                             0 ->      0
+  ok one byte                          1 ->      2
+  ok zeros                         30000 ->    695
+  ok random (incompressible)       30000 ->  30235
+  ok random, near the limit        60000 ->  60474
+  ok small alphabet 1..399           399 ->    336
+  ok structured                    30000 ->   1265
+lz: all ok
+lz maximum-match differential: 20300 cases ok

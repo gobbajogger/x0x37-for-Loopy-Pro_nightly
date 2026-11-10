@@ -1,0 +1,5 @@
+  ok tempo == 128
+  ok sound6.0.1 == 4
+  ok sound6.0.1 == 4
+  ok peak -7.9 dBFS
+host: 41448 ms simulated, 2260 blits, render 1.2% of real time (host CPU)

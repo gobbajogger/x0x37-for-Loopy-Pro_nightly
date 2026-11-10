@@ -1,0 +1,2 @@
+$ python3 tools/add_ctl.py /workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37.fwsc /workspace/build-ce278129-out/ctl.img -o /workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37-ble.fwsc
+/workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37-ble.fwsc: with /workspace/build-ce278129-out/ctl.img

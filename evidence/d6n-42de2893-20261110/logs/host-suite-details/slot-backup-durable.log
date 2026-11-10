@@ -1,0 +1,11 @@
+test_directory_open_failure_refuses_success (__main__.BackupDirectorySync.test_directory_open_failure_refuses_success) ... ok
+test_existing_name_and_corrupt_archive_fail_closed (__main__.BackupDirectorySync.test_existing_name_and_corrupt_archive_fail_closed) ... ok
+test_fresh_backup_fsyncs_published_name (__main__.BackupDirectorySync.test_fresh_backup_fsyncs_published_name) ... ok
+test_post_publish_dirsync_failure_refuses_success (__main__.BackupDirectorySync.test_post_publish_dirsync_failure_refuses_success) ... ok
+test_pre_publish_fsync_failure_preserves_original (__main__.BackupDirectorySync.test_pre_publish_fsync_failure_preserves_original) ... ok
+test_replace_path_also_fsyncs_directory (__main__.BackupDirectorySync.test_replace_path_also_fsyncs_directory) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.010s
+
+OK

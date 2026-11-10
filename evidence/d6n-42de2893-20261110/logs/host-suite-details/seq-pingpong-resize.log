@@ -1,0 +1,2 @@
+compile: cc -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function /workspace/d6n-42de2893-20261110/src/build/host/iso/seq-pingpong-resize/tmp/seq-pingpong-_5jazd1t/test.c -o /workspace/d6n-42de2893-20261110/src/build/host/iso/seq-pingpong-resize/tmp/seq-pingpong-_5jazd1t/test
+ping-pong resize source-window: 178925 pass, 0 fail

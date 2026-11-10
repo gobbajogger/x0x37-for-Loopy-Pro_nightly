@@ -1,0 +1,19 @@
+native-elite:
+loader: image 8644 B at 0x1c0a800, bss end 0x1c0f870
+loader: ota.bin 7551 B
+  ok    .ram_text: 844 insns, no calls
+  ok    app code area 552672 B, 69000 B free (Bluetooth block at app.bin 0x86ee0)
+  ok    no soft-double routines (single-precision FPU only)
+  ok    image 483672 B; RAM .data+.bss 95540 B of 98304; pool 335464 B of 344064
+  ok    register access: hal/ only (src/, loader/ clean)
+native-pro:
+loader: image 8644 B at 0x1c0a800, bss end 0x1c0f870
+loader: ota.bin 7551 B
+  ok    .ram_text: 844 insns, no calls
+  ok    app code area 552672 B, 69000 B free (Bluetooth block at app.bin 0x86ee0)
+  ok    no soft-double routines (single-precision FPU only)
+  ok    image 483672 B; RAM .data+.bss 95540 B of 98304; pool 335464 B of 344064
+  ok    register access: hal/ only (src/, loader/ clean)
+pool headroom: 344064 - 335464 = 8600 B (gate >= 8192 B: PASS) on both models
+RAM free: 98304 - 95540 = 2764 B on both models
+controller (input, not rebuilt): /workspace/build-ce278129-out/ctl.img 61552 B sha256 a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984; add_ctl --check ok (logs/ctl-check.log); header crc32 564a8f55

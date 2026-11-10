@@ -1,0 +1,2 @@
+PASS: central receive and unchanged peripheral diagnostic formats
+PASS: old and extended DIAG decoding, handles and bounded rejected header

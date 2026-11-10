@@ -1,0 +1,12 @@
+mock CTL_READ: offset 0x10000 (outside the block): no reply      ok
+mock CTL_READ: the count stops at the block end                  ok
+read-back: full 65536 B block in 293 reads, unit CRC32 = expected CRC32 9da9720b ok
+read-back: every request stays inside the Bluetooth block        ok
+one changed bit: error, unit CRC32 e8e23747 printed, expected 9da9720b ok
+changed erased padding byte is detected                          ok
+no CTL_READ on the unit: error, no CRC claimed                   ok
+install with a ctl.img: installed, read back, CRC32 ok, exit 0   ok
+install, the unit block differs: exit 8, error                   ok
+install, the unit has no CTL_READ: exit 8                        ok
+install without a ctl.img: no read-back                          ok
+install ctl tests passed

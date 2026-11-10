@@ -1,0 +1,17 @@
+PASS APC40 pad table (128 entries, owner-calibrated)
+PASS Universal Device Inquiry response (Akai APC40 mkII identity)
+PASS USB-MIDI SysEx framing (35-byte identity response)
+PASS origin-normalized sparse maps and single-view pad rendering
+PASS < > local only (no Loopy moves), OCT-/OCT+ move clamped local views; KNOB BANK tap and FADER BANK are no-ops in clip mode
+PASS clip mode entry refreshes pad colors; page snapshots clear old-page cells; layout grows; pending clips blink
+PASS host-owned clip LED state capture; last color drawn from the owner-calibrated table
+PASS Loopy Play/Record feedback LEDs, clock-synced PLAY blink, momentary transport messages
+PASS clip input isolation and APC40 initialization handshake
+PASS clip grid on the LCD: main loop only, rate limited, current pad view framed
+PASS LCD clip colours from APC40_LCD565; empty cells, pads, entry, menu and disconnect unchanged
+PASS Song Position resets the queued blink phase
+PASS LCD clip map fits the used clip area
+PASS Loopy undo/redo: PATCH + SEQ REC / SEQ PLAY in clip mode only
+PASS PLAY note 0x5B outside clip mode: USB and Bluetooth, after the clip mode handlers
+PASS Bluetooth link end or notify off clears the clip feedback
+PASS Bluetooth notes while notify is off: only the pad colour write stops (rule 8)

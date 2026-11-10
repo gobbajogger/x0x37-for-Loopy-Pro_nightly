@@ -1,0 +1,6 @@
+ok   wrapper: the child gets the sender (pid 1469436, cwd sender1), exit 143, sender file removed
+ok   gate.log names the sender (pid 1470294, cwd sender2)
+ok   output line names the sender, exit 143
+ok   gate.log: SCRIPT CHANGED for gate_flashmap.py
+ok   no wrapper: sender unknown, no SCRIPT CHANGED
+gate trap: 5 of 5 ok

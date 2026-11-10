@@ -1,0 +1,24 @@
+PASS W1 power on, links up, no message: waiting
+PASS W2 handshake only (no link given): waiting
+PASS W3 USB clip feedback: grid
+PASS W4 USB link ends: waiting
+PASS W5 USB PLAY feedback: grid
+PASS W6 USB host lost: waiting
+PASS W7 Bluetooth clip note with notify off: waiting
+PASS W8 Bluetooth clip feedback: grid
+PASS W9 Bluetooth link ends: waiting
+PASS W10 USB and Bluetooth hosts, Bluetooth ends: grid (USB stays)
+PASS W11 USB generic mode: waiting
+PASS W12 a clip keys page shows while it waits: no waiting screen
+PASS W13 USB APC host cannot consume Bluetooth instrument notes and CCs
+PASS W14 each APC host owns only its own link
+PASS W15 USB host loss preserves Bluetooth host ownership
+PASS W16 Bluetooth link loss releases its note ownership
+smk_clip_wait_test: 0 fail(s)
+PASS draw_main: the waiting branch comes before the clip grid
+PASS waiting screen: WAITING FOR / LOOPY PRO
+PASS waiting screen: no grid (returns before smk_clip_lcd_draw)
+PASS the grid draws at once when a host comes (smk_clip_lcd_force)
+PASS a menu or the grid resets the waiting screen flag
+PASS only in clip mode with no menu and no help
+smk_clip_wait_test.py: 0 fail(s)

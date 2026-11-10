@@ -1,0 +1,22 @@
+ok   the gate removes X0X_DEV_* of the caller
+ok   the gate removes X0X_CDC of the caller
+ok   the gate removes X0X_DEBUG of the caller
+ok   the gate removes FELUCCA_DATA_FAMILY of the caller
+ok   the gate removes MODEL of the caller
+ok   the gate removes BOARD of the caller
+ok   dev build with X0X_DEV_PADCAL=1
+ok   rel build with X0X_DEV_PADCAL=0 in its own worktree
+ok   dev tests with X0X_DEV_PADCAL=1
+ok   rel tests with X0X_DEV_PADCAL=0
+ok   rel test failures make a FAIL
+ok   pool headroom checked for the rel builds
+ok   rel lines in the CRC manifest
+ok   Config CRCs line in the result file
+ok   Configs column in the index row
+ok   guard: rel lines
+ok   guard: one-config result is dev only
+ok   index row columns 5-7: PASS;x-1.md;2026-10-17 00:27 +10
+ok   both configs build only Elite and Pro
+ok   manifest excludes FM-1 and requires SMK artifacts
+ok   expected tests ignore comments and retain missing real tests
+gate configs: 19 of 19 ok

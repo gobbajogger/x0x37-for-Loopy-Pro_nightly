@@ -1,0 +1,4 @@
+$ python3 tools/add_ctl.py /workspace/build-ce278129-out/ctl.img --check; sha256sum /workspace/build-ce278129-out/ctl.img; wc -c /workspace/build-ce278129-out/ctl.img
+/workspace/build-ce278129-out/ctl.img: ok
+a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984  /workspace/build-ce278129-out/ctl.img
+61552 /workspace/build-ce278129-out/ctl.img

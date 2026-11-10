@@ -1,0 +1,7 @@
+sound-reset: ok
+sound-reset: ok
+sound-reset mutant: pan failed as required
+sound-reset mutant: last failed as required
+sound-reset mutant: tag failed as required
+sound-reset mutant: restore failed as required
+sound-reset: ok

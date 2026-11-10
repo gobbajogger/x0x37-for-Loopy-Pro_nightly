@@ -1,0 +1,18 @@
+  ok vmute == 0
+  ok vmute == 2
+  ok sel == 0
+  ok view == 8
+  ok vmute == 2050
+  ok vmute == 2050
+  ok mute == 0
+  ok vmute == 2048
+  ok mute == 2047
+  ok view == 4
+  ok mute == 0
+  ok vmute == 2056
+  ok view == 4
+  leds: buttons LFO | white................ black#oo.ooooooo
+  ok hit0.0.5 == 0
+  ok vmute == 2056
+  ok hit0.0.6 == 0
+host: 2594 ms simulated, 54 blits, render 0.2% of real time (host CPU)

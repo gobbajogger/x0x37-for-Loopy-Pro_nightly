@@ -1,0 +1,1 @@
+PASS 32768 exact evaluator samples, max error 0; positive10% pulse, negativeDC low, triangle, Fourier shape

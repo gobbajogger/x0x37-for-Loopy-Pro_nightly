@@ -1,0 +1,8 @@
+  ok part == 2
+  ok gate0.4 == 0
+  ok gate0.0 == 0
+  ok gate0.4 == 0
+  ok gate0.0 == 0
+  ok gate0.0 == 1
+  ok gate0.8 == 1
+host: 1884 ms simulated, 52 blits, render 0.5% of real time (host CPU)

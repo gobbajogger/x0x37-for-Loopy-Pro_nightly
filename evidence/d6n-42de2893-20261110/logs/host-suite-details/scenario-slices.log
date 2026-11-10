@@ -1,0 +1,15 @@
+  ok part == 4
+  ok brk0 == 1
+  ok brk0 == 1
+  ok brkslice0 == 5
+  ok brkslice4 == 3
+  ok brk8 == 1
+  ok brkslice8 == 2
+  ok brknow == 5
+  ok brknow == 3
+  ok brkslice4 == 0
+  ok brk4 == 1
+  ok brkslice6 == 0
+  ok brkslice0 == 5
+  ok brkslice8 == 2
+host: 2726 ms simulated, 43 blits, render 0.3% of real time (host CPU)

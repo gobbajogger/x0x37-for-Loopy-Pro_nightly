@@ -1,0 +1,12 @@
+  ok part == 0
+  ok hit0.0.0 == 1
+  ok lanes == 1
+  ok laneval7.0.0.0 == 50
+  ok laneval7.0.0.1 == 5
+  ok laneval7.0.0.0 == 255
+  ok lanes == 1
+  ok lanes == 0
+  ok laneval7.0.0.0 == 50
+  ok laneval7.32.0.4 == 80
+  ok gate0.4 == 1
+host: 8614 ms simulated, 105 blits, render 0.2% of real time (host CPU)

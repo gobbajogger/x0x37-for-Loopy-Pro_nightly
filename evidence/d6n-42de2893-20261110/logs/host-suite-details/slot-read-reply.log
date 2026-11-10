@@ -1,0 +1,20 @@
+test_canonical_highbit_groups_and_tail (__main__.ReadReply.test_canonical_highbit_groups_and_tail) ... ok
+test_empty_read_never_sends_device_command (__main__.ReadReply.test_empty_read_never_sends_device_command) ... ok
+test_empty_reply_refused (__main__.ReadReply.test_empty_reply_refused) ... ok
+test_exact_even_readback (__main__.ReadReply.test_exact_even_readback) ... ok
+test_non_7bit_wire_byte_rejected (__main__.ReadReply.test_non_7bit_wire_byte_rejected) ... ok
+test_odd_pair_roundup (__main__.ReadReply.test_odd_pair_roundup) ... ok
+test_orphan_final_pack7_mask_rejected (__main__.ReadReply.test_orphan_final_pack7_mask_rejected) ... ok
+test_oversized_payload_refused_before_return (__main__.ReadReply.test_oversized_payload_refused_before_return) ... ok
+test_oversized_single_byte_request_refused (__main__.ReadReply.test_oversized_single_byte_request_refused) ... ok
+test_partial_valid_replies_advance_address (__main__.ReadReply.test_partial_valid_replies_advance_address) ... ok
+test_read_over_two_224_byte_frames (__main__.ReadReply.test_read_over_two_224_byte_frames) ... ok
+test_truncated_frame_refused (__main__.ReadReply.test_truncated_frame_refused) ... ok
+test_unused_pack7_mask_bits_rejected (__main__.ReadReply.test_unused_pack7_mask_bits_rejected) ... ok
+test_wrong_address_refused (__main__.ReadReply.test_wrong_address_refused) ... ok
+test_wrong_slot_refused (__main__.ReadReply.test_wrong_slot_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

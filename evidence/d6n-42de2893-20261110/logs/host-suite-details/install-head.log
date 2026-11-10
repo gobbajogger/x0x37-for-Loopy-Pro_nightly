@@ -1,0 +1,15 @@
+ok   the test package is a valid package
+ok   head guard, same head: rc 0, want 0 (OK): bootloader guard: head OK, sha256 ab571d12466f75ae = /workspace/d6n-42de2893-20261110/src/build/host/iso/insta
+ok   head guard, one byte at 0x0000 (flash header): rc 11, want 11 (MISMATCH): bootloader guard: REFUSED: the package bytes 0..0x4000 are not the reference head: package sha256 ab571d12466f
+ok   head guard, one byte at 0x1234 (SPL): rc 11, want 11 (MISMATCH): bootloader guard: REFUSED: the package bytes 0..0x4000 are not the reference head: package sha256 ab571d12466f
+ok   head guard, one byte at 0x3FFF (last head byte): rc 11, want 11 (MISMATCH): bootloader guard: REFUSED: the package bytes 0..0x4000 are not the reference head: package sha256 ab571d12466f
+ok   head guard, a byte at 0x4000 (app area, not the head): rc 0, want 0 (OK): bootloader guard: head OK, sha256 ab571d12466f75ae = /workspace/d6n-42de2893-20261110/src/build/host/iso/insta
+ok   head guard, short reference: rc 11, want 11 (ERROR): bootloader guard: REFUSED: the reference /workspace/d6n-42de2893-20261110/src/build/host/iso/install-head/tmp/
+ok   no reference: continue with a note (rc 0)
+ok   X0X_HEAD_REF with a changed byte: rc 11, want 11
+ok   --head-check, changed byte: rc 11, ing was written.
+HEAD MISMATCH
+ok   --head-check, same head: rc 0
+ok   main, changed head: exit 11, device opened: False
+ok   main, same head: the install goes on to the device (stub: exit 3)
+install head: 13 of 13 ok

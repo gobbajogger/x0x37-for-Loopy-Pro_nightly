@@ -1,0 +1,5 @@
+PASS synthetic payloads / simulated HCI: 240 payloads, 3525 MIDI, 3 size rejections
+PASS synthetic payloads / simulated fragmented HCI tails 1-8: 240 payloads, 3525 MIDI, 3 size rejections
+PASS resegmented MTU-23 / simulated fragmented HCI: 568 payloads, 3645 MIDI, 0 size rejections
+Synthetic fixture SHA-256: 2fa86a0a634a26f743b39db04db8f71595a66d32892d0512e8c5df25aef0fe2b
+Physical device behavior: NOT TESTED

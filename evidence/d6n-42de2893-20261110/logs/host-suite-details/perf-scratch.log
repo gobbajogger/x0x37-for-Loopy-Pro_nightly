@@ -1,0 +1,60 @@
+  ok store_writes == 0
+  ok store_writes == 0
+  ok listsel == 23
+  ok view == 7
+  ok store_writes == 6 (>0)
+  ok perftest == 0
+  ok patptr == 0
+  ok perftest == 3
+  ok perfres0 == 10 (>0)
+  ok perfres1 == 18 (>0)
+  ok perfres2 == 27 (>0)
+  ok patptr == 1
+  ok playing == 0
+  ok hit0.0.0 == 1
+  ok peak -7.9 dBFS
+  ok peak -7.9 dBFS
+host: 19490 ms simulated, 212 blits, render 1.3% of real time (host CPU)
+host: build/host/x0x_host
+  ok tempo == 120
+  ok mute == 4194304
+  ok listsel == 23
+  ok view == 7
+  ok perftest == 0
+  ok patptr == 0
+  ok perftest == 3
+  ok perfres0 == 10 (>0)
+  ok perfres1 == 18 (>0)
+  ok perfres2 == 25 (>0)
+  ok patptr == 1
+  ok playing == 0
+  ok tempo == 120
+  ok mute == 4194304
+  ok hit0.0.8 == 1
+  ok sound2.0.0 == 127
+  ok view == 7
+  ok perftest == 0
+  ok patptr == 0
+  ok perftest == -1
+  ok patptr == 1
+  ok playing == 0
+  ok tempo == 120
+  ok mute == 4194304
+host: 28864 ms simulated, 178 blits, render 1.1% of real time (host CPU)
+  ok store_writes == 0
+  ok store_writes == 0
+  ok listsel == 23
+  ok view == 7
+  ok store_writes == 6 (>0)
+  ok perftest == 0
+  ok patptr == 0
+  ok perftest == 3
+  ok perfres0 == 10 (>0)
+  ok perfres1 == 18 (>0)
+  ok perfres2 == 25 (>0)
+  ok patptr == 1
+  ok playing == 0
+  ok hit0.0.0 == 1
+  ok peak -7.9 dBFS
+  ok peak -7.9 dBFS
+host: 19490 ms simulated, 212 blits, render 1.2% of real time (host CPU)

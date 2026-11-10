@@ -1,0 +1,14 @@
+HEAD 42de289338e3fb718423b4eafbefd567115b81bf
+TREE cd0e967f410dd5e11c97f2c6c0743baf3c03679f
+PARENTS 7af8dca112331f6d796a24d2580ad9d4bece629d 71c0a932bbbe7b22dd5b22ddcf9cfe223e4a1403
+AUTHOR gobbajogger <255244738+gobbajogger@users.noreply.github.com>
+COMMITTER gobbajogger <255244738+gobbajogger@users.noreply.github.com>
+SUBJECT Merge lane/build-sdk214-pins-20261110 (SDK V1.2.14 pins) into 0.0.25 candidate
+# git diff --numstat 7af8dca1 HEAD
+58	0	tests/sdk_pin_test.py
+14	6	tools/build.py
+# blobs HEAD vs 71c0a932 (tools/build.py, tests/sdk_pin_test.py)
+77c333edefb90d2951692b7ddad234711afaa208
+0b75ab123cdbe6ddb059faa081864e7614bef328
+77c333edefb90d2951692b7ddad234711afaa208
+0b75ab123cdbe6ddb059faa081864e7614bef328

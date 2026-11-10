@@ -1,0 +1,9 @@
+  ok mute == 29360128
+  ok part == 0
+  ok peak -11.3 dBFS
+  ok playing == 1
+  ok peak -180.0 dBFS
+  ok peak -180.0 dBFS
+  ok sel == 1
+  ok peak -11.3 dBFS
+host: 6220 ms simulated, 113 blits, render 0.2% of real time (host CPU)

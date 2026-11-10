@@ -1,0 +1,17 @@
+PASS export sha256 54ecc6f87ff0a0da (owner export 2026-10-17)
+PASS export: 128 entries, 89 ok, padcal_orient 0
+PASS app/apc40_pad_owner.h == generator output for the export (all 128 entries)
+PASS both tables have 128 entries
+PASS the 89 ok entries == the export
+PASS the 39 other entries == the 89f680e start values (export, APC40_PAD_DEFAULT, generator rule)
+PASS apc40_pad_gamma.h is the same as at 89f680e (sha256 c4dce93ddbe5cb34)
+PASS apc40_lcd565.h is the same as at 89f680e (sha256 269e1b3aa2aeeea2)
+PASS smk_padcal_default is the same as at 89f680e (sha256 40a61ddf5a5c515a)
+PASS smk_pads: a clip pad sends APC40_PAD_OWNER[v][0..2] * brightness / 510 as R, G, B (idle shades / 255)
+PASS main_fm1.c: no APC40_RGB (the old pad table is gone)
+PASS smk_apc_led_brightness returns 0 or 255 only (['0', '255'])
+PASS PAD COLOURS sends c[0] >> 1, c[1] >> 1, c[2] >> 1 (as on 89f680e)
+PASS render: lit clip pad of velocity v == the bytes the owner saw for entry v (114 non-idle v x R, G, B)
+PASS render: idle shades 7-59 send the full export level (2 x what the owner saw at half level)
+PASS render: the off half of a blink is 0, 0, 0
+apc40-pad-owner: 0 fail(s)

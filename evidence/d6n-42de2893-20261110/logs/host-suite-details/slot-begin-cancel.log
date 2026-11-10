@@ -1,0 +1,20 @@
+  ok   setup: last-good sample present
+  ok   BEGIN alone keeps nz and name (cancel / abandon)
+  ok   BEGIN alone leaves flash bytes unchanged
+  ok   END without WRITE -> rc 6 (no sector-0 erase)
+  ok   refused END keeps last-good name
+  ok   refused END leaves flash bytes unchanged
+  ok   first WRITE clears live header
+  ok   BEGIN after mid-WRITE abandon restores last-good
+  ok   restored sector 0 matches pre-import bytes
+  ok   END CRC mismatch -> rc 3
+  ok   failed END restores last-good from shadow
+  ok   WRITE without BEGIN on occupied slot -> rc 4
+  ok   BEGIN+WRITE+END replaces sample
+  ok   setup: multi-sector last-good present
+  ok   WRITE at 0x1000 destroys higher-sector last-good
+  ok   abandon after higher-sector WRITE leaves slot empty (fail-closed)
+  ok   higher-sector erase cleared sec0 shadow
+  ok   higher-first WRITE wipes live sector-0 header
+  ok   higher-first WRITE leaves no restore shadow
+x0x slots begin-cancel: all ok

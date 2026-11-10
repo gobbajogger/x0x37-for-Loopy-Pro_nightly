@@ -1,0 +1,2 @@
+memory-full preflight: no writes; prior project survives reboot
+sound collision: different bytes persisted and read back; identical save skipped

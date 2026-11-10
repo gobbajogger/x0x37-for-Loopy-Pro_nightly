@@ -1,0 +1,47 @@
+  ok tempo == 120
+  ok part == 2
+  ok ppat2 == 2
+  ok ppat0 == 1
+  ok ppat3 == 1
+  ok ppat2 == 1
+  ok view == 6
+  ok songlen == 3
+  ok songbar2.0 == 2
+  ok songbar3.0 == 1
+  ok songbar3.5 == 2
+  ok songbar2.3 == 5
+  ok songon == 1
+  ok songpos == 1
+  ok ppat0 == 1
+  ok songpos == 2
+  ok ppat0 == 2
+  ok ppat3 == 5
+  ok songpos == 3
+  ok mute == 4192256
+  ok songpos == 1
+  ok mute == 0
+  ok songon == 1
+  ok songon == 0
+  ok part == 2
+  ok page == 2
+  ok sound2.0.9 == 48
+  ok lanes == 1
+  ok sound2.0.9 == 68
+  ok laneval2.0.9.2 == 8
+  ok laneval2.0.9.5 == 38
+  ok laneval2.0.9.8 == 68
+  ok laneval2.0.9.1 == 255
+  ok laneval2.0.9.9 == 255
+  ok motion2.0.9 == 19 (<29)
+  ok motion2.0.9 == 19 (>17)
+  ok motion2.0.9 == -1
+  ok sound2.0.9 == 64
+  ok lanes == 0
+  ok sound2.0.9 == 64
+  ok lanes == 1
+  ok store_writes == 6
+  ok lanes == 1
+  ok songlen == 3
+  ok songbar2.3 == 5
+  ok songbar3.5 == 2
+host: 14787 ms simulated, 210 blits, render 0.3% of real time (host CPU)

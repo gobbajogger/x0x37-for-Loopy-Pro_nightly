@@ -1,0 +1,5 @@
+$ sh tests/run_tests.sh play-question-ui play-question smc-lock-beat
+  ok   play-question
+  ok   play-question-ui
+  ok   smc-lock-beat
+all tests passed

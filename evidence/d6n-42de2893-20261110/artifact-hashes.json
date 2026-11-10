@@ -1,0 +1,27 @@
+{
+  "ctl.img": {
+    "path": "/workspace/build-ce278129-out/ctl.img",
+    "sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+    "bytes": 61552
+  },
+  "x0x-smk37-elite-ble.fwsc": {
+    "path": "/workspace/d6n-42de2893-20261110/bin/elite/x0x-smk37-elite-ble.fwsc",
+    "sha256": "8997b5e437892bb0c543702c042ff304f924f860c272a15b88a42182130b36c2",
+    "bytes": 651667
+  },
+  "x0x-smk37-elite.fwsc": {
+    "path": "/workspace/d6n-42de2893-20261110/bin/elite/x0x-smk37-elite.fwsc",
+    "sha256": "3640f426e8b1ea10ef2ab23886529d848929eb24e30d08afaf43981927ff624e",
+    "bytes": 651667
+  },
+  "x0x-smk37-ble.fwsc": {
+    "path": "/workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37-ble.fwsc",
+    "sha256": "0ff74548a1a83ead811b5c5d6780df47788947877c948ffac800f955815cb8fd",
+    "bytes": 651667
+  },
+  "x0x-smk37.fwsc": {
+    "path": "/workspace/d6n-42de2893-20261110/bin/pro/x0x-smk37.fwsc",
+    "sha256": "2973b96a67c9b634351b53989641bc1a14dcc04d10c229b2386a7d2462087fd4",
+    "bytes": 651667
+  }
+}

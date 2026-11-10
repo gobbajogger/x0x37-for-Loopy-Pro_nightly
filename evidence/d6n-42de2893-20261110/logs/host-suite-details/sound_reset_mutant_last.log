@@ -1,0 +1,6 @@
+FAIL last-parameter reset status 1
+FAIL last-parameter stayed NO_SAVED
+FAIL last-parameter was not reset
+FAIL last-parameter stored no undo
+FAIL last-parameter undo failed
+sound-reset: 5 FAILED

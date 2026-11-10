@@ -1,0 +1,29 @@
+  ok view == 8
+  ok part == 0
+  ok view == 1
+  ok hit0.0.0 == 0
+  ok hit0.0.0 == 0
+  ok sel == 1
+  ok playing == 1
+  ok hit0.1.0 == 0
+  ok hit0.1.4 == 0
+  ok view == 8
+  ok playing == 0
+  ok hit0.1.4 == 1
+  ok view == 1
+  ok lanes == 1
+  ok laneval0.1.0.8 == 66 (>0)
+  ok view == 1
+  ok view == 8
+  ok view == 1
+  ok sel == 1
+  ok hit0.1.4 == 1
+  ok part == 2
+  ok gate0.0 == 0
+  ok gate0.0 == 0
+  ok playing == 0
+  ok view == 8
+  ok gate0.0 == 0
+  ok peak -16.4 dBFS
+  ok view == 1
+host: 2949 ms simulated, 96 blits, render 0.5% of real time (host CPU)

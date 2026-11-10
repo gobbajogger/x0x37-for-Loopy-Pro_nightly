@@ -1,0 +1,6 @@
+$ test "$(git rev-parse HEAD)" = 42de289338e3fb718423b4eafbefd567115b81bf && test "$(git rev-parse 'HEAD^{tree}')" = cd0e967f410dd5e11c97f2c6c0743baf3c03679f && test "$(git rev-parse HEAD^1)" = 7af8dca112331f6d796a24d2580ad9d4bece629d && test "$(git rev-parse HEAD^2)" = 71c0a932bbbe7b22dd5b22ddcf9cfe223e4a1403 && test -z "$(git status --porcelain --ignored)" && git rev-parse HEAD 'HEAD^{tree}' HEAD^1 HEAD^2 && git status --porcelain --ignored && echo porcelain-empty
+42de289338e3fb718423b4eafbefd567115b81bf
+cd0e967f410dd5e11c97f2c6c0743baf3c03679f
+7af8dca112331f6d796a24d2580ad9d4bece629d
+71c0a932bbbe7b22dd5b22ddcf9cfe223e4a1403
+porcelain-empty

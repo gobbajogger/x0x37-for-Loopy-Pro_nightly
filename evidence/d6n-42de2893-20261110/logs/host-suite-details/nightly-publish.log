@@ -1,0 +1,7 @@
+site: /workspace/d6n-42de2893-20261110/src/build/host/iso/nightly-publish/tmp/nightly-publish-spa6orde/.nightly-e222fbtw: 1 version(s), models [elite, pro], firmware files 2
+nightly handoff nightly-4ab8fa943c3b (4ab8fa943c3b) -> /workspace/d6n-42de2893-20261110/src/build/host/iso/nightly-publish/tmp/nightly-publish-spa6orde/page
+not a live deploy of gobbajogger/x0x37-for-Loopy-Pro_nightly gh-pages
+site: /workspace/d6n-42de2893-20261110/src/build/host/iso/nightly-publish/tmp/nightly-publish-spa6orde/.nightly-bw23q50k: 2 version(s), models [elite, pro], firmware files 2
+nightly handoff nightly-4ab8fa943c3b (4ab8fa943c3b) -> /workspace/d6n-42de2893-20261110/src/build/host/iso/nightly-publish/tmp/nightly-publish-spa6orde/merged
+not a live deploy of gobbajogger/x0x37-for-Loopy-Pro_nightly gh-pages
+PASS nightly publish

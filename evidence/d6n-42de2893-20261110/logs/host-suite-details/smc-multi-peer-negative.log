@@ -1,0 +1,6 @@
+PASS rejected runtime mutant shared-ingress FAIL tests/host/smc_multi_peer_test.c:40: smc_states[0].up && smc_states[1].up
+PASS rejected runtime mutant shared-state FAIL tests/host/smc_multi_peer_test.c:40: smc_states[0].up && smc_states[1].up
+PASS rejected runtime mutant lost-solo-union FAIL tests/host/smc_multi_peer_test.c:88: solo_parts==(smc_states[victim].solo|smc_states[other].solo)
+PASS rejected runtime mutant reset-rearms-other-fx FAIL tests/host/smc_multi_peer_test.c:33: !require_zero_fx || !down
+PASS rejected runtime mutant wrong-feedback-peer FAIL tests/host/smc_multi_peer_test.c:110: out_n[0] && out_n[1]
+PASS: 5 compiling dual-peer ownership mutants rejected

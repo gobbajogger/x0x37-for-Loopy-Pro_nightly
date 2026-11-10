@@ -1,0 +1,16 @@
+PASS failed atomic publication must be reported
+PASS failed publication never truncates original firmware
+PASS failed publication cleans temporary files
+PASS disk flush failure must abort before publishing
+PASS disk flush failure preserves original firmware
+PASS sync failure cleans temporary files
+PASS failed directory fsync occurs after replacement and keeps new output
+PASS post-replace fsync failure explicitly warns about uncertain durability
+PASS post-replace fsync failure leaves no temporary file
+PASS failed directory open occurs after replacement and keeps new output
+PASS post-replace directory open failure warns about uncertain durability
+PASS post-replace directory open failure leaves no temporary file
+PASS successful in-place controller package replace
+PASS successful replace cleans temporary files
+PASS explicit output path safely receives validated package bytes
+add_ctl_atomic_test: PASS

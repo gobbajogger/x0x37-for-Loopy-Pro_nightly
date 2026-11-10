@@ -1,0 +1,17 @@
+  ok midiheld == 0
+  ok midiheld == 4096
+  ok midiheld == 4096
+  ok midiheld == 0
+  ok midiheld == 4096
+  ok midiheld == 4096
+  ok midiheld == 0
+  ok midiheld == 4096
+  ok midiheld == 0
+  ok midiheld == 256
+  ok midiheld == 256
+  ok midiheld == 0
+  ok midiheld == 4096
+  ok midiheld == 4096
+  ok midiheld == 0
+  ok noteons == 0
+host: 650 ms simulated, 6 blits, render 0.3% of real time (host CPU)

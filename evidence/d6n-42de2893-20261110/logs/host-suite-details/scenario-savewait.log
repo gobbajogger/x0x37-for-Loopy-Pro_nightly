@@ -1,0 +1,4 @@
+  ok store_writes == 0
+  ok store_writes == 0
+  ok store_writes == 6 (>0)
+host: 1930 ms simulated, 23 blits, render 0.3% of real time (host CPU)

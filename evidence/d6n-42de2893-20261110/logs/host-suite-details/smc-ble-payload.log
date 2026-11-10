@@ -1,0 +1,2 @@
+source: /workspace/d6n-42de2893-20261110/src/firmware/src/app/smc_mixer.c compiler: cc -std=c11 -O1 -g -Wall -Wextra -Werror /tmp/smc-ble-payload-gdxv58j6/test.c -o /tmp/smc-ble-payload-gdxv58j6/test
+checks=26 failed=0

@@ -1,0 +1,9 @@
+Final read-only remote pin check (git ls-remote).
+2026-11-10 19:13:05 +10
+# firmware
+42de289338e3fb718423b4eafbefd567115b81bf	refs/heads/lane/build-025-candidate-20261110
+1a6bc3fe0245277b5ae31ab554c73d74b9ab4d83	refs/heads/main
+337a02fa2a7bbb03a6996bdc10e91a2d7f737b42	refs/heads/wip/one-build
+# nightly
+2a2e81466cce0af635440f9cf62f0e909fb6d2a3	refs/heads/gh-pages
+a8205aff483dce09414093defdc19cf79d57b719	refs/heads/main

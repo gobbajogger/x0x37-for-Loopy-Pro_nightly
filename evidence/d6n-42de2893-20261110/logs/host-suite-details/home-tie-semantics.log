@@ -1,0 +1,19 @@
+In file included from tests/host/home_tie_semantics_test.c:4:
+tests/host/seq_test.c:32:1: warning: missing initializer for field ‘transport’ of ‘seq_sink_t’ [-Wmissing-field-initializers]
+   32 | static const seq_sink_t SINK = {s_drum, s_on, s_off, s_brk, s_brkstop, s_midi, 0, 0};
+      | ^~~~~~
+In file included from tests/host/seq_test.c:8:
+tests/host/../../firmware/src/seq/sequencer.h:88:12: note: ‘transport’ declared here
+   88 |     void (*transport)(void *ctx, int running); /* ordered with following input */
+      |            ^~~~~~~~~
+tests/host/seq_test.c:34:1: warning: missing initializer for field ‘transport’ of ‘seq_sink_t’ [-Wmissing-field-initializers]
+   34 | static const seq_sink_t SINK_STEP = {s_drum, s_on, s_off, s_brk, s_brkstop, s_midi, s_step, 0};   /* + the 909's steps */
+      | ^~~~~~
+tests/host/../../firmware/src/seq/sequencer.h:88:12: note: ‘transport’ declared here
+   88 |     void (*transport)(void *ctx, int running); /* ordered with following input */
+      |            ^~~~~~~~~
+  303 gate / slide / tie / transpose: checked
+all-TIE, both303s,2bars: bass-on events=0
+isolated orphan TIE,both303s,2bars: bass-on events=0
+wrap-held NOTE positive, both303s: onset/sustain/release and data preservation checked
+TIE semantics PASS

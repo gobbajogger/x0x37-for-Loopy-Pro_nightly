@@ -1,0 +1,9 @@
+  303 keyboard: octave and part changes release the original key; later key owns gate: checked
+  303 step preview: part, view and clip transitions release sound; taps keep their meaning: checked
+  303 automatic REC slides: overlap, release, wrap, same step, accent, rest and REC restart checked
+  303 live record: LFO + key slides, ENV + key accents, the keys record after the release: checked
+  Start with the clock running, a hit before the first tick: step 1: checked
+  909 live record: black-key strike velocity in T_VEL lane: checked
+  909 T_VEL clear restores seq.drum_vel to accent fallback: checked
+  909 live record: the nearest step, step 1 for a hit just before the loop start: checked
+rec_live: ok

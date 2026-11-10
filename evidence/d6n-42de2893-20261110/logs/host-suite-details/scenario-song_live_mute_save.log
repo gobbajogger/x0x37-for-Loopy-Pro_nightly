@@ -1,0 +1,9 @@
+  ok view == 6
+  ok songlen == 1
+  ok store_writes == 6
+  ok songpos == 1
+  ok songbar1.5 == 1
+  ok store_writes == 7
+  ok songlen == 1
+  ok songbar1.5 == 1
+host: 5720 ms simulated, 33 blits, render 0.1% of real time (host CPU)

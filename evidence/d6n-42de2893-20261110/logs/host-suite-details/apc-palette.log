@@ -1,0 +1,50 @@
+PASS source: 128 rows, each cites the Akai APC40 Mk2 protocol v1.2 PDF
+PASS source: spot values (39, 47, 55 as captured; 81 = 7A00FF)
+PASS source: Live clip colour column for 60-119 only
+PASS pad and LCD: lit exactly where the source is lit (velocity 0 dark)
+PASS pad: each lit entry sends at least 2 (the dim 0x19 entries show)
+PASS hue vel  48 874CFF: LCD 290.8 (blue 264.1), pad 292.8 (blue 236.6)
+PASS hue vel  49 5400FF: LCD 279.1 (blue 264.1), pad 269.8 (blue 236.6)
+PASS hue vel  51 0F0030: LCD 289.8 (blue 264.1), pad 289.4 (blue 236.6) (dim: LCD only)
+PASS hue vel  52 FF4CFF: LCD 328.0 (blue 264.1), pad 339.7 (blue 236.6)
+PASS hue vel  53 FF00FF: LCD 328.4 (blue 264.1), pad 339.7 (blue 236.6)
+PASS hue vel  54 590059: LCD 328.4 (blue 264.1), pad 341.0 (blue 236.6)
+PASS hue vel  55 190019: LCD 328.4 (blue 264.1), pad 321.8 (blue 236.6) (dim: LCD only)
+PASS hue vel  81 7A00FF: LCD 292.4 (blue 264.1), pad 295.7 (blue 236.6)
+PASS hue vel  93 877FE9: LCD 283.9 (blue 264.1), pad 277.9 (blue 236.6)
+PASS hue vel  94 D31DFF: LCD 318.6 (blue 264.1), pad 330.2 (blue 236.6)
+PASS hue vel 103 15152A: LCD 292.3 (blue 264.1), pad 270.2 (blue 236.6) (dim: LCD only)
+PASS hue vel 112 1E1E30: LCD 293.2 (blue 264.1), pad 314.1 (blue 236.6) (dim: LCD only)
+PASS hue vel 115 9A99FF: LCD 283.3 (blue 264.1), pad 273.2 (blue 236.6)
+PASS hue vel 116 8E66FF: LCD 290.2 (blue 264.1), pad 291.4 (blue 236.6)
+PASS hue order blue..pink kept on the LCD and the pads (30 entries) []
+PASS LCD hue within 10 degrees of the hue of the source colour (largest (103, '15152A', 10.0))
+NOTE LCD hue more than 8 degrees from the hue at full brightness: [(11, '271B00', 8.2), (39, '001019', -16.1), (43, '000819', -9.6), (51, '0F0030', 11.5), (103, '15152A', 12.2), (112, '1E1E30', 10.6)]
+NOTE source duplicates (the same colour in the Akai table): [[2, 70], [5, 72], [21, 87], [37, 78], [45, 67], [97, 124]]
+NOTE pad collision (LED bit depth): sent (0, 0, 2) for source 000019 000819 (velocities [43, 47])
+NOTE pad collision (LED bit depth): sent (0, 2, 0) for source 001900 001902 142B00 (velocities [19, 23, 27])
+NOTE pad collision (LED bit depth): sent (0, 2, 1) for source 001912 001F12 (velocities [31, 35])
+NOTE pad collision (LED bit depth): sent (0, 10, 8) for source 004152 00454F (velocities [38, 68])
+NOTE pad collision (LED bit depth): sent (0, 13, 0) for source 005900 00590D 00591D (velocities [22, 26, 30])
+NOTE pad collision (LED bit depth): sent (0, 127, 0) for source 00FF00 00FF19 (velocities [21, 25, 87])
+NOTE pad collision (LED bit depth): sent (2, 0, 0) for source 190000 271B00 (velocities [7, 11])
+NOTE pad collision (LED bit depth): sent (13, 0, 0) for source 590000 59001D 591D00 (velocities [6, 10, 58])
+NOTE pad collision (LED bit depth): sent (127, 0, 0) for source FF0000 FF1500 (velocities [5, 60, 72])
+NOTE LCD clash (RGB565 bit depth): 00C0 for source 001900 001902 (velocities [23, 27])
+PASS LCD: different source colours give different RGB565, except the known 5-bit clash {192: [6400, 6402]}
+NOTE pad sent table digest cfad997639a6
+PASS replay inlog_9a733fe_clips.txt: 8 states
+PASS replay 22:43:06: each pad colour comes from a stored cell, new pads 0:55->2,0,2 1:55->2,0,2 2:55->2,0,2 3:55->2,0,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+PASS replay 22:43:43: each pad colour comes from a stored cell, new pads 0:55->2,0,2 1:55->2,0,2 2:55->2,0,2 3:55->2,0,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+PASS replay 22:43:48: each pad colour comes from a stored cell, new pads 0:47->0,0,2 1:55->2,0,2 2:55->2,0,2 3:55->2,0,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+PASS replay 22:43:54: each pad colour comes from a stored cell, new pads 0:47->0,0,2 1:47->0,0,2 2:55->2,0,2 3:55->2,0,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+PASS replay 22:43:59: each pad colour comes from a stored cell, new pads 0:47->0,0,2 1:47->0,0,2 2:55->2,0,2 3:55->2,0,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+PASS replay 22:44:03: each pad colour comes from a stored cell, new pads 0:47->0,0,2 1:47->0,0,2 2:47->0,0,2 3:55->2,0,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+PASS replay 22:44:13: each pad colour comes from a stored cell, new pads 0:47->0,0,2 1:47->0,0,2 2:47->0,0,2 3:39->0,1,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+PASS replay 22:50:53: each pad colour comes from a stored cell, new pads 0:55->2,0,2 1:55->2,0,2 2:55->2,0,2 3:55->2,0,2 4:55->2,0,2 5:55->2,0,2 6:55->2,0,2 7:55->2,0,2 8:55->2,0,2 9:55->2,0,2 10:55->2,0,2 11:55->2,0,2 12:55->2,0,2 13:55->2,0,2 14:55->2,0,2 15:55->2,0,2 []
+NOTE replay velocity 39: Akai 001019, pad old 001019 send (0, 8, 12), pad new send (0, 1, 2), LCD 0083
+NOTE replay velocity 47: Akai 000019, pad old 000019 send (0, 0, 12), pad new send (0, 0, 2), LCD 0003
+NOTE replay velocity 55: Akai 190019, pad old 190019 send (12, 0, 12), pad new send (2, 0, 2), LCD 1803
+NOTE replay velocity 81: Akai 7A00FF (Live A34BAD), pad old CC00FF send (102, 0, 127), pad new send (52, 0, 127), LCD 781F
+PASS pad override: the entries marked ok replace the rule, the others stay
+apc_palette_test: ok

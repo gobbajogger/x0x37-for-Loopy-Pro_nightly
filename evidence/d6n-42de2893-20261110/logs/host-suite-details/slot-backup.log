@@ -1,0 +1,28 @@
+  ok   SMP_INFO: 2 slots of 80 KiB
+  ok   backup sends only SMP_INFO and SMP_READ (read-only)
+  ok   backup leaves the flash unchanged
+  ok   backup images: slot 1 exact, slot 2 empty
+  ok   archive header: count, sizes, names, rates, samples, CRC
+  ok   archive round trip
+  ok   archive refuses swapped slot identities even with a valid outer CRC
+  ok   archive refuses duplicate slot identities even with a valid outer CRC
+  ok   archive refuses skipped slot identity even with a valid outer CRC
+  ok   archive refuses inconsistent slot count even with a valid outer CRC
+  ok   CRC-valid archive refuses string false silently erases a populated slot
+  ok   CRC-valid archive refuses numeric empty flag erases a populated slot
+  ok   CRC-valid archive refuses empty entry carrying hidden image pointers
+  ok   CRC-valid archive refuses aliased image regions copy slot one's bytes into slot two
+  ok   CRC-valid archive refuses orphan payload bytes after referenced images
+  ok   false-string empty flag cannot erase samples or send flash-write commands
+  ok   a damaged archive is refused
+  ok   restore: slot 1 rewritten, slot 2 erased
+  ok   restore: SMP_INFO after restore lists the archive's zones
+  ok   restore uses SMP_ERASE / SMP_BEGIN, SMP_WRITE, SMP_END
+  ok   restore --slots 2 only
+  ok   3 x 120 KiB layout: backup, 100 KB in one slot, lost frames retried
+  ok   3 x 120 KiB layout: restore, verified
+  ok   3-slot archive on 2 slots: slot 3 skipped
+  ok   an image larger than the slot is skipped
+1 slot image(s) in /workspace/d6n-42de2893-20261110/src/build/host/x0x_slots_extract
+  ok   extract: slot1.hdr / .bin equal the uploaded header and data
+x0x slots: all ok

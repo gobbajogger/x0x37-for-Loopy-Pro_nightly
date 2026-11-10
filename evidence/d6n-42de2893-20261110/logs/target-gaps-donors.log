@@ -1,0 +1,5 @@
+$ X0X_TEST_JOBS=2 sh tests/run_tests.sh optimization-equivalence drum909 drum808
+  ok   optimization-equivalence
+  ok   drum909
+  ok   drum808
+all tests passed

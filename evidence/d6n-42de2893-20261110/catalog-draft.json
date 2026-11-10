@@ -1,0 +1,45 @@
+{
+  "title": "UNREVIEWED · DEVICE NOT TESTED — 0.0.25 candidate (SDK V1.2.14) D6-N preview",
+  "label": "UNREVIEWED · DEVICE NOT TESTED — 42de2893",
+  "description": "UNREVIEWED · DEVICE NOT TESTED — D6-N preview: host 348 ok / 0 FAIL / 2 NOT_RUN (drum909/drum808 ok in target-gaps-donors). Device NOT_RUN (no device testing performed or authorized for this local package). Not a publish.",
+  "known_limitation": "KNOWN LIMITATION 0.0.25: Note On accepted in the same drain as PANIC is silenced (≤1 drain, ~11.6 ms; engine.c:1747, panic_order_test.c:214-216).",
+  "hardware_tested": false,
+  "status": "local-evidence-draft-not-published",
+  "config": "X0X_DEV_PADCAL=0",
+  "sdk": "AC79NN_SDK_V1.2.14_2026-10-13 (commit 5fa84a9b2f723a5e9337ad79dc2ad741fc98fe2d)",
+  "pkg": null,
+  "source_commit": "42de289338e3fb718423b4eafbefd567115b81bf",
+  "source_tree": "cd0e967f410dd5e11c97f2c6c0743baf3c03679f",
+  "source_parents": [
+    "7af8dca112331f6d796a24d2580ad9d4bece629d",
+    "71c0a932bbbe7b22dd5b22ddcf9cfe223e4a1403"
+  ],
+  "models": {
+    "elite": {
+      "product": "SMK-37 Elite_900",
+      "sha256": "8997b5e437892bb0c543702c042ff304f924f860c272a15b88a42182130b36c2",
+      "size": 651667
+    },
+    "pro": {
+      "product": "SMK-37 Pro_900",
+      "sha256": "0ff74548a1a83ead811b5c5d6780df47788947877c948ffac800f955815cb8fd",
+      "size": 651667
+    }
+  },
+  "controller": {
+    "sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+    "size": 61552,
+    "strategy": "bundled"
+  },
+  "host_summary": {
+    "ok": 348,
+    "FAIL": 0,
+    "NOT_RUN": 2,
+    "exit_code": 0
+  },
+  "device": {
+    "status": "NOT_RUN",
+    "reason": "No device testing performed or authorized for local package"
+  },
+  "created_at": "2026-11-10 19:13:05 Asia/Vladivostok"
+}

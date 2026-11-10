@@ -1,0 +1,20 @@
+  ok   bypass at 1:1 with PUMP 0 is sample-exact
+  ok   4:1 above a -24 dB threshold: -6 dB in -> -19.39 dB out (want -19.5)
+  ok   -36 dB in, under the threshold: unchanged
+  ok   INF ratio holds -6 dB in to -23.85 dB (threshold -24)
+  ok   attack: 63% of the reduction after 21.3 ms (attack 23.0 ms)
+  ok   makeup +12 dB: -7.29 dB (want -7.4)
+  ok   parallel mix 50%: -10.38 dB, between wet -19.5 and dry -6
+  ok   PUMP keyed by 909 ignores an 808 kick
+  ok   ... it eases in: 2.8 dB down 3-4 ms after the kick (a 3 ms rise, 8 dB, was a click)
+  ok   a 909 kick ducks 11.8 dB (depth 12) by 45 ms
+  ok   ... and the mix has swelled back after the release (0.00 dB down)
+  ok   limiter: a 60 Hz burst at 1.6, from its peak, comes out at 0.80 (ceiling 0.8, soft above 0.89)
+  ok   limiter: the gain moves at most 0.35 dB a sample
+  ok   limiter OFF->ON (mono): stale look-ahead audio peak 0.000000 (want silence)
+  ok   limiter OFF->ON (mono): fresh signal passes after look-ahead
+  ok   limiter unchanged (mono): live look-ahead remains intact
+  ok   limiter OFF->ON (stereo): stale look-ahead audio peak 0.000000 (want silence)
+  ok   limiter OFF->ON (stereo): fresh signal passes after look-ahead
+  ok   limiter unchanged (stereo): live look-ahead remains intact
+master: ok

@@ -1,0 +1,15 @@
+MUTANT KILLED: notes-off-empty
+MUTANT KILLED: transport-stops
+MUTANT KILLED: queued-note-kept
+MUTANT KILLED: silence-skipped
+MUTANT KILLED: chord-not-consumed
+MUTANT KILLED: user-mode-fires
+MUTANT KILLED: overflow-keeps-slot
+MUTANT KILLED: midi-defer-ignored
+MUTANT KILLED: seq-carry-dropped
+MUTANT KILLED: cq-unsigned-order
+MUTANT KILLED: midi-unsigned-order
+MUTANT KILLED: cq-no-reclaim
+MUTANT KILLED: shift-outside-lock
+MUTANT KILLED: no-shift
+panic mutants: 14 killed

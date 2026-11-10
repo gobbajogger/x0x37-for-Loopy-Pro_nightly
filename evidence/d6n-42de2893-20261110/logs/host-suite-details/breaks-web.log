@@ -1,0 +1,23 @@
+  ok whole, 44.1 kHz, slot 1: empty
+  ok whole, 44.1 kHz, slot 2: 2 loop(s), 116865 B
+  ok one bar, 44.1 kHz, slot 1: 1 loop(s), 44100 B
+  ok one bar, 44.1 kHz, slot 2: 3 loop(s), 110250 B
+  ok whole, 22.05 kHz, slot 1: 2 loop(s), 67253 B
+  ok whole, 22.05 kHz, slot 2: 2 loop(s), 31973 B
+  ok one bar, trimmed, slot 1: 1 loop(s), 44100 B
+  ok one bar, trimmed, slot 2: 3 loop(s), 92742 B
+  ok one bar, oldschool, slot 1: 4 loop(s), 77176 B
+  ok shot, trimmed, slot 1: 1 loop(s), 11157 B
+  ok whole, 3 x 120 KB, slot 1: 1 loop(s), 88200 B
+  ok whole, 3 x 120 KB, slot 2: 3 loop(s), 110250 B
+  ok whole, 2 x 80 KB, slot 1: 1 loop(s), 46305 B
+  ok whole, 2 x 80 KB, slot 2: 2 loop(s), 63945 B
+  ok trim: 62400 -> 24288 samples, sound at 48 (1 ms), faded end
+  ok read back: header and decoded loops
+  ok backup archive: same bytes as x0x_slots.py (25902 B)
+  ok backup archive, SMP_INFO extension (80 / 120 / 44 KB): same bytes as x0x_slots.py
+  ok restore plan: per-slot sizes (50000 B do not fit the 44 KB slot 3)
+  ok backup archive: read back (3 x 120 KB layout, rates, name)
+  ok backup archive: a damaged file is refused
+  ok restore plan: a 3-slot backup on a 2-slot device skips slot 3
+breaks web: same bytes as upload_breaks.py

@@ -1,0 +1,9 @@
+$ for d in $NINEW9_DIR $EIGHTW8_DIR; do echo $d; git -C $d rev-parse HEAD; git -C $d status --porcelain | wc -l; done; sha256sum $NINEW9_DIR/src/dsp/er99_engine.c $EIGHTW8_DIR/src/dsp/sc808_engine.cpp
+/workspace/plan-all/schwung-9W9
+10cbe5c1e1c9e65b0818bb34644ab1a13092082c
+0
+/workspace/plan-all/schwung-8W8
+94aa2716d4c2e5851fc7c5dbb4c17adfd133c997
+0
+8013b3df3385f6551a007a5359f9e6fc1e7eb9391443f3959e0ab912aa7568db  /workspace/plan-all/schwung-9W9/src/dsp/er99_engine.c
+81a926b7fbde0b8eb777c53909613afb6396b4fd5eabd773cf30214e1e085f53  /workspace/plan-all/schwung-8W8/src/dsp/sc808_engine.cpp

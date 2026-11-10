@@ -1,0 +1,38 @@
+[
+  {
+    "name": "locked-settings",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/locked-settings.log"
+  },
+  {
+    "name": "native-elite",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/native-elite.log"
+  },
+  {
+    "name": "native-pro",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/native-pro.log"
+  },
+  {
+    "name": "ctl-check",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/ctl-check.log"
+  },
+  {
+    "name": "compose-elite",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/compose-elite.log"
+  },
+  {
+    "name": "compose-pro",
+    "status": "ok",
+    "exit_code": 0,
+    "log": "logs/compose-pro.log"
+  }
+]

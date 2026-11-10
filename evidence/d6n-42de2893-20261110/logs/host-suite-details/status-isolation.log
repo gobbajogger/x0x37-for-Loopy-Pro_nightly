@@ -1,0 +1,8 @@
+ok   test run, no output folder: refused, exit 4
+ok   --out DIR: files in DIR only
+ok   X0X_STATUS_OUT: files in DIR only
+ok   unknown argument: exit 2
+ok   scan flags the bad fixture: /workspace/d6n-42de2893-20261110/src/tests/host/fixtures/status/leaky_status_test.sh:6: X0X_REPO=/tmp/none bash "$TOP/tools/status.sh"
+ok   scan: each status test gives an output folder
+ok   live folder /workspace/x0x37-orchestrator not on this machine: case 6 not needed
+status-isolation: 7 of 7 ok

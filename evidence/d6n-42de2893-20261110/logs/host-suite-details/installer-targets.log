@@ -1,0 +1,5 @@
+site: /tmp/tmpifmd6cyc/site1: 1 version(s), models [elite, pro], firmware files 2
+site: /tmp/tmpifmd6cyc/site2: 2 version(s), models [elite, mke, pro], firmware files 5
+site: /tmp/tmpifmd6cyc/site3: 1 version(s), models [fm1], firmware files 1
+site: /tmp/tmpifmd6cyc/shell: 0 version(s), models [], firmware files 0
+PASS installer identities, multi-version merge, sample-importer page, legacy FM-1 site, shell site

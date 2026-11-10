@@ -1,0 +1,11 @@
+PASS reconnect
+PASS reconnect-late
+PASS disconnect
+PASS disconnect-late
+PASS stable-pickup
+PASS coalesced-edges
+PASS project-reset
+PASS disconnect-clears-solo
+PASS wrap-down
+PASS wrap-up
+PASS: 10 SMC link cases preserve reconnect, disconnect, pickup, reset and wrap

@@ -1,0 +1,14 @@
+test_bad_data_reply_failure_still_aborts (__main__.FinishAckTest.test_bad_data_reply_failure_still_aborts) ... ok
+test_empty_link_reports_disconnection_not_success (__main__.FinishAckTest.test_empty_link_reports_disconnection_not_success) ... ok
+test_finish_check_reply_failure_is_connection_lost (__main__.FinishAckTest.test_finish_check_reply_failure_is_connection_lost) ... ok
+test_finish_check_reply_succeeds (__main__.FinishAckTest.test_finish_check_reply_succeeds) ... ok
+test_finish_write_reply_failure_is_connection_lost (__main__.FinishAckTest.test_finish_write_reply_failure_is_connection_lost) ... ok
+test_finish_write_reply_succeeds (__main__.FinishAckTest.test_finish_write_reply_succeeds) ... ok
+test_nonmatching_finish_reply_failure_is_terminal (__main__.FinishAckTest.test_nonmatching_finish_reply_failure_is_terminal) ... ok
+test_nonmatching_finish_reply_success_continues (__main__.FinishAckTest.test_nonmatching_finish_reply_success_continues) ... ok
+test_successful_data_response_preserves_progress (__main__.FinishAckTest.test_successful_data_response_preserves_progress) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.022s
+
+OK

@@ -1,0 +1,12 @@
+  909 external MIDI record: own channel writes, other channel and REC off do not: checked
+  808 external MIDI record: own channel writes, other channel and REC off do not: checked
+  BREAK external MIDI record: own channel writes, other channel and REC off do not: checked
+  909 REC boundaries: disarm, stopped input, pattern, STOP, START and CONTINUE: checked
+  909 first new REC/START/CONTINUE/pattern onsets before UI drain: checked
+  808 REC boundaries: disarm, stopped input, pattern, STOP, START and CONTINUE: checked
+  808 first new REC/START/CONTINUE/pattern onsets before UI drain: checked
+  BREAK REC boundaries: disarm, stopped input, pattern, STOP, START and CONTINUE: checked
+  BREAK first new REC/START/CONTINUE/pattern onsets before UI drain: checked
+  Chicago+Chicago: every part records its own channel at once (909, 808, BREAK, A, B): checked
+  Chicago+Miami: every part records its own channel at once (909, 808, BREAK, A, B): checked
+ext_midi_rec: ok

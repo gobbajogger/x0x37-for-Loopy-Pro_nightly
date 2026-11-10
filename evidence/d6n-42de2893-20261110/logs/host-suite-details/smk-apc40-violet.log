@@ -1,0 +1,11 @@
+PASS vel  48 (0x30) spec 874CFF                       table 6122FF owner 6122FF (ok) pad (48, 17, 127) hue 256.9 (a76 range 265-290: out, information)
+PASS vel  49 (0x31) spec 5400FF                       table 2A00FF owner 2A00FF (start value kept) pad (21, 0, 127) hue 249.9 (a76 range 265-290: out, information)
+PASS vel  50 (0x32) spec 190064                       table 020520 owner 020520 (ok) pad (1, 2, 16) hue 236.0 (a76 range 265-290: out, information)
+PASS vel  51 (0x33) spec 0F0030                       table 020408 owner 020408 (ok) pad (1, 2, 4) hue 220.0 (a76 range 265-290: out, information)
+PASS vel  69 (0x45) spec 2500CC (Live 624BAD violet)  table 060078 owner 060078 (ok) pad (3, 0, 60) hue 243.0 (a76 range 265-290: out, information)
+PASS vel  80 (0x50) spec 3F00FF (Live 886CE4 lavender) table 1A0080 owner 1A0080 (ok) pad (13, 0, 64) hue 252.2 (a76 range 265-290: out, information)
+PASS vel  93 (0x5D) spec 877FE9 (Live B88DFF)         table 70699F owner 70699F (ok) pad (56, 52, 79) hue 248.9 (a76 range 265-290: out, information)
+PASS vel 116 (0x74) spec 8E66FF (Live CDBBE4)         table 7772D8 owner 7772D8 (ok) pad (59, 57, 108) hue 242.4 (a76 range 265-290: out, information)
+PASS vel  81 (0x51) spec 7A00FF (Live A34BAD purple)  table 2D0053 owner 2D0053 (ok) pad (22, 0, 41) hue 272.2 (a76 range 285-300: out, information)
+PASS vel  94 (0x5E) spec D31DFF (Live D86CE4 orchid)  table 7F01AA owner 7F01AA (ok) pad (63, 0, 85) hue 284.5 (a76 range 300-330: out, information)
+PASS 0 violet, purple or pink velocities differ from the owner export

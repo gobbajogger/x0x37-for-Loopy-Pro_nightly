@@ -1,0 +1,32 @@
+font packing: 5204 rendered cases retain identical pixels and metrics
+font packing: 5204 rendered cases retain identical pixels and metrics
+font T: BarlowSemiCondensed-SemiBold.ttf 10px h 12, digit adv 5, 2316 B
+font XS: BarlowSemiCondensed-SemiBold.ttf 12px h 15, digit adv 6, 3288 B
+font S: BarlowSemiCondensed-Medium.ttf 15px h 16, digit adv 7, 4280 B
+font B: BarlowSemiCondensed-Bold.ttf 15px h 16, digit adv 8, 4374 B
+font M: BarlowSemiCondensed-SemiBold.ttf 23px h 24, digit adv 12, 4863 B
+font L: BarlowSemiCondensed-Bold.ttf 31px h 32, digit adv 16, 3584 B
+font set barlow: 23179 B (approx)
+font T: BarlowSemiCondensed-SemiBold.ttf 10px h 12, digit adv 5, 3600 B
+font XS: BarlowSemiCondensed-SemiBold.ttf 12px h 15, digit adv 6, 5700 B
+font S: BarlowSemiCondensed-Medium.ttf 15px h 16, digit adv 7, 6960 B
+font B: BarlowSemiCondensed-Bold.ttf 15px h 16, digit adv 8, 7120 B
+font M: BarlowSemiCondensed-SemiBold.ttf 23px h 24, digit adv 12, 8496 B
+font L: BarlowSemiCondensed-Bold.ttf 31px h 32, digit adv 16, 7488 B
+font set barlow: 40184 B (approx)
+barlow: 16659 bytes saved; all rendered pixels retained
+font T: ter-u12n.bdf 12px h 12, digit adv 6, 2169 B
+font XS: ter-u12n.bdf 12px h 12, digit adv 6, 2577 B
+font S: ter-u16n.bdf 16px h 16, digit adv 8, 3435 B
+font B: ter-u16b.bdf 16px h 16, digit adv 8, 3570 B
+font M: ter-u24b.bdf 24px h 24, digit adv 12, 4062 B
+font L: ter-u32b.bdf 32px h 32, digit adv 16, 2756 B
+font set terminus: 18957 B (approx)
+font T: ter-u12n.bdf 12px h 12, digit adv 6, 3840 B
+font XS: ter-u12n.bdf 12px h 12, digit adv 6, 4560 B
+font S: ter-u16n.bdf 16px h 16, digit adv 8, 7296 B
+font B: ter-u16b.bdf 16px h 16, digit adv 8, 7296 B
+font M: ter-u24b.bdf 24px h 24, digit adv 12, 8448 B
+font L: ter-u32b.bdf 32px h 32, digit adv 16, 8320 B
+font set terminus: 40588 B (approx)
+terminus: 21191 bytes saved; all rendered pixels retained

@@ -1,0 +1,3 @@
+  ok playing == 1
+  ok playing == 0
+host: 1066 ms simulated, 24 blits, render 0.3% of real time (host CPU)

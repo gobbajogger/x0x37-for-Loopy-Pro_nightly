@@ -1,0 +1,2111 @@
+{
+  "name": "host-suite",
+  "ok": 348,
+  "FAIL": 0,
+  "NOT_RUN": 2,
+  "exit_code": 0,
+  "log": "logs/host-suite.log",
+  "inventory": [
+    {
+      "status": "ok",
+      "name": "dsp-host-linkage",
+      "detail": "",
+      "runner_line": "  ok   dsp-host-linkage"
+    },
+    {
+      "status": "ok",
+      "name": "fastmath",
+      "detail": "",
+      "runner_line": "  ok   fastmath"
+    },
+    {
+      "status": "ok",
+      "name": "fastmath-ubsan",
+      "detail": "",
+      "runner_line": "  ok   fastmath-ubsan"
+    },
+    {
+      "status": "ok",
+      "name": "play-question",
+      "detail": "",
+      "runner_line": "  ok   play-question"
+    },
+    {
+      "status": "ok",
+      "name": "play-question-ui",
+      "detail": "",
+      "runner_line": "  ok   play-question-ui"
+    },
+    {
+      "status": "ok",
+      "name": "sound-reset",
+      "detail": "",
+      "runner_line": "  ok   sound-reset"
+    },
+    {
+      "status": "ok",
+      "name": "sound-reset-ui",
+      "detail": "",
+      "runner_line": "  ok   sound-reset-ui"
+    },
+    {
+      "status": "ok",
+      "name": "held-step-release",
+      "detail": "",
+      "runner_line": "  ok   held-step-release"
+    },
+    {
+      "status": "ok",
+      "name": "ui-perf-identity",
+      "detail": "",
+      "runner_line": "  ok   ui-perf-identity"
+    },
+    {
+      "status": "ok",
+      "name": "home-tie-semantics",
+      "detail": "",
+      "runner_line": "  ok   home-tie-semantics"
+    },
+    {
+      "status": "ok",
+      "name": "sequencer",
+      "detail": "",
+      "runner_line": "  ok   sequencer"
+    },
+    {
+      "status": "ok",
+      "name": "bass-prob-midi",
+      "detail": "",
+      "runner_line": "  ok   bass-prob-midi"
+    },
+    {
+      "status": "ok",
+      "name": "seq-tb3po-bars",
+      "detail": "",
+      "runner_line": "  ok   seq-tb3po-bars"
+    },
+    {
+      "status": "ok",
+      "name": "seq-random-swing",
+      "detail": "",
+      "runner_line": "  ok   seq-random-swing"
+    },
+    {
+      "status": "ok",
+      "name": "seq-random-clock-handoff",
+      "detail": "",
+      "runner_line": "  ok   seq-random-clock-handoff"
+    },
+    {
+      "status": "ok",
+      "name": "seq-long-notes",
+      "detail": "",
+      "runner_line": "  ok   seq-long-notes"
+    },
+    {
+      "status": "ok",
+      "name": "seq-pingpong-resize",
+      "detail": "",
+      "runner_line": "  ok   seq-pingpong-resize"
+    },
+    {
+      "status": "ok",
+      "name": "clk-lock",
+      "detail": "",
+      "runner_line": "  ok   clk-lock"
+    },
+    {
+      "status": "ok",
+      "name": "seq-random-tie-preview",
+      "detail": "",
+      "runner_line": "  ok   seq-random-tie-preview"
+    },
+    {
+      "status": "ok",
+      "name": "encoder",
+      "detail": "",
+      "runner_line": "  ok   encoder"
+    },
+    {
+      "status": "ok",
+      "name": "bass-midi-pending-native",
+      "detail": "",
+      "runner_line": "  ok   bass-midi-pending-native"
+    },
+    {
+      "status": "ok",
+      "name": "uac",
+      "detail": "",
+      "runner_line": "  ok   uac"
+    },
+    {
+      "status": "ok",
+      "name": "trs",
+      "detail": "",
+      "runner_line": "  ok   trs"
+    },
+    {
+      "status": "ok",
+      "name": "undo",
+      "detail": "",
+      "runner_line": "  ok   undo"
+    },
+    {
+      "status": "ok",
+      "name": "undo-capacity",
+      "detail": "",
+      "runner_line": "  ok   undo-capacity"
+    },
+    {
+      "status": "ok",
+      "name": "lz",
+      "detail": "",
+      "runner_line": "  ok   lz"
+    },
+    {
+      "status": "ok",
+      "name": "lz-max-match",
+      "detail": "",
+      "runner_line": "  ok   lz-max-match"
+    },
+    {
+      "status": "ok",
+      "name": "motion",
+      "detail": "",
+      "runner_line": "  ok   motion"
+    },
+    {
+      "status": "ok",
+      "name": "host-build",
+      "detail": "",
+      "runner_line": "  ok   host-build"
+    },
+    {
+      "status": "ok",
+      "name": "original-release-integration",
+      "detail": "",
+      "runner_line": "  ok   original-release-integration"
+    },
+    {
+      "status": "ok",
+      "name": "original-release-ui",
+      "detail": "",
+      "runner_line": "  ok   original-release-ui"
+    },
+    {
+      "status": "ok",
+      "name": "original-build",
+      "detail": "",
+      "runner_line": "  ok   original-build"
+    },
+    {
+      "status": "ok",
+      "name": "freeplay-rate-pads",
+      "detail": "",
+      "runner_line": "  ok   freeplay-rate-pads"
+    },
+    {
+      "status": "ok",
+      "name": "boot-screen",
+      "detail": "",
+      "runner_line": "  ok   boot-screen"
+    },
+    {
+      "status": "ok",
+      "name": "ui-theme",
+      "detail": "",
+      "runner_line": "  ok   ui-theme"
+    },
+    {
+      "status": "ok",
+      "name": "project-protocol",
+      "detail": "",
+      "runner_line": "  ok   project-protocol"
+    },
+    {
+      "status": "ok",
+      "name": "project-save-preflight",
+      "detail": "",
+      "runner_line": "  ok   project-save-preflight"
+    },
+    {
+      "status": "ok",
+      "name": "editor-ota-dispatch",
+      "detail": "",
+      "runner_line": "  ok   editor-ota-dispatch"
+    },
+    {
+      "status": "ok",
+      "name": "storage-scratch",
+      "detail": "",
+      "runner_line": "  ok   storage-scratch"
+    },
+    {
+      "status": "ok",
+      "name": "project-stage",
+      "detail": "",
+      "runner_line": "  ok   project-stage"
+    },
+    {
+      "status": "ok",
+      "name": "project-runtime",
+      "detail": "",
+      "runner_line": "  ok   project-runtime"
+    },
+    {
+      "status": "ok",
+      "name": "save-note-quiet",
+      "detail": "",
+      "runner_line": "  ok   save-note-quiet"
+    },
+    {
+      "status": "ok",
+      "name": "font-pack",
+      "detail": "",
+      "runner_line": "  ok   font-pack"
+    },
+    {
+      "status": "ok",
+      "name": "smc-protocol",
+      "detail": "",
+      "runner_line": "  ok   smc-protocol"
+    },
+    {
+      "status": "ok",
+      "name": "smc-fader",
+      "detail": "",
+      "runner_line": "  ok   smc-fader"
+    },
+    {
+      "status": "ok",
+      "name": "smc-buttons",
+      "detail": "",
+      "runner_line": "  ok   smc-buttons"
+    },
+    {
+      "status": "ok",
+      "name": "smc-select-mode",
+      "detail": "",
+      "runner_line": "  ok   smc-select-mode"
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx",
+      "detail": "",
+      "runner_line": "  ok   smc-fx"
+    },
+    {
+      "status": "ok",
+      "name": "smc-mixer-edges",
+      "detail": "",
+      "runner_line": "  ok   smc-mixer-edges"
+    },
+    {
+      "status": "ok",
+      "name": "smc-action-source",
+      "detail": "",
+      "runner_line": "  ok   smc-action-source"
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-caption",
+      "detail": "",
+      "runner_line": "  ok   smc-fx-caption"
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-page-port",
+      "detail": "",
+      "runner_line": "  ok   smc-fx-page-port"
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-peer-view",
+      "detail": "",
+      "runner_line": "  ok   smc-fx-peer-view"
+    },
+    {
+      "status": "ok",
+      "name": "smc-fx-preset-preserve",
+      "detail": "",
+      "runner_line": "  ok   smc-fx-preset-preserve"
+    },
+    {
+      "status": "ok",
+      "name": "smc-queue",
+      "detail": "",
+      "runner_line": "  ok   smc-queue"
+    },
+    {
+      "status": "ok",
+      "name": "smc-solo-overflow",
+      "detail": "",
+      "runner_line": "  ok   smc-solo-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-rec-overflow",
+      "detail": "",
+      "runner_line": "  ok   engine-cq-rec-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-isr-preemption",
+      "detail": "",
+      "runner_line": "  ok   engine-cq-isr-preemption"
+    },
+    {
+      "status": "ok",
+      "name": "cq-shift-preempt",
+      "detail": "",
+      "runner_line": "  ok   cq-shift-preempt"
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-boff-overflow",
+      "detail": "",
+      "runner_line": "  ok   engine-cq-boff-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-brk-overflow",
+      "detail": "",
+      "runner_line": "  ok   engine-cq-brk-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-bon-overflow",
+      "detail": "",
+      "runner_line": "  ok   engine-cq-bon-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "engine-cq-drum-overflow",
+      "detail": "",
+      "runner_line": "  ok   engine-cq-drum-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "midi-mq-noteoff-overflow",
+      "detail": "",
+      "runner_line": "  ok   midi-mq-noteoff-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "midi-mq-rt-overflow",
+      "detail": "",
+      "runner_line": "  ok   midi-mq-rt-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "midi-overflow-order",
+      "detail": "",
+      "runner_line": "  ok   midi-overflow-order"
+    },
+    {
+      "status": "ok",
+      "name": "midi-out-mq-noteoff-overflow",
+      "detail": "",
+      "runner_line": "  ok   midi-out-mq-noteoff-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "midi-seq-carry",
+      "detail": "",
+      "runner_line": "  ok   midi-seq-carry"
+    },
+    {
+      "status": "ok",
+      "name": "ble-out-noteoff-overflow",
+      "detail": "",
+      "runner_line": "  ok   ble-out-noteoff-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "ble-out-rt-overflow",
+      "detail": "",
+      "runner_line": "  ok   ble-out-rt-overflow"
+    },
+    {
+      "status": "ok",
+      "name": "usb-sxq-sticky-apc",
+      "detail": "",
+      "runner_line": "  ok   usb-sxq-sticky-apc"
+    },
+    {
+      "status": "ok",
+      "name": "smc-host-data7",
+      "detail": "",
+      "runner_line": "  ok   smc-host-data7"
+    },
+    {
+      "status": "ok",
+      "name": "smc-host-overflow-data7",
+      "detail": "",
+      "runner_line": "  ok   smc-host-overflow-data7"
+    },
+    {
+      "status": "ok",
+      "name": "smc-sender-isolation",
+      "detail": "",
+      "runner_line": "  ok   smc-sender-isolation"
+    },
+    {
+      "status": "ok",
+      "name": "smc-ble-payload",
+      "detail": "",
+      "runner_line": "  ok   smc-ble-payload"
+    },
+    {
+      "status": "ok",
+      "name": "smc-link",
+      "detail": "",
+      "runner_line": "  ok   smc-link"
+    },
+    {
+      "status": "ok",
+      "name": "smc-reconnect-epoch",
+      "detail": "",
+      "runner_line": "  ok   smc-reconnect-epoch"
+    },
+    {
+      "status": "ok",
+      "name": "smc-boot-saved-roles",
+      "detail": "",
+      "runner_line": "  ok   smc-boot-saved-roles"
+    },
+    {
+      "status": "ok",
+      "name": "ble-central-first-notification",
+      "detail": "",
+      "runner_line": "  ok   ble-central-first-notification"
+    },
+    {
+      "status": "ok",
+      "name": "ble-active-peer-contract",
+      "detail": "",
+      "runner_line": "  ok   ble-active-peer-contract"
+    },
+    {
+      "status": "ok",
+      "name": "ble-smc-outbound-slots",
+      "detail": "",
+      "runner_line": "  ok   ble-smc-outbound-slots"
+    },
+    {
+      "status": "ok",
+      "name": "ble-one-peer-command",
+      "detail": "",
+      "runner_line": "  ok   ble-one-peer-command"
+    },
+    {
+      "status": "ok",
+      "name": "ble-dual-peer",
+      "detail": "",
+      "runner_line": "  ok   ble-dual-peer"
+    },
+    {
+      "status": "ok",
+      "name": "ble-command-credit",
+      "detail": "",
+      "runner_line": "  ok   ble-command-credit"
+    },
+    {
+      "status": "ok",
+      "name": "ble-controller-heap",
+      "detail": "",
+      "runner_line": "  ok   ble-controller-heap"
+    },
+    {
+      "status": "ok",
+      "name": "ble-midi-receive",
+      "detail": "",
+      "runner_line": "  ok   ble-midi-receive"
+    },
+    {
+      "status": "ok",
+      "name": "ble-capture-replay",
+      "detail": "",
+      "runner_line": "  ok   ble-capture-replay"
+    },
+    {
+      "status": "ok",
+      "name": "ble-acl-start-flags",
+      "detail": "",
+      "runner_line": "  ok   ble-acl-start-flags"
+    },
+    {
+      "status": "ok",
+      "name": "ble-hci-completed",
+      "detail": "",
+      "runner_line": "  ok   ble-hci-completed"
+    },
+    {
+      "status": "ok",
+      "name": "ble-acl-zero-credit",
+      "detail": "",
+      "runner_line": "  ok   ble-acl-zero-credit"
+    },
+    {
+      "status": "ok",
+      "name": "ble-link-epoch-reset",
+      "detail": "",
+      "runner_line": "  ok   ble-link-epoch-reset"
+    },
+    {
+      "status": "ok",
+      "name": "ble-disconnect-status",
+      "detail": "",
+      "runner_line": "  ok   ble-disconnect-status"
+    },
+    {
+      "status": "ok",
+      "name": "smc-reachability",
+      "detail": "",
+      "runner_line": "  ok   smc-reachability"
+    },
+    {
+      "status": "ok",
+      "name": "smc-pickup-acceptance",
+      "detail": "",
+      "runner_line": "  ok   smc-pickup-acceptance"
+    },
+    {
+      "status": "ok",
+      "name": "smc-lock",
+      "detail": "",
+      "runner_line": "  ok   smc-lock"
+    },
+    {
+      "status": "ok",
+      "name": "smc-lock-beat",
+      "detail": "",
+      "runner_line": "  ok   smc-lock-beat"
+    },
+    {
+      "status": "ok",
+      "name": "smc-multi-peer",
+      "detail": "",
+      "runner_line": "  ok   smc-multi-peer"
+    },
+    {
+      "status": "ok",
+      "name": "smc-multi-peer-negative",
+      "detail": "",
+      "runner_line": "  ok   smc-multi-peer-negative"
+    },
+    {
+      "status": "ok",
+      "name": "smc-pause-loss",
+      "detail": "",
+      "runner_line": "  ok   smc-pause-loss"
+    },
+    {
+      "status": "ok",
+      "name": "smk-wheel-mode",
+      "detail": "",
+      "runner_line": "  ok   smk-wheel-mode"
+    },
+    {
+      "status": "ok",
+      "name": "miami-table-interpolation",
+      "detail": "",
+      "runner_line": "  ok   miami-table-interpolation"
+    },
+    {
+      "status": "ok",
+      "name": "legacy-303-project",
+      "detail": "",
+      "runner_line": "  ok   legacy-303-project"
+    },
+    {
+      "status": "ok",
+      "name": "smc-interaction-negative",
+      "detail": "",
+      "runner_line": "  ok   smc-interaction-negative"
+    },
+    {
+      "status": "ok",
+      "name": "corner-coverage",
+      "detail": "",
+      "runner_line": "  ok   corner-coverage"
+    },
+    {
+      "status": "ok",
+      "name": "part-order",
+      "detail": "",
+      "runner_line": "  ok   part-order"
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui",
+      "detail": "",
+      "runner_line": "  ok   smc-ui"
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui-popup",
+      "detail": "",
+      "runner_line": "  ok   smc-ui-popup"
+    },
+    {
+      "status": "ok",
+      "name": "smc-mode-page",
+      "detail": "",
+      "runner_line": "  ok   smc-mode-page"
+    },
+    {
+      "status": "ok",
+      "name": "smc-mixer-page",
+      "detail": "",
+      "runner_line": "  ok   smc-mixer-page"
+    },
+    {
+      "status": "ok",
+      "name": "ui-shared-glyph",
+      "detail": "",
+      "runner_line": "  ok   ui-shared-glyph"
+    },
+    {
+      "status": "ok",
+      "name": "ui-drum-mix-material",
+      "detail": "",
+      "runner_line": "  ok   ui-drum-mix-material"
+    },
+    {
+      "status": "ok",
+      "name": "ui-waveform-truth",
+      "detail": "",
+      "runner_line": "  ok   ui-waveform-truth"
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui-bounds",
+      "detail": "",
+      "runner_line": "  ok   smc-ui-bounds"
+    },
+    {
+      "status": "ok",
+      "name": "smc-ui-negative",
+      "detail": "",
+      "runner_line": "  ok   smc-ui-negative"
+    },
+    {
+      "status": "ok",
+      "name": "smc-mapping",
+      "detail": "",
+      "runner_line": "  ok   smc-mapping"
+    },
+    {
+      "status": "ok",
+      "name": "smc-drum-mutes",
+      "detail": "",
+      "runner_line": "  ok   smc-drum-mutes"
+    },
+    {
+      "status": "ok",
+      "name": "smc-drum-rs",
+      "detail": "",
+      "runner_line": "  ok   smc-drum-rs"
+    },
+    {
+      "status": "ok",
+      "name": "smc-performance-abort",
+      "detail": "",
+      "runner_line": "  ok   smc-performance-abort"
+    },
+    {
+      "status": "ok",
+      "name": "smc-filter",
+      "detail": "",
+      "runner_line": "  ok   smc-filter"
+    },
+    {
+      "status": "ok",
+      "name": "smc-feedback",
+      "detail": "",
+      "runner_line": "  ok   smc-feedback"
+    },
+    {
+      "status": "ok",
+      "name": "smc-record-feedback",
+      "detail": "",
+      "runner_line": "  ok   smc-record-feedback"
+    },
+    {
+      "status": "ok",
+      "name": "smc-part-select",
+      "detail": "",
+      "runner_line": "  ok   smc-part-select"
+    },
+    {
+      "status": "ok",
+      "name": "smc-clip-visibility",
+      "detail": "",
+      "runner_line": "  ok   smc-clip-visibility"
+    },
+    {
+      "status": "ok",
+      "name": "drum-pan",
+      "detail": "",
+      "runner_line": "  ok   drum-pan"
+    },
+    {
+      "status": "ok",
+      "name": "stereo",
+      "detail": "",
+      "runner_line": "  ok   stereo"
+    },
+    {
+      "status": "ok",
+      "name": "master",
+      "detail": "",
+      "runner_line": "  ok   master"
+    },
+    {
+      "status": "ok",
+      "name": "drum-kit-identity",
+      "detail": "",
+      "runner_line": "  ok   drum-kit-identity"
+    },
+    {
+      "status": "ok",
+      "name": "drum909-adpcm",
+      "detail": "",
+      "runner_line": "  ok   drum909-adpcm"
+    },
+    {
+      "status": "ok",
+      "name": "optimization-equivalence",
+      "detail": "",
+      "runner_line": "  ok   optimization-equivalence"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "drum909",
+      "detail": "(../schwung-9W9/src/dsp/er99_engine.c)",
+      "runner_line": "  not-run drum909 (../schwung-9W9/src/dsp/er99_engine.c)"
+    },
+    {
+      "status": "NOT_RUN",
+      "name": "drum808",
+      "detail": "(../schwung-8W8/src/dsp/sc808_engine.cpp)",
+      "runner_line": "  not-run drum808 (../schwung-8W8/src/dsp/sc808_engine.cpp)"
+    },
+    {
+      "status": "ok",
+      "name": "breaks",
+      "detail": "",
+      "runner_line": "  ok   breaks"
+    },
+    {
+      "status": "ok",
+      "name": "break-suite-registration",
+      "detail": "",
+      "runner_line": "  ok   break-suite-registration"
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-dsp",
+      "detail": "",
+      "runner_line": "  ok   adaptive-break-dsp"
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-controls",
+      "detail": "",
+      "runner_line": "  ok   adaptive-break-controls"
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-storage",
+      "detail": "",
+      "runner_line": "  ok   adaptive-break-storage"
+    },
+    {
+      "status": "ok",
+      "name": "adaptive-break-midi-pair",
+      "detail": "",
+      "runner_line": "  ok   adaptive-break-midi-pair"
+    },
+    {
+      "status": "ok",
+      "name": "break-performance",
+      "detail": "",
+      "runner_line": "  ok   break-performance"
+    },
+    {
+      "status": "ok",
+      "name": "brk-loops-seamless",
+      "detail": "",
+      "runner_line": "  ok   brk-loops-seamless"
+    },
+    {
+      "status": "ok",
+      "name": "brk-outline",
+      "detail": "",
+      "runner_line": "  ok   brk-outline"
+    },
+    {
+      "status": "ok",
+      "name": "brk-outline-gate",
+      "detail": "",
+      "runner_line": "  ok   brk-outline-gate"
+    },
+    {
+      "status": "ok",
+      "name": "chicago-fx-bridge",
+      "detail": "",
+      "runner_line": "  ok   chicago-fx-bridge"
+    },
+    {
+      "status": "ok",
+      "name": "au-compare-align",
+      "detail": "",
+      "runner_line": "  ok   au-compare-align"
+    },
+    {
+      "status": "ok",
+      "name": "au-compare-battery",
+      "detail": "",
+      "runner_line": "  ok   au-compare-battery"
+    },
+    {
+      "status": "ok",
+      "name": "install-gate-guard",
+      "detail": "",
+      "runner_line": "  ok   install-gate-guard"
+    },
+    {
+      "status": "ok",
+      "name": "queue-guard",
+      "detail": "",
+      "runner_line": "  ok   queue-guard"
+    },
+    {
+      "status": "ok",
+      "name": "install-guards",
+      "detail": "",
+      "runner_line": "  ok   install-guards"
+    },
+    {
+      "status": "ok",
+      "name": "install-head",
+      "detail": "",
+      "runner_line": "  ok   install-head"
+    },
+    {
+      "status": "ok",
+      "name": "release-tree",
+      "detail": "",
+      "runner_line": "  ok   release-tree"
+    },
+    {
+      "status": "ok",
+      "name": "prepush-trim",
+      "detail": "",
+      "runner_line": "  ok   prepush-trim"
+    },
+    {
+      "status": "ok",
+      "name": "prepush-allow",
+      "detail": "",
+      "runner_line": "  ok   prepush-allow"
+    },
+    {
+      "status": "ok",
+      "name": "gate-configs",
+      "detail": "",
+      "runner_line": "  ok   gate-configs"
+    },
+    {
+      "status": "ok",
+      "name": "gate-trap",
+      "detail": "",
+      "runner_line": "  ok   gate-trap"
+    },
+    {
+      "status": "ok",
+      "name": "quickcheck-plan",
+      "detail": "",
+      "runner_line": "  ok   quickcheck-plan"
+    },
+    {
+      "status": "ok",
+      "name": "host-failure-summary",
+      "detail": "",
+      "runner_line": "  ok   host-failure-summary"
+    },
+    {
+      "status": "ok",
+      "name": "ctl-compile",
+      "detail": "",
+      "runner_line": "  ok   ctl-compile"
+    },
+    {
+      "status": "ok",
+      "name": "host-setup",
+      "detail": "",
+      "runner_line": "  ok   host-setup"
+    },
+    {
+      "status": "ok",
+      "name": "gen-nonfont-tables",
+      "detail": "",
+      "runner_line": "  ok   gen-nonfont-tables"
+    },
+    {
+      "status": "ok",
+      "name": "stereo-alone-gen",
+      "detail": "",
+      "runner_line": "  ok   stereo-alone-gen"
+    },
+    {
+      "status": "ok",
+      "name": "runner-admission",
+      "detail": "",
+      "runner_line": "  ok   runner-admission"
+    },
+    {
+      "status": "ok",
+      "name": "update-names",
+      "detail": "",
+      "runner_line": "  ok   update-names"
+    },
+    {
+      "status": "ok",
+      "name": "gate-reason",
+      "detail": "",
+      "runner_line": "  ok   gate-reason"
+    },
+    {
+      "status": "ok",
+      "name": "validation-inputs",
+      "detail": "",
+      "runner_line": "  ok   validation-inputs"
+    },
+    {
+      "status": "ok",
+      "name": "stage-handoff",
+      "detail": "",
+      "runner_line": "  ok   stage-handoff"
+    },
+    {
+      "status": "ok",
+      "name": "dev-validate",
+      "detail": "",
+      "runner_line": "  ok   dev-validate"
+    },
+    {
+      "status": "ok",
+      "name": "dev-validate-composed",
+      "detail": "",
+      "runner_line": "  ok   dev-validate-composed"
+    },
+    {
+      "status": "ok",
+      "name": "nightly-publish",
+      "detail": "",
+      "runner_line": "  ok   nightly-publish"
+    },
+    {
+      "status": "ok",
+      "name": "gen-cache",
+      "detail": "",
+      "runner_line": "  ok   gen-cache"
+    },
+    {
+      "status": "ok",
+      "name": "smk-update-contract",
+      "detail": "",
+      "runner_line": "  ok   smk-update-contract"
+    },
+    {
+      "status": "ok",
+      "name": "gen-order",
+      "detail": "",
+      "runner_line": "  ok   gen-order"
+    },
+    {
+      "status": "ok",
+      "name": "quickcheck-devbug",
+      "detail": "",
+      "runner_line": "  ok   quickcheck-devbug"
+    },
+    {
+      "status": "ok",
+      "name": "status-lanes",
+      "detail": "",
+      "runner_line": "  ok   status-lanes"
+    },
+    {
+      "status": "ok",
+      "name": "status-isolation",
+      "detail": "",
+      "runner_line": "  ok   status-isolation"
+    },
+    {
+      "status": "ok",
+      "name": "loop-bars",
+      "detail": "",
+      "runner_line": "  ok   loop-bars"
+    },
+    {
+      "status": "ok",
+      "name": "installer",
+      "detail": "",
+      "runner_line": "  ok   installer"
+    },
+    {
+      "status": "ok",
+      "name": "installer-f02-bind",
+      "detail": "",
+      "runner_line": "  ok   installer-f02-bind"
+    },
+    {
+      "status": "ok",
+      "name": "installer-f02-bind-web",
+      "detail": "",
+      "runner_line": "  ok   installer-f02-bind-web"
+    },
+    {
+      "status": "ok",
+      "name": "locked-settings",
+      "detail": "",
+      "runner_line": "  ok   locked-settings"
+    },
+    {
+      "status": "ok",
+      "name": "smk-flash",
+      "detail": "",
+      "runner_line": "  ok   smk-flash"
+    },
+    {
+      "status": "ok",
+      "name": "smk-storage",
+      "detail": "",
+      "runner_line": "  ok   smk-storage"
+    },
+    {
+      "status": "ok",
+      "name": "smk-apc40-map",
+      "detail": "",
+      "runner_line": "  ok   smk-apc40-map"
+    },
+    {
+      "status": "ok",
+      "name": "smk-apc40",
+      "detail": "",
+      "runner_line": "  ok   smk-apc40"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-ble-clear",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-ble-clear"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-keys",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-keys"
+    },
+    {
+      "status": "ok",
+      "name": "smk-chord-recognize",
+      "detail": "",
+      "runner_line": "  ok   smk-chord-recognize"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-chord-display",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-chord-display"
+    },
+    {
+      "status": "ok",
+      "name": "smk-ck-page-layout",
+      "detail": "",
+      "runner_line": "  ok   smk-ck-page-layout"
+    },
+    {
+      "status": "ok",
+      "name": "smk-arrows",
+      "detail": "",
+      "runner_line": "  ok   smk-arrows"
+    },
+    {
+      "status": "ok",
+      "name": "smk-arrows-owner",
+      "detail": "",
+      "runner_line": "  ok   smk-arrows-owner"
+    },
+    {
+      "status": "ok",
+      "name": "apc40-tables",
+      "detail": "",
+      "runner_line": "  ok   apc40-tables"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-idle",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-idle"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-idle-pad",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-idle-pad"
+    },
+    {
+      "status": "ok",
+      "name": "apc40-pad-owner",
+      "detail": "",
+      "runner_line": "  ok   apc40-pad-owner"
+    },
+    {
+      "status": "ok",
+      "name": "smk-padcal",
+      "detail": "",
+      "runner_line": "  ok   smk-padcal"
+    },
+    {
+      "status": "ok",
+      "name": "padcal-view",
+      "detail": "",
+      "runner_line": "  ok   padcal-view"
+    },
+    {
+      "status": "ok",
+      "name": "smk-padcal-export",
+      "detail": "",
+      "runner_line": "  ok   smk-padcal-export"
+    },
+    {
+      "status": "ok",
+      "name": "smk-padcal-wiring",
+      "detail": "",
+      "runner_line": "  ok   smk-padcal-wiring"
+    },
+    {
+      "status": "ok",
+      "name": "pad-placement-doc",
+      "detail": "",
+      "runner_line": "  ok   pad-placement-doc"
+    },
+    {
+      "status": "ok",
+      "name": "padcal-flag",
+      "detail": "",
+      "runner_line": "  ok   padcal-flag"
+    },
+    {
+      "status": "ok",
+      "name": "apc40-lcd565-csv",
+      "detail": "",
+      "runner_line": "  ok   apc40-lcd565-csv"
+    },
+    {
+      "status": "ok",
+      "name": "apc-palette",
+      "detail": "",
+      "runner_line": "  ok   apc-palette"
+    },
+    {
+      "status": "ok",
+      "name": "installer-targets",
+      "detail": "",
+      "runner_line": "  ok   installer-targets"
+    },
+    {
+      "status": "ok",
+      "name": "diag-size",
+      "detail": "",
+      "runner_line": "  ok   diag-size"
+    },
+    {
+      "status": "ok",
+      "name": "smk-inlog",
+      "detail": "",
+      "runner_line": "  ok   smk-inlog"
+    },
+    {
+      "status": "ok",
+      "name": "ble-central-diag",
+      "detail": "",
+      "runner_line": "  ok   ble-central-diag"
+    },
+    {
+      "status": "ok",
+      "name": "ble-role-switch",
+      "detail": "",
+      "runner_line": "  ok   ble-role-switch"
+    },
+    {
+      "status": "ok",
+      "name": "inlog-tool",
+      "detail": "",
+      "runner_line": "  ok   inlog-tool"
+    },
+    {
+      "status": "ok",
+      "name": "smk-pad-inputs",
+      "detail": "",
+      "runner_line": "  ok   smk-pad-inputs"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-ble-notify",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-ble-notify"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-dark",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-dark"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-usb-clear",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-usb-clear"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-isolation",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-isolation"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-knob",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-knob"
+    },
+    {
+      "status": "ok",
+      "name": "smk-fader-pickup",
+      "detail": "",
+      "runner_line": "  ok   smk-fader-pickup"
+    },
+    {
+      "status": "ok",
+      "name": "smk-clip-wait",
+      "detail": "",
+      "runner_line": "  ok   smk-clip-wait"
+    },
+    {
+      "status": "ok",
+      "name": "smk-apc40-violet",
+      "detail": "",
+      "runner_line": "  ok   smk-apc40-violet"
+    },
+    {
+      "status": "ok",
+      "name": "smk-package",
+      "detail": "",
+      "runner_line": "  ok   smk-package"
+    },
+    {
+      "status": "ok",
+      "name": "smk-ota-entry",
+      "detail": "",
+      "runner_line": "  ok   smk-ota-entry"
+    },
+    {
+      "status": "ok",
+      "name": "smk-ota-entry-model1",
+      "detail": "",
+      "runner_line": "  ok   smk-ota-entry-model1"
+    },
+    {
+      "status": "ok",
+      "name": "smk-ota-entry-model2",
+      "detail": "",
+      "runner_line": "  ok   smk-ota-entry-model2"
+    },
+    {
+      "status": "ok",
+      "name": "smk-update-loader",
+      "detail": "",
+      "runner_line": "  ok   smk-update-loader"
+    },
+    {
+      "status": "ok",
+      "name": "smk-build-package",
+      "detail": "",
+      "runner_line": "  ok   smk-build-package"
+    },
+    {
+      "status": "ok",
+      "name": "ble-sysex-bounds",
+      "detail": "",
+      "runner_line": "  ok   ble-sysex-bounds"
+    },
+    {
+      "status": "ok",
+      "name": "ble",
+      "detail": "",
+      "runner_line": "  ok   ble"
+    },
+    {
+      "status": "ok",
+      "name": "ble-package",
+      "detail": "",
+      "runner_line": "  ok   ble-package"
+    },
+    {
+      "status": "ok",
+      "name": "upload-images",
+      "detail": "",
+      "runner_line": "  ok   upload-images"
+    },
+    {
+      "status": "ok",
+      "name": "upload-tools",
+      "detail": "",
+      "runner_line": "  ok   upload-tools"
+    },
+    {
+      "status": "ok",
+      "name": "builtin-break-output",
+      "detail": "",
+      "runner_line": "  ok   builtin-break-output"
+    },
+    {
+      "status": "ok",
+      "name": "break-pack",
+      "detail": "",
+      "runner_line": "  ok   break-pack"
+    },
+    {
+      "status": "ok",
+      "name": "break-pack-web",
+      "detail": "",
+      "runner_line": "  ok   break-pack-web"
+    },
+    {
+      "status": "ok",
+      "name": "breaks-web",
+      "detail": "",
+      "runner_line": "  ok   breaks-web"
+    },
+    {
+      "status": "ok",
+      "name": "breaks-page",
+      "detail": "",
+      "runner_line": "  ok   breaks-page"
+    },
+    {
+      "status": "ok",
+      "name": "project-adoption-identities",
+      "detail": "",
+      "runner_line": "  ok   project-adoption-identities"
+    },
+    {
+      "status": "ok",
+      "name": "projects-web",
+      "detail": "",
+      "runner_line": "  ok   projects-web"
+    },
+    {
+      "status": "ok",
+      "name": "installer-project-handoff",
+      "detail": "",
+      "runner_line": "  ok   installer-project-handoff"
+    },
+    {
+      "status": "ok",
+      "name": "projects-page",
+      "detail": "",
+      "runner_line": "  ok   projects-page"
+    },
+    {
+      "status": "ok",
+      "name": "install-slots-web",
+      "detail": "",
+      "runner_line": "  ok   install-slots-web"
+    },
+    {
+      "status": "ok",
+      "name": "installer-backup-selection",
+      "detail": "",
+      "runner_line": "  ok   installer-backup-selection"
+    },
+    {
+      "status": "ok",
+      "name": "slot-build-safe",
+      "detail": "",
+      "runner_line": "  ok   slot-build-safe"
+    },
+    {
+      "status": "ok",
+      "name": "wav-import-integrity",
+      "detail": "",
+      "runner_line": "  ok   wav-import-integrity"
+    },
+    {
+      "status": "ok",
+      "name": "slot-backup",
+      "detail": "",
+      "runner_line": "  ok   slot-backup"
+    },
+    {
+      "status": "ok",
+      "name": "slot-begin-cancel",
+      "detail": "",
+      "runner_line": "  ok   slot-begin-cancel"
+    },
+    {
+      "status": "ok",
+      "name": "smp-begin-cancel",
+      "detail": "",
+      "runner_line": "  ok   smp-begin-cancel"
+    },
+    {
+      "status": "ok",
+      "name": "slot-backup-durable",
+      "detail": "",
+      "runner_line": "  ok   slot-backup-durable"
+    },
+    {
+      "status": "ok",
+      "name": "slot-archive-zone",
+      "detail": "",
+      "runner_line": "  ok   slot-archive-zone"
+    },
+    {
+      "status": "ok",
+      "name": "slot-verify-order",
+      "detail": "",
+      "runner_line": "  ok   slot-verify-order"
+    },
+    {
+      "status": "ok",
+      "name": "slot-read-reply",
+      "detail": "",
+      "runner_line": "  ok   slot-read-reply"
+    },
+    {
+      "status": "ok",
+      "name": "slot-ack-integrity",
+      "detail": "",
+      "runner_line": "  ok   slot-ack-integrity"
+    },
+    {
+      "status": "ok",
+      "name": "slot-echo-7bit",
+      "detail": "",
+      "runner_line": "  ok   slot-echo-7bit"
+    },
+    {
+      "status": "ok",
+      "name": "slot-migration-matching",
+      "detail": "",
+      "runner_line": "  ok   slot-migration-matching"
+    },
+    {
+      "status": "ok",
+      "name": "slot-break-menu-migration",
+      "detail": "",
+      "runner_line": "  ok   slot-break-menu-migration"
+    },
+    {
+      "status": "ok",
+      "name": "installer-slots",
+      "detail": "",
+      "runner_line": "  ok   installer-slots"
+    },
+    {
+      "status": "ok",
+      "name": "installer-restore-status",
+      "detail": "",
+      "runner_line": "  ok   installer-restore-status"
+    },
+    {
+      "status": "ok",
+      "name": "installer-ota-finish-ack",
+      "detail": "",
+      "runner_line": "  ok   installer-ota-finish-ack"
+    },
+    {
+      "status": "ok",
+      "name": "installer-backup-snapshot",
+      "detail": "",
+      "runner_line": "  ok   installer-backup-snapshot"
+    },
+    {
+      "status": "ok",
+      "name": "installer-ctl",
+      "detail": "",
+      "runner_line": "  ok   installer-ctl"
+    },
+    {
+      "status": "ok",
+      "name": "ctl-read-framing",
+      "detail": "",
+      "runner_line": "  ok   ctl-read-framing"
+    },
+    {
+      "status": "ok",
+      "name": "ctl-publish-atomic",
+      "detail": "",
+      "runner_line": "  ok   ctl-publish-atomic"
+    },
+    {
+      "status": "ok",
+      "name": "panic-chord",
+      "detail": "",
+      "runner_line": "  ok   panic-chord"
+    },
+    {
+      "status": "ok",
+      "name": "panic-notes",
+      "detail": "",
+      "runner_line": "  ok   panic-notes"
+    },
+    {
+      "status": "ok",
+      "name": "panic-clear",
+      "detail": "",
+      "runner_line": "  ok   panic-clear"
+    },
+    {
+      "status": "ok",
+      "name": "panic-order",
+      "detail": "",
+      "runner_line": "  ok   panic-order"
+    },
+    {
+      "status": "ok",
+      "name": "cq-reclaim",
+      "detail": "",
+      "runner_line": "  ok   cq-reclaim"
+    },
+    {
+      "status": "ok",
+      "name": "panic-route",
+      "detail": "",
+      "runner_line": "  ok   panic-route"
+    },
+    {
+      "status": "ok",
+      "name": "panic-mutants",
+      "detail": "",
+      "runner_line": "  ok   panic-mutants"
+    },
+    {
+      "status": "ok",
+      "name": "rec-held-duration",
+      "detail": "",
+      "runner_line": "  ok   rec-held-duration"
+    },
+    {
+      "status": "ok",
+      "name": "original-stale-release",
+      "detail": "",
+      "runner_line": "  ok   original-stale-release"
+    },
+    {
+      "status": "ok",
+      "name": "rec-endpoint-lifecycle",
+      "detail": "",
+      "runner_line": "  ok   rec-endpoint-lifecycle"
+    },
+    {
+      "status": "ok",
+      "name": "rec-endpoint-storage",
+      "detail": "",
+      "runner_line": "  ok   rec-endpoint-storage"
+    },
+    {
+      "status": "ok",
+      "name": "rec-nonforward-guard",
+      "detail": "",
+      "runner_line": "  ok   rec-nonforward-guard"
+    },
+    {
+      "status": "ok",
+      "name": "rec-live-smk",
+      "detail": "",
+      "runner_line": "  ok   rec-live-smk"
+    },
+    {
+      "status": "ok",
+      "name": "ext-midi-rec-smk",
+      "detail": "",
+      "runner_line": "  ok   ext-midi-rec-smk"
+    },
+    {
+      "status": "ok",
+      "name": "copy-semantics",
+      "detail": "",
+      "runner_line": "  ok   copy-semantics"
+    },
+    {
+      "status": "ok",
+      "name": "song-actions",
+      "detail": "",
+      "runner_line": "  ok   song-actions"
+    },
+    {
+      "status": "ok",
+      "name": "ui-feedback",
+      "detail": "",
+      "runner_line": "  ok   ui-feedback"
+    },
+    {
+      "status": "ok",
+      "name": "remaining-feature-proof-selftest",
+      "detail": "",
+      "runner_line": "  ok   remaining-feature-proof-selftest"
+    },
+    {
+      "status": "ok",
+      "name": "home-pattern-glyph",
+      "detail": "",
+      "runner_line": "  ok   home-pattern-glyph"
+    },
+    {
+      "status": "ok",
+      "name": "home-overview",
+      "detail": "",
+      "runner_line": "  ok   home-overview"
+    },
+    {
+      "status": "ok",
+      "name": "sound-matrix",
+      "detail": "",
+      "runner_line": "  ok   sound-matrix"
+    },
+    {
+      "status": "ok",
+      "name": "sound-layout",
+      "detail": "",
+      "runner_line": "  ok   sound-layout"
+    },
+    {
+      "status": "ok",
+      "name": "perf-wheel-motion",
+      "detail": "",
+      "runner_line": "  ok   perf-wheel-motion"
+    },
+    {
+      "status": "ok",
+      "name": "chicago-presentation",
+      "detail": "",
+      "runner_line": "  ok   chicago-presentation"
+    },
+    {
+      "status": "ok",
+      "name": "chicago-readout",
+      "detail": "",
+      "runner_line": "  ok   chicago-readout"
+    },
+    {
+      "status": "ok",
+      "name": "ui-drum-glyph",
+      "detail": "",
+      "runner_line": "  ok   ui-drum-glyph"
+    },
+    {
+      "status": "ok",
+      "name": "ui-glyph-polish",
+      "detail": "",
+      "runner_line": "  ok   ui-glyph-polish"
+    },
+    {
+      "status": "ok",
+      "name": "ui-chicago-env-motion",
+      "detail": "",
+      "runner_line": "  ok   ui-chicago-env-motion"
+    },
+    {
+      "status": "ok",
+      "name": "matrix-knob-caption",
+      "detail": "",
+      "runner_line": "  ok   matrix-knob-caption"
+    },
+    {
+      "status": "ok",
+      "name": "preset-navigation-noop",
+      "detail": "",
+      "runner_line": "  ok   preset-navigation-noop"
+    },
+    {
+      "status": "ok",
+      "name": "ui-303-entry",
+      "detail": "",
+      "runner_line": "  ok   ui-303-entry"
+    },
+    {
+      "status": "ok",
+      "name": "roadmap-evidence-check",
+      "detail": "",
+      "runner_line": "  ok   roadmap-evidence-check"
+    },
+    {
+      "status": "ok",
+      "name": "roadmap-evidence-check-selftest",
+      "detail": "",
+      "runner_line": "  ok   roadmap-evidence-check-selftest"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-arrows",
+      "detail": "",
+      "runner_line": "  ok   scenario-arrows"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-autosave",
+      "detail": "",
+      "runner_line": "  ok   scenario-autosave"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-bleclock",
+      "detail": "",
+      "runner_line": "  ok   scenario-bleclock"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-blenotes",
+      "detail": "",
+      "runner_line": "  ok   scenario-blenotes"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-brkslice",
+      "detail": "",
+      "runner_line": "  ok   scenario-brkslice"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-brkslice_mode_toggle",
+      "detail": "",
+      "runner_line": "  ok   scenario-brkslice_mode_toggle"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-brkslice_trs_overlap",
+      "detail": "",
+      "runner_line": "  ok   scenario-brkslice_trs_overlap"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clip-arrow-menu",
+      "detail": "",
+      "runner_line": "  ok   scenario-clip-arrow-menu"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clklock",
+      "detail": "",
+      "runner_line": "  ok   scenario-clklock"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clkmove",
+      "detail": "",
+      "runner_line": "  ok   scenario-clkmove"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-clocksrc",
+      "detail": "",
+      "runner_line": "  ok   scenario-clocksrc"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-drum_bass_ch_consume",
+      "detail": "",
+      "runner_line": "  ok   scenario-drum_bass_ch_consume"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-edit_midi_rec_guard",
+      "detail": "",
+      "runner_line": "  ok   scenario-edit_midi_rec_guard"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-edit_oct_no_hidden",
+      "detail": "",
+      "runner_line": "  ok   scenario-edit_oct_no_hidden"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-extclock",
+      "detail": "",
+      "runner_line": "  ok   scenario-extclock"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-freeplay",
+      "detail": "",
+      "runner_line": "  ok   scenario-freeplay"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-getting_started",
+      "detail": "",
+      "runner_line": "  ok   scenario-getting_started"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-groove",
+      "detail": "",
+      "runner_line": "  ok   scenario-groove"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-guard",
+      "detail": "",
+      "runner_line": "  ok   scenario-guard"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-help",
+      "detail": "",
+      "runner_line": "  ok   scenario-help"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-jam",
+      "detail": "",
+      "runner_line": "  ok   scenario-jam"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-keysound",
+      "detail": "",
+      "runner_line": "  ok   scenario-keysound"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-knobs",
+      "detail": "",
+      "runner_line": "  ok   scenario-knobs"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-midiowner",
+      "detail": "",
+      "runner_line": "  ok   scenario-midiowner"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-migrate",
+      "detail": "",
+      "runner_line": "  ok   scenario-migrate"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-migrate0102",
+      "detail": "",
+      "runner_line": "  ok   scenario-migrate0102"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-patterns",
+      "detail": "",
+      "runner_line": "  ok   scenario-patterns"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-perf",
+      "detail": "",
+      "runner_line": "  ok   scenario-perf"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-perfsave",
+      "detail": "",
+      "runner_line": "  ok   scenario-perfsave"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-plock",
+      "detail": "",
+      "runner_line": "  ok   scenario-plock"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-prob",
+      "detail": "",
+      "runner_line": "  ok   scenario-prob"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-probcond",
+      "detail": "",
+      "runner_line": "  ok   scenario-probcond"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-probreset",
+      "detail": "",
+      "runner_line": "  ok   scenario-probreset"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-roll_continuation",
+      "detail": "",
+      "runner_line": "  ok   scenario-roll_continuation"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-roll_short_tie",
+      "detail": "",
+      "runner_line": "  ok   scenario-roll_short_tie"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-savefeedback",
+      "detail": "",
+      "runner_line": "  ok   scenario-savefeedback"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-savewait",
+      "detail": "",
+      "runner_line": "  ok   scenario-savewait"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-showcase",
+      "detail": "",
+      "runner_line": "  ok   scenario-showcase"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-slices",
+      "detail": "",
+      "runner_line": "  ok   scenario-slices"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-song",
+      "detail": "",
+      "runner_line": "  ok   scenario-song"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-song_live_mute_save",
+      "detail": "",
+      "runner_line": "  ok   scenario-song_live_mute_save"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-songrep",
+      "detail": "",
+      "runner_line": "  ok   scenario-songrep"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_chicago",
+      "detail": "",
+      "runner_line": "  ok   scenario-sound_matrix_chicago"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_chicago_idle",
+      "detail": "",
+      "runner_line": "  ok   scenario-sound_matrix_chicago_idle"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_drum",
+      "detail": "",
+      "runner_line": "  ok   scenario-sound_matrix_drum"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_lock",
+      "detail": "",
+      "runner_line": "  ok   scenario-sound_matrix_lock"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_matrix_miami",
+      "detail": "",
+      "runner_line": "  ok   scenario-sound_matrix_miami"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-sound_page_split",
+      "detail": "",
+      "runner_line": "  ok   scenario-sound_page_split"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-step303",
+      "detail": "",
+      "runner_line": "  ok   scenario-step303"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-steps64",
+      "detail": "",
+      "runner_line": "  ok   scenario-steps64"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-stereo",
+      "detail": "",
+      "runner_line": "  ok   scenario-stereo"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-tb3po",
+      "detail": "",
+      "runner_line": "  ok   scenario-tb3po"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-tour",
+      "detail": "",
+      "runner_line": "  ok   scenario-tour"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-trackmute",
+      "detail": "",
+      "runner_line": "  ok   scenario-trackmute"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-undo",
+      "detail": "",
+      "runner_line": "  ok   scenario-undo"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-upload",
+      "detail": "",
+      "runner_line": "  ok   scenario-upload"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-upload44",
+      "detail": "",
+      "runner_line": "  ok   scenario-upload44"
+    },
+    {
+      "status": "ok",
+      "name": "scenario-usbnotes",
+      "detail": "",
+      "runner_line": "  ok   scenario-usbnotes"
+    },
+    {
+      "status": "ok",
+      "name": "perf-scratch",
+      "detail": "",
+      "runner_line": "  ok   perf-scratch"
+    }
+  ],
+  "note": "drum909/drum808 printed not-run here (donor heads are not siblings of this worktree); both ran ok in target-gaps-donors. smk-build-package-mke is absent from the list because no MKE build was made (Elite/Pro scope)."
+}

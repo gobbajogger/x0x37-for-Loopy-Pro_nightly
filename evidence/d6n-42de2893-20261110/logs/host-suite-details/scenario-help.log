@@ -1,0 +1,16 @@
+  ok helpfits == 1
+  ok store_writes == 0
+  ok help == 0
+  ok help == 8
+  ok help == 0
+  ok store_writes == 0
+  ok store_writes == 6
+  ok help == 7
+  ok help == 0
+  ok tempo == 130
+  ok view == 8
+  ok help == 3
+  ok help == 0
+  ok hit0.0.0 == 1
+  ok help == 14
+host: 5766 ms simulated, 39 blits, render 0.2% of real time (host CPU)

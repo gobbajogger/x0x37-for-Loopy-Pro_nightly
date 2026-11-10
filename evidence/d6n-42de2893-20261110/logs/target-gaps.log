@@ -1,0 +1,5 @@
+$ X0X_TEST_JOBS=2 sh tests/run_tests.sh optimization-equivalence drum909 drum808 smk-build-package-mke
+  ok   optimization-equivalence
+  not-run drum909 (../schwung-9W9/src/dsp/er99_engine.c)
+  not-run drum808 (../schwung-8W8/src/dsp/sc808_engine.cpp)
+all tests passed
