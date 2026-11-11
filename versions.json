@@ -2,8 +2,41 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-42de2893-dev",
+  "latest": "nightly-fc65ca31-dev",
   "versions": [
+    {
+      "version": "nightly-fc65ca31-dev",
+      "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "X0X_DEV_PADCAL=0",
+      "hardware_tested": false,
+      "source_commit": "fc65ca314334651059d21e5c244212d4594bb52d",
+      "source_tree": "aa432b209ac5e0adcac627276d7ec903a1dfa9b1",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "268882188b5e694547dc56d234705c6a546dc2ca39acc5cb6e854650a71747d2",
+          "size": 651721,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/268882188b5e694547dc56d234705c6a546dc2ca39acc5cb6e854650a71747d2/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "ffa446e58c74b9f01e95ad928b548a98b50c33d5acb73e192df05b0ecd83d49d",
+          "size": 651721,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/ffa446e58c74b9f01e95ad928b548a98b50c33d5acb73e192df05b0ecd83d49d/x0x37-pro-dev.fwsc"
+        }
+      },
+      "display_version": "0.0.25",
+      "title": "DEVICE NOT TESTED — 0.0.25 (SDK V1.2.14): PANIC, sound-only reset, PLAY answers, part ON/OFF core, 1/8 and 1/4 timing core",
+      "description": "DEVICE NOT TESTED. Source lane/build-025-real-20261112 fc65ca314334651059d21e5c244212d4594bb52d (tree aa432b209ac5e0adcac627276d7ec903a1dfa9b1): recovered 0.0.25 (8984a297, superset of 0.0.24.5 8be16486) merged onto 42de2893 with the 42de command-queue accept order. Embedded firmware reports 0.0.25. JieLi SDK V1.2.14, X0X_DEV_PADCAL=0. Elite_900 and Pro_900 native builds exit 0; app 523,704 B; RAM .data+.bss 97,588 of 98,304 B; pool 335,736 of 344,064 B (8,328 B free each, 8,192 B minimum). Bundled Bluetooth controller a334208b (61,552 B, CRC32 564a8f55); package_nightly --check exit 0 for both. Host suite on firmware-identical 28456b3b: 412 ok / 0 FAIL / 0 NOT_RUN; added tests on fc65ca31: optimization-equivalence PASS (mix-LUT check removed: this tree keeps its own bit-exact LUT; ima-delta clang leg not run, gcc leg PASS), usb-retry PASS. Audio vs 0.0.24.5: 57 scenarios bit-identical; plock differs (0.0.24.5 fails its own check, 0.0.25 passes); upload/upload44 need a slot image in both. Host ABBA vs 0.0.24.5, 15 rounds with A/A: 8 workloads, 0 SLOWER (cpu ratio 0.919-0.989). Device CPU and latency not measured. Not in this build: L14 SMC paint snapshot (re-adds the withdrawn page peek; +1,888 B .bss vs 716 B RAM headroom), M12 completeness gate (#822), M6 presentation and M7/M13 UI (await owner mockups), M5 undefined. Installer backup warning, no-force policy and earlier firmware entries unchanged. Owner-operated test build, not production.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/fc65ca314334651059d21e5c244212d4594bb52d"
+    },
     {
       "version": "nightly-42de2893-dev",
       "label": "UNREVIEWED · DEVICE NOT TESTED — 42de2893",
