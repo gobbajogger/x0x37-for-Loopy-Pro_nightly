@@ -645,6 +645,54 @@
           "controller_size": 61552
         }
       }
+    },
+    {
+      "package_version": "0.0.24",
+      "catalog_id": "nightly-8be16486-dev",
+      "source_commit": "8be16486e33f65b31c76710e1d825b6aa701c2c9",
+      "source_tree": "f952ab4455723e4a1a68fdb3a8eea22d2da59710",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "d0080061064a66b9d203dd9e75956cd59ab9372c2f4fd15769fa9b06b5f2073f",
+          "size": 651570,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "9ae7214baa0dd79a3709f3845da4481b15311d40c37a8be033dce07c95475dcd",
+          "size": 651566,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552
+        }
+      }
+    },
+    {
+      "package_version": "0.0.24",
+      "catalog_id": "nightly-179ab384-dev",
+      "source_commit": "179ab3840b8db7f5c5fc80fe5dc507ecdba42bf5",
+      "source_tree": "ad99a31b04f1f2ef9f8e374b380f6c4cea9ee590",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "7187cdf57161f21aecb1cd576f27fe21d1094212be0fffe3dd491d05ecc07679",
+          "size": 651570,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "8ae1ee345d1324968e563af45b97c6a95ba8cea83a1500b372415ca41d16f18c",
+          "size": 651566,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552
+        }
+      }
     }
   ]
 }
