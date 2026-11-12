@@ -2,8 +2,41 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-1ec5d683-dev",
+  "latest": "nightly-79280e76-dev",
   "versions": [
+    {
+      "version": "nightly-79280e76-dev",
+      "label": "DEVICE NOT TESTED",
+      "status": "dev-checked",
+      "config": "X0X_DEV_PADCAL=0",
+      "hardware_tested": false,
+      "source_commit": "79280e763341d03ba43266d3e25dad66f12de860",
+      "source_tree": "ab2e16a61c81abbcb6c4a71bd83bf0b5d943c120",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "5e24e0d4afccc30906b334fbe73bcad3621df8df3c325790b7af2f94accffb1a",
+          "size": 651721,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/5e24e0d4afccc30906b334fbe73bcad3621df8df3c325790b7af2f94accffb1a/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "6f135a3d03bb1a2a4d09d63040c719313612b85590a6af69b293a928e22285bf",
+          "size": 651721,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/6f135a3d03bb1a2a4d09d63040c719313612b85590a6af69b293a928e22285bf/x0x37-pro-dev.fwsc"
+        }
+      },
+      "display_version": "0.0.25.1",
+      "title": "Elite and Pro (0.0.25.1 79280e76: pattern chain uses the longest playing part)",
+      "description": "DEVICE NOT TESTED. Source lane/025-zero-dropout 79280e763341d03ba43266d3e25dad66f12de860 (tree ab2e16a61c81abbcb6c4a71bd83bf0b5d943c120): a chain slot lasts for the longest playing part in the current pattern (909, 808, both 303s and BREAK), counting length and rate, rounded up to a whole 909 bar. Muted, part-off and empty parts do not extend the slot. Chaining stays live-only and is not saved. Firmware reports 0.0.25, GIT 79280e76. JieLi SDK V1.2.14, X0X_DEV_PADCAL=0. Elite_900 and Pro_900; app 547,880 B; RAM .data+.bss 95,556 of 98,304 B (2,748 B free); pool 335,744 of 344,064 B (8,320 B free, 8,192 B minimum). Bundled Bluetooth controller a334208b (61,552 B, CRC32 564a8f55); package_nightly --check exit 0 for both. Official emu360 gate (fm1-live, 360 MHz, 0 late during the test, worst under 11,609 µs): Elite 11,548 µs PASS, Pro 11,564 µs PASS. These are 52 µs and 76 µs above the 1ec5d683 figures (11,496 / 11,488); that sits inside the same-day passing run-to-run range (about 11,484–11,578 µs). Host suite: 415 ok, 0 FAIL, 1 skip (Pro package tests need a build.sh tree), 0 not-run; chain-longest-playing PASS. The previous 0.0.25 package (nightly-1ec5d683-dev) and 0.0.24.5 stay listed. Owner-operated test build, not production.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/commit/79280e763341d03ba43266d3e25dad66f12de860"
+    },
     {
       "version": "nightly-1ec5d683-dev",
       "label": "DEV / HARDWARE TEST — DEVICE NOT TESTED",
