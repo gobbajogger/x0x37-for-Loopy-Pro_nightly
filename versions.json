@@ -24,7 +24,7 @@
           "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
           "controller_strategy": "bundled",
           "controller_size": 61552,
-          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/95b3195f4767ef5df33b365197b01203873e5eec3d7fa497c73e5e509484a4a6/x0x37-elite-dev.fwsc"
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/95b3195f4767ef5df33b365197b01203873e5eec3d7fa497c73e5e509484a4a6/DnBOX-0.0.26-SMK37-Elite-94197fc8-hwtest.fwsc"
         },
         "pro": {
           "product": "SMK-37 Pro_900",
@@ -33,7 +33,7 @@
           "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
           "controller_strategy": "bundled",
           "controller_size": 61552,
-          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/ce67d560eebd03cb8b9087f7723b1e0b71fb7cca256184cdfdd55a8c27c708b8/x0x37-pro-dev.fwsc"
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/ce67d560eebd03cb8b9087f7723b1e0b71fb7cca256184cdfdd55a8c27c708b8/DnBOX-0.0.26-SMK37-Pro-94197fc8-hwtest.fwsc"
         }
       }
     },
