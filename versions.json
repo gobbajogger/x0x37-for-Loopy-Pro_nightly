@@ -2,8 +2,41 @@
   "schema": 1,
   "repo": "https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly",
   "pages": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/",
-  "latest": "nightly-79280e76-dev",
+  "latest": "nightly-94197fc8-dev",
   "versions": [
+    {
+      "version": "nightly-94197fc8-dev",
+      "display_version": "0.0.26",
+      "label": "HARDWARE TEST — BOOT/RESTART NOT YET VERIFIED",
+      "status": "dev-checked",
+      "config": "X0X_DEV_PADCAL=0",
+      "hardware_tested": false,
+      "source_commit": "94197fc839b00aff47b98ca02f3c6396e4a6eabf",
+      "source_tree": "72d28fbc741244d18fa3d18495da16ab0fcb1d24",
+      "title": "DnBOX 0.0.26 — corrected boot-guard hardware test (94197fc8)",
+      "description": "Owner-test candidate, not hardware-proven or production. Replaces the withdrawn 600b build; includes the reviewed retained-RAM boot-guard correction, SMK-37 identity, sample-integrity fixes and host fixture repair. Physical startup/restart and recovery still require owner testing. Keep a backup and the known-good 0.0.25.1 package. Exact-head Elite/Pro native builds PASS: app544232/544224B, free flash8440/8448B, pool8340B each. SDKV1.2.14/PADCAL0; bundledBTa334208b61552B CRC32564a8f55; package checks PASS. Full-suite raw434PASS/6FAIL/2NOT_RUN retained; subsequent focused checks close the four fixture failures, Lua,808/909 reference gaps and hiddenTB3PO gap; browser-only test N/A, not passed. Owner strict emu360 on unchanged d408 production inputs: Elite11406us/Pro11410us, zero late,648halves,3repeats. Not a measurement of these newly rebuilt image hashes. Boot-guard native checks and90seeded cases/model PASS, not hardware proof.",
+      "evidence_url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/869",
+      "models": {
+        "elite": {
+          "product": "SMK-37 Elite_900",
+          "sha256": "95b3195f4767ef5df33b365197b01203873e5eec3d7fa497c73e5e509484a4a6",
+          "size": 651732,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/95b3195f4767ef5df33b365197b01203873e5eec3d7fa497c73e5e509484a4a6/x0x37-elite-dev.fwsc"
+        },
+        "pro": {
+          "product": "SMK-37 Pro_900",
+          "sha256": "ce67d560eebd03cb8b9087f7723b1e0b71fb7cca256184cdfdd55a8c27c708b8",
+          "size": 651730,
+          "controller_sha256": "a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984",
+          "controller_strategy": "bundled",
+          "controller_size": 61552,
+          "pkg": "https://gobbajogger.github.io/x0x37-for-Loopy-Pro_nightly/artifacts/nightly-dev/ce67d560eebd03cb8b9087f7723b1e0b71fb7cca256184cdfdd55a8c27c708b8/x0x37-pro-dev.fwsc"
+        }
+      }
+    },
     {
       "version": "nightly-79280e76-dev",
       "label": "DEVICE NOT TESTED",
