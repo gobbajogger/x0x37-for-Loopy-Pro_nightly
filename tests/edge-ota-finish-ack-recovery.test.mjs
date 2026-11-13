@@ -25,7 +25,7 @@ function syntheticLink(packets, sendResult = () => true) {
 }
 
 function updaterFor(link, loader = true) {
-  const name = 'FM-1';
+  const name = 'SMK-37 Elite';
   const input = { name, state: 'connected' };
   const output = { name, state: 'connected' }, listeners = new Set();
   link.input = input; link.output = output;
@@ -34,7 +34,7 @@ function updaterFor(link, loader = true) {
     removeEventListener(type, fn) { listeners.delete(fn); } });
   // Discovery is synthetic; bind, serve, write, install and resume stay production code.
   updater.find = async () => ({ name, link,
-    id: { text: loader ? 'ota-FM-1_1' : 'FM-1_1', model: loader ? 'ota-FM-1' : 'FM-1', version: 1 } });
+    id: { text: loader ? 'ota-SMK-37 Elite_1' : 'SMK-37 Elite_1', model: loader ? 'ota-SMK-37 Elite' : 'SMK-37 Elite', version: 1 } });
   return updater;
 }
 
@@ -86,7 +86,7 @@ test('a latched receive error is propagated, not converted into successful compl
 test('resume returns false and closes the link when the loader finish ACK fails', async () => {
   const link = syntheticLink([request(0, 8), request(0xf0000000)], n => n !== 3);
   const steps = [];
-  const result = await updaterFor(link).resume(new Uint8Array(32), (...args) => steps.push(args), 'FM-1_2');
+  const result = await updaterFor(link).resume(new Uint8Array(32), (...args) => steps.push(args), 'SMK-37 Elite_2');
   assert.equal(result, false);
   assert.equal(link.closed, 1);
   assert.deepEqual(steps, [['write', 1]]);
@@ -96,7 +96,7 @@ test('resume returns false and closes the link when the loader finish ACK fails'
 test('a fresh resume still succeeds after a previous failed finish ACK', async () => {
   const failed = syntheticLink([request(0, 8), request(0xf0000000)], n => n !== 3);
   const failedUpdater = updaterFor(failed);
-  assert.equal(await failedUpdater.resume(new Uint8Array(32), null, 'FM-1_2'), false);
+  assert.equal(await failedUpdater.resume(new Uint8Array(32), null, 'SMK-37 Elite_2'), false);
   assert.equal(failed.closed, 1);
   failedUpdater.close();
   const retry = syntheticLink([request(0, 8), request(0xf0000000)]);
@@ -104,15 +104,15 @@ test('a fresh resume still succeeds after a previous failed finish ACK', async (
   const back = syntheticLink([]);
   back.input = retry.input; back.output = retry.output;
   updater.waitFor = async filter => {
-    const id = { text: 'FM-1_2', model: 'FM-1', version: 2 };
+    const id = { text: 'SMK-37 Elite_2', model: 'SMK-37 Elite', version: 2 };
     assert.equal(filter(id), true);
-    return { name: 'FM-1', id, link: back };
+    return { name: 'SMK-37 Elite', id, link: back };
   };
   const steps = [];
-  assert.equal(await updater.resume(new Uint8Array(32), (...args) => steps.push(args), 'FM-1_2'), true);
+  assert.equal(await updater.resume(new Uint8Array(32), (...args) => steps.push(args), 'SMK-37 Elite_2'), true);
   assert.equal(retry.closed, 1);
   assert.equal(back.closed, 1);assert.equal(updater.verified, true);
-  assert.deepEqual(steps, [['write', 1], ['reboot'], ['done', 'FM-1_2']]);
+  assert.deepEqual(steps, [['write', 1], ['reboot'], ['done', 'SMK-37 Elite_2']]);
   assert.equal(retry.sent.length, 3);
 });
 
@@ -121,8 +121,8 @@ test('install aborts before loader discovery when first-stage finish ACK fails',
   const updater = updaterFor(link, false);
   updater.waitFor = async () => { assert.fail('failed first-stage ACK must not enter loader discovery'); };
   const steps = [];
-  await assert.rejects(updater.install(new Uint8Array(32), 'FM-1_2', (...args) => steps.push(args)), { code: 'lost' });
+  await assert.rejects(updater.install(new Uint8Array(32), 'SMK-37 Elite_2', (...args) => steps.push(args)), { code: 'lost' });
   assert.equal(link.closed, 1);
   assert.equal(updater.verified, false);
-  assert.deepEqual(steps, [['start', 'FM-1_1'], ['verify', 1]]);
+  assert.deepEqual(steps, [['start', 'SMK-37 Elite_1'], ['verify', 1]]);
 });

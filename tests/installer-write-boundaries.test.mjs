@@ -48,7 +48,11 @@ async function installCase(product, appModel, loaderModel, accept) {
     else { assert.equal(finish,0xE0000000); verifyServe++; }
     return { finished: true, served: 1 };
   };
-  if (accept) {
+  if (product.startsWith('FM-1')) {
+    // Strict model match (#806): an FM-1 package is refused before any write.
+    await assert.rejects(up.install(image,product), error=>error.code==='model');
+    assert.equal(loader.state.sends.length,0); assert.equal(loaderServe,0);
+  } else if (accept) {
     assert.equal(await up.install(image, product), product);
     assert.equal(loader.state.sends.length,1); assert.equal(loaderServe,1);
     assert.deepEqual(loader.state.sends[0],[0xF0,0x22,0x24,0x35,0x7F,0xF7]);
@@ -58,6 +62,7 @@ async function installCase(product, appModel, loaderModel, accept) {
     assert.equal(loaderServe,0,'wrong-family loader receives no image reads');
     assert.equal(loader.state.closed,1);
   }
+  if (product.startsWith('FM-1')) { assert.equal(verifyServe,0,'FM-1 package: no staging read either'); return; }
   assert.equal(verifyServe,1,'initial running-firmware staging remains actual install behavior');
 }
 await check('install rejects ota-FM-1 before loader write for Elite package',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-FM-1',false));
@@ -66,7 +71,7 @@ await check('install rejects Pro loader for Elite package',()=>installCase('SMK-
 await check('install rejects Elite loader for Pro package',()=>installCase('SMK-37 Pro_900','SMK-37 Pro','ota-SMK-37 Elite',false));
 await check('install preserves matching Elite loader positive',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-SMK-37 Elite',true));
 await check('install preserves matching Pro loader positive',()=>installCase('SMK-37 Pro_900','SMK-37 Pro','ota-SMK-37 Pro',true));
-await check('install preserves FM-1 loader positive',()=>installCase('FM-1_900','FM-1','ota-FM-1',true));
+await check('install refuses FM-1 package even with an FM-1 loader',()=>installCase('FM-1_900','FM-1','ota-FM-1',false));
 for (const [name, product, model, accept] of [
   ['write cross-family refusal','SMK-37 Elite_900','ota-FM-1',false],
   ['write requires a known package identity','','ota-SMK-37 Elite',false],
@@ -107,7 +112,7 @@ function slotDevice(text, mode) {
   };
   return {name:model,id:{text,model,version:Number(text.split('_')[1])},link,state};
 }
-for(const [name,text,mode,code] of [
+for(const [name,text,mode,code,pkg] of [
   ['X0X no slot response blocks install','SMK-37 Pro_900','no-reply','slotbackup'],
   ['USB send failure blocks install','SMK-37 Pro_900','usb-loss','slotbackup'],
   ['USB read failure blocks install','SMK-37 Pro_900','read-error','slotbackup'],
@@ -119,13 +124,14 @@ for(const [name,text,mode,code] of [
   ['stock Elite016 no SMP_INFO retains supported path','SMK-37 Elite_016','no-reply',null],
   ['stock MKE016 no SMP_INFO retains supported path','MKE-P37_016','no-reply',null],
   ['stock Starry016 no SMP_INFO retains supported path','STARRYKEY-37 Play_016','no-reply',null],
-  ['stock FM1_015 no SMP_INFO retains supported path','FM-1_015','no-reply',null],
+  ['stock FM1_015 is refused (FM-1 never flashed)','FM-1_015','no-reply','model'],
+  ['stock Starry016 refuses Pro package (no alias)','STARRYKEY-37 Play_016','no-reply','model','SMK-37 Pro_900'],
   ['required slot backup failure blocks install','SMK-37 Pro_900','backup-error','slotbackup'],
   ['known stock Pro016 no SMP_INFO retains existing manual path','SMK-37 Pro_016','no-reply',null],
   ['valid empty slot layout retains install','SMK-37 Pro_900','empty',null],
 ]) await check(name,async()=>{
   const dev=slotDevice(text,mode);let installs=0;
-  const product=(text.startsWith('STARRYKEY-37')?'SMK-37 Pro':text.split('_')[0])+'_900';
+  const product=pkg||text.split('_')[0]+'_900';
   const up=new Updater(accessFor(dev),()=>{});
   up.find=async filter=>{assert.ok(filter(dev.id));return dev;};
   up.install=async()=>{installs++;return product;};
@@ -143,11 +149,11 @@ for (const [product, model] of [['SMK-37 Elite_900','ota-FM-1'],['SMK-37 Elite_9
   await assert.rejects(up.resume(image,()=>{},product),e=>e.code==='model');
   assert.equal(loader.state.sends.length,0);assert.equal(served,0);assert.equal(loader.state.closed,1);
  });
-await check('sameKeyboard preserves exact models and only the verified Starrykey-to-Pro alias',()=>{
+await check('sameKeyboard is a strict exact model match (#806): no Starrykey alias, FM-1 refused',()=>{
  for(const name of ['SMK-37 Pro','SMK-37 Elite','MKE-P37','STARRYKEY-37 Play','SMK-37+VA'])
   {assert.equal(sameKeyboard(name,name),true);assert.equal(sameKeyboard(name,'SMK-37 Elite'),name==='SMK-37 Elite');assert.equal(sameKeyboard(name,'FM-1'),false);}
- assert.equal(sameKeyboard('STARRYKEY-37 Play','SMK-37 Pro'),true);
- assert.equal(sameKeyboard('FM-1','FM-1'),true);
+ assert.equal(sameKeyboard('STARRYKEY-37 Play','SMK-37 Pro'),false);
+ assert.equal(sameKeyboard('FM-1','FM-1'),false);
 });
 function midiPort(name,text) {
  const state={sent:[],opens:0,text};

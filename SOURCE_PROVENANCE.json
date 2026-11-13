@@ -6,7 +6,7 @@
     "web/x0x_installer.html": "c88b9f9062a43325425e53b4e970c988d6e0a501",
     "web/x0x_breaks.html": "71d44ae5568bae2f1ee9f7c7059d2819ee0fe9c3",
     "web/fm1pkg.js": "d20fa623d6052f665c4f819aac6e156a57deaf8f",
-    "web/fm1ota.js": "192344e4ceb0bd7423ebcd6c8e7ce3e6cc465db1",
+    "web/fm1ota.js": "034b7ab3d6a03a99a34bec2d9399c19e6eb0835e",
     "web/x0x_breaks.js": "ee9ab4d92c909e8ef05b4e15b9ae8c55fafb790d",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "f10d6fdace6c2bbf99d7918111a85664e52826c8",
@@ -692,6 +692,27 @@
       },
       "evidence": "docs/repair-evidence/retained-map-compatibility-20261029/package-review.json",
       "description": "Retain exactly the two CRC-protected slot-map geometries verified across all 18 immutable catalog packages. Accept current two-slot and retained legacy three-slot only, with exact ordered offsets/sizes and complete table/CRC bounds. Preserve controller CRC/model/hash checks, current VM spare exclusion and historical owner-supplied controller path."
+    },
+    {
+      "paths": [
+        "web/fm1ota.js",
+        "tests/edge-strict-model-match.test.mjs",
+        "tests/installer-write-boundaries.test.mjs",
+        "tests/edge-ota-finish-ack-recovery.test.mjs",
+        "tests/edge-ota-session-continuity.test.mjs"
+      ],
+      "sourceRepository": "gobbajogger/x0x37-for-Loopy-Pro_nightly",
+      "sourceBaseCommit": "a8205aff483dce09414093defdc19cf79d57b719",
+      "sourceBaseTree": "75ac6de0061d62c5f93e66c02bf13938f8dc0c56",
+      "resultBlobs": {
+        "web/fm1ota.js": "034b7ab3d6a03a99a34bec2d9399c19e6eb0835e",
+        "tests/edge-strict-model-match.test.mjs": "c8202d0d7a44929b2133f43da961179e3e120fb3",
+        "tests/installer-write-boundaries.test.mjs": "46bb28e54d5e96f7959582efcf680f20e8cd55b0",
+        "tests/edge-ota-finish-ack-recovery.test.mjs": "e5e1de8f6daf45c9e5996f569fc91feb4b322cbb",
+        "tests/edge-ota-session-continuity.test.mjs": "2a08a9c229af00cedda7c2ed8b0086a2a63bf5ec"
+      },
+      "regression": "tests/edge-strict-model-match.test.mjs",
+      "description": "Port X0X37-for-Loopy-Pro #806 (62cf11e98) strict model match: a package is written only when its model equals the model the keyboard reports (case-insensitive, ota- ignored). The Starrykey-to-Pro alias is removed and FM-1 is always refused. Web MIDI discovery, port pairing and the in-page confirmation are unchanged."
     }
   ]
 }

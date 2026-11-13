@@ -851,12 +851,13 @@ const MAXDATA = 512;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const IS_OTA = (id) => /^ota-/i.test(id.model);
 const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro|snoop|vector|vox|ota|composite|sinco|usb-midi/i;
-// Package models are distinct even when boards share a family. The verified
-// Starrykey stock identity names the Pro model; it is not an Elite alias.
+// Strict model match (X0X37-for-Loopy-Pro #806 62cf11e98): a package is written only
+// when its model equals the model the keyboard reports (case-insensitive, "ota-"
+// ignored). No family or alias match, and an FM-1 is never flashed.
 function keyboardModel(model) {
   if (typeof model !== "string" || !model) return null;
   const name = model.replace(/^ota-/i, "").toLowerCase();
-  return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
+  return name === "fm-1" ? null : name;
 }
 const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
 

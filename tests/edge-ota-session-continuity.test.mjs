@@ -156,9 +156,10 @@ test('a returned wrong version is not verified completion', async () => {
   assert.equal(s.up.verified, false);
 });
 
-test('verified Starry alias stays Pro, while Elite and other model names stay distinct', () => {
-  assert.equal(sameKeyboard('STARRYKEY-37 Play', 'SMK-37 Pro'), true);
-  assert.equal(sameKeyboard('ota-STARRYKEY-37 Play', 'SMK-37 Pro'), true);
+test('strict model match (#806): no Starry-to-Pro alias, Elite and other model names stay distinct', () => {
+  assert.equal(sameKeyboard('STARRYKEY-37 Play', 'SMK-37 Pro'), false);
+  assert.equal(sameKeyboard('ota-STARRYKEY-37 Play', 'SMK-37 Pro'), false);
+  assert.equal(sameKeyboard('ota-STARRYKEY-37 Play', 'STARRYKEY-37 Play'), true);
   assert.equal(sameKeyboard('STARRYKEY-37 Play', 'SMK-37 Elite'), false);
   assert.equal(sameKeyboard('SMK-37 Pro', 'SMK-37 Elite'), false);
   assert.equal(sameKeyboard('MKE-P37', 'MKE-P37'), true);
