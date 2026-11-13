@@ -86,3 +86,19 @@ test('corrected 0.0.26 candidate has a bound numeric identity without hardware p
  }
  assert.equal(v.hardware_tested,false);
 });
+
+test('real historical catalog revisions survive regeneration without losing firmware identity', () => {
+ const fixture=JSON.parse(readFileSync(new URL('./fixtures/published-revision-labels-80c50ea9.json',import.meta.url),'utf8'));
+ for(const v of fixture.versions) {
+   const fw=v.version==='nightly-79280e76-dev'?'0.0.25':'0.0.24';
+   const expected='DnBOX '+v.display_version+' (firmware '+fw+')';
+   assert.equal(ctx.label(v),expected);
+   for(const p of Object.values(v.models))assert.equal(ctx.label(v,p),expected);
+   for(const mutate of [x=>x.source_commit='0'.repeat(40),x=>x.models.pro.sha256='0'.repeat(64),x=>x.models.elite.size++]) {
+     const bad=structuredClone(v);mutate(bad);assert.match(ctx.label(bad),/^verunverified/);
+   }
+   for(const revision of ['0.0.99.1',fw+'.0',fw+'.01',fw+'.1junk']) {
+     const bad=structuredClone(v);bad.display_version=revision;assert.equal(ctx.label(bad),'DnBOX '+fw);
+   }
+ }
+});

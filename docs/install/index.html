@@ -2787,7 +2787,13 @@ function buildDisplayLabel(v, selectedPackage) {
   const title = typeof v.title === "string" ? v.title.trim().replace(/^DEV \/ HARDWARE TEST — /, "") : "";
   if (!valid) return t("verunverified") + " · " + v.version;
   const assigned = assignedPackageVersion(v, selectedPackage);
-  if (assigned) return assigned.valid ? "DnBOX " + assigned.version : t("verunverified") + " · " + v.version;
+  if (assigned) {
+    if (!assigned.valid) return t("verunverified") + " · " + v.version;
+    const catalogRevision = typeof v.display_version === "string" &&
+      /^[0-9]+\.[0-9]+\.[0-9]+\.[1-9][0-9]*$/.test(v.display_version) &&
+      v.display_version.startsWith(assigned.version + ".");
+    return "DnBOX " + (catalogRevision ? v.display_version + " (firmware " + assigned.version + ")" : assigned.version);
+  }
   const values = [...new Set(identities.map(i => i.version))];
   if (values.length !== 1) return t("vermixed") + " · " + (title || v.version);
   const version = values[0];
