@@ -2787,7 +2787,7 @@ function buildDisplayLabel(v, selectedPackage) {
   const title = typeof v.title === "string" ? v.title.trim().replace(/^DEV \/ HARDWARE TEST — /, "") : "";
   if (!valid) return t("verunverified") + " · " + v.version;
   const assigned = assignedPackageVersion(v, selectedPackage);
-  if (assigned) return assigned.valid ? "DN Box " + assigned.version : t("verunverified") + " · " + v.version;
+  if (assigned) return assigned.valid ? "DnBOX " + assigned.version : t("verunverified") + " · " + v.version;
   const values = [...new Set(identities.map(i => i.version))];
   if (values.length !== 1) return t("vermixed") + " · " + (title || v.version);
   const version = values[0];
