@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>X0X break loops</title>
+<title>DnBOX break loops</title>
 <style>
   :root { --bg: #fff; --fg: #000; --dim: #777; --rule: #ddd; --wave: #999; --accent: #c8700a; color-scheme: light; }
   @media (prefers-color-scheme: dark) {
@@ -92,9 +92,9 @@
 </head>
 <body>
 <main>
-  <a class="home" href="../">X0X</a>
+  <a class="home" href="../">DnBOX</a>
   <h1>Import samples</h1>
-  <p>Connect your keyboard by USB with X0X running. Use Chrome or Edge to add or replace loops.</p>
+  <p>Connect your keyboard by USB with DnBOX running. Use Chrome or Edge to add or replace loops.</p>
 
   <div class="bar">
     <button id="connect">Connect</button>
@@ -158,8 +158,8 @@
     about 86 KB; tick "22 kHz" to fit twice as many at a lower quality. Loops follow the tempo by playing faster or slower, so their pitch
     follows it too; the break's PITCH knob shifts it. Removing a loop renumbers the ones after it, so patterns
     that used them play the next loop instead.
-    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#8-break" style="color:inherit">The manual's BREAK section</a> says how X0X plays a loop.</p></details>
-  <p class="small">X0X is GPL-3.0, built on Felucca by Hügelton Instruments; the break generator is BB Gen's.
+    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#8-break" style="color:inherit">The manual's BREAK section</a> says how DnBOX plays a loop.</p></details>
+  <p class="small">DnBOX builds on X0X and Felucca by Hügelton Instruments (GPL-3.0); the break generator is BB Gen's.
     <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro" style="color:inherit">github.com/gobbajogger/X0X37-for-Loopy-Pro</a></p>
 </main>
 <script type="module">
@@ -436,7 +436,7 @@ class Link {
         writeAddress: cmd === 12 ? args.slice(0, 4) : null };
       entry.timer = setTimeout(() => {
         if (this.wait === entry) this.wait = null;
-        reject(new Error("The FM-1 stopped answering."));
+        reject(new Error("The SMK-37 stopped answering."));
       }, ms);
       this.wait = entry;
       try {
@@ -463,7 +463,7 @@ async function connect() {
   };
   const outs = [...midi.outputs.values()];
   for (const input of midi.inputs.values()) {
-    if (input.state === "disconnected" || !/x0x|felucca/i.test(input.name || "")) continue;
+    if (input.state === "disconnected" || !(/x0x|felucca/i.test(input.name || "") || /\bDnBOX\b.*\b(?:SMK-37 (?:Elite|Pro)|37(?:ELITE|PRO))\b/i.test(input.name || ""))) continue;
     const output = outs.find((o) => o.name === input.name);
     if (!output) continue;
     await input.open();
@@ -471,7 +471,7 @@ async function connect() {
     const l = new Link(input, output);
     try { await l.retry(1, [], 1000); return l; } catch (_) { /* not answering: the next */ }
   }
-  throw new Error("No FM-1 running X0X found. Connect it by USB, and close other apps that use its MIDI port.");
+  throw new Error("No SMK-37 running DnBOX found. Connect it by USB, and close other apps that use its MIDI port.");
 }
 
 function unpack7(a) {
@@ -520,7 +520,7 @@ async function readSlots() {
     }
   } catch (_) {
     bar.hidden = true;
-    throw new Error("This X0X can't send its loops back to the page. Update X0X, then connect again.");
+    throw new Error("This firmware can't send its loops back to the page. Update DnBOX, then connect again.");
   }
   bar.hidden = true;
   return { lay: l, dev: d };
@@ -545,20 +545,20 @@ async function readAll() {
 async function writeImage(k, img, onPart) {
   if (!img) {
     const r = await link.req(14, [k], 30000);
-    if (r[1]) throw new Error("The FM-1 couldn't clear its memory.");
+    if (r[1]) throw new Error("The SMK-37 couldn't clear its memory.");
     return;
   }
   const b = await link.req(11, [k], 10000);
-  if (b[1]) throw new Error("The FM-1 couldn't erase its memory.");
+  if (b[1]) throw new Error("The SMK-37 couldn't erase its memory.");
   const data = img.subarray(SLOT_DATA_OFF);
   for (let off = 0; off < data.length; off += 256) {
     const adr = SLOT_DATA_OFF + off;
     const r = await link.retry(12, [k, adr & 0x7F, (adr >> 7) & 0x7F, (adr >> 14) & 0x7F, ...pack78(data.subarray(off, off + 256))], 3000);
-    if (r[4]) throw new Error("Writing to the FM-1 failed.");
+    if (r[4]) throw new Error("Writing to the SMK-37 failed.");
     if (onPart) onPart(Math.min(256, data.length - off));
   }
   const e = await link.req(13, [k, ...pack78(img.subarray(0, SLOT_HDR_LEN))], 5000);
-  if (e[1]) throw new Error("The FM-1 didn't accept the loops.");
+  if (e[1]) throw new Error("The SMK-37 didn't accept the loops.");
 }
 
 function sampleLayoutKey(layout) {
@@ -639,7 +639,7 @@ $("send").onclick = () => run(async () => {
   say("Reading back…");
   requireFreshSampleSnapshot(expected, await readSlots());
   await readAll();
-  say("Done. On the FM-1: BREAK, then EDIT, then LOOP A or LOOP B.");
+  say("Done. On the SMK-37: BREAK, then EDIT, then LOOP A or LOOP B.");
 });
 
 $("backup").onclick = () => run(async () => {
@@ -650,7 +650,7 @@ $("backup").onclick = () => run(async () => {
   const file = makeArchive(r.lay, r.dev.map((d) => (d ? d.image : null)), stamp);
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
-  a.download = `x0x-slots-${stamp.replace(/[-:]/g, "").replace("T", "-")}.x0xslots`;
+  a.download = `DnBOX-slots-${stamp.replace(/[-:]/g, "").replace("T", "-")}.x0xslots`;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 10000);
   say(`Saved ${a.download} (${KB(file.length)}).`);
