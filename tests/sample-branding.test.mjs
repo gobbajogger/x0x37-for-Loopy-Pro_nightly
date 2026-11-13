@@ -20,10 +20,10 @@ test('actual connect discovers DnBOX SMK models and retains legacy aliases',asyn
   const connect=runInNewContext(connectSource+';connect',context);
   try{await connect();return {ok:true,requests,opens};}catch{return {ok:false,requests,opens};}
  }
- for(const name of ['DnBOX 0.0.26 SMK-37 Elite','DnBOX 0.0.26 SMK-37 Pro','X0X 0.0.25.1','Felucca']){
+ for(const name of ['DnBOX 0.0.26 SMK-37 Elite','DnBOX 0.0.26 SMK-37 Pro','DnBOX 0.0.25 37ELITE','DnBOX 0.0.25 37PRO','X0X 0.0.25.1','Felucca']){
   assert.deepEqual(await probe(name),{ok:true,requests:1,opens:2},name);
  }
- for(const name of ['DnBOX FM-1','DnBOX','DnBOX SMK-37 Unknown','Other MIDI','']){
+ for(const name of ['DnBOX FM-1','DnBOX','DnBOX SMK-37 Unknown','DnBOX 0.0.25 37PROTOTYPE','DnBOX 0.0.25 37ELITES','Other MIDI','']){
   assert.deepEqual(await probe(name),{ok:false,requests:0,opens:0},name);
  }
  assert.equal((await probe('DnBOX 0.0.26 SMK-37 Elite',{state:'disconnected'})).ok,false);

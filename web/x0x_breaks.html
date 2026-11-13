@@ -463,7 +463,7 @@ async function connect() {
   };
   const outs = [...midi.outputs.values()];
   for (const input of midi.inputs.values()) {
-    if (input.state === "disconnected" || !(/x0x|felucca/i.test(input.name || "") || /\bDnBOX\b.*\bSMK-37 (?:Elite|Pro)\b/i.test(input.name || ""))) continue;
+    if (input.state === "disconnected" || !(/x0x|felucca/i.test(input.name || "") || /\bDnBOX\b.*\b(?:SMK-37 (?:Elite|Pro)|37(?:ELITE|PRO))\b/i.test(input.name || ""))) continue;
     const output = outs.find((o) => o.name === input.name);
     if (!output) continue;
     await input.open();
