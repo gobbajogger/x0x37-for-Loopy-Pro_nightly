@@ -8,7 +8,8 @@ import { controllerOf, insertCtl, logicalImage, CTL_NO_BLOCK } from '../web/fm1p
 import { makePackage, makeController } from './fixtures/bundled-synthetic.mjs';
 const current = [[0xc2000, 0x14000], [0xd6000, 0x1e000]];
 const legacy = [...current, [0xb0000, 0xb000]];
-for (const [label, slotMap] of [['current two-slot', current], ['retained legacy three-slot', legacy]])
+const currentThree = [...current, [0xb3000, 0x8000]];
+for (const [label, slotMap] of [['current two-slot', current], ['retained legacy three-slot', legacy], ['current three-slot at 0xB3000', currentThree]])
 for (const model of ['elite', 'pro']) test(label + ' full package admits bundled controller: ' + model, () => {
   const image = logicalImage(makePackage(model, { slotMap }));
   assert.deepEqual(Buffer.from(controllerOf(image)), makeController());
@@ -21,6 +22,9 @@ const invalid = [
   ['third slot offset +1', [...current, [0xb0001, 0xb000]]],
   ['third slot size +1', [...current, [0xb0000, 0xb001]]],
   ['third slot zero size', [...current, [0xb0000, 0]]],
+  ['current third slot offset +1', [...current, [0xb3001, 0x8000]]],
+  ['current third slot size +1', [...current, [0xb3000, 0x8001]]],
+  ['current third slot zero size', [...current, [0xb3000, 0]]],
   ['third slot overlaps first', [...current, [0xc2000, 0xb000]]],
   ['first VM-spare offset', [[0xb0000, 0x14000], current[1]]],
   ['first zero size', [[0xc2000, 0], current[1]]],
@@ -36,7 +40,7 @@ const invalid = [
 for (const [name, slotMap] of invalid) test('CRC-valid malformed map is rejected: ' + name, () => {
   assert.throws(() => controllerOf(logicalImage(makePackage('pro', { slotMap }))), /slot map/);
 });
-for (const [label, slotMap] of [['two-slot', current], ['three-slot', legacy]]) {
+for (const [label, slotMap] of [['two-slot', current], ['three-slot', legacy], ['current three-slot', currentThree]]) {
   test('relocated correct ' + label + ' decoy cannot satisfy fixed-address admission', () => {
     assert.throws(() => controllerOf(logicalImage(makePackage('pro', { slotMap, slotMapOffset: 0x9cf80 }))), /slot map/);
   });

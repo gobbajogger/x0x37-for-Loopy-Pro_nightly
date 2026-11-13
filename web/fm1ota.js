@@ -17,6 +17,7 @@ const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro
 function keyboardModel(model) {
   if (typeof model !== "string" || !model) return null;
   const name = model.replace(/^ota-/i, "").toLowerCase();
+  if (name === "fm-1") return null; // SMK installer: never admit the other board.
   return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
 }
 export const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
@@ -139,14 +140,15 @@ class Link {
   }
 }
 
-async function handshake(link, tries = 3) {
+async function handshake(link, tries = 3, onPacket = null, deadline = Infinity) {
   link.drain();
-  for (let t = 0; t < tries; t++) {
+  for (let t = 0; t < tries && Date.now() < deadline; t++) {
     if (!link.send(HS_QUERY)) return null;
-    const end = Date.now() + 1000;
+    const end = Math.min(Date.now() + 1000, deadline);
     while (Date.now() < end) {
       const p = await link.read(end - Date.now());
       if (!p) break;
+      if (onPacket && onPacket(p)) continue;
       const id = parseIdentity(p);
       if (id) return id;
     }
@@ -154,19 +156,27 @@ async function handshake(link, tries = 3) {
   return null;
 }
 
-async function openMidiPort(port) {
-  // Reuse the Projects workspace's initial-opening boundary: consume the
-  // closed -> open event before a new session installs its lifecycle guard.
-  // Later events remain observable by every existing bound updater.
-  if (port.connection !== "closed") { await port.open(); return; }
+async function openMidiPort(port, deadline = Infinity) {
+  // Bound the entire opening operation, not just its statechange event.
+  // Some Web MIDI hosts emit statechange but never settle open().
+  const ms = Math.min(3000, deadline - Date.now());
+  if (ms <= 0) throw fail("open", "The MIDI port did not finish opening. Reconnect and try again.");
   let changed, timer;
-  const transition = new Promise((resolve, reject) => {
+  const transition = port.connection === "closed" ? new Promise(resolve => {
     changed = () => resolve();
-    timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), 3000);
     port.addEventListener("statechange", changed, { once: true });
-  });
-  try { await Promise.all([port.open(), transition]); }
-  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+  }) : Promise.resolve();
+  try {
+    await Promise.race([
+      Promise.all([port.open(), transition]),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), ms);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+    if (changed) port.removeEventListener("statechange", changed);
+  }
 }
 
 export class Updater {
@@ -180,6 +190,7 @@ export class Updater {
     this.binding = null;
     this.onPortState = null;
     this.admitted = null;
+    this.finishRetry = null;
   }
 
   ports() {
@@ -238,6 +249,7 @@ export class Updater {
     if (this.onPortState && typeof this.access.removeEventListener === "function")
       this.access.removeEventListener("statechange", this.onPortState);
     this.onPortState = null;
+    this.finishRetry = null;
     if (this.binding) this.binding.invalid = true;
   }
 
@@ -263,16 +275,21 @@ export class Updater {
   }
 
   // every in/out pair with the same port name that answers the handshake
-  async find(filter) {
+  async find(filter, deadline = Infinity) {
     if (this.target) this.singlePort();
     if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
-      try { await openMidiPort(input); await openMidiPort(output); } catch (_) { continue; }
+      if (Date.now() >= deadline) return null;
+      try { await openMidiPort(input, deadline); await openMidiPort(output, deadline); } catch (_) { continue; }
+      // A timed-out opening can settle later. Never give that stale attempt a
+      // receive handler or let it turn a finished timeout into success.
+      if (Date.now() >= deadline) return null;
       if (!this._portPairs().some((p) => p.input === input && p.output === output)) continue;
       const link = new Link(input, output);
       let id;
-      try { id = await handshake(link, 2); }
+      try { id = await handshake(link, 2, pkt => this.retryFinish(link, pkt), deadline); }
       catch (error) { link.close(); throw error; }
+      if (Date.now() >= deadline) { link.close(); return null; }
       if (id && this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), id.model.replace(/^ota-/i, ""))) {
         link.close();
         throw fail("model", `The selected keyboard changed model during the update: ${id.text}`);
@@ -281,6 +298,7 @@ export class Updater {
         const dev = { link, id, name: input.name };
         try { if (this.binding) this.assertContinuous(dev); }
         catch (error) { link.close(); throw error; }
+        this.finishRetry = null;
         return dev;
       }
       link.close();
@@ -291,11 +309,28 @@ export class Updater {
   async waitFor(filter, ms) {
     const end = Date.now() + ms;
     while (Date.now() < end) {
-      const dev = await this.find(filter);
+      const dev = await this.find(filter, end);
       if (dev) return dev;
-      await sleep(1000);
+      if (Date.now() < end) await sleep(Math.min(1000, end - Date.now()));
     }
     return null;
+  }
+
+  // A successful Web MIDI send only queues bytes. Keep the completed-stage
+  // token available during discovery so a loader can retry a lost response.
+  // Never answer image reads or a terminal request from another port pair.
+  retryFinish(link, pkt) {
+    const pending = this.finishRetry;
+    if (!pending || Date.now() > pending.until) return false;
+    if (link.input !== pending.input || link.output !== pending.output) return false;
+    const r = parseRequest(pkt);
+    if (!r || (r.addr !== 0xE0000000 && r.addr !== 0xF0000000)) return false;
+    this.singlePort();
+    if (r.addr !== pending.addr || r.len !== 8)
+      throw fail("badreq", "Unexpected OTA completion during restart");
+    if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0])))
+      throw fail("lost", "The keyboard disconnected during restart.");
+    return true;
   }
 
   // serve read requests until the device asks for one of the finish addresses; stops early
@@ -321,6 +356,8 @@ export class Updater {
         if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
           return { served, finished: false, lost: true };
         }
+        this.finishRetry = { addr: r.addr, input: link.input, output: link.output,
+          until: Date.now() + 70000 };
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }
@@ -343,7 +380,7 @@ export class Updater {
     this.admitted = admitted;
     const step = onStep || (() => {});
     const dev = await this.find((id) => !IS_OTA(id));
-    if (!dev) throw fail("notfound", "FM-1 not found (USB cable, and no other app using it?)");
+    if (!dev) throw fail("notfound", "SMK-37 not found (USB cable, and no other app using it?)");
     const [model] = product.split("_");
     if (!sameKeyboard(dev.id.model, model)) { dev.link.close(); throw fail("model", `the device is ${dev.id.text}, the package is for ${product}`); }
     this.bind(dev);
@@ -382,7 +419,8 @@ export class Updater {
     this.verified = false;
     step("reboot");
     await sleep(3000);
-    const back = await this.waitFor((id) => !IS_OTA(id), 40000);
+    // Loader terminal retries can take 4 × 3 × 5 seconds before reset.
+    const back = await this.waitFor((id) => !IS_OTA(id), 70000);
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
       this.singlePort(back.name);
@@ -434,3 +472,4 @@ export class Updater {
     return true;
   }
 }
+
