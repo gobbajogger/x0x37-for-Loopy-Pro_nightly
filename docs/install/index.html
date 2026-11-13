@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Firmware & samples · X0X37 NIGHTLY</title>
+<title>Firmware & samples · DnBOX NIGHTLY</title>
 <style>
 /* X0X37 / firmware control desk. Source-only skin: no flashing logic. */
 :root {
@@ -433,6 +433,12 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 .prep-options{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;align-content:start}.prep-options label{display:block;font-size:12px;color:var(--prep-muted)}.prep-options select{display:block;width:100%;min-height:44px;margin-top:5px;padding:8px 10px;color:var(--prep-ink);border:1px solid #53616b;border-radius:5px;background:#29333b;font:inherit;font-size:13px}.prep-options .prep-cuts{display:flex;gap:16px;grid-column:1/-1}.prep-cuts label{display:flex;align-items:center;gap:7px;min-height:36px;white-space:nowrap}.prep-cuts input{width:16px;height:16px;accent-color:var(--prep-action)}.sample-prep .prep-quality-help{font-size:12px;line-height:1.5;color:var(--prep-muted);margin:0;grid-column:1/-1;max-width:46ch}
 .prep-footer{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid #44505a}.sample-prep .prep-detail{font-size:12px;color:var(--prep-muted);max-width:65ch}.prep-detail summary{cursor:pointer;min-height:36px;align-content:center}.prep-detail p{font-size:12px;margin:8px 0 0;line-height:1.5}.prep-import{text-align:right;flex-shrink:0}.sample-prep #prep-manage{display:inline-block;font-size:13px;font-weight:600;color:var(--prep-action);min-height:36px;align-content:center;text-decoration:underline}.prep-import small{display:block;font-size:11px;color:var(--prep-muted)}.sample-prep :is(input,select,button,a,summary):focus-visible{outline:3px solid var(--prep-action);outline-offset:3px}
 @media(max-width:700px){.sample-prep{padding:15px}.sample-prep .prep-head{align-items:start;gap:8px}.sample-prep .prep-head p{max-width:18ch}.sample-prep .prep-file{width:130px;flex-shrink:0}.sample-prep input[type=file]{font-size:11px}.sample-prep input::file-selector-button{display:block;margin:0 0 5px;min-height:44px}.prep-workbench{grid-template-columns:1fr;gap:14px}.prep-display{padding:11px}.prep-display canvas{height:60px}.prep-facts{gap:14px}.prep-audio{gap:6px}.sample-prep .prep-audio button{padding:8px 11px}.prep-options{gap:8px 12px}.prep-cuts label{min-height:36px}.prep-options .prep-cuts{gap:14px}.prep-footer{gap:10px}.prep-import small{max-width:23ch;margin-left:auto}.sample-prep h2{font-size:20px}}
+
+/* DnBOX channel identity and release notice; no install behavior changes. */
+.head-nav a{display:inline-flex!important;min-height:44px;align-items:center}
+.channel-label{font:700 11px var(--mono);color:var(--dim);white-space:nowrap;border:1px solid var(--rule);padding:4px 7px;border-radius:3px}
+.release-notice{margin:0 0 20px;border-left:3px solid var(--busy);padding:12px 16px;background:var(--card);font-size:14px}.release-notice p{margin:4px 0 0;color:var(--dim)}
+@media(max-width:600px){.header-top{flex-wrap:wrap;gap:12px}.head-nav{order:4;flex-basis:100%;margin:0;gap:20px;padding-bottom:10px}.channel-label{font-size:10px}.lang{margin-left:auto}.release-notice{font-size:13px}}
 </style>
 </head>
 <body>
@@ -440,9 +446,9 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 <main id="workspace-main">
   <header class="site-head">
     <div class="header-top">
-      <a class="home" href="../" aria-label="X0X37 home">X0X37</a>
+      <a class="home" href="../" aria-label="DnBOX home">DnBOX</a><span class="channel-label">SMK-37 · NIGHTLY</span>
       <nav class="head-nav" aria-label="Site navigation">
-        <a href="../manual/" data-t="navmanual">Manual</a>
+        <a href="../manual/" data-t="navmanual">Manual</a><a href="../new/">Changes</a><a href="https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly">Source</a>
       </nav>
       <button class="lang" id="lang" type="button"></button>
     </div>
@@ -466,6 +472,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   <section id="samples-panel" aria-label="Sample workspace" hidden><iframe id="sample-frame" title="Import break loops, back up or restore sample slots" src="../breaks/?embedded=1" allow="midi"></iframe><p class="small"><a href="../breaks/">Open sample tools separately</a> if this panel does not load.</p></section>
   <section id="projects-panel" aria-label="Songs and projects workspace" hidden><iframe id="project-frame" title="Import or export a whole song project; reset project while keeping samples" src="../projects/?embedded=1" allow="midi"></iframe><p class="small"><a href="../projects/">Open Songs &amp; projects separately</a> if this panel does not load.</p></section>
   <div id="firmware-panel">
+  <aside class="release-notice" aria-label="Release status"><strong>0.0.26 hardware-test candidate available</strong><p>The original 600b build remains withdrawn. Candidate 94197fc8 includes the boot-guard correction, but physical startup/restart is not yet verified. 0.0.25.1 remains the known-good fallback. <a href="../new/">Release status</a></p></aside>
 
   <div class="install-layout">
     <div class="install-primary" id="firmware">
@@ -490,7 +497,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
     <fieldset class="model-select" id="modeldetails">
       <legend data-t="modelheading">Choose your keyboard model</legend>
       <div class="models" id="models" role="radiogroup" aria-label="Keyboard model"></div>
-      <p class="model-prompt">Choose the name printed on your keyboard.</p><details class="model-help"><summary>Model naming help</summary><p data-t="modelwhy"></p></details>
+      <p class="model-prompt">Choose the name printed on your keyboard. The installer also checks the connected device before writing.</p><details class="model-help"><summary>Model naming help</summary><p data-t="modelwhy"></p></details>
     </fieldset>
         <div class="row" id="versionrow">
           <label class="field"><span data-t="versionlabel">Firmware version</span>
@@ -576,7 +583,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   </details>
 
   <details class="connection-help"><summary>Connection &amp; recovery help</summary><p class="small" data-t="direct"></p><p class="small" data-t="helptext"></p><p class="small"><a href="../manual/" data-t="helpmanual">Open the manual</a></p>  <p class="small" id="recovery"><span data-t="brick"></span>
-    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#recovering-an-fm-1-that-wont-start" style="color:inherit" data-t="bricklink"></a></p>
+    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/issues" style="color:inherit" data-t="bricklink"></a></p>
   <p class="small" data-t="back"></p></details>
   <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
     <div class="prep-head"><div><h2 id="prep-title">Prepare a sample</h2><p>Listen first. Connect when you’re ready.</p></div><label class="prep-file" for="prep-file"><span >Choose your audio</span><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label></div>
@@ -628,7 +635,7 @@ const BLOCKS = 20, BLK = 0x30, KEEP = 0x2F;
 
 // the package identity ("FM-1_904"): one marker byte after each of the first 20 blocks
 function productOf(fwsc) {
-  if (fwsc.length < BLOCKS * BLK) throw new Error("not an FM-1 package (too short)");
+  if (fwsc.length < BLOCKS * BLK) throw new Error("firmware package is too short");
   let s = "";
   for (let i = 0; i < BLOCKS; i++) {
     const m = fwsc[i * BLK + KEEP];
@@ -720,14 +727,22 @@ function pkHasSlotMap(flash) {
   const map = 0x9CF00; // Fixed SMK flash-map address, not a marker elsewhere in package padding.
   if (flash.length < map + 20 || !CTL_SLOTMAP.every((b, j) => flash[map + j] === b)) return false;
   const count = pkU32(flash, map + 16);
-  // The retained packages contain exactly these two layouts: the current
-  // two-slot map, or the older three-slot map. 0xB0000 is VM recovery spare
-  // in the current layout; it is a sample slot only in that verified old map.
-  if (count !== 2 && count !== 3) return false;
+  // The retained packages contain exactly these layouts: the two-slot map,
+  // the older three-slot map (0xB0000 is a sample slot in that verified old
+  // map; later it is VM recovery spare / sector-0 shadows), and the current
+  // three-slot map with slot 3 at 0xB3000 (32 KiB, after the shadows).
+  // Port of live gh-pages 9fde4dbe so a later site render cannot drop 0.0.25 packages.
+  const allowed = [
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000]],
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]],
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB3000, 0x8000]],
+  ];
   const end = map + 20 + 8 * count;
   return flash.length >= end + 4 &&
-    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]].slice(0, count).every(([off, size], j) =>
-      pkU32(flash, map + 20 + j * 8) === off && pkU32(flash, map + 24 + j * 8) === size) &&
+    allowed.some((slots) =>
+      slots.length === count &&
+      slots.every(([off, size], j) =>
+        pkU32(flash, map + 20 + j * 8) === off && pkU32(flash, map + 24 + j * 8) === size)) &&
     pkU32(flash, end) === pkCrc32(flash, map, end);
 }
 const CTL_NO_BLOCK = "the app code of this package goes into the Bluetooth block (flash 0x8B000-0x9AFFF). "
@@ -856,6 +871,7 @@ const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro
 function keyboardModel(model) {
   if (typeof model !== "string" || !model) return null;
   const name = model.replace(/^ota-/i, "").toLowerCase();
+  if (name === "fm-1") return null; // SMK installer: never admit the other board.
   return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
 }
 const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
@@ -978,14 +994,15 @@ class Link {
   }
 }
 
-async function handshake(link, tries = 3) {
+async function handshake(link, tries = 3, onPacket = null, deadline = Infinity) {
   link.drain();
-  for (let t = 0; t < tries; t++) {
+  for (let t = 0; t < tries && Date.now() < deadline; t++) {
     if (!link.send(HS_QUERY)) return null;
-    const end = Date.now() + 1000;
+    const end = Math.min(Date.now() + 1000, deadline);
     while (Date.now() < end) {
       const p = await link.read(end - Date.now());
       if (!p) break;
+      if (onPacket && onPacket(p)) continue;
       const id = parseIdentity(p);
       if (id) return id;
     }
@@ -993,19 +1010,27 @@ async function handshake(link, tries = 3) {
   return null;
 }
 
-async function openMidiPort(port) {
-  // Reuse the Projects workspace's initial-opening boundary: consume the
-  // closed -> open event before a new session installs its lifecycle guard.
-  // Later events remain observable by every existing bound updater.
-  if (port.connection !== "closed") { await port.open(); return; }
+async function openMidiPort(port, deadline = Infinity) {
+  // Bound the entire opening operation, not just its statechange event.
+  // Some Web MIDI hosts emit statechange but never settle open().
+  const ms = Math.min(3000, deadline - Date.now());
+  if (ms <= 0) throw fail("open", "The MIDI port did not finish opening. Reconnect and try again.");
   let changed, timer;
-  const transition = new Promise((resolve, reject) => {
+  const transition = port.connection === "closed" ? new Promise(resolve => {
     changed = () => resolve();
-    timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), 3000);
     port.addEventListener("statechange", changed, { once: true });
-  });
-  try { await Promise.all([port.open(), transition]); }
-  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+  }) : Promise.resolve();
+  try {
+    await Promise.race([
+      Promise.all([port.open(), transition]),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), ms);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+    if (changed) port.removeEventListener("statechange", changed);
+  }
 }
 
 class Updater {
@@ -1019,6 +1044,7 @@ class Updater {
     this.binding = null;
     this.onPortState = null;
     this.admitted = null;
+    this.finishRetry = null;
   }
 
   ports() {
@@ -1077,6 +1103,7 @@ class Updater {
     if (this.onPortState && typeof this.access.removeEventListener === "function")
       this.access.removeEventListener("statechange", this.onPortState);
     this.onPortState = null;
+    this.finishRetry = null;
     if (this.binding) this.binding.invalid = true;
   }
 
@@ -1102,16 +1129,21 @@ class Updater {
   }
 
   // every in/out pair with the same port name that answers the handshake
-  async find(filter) {
+  async find(filter, deadline = Infinity) {
     if (this.target) this.singlePort();
     if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
-      try { await openMidiPort(input); await openMidiPort(output); } catch (_) { continue; }
+      if (Date.now() >= deadline) return null;
+      try { await openMidiPort(input, deadline); await openMidiPort(output, deadline); } catch (_) { continue; }
+      // A timed-out opening can settle later. Never give that stale attempt a
+      // receive handler or let it turn a finished timeout into success.
+      if (Date.now() >= deadline) return null;
       if (!this._portPairs().some((p) => p.input === input && p.output === output)) continue;
       const link = new Link(input, output);
       let id;
-      try { id = await handshake(link, 2); }
+      try { id = await handshake(link, 2, pkt => this.retryFinish(link, pkt), deadline); }
       catch (error) { link.close(); throw error; }
+      if (Date.now() >= deadline) { link.close(); return null; }
       if (id && this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), id.model.replace(/^ota-/i, ""))) {
         link.close();
         throw fail("model", `The selected keyboard changed model during the update: ${id.text}`);
@@ -1120,6 +1152,7 @@ class Updater {
         const dev = { link, id, name: input.name };
         try { if (this.binding) this.assertContinuous(dev); }
         catch (error) { link.close(); throw error; }
+        this.finishRetry = null;
         return dev;
       }
       link.close();
@@ -1130,11 +1163,28 @@ class Updater {
   async waitFor(filter, ms) {
     const end = Date.now() + ms;
     while (Date.now() < end) {
-      const dev = await this.find(filter);
+      const dev = await this.find(filter, end);
       if (dev) return dev;
-      await sleep(1000);
+      if (Date.now() < end) await sleep(Math.min(1000, end - Date.now()));
     }
     return null;
+  }
+
+  // A successful Web MIDI send only queues bytes. Keep the completed-stage
+  // token available during discovery so a loader can retry a lost response.
+  // Never answer image reads or a terminal request from another port pair.
+  retryFinish(link, pkt) {
+    const pending = this.finishRetry;
+    if (!pending || Date.now() > pending.until) return false;
+    if (link.input !== pending.input || link.output !== pending.output) return false;
+    const r = parseRequest(pkt);
+    if (!r || (r.addr !== 0xE0000000 && r.addr !== 0xF0000000)) return false;
+    this.singlePort();
+    if (r.addr !== pending.addr || r.len !== 8)
+      throw fail("badreq", "Unexpected OTA completion during restart");
+    if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0])))
+      throw fail("lost", "The keyboard disconnected during restart.");
+    return true;
   }
 
   // serve read requests until the device asks for one of the finish addresses; stops early
@@ -1160,6 +1210,8 @@ class Updater {
         if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
           return { served, finished: false, lost: true };
         }
+        this.finishRetry = { addr: r.addr, input: link.input, output: link.output,
+          until: Date.now() + 70000 };
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }
@@ -1182,7 +1234,7 @@ class Updater {
     this.admitted = admitted;
     const step = onStep || (() => {});
     const dev = await this.find((id) => !IS_OTA(id));
-    if (!dev) throw fail("notfound", "FM-1 not found (USB cable, and no other app using it?)");
+    if (!dev) throw fail("notfound", "SMK-37 not found (USB cable, and no other app using it?)");
     const [model] = product.split("_");
     if (!sameKeyboard(dev.id.model, model)) { dev.link.close(); throw fail("model", `the device is ${dev.id.text}, the package is for ${product}`); }
     this.bind(dev);
@@ -1221,7 +1273,8 @@ class Updater {
     this.verified = false;
     step("reboot");
     await sleep(3000);
-    const back = await this.waitFor((id) => !IS_OTA(id), 40000);
+    // Loader terminal retries can take 4 × 3 × 5 seconds before reset.
+    const back = await this.waitFor((id) => !IS_OTA(id), 70000);
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
       this.singlePort(back.name);
@@ -1273,6 +1326,7 @@ class Updater {
     return true;
   }
 }
+
 
 // SPDX-License-Identifier: GPL-3.0-only
 // X0X break loops in the browser: tools/upload_breaks.py and its helpers (tools/sampleio.py,
@@ -2253,7 +2307,7 @@ async function installKeepingSlots(up, image, product, board, hooks) {
 
 const $ = (id) => document.getElementById(id);
 const MODELS = { pro: "SMK-37 Pro", elite: "SMK-37 Elite", mke: "MKE-P37", fm1: "FM-1" };
-const MODEL_KEYS = ["pro", "elite", "mke", "fm1"];
+const MODEL_KEYS = ["pro", "elite", "mke"];
 const STOCK_SHA256_FM1 = "db1642b2b6fa5c2cccb11ffd13878068bb28601678d3644049f99dc40e7edb8a";
 const TEXT = {
   ja: {
@@ -2283,7 +2337,7 @@ const TEXT = {
     evidencelink: "開発検証記録", archiveheading: "ビルド履歴", archiveintro: "SHA確認済みビルドとソースのみの状態・未入手アーカイブ・失敗ビルドを区別します。コミットだけではインストールできません。",
     choosebuild: "このビルドを選ぶ", otherbuilds: "その他のチェックポイント (インストール不可)", unapproved: "このパッケージには機種別検証記録がないため、自動インストールできません。",
     title: "X0X をインストール",
-    intro: "SMK-37 と FM-1 向けファームウェア。USB で接続して機種とビルドを選び、サンプルのバックアップ保護を確認してインストールします。PC の Chrome または Edge をご使用ください。",
+    intro: "SMK-37 Pro / Elite 向けファームウェア。USB で接続して機種とビルドを選び、サンプルのバックアップ保護を確認してインストールします。PC の Chrome または Edge をご使用ください。",
     warn: "書き込み中は USB を抜かないでください。",
     install: "ファームウェアを書き込む", other: "English", connect: "USB 接続",
     connhelp: "Chrome か Edge で開き、USB でつないでから接続を押してください。",
@@ -2295,8 +2349,8 @@ const TEXT = {
     breaks: "サンプル・インポーター：自分のブレイク・ループ",
     untested: "X0X はベータ版です。",
     direct: "USB ケーブルはパソコンに直接つないでください。",
-    brick: "万一 FM-1 が起動しなくなった場合は、Mac から標準ファームウェアに戻せます:",
-    bricklink: "起動しない FM-1 の復旧（マニュアル）",
+    brick: "起動や復旧の問題は、お使いの SMK モデルに対応する手順を確認してください:",
+    bricklink: "SMK の起動・復旧サポート",
     beta: "これはベータ版で、不安定な場合があります。自己責任でお使いください。",
     back: "公式や他のカスタムへ移すには、下に .fwsc を落とすか M-VAVE の M-UPGRADE を使います。",
     noversion: "まだ公開パッケージがありません。下に .fwsc を落として書き込めます（アップグレード・ダウングレード・純正・他カスタム）。",
@@ -2384,7 +2438,7 @@ const TEXT = {
     evidencelink: "Development validation record", archiveheading: "Build history", archiveintro: "SHA-verified builds are separated from source-only checkpoints, unavailable archives and failed builds. A source commit alone is not flashable firmware.",
     choosebuild: "Select this build", otherbuilds: "Other checkpoints — not available for installation", unapproved: "No model-specific development/release validation for this package. Automatic installation is disabled.",
     title: "Install firmware",
-    intro: "Firmware for SMK-37 and FM-1. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.",
+    intro: "Firmware for SMK-37 Pro and Elite. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.",
     warn: "Do not unplug the USB cable while writing.",
     install: "Install firmware", other: "日本語", connect: "Connect USB",
     connhelp: "Plug in by USB. Use Chrome or Edge on a computer.",
@@ -2396,8 +2450,8 @@ const TEXT = {
     breaks: "Sample importer: your own break loops",
     untested: "X0X is a beta.",
     direct: "Connect the USB cable directly to the computer. No probe or Transporter is needed.",
-    brick: "If the FM-1 no longer starts, a Mac can put the stock firmware back:",
-    bricklink: "recovering an FM-1 that won't start (manual)",
+    brick: "For startup or recovery problems, use instructions for your exact SMK model:",
+    bricklink: "SMK startup and recovery support",
     beta: "This is a beta and may be unstable. The author accepts no responsibility if your device is damaged or misbehaves because of this custom firmware. Use it at your own risk.",
     back: "To move to stock or another custom firmware, drop its .fwsc below, or use M-VAVE's M-UPGRADE.",
     noversion: "No packages are included in this source preview. Use the published NIGHTLY installer, or choose a local package below.",
@@ -2671,11 +2725,10 @@ function suggestModel(deviceModel) {
   const ver = currentVersion();
   if (!ver) return;
   const avail = availableModels(ver);
-  let want = "pro";
-  if (/Elite/i.test(deviceModel)) want = "elite";
-  else if (/MKE/i.test(deviceModel)) want = "mke";
-  else if (/^FM-1/i.test(deviceModel)) want = "fm1";
-  if (!avail.includes(want)) want = avail[0];
+  // Never turn an unknown or non-keyboard identity into a Pro suggestion.
+  const model = String(deviceModel || "").replace(/^ota-/i, "");
+  const want = MODEL_KEYS.find(k => sameKeyboard(MODELS[k], model));
+  if (!want || !avail.includes(want)) return;
   if (want) {
     chosenModel = want;
     const input = document.querySelector(`#models input[value="${want}"]`);
