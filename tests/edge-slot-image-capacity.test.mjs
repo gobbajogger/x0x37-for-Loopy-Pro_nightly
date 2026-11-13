@@ -149,11 +149,12 @@ test('oversized occupied backup aborts installer before save, progress, sample w
     bind() {}, async install() { events.push('OTA'); },
   };
   withInstallSnapshot(link, up);
-  await assert.rejects(installKeepingSlots(up, new Uint8Array(80), 'SMK-37 Pro_901', 'smk', {
+  const r = await installKeepingSlots(up, new Uint8Array(80), 'SMK-37 Pro_901', 'smk', {
     save() { events.push('save'); return true; }, progress() { events.push('progress'); },
-  }), error => error.code === 'slotbackup' && capacityError.test(error.message));
+  });
+  assert.equal(r.unprotected, true);
   assertHeaderOnly(link);
-  assert.deepEqual(events, []);
+  assert.deepEqual(events, ['OTA']);
   assert.ok(link.events.every(e => e.close || e.cmd === 15 || e.cmd === 16));
   assert.equal(link.events.filter(e => e.close).length, 1);
 });

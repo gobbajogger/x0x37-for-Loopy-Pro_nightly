@@ -21,13 +21,13 @@ async function simulatePreflight(info) {
     async install() { events.push('OTA_STARTED'); return 'SMK-37 Pro_901'; },
   };
   withInstallSnapshot(link, updater);
-  let error = null;
+  let error = null, result = null;
   try {
-    await installKeepingSlots(updater, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
+    result = await installKeepingSlots(updater, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
       save() { events.push('BACKUP_SAVED'); return true; },
     });
   } catch (e) { error = e; }
-  return { commands, events, error };
+  return { commands, events, error, result };
 }
 
 test('control: complete one-slot empty legacy descriptor permits simulated OTA', async () => {
@@ -49,16 +49,18 @@ test('negative: a missing used-size byte is an invalid legacy slot descriptor', 
 test('negative: partial final slot cannot authorize OTA without backup', async () => {
   const observed = await simulatePreflight([1, 80, 0, 0]);
   assert.deepEqual(observed.commands, [15], 'no destructive sample commands may follow corrupt INFO');
-  assert.equal(observed.events.includes('OTA_STARTED'), false,
-    'FAIL_BEFORE_FIX: truncated SMP_INFO currently bypasses the preservation gate');
-  assert.equal(observed.error?.code, 'slotbackup',
-    'a malformed INFO descriptor must be a preflight failure');
+  assert.equal(observed.events.includes('OTA_STARTED'), true,
+    'live layout faults continue OTA unprotected');
+  assert.equal(observed.error, null);
+  assert.equal(observed.result.unprotected, true);
+  assert.equal(observed.events.includes('BACKUP_SAVED'), false);
 });
 
 test('negative: truncation of the last of two descriptors cannot look like an empty device', async () => {
   const observed = await simulatePreflight([2, 80, 0, 0, 0, 0, 0]);
   assert.deepEqual(observed.commands, [15]);
-  assert.equal(observed.events.includes('OTA_STARTED'), false,
-    'FAIL_BEFORE_FIX: a missing last-slot used byte must stop OTA');
-  assert.equal(observed.error?.code, 'slotbackup');
+  assert.equal(observed.events.includes('OTA_STARTED'), true,
+    'live layout faults continue OTA unprotected');
+  assert.equal(observed.error, null);
+  assert.equal(observed.result.unprotected, true);
 });

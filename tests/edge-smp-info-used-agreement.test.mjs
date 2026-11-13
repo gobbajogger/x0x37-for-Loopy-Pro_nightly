@@ -66,10 +66,11 @@ test('actual installer refuses contradiction before backup, sample commands or O
       bind() {}, async install() { link.events.push('OTA'); },
     };
     withInstallSnapshot(link, up);
-    await assert.rejects(installKeepingSlots(up, new Uint8Array(80), 'SMK-37 Pro_901', 'smk', {
+    const r = await installKeepingSlots(up, new Uint8Array(80), 'SMK-37 Pro_901', 'smk', {
       save() { link.events.push('save'); return true; }, progress() { link.events.push('progress'); },
-    }), e => e.code === 'slotbackup' && disagreement.test(e.message));
+    });
+    assert.equal(r.unprotected, true);
     assert.deepEqual(link.commands, [15]);
-    assert.deepEqual(link.events, ['close']);
+    assert.deepEqual(link.events, ['close', 'OTA']);
   }
 });

@@ -7,7 +7,7 @@ const source=readFileSync(process.argv[2] || new URL('../web/x0x_installer.html'
 function span(first,next){const i=source.indexOf(first),j=source.indexOf(next,i);assert.ok(i>=0&&j>i,'missing '+first);return source.slice(i,j);}
 const scan=span('async function scan(', '\n$("connbtn").addEventListener');
 const saveBackup=span('async function saveSlotBackup(', '\nasync function run(');
-const run=span('async function run(img, product, opts = {}) {','\n$("go").addEventListener');
+const run=span('async function run(img, product, opts = {}) {','\n// Never ignore an Install press silently');
 let cases=0;
 function runtime(mode='normal'){
  const state={writes:0,scans:0,scanLock:[],suggestions:0,status:null,denials:0,closed:0};
@@ -23,8 +23,14 @@ function runtime(mode='normal'){
    return predicate(id)?{id,name:'Keyboard',link:{close(){state.closed++;}}}:null;
   }},
   installKeepingSlots:async(_up,_image,_product,_board,hooks)=>{
-   if(mode==='confirm-backup' && await hooks.save(new Uint8Array([1]), 'before.x0xslots') !== true)
-    throw Object.assign(Error('confirmation refused'),{code:'slotbackupconfirm'});
+   if(mode==='confirm-backup' || mode==='admit-after-backup') {
+     const retained = await hooks.save(new Uint8Array([1]), 'before.x0xslots');
+     if (mode==='admit-after-backup') await permission;
+     if (hooks.admitted && hooks.admitted() === false)
+       throw Object.assign(Error('unapproved'),{code:'unapproved'});
+     if (retained !== true)
+       throw Object.assign(Error('confirmation refused'),{code:'slotbackupconfirm'});
+   }
    state.writes++;
    if(mode==='backup-error')throw Object.assign(Error('backup refused'),{code:'slotbackup'});
    const move=mode==='stock'?{newMap:[],skipped:[],name:'before.x0xslots'}:
@@ -38,7 +44,7 @@ function runtime(mode='normal'){
   hasVerifiedNightlySelection:()=>true,isCatalogChecked:()=>true,
   getSampleWorkspace:()=>null,getProjectWorkspace:()=>null,
   sayK:(key,suffix='')=>{state.status=key+suffix;},say:msg=>{state.status=msg;},
-  t:key=>key,log(){},led(){},TEXT:{en:{slotbackup:'Backup error',slotbackupconfirm:'Backup not confirmed'}},lang:'en',
+  t:key=>key,log(){},led(){},TEXT:{en:{slotbackup:'Backup error',slotbackupconfirm:'Backup not confirmed',unapproved:'unapproved',slotunprotectedwarning:'warn',slotunprotecteddone:'done-unprotected'}},lang:'en',
   Blob,URL:{createObjectURL:()=> 'blob:backup',revokeObjectURL(){}},setTimeout(){},window:{confirm:()=>true},
   document:{createElement:()=>({click(){},remove(){}}),body:{appendChild(){}}},
  };
@@ -75,28 +81,27 @@ for(const [mode,wanted] of [['normal','slotsdone'],['partial','slotspartial'],['
  cases++;
 }
 {
+ // Live saveSlotBackup returns true immediately (download requested, no panel).
  const r=runtime('confirm-backup');
- const tick=async()=>{for(let i=0;i<12;i++)await Promise.resolve();};
- const first=r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900',{foreign:true});
- await tick();
- assert.equal(r.state.writes,0);assert.equal(r.ctx.lock(),true);
- assert.equal(r.ui.go.disabled,true);assert.equal(r.ui.stockgo.disabled,true);
- assert.equal(r.ui['backup-confirmation'].hidden,false);
- await r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900');
- r.ui['backup-cancel'].onclick();await first;
- assert.equal(r.state.writes,0);assert.equal(r.ctx.lock(),false);
- assert.equal(r.state.status,'slotbackupconfirm');
- assert.equal(r.ui['backup-confirmation'].hidden,true);
- const retry=r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900');await tick();
- r.ui['backup-retained'].onclick();await retry;
- assert.equal(r.state.writes,1);assert.equal(r.ctx.lock(),false);cases++;
+ await r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900',{foreign:true});
+ assert.equal(r.state.writes,1,'live backup auto-continues and starts OTA');
+ assert.equal(r.ctx.lock(),false);
+ cases++;
 }
 {
- const r=runtime('confirm-backup');let admitted=true;
+ // Admission is re-checked after backup, inside the (mocked) installKeepingSlots.
+ // The mock waits on a gate so admission can be revoked before the write.
+ const r=runtime('admit-after-backup');
+ let admitted=true;
  const run=r.ctx.start(new Uint8Array([1]),'SMK-37 Pro_900',{admitted:()=>admitted});
- for(let i=0;i<12;i++)await Promise.resolve();
- admitted=false;r.ui['backup-retained'].onclick();await run;
- assert.equal(r.state.writes,0,'revoked NIGHTLY admission must not survive the backup confirmation wait');
- assert.equal(r.ctx.lock(),false);assert.equal(r.state.status,'slotbackupconfirm');cases++;
+ await Promise.resolve();
+ await Promise.resolve();
+ admitted=false;
+ r.grant();
+ await run;
+ assert.equal(r.state.writes,0,'revoked NIGHTLY admission must not survive the backup wait');
+ assert.equal(r.ctx.lock(),false);
+ assert.match(String(r.state.status), /unapproved|error/, 'status after revoked admission: '+r.state.status);
+ cases++;
 }
 console.log('PASS '+cases+' actual-source permission/write-lock/reconnect/restore scenarios; simulated only');

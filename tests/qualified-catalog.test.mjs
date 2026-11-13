@@ -201,7 +201,11 @@ try {
   const out = join(dir,'valid-public-output');
   const valid = cli(catalog,qualification,out);
   assert.equal(valid.status,0,valid.stderr);
-  assert.deepEqual(JSON.parse(readFileSync(join(out,'versions.json'),'utf8')),catalog);
+  {
+    const published=JSON.parse(readFileSync(join(out,'versions.json'),'utf8'));
+    const expected={...catalog}; delete expected.history; // live picker omits empty history
+    assert.deepEqual(published,expected);
+  }
   assert.equal(existsSync(join(out,'qualification.json')),false,'private/full qualification must not be emitted');
   assert.ok(readFileSync(join(out,'install/index.html'),'utf8').includes(digest));
   const root = fileURLToPath(new URL('../',import.meta.url));
@@ -256,7 +260,11 @@ try {
       assert.equal(readFileSync(join(inside,'keep.txt'),'utf8'),'source sentinel');
     }else{
       assert.equal(result.status,0,result.stderr);
-      assert.deepEqual(JSON.parse(readFileSync(join(output,'versions.json'),'utf8')),catalog);
+      {
+    const published=JSON.parse(readFileSync(join(output,'versions.json'),'utf8'));
+    const expected={...catalog}; delete expected.history; // live picker omits empty history
+    assert.deepEqual(published,expected);
+  }
       assert.ok(readFileSync(join(output,'install/index.html'),'utf8').includes(digest));
     }
   }

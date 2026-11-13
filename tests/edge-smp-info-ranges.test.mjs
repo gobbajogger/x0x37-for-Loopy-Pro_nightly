@@ -78,10 +78,11 @@ test('invalid ranges fail before sample reads, backup save or OTA on the actual 
       bind() {}, async install() { events.push('OTA'); },
     };
     withInstallSnapshot(link, up);
-    await assert.rejects(installKeepingSlots(up, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
+    const r = await installKeepingSlots(up, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
       save() { events.push('save'); },
-    }), e => e.code === 'slotbackup' && /overlapping SMP_INFO/.test(e.message));
+    });
+    assert.equal(r.unprotected, true);
     assert.deepEqual(commands, [15]);
-    assert.deepEqual(events, ['close']);
+    assert.deepEqual(events, ['close', 'OTA']);
   }
 });

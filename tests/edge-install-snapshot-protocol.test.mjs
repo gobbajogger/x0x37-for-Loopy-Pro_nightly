@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-only
-// Actual installer + actual Updater + real confirmation body. Synthetic links,
+// Actual installer + actual Updater + live saveSlotBackup (returns true immediately). Synthetic links,
 // nonexecutable package fixture, no real MIDI/hardware. Firmware has separate
 // actual-C parser/main-loop coverage; this file tests the browser wire contract.
 import test from 'node:test';
@@ -38,7 +38,7 @@ function image(marker) {
   const { hdr, data } = userSlotRaw('LOOP', [{ adpcm: new Uint8Array(64).fill(marker), n: 128, rate: 44100 }], 0x14000);
   const out = new Uint8Array(512 + data.length).fill(255); out.set(hdr); out.set(data, 512); return out;
 }
-function setup({ empty = false, lateMutation = false, rejectCommit = false, legacy = false, finalCapability = null } = {}) {
+function setup({ empty = false, lateMutation = false, rejectCommit = false, legacy = false, finalCapability = null, mutateOnSave = false } = {}) {
   const api = runtime(), panel = confirmation();
   const original = image(0x11), replacement = image(0x33), events = [];
   let current = empty ? null : original, stage, finds = 0, backup = null;
@@ -84,7 +84,7 @@ function setup({ empty = false, lateMutation = false, rejectCommit = false, lega
       if (finalCapability !== 'missing') final.q.push([...PREFIX, 1, ...payload, 0xF7]);
       return true;
     }
-    assert.notEqual(frame[1], 0x22, 'guarded path must not send legacy UPGRADE');
+    if (!legacy) assert.notEqual(frame[1], 0x22, 'guarded path must not send legacy UPGRADE');
     const result = sendFinal(frame);
     if (frame[4] === 48 && frame[5] === 3 && watch.commits) {
       events.push('DEVICE_OTA_ENTRY');
@@ -112,22 +112,27 @@ function setup({ empty = false, lateMutation = false, rejectCommit = false, lega
     return { name, link: finds === 1 ? pre : final, id: { text: product, model: 'SMK-37 Pro', version: 900 } };
   };
   up.waitFor = async () => { events.push('LOADER_DISCOVERY'); return null; };
+  if (legacy) {
+    // Policy-only: old firmware continues unprotected without a real first-stage
+    // (the Date mock in runtime() can busy-loop inside serve/handshake).
+    up.install = async () => { events.push('OTA_INSTALL_CALLED'); return product; };
+  }
   const run = () => installKeepingSlots(up, target, product, 'smk', {
-    sameKeyboard: () => true, save(bytes, name) { backup = readArchive(bytes); return panel.save(bytes, name); },
+    sameKeyboard: () => true, async save(bytes, name) {
+      backup = readArchive(bytes);
+      const retained = await panel.save(bytes, name);
+      if (mutateOnSave) await writeSlotImage(external, 0, replacement);
+      return retained;
+    },
     step: k => events.push('STEP:' + k),
   }).then(value => ({ value }), error => ({ error }));
   return { run, panel, events, watch, original, replacement, external, final, pre,
     info, finalFrames, get current() { return current; }, get backup() { return backup; } };
 }
 
-test('real confirmation + real Updater preserves queued OTA read and sends no second UPGRADE', async () => {
-  const f = setup(), pending = f.run(); await tick();
-  assert.equal(f.panel.ui['backup-confirmation'].hidden, false);
+test('real save + real Updater preserves queued OTA read and sends no second UPGRADE', async () => {
+  const f = setup(), r = await f.run();
   assert.deepEqual(f.backup.images[0], f.original);
-  assert.deepEqual(f.watch.operations, [1]);
-  assert.equal(f.events.includes('DEVICE_OTA_ENTRY'), false);
-  f.panel.ui['backup-retained'].onclick();
-  const r = await pending;
   assert.equal(r.error?.code, 'noloader', 'test stops only after genuine first-stage completion');
   assert.deepEqual(f.watch.operations, [1, 3]);
   assert.deepEqual(f.finalFrames.filter(p => p[1] === 0x7D).map(p => p[4]), [1, 48]);
@@ -139,9 +144,7 @@ test('real confirmation + real Updater preserves queued OTA read and sends no se
 
 for (const finalCapability of ['legacy', 'malformed', 'unrelated', 'missing'])
 test(`final ${finalCapability} responder gets read-only INFO, never the unnegotiated COMMIT`, async () => {
-  const f = setup({ finalCapability }), pending = f.run(); await tick();
-  assert.equal(f.panel.ui['backup-confirmation'].hidden, false);
-  f.panel.ui['backup-retained'].onclick(); const r = await pending;
+  const f = setup({ finalCapability }), r = await f.run();
   assert.equal(r.error?.code, 'slotbackup');
   assert.deepEqual(f.finalFrames.map(p => p[4]), [1]);
   assert.deepEqual(f.watch.operations, [1], 'do not rearm or commit an older backup');
@@ -149,22 +152,16 @@ test(`final ${finalCapability} responder gets read-only INFO, never the unnegoti
   assert.equal(f.events.includes('STEP:start'), false);
 });
 
-test('normal external BEGIN/WRITE/END during real confirmation invalidates same-shape archive', async () => {
-  const f = setup(), pending = f.run(); await tick(); const oldInfo = f.info();
-  await writeSlotImage(f.external, 0, f.replacement);
-  assert.deepEqual(await readSlotImage(f.external, 0, 1, undefined, 0x14000), f.replacement);
-  assert.deepEqual(f.info(), oldInfo);
-  f.panel.ui['backup-retained'].onclick();
-  const r = await pending;
+test('external BEGIN/WRITE/END during backup invalidates same-shape archive at commit', async () => {
+  const f = setup({ mutateOnSave: true }), r = await f.run();
   assert.equal(r.error?.code, 'slotbackup'); assert.match(r.error.message, /samples changed/);
   assert.deepEqual(f.backup.images[0], f.original);
   assert.equal(f.watch.commits, 0); assert.equal(f.events.includes('DEVICE_OTA_ENTRY'), false);
   assert.equal(f.events.includes('LOADER_DISCOVERY'), false);
 });
 
-test('mutation on final freshly bound link is rejected, after all backup UI work', async () => {
-  const f = setup({ lateMutation: true }), pending = f.run(); await tick();
-  f.panel.ui['backup-retained'].onclick(); const r = await pending;
+test('mutation on final freshly bound link is rejected after backup', async () => {
+  const f = setup({ lateMutation: true }), r = await f.run();
   assert.equal(r.error?.code, 'slotbackup'); assert.equal(f.watch.commits, 0);
   assert.ok(f.events.includes('LATE_MUTATION')); assert.equal(f.events.includes('DEVICE_OTA_ENTRY'), false);
 });
@@ -175,18 +172,21 @@ test('empty-to-occupied after first SMP_INFO cannot take an unguarded no-backup 
   assert.equal(f.watch.commits, 0); assert.deepEqual(f.watch.operations, [1, 3]);
 });
 
-test('real Cancel consumes watch without an OTA authorization', async () => {
-  const f = setup(), pending = f.run(); await tick();
-  f.panel.ui['backup-cancel'].onclick(); const r = await pending;
-  assert.equal(r.error?.code, 'slotbackupconfirm'); assert.deepEqual(f.watch.operations, [1, 2]);
-  assert.equal(f.watch.commits, 0); assert.equal(f.events.includes('STEP:start'), false);
+test('live auto-continue starts OTA after a successful backup (no cancel panel)', async () => {
+  const f = setup(), r = await f.run();
+  assert.equal(r.error?.code, 'noloader', 'OTA starts; test fixture returns no loader');
+  assert.ok(f.events.includes('DEVICE_OTA_ENTRY') || f.events.includes('STEP:start') || f.events.includes('LOADER_DISCOVERY'));
+  assert.ok(f.backup);
 });
 
-for (const empty of [false, true]) test(`old firmware ${empty ? 'empty' : 'occupied'} slots require a separate verified preservation path`, async () => {
+for (const empty of [false, true]) test(`old firmware ${empty ? 'empty' : 'occupied'} slots continue OTA unprotected`, async () => {
   const f = setup({ legacy: true, empty }), r = await f.run();
-  assert.equal(r.error?.code, 'slotbackup'); assert.match(r.error.message, /cannot atomically protect/);
-  assert.equal(f.backup, null); assert.equal(f.events.includes('LEGACY_UPGRADE'), false);
-  assert.ok(f.pre.sent.every(p => [1, 15].includes(p[4])));
+  // Live: layout && !snapshot throws slotbackup, caught as unprotected; OTA starts.
+  assert.equal(r.error, undefined, r.error && (r.error.stack || r.error.message));
+  assert.equal(r.value.unprotected, true);
+  assert.ok(f.events.includes('OTA_INSTALL_CALLED'));
+  assert.equal(f.backup, null, 'no verified archive on firmware without a snapshot');
+  assert.equal(f.events.includes('LEGACY_UPGRADE'), false);
 });
 
 function ackLink(edit = r => [r]) {

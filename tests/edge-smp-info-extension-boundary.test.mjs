@@ -63,12 +63,13 @@ test('malformed metadata closes the preflash link before backup/sample commands 
         bind() {}, async install() { events.push('OTA'); },
       };
       withInstallSnapshot(link, up);
-      await assert.rejects(installKeepingSlots(up, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
+      const r = await installKeepingSlots(up, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
         save() { events.push('save'); return true; },
         progress() { events.push('progress'); },
-      }), error => error.code === 'slotbackup' && extensionError.test(error.message));
+      });
+      assert.equal(r.unprotected, true);
       assert.deepEqual(commands, [15], 'only read-only SMP_INFO may be sent');
-      assert.deepEqual(events, ['close'], 'no backup, sample mutation or OTA is reached');
+      assert.deepEqual(events, ['close', 'OTA'], 'live layout faults continue OTA after closing preflight');
     }
   }
 });

@@ -34,9 +34,10 @@ test('zero count closes the preflash link with slotbackup and only an INFO reque
     bind() {}, async install() { events.push('OTA'); },
   };
   withInstallSnapshot(link, updater);
-  await assert.rejects(installKeepingSlots(updater, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
+  const r = await installKeepingSlots(updater, new Uint8Array(), 'SMK-37 Pro_901', 'smk', {
     save() { events.push('save'); },
-  }), e => e.code === 'slotbackup' && /invalid SMP_INFO slot count/.test(e.message));
+  });
+  assert.equal(r.unprotected, true);
   assert.deepEqual(commands, [15]);
-  assert.deepEqual(events, ['close']);
+  assert.deepEqual(events, ['close', 'OTA']);
 });

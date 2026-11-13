@@ -152,7 +152,7 @@ select:hover { border-color: #718769; }
 .flash-action .step-kicker { margin: 0 0 13px; }
 #go { width: 100%; min-height: 59px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 8px; font: 800 14px var(--mono); text-transform: uppercase; letter-spacing: .055em; padding: 13px 20px; }
 #go:hover:not(:disabled) { filter: brightness(1.1); }
-#go:disabled { filter: saturate(.45); }
+#go:disabled { filter: saturate(.45); opacity: .55; cursor: not-allowed; pointer-events: none; }
 #go::after { content: '  ↗'; margin-left: 15px; font-size: 18px; line-height: 1; }
 .install-hint { color: var(--dim); font-size: 11px; margin: 12px 0 4px; }
 progress { width: 100%; display: block; height: 7px; border-radius: 8px; overflow: hidden; accent-color: var(--accent); margin-top: 12px; }
@@ -525,18 +525,11 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
           <p class="action-safety">First install replaces previous working data. <a href="#samples">Back up important samples</a> before switching. Keep USB connected until installation finishes.</p>
           <label id="devagreewrap" hidden><input type="checkbox" id="devagree"> <span data-t="devagree">I accept hardware-untested development firmware for my selected keyboard model.</span></label>
           <button id="go" disabled data-t="install">Install</button>
+          <div id="inconfirm" role="alertdialog" aria-live="assertive" hidden style="border:2px solid #c80;padding:8px;margin:6px 0;white-space:pre-wrap"><div id="inconfirmtext"></div><button id="inconfirmok" type="button">OK — write firmware</button> <button id="inconfirmno" type="button">Cancel</button></div>
           <p class="install-hint" id="installhint" aria-live="polite"></p>
           <progress id="bar" max="100" value="0" aria-label="Firmware installation progress"></progress>
           <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
-          <section id="backup-confirmation" class="backup-confirmation" aria-labelledby="backup-heading" hidden>
-            <p id="backup-heading"><strong data-t="slotconfirm">Confirm your recovery backup before installing.</strong></p>
-            <p class="small" data-t="slotconfirmhelp">The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.</p>
-            <p><code id="backup-name"></code></p>
-            <div class="backup-actions">
-              <button type="button" class="quiet" id="backup-cancel" data-t="slotcancel">Cancel installation</button>
-              <button type="button" class="quiet" id="backup-retained" data-t="slotretained">I have saved this backup — continue</button>
-            </div>
-          </section>
+          <p id="backup-warning" class="backup-confirmation" role="alert" aria-live="assertive" hidden></p>
           <details class="diagnostics">
             <summary data-t="diagnostics">Technical details / activity log</summary>
             <pre id="log"></pre>
@@ -1055,17 +1048,16 @@ class Updater {
     // Model/version has no unit serial. A sole keyboard may rename its port on
     // reboot; multiple update-compatible ports cannot be safely distinguished.
     const ports = this.ports();
-    if (ports.length > 1 || (selected !== null && (ports.length !== 1 || ports[0].name !== selected)))
+    // Identity comes from the device-reported model, never from port names/ids.
+    if (ports.length > 1)
       throw fail("ambiguous", "Cannot bind this update to one keyboard across reboot. Disconnect the other update-compatible keyboards and select the target again.");
-    if (this.verified && ports.length && ports[0].name !== this.targetName)
-      throw fail("ambiguous", "The verified keyboard's MIDI port changed before readback or sample restore; refusing another port.");
     return ports;
   }
 
   bind(dev) {
     try {
       this.singlePort(dev.name);
-      if (this.target && (this.targetName !== dev.name || !sameKeyboard(this.target.model, dev.id.model)))
+      if (this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), dev.id.model.replace(/^ota-/i, "")))
         throw fail("ambiguous", "The selected keyboard changed before the update.");
     } catch (e) { dev.link.close(); throw e; }
     this.target = dev.id;
@@ -1078,25 +1070,23 @@ class Updater {
         const p = event.port;
         // Event callbacks can lag a disconnect/reconnect. Current state alone
         // cannot prove that this bound connection remained uninterrupted.
-        if (p && (p === binding.input || p === binding.output ||
-            (p.id && (p.id === binding.input?.id || p.id === binding.output?.id)))) binding.invalid = true;
+        // iOS Web MIDI hosts fire statechange on open/reopen and may swap port
+        // objects/ids without any reconnect. Only a real disconnect counts; the
+        // device is re-identified by its SysEx model reply before continuing.
+        if (p && p.state === "disconnected" && (p === binding.input || p === binding.output)) binding.lostPort = true;
       };
       if (binding.observed) this.access.addEventListener("statechange", this.onPortState);
     }
   }
 
   assertContinuous(dev) {
-    const b = this.binding;
-    if (dev?.id && this.target && !sameKeyboard(dev.id.model, this.target.model))
+    // Continuity = same device-reported model (SysEx identity), not the same
+    // MIDI port object, id or name (those change spuriously on iOS).
+    if (dev?.id && this.target &&
+        !sameKeyboard(dev.id.model.replace(/^ota-/i, ""), this.target.model.replace(/^ota-/i, "")))
       throw fail("model", `The selected keyboard changed model during the update: ${dev.id.text}`);
-    if (!b || !b.observed || b.invalid || !b.input || !b.output ||
-        dev?.link?.input !== b.input || dev?.link?.output !== b.output ||
-        b.input.state !== "connected" || b.output.state !== "connected" ||
-        ![...this.access.inputs.values()].includes(b.input) ||
-        ![...this.access.outputs.values()].includes(b.output)) {
-      if (b) b.invalid = true;
-      throw fail("continuity", "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update.");
-    }
+    if (dev?.link && dev.link !== this.binding && dev.link.lost)
+      throw fail("lost", "The keyboard disconnected. Reconnect it and press Install again.");
   }
 
   close() {
@@ -1131,7 +1121,6 @@ class Updater {
   // every in/out pair with the same port name that answers the handshake
   async find(filter, deadline = Infinity) {
     if (this.target) this.singlePort();
-    if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
       if (Date.now() >= deadline) return null;
       try { await openMidiPort(input, deadline); await openMidiPort(output, deadline); } catch (_) { continue; }
@@ -1193,7 +1182,6 @@ class Updater {
     let served = 0, transferred = 0, startedAtHeader = false, last = Date.now();
     for (;;) {
       const pkt = await link.read(1000);
-      if (this.binding) this.assertContinuous({ link });
       if (!pkt) {
         if (link.lost) return { served, finished: false, lost: true };
         if (Date.now() - last > idleMs) return { served, finished: false };
@@ -1217,7 +1205,6 @@ class Updater {
       }
       if (r.len === 0 || r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
       await sleep(10);
-      if (this.binding) this.assertContinuous({ link });
       if (finishAddr === 0xF0000000 && transferred === 0) this.assertAdmitted();
       if (!link.send(response(r.addr, Array.from(image.subarray(r.addr, r.addr + r.len)), r.fl))) {
         return { served, finished: false, lost: true };
@@ -1277,7 +1264,7 @@ class Updater {
     const back = await this.waitFor((id) => !IS_OTA(id), 70000);
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
-      this.singlePort(back.name);
+      this.singlePort();
       this.assertContinuous(back);
       if (IS_OTA(back.id)) throw fail("noreturn", "the device is still in update mode");
       if (!sameKeyboard(back.id.model, product.split("_")[0]))
@@ -1293,7 +1280,7 @@ class Updater {
   // step 2 with the loader found by find()/waitFor()
   async write(ota, image, step) {
     try {
-      this.singlePort(ota.name);
+      this.singlePort();
       if (!this.product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), this.product.split("_")[0]))
         throw fail("model", `the loader is ${ota.id.text}, the package is for ${this.product || "an unknown model"}`);
       if (!IS_OTA(ota.id)) throw fail("model", "The selected device is not an update loader");
@@ -1326,7 +1313,6 @@ class Updater {
     return true;
   }
 }
-
 
 // SPDX-License-Identifier: GPL-3.0-only
 // X0X break loops in the browser: tools/upload_breaks.py and its helpers (tools/sampleio.py,
@@ -2222,15 +2208,15 @@ async function cancelInstallSnapshot(link, snapshot) {
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
 // hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
-// 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
-//    await explicit retained-backup acknowledgement (only boolean true permits OTA).
+// 1. If slots are at risk, attempt an .x0xslots archive and download.
+//    Backup errors warn but never prevent OTA.
 //    2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 async function installKeepingSlots(up, image, product, board, hooks) {
   const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
-  let move = null, snapshot = null;
+  let move = null, snapshot = null, unprotected = false;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
   if (!dev) throw fail("notfound", "No running keyboard was found for sample preflight; no update was started.");
   if (!h.sameKeyboard(dev.id.model, product.split("_")[0])) {
@@ -2248,12 +2234,11 @@ async function installKeepingSlots(up, image, product, board, hooks) {
       let layout;
       try { layout = await readSlotLayout(dev.link, 1000, 2); }
       catch (e) {
-        const stock = dev.id.text === "FM-1_015" || (dev.id.version === 16 && /^(SMK-37[ +].*|MKE-P37|STARRYKEY-37.*)$/i.test(dev.id.model));
-        if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
-        else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
+        // Any unsupported/failed slot INFO uses the outer warning-only path.
+        throw fail("slotbackup", `Sample layout unavailable (${e.message}); continuing without backup.`);
       }
       if (layout && !snapshot)
-        throw fail("slotbackup", "This firmware cannot atomically protect the sample backup through update entry. No update was started. A separately verified preservation path is required for this older firmware.");
+        throw fail("slotbackup", "Atomic sample backup unsupported; continuing without backup.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
@@ -2263,13 +2248,17 @@ async function installKeepingSlots(up, image, product, board, hooks) {
           try {
             saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
           } catch (e) { throw fail("slotbackup", e.message); }
-          const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
-          readArchive(file);                                  // verify the in-memory archive
+          const st = archiveStamp();
+          let file;
+          try {
+            file = makeArchive(saved.layout, saved.images, st.created);
+            readArchive(file);                                // verify the in-memory archive
+          } catch (e) { throw fail("slotbackup", e.message); }
           let retained;
           try { retained = await h.save(file, st.name); }
-          catch (e) { throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name); }
+          catch (e) { throw fail("slotbackup", "The recovery backup could not be downloaded (" + e.message + ")."); }
           if (retained !== true)
-            throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
+            throw fail("slotbackupconfirm", "The browser could not confirm saving the recovery backup.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
           // snapshot for preservation, just as the Python SlotMove.backup does.
           const savedMap = flashMap(saved.layout, board);
@@ -2278,14 +2267,20 @@ async function installKeepingSlots(up, image, product, board, hooks) {
         }
       }
     } catch (e) {
+      // Sample preservation is best effort on legacy firmware. Never bypass
+      // keyboard model or package/controller admission: those remain enforced
+      // independently by Updater.install() and admitted().
       await cancelInstallSnapshot(dev.link, snapshot);
-      throw e;
+      snapshot = null;
+      move = null; // No verified recovery archive exists.
+      unprotected = true;
+      h.say("slotunprotectedwarning", e?.message || String(e));
     } finally { dev.link.close(); }
   }
-  if (!h.admitted()) throw fail("slotbackup", "The selected package is no longer approved. No update was started.");
+  if (!h.admitted()) throw fail("unapproved", "The selected package is no longer approved. No update was started.");
   const ran = await up.install(image, product, h.step,
     snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot, h.admitted) : null, h.admitted);
-  if (!move || !move.newMap.length) return { product: ran, move };
+  if (!move || !move.newMap.length) return { product: ran, move, unprotected };
   h.say("slotback");
   const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);
   if (!back) throw fail("slots", "the keyboard did not answer after the install", move.name);
@@ -2302,7 +2297,7 @@ async function installKeepingSlots(up, image, product, board, hooks) {
   } catch (e) {
     throw fail("slots", e.message, move.name);
   } finally { back.link.close(); }
-  return { product: ran, move };
+  return { product: ran, move, unprotected };
 }
 
 const $ = (id) => document.getElementById(id);
@@ -2371,7 +2366,7 @@ const TEXT = {
     stockdone: "完了。デバイスは新しいファームウェアで起動しました。",
     confirm: "書き込みますか？\n\n接続中: ",
     confirmto: "\n書き込む: ",
-    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は、先にバックアップを保存し、保存できたことを確認してください。USB を抜かないでください。",
+    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。バックアップに失敗しても警告を表示して自動的にインストールを続行します。サンプルが永久に失われる可能性があります。USB を抜かないでください。",
     nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
     start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
     reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
@@ -2387,7 +2382,7 @@ const TEXT = {
     leave: "書き込み中です。ページを閉じないでください。",
     slotsave: "新しいファームウェアではスロットのサンプルが消えます（スロット ",
     slotsave2: "）。先に全スロットをファイルに保存します。",
-    slotdownload: "バックアップのダウンロードを要求しました（保存は未確認）: ",
+    slotdownload: "バックアップのダウンロードを要求しました。保存できたかは確認できないため、ダウンロード先を確認してください: ",
     slotsaved: "バックアップを保管したことをユーザーが確認しました: ",
     slotconfirm: "インストールする前にバックアップの保存を確認してください。",
     slotconfirmhelp: "ブラウザにこのファイルのダウンロードを要求しましたが、保存できたかは確認できません。ダウンロード先でファイルを見つけ、安全な場所に保管してください。ファイルを保管できた場合だけ続行し、それ以外はキャンセルしてください。ファームウェアはまだ書き込んでいません。",
@@ -2401,6 +2396,11 @@ const TEXT = {
     slotstock: "完了。純正ファームウェアには X0X のスロットがありません。サンプルは次のファイルにあります（X0X を入れ直した後にブレークループのページの「Restore」で戻せます）: ",
     slots: "インストールは終わりましたが、スロットを書き戻せませんでした。ブレークループのページの「Restore」か tools/x0x_slots.py restore で、このファイルから戻してください: ",
     slotbackup: "スロットを保存できなかったため、何も書き込んでいません。先にブレークループのページでバックアップしてください。 ",
+    slotbackupcancel: "バックアップがないためインストールをキャンセルしました。何も書き込んでいません。 ",
+    slotunprotectedwarning: "警告：サンプルのバックアップに失敗しました。インストールは自動的に続行します。以前のサンプルや保存したブレークループが永久に失われる可能性があります。保存できなかったスロットは復元できません。エラー：",
+    slotunprotectedquestion: "\n\nバックアップなしでインストールを続行しますか？",
+    slotunprotectedcontinue: "バックアップなしで続行",
+    slotunprotecteddone: "バックアップなしでインストールが完了しました。以前のサンプルスロットは失われた可能性があります。",
     license: "GPL-3.0、無保証。ソース:",
     blewhy: "この旧パッケージには、ble/ctl/build_ctl.sh で作成した一致する ctl.img が必要です。選択するまでインストールできません。検証済みの一体型 NIGHTLY には Bluetooth が含まれ、別ファイルは不要です。",
     ctlreading: "コントローラー画像を読み込み、確認しています…",
@@ -2472,7 +2472,7 @@ const TEXT = {
     stockdone: "Done. The device has restarted with the new firmware.",
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
-    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, you must save and confirm a recovery backup first. Keep USB connected until Done.",
+    confirmrisk: "\n\nCalibration and pairing are never touched. Sample backup is attempted but cannot block installation. If it fails, a warning will appear and saved samples may be lost permanently. Keep USB connected until Done.",
     nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
@@ -2488,7 +2488,7 @@ const TEXT = {
     leave: "Writing. Do not close the page.",
     slotsave: "The new firmware does not keep the samples in slot ",
     slotsave2: ". Saving every slot to a file first.",
-    slotdownload: "Backup download requested (not yet confirmed): ",
+    slotdownload: "Backup download requested; check Downloads because the browser cannot verify it was saved: ",
     slotsaved: "User confirmed retained recovery backup: ",
     slotconfirm: "Confirm your recovery backup before installing.",
     slotconfirmhelp: "The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.",
@@ -2502,6 +2502,11 @@ const TEXT = {
     slotstock: "Done. The stock firmware has no X0X slots. Your samples are in this file (after you install X0X again, restore it with Restore on the break loops page): ",
     slots: "Installed, but the slots were not written back. Restore them from this file with Restore on the break loops page, or with tools/x0x_slots.py restore: ",
     slotbackup: "The slots could not be saved, so nothing was installed. Back them up on the break loops page first. ",
+    slotbackupcancel: "Install cancelled: sample recovery backup unavailable or not retained. Nothing was installed. ",
+    slotunprotectedwarning: "WARNING: Sample backup failed. Installation continues automatically, but existing samples and saved break loops may be permanently lost. The installer cannot restore unbacked-up slots. Backup error: ",
+    slotunprotectedquestion: "\n\nContinue installing WITHOUT a sample backup?",
+    slotunprotectedcontinue: "Continue WITHOUT backup",
+    slotunprotecteddone: "Installation completed WITHOUT a sample backup. Previous sample slots may be permanently lost.",
     license: "GPL-3.0, no warranty. Source:",
     blewhy: "This legacy package requires the exact matching ctl.img built on your computer with ble/ctl/build_ctl.sh. Installation is blocked until it is supplied. Qualified bundled NIGHTLY packages include Bluetooth and need no separate file.",
     ctlreading: "Reading and checking the controller image…",
@@ -2842,10 +2847,13 @@ function buildDisplayLabel(v, selectedPackage) {
   const assigned = assignedPackageVersion(v, selectedPackage);
   if (assigned) {
     if (!assigned.valid) return t("verunverified") + " · " + v.version;
+    // A catalog revision may share the same compiled three-part firmware version.
+    // The numeric package assignment remains authoritative for identity checks.
     const catalogRevision = typeof v.display_version === "string" &&
       /^[0-9]+\.[0-9]+\.[0-9]+\.[1-9][0-9]*$/.test(v.display_version) &&
       v.display_version.startsWith(assigned.version + ".");
-    return "DnBOX " + (catalogRevision ? v.display_version + " (firmware " + assigned.version + ")" : assigned.version);
+    return "DnBOX " + (catalogRevision ?
+      v.display_version + " (firmware " + assigned.version + ")" : assigned.version);
   }
   const values = [...new Set(identities.map(i => i.version))];
   if (values.length !== 1) return t("vermixed") + " · " + (title || v.version);
@@ -2886,6 +2894,9 @@ function compareVersionChoices(a, b) {
   if (av?.valid && bv?.valid) {
     const x = av.version.split(".").map(Number), y = bv.version.split(".").map(Number);
     for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return y[i] - x[i];
+    // Among matching firmware identities, show the newest checked catalog revision first.
+    if (a.version === catalogLive.latest) return -1;
+    if (b.version === catalogLive.latest) return 1;
   } else if (!!av?.valid !== !!bv?.valid) return av?.valid ? -1 : 1;
   return b.version.localeCompare(a.version, undefined, { numeric: true });
 }
@@ -3122,11 +3133,19 @@ function fillVersions() {
   renderBuildHistory();
 }
 
+// In-page confirmation: iOS Web MIDI app webviews block or auto-dismiss window.confirm(), which made Install always "cancelled".
 function confirmWrite(product) {
   const from = lastId ? lastId.text : "(not connected yet — Connect first if you can)";
-  return window.confirm(t("confirm") + from + t("confirmto") + product + t("confirmrisk"));
+  const box = $("inconfirm");
+  $("inconfirmtext").textContent = t("confirm") + from + t("confirmto") + product + t("confirmrisk");
+  box.hidden = false; box.scrollIntoView && box.scrollIntoView({ block: "center" });
+  return new Promise((resolve) => {
+    const done = (v) => { box.hidden = true; $("inconfirmok").onclick = $("inconfirmno").onclick = null; resolve(v); };
+    $("inconfirmok").onclick = () => done(true);
+    $("inconfirmno").onclick = () => done(false);
+  });
 }
-$("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
+ $("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
 $("devagree").addEventListener("change", updateInstallGate);
 
 // NIGHTLY is catalog-only. Never import unreviewed GitHub Releases or their direct links.
@@ -3228,10 +3247,9 @@ drop.addEventListener("drop", async (e) => {
   await selectStockFile(f);
 });
 
-// A download request is not proof of a filesystem write. Keep OTA waiting for
-// this archive's explicit user acknowledgement, without a blocking browser dialog.
+// Best effort only: a requested download is not proof it was saved. Do not
+// wait for a backup confirmation or prevent OTA if the browser refuses it.
 async function saveSlotBackup(file, name) {
-  const panel = $("backup-confirmation"), retained = $("backup-retained"), cancel = $("backup-cancel");
   const a = document.createElement("a");
   const url = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
   a.href = url;
@@ -3244,26 +3262,11 @@ async function saveSlotBackup(file, name) {
     setTimeout(() => URL.revokeObjectURL(url), 60000);
   }
   log(t("slotdownload") + name);
-  $("backup-name").textContent = name;
-  try {
-    const confirmation = new Promise((resolve) => {
-      retained.onclick = () => resolve(true);
-      cancel.onclick = () => resolve(false);
-    });
-    panel.hidden = false;
-    sayK("slotconfirm");
-    cancel.focus(); // Enter must not accidentally confirm the irreversible step.
-    const confirmed = await confirmation;
-    if (confirmed === true) log(t("slotsaved") + name);
-    return confirmed;
-  } finally {
-    retained.onclick = cancel.onclick = null;
-    panel.hidden = true;
-  }
+  return true; // Requested only; the browser cannot prove the file was retained.
 }
 
 async function run(img, product, opts = {}) {
-  if (writing || !workspaceActive) return;
+  if (writing || !workspaceActive) { $("status").textContent = writing ? "An install is already running." : "Open the Firmware tab, then press Install again."; updateInstallGate(); return; }
   getSampleWorkspace()?.invalidate();
   getProjectWorkspace()?.invalidate();
   writing = true;
@@ -3271,8 +3274,10 @@ async function run(img, product, opts = {}) {
   ctlLoadSerial++; stockLoadSerial++;
   $("go").disabled = $("stockgo").disabled = true;
   $("bar").value = 0;
+  $("backup-warning").hidden = true;
+  $("backup-warning").textContent = "";
   const foreign = !!opts.foreign;   // stock / other custom: identity text after reboot may differ
-  let access, up;
+  let access, up, unprotected = false;
   try { access = await midiAccess(); }
   catch (e) {
     writing = false;
@@ -3305,14 +3310,19 @@ async function run(img, product, opts = {}) {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
         step, sameKeyboard, admitted: opts.admitted,
-        say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
-        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
-        save: async (file, name) => {
-          const retained = await saveSlotBackup(file, name);
-          // The user may change/revoke a NIGHTLY selection while checking the file.
-          return retained === true && (!opts.admitted || opts.admitted());
+        say: (k, a) => {
+          if (k === "slotsave") sayK("slotsave", a + t("slotsave2"));
+          else if (k === "slotunprotectedwarning") {
+            $("backup-warning").textContent = t(k) + (a ?? "");
+            $("backup-warning").hidden = false;
+            sayK(k, a || "");
+          } else sayK(k);
+          log(k + " " + (a ?? ""));
         },
+        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
+        save: (file, name) => saveSlotBackup(file, name),
       });
+      unprotected = r.unprotected === true;
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);
       else if (r.move) {
         $("bar").value = 100;
@@ -3322,6 +3332,10 @@ async function run(img, product, opts = {}) {
       }
     }
     await scan(true);
+    if (unprotected) {
+      sayK("slotunprotecteddone");
+      log("Firmware installed without a recoverable sample-slot backup.");
+    }
   } catch (e) {
     if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
     else sayK("error", e && e.message);
@@ -3335,9 +3349,23 @@ async function run(img, product, opts = {}) {
   }
 }
 
+// Never ignore an Install press silently: say why it did not start.
+const installBlocked = (why) => { $("status").textContent = why; $("installhint").textContent = why; log("install not started: " + why); };
+$("go").parentElement.addEventListener("click", (e) => {
+  if (e.target !== $("go") && !(e.target.contains && e.target.contains($("go")))) return;
+  if (!$("go").disabled || writing) return;
+  installBlocked(!$("devagree").checked ? "Install is locked: tick the development-firmware consent box above, then press Install."
+    : "Install is locked: the selected package is not downloaded and verified yet. Choose the model/version again and wait for 'Ready to install'.");
+});
 $("go").addEventListener("click", async () => {
-  if (writing || $("go").disabled || !hasCurrentVerifiedSelection() || !$("devagree").checked) return;
-  if (!confirmWrite(selectedProduct)) return;
+  if (writing) { installBlocked("An install is already running."); return; }
+  if (!$("devagree").checked) { installBlocked("Tick the development-firmware consent box above, then press Install."); return; }
+  if ($("go").disabled || !hasCurrentVerifiedSelection()) { installBlocked("The selected package is not verified yet. Choose the model/version again and wait for 'Ready to install'."); return; }
+  $("status").textContent = "Starting install…";
+  $("status").textContent = "Confirm below: press OK — write firmware.";
+  const confirmProduct = selectedProduct, confirmSerial = loadSerial;
+  if (!(await confirmWrite(selectedProduct))) { installBlocked("Install cancelled. Press Install again and choose OK — write firmware."); return; }
+  if (writing || loadSerial !== confirmSerial || selectedProduct !== confirmProduct || !$("devagree").checked || !hasCurrentVerifiedSelection()) { installBlocked("Selection changed while confirming. Press Install again."); return; }
   const { version: ver, pkg } = currentSelection();
   const selectedImage = image, product = selectedProduct, controller = ctl, serial = loadSerial;
   $("go").disabled = true;
@@ -3370,9 +3398,10 @@ $("go").addEventListener("click", async () => {
     image === selectedImage && (bundled || ctl === controller) && $("devagree").checked &&
     hasCurrentVerifiedSelection() });
 });
-$("stockgo").addEventListener("click", () => {
+$("stockgo").addEventListener("click", async () => {
   if (!stock || !$("stockconfirm").checked || writing) return;
-  if (!confirmWrite(stock.product)) return;
+  const st = stock;
+  if (!(await confirmWrite(st.product)) || stock !== st || writing || !$("stockconfirm").checked) return;
   $("stockgo").disabled = true;
   run(stock.image, stock.product, { foreign: true });
 });
@@ -3522,3 +3551,5 @@ navigateWorkspace();
 </script>
 </body>
 </html>
+
+

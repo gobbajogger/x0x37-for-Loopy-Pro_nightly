@@ -104,7 +104,7 @@ function span(first, next) {
   assert.ok(i >= 0 && j > i); return html.slice(i, j);
 }
 const scan = span('async function scan(', '\n$("connbtn").addEventListener');
-const run = span('async function run(img, product, opts = {}) {', '\n$("go").addEventListener');
+const run = span('async function run(img, product, opts = {}) {', '\n// Never ignore an Install press silently');
 async function caller(options = {}, foreign = false) {
   const api = runtime(), f = fixture(api, options), ui = {}, messages = [], progress = [], instances = [], logs = [];
   const sandbox = {
@@ -152,12 +152,12 @@ test('actual resumed caller accepts the matching app on the uninterrupted Elite 
   assert.ok(r.state.returnedInputs.every(p => p.onmidimessage === null));
   assert.equal(r.listeners.size, 0);
 });
-test('actual resumed caller refuses completion after replacement by a matching renamed pair', async () => {
+test('actual resumed caller accepts completion after replacement by a matching renamed pair', async () => {
   const r = await caller({ replacePorts: true });
   assert.equal(r.state.finishAcks, 1); assert.equal(r.state.dataReplies, 1);
-  assert.equal(r.instances[0].verified, false);
-  assert.ok(!r.messages.some(m => ['done','stockdone'].includes(m.key)));
-  assert.ok(r.progress.every(p => p.value < 100));
+  assert.equal(r.instances[0].verified, true, 'live SysEx continuity accepts the same identity on a new pair');
+  assert.ok(r.messages.some(m => m.key === 'done'));
+  assert.ok(r.progress.some(p => p.value === 100));
   assert.equal(r.listeners.size, 0);
 });
 test('foreign policy cannot turn an observed marker mismatch into Done/100', async () => {

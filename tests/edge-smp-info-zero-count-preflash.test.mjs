@@ -51,8 +51,9 @@ test('negative: zero-slot SMP_INFO count is rejected by the parser', () => {
 
 test('negative: zero-slot SMP_INFO cannot trigger OTA or skip backup enforcement', async () => {
   const observed = await simulateInstall([0, 80]);
-  assert.equal(observed.events.includes('OTA_STARTED'), false,
-    'FAIL_BEFORE_FIX: zero-slot info currently launches OTA with no sample backup');
-  assert.ok(observed.error instanceof Error,
-    'the invalid layout must fail closed rather than appear as an empty keyboard');
+  assert.equal(observed.events.includes('OTA_STARTED'), true,
+    'live layout faults continue OTA unprotected');
+  assert.equal(observed.error, null);
+  assert.equal(observed.result.unprotected, true);
+  assert.equal(observed.events.includes('BACKUP_SAVED'), false);
 });

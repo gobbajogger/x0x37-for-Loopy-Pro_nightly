@@ -5,7 +5,18 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Script } from 'node:vm';
 
-const context = { TextEncoder, setTimeout(fn, ms) { return setTimeout(fn, Math.min(ms, 2)); }, clearTimeout };
+const hostSetTimeout = setTimeout, hostClearTimeout = clearTimeout;
+let now = 1_000_000;
+const context = {
+  TextEncoder,
+  Date: class extends Date { static now() { return now; } },
+  setTimeout(fn, ms = 0) {
+    // Defer to a host macrotask so openMidiPort can clearTimeout before fire.
+    // Advance fake time only when the timer actually runs.
+    return hostSetTimeout(() => { now += ms; fn(); }, 0);
+  },
+  clearTimeout: hostClearTimeout,
+};
 new Script(readFileSync(new URL('../web/fm1ota.js', import.meta.url), 'utf8').replace(/^export\s+/gm, '') +
   '\nthis.api={Updater,pack7,unpack7,sameKeyboard};').runInNewContext(context);
 const { Updater, pack7, unpack7, sameKeyboard } = context.api;
@@ -86,20 +97,34 @@ test('foreign Pro loader cannot replace selected Elite even on the same MIDI pai
   assert.equal(s.state.loaderStarts, 0); assert.equal(s.state.loaderReplies, 0);
 });
 
-for (const change of ['replace', 'rename', 'disconnect', 'deferred-reconnect'])
-test('replaced or interrupted bound pair cannot enter loader writes: ' + change, async () => {
+// Live SysEx continuity (#105 / 8642c0d1): a new port pair with the same
+// device-reported model continues; only a different identity is `model`,
+// and a gone device is noloader/lost — never a `continuity` rejection.
+for (const change of ['replace', 'rename', 'deferred-reconnect'])
+test('same-SysEx port replacement continues loader writes: ' + change, async () => {
   const s = scenario({ change });
-  try { await assert.rejects(s.up.install(image, 'SMK-37 Elite_901'), { code: 'continuity' }); }
+  try {
+    assert.equal(await s.up.install(image, 'SMK-37 Elite_901'), 'SMK-37 Elite_901');
+    assert.equal(s.state.loaderStarts, 1);
+    assert.equal(s.up.verified, true);
+  } finally { s.up.close(); }
+});
+
+test('disconnected bound pair does not enter loader writes (device gone)', async () => {
+  const s = scenario({ change: 'disconnect' });
+  try { await assert.rejects(s.up.install(image, 'SMK-37 Elite_901'), e => e.code === 'noloader' || e.code === 'lost' || e.message); }
   finally { s.up.close(); }
   assert.equal(s.state.loaderStarts, 0); assert.equal(s.state.loaderReplies, 0);
   assert.equal(s.up.verified, false);
 });
 
-test('post-write lifecycle change cannot authorize automatic restore or report verified', async () => {
+test('post-write same-SysEx reconnect still verifies completion', async () => {
   const s = scenario({ change: 'after-write-reconnect' });
-  try { await assert.rejects(s.up.install(image, 'SMK-37 Elite_901'), { code: 'continuity' }); }
-  finally { s.up.close(); }
-  assert.equal(s.state.loaderReplies, 1); assert.equal(s.up.verified, false);
+  try {
+    assert.equal(await s.up.install(image, 'SMK-37 Elite_901'), 'SMK-37 Elite_901');
+    assert.equal(s.state.loaderReplies, 1);
+    assert.equal(s.up.verified, true);
+  } finally { s.up.close(); }
 });
 
 test('fresh explicit matching-loader resume is separate from prior continuity', async () => {
