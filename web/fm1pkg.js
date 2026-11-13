@@ -8,7 +8,7 @@ const BLOCKS = 20, BLK = 0x30, KEEP = 0x2F;
 
 // the package identity ("FM-1_904"): one marker byte after each of the first 20 blocks
 export function productOf(fwsc) {
-  if (fwsc.length < BLOCKS * BLK) throw new Error("not an FM-1 package (too short)");
+  if (fwsc.length < BLOCKS * BLK) throw new Error("firmware package is too short");
   let s = "";
   for (let i = 0; i < BLOCKS; i++) {
     const m = fwsc[i * BLK + KEEP];
