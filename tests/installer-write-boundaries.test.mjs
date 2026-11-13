@@ -8,7 +8,16 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Script } from 'node:vm';
 const source = path => readFileSync(new URL('../'+path, import.meta.url), 'utf8').replace(/^export\s+/gm, '');
-const otaContext = { setTimeout(fn) { fn(); return 0; }, clearTimeout() {}, TextEncoder };
+// Honor delay so #119's openMidiPort timeout cannot fire before port.open() settles.
+// Zero-delay still flushes immediately for yield/sleep(0) paths.
+const otaContext = {
+  setTimeout(fn, ms) {
+    if (!ms) { fn(); return 0; }
+    return globalThis.setTimeout(fn, ms);
+  },
+  clearTimeout(id) { globalThis.clearTimeout(id); },
+  TextEncoder
+};
 new Script(source('web/fm1ota.js')+'\nthis.api={Updater,sameKeyboard,pack7};').runInNewContext(otaContext);
 const { Updater, sameKeyboard, pack7 } = otaContext.api;
 const slotsContext = { TextEncoder, TextDecoder, crypto: globalThis.crypto };
@@ -61,12 +70,25 @@ async function installCase(product, appModel, loaderModel, accept) {
   assert.equal(verifyServe,1,'initial running-firmware staging remains actual install behavior');
 }
 await check('install rejects ota-FM-1 before loader write for Elite package',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-FM-1',false));
-await check('install rejects ota-SMK before loader write for FM-1 package',()=>installCase('FM-1_900','FM-1','ota-SMK-37 Pro',false));
+await check('install refuses an FM-1 package before staging',async()=>{
+  const app=device('FM-1');const up=new Updater(accessFor(app),()=>{});let served=0;
+  up.find=async filter=>{assert.ok(filter(app.id));return app;};
+  up.serve=async()=>{served++;return {finished:true,served:1};};
+  await assert.rejects(up.install(image,'FM-1_900'),e=>e.code==='model');
+  assert.equal(served,0,'FM-1 is refused before image staging');
+  assert.equal(app.state.closed,1);
+});
 await check('install rejects Pro loader for Elite package',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-SMK-37 Pro',false));
 await check('install rejects Elite loader for Pro package',()=>installCase('SMK-37 Pro_900','SMK-37 Pro','ota-SMK-37 Elite',false));
 await check('install preserves matching Elite loader positive',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-SMK-37 Elite',true));
 await check('install preserves matching Pro loader positive',()=>installCase('SMK-37 Pro_900','SMK-37 Pro','ota-SMK-37 Pro',true));
-await check('install preserves FM-1 loader positive',()=>installCase('FM-1_900','FM-1','ota-FM-1',true));
+await check('install refuses a matching FM-1 loader and device',async()=>{
+  const app=device('FM-1');const up=new Updater(accessFor(app),()=>{});let served=0;
+  up.find=async filter=>{assert.ok(filter(app.id));return app;};
+  up.serve=async()=>{served++;return {finished:true,served:1};};
+  await assert.rejects(up.install(image,'FM-1_900'),e=>e.code==='model');
+  assert.equal(served,0);
+});
 for (const [name, product, model, accept] of [
   ['write cross-family refusal','SMK-37 Elite_900','ota-FM-1',false],
   ['write requires a known package identity','','ota-SMK-37 Elite',false],
@@ -119,7 +141,7 @@ for(const [name,text,mode,code] of [
   ['stock Elite016 no SMP_INFO retains supported path','SMK-37 Elite_016','no-reply',null],
   ['stock MKE016 no SMP_INFO retains supported path','MKE-P37_016','no-reply',null],
   ['stock Starry016 no SMP_INFO retains supported path','STARRYKEY-37 Play_016','no-reply',null],
-  ['stock FM1_015 no SMP_INFO retains supported path','FM-1_015','no-reply',null],
+  ['stock FM1_015 is refused as an unsupported board','FM-1_015','no-reply','model'],
   ['required slot backup failure blocks install','SMK-37 Pro_900','backup-error','slotbackup'],
   ['known stock Pro016 no SMP_INFO retains existing manual path','SMK-37 Pro_016','no-reply',null],
   ['valid empty slot layout retains install','SMK-37 Pro_900','empty',null],
@@ -147,7 +169,7 @@ await check('sameKeyboard preserves exact models and only the verified Starrykey
  for(const name of ['SMK-37 Pro','SMK-37 Elite','MKE-P37','STARRYKEY-37 Play','SMK-37+VA'])
   {assert.equal(sameKeyboard(name,name),true);assert.equal(sameKeyboard(name,'SMK-37 Elite'),name==='SMK-37 Elite');assert.equal(sameKeyboard(name,'FM-1'),false);}
  assert.equal(sameKeyboard('STARRYKEY-37 Play','SMK-37 Pro'),true);
- assert.equal(sameKeyboard('FM-1','FM-1'),true);
+ assert.equal(sameKeyboard('FM-1','FM-1'),false);
 });
 function midiPort(name,text) {
  const state={sent:[],opens:0,text};

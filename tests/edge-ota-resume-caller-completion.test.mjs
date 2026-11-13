@@ -9,10 +9,35 @@ const source = readFileSync(new URL('../web/fm1ota.js', import.meta.url), 'utf8'
 const html = readFileSync(new URL('../web/x0x_installer.html', import.meta.url), 'utf8');
 const product = 'SMK-37 Elite_900', image = new Uint8Array(128);
 function runtime() {
-  let clock = 0;
+  // Host timers: #119 openMidiPort races open() against a 3000ms timeout.
+  // Firing that timeout on a microtask can beat clearTimeout and fail find().
+  // Zero-ms (sleep(0)) yields on a microtask; longer timers use a host macrotask
+  // so a successful open can cancel them first. The fake clock only advances
+  // when a timer actually fires.
+  const hostSetTimeout = setTimeout, hostClearTimeout = clearTimeout;
+  let clock = 0, timerId = 0;
+  const cleared = new Set();
+  const hosts = new Map();
   const context = { TextEncoder, Date: class extends Date { static now() { return clock; } },
-    setTimeout(fn, ms) { clock += ms || 0; fn(); return 0; }, clearTimeout() {} };
-  new Script(source.replace(/^export\s+/gm, '') + '\nthis.api={Updater,pack7,unpack7};').runInNewContext(context);
+    setTimeout(fn, ms) {
+      const id = ++timerId;
+      if (!ms) {
+        queueMicrotask(() => { if (!cleared.has(id)) fn(); });
+        return id;
+      }
+      hosts.set(id, hostSetTimeout(() => {
+        hosts.delete(id);
+        if (cleared.has(id)) return;
+        clock += ms;
+        fn();
+      }, 0));
+      return id;
+    },
+    clearTimeout(id) {
+      cleared.add(id);
+      if (hosts.has(id)) { hostClearTimeout(hosts.get(id)); hosts.delete(id); }
+    } };
+  new Script(source.replace(/^export\s+/gm, '') + '\nthis.api={Updater,sameKeyboard,pack7,unpack7};').runInNewContext(context);
   return context.api;
 }
 function fixture(api, { outcome = 'matching', failAck = false, loaderModel = 'ota-SMK-37 Elite', extraLoader = false, replacePorts = false } = {}) {
@@ -90,6 +115,7 @@ async function caller(options = {}, foreign = false) {
     midiAccess: async () => f.access,
     Updater: class extends api.Updater { constructor(...args) { super(...args); instances.push(this); } },
     getSampleWorkspace: () => null, getProjectWorkspace: () => null,
+    sameKeyboard: api.sameKeyboard,
     sayK: key => messages.push({ key, appResponses: f.state.appResponses }), t: key => key, log: value => logs.push(value), led() {},
     updateInstallGate() {}, setConnected() {}, suggestModel() { assert.fail('postwrite scan must not select a package'); },
     installKeepingSlots() { assert.fail('not the resume path'); },

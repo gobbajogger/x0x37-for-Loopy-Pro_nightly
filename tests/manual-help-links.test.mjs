@@ -12,7 +12,7 @@ for (const file of ['web/x0x_breaks.html', 'docs/breaks/index.html']) {
 for (const file of ['web/x0x_installer.html', 'docs/install/index.html']) {
   const html = read(file);
   const href = html.match(/<a\s+href="([^"]+)"[^>]*\bdata-t="bricklink"/)?.[1];
-  assert.equal(href, `${manual}#recovering-an-fm-1-that-wont-start`, `${file}: existing troubleshooting help must reach the maintained section`);
+  assert.equal(href, 'https://github.com/gobbajogger/X0X37-for-Loopy-Pro/issues', `${file}: SMK recovery help must reach project support, not the FM-1 manual`);
 }
 for (const file of ['web/x0x_breaks.html', 'web/x0x_installer.html', 'docs/breaks/index.html', 'docs/install/index.html']) {
   assert.doesNotMatch(read(file), /href="\.\.\/manual\/#/, `${file}: local Manual is a landing stub, not a sectioned document`);

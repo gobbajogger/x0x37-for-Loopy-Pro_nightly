@@ -10,9 +10,9 @@ import { runInNewContext } from 'node:vm';
 const src = readFileSync(new URL('./fm1ota.js', import.meta.url), 'utf8');
 const methodStart = src.indexOf('  _portPairs() {');
 const methodEnd = src.indexOf('\n  // every in/out pair', methodStart);
-const findStart = src.indexOf('  async find(filter) {', methodEnd);
+const findStart = src.indexOf('  async find(filter, deadline = Infinity) {', methodEnd);
 const findEnd = src.indexOf('\n  async waitFor(', findStart);
-const openStart = src.indexOf('async function openMidiPort(port) {');
+const openStart = src.indexOf('async function openMidiPort(port, deadline = Infinity) {');
 const openEnd = src.indexOf('\nexport class Updater', openStart);
 assert.ok(methodStart > 0 && methodEnd > methodStart && findStart > methodEnd && findEnd > findStart,
   'Updater._portPairs and Updater.find must exist in their expected source positions');
