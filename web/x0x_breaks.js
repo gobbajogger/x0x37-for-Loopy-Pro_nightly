@@ -892,15 +892,15 @@ async function cancelInstallSnapshot(link, snapshot) {
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
 // hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
-// 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
-//    await explicit retained-backup acknowledgement (only boolean true permits OTA).
+// 1. If slots are at risk, attempt an .x0xslots archive and download.
+//    Backup errors warn but never prevent OTA.
 //    2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 export async function installKeepingSlots(up, image, product, board, hooks) {
   const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
-  let move = null, snapshot = null;
+  let move = null, snapshot = null, unprotected = false;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
   if (!dev) throw fail("notfound", "No running keyboard was found for sample preflight; no update was started.");
   if (!h.sameKeyboard(dev.id.model, product.split("_")[0])) {
@@ -918,12 +918,11 @@ export async function installKeepingSlots(up, image, product, board, hooks) {
       let layout;
       try { layout = await readSlotLayout(dev.link, 1000, 2); }
       catch (e) {
-        const stock = dev.id.text === "FM-1_015" || (dev.id.version === 16 && /^(SMK-37[ +].*|MKE-P37|STARRYKEY-37.*)$/i.test(dev.id.model));
-        if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
-        else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
+        // Any unsupported/failed slot INFO uses the outer warning-only path.
+        throw fail("slotbackup", `Sample layout unavailable (${e.message}); continuing without backup.`);
       }
       if (layout && !snapshot)
-        throw fail("slotbackup", "This firmware cannot atomically protect the sample backup through update entry. No update was started. A separately verified preservation path is required for this older firmware.");
+        throw fail("slotbackup", "Atomic sample backup unsupported; continuing without backup.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
@@ -933,13 +932,17 @@ export async function installKeepingSlots(up, image, product, board, hooks) {
           try {
             saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
           } catch (e) { throw fail("slotbackup", e.message); }
-          const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
-          readArchive(file);                                  // verify the in-memory archive
+          const st = archiveStamp();
+          let file;
+          try {
+            file = makeArchive(saved.layout, saved.images, st.created);
+            readArchive(file);                                // verify the in-memory archive
+          } catch (e) { throw fail("slotbackup", e.message); }
           let retained;
           try { retained = await h.save(file, st.name); }
-          catch (e) { throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name); }
+          catch (e) { throw fail("slotbackup", "The recovery backup could not be downloaded (" + e.message + ")."); }
           if (retained !== true)
-            throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
+            throw fail("slotbackupconfirm", "The browser could not confirm saving the recovery backup.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
           // snapshot for preservation, just as the Python SlotMove.backup does.
           const savedMap = flashMap(saved.layout, board);
@@ -948,14 +951,20 @@ export async function installKeepingSlots(up, image, product, board, hooks) {
         }
       }
     } catch (e) {
+      // Sample preservation is best effort on legacy firmware. Never bypass
+      // keyboard model or package/controller admission: those remain enforced
+      // independently by Updater.install() and admitted().
       await cancelInstallSnapshot(dev.link, snapshot);
-      throw e;
+      snapshot = null;
+      move = null; // No verified recovery archive exists.
+      unprotected = true;
+      h.say("slotunprotectedwarning", e?.message || String(e));
     } finally { dev.link.close(); }
   }
-  if (!h.admitted()) throw fail("slotbackup", "The selected package is no longer approved. No update was started.");
+  if (!h.admitted()) throw fail("unapproved", "The selected package is no longer approved. No update was started.");
   const ran = await up.install(image, product, h.step,
     snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot, h.admitted) : null, h.admitted);
-  if (!move || !move.newMap.length) return { product: ran, move };
+  if (!move || !move.newMap.length) return { product: ran, move, unprotected };
   h.say("slotback");
   const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);
   if (!back) throw fail("slots", "the keyboard did not answer after the install", move.name);
@@ -972,5 +981,5 @@ export async function installKeepingSlots(up, image, product, board, hooks) {
   } catch (e) {
     throw fail("slots", e.message, move.name);
   } finally { back.link.close(); }
-  return { product: ran, move };
+  return { product: ran, move, unprotected };
 }

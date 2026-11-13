@@ -65,7 +65,7 @@ function versionMetadataMatches(record, identity) {
 
 // Only the documented public catalog schema may reach public candidate files.
 const catalogKeys = ['schema', 'repo', 'pages', 'latest', 'versions', 'history'];
-const versionKeys = ['version', 'firmware_version', 'release_display', 'label', 'status', 'config', 'hardware_tested', 'source_commit', 'source_tree',
+const versionKeys = ['version', 'firmware_version', 'release_display', 'display_version', 'label', 'status', 'config', 'hardware_tested', 'source_commit', 'source_tree',
   'models', 'title', 'description', 'built_at', 'evidence_url', 'lifecycle', 'revoked', 'blocked', 'withdrawn',
   ...approvalKeys, 'fromRelease', 'device_verified'];
 const packageKeys = ['product', 'firmware_version', 'release_display', 'sha256', 'size', 'controller_sha256', 'controller_strategy', 'controller_size', 'pkg', 'status', 'lifecycle',
@@ -113,13 +113,32 @@ function checkInputFields(catalog, qualification, need) {
   }
 }
 const pick = (value, keys) => Object.fromEntries(keys.filter(key => Object.hasOwn(value, key)).map(key => [key, value[key]]));
-function publicCatalog(catalog) {
+export function publicCatalog(catalog) {
   const result = pick(catalog, catalogKeys);
   result.versions = catalog.versions.map(v => ({...pick(v, versionKeys),
     models: Object.fromEntries(Object.entries(v.models).filter(([key]) => ['elite', 'pro'].includes(key))
       .map(([key, p]) => [key, pick(p, packageKeys)]))}));
-  result.history = []; // Read-only history belongs in build-status, never this picker.
+  // Read-only history belongs in build-status, never this picker. Omit the
+  // key so a publication render matches live (which has no catalog.history).
+  delete result.history;
   return result;
+}
+
+// Publication / qualified render only. The in-repo docs/versions.json and
+// preview-catalog.json are empty preview files and must never be a render
+// or deploy input. build-preview.mjs is the only path that may write them.
+export const RETAINED_LIVE_CATALOG_BLOB = '24a8b208aa01d539b5ef4e23af73d9c4aa2ac3d8';
+export function assertPublicationCatalog(catalog, sourcePath = '') {
+  const n = Array.isArray(catalog?.versions) ? catalog.versions.length : 0;
+  if (n === 0) {
+    const where = sourcePath ? ` (${sourcePath})` : '';
+    throw new Error(
+      'REFUSING PUBLICATION: catalog' + where + ' is empty (no versions). ' +
+      'The in-repo docs/versions.json and preview-catalog.json are empty preview files and must never be deployed or used as a qualified-render input. ' +
+      'Use the retained live catalog (git blob ' + RETAINED_LIVE_CATALOG_BLOB + ').'
+    );
+  }
+  return catalog;
 }
 
 // These are receipts supplied by the existing independent owners, not approvals
@@ -265,6 +284,7 @@ async function main(argv) {
     throw new Error('Usage: node scripts/render-qualified-nightly.mjs --catalog FILE --qualification FILE --out NEW_DIRECTORY');
   }
   const catalog = JSON.parse(readFileSync(argv[1], 'utf8'));
+  assertPublicationCatalog(catalog, argv[1]);
   const qualification = JSON.parse(readFileSync(argv[3], 'utf8'));
   validateCatalog(catalog, qualification);
   const output = checkedOutput(argv[5]);

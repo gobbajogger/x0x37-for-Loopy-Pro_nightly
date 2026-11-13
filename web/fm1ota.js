@@ -201,17 +201,16 @@ export class Updater {
     // Model/version has no unit serial. A sole keyboard may rename its port on
     // reboot; multiple update-compatible ports cannot be safely distinguished.
     const ports = this.ports();
-    if (ports.length > 1 || (selected !== null && (ports.length !== 1 || ports[0].name !== selected)))
+    // Identity comes from the device-reported model, never from port names/ids.
+    if (ports.length > 1)
       throw fail("ambiguous", "Cannot bind this update to one keyboard across reboot. Disconnect the other update-compatible keyboards and select the target again.");
-    if (this.verified && ports.length && ports[0].name !== this.targetName)
-      throw fail("ambiguous", "The verified keyboard's MIDI port changed before readback or sample restore; refusing another port.");
     return ports;
   }
 
   bind(dev) {
     try {
       this.singlePort(dev.name);
-      if (this.target && (this.targetName !== dev.name || !sameKeyboard(this.target.model, dev.id.model)))
+      if (this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), dev.id.model.replace(/^ota-/i, "")))
         throw fail("ambiguous", "The selected keyboard changed before the update.");
     } catch (e) { dev.link.close(); throw e; }
     this.target = dev.id;
@@ -224,25 +223,23 @@ export class Updater {
         const p = event.port;
         // Event callbacks can lag a disconnect/reconnect. Current state alone
         // cannot prove that this bound connection remained uninterrupted.
-        if (p && (p === binding.input || p === binding.output ||
-            (p.id && (p.id === binding.input?.id || p.id === binding.output?.id)))) binding.invalid = true;
+        // iOS Web MIDI hosts fire statechange on open/reopen and may swap port
+        // objects/ids without any reconnect. Only a real disconnect counts; the
+        // device is re-identified by its SysEx model reply before continuing.
+        if (p && p.state === "disconnected" && (p === binding.input || p === binding.output)) binding.lostPort = true;
       };
       if (binding.observed) this.access.addEventListener("statechange", this.onPortState);
     }
   }
 
   assertContinuous(dev) {
-    const b = this.binding;
-    if (dev?.id && this.target && !sameKeyboard(dev.id.model, this.target.model))
+    // Continuity = same device-reported model (SysEx identity), not the same
+    // MIDI port object, id or name (those change spuriously on iOS).
+    if (dev?.id && this.target &&
+        !sameKeyboard(dev.id.model.replace(/^ota-/i, ""), this.target.model.replace(/^ota-/i, "")))
       throw fail("model", `The selected keyboard changed model during the update: ${dev.id.text}`);
-    if (!b || !b.observed || b.invalid || !b.input || !b.output ||
-        dev?.link?.input !== b.input || dev?.link?.output !== b.output ||
-        b.input.state !== "connected" || b.output.state !== "connected" ||
-        ![...this.access.inputs.values()].includes(b.input) ||
-        ![...this.access.outputs.values()].includes(b.output)) {
-      if (b) b.invalid = true;
-      throw fail("continuity", "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update.");
-    }
+    if (dev?.link && dev.link !== this.binding && dev.link.lost)
+      throw fail("lost", "The keyboard disconnected. Reconnect it and press Install again.");
   }
 
   close() {
@@ -277,7 +274,6 @@ export class Updater {
   // every in/out pair with the same port name that answers the handshake
   async find(filter, deadline = Infinity) {
     if (this.target) this.singlePort();
-    if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
       if (Date.now() >= deadline) return null;
       try { await openMidiPort(input, deadline); await openMidiPort(output, deadline); } catch (_) { continue; }
@@ -339,7 +335,6 @@ export class Updater {
     let served = 0, transferred = 0, startedAtHeader = false, last = Date.now();
     for (;;) {
       const pkt = await link.read(1000);
-      if (this.binding) this.assertContinuous({ link });
       if (!pkt) {
         if (link.lost) return { served, finished: false, lost: true };
         if (Date.now() - last > idleMs) return { served, finished: false };
@@ -363,7 +358,6 @@ export class Updater {
       }
       if (r.len === 0 || r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
       await sleep(10);
-      if (this.binding) this.assertContinuous({ link });
       if (finishAddr === 0xF0000000 && transferred === 0) this.assertAdmitted();
       if (!link.send(response(r.addr, Array.from(image.subarray(r.addr, r.addr + r.len)), r.fl))) {
         return { served, finished: false, lost: true };
@@ -423,7 +417,7 @@ export class Updater {
     const back = await this.waitFor((id) => !IS_OTA(id), 70000);
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
-      this.singlePort(back.name);
+      this.singlePort();
       this.assertContinuous(back);
       if (IS_OTA(back.id)) throw fail("noreturn", "the device is still in update mode");
       if (!sameKeyboard(back.id.model, product.split("_")[0]))
@@ -439,7 +433,7 @@ export class Updater {
   // step 2 with the loader found by find()/waitFor()
   async write(ota, image, step) {
     try {
-      this.singlePort(ota.name);
+      this.singlePort();
       if (!this.product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), this.product.split("_")[0]))
         throw fail("model", `the loader is ${ota.id.text}, the package is for ${this.product || "an unknown model"}`);
       if (!IS_OTA(ota.id)) throw fail("model", "The selected device is not an update loader");
@@ -472,4 +466,3 @@ export class Updater {
     return true;
   }
 }
-
