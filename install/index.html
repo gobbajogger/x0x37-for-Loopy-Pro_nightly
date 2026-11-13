@@ -724,6 +724,7 @@ function pkHasSlotMap(flash) {
   // the older three-slot map (0xB0000 is a sample slot in that verified old
   // map; later it is VM recovery spare / sector-0 shadows), and the current
   // three-slot map with slot 3 at 0xB3000 (32 KiB, after the shadows).
+  // Port of live gh-pages 9fde4dbe so a later site render cannot drop 0.0.25 packages.
   const allowed = [
     [[0xC2000, 0x14000], [0xD6000, 0x1E000]],
     [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]],
@@ -858,13 +859,13 @@ const MAXDATA = 512;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const IS_OTA = (id) => /^ota-/i.test(id.model);
 const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro|snoop|vector|vox|ota|composite|sinco|usb-midi/i;
-// Strict model match (X0X37-for-Loopy-Pro #806 62cf11e98): a package is written only
-// when its model equals the model the keyboard reports (case-insensitive, "ota-"
-// ignored). No family or alias match, and an FM-1 is never flashed.
+// Package models are distinct even when boards share a family. The verified
+// Starrykey stock identity names the Pro model; it is not an Elite alias.
 function keyboardModel(model) {
   if (typeof model !== "string" || !model) return null;
   const name = model.replace(/^ota-/i, "").toLowerCase();
-  return name === "fm-1" ? null : name;
+  if (name === "fm-1") return null; // SMK installer: never admit the other board.
+  return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
 }
 const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
 
