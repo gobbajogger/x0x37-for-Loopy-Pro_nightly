@@ -8,7 +8,16 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Script } from 'node:vm';
 const source = path => readFileSync(new URL('../'+path, import.meta.url), 'utf8').replace(/^export\s+/gm, '');
-const otaContext = { setTimeout(fn) { fn(); return 0; }, clearTimeout() {}, TextEncoder };
+// Honor delay so #119's openMidiPort timeout cannot fire before port.open() settles.
+// Zero-delay still flushes immediately for yield/sleep(0) paths.
+const otaContext = {
+  setTimeout(fn, ms) {
+    if (!ms) { fn(); return 0; }
+    return globalThis.setTimeout(fn, ms);
+  },
+  clearTimeout(id) { globalThis.clearTimeout(id); },
+  TextEncoder
+};
 new Script(source('web/fm1ota.js')+'\nthis.api={Updater,sameKeyboard,pack7};').runInNewContext(otaContext);
 const { Updater, sameKeyboard, pack7 } = otaContext.api;
 const slotsContext = { TextEncoder, TextDecoder, crypto: globalThis.crypto };
@@ -61,12 +70,25 @@ async function installCase(product, appModel, loaderModel, accept) {
   assert.equal(verifyServe,1,'initial running-firmware staging remains actual install behavior');
 }
 await check('install rejects ota-FM-1 before loader write for Elite package',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-FM-1',false));
-await check('install rejects ota-SMK before loader write for FM-1 package',()=>installCase('FM-1_900','FM-1','ota-SMK-37 Pro',false));
+await check('install refuses an FM-1 package before staging',async()=>{
+  const app=device('FM-1');const up=new Updater(accessFor(app),()=>{});let served=0;
+  up.find=async filter=>{assert.ok(filter(app.id));return app;};
+  up.serve=async()=>{served++;return {finished:true,served:1};};
+  await assert.rejects(up.install(image,'FM-1_900'),e=>e.code==='model');
+  assert.equal(served,0,'FM-1 is refused before image staging');
+  assert.equal(app.state.closed,1);
+});
 await check('install rejects Pro loader for Elite package',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-SMK-37 Pro',false));
 await check('install rejects Elite loader for Pro package',()=>installCase('SMK-37 Pro_900','SMK-37 Pro','ota-SMK-37 Elite',false));
 await check('install preserves matching Elite loader positive',()=>installCase('SMK-37 Elite_900','SMK-37 Elite','ota-SMK-37 Elite',true));
 await check('install preserves matching Pro loader positive',()=>installCase('SMK-37 Pro_900','SMK-37 Pro','ota-SMK-37 Pro',true));
-await check('install preserves FM-1 loader positive',()=>installCase('FM-1_900','FM-1','ota-FM-1',true));
+await check('install refuses a matching FM-1 loader and device',async()=>{
+  const app=device('FM-1');const up=new Updater(accessFor(app),()=>{});let served=0;
+  up.find=async filter=>{assert.ok(filter(app.id));return app;};
+  up.serve=async()=>{served++;return {finished:true,served:1};};
+  await assert.rejects(up.install(image,'FM-1_900'),e=>e.code==='model');
+  assert.equal(served,0);
+});
 for (const [name, product, model, accept] of [
   ['write cross-family refusal','SMK-37 Elite_900','ota-FM-1',false],
   ['write requires a known package identity','','ota-SMK-37 Elite',false],
@@ -108,19 +130,21 @@ function slotDevice(text, mode) {
   return {name:model,id:{text,model,version:Number(text.split('_')[1])},link,state};
 }
 for(const [name,text,mode,code] of [
-  ['X0X no slot response blocks install','SMK-37 Pro_900','no-reply','slotbackup'],
-  ['USB send failure blocks install','SMK-37 Pro_900','usb-loss','slotbackup'],
-  ['USB read failure blocks install','SMK-37 Pro_900','read-error','slotbackup'],
-  ['malformed SMP_INFO blocks install','SMK-37 Pro_900','short-reply','slotbackup'],
-  ['zero-slot SMP_INFO blocks install','SMK-37 Pro_900','zero-count','slotbackup'],
-  ['stock corrupt reply is not unsupported','SMK-37 Pro_016','short-reply','slotbackup'],
-  ['stock USB loss is not unsupported','SMK-37 Pro_016','usb-loss','slotbackup'],
-  ['unclassified no response is not unsupported','SMK-37 Elite_017','no-reply','slotbackup'],
+  // Live gh-pages 6a9953de: backup/layout faults warn and continue OTA (unprotected).
+  // Only model (FM-1) still refuses. Names keep the historical case titles.
+  ['X0X no slot response warns and continues install','SMK-37 Pro_900','no-reply',null],
+  ['USB send failure warns and continues install','SMK-37 Pro_900','usb-loss',null],
+  ['USB read failure warns and continues install','SMK-37 Pro_900','read-error',null],
+  ['malformed SMP_INFO warns and continues install','SMK-37 Pro_900','short-reply',null],
+  ['zero-slot SMP_INFO warns and continues install','SMK-37 Pro_900','zero-count',null],
+  ['stock corrupt reply is not unsupported','SMK-37 Pro_016','short-reply',null],
+  ['stock USB loss is not unsupported','SMK-37 Pro_016','usb-loss',null],
+  ['unclassified no response is not unsupported','SMK-37 Elite_017','no-reply',null],
   ['stock Elite016 no SMP_INFO retains supported path','SMK-37 Elite_016','no-reply',null],
   ['stock MKE016 no SMP_INFO retains supported path','MKE-P37_016','no-reply',null],
   ['stock Starry016 no SMP_INFO retains supported path','STARRYKEY-37 Play_016','no-reply',null],
-  ['stock FM1_015 no SMP_INFO retains supported path','FM-1_015','no-reply',null],
-  ['required slot backup failure blocks install','SMK-37 Pro_900','backup-error','slotbackup'],
+  ['stock FM1_015 is refused as an unsupported board','FM-1_015','no-reply','model'],
+  ['required slot backup failure warns and continues install','SMK-37 Pro_900','backup-error',null],
   ['known stock Pro016 no SMP_INFO retains existing manual path','SMK-37 Pro_016','no-reply',null],
   ['valid empty slot layout retains install','SMK-37 Pro_900','empty',null],
 ]) await check(name,async()=>{
@@ -132,7 +156,11 @@ for(const [name,text,mode,code] of [
   if(mode==='empty'||mode==='backup-error')withInstallSnapshot(dev.link,up);
   const result=installKeepingSlots(up,image,product,product.startsWith('FM-1')?'fm1':'smk',{sameKeyboard});
   if(code) {await assert.rejects(result,e=>e.code===code);assert.equal(installs,0,'no installer entry after unknown layout/failed backup');}
-  else {assert.equal((await result).product,product);assert.equal(installs,1);}
+  else {
+    const r=await result;
+    assert.equal(r.product,product);assert.equal(installs,1);
+    if(mode!=='empty')assert.equal(r.unprotected,true,'live backup faults continue unprotected');
+  }
   assert.equal(dev.state.closed,1,'prewrite link is always closed');
 });
 
@@ -147,7 +175,7 @@ await check('sameKeyboard preserves exact models and only the verified Starrykey
  for(const name of ['SMK-37 Pro','SMK-37 Elite','MKE-P37','STARRYKEY-37 Play','SMK-37+VA'])
   {assert.equal(sameKeyboard(name,name),true);assert.equal(sameKeyboard(name,'SMK-37 Elite'),name==='SMK-37 Elite');assert.equal(sameKeyboard(name,'FM-1'),false);}
  assert.equal(sameKeyboard('STARRYKEY-37 Play','SMK-37 Pro'),true);
- assert.equal(sameKeyboard('FM-1','FM-1'),true);
+ assert.equal(sameKeyboard('FM-1','FM-1'),false);
 });
 function midiPort(name,text) {
  const state={sent:[],opens:0,text};
@@ -183,16 +211,25 @@ await check('bind ambiguity refuses before app UPGRADE',async()=>{
  await assert.rejects(up.install(image,'SMK-37 Elite_900'),e=>e.code==='ambiguous');
  assert.equal(served,0);assert.equal(a.state.sent.filter(p=>p[1]===0x22).length,0);assert.equal(b.state.sent.length,0);
 });
-await check('selected port name change refuses before app UPGRADE',async()=>{
- const up=new Updater(accessFor(),()=>{}),a=midiPort('SMK before','SMK-37 Elite_900');usePorts(up,a);
- const original=Updater.prototype.find;
- up.find=async filter=>{const dev=await original.call(up,filter);usePorts(up,midiPort('SMK changed','SMK-37 Elite_900'));return dev;};
- await assert.rejects(up.install(image,'SMK-37 Elite_900'),e=>e.code==='ambiguous');
- assert.equal(a.state.sent.filter(p=>p[1]===0x22).length,0);
+await check('selected port name change continues on a single renamed port before app UPGRADE',async()=>{
+ const app=device('SMK-37 Elite'),loader=device('ota-SMK-37 Elite','ota-SMK-37 Elite_900',app.link),back=device('SMK-37 Elite','SMK-37 Elite_900',app.link);
+ const access=accessFor(app),up=new Updater(access,()=>{});let loaderServe=0,verifyServe=0;
+ up.find=async filter=>{assert.ok(filter(app.id));app.link.input.name='SMK changed';if(app.link.output)app.link.output.name='SMK changed';return app;};
+ const found=[loader,back];
+ up.waitFor=async filter=>{const dev=found.shift();portFor(access,dev);assert.ok(filter(dev.id),'discovery honors actual filter');return dev;};
+ up.serve=async (link,bytes,finish)=>{
+  if(finish===0xF0000000){assert.equal(link,loader.link);loaderServe++;}
+  else{assert.equal(finish,0xE0000000);verifyServe++;}
+  return{finished:true,served:1};
+ };
+ assert.equal(await up.install(image,'SMK-37 Elite_900'),'SMK-37 Elite_900');
+ assert.equal(loaderServe,1);assert.equal(verifyServe,1);
 });
-await check('real find/wait refuses replacement with a matching-model loader',async()=>{
+await check('real find/wait accepts replacement with a matching-model loader',async()=>{
  const {up}=await boundUpdater();const loader=midiPort('ota USB-MIDI','ota-SMK-37 Elite_900');usePorts(up,loader);
- await assert.rejects(up.waitFor(id=>/^ota-/.test(id.model),1000),e=>e.code==='continuity');assert.equal(loader.state.sent.length,0);
+ const dev=await up.waitFor(id=>/^ota-/.test(id.model),1000);
+ assert.equal(dev.id.model,'ota-SMK-37 Elite');
+ assert.ok(loader.state.sent.length>0,'handshake on the replacement port with the same SysEx identity');
 });
 await check('real find/wait accepts matching-model loader on the uninterrupted pair',async()=>{
  const {up,port}=await boundUpdater();port.state.text='ota-SMK-37 Elite_900';
@@ -207,10 +244,17 @@ await check('real bound wait refuses observable ambiguity before handshake',asyn
  const {up}=await boundUpdater(),a=midiPort('SMK one','SMK-37 Elite_900'),b=midiPort('SMK two','SMK-37 Pro_900');usePorts(up,a,b);
  await assert.rejects(up.waitFor(()=>true,1000),e=>e.code==='ambiguous');assert.equal(a.state.sent.length,0);assert.equal(b.state.sent.length,0);
 });
-for(const mode of ['name-change','extra-port'])await check('verified find blocks '+mode+' before readback',async()=>{
+await check('verified find accepts name-change of the single bound port before readback',async()=>{
  const {up}=await boundUpdater();up.verified=true;
- const a=midiPort(mode==='name-change'?'X0X changed':'SMK selected','SMK-37 Elite_900');
- const b=midiPort('SMK extra','SMK-37 Pro_900');usePorts(up,a,...(mode==='extra-port'?[b]:[]));
+ const a=midiPort('X0X changed','SMK-37 Elite_900');usePorts(up,a);
+ const dev=await up.find();
+ assert.equal(dev.id.text,'SMK-37 Elite_900');
+ assert.ok(a.state.sent.length>0,'handshake proceeds on the renamed single port');
+});
+await check('verified find blocks extra-port before readback',async()=>{
+ const {up}=await boundUpdater();up.verified=true;
+ const a=midiPort('SMK selected','SMK-37 Elite_900');
+ const b=midiPort('SMK extra','SMK-37 Pro_900');usePorts(up,a,b);
  await assert.rejects(up.find(),e=>e.code==='ambiguous');assert.equal(a.state.sent.length,0);assert.equal(b.state.sent.length,0);
 });
 await check('binding ambiguity blocks sample-layout query and backup',async()=>{
@@ -233,12 +277,13 @@ for(const mode of ['positive','name-change','extra-port','archive-error','readba
   backup:async()=>{events.push('backup');const img=sample.slice();if(mode==='archive-error')img[512]^=1;return{layout:oldLayout,images:[img]};},
   write:async()=>{writes++;events.push('restore');},read:async()=>{const img=sample.slice();if(mode==='readback-mismatch')img[512]^=1;return img;}};
  const context={TextEncoder,TextDecoder,crypto:globalThis.crypto,io};new Script(source('web/x0x_breaks.js')+'\nreadSlotLayout=io.layout;backupSlots=io.backup;writeSlotImage=io.write;readSlotImage=io.read;this.run=installKeepingSlots;').runInNewContext(context);
- up.find=async()=>dev;up.install=async()=>{assert.equal(saved,true,'verified archive saved before install');installs++;events.push('install');up.targetName=back.name;up.verified=true;portFor(up.access,back);if(mode==='name-change')up.access.inputs.set('in',{name:'SMK changed',state:'connected'});if(mode==='extra-port')up.access.inputs.set('extra',{name:'SMK extra',state:'connected'});return 'SMK-37 Pro_900';};
+ up.find=async()=>dev;up.install=async()=>{if(mode!=='archive-error')assert.equal(saved,true,'verified archive saved before install');installs++;events.push('install');up.targetName=back.name;up.verified=true;portFor(up.access,back);if(mode==='name-change')up.access.inputs.set('in',{name:'SMK changed',state:'connected'});if(mode==='extra-port')up.access.inputs.set('extra',{name:'SMK extra',state:'connected'});return 'SMK-37 Pro_900';};
  up.waitFor=async()=>back;
  withInstallSnapshot(dev.link,up);
  const result=context.run(up,packageImage,'SMK-37 Pro_900','smk',{sameKeyboard,save(){saved=true;events.push('save');return true; /* simulated retained backup */}});
- if(mode==='positive'){await result;assert.equal(installs,1);assert.equal(writes,1);assert.ok(postReads>0);assert.deepEqual(events,['backup','save','install','restore']);}
- else{await assert.rejects(result);if(mode==='archive-error'){assert.equal(installs,0);assert.equal(saved,false);}else if(mode==='readback-mismatch'){assert.equal(installs,1);assert.equal(writes,1);}else{assert.equal(installs,1);assert.equal(postReads,0);assert.equal(writes,0);}}
+ if(mode==='positive'||mode==='name-change'){await result;assert.equal(installs,1);assert.equal(writes,1);assert.ok(postReads>0);assert.deepEqual(events,['backup','save','install','restore']);}
+ else if(mode==='archive-error'){const r=await result;assert.equal(installs,1,'live archive faults continue OTA unprotected');assert.equal(saved,false);assert.equal(writes,0);assert.equal(r.unprotected,true);}
+ else{await assert.rejects(result);if(mode==='readback-mismatch'){assert.equal(installs,1);assert.equal(writes,1);}else{assert.equal(installs,1);assert.equal(postReads,0);assert.equal(writes,0);}}
 });
 // B4-B8 use observable WebMIDI port names and real bind/find/wait guards.
 console.log(JSON.stringify({cases,failed,scope:'actual browser shipping bodies; synthetic discovery/serve/MIDI boundaries, no hardware'}));

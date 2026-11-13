@@ -10,7 +10,7 @@ import { withInstallSnapshot } from './fixtures/install-snapshot.mjs';
 const source = (name) => readFileSync(new URL('../'+name, import.meta.url),'utf8');
 const html = source('web/x0x_installer.html');
 const first = html.indexOf('async function run(img, product, opts = {}) {');
-const last = html.indexOf('\n$("go").addEventListener', first);
+const last = html.indexOf('\n// Never ignore an Install press silently', first);
 assert.ok(first >= 0 && last > first, 'production run() span missing');
 const runCode = html.slice(first,last);
 const breaksSrc = source('web/x0x_breaks.js').replace(/^export\s+/gm,'');

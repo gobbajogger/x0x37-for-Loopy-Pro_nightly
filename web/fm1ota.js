@@ -17,6 +17,7 @@ const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro
 function keyboardModel(model) {
   if (typeof model !== "string" || !model) return null;
   const name = model.replace(/^ota-/i, "").toLowerCase();
+  if (name === "fm-1") return null; // SMK installer: never admit the other board.
   return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
 }
 export const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
@@ -139,14 +140,15 @@ class Link {
   }
 }
 
-async function handshake(link, tries = 3) {
+async function handshake(link, tries = 3, onPacket = null, deadline = Infinity) {
   link.drain();
-  for (let t = 0; t < tries; t++) {
+  for (let t = 0; t < tries && Date.now() < deadline; t++) {
     if (!link.send(HS_QUERY)) return null;
-    const end = Date.now() + 1000;
+    const end = Math.min(Date.now() + 1000, deadline);
     while (Date.now() < end) {
       const p = await link.read(end - Date.now());
       if (!p) break;
+      if (onPacket && onPacket(p)) continue;
       const id = parseIdentity(p);
       if (id) return id;
     }
@@ -154,19 +156,27 @@ async function handshake(link, tries = 3) {
   return null;
 }
 
-async function openMidiPort(port) {
-  // Reuse the Projects workspace's initial-opening boundary: consume the
-  // closed -> open event before a new session installs its lifecycle guard.
-  // Later events remain observable by every existing bound updater.
-  if (port.connection !== "closed") { await port.open(); return; }
+async function openMidiPort(port, deadline = Infinity) {
+  // Bound the entire opening operation, not just its statechange event.
+  // Some Web MIDI hosts emit statechange but never settle open().
+  const ms = Math.min(3000, deadline - Date.now());
+  if (ms <= 0) throw fail("open", "The MIDI port did not finish opening. Reconnect and try again.");
   let changed, timer;
-  const transition = new Promise((resolve, reject) => {
+  const transition = port.connection === "closed" ? new Promise(resolve => {
     changed = () => resolve();
-    timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), 3000);
     port.addEventListener("statechange", changed, { once: true });
-  });
-  try { await Promise.all([port.open(), transition]); }
-  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+  }) : Promise.resolve();
+  try {
+    await Promise.race([
+      Promise.all([port.open(), transition]),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), ms);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+    if (changed) port.removeEventListener("statechange", changed);
+  }
 }
 
 export class Updater {
@@ -180,6 +190,7 @@ export class Updater {
     this.binding = null;
     this.onPortState = null;
     this.admitted = null;
+    this.finishRetry = null;
   }
 
   ports() {
@@ -190,17 +201,16 @@ export class Updater {
     // Model/version has no unit serial. A sole keyboard may rename its port on
     // reboot; multiple update-compatible ports cannot be safely distinguished.
     const ports = this.ports();
-    if (ports.length > 1 || (selected !== null && (ports.length !== 1 || ports[0].name !== selected)))
+    // Identity comes from the device-reported model, never from port names/ids.
+    if (ports.length > 1)
       throw fail("ambiguous", "Cannot bind this update to one keyboard across reboot. Disconnect the other update-compatible keyboards and select the target again.");
-    if (this.verified && ports.length && ports[0].name !== this.targetName)
-      throw fail("ambiguous", "The verified keyboard's MIDI port changed before readback or sample restore; refusing another port.");
     return ports;
   }
 
   bind(dev) {
     try {
       this.singlePort(dev.name);
-      if (this.target && (this.targetName !== dev.name || !sameKeyboard(this.target.model, dev.id.model)))
+      if (this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), dev.id.model.replace(/^ota-/i, "")))
         throw fail("ambiguous", "The selected keyboard changed before the update.");
     } catch (e) { dev.link.close(); throw e; }
     this.target = dev.id;
@@ -213,31 +223,30 @@ export class Updater {
         const p = event.port;
         // Event callbacks can lag a disconnect/reconnect. Current state alone
         // cannot prove that this bound connection remained uninterrupted.
-        if (p && (p === binding.input || p === binding.output ||
-            (p.id && (p.id === binding.input?.id || p.id === binding.output?.id)))) binding.invalid = true;
+        // iOS Web MIDI hosts fire statechange on open/reopen and may swap port
+        // objects/ids without any reconnect. Only a real disconnect counts; the
+        // device is re-identified by its SysEx model reply before continuing.
+        if (p && p.state === "disconnected" && (p === binding.input || p === binding.output)) binding.lostPort = true;
       };
       if (binding.observed) this.access.addEventListener("statechange", this.onPortState);
     }
   }
 
   assertContinuous(dev) {
-    const b = this.binding;
-    if (dev?.id && this.target && !sameKeyboard(dev.id.model, this.target.model))
+    // Continuity = same device-reported model (SysEx identity), not the same
+    // MIDI port object, id or name (those change spuriously on iOS).
+    if (dev?.id && this.target &&
+        !sameKeyboard(dev.id.model.replace(/^ota-/i, ""), this.target.model.replace(/^ota-/i, "")))
       throw fail("model", `The selected keyboard changed model during the update: ${dev.id.text}`);
-    if (!b || !b.observed || b.invalid || !b.input || !b.output ||
-        dev?.link?.input !== b.input || dev?.link?.output !== b.output ||
-        b.input.state !== "connected" || b.output.state !== "connected" ||
-        ![...this.access.inputs.values()].includes(b.input) ||
-        ![...this.access.outputs.values()].includes(b.output)) {
-      if (b) b.invalid = true;
-      throw fail("continuity", "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update.");
-    }
+    if (dev?.link && dev.link !== this.binding && dev.link.lost)
+      throw fail("lost", "The keyboard disconnected. Reconnect it and press Install again.");
   }
 
   close() {
     if (this.onPortState && typeof this.access.removeEventListener === "function")
       this.access.removeEventListener("statechange", this.onPortState);
     this.onPortState = null;
+    this.finishRetry = null;
     if (this.binding) this.binding.invalid = true;
   }
 
@@ -263,16 +272,20 @@ export class Updater {
   }
 
   // every in/out pair with the same port name that answers the handshake
-  async find(filter) {
+  async find(filter, deadline = Infinity) {
     if (this.target) this.singlePort();
-    if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
-      try { await openMidiPort(input); await openMidiPort(output); } catch (_) { continue; }
+      if (Date.now() >= deadline) return null;
+      try { await openMidiPort(input, deadline); await openMidiPort(output, deadline); } catch (_) { continue; }
+      // A timed-out opening can settle later. Never give that stale attempt a
+      // receive handler or let it turn a finished timeout into success.
+      if (Date.now() >= deadline) return null;
       if (!this._portPairs().some((p) => p.input === input && p.output === output)) continue;
       const link = new Link(input, output);
       let id;
-      try { id = await handshake(link, 2); }
+      try { id = await handshake(link, 2, pkt => this.retryFinish(link, pkt), deadline); }
       catch (error) { link.close(); throw error; }
+      if (Date.now() >= deadline) { link.close(); return null; }
       if (id && this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), id.model.replace(/^ota-/i, ""))) {
         link.close();
         throw fail("model", `The selected keyboard changed model during the update: ${id.text}`);
@@ -281,6 +294,7 @@ export class Updater {
         const dev = { link, id, name: input.name };
         try { if (this.binding) this.assertContinuous(dev); }
         catch (error) { link.close(); throw error; }
+        this.finishRetry = null;
         return dev;
       }
       link.close();
@@ -291,11 +305,28 @@ export class Updater {
   async waitFor(filter, ms) {
     const end = Date.now() + ms;
     while (Date.now() < end) {
-      const dev = await this.find(filter);
+      const dev = await this.find(filter, end);
       if (dev) return dev;
-      await sleep(1000);
+      if (Date.now() < end) await sleep(Math.min(1000, end - Date.now()));
     }
     return null;
+  }
+
+  // A successful Web MIDI send only queues bytes. Keep the completed-stage
+  // token available during discovery so a loader can retry a lost response.
+  // Never answer image reads or a terminal request from another port pair.
+  retryFinish(link, pkt) {
+    const pending = this.finishRetry;
+    if (!pending || Date.now() > pending.until) return false;
+    if (link.input !== pending.input || link.output !== pending.output) return false;
+    const r = parseRequest(pkt);
+    if (!r || (r.addr !== 0xE0000000 && r.addr !== 0xF0000000)) return false;
+    this.singlePort();
+    if (r.addr !== pending.addr || r.len !== 8)
+      throw fail("badreq", "Unexpected OTA completion during restart");
+    if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0])))
+      throw fail("lost", "The keyboard disconnected during restart.");
+    return true;
   }
 
   // serve read requests until the device asks for one of the finish addresses; stops early
@@ -304,7 +335,6 @@ export class Updater {
     let served = 0, transferred = 0, startedAtHeader = false, last = Date.now();
     for (;;) {
       const pkt = await link.read(1000);
-      if (this.binding) this.assertContinuous({ link });
       if (!pkt) {
         if (link.lost) return { served, finished: false, lost: true };
         if (Date.now() - last > idleMs) return { served, finished: false };
@@ -321,12 +351,13 @@ export class Updater {
         if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
           return { served, finished: false, lost: true };
         }
+        this.finishRetry = { addr: r.addr, input: link.input, output: link.output,
+          until: Date.now() + 70000 };
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }
       if (r.len === 0 || r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
       await sleep(10);
-      if (this.binding) this.assertContinuous({ link });
       if (finishAddr === 0xF0000000 && transferred === 0) this.assertAdmitted();
       if (!link.send(response(r.addr, Array.from(image.subarray(r.addr, r.addr + r.len)), r.fl))) {
         return { served, finished: false, lost: true };
@@ -343,7 +374,7 @@ export class Updater {
     this.admitted = admitted;
     const step = onStep || (() => {});
     const dev = await this.find((id) => !IS_OTA(id));
-    if (!dev) throw fail("notfound", "FM-1 not found (USB cable, and no other app using it?)");
+    if (!dev) throw fail("notfound", "SMK-37 not found (USB cable, and no other app using it?)");
     const [model] = product.split("_");
     if (!sameKeyboard(dev.id.model, model)) { dev.link.close(); throw fail("model", `the device is ${dev.id.text}, the package is for ${product}`); }
     this.bind(dev);
@@ -382,10 +413,11 @@ export class Updater {
     this.verified = false;
     step("reboot");
     await sleep(3000);
-    const back = await this.waitFor((id) => !IS_OTA(id), 40000);
+    // Loader terminal retries can take 4 × 3 × 5 seconds before reset.
+    const back = await this.waitFor((id) => !IS_OTA(id), 70000);
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
-      this.singlePort(back.name);
+      this.singlePort();
       this.assertContinuous(back);
       if (IS_OTA(back.id)) throw fail("noreturn", "the device is still in update mode");
       if (!sameKeyboard(back.id.model, product.split("_")[0]))
@@ -401,7 +433,7 @@ export class Updater {
   // step 2 with the loader found by find()/waitFor()
   async write(ota, image, step) {
     try {
-      this.singlePort(ota.name);
+      this.singlePort();
       if (!this.product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), this.product.split("_")[0]))
         throw fail("model", `the loader is ${ota.id.text}, the package is for ${this.product || "an unknown model"}`);
       if (!IS_OTA(ota.id)) throw fail("model", "The selected device is not an update loader");

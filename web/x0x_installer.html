@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Firmware & samples · X0X37 NIGHTLY</title>
+<title>Firmware & samples · DnBOX NIGHTLY</title>
 <style>
 /* X0X37 / firmware control desk. Source-only skin: no flashing logic. */
 :root {
@@ -152,7 +152,7 @@ select:hover { border-color: #718769; }
 .flash-action .step-kicker { margin: 0 0 13px; }
 #go { width: 100%; min-height: 59px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 8px; font: 800 14px var(--mono); text-transform: uppercase; letter-spacing: .055em; padding: 13px 20px; }
 #go:hover:not(:disabled) { filter: brightness(1.1); }
-#go:disabled { filter: saturate(.45); }
+#go:disabled { filter: saturate(.45); opacity: .55; cursor: not-allowed; pointer-events: none; }
 #go::after { content: '  ↗'; margin-left: 15px; font-size: 18px; line-height: 1; }
 .install-hint { color: var(--dim); font-size: 11px; margin: 12px 0 4px; }
 progress { width: 100%; display: block; height: 7px; border-radius: 8px; overflow: hidden; accent-color: var(--accent); margin-top: 12px; }
@@ -433,6 +433,12 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 .prep-options{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;align-content:start}.prep-options label{display:block;font-size:12px;color:var(--prep-muted)}.prep-options select{display:block;width:100%;min-height:44px;margin-top:5px;padding:8px 10px;color:var(--prep-ink);border:1px solid #53616b;border-radius:5px;background:#29333b;font:inherit;font-size:13px}.prep-options .prep-cuts{display:flex;gap:16px;grid-column:1/-1}.prep-cuts label{display:flex;align-items:center;gap:7px;min-height:36px;white-space:nowrap}.prep-cuts input{width:16px;height:16px;accent-color:var(--prep-action)}.sample-prep .prep-quality-help{font-size:12px;line-height:1.5;color:var(--prep-muted);margin:0;grid-column:1/-1;max-width:46ch}
 .prep-footer{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid #44505a}.sample-prep .prep-detail{font-size:12px;color:var(--prep-muted);max-width:65ch}.prep-detail summary{cursor:pointer;min-height:36px;align-content:center}.prep-detail p{font-size:12px;margin:8px 0 0;line-height:1.5}.prep-import{text-align:right;flex-shrink:0}.sample-prep #prep-manage{display:inline-block;font-size:13px;font-weight:600;color:var(--prep-action);min-height:36px;align-content:center;text-decoration:underline}.prep-import small{display:block;font-size:11px;color:var(--prep-muted)}.sample-prep :is(input,select,button,a,summary):focus-visible{outline:3px solid var(--prep-action);outline-offset:3px}
 @media(max-width:700px){.sample-prep{padding:15px}.sample-prep .prep-head{align-items:start;gap:8px}.sample-prep .prep-head p{max-width:18ch}.sample-prep .prep-file{width:130px;flex-shrink:0}.sample-prep input[type=file]{font-size:11px}.sample-prep input::file-selector-button{display:block;margin:0 0 5px;min-height:44px}.prep-workbench{grid-template-columns:1fr;gap:14px}.prep-display{padding:11px}.prep-display canvas{height:60px}.prep-facts{gap:14px}.prep-audio{gap:6px}.sample-prep .prep-audio button{padding:8px 11px}.prep-options{gap:8px 12px}.prep-cuts label{min-height:36px}.prep-options .prep-cuts{gap:14px}.prep-footer{gap:10px}.prep-import small{max-width:23ch;margin-left:auto}.sample-prep h2{font-size:20px}}
+
+/* DnBOX channel identity and release notice; no install behavior changes. */
+.head-nav a{display:inline-flex!important;min-height:44px;align-items:center}
+.channel-label{font:700 11px var(--mono);color:var(--dim);white-space:nowrap;border:1px solid var(--rule);padding:4px 7px;border-radius:3px}
+.release-notice{margin:0 0 20px;border-left:3px solid var(--busy);padding:12px 16px;background:var(--card);font-size:14px}.release-notice p{margin:4px 0 0;color:var(--dim)}
+@media(max-width:600px){.header-top{flex-wrap:wrap;gap:12px}.head-nav{order:4;flex-basis:100%;margin:0;gap:20px;padding-bottom:10px}.channel-label{font-size:10px}.lang{margin-left:auto}.release-notice{font-size:13px}}
 </style>
 </head>
 <body>
@@ -440,9 +446,9 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 <main id="workspace-main">
   <header class="site-head">
     <div class="header-top">
-      <a class="home" href="../" aria-label="X0X37 home">X0X37</a>
+      <a class="home" href="../" aria-label="DnBOX home">DnBOX</a><span class="channel-label">SMK-37 · NIGHTLY</span>
       <nav class="head-nav" aria-label="Site navigation">
-        <a href="../manual/" data-t="navmanual">Manual</a>
+        <a href="../manual/" data-t="navmanual">Manual</a><a href="../new/">Changes</a><a href="https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly">Source</a>
       </nav>
       <button class="lang" id="lang" type="button"></button>
     </div>
@@ -466,6 +472,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   <section id="samples-panel" aria-label="Sample workspace" hidden><iframe id="sample-frame" title="Import break loops, back up or restore sample slots" src="../breaks/?embedded=1" allow="midi"></iframe><p class="small"><a href="../breaks/">Open sample tools separately</a> if this panel does not load.</p></section>
   <section id="projects-panel" aria-label="Songs and projects workspace" hidden><iframe id="project-frame" title="Import or export a whole song project; reset project while keeping samples" src="../projects/?embedded=1" allow="midi"></iframe><p class="small"><a href="../projects/">Open Songs &amp; projects separately</a> if this panel does not load.</p></section>
   <div id="firmware-panel">
+  <aside class="release-notice" aria-label="Release status"><strong>0.0.26 hardware-test candidate available</strong><p>The original 600b build remains withdrawn. Candidate 94197fc8 includes the boot-guard correction, but physical startup/restart is not yet verified. 0.0.25.1 remains the known-good fallback. <a href="../new/">Release status</a></p></aside>
 
   <div class="install-layout">
     <div class="install-primary" id="firmware">
@@ -490,7 +497,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
     <fieldset class="model-select" id="modeldetails">
       <legend data-t="modelheading">Choose your keyboard model</legend>
       <div class="models" id="models" role="radiogroup" aria-label="Keyboard model"></div>
-      <p class="model-prompt">Choose the name printed on your keyboard.</p><details class="model-help"><summary>Model naming help</summary><p data-t="modelwhy"></p></details>
+      <p class="model-prompt">Choose the name printed on your keyboard. The installer also checks the connected device before writing.</p><details class="model-help"><summary>Model naming help</summary><p data-t="modelwhy"></p></details>
     </fieldset>
         <div class="row" id="versionrow">
           <label class="field"><span data-t="versionlabel">Firmware version</span>
@@ -518,18 +525,11 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
           <p class="action-safety">First install replaces previous working data. <a href="#samples">Back up important samples</a> before switching. Keep USB connected until installation finishes.</p>
           <label id="devagreewrap" hidden><input type="checkbox" id="devagree"> <span data-t="devagree">I accept hardware-untested development firmware for my selected keyboard model.</span></label>
           <button id="go" disabled data-t="install">Install</button>
+          <div id="inconfirm" role="alertdialog" aria-live="assertive" hidden style="border:2px solid #c80;padding:8px;margin:6px 0;white-space:pre-wrap"><div id="inconfirmtext"></div><button id="inconfirmok" type="button">OK — write firmware</button> <button id="inconfirmno" type="button">Cancel</button></div>
           <p class="install-hint" id="installhint" aria-live="polite"></p>
           <progress id="bar" max="100" value="0" aria-label="Firmware installation progress"></progress>
           <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
-          <section id="backup-confirmation" class="backup-confirmation" aria-labelledby="backup-heading" hidden>
-            <p id="backup-heading"><strong data-t="slotconfirm">Confirm your recovery backup before installing.</strong></p>
-            <p class="small" data-t="slotconfirmhelp">The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.</p>
-            <p><code id="backup-name"></code></p>
-            <div class="backup-actions">
-              <button type="button" class="quiet" id="backup-cancel" data-t="slotcancel">Cancel installation</button>
-              <button type="button" class="quiet" id="backup-retained" data-t="slotretained">I have saved this backup — continue</button>
-            </div>
-          </section>
+          <p id="backup-warning" class="backup-confirmation" role="alert" aria-live="assertive" hidden></p>
           <details class="diagnostics">
             <summary data-t="diagnostics">Technical details / activity log</summary>
             <pre id="log"></pre>
@@ -576,7 +576,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   </details>
 
   <details class="connection-help"><summary>Connection &amp; recovery help</summary><p class="small" data-t="direct"></p><p class="small" data-t="helptext"></p><p class="small"><a href="../manual/" data-t="helpmanual">Open the manual</a></p>  <p class="small" id="recovery"><span data-t="brick"></span>
-    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#recovering-an-fm-1-that-wont-start" style="color:inherit" data-t="bricklink"></a></p>
+    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/issues" style="color:inherit" data-t="bricklink"></a></p>
   <p class="small" data-t="back"></p></details>
   <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
     <div class="prep-head"><div><h2 id="prep-title">Prepare a sample</h2><p>Listen first. Connect when you’re ready.</p></div><label class="prep-file" for="prep-file"><span >Choose your audio</span><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label></div>
@@ -621,7 +621,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 /*LIB*/
 const $ = (id) => document.getElementById(id);
 const MODELS = { pro: "SMK-37 Pro", elite: "SMK-37 Elite", mke: "MKE-P37", fm1: "FM-1" };
-const MODEL_KEYS = ["pro", "elite", "mke", "fm1"];
+const MODEL_KEYS = ["pro", "elite", "mke"];
 const STOCK_SHA256_FM1 = "db1642b2b6fa5c2cccb11ffd13878068bb28601678d3644049f99dc40e7edb8a";
 const TEXT = {
   ja: {
@@ -651,7 +651,7 @@ const TEXT = {
     evidencelink: "開発検証記録", archiveheading: "ビルド履歴", archiveintro: "SHA確認済みビルドとソースのみの状態・未入手アーカイブ・失敗ビルドを区別します。コミットだけではインストールできません。",
     choosebuild: "このビルドを選ぶ", otherbuilds: "その他のチェックポイント (インストール不可)", unapproved: "このパッケージには機種別検証記録がないため、自動インストールできません。",
     title: "X0X をインストール",
-    intro: "SMK-37 と FM-1 向けファームウェア。USB で接続して機種とビルドを選び、サンプルのバックアップ保護を確認してインストールします。PC の Chrome または Edge をご使用ください。",
+    intro: "SMK-37 Pro / Elite 向けファームウェア。USB で接続して機種とビルドを選び、サンプルのバックアップ保護を確認してインストールします。PC の Chrome または Edge をご使用ください。",
     warn: "書き込み中は USB を抜かないでください。",
     install: "ファームウェアを書き込む", other: "English", connect: "USB 接続",
     connhelp: "Chrome か Edge で開き、USB でつないでから接続を押してください。",
@@ -663,8 +663,8 @@ const TEXT = {
     breaks: "サンプル・インポーター：自分のブレイク・ループ",
     untested: "X0X はベータ版です。",
     direct: "USB ケーブルはパソコンに直接つないでください。",
-    brick: "万一 FM-1 が起動しなくなった場合は、Mac から標準ファームウェアに戻せます:",
-    bricklink: "起動しない FM-1 の復旧（マニュアル）",
+    brick: "起動や復旧の問題は、お使いの SMK モデルに対応する手順を確認してください:",
+    bricklink: "SMK の起動・復旧サポート",
     beta: "これはベータ版で、不安定な場合があります。自己責任でお使いください。",
     back: "公式や他のカスタムへ移すには、下に .fwsc を落とすか M-VAVE の M-UPGRADE を使います。",
     noversion: "まだ公開パッケージがありません。下に .fwsc を落として書き込めます（アップグレード・ダウングレード・純正・他カスタム）。",
@@ -685,7 +685,7 @@ const TEXT = {
     stockdone: "完了。デバイスは新しいファームウェアで起動しました。",
     confirm: "書き込みますか？\n\n接続中: ",
     confirmto: "\n書き込む: ",
-    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は、先にバックアップを保存し、保存できたことを確認してください。USB を抜かないでください。",
+    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。バックアップに失敗しても警告を表示して自動的にインストールを続行します。サンプルが永久に失われる可能性があります。USB を抜かないでください。",
     nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
     start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
     reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
@@ -701,7 +701,7 @@ const TEXT = {
     leave: "書き込み中です。ページを閉じないでください。",
     slotsave: "新しいファームウェアではスロットのサンプルが消えます（スロット ",
     slotsave2: "）。先に全スロットをファイルに保存します。",
-    slotdownload: "バックアップのダウンロードを要求しました（保存は未確認）: ",
+    slotdownload: "バックアップのダウンロードを要求しました。保存できたかは確認できないため、ダウンロード先を確認してください: ",
     slotsaved: "バックアップを保管したことをユーザーが確認しました: ",
     slotconfirm: "インストールする前にバックアップの保存を確認してください。",
     slotconfirmhelp: "ブラウザにこのファイルのダウンロードを要求しましたが、保存できたかは確認できません。ダウンロード先でファイルを見つけ、安全な場所に保管してください。ファイルを保管できた場合だけ続行し、それ以外はキャンセルしてください。ファームウェアはまだ書き込んでいません。",
@@ -715,6 +715,11 @@ const TEXT = {
     slotstock: "完了。純正ファームウェアには X0X のスロットがありません。サンプルは次のファイルにあります（X0X を入れ直した後にブレークループのページの「Restore」で戻せます）: ",
     slots: "インストールは終わりましたが、スロットを書き戻せませんでした。ブレークループのページの「Restore」か tools/x0x_slots.py restore で、このファイルから戻してください: ",
     slotbackup: "スロットを保存できなかったため、何も書き込んでいません。先にブレークループのページでバックアップしてください。 ",
+    slotbackupcancel: "バックアップがないためインストールをキャンセルしました。何も書き込んでいません。 ",
+    slotunprotectedwarning: "警告：サンプルのバックアップに失敗しました。インストールは自動的に続行します。以前のサンプルや保存したブレークループが永久に失われる可能性があります。保存できなかったスロットは復元できません。エラー：",
+    slotunprotectedquestion: "\n\nバックアップなしでインストールを続行しますか？",
+    slotunprotectedcontinue: "バックアップなしで続行",
+    slotunprotecteddone: "バックアップなしでインストールが完了しました。以前のサンプルスロットは失われた可能性があります。",
     license: "GPL-3.0、無保証。ソース:",
     blewhy: "この旧パッケージには、ble/ctl/build_ctl.sh で作成した一致する ctl.img が必要です。選択するまでインストールできません。検証済みの一体型 NIGHTLY には Bluetooth が含まれ、別ファイルは不要です。",
     ctlreading: "コントローラー画像を読み込み、確認しています…",
@@ -752,7 +757,7 @@ const TEXT = {
     evidencelink: "Development validation record", archiveheading: "Build history", archiveintro: "SHA-verified builds are separated from source-only checkpoints, unavailable archives and failed builds. A source commit alone is not flashable firmware.",
     choosebuild: "Select this build", otherbuilds: "Other checkpoints — not available for installation", unapproved: "No model-specific development/release validation for this package. Automatic installation is disabled.",
     title: "Install firmware",
-    intro: "Firmware for SMK-37 and FM-1. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.",
+    intro: "Firmware for SMK-37 Pro and Elite. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.",
     warn: "Do not unplug the USB cable while writing.",
     install: "Install firmware", other: "日本語", connect: "Connect USB",
     connhelp: "Plug in by USB. Use Chrome or Edge on a computer.",
@@ -764,8 +769,8 @@ const TEXT = {
     breaks: "Sample importer: your own break loops",
     untested: "X0X is a beta.",
     direct: "Connect the USB cable directly to the computer. No probe or Transporter is needed.",
-    brick: "If the FM-1 no longer starts, a Mac can put the stock firmware back:",
-    bricklink: "recovering an FM-1 that won't start (manual)",
+    brick: "For startup or recovery problems, use instructions for your exact SMK model:",
+    bricklink: "SMK startup and recovery support",
     beta: "This is a beta and may be unstable. The author accepts no responsibility if your device is damaged or misbehaves because of this custom firmware. Use it at your own risk.",
     back: "To move to stock or another custom firmware, drop its .fwsc below, or use M-VAVE's M-UPGRADE.",
     noversion: "No packages are included in this source preview. Use the published NIGHTLY installer, or choose a local package below.",
@@ -786,7 +791,7 @@ const TEXT = {
     stockdone: "Done. The device has restarted with the new firmware.",
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
-    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, you must save and confirm a recovery backup first. Keep USB connected until Done.",
+    confirmrisk: "\n\nCalibration and pairing are never touched. Sample backup is attempted but cannot block installation. If it fails, a warning will appear and saved samples may be lost permanently. Keep USB connected until Done.",
     nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
@@ -802,7 +807,7 @@ const TEXT = {
     leave: "Writing. Do not close the page.",
     slotsave: "The new firmware does not keep the samples in slot ",
     slotsave2: ". Saving every slot to a file first.",
-    slotdownload: "Backup download requested (not yet confirmed): ",
+    slotdownload: "Backup download requested; check Downloads because the browser cannot verify it was saved: ",
     slotsaved: "User confirmed retained recovery backup: ",
     slotconfirm: "Confirm your recovery backup before installing.",
     slotconfirmhelp: "The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.",
@@ -816,6 +821,11 @@ const TEXT = {
     slotstock: "Done. The stock firmware has no X0X slots. Your samples are in this file (after you install X0X again, restore it with Restore on the break loops page): ",
     slots: "Installed, but the slots were not written back. Restore them from this file with Restore on the break loops page, or with tools/x0x_slots.py restore: ",
     slotbackup: "The slots could not be saved, so nothing was installed. Back them up on the break loops page first. ",
+    slotbackupcancel: "Install cancelled: sample recovery backup unavailable or not retained. Nothing was installed. ",
+    slotunprotectedwarning: "WARNING: Sample backup failed. Installation continues automatically, but existing samples and saved break loops may be permanently lost. The installer cannot restore unbacked-up slots. Backup error: ",
+    slotunprotectedquestion: "\n\nContinue installing WITHOUT a sample backup?",
+    slotunprotectedcontinue: "Continue WITHOUT backup",
+    slotunprotecteddone: "Installation completed WITHOUT a sample backup. Previous sample slots may be permanently lost.",
     license: "GPL-3.0, no warranty. Source:",
     blewhy: "This legacy package requires the exact matching ctl.img built on your computer with ble/ctl/build_ctl.sh. Installation is blocked until it is supplied. Qualified bundled NIGHTLY packages include Bluetooth and need no separate file.",
     ctlreading: "Reading and checking the controller image…",
@@ -1039,11 +1049,10 @@ function suggestModel(deviceModel) {
   const ver = currentVersion();
   if (!ver) return;
   const avail = availableModels(ver);
-  let want = "pro";
-  if (/Elite/i.test(deviceModel)) want = "elite";
-  else if (/MKE/i.test(deviceModel)) want = "mke";
-  else if (/^FM-1/i.test(deviceModel)) want = "fm1";
-  if (!avail.includes(want)) want = avail[0];
+  // Never turn an unknown or non-keyboard identity into a Pro suggestion.
+  const model = String(deviceModel || "").replace(/^ota-/i, "");
+  const want = MODEL_KEYS.find(k => sameKeyboard(MODELS[k], model));
+  if (!want || !avail.includes(want)) return;
   if (want) {
     chosenModel = want;
     const input = document.querySelector(`#models input[value="${want}"]`);
@@ -1155,7 +1164,16 @@ function buildDisplayLabel(v, selectedPackage) {
   const title = typeof v.title === "string" ? v.title.trim().replace(/^DEV \/ HARDWARE TEST — /, "") : "";
   if (!valid) return t("verunverified") + " · " + v.version;
   const assigned = assignedPackageVersion(v, selectedPackage);
-  if (assigned) return assigned.valid ? "DN Box " + assigned.version : t("verunverified") + " · " + v.version;
+  if (assigned) {
+    if (!assigned.valid) return t("verunverified") + " · " + v.version;
+    // A catalog revision may share the same compiled three-part firmware version.
+    // The numeric package assignment remains authoritative for identity checks.
+    const catalogRevision = typeof v.display_version === "string" &&
+      /^[0-9]+\.[0-9]+\.[0-9]+\.[1-9][0-9]*$/.test(v.display_version) &&
+      v.display_version.startsWith(assigned.version + ".");
+    return "DnBOX " + (catalogRevision ?
+      v.display_version + " (firmware " + assigned.version + ")" : assigned.version);
+  }
   const values = [...new Set(identities.map(i => i.version))];
   if (values.length !== 1) return t("vermixed") + " · " + (title || v.version);
   const version = values[0];
@@ -1195,6 +1213,9 @@ function compareVersionChoices(a, b) {
   if (av?.valid && bv?.valid) {
     const x = av.version.split(".").map(Number), y = bv.version.split(".").map(Number);
     for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return y[i] - x[i];
+    // Among matching firmware identities, show the newest checked catalog revision first.
+    if (a.version === catalogLive.latest) return -1;
+    if (b.version === catalogLive.latest) return 1;
   } else if (!!av?.valid !== !!bv?.valid) return av?.valid ? -1 : 1;
   return b.version.localeCompare(a.version, undefined, { numeric: true });
 }
@@ -1431,11 +1452,19 @@ function fillVersions() {
   renderBuildHistory();
 }
 
+// In-page confirmation: iOS Web MIDI app webviews block or auto-dismiss window.confirm(), which made Install always "cancelled".
 function confirmWrite(product) {
   const from = lastId ? lastId.text : "(not connected yet — Connect first if you can)";
-  return window.confirm(t("confirm") + from + t("confirmto") + product + t("confirmrisk"));
+  const box = $("inconfirm");
+  $("inconfirmtext").textContent = t("confirm") + from + t("confirmto") + product + t("confirmrisk");
+  box.hidden = false; box.scrollIntoView && box.scrollIntoView({ block: "center" });
+  return new Promise((resolve) => {
+    const done = (v) => { box.hidden = true; $("inconfirmok").onclick = $("inconfirmno").onclick = null; resolve(v); };
+    $("inconfirmok").onclick = () => done(true);
+    $("inconfirmno").onclick = () => done(false);
+  });
 }
-$("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
+ $("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
 $("devagree").addEventListener("change", updateInstallGate);
 
 // NIGHTLY is catalog-only. Never import unreviewed GitHub Releases or their direct links.
@@ -1537,10 +1566,9 @@ drop.addEventListener("drop", async (e) => {
   await selectStockFile(f);
 });
 
-// A download request is not proof of a filesystem write. Keep OTA waiting for
-// this archive's explicit user acknowledgement, without a blocking browser dialog.
+// Best effort only: a requested download is not proof it was saved. Do not
+// wait for a backup confirmation or prevent OTA if the browser refuses it.
 async function saveSlotBackup(file, name) {
-  const panel = $("backup-confirmation"), retained = $("backup-retained"), cancel = $("backup-cancel");
   const a = document.createElement("a");
   const url = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
   a.href = url;
@@ -1553,26 +1581,11 @@ async function saveSlotBackup(file, name) {
     setTimeout(() => URL.revokeObjectURL(url), 60000);
   }
   log(t("slotdownload") + name);
-  $("backup-name").textContent = name;
-  try {
-    const confirmation = new Promise((resolve) => {
-      retained.onclick = () => resolve(true);
-      cancel.onclick = () => resolve(false);
-    });
-    panel.hidden = false;
-    sayK("slotconfirm");
-    cancel.focus(); // Enter must not accidentally confirm the irreversible step.
-    const confirmed = await confirmation;
-    if (confirmed === true) log(t("slotsaved") + name);
-    return confirmed;
-  } finally {
-    retained.onclick = cancel.onclick = null;
-    panel.hidden = true;
-  }
+  return true; // Requested only; the browser cannot prove the file was retained.
 }
 
 async function run(img, product, opts = {}) {
-  if (writing || !workspaceActive) return;
+  if (writing || !workspaceActive) { $("status").textContent = writing ? "An install is already running." : "Open the Firmware tab, then press Install again."; updateInstallGate(); return; }
   getSampleWorkspace()?.invalidate();
   getProjectWorkspace()?.invalidate();
   writing = true;
@@ -1580,8 +1593,10 @@ async function run(img, product, opts = {}) {
   ctlLoadSerial++; stockLoadSerial++;
   $("go").disabled = $("stockgo").disabled = true;
   $("bar").value = 0;
+  $("backup-warning").hidden = true;
+  $("backup-warning").textContent = "";
   const foreign = !!opts.foreign;   // stock / other custom: identity text after reboot may differ
-  let access, up;
+  let access, up, unprotected = false;
   try { access = await midiAccess(); }
   catch (e) {
     writing = false;
@@ -1614,14 +1629,19 @@ async function run(img, product, opts = {}) {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
         step, sameKeyboard, admitted: opts.admitted,
-        say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
-        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
-        save: async (file, name) => {
-          const retained = await saveSlotBackup(file, name);
-          // The user may change/revoke a NIGHTLY selection while checking the file.
-          return retained === true && (!opts.admitted || opts.admitted());
+        say: (k, a) => {
+          if (k === "slotsave") sayK("slotsave", a + t("slotsave2"));
+          else if (k === "slotunprotectedwarning") {
+            $("backup-warning").textContent = t(k) + (a ?? "");
+            $("backup-warning").hidden = false;
+            sayK(k, a || "");
+          } else sayK(k);
+          log(k + " " + (a ?? ""));
         },
+        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
+        save: (file, name) => saveSlotBackup(file, name),
       });
+      unprotected = r.unprotected === true;
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);
       else if (r.move) {
         $("bar").value = 100;
@@ -1631,6 +1651,10 @@ async function run(img, product, opts = {}) {
       }
     }
     await scan(true);
+    if (unprotected) {
+      sayK("slotunprotecteddone");
+      log("Firmware installed without a recoverable sample-slot backup.");
+    }
   } catch (e) {
     if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
     else sayK("error", e && e.message);
@@ -1644,9 +1668,23 @@ async function run(img, product, opts = {}) {
   }
 }
 
+// Never ignore an Install press silently: say why it did not start.
+const installBlocked = (why) => { $("status").textContent = why; $("installhint").textContent = why; log("install not started: " + why); };
+$("go").parentElement.addEventListener("click", (e) => {
+  if (e.target !== $("go") && !(e.target.contains && e.target.contains($("go")))) return;
+  if (!$("go").disabled || writing) return;
+  installBlocked(!$("devagree").checked ? "Install is locked: tick the development-firmware consent box above, then press Install."
+    : "Install is locked: the selected package is not downloaded and verified yet. Choose the model/version again and wait for 'Ready to install'.");
+});
 $("go").addEventListener("click", async () => {
-  if (writing || $("go").disabled || !hasCurrentVerifiedSelection() || !$("devagree").checked) return;
-  if (!confirmWrite(selectedProduct)) return;
+  if (writing) { installBlocked("An install is already running."); return; }
+  if (!$("devagree").checked) { installBlocked("Tick the development-firmware consent box above, then press Install."); return; }
+  if ($("go").disabled || !hasCurrentVerifiedSelection()) { installBlocked("The selected package is not verified yet. Choose the model/version again and wait for 'Ready to install'."); return; }
+  $("status").textContent = "Starting install…";
+  $("status").textContent = "Confirm below: press OK — write firmware.";
+  const confirmProduct = selectedProduct, confirmSerial = loadSerial;
+  if (!(await confirmWrite(selectedProduct))) { installBlocked("Install cancelled. Press Install again and choose OK — write firmware."); return; }
+  if (writing || loadSerial !== confirmSerial || selectedProduct !== confirmProduct || !$("devagree").checked || !hasCurrentVerifiedSelection()) { installBlocked("Selection changed while confirming. Press Install again."); return; }
   const { version: ver, pkg } = currentSelection();
   const selectedImage = image, product = selectedProduct, controller = ctl, serial = loadSerial;
   $("go").disabled = true;
@@ -1679,9 +1717,10 @@ $("go").addEventListener("click", async () => {
     image === selectedImage && (bundled || ctl === controller) && $("devagree").checked &&
     hasCurrentVerifiedSelection() });
 });
-$("stockgo").addEventListener("click", () => {
+$("stockgo").addEventListener("click", async () => {
   if (!stock || !$("stockconfirm").checked || writing) return;
-  if (!confirmWrite(stock.product)) return;
+  const st = stock;
+  if (!(await confirmWrite(st.product)) || stock !== st || writing || !$("stockconfirm").checked) return;
   $("stockgo").disabled = true;
   run(stock.image, stock.product, { foreign: true });
 });
@@ -1831,3 +1870,5 @@ navigateWorkspace();
 </script>
 </body>
 </html>
+
+

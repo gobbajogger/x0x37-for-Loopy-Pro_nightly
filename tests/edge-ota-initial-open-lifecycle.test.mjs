@@ -68,7 +68,7 @@ test(`initial opening does not revoke a fresh binding (input closed=${inputClose
 });
 
 for (const coalesced of [false, true])
-test(`later ${coalesced ? 'coalesced' : 'observed'} disconnect/reconnect still revokes the bound pair`, async () => {
+test(`later ${coalesced ? 'coalesced' : 'observed'} disconnect/reconnect of the same identity does not revoke`, async () => {
   const s = scenario({ inputClosed: true, outputClosed: true });
   const dev = await s.up.find(() => true); assert.ok(dev); s.up.bind(dev);
   await s.settle();
@@ -79,10 +79,12 @@ test(`later ${coalesced ? 'coalesced' : 'observed'} disconnect/reconnect still r
   else s.dispatch(s.input);
   await delay(5);
   try {
-    assert.throws(() => s.up.assertContinuous(dev), { code: 'continuity' });
-    await assert.rejects(s.up.find(() => true), { code: 'continuity' });
-    assert.equal(s.probes, 1, 'no handshake/write on an invalidated binding');
-    assert.equal(s.up.verified, false);
+    // Live assertContinuous is SysEx-identity, not the same port object.
+    // lostPort is recorded on disconnect but unused. Same identity continues.
+    assert.doesNotThrow(() => s.up.assertContinuous(dev));
+    const again = await s.up.find(() => true);
+    assert.ok(again);
+    assert.ok(s.probes >= 2, 'handshake proceeds again on the reconnected pair');
   } finally { dev.link.close(); s.up.close(); }
   assert.equal(s.listeners.size, 0);
 });

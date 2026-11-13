@@ -3,18 +3,18 @@
   "upstreamCommit": "33c60ee9d3161de48b11ce890410384429983886",
   "upstreamPullRequest": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/32",
   "publicSourceBlobs": {
-    "web/x0x_installer.html": "c88b9f9062a43325425e53b4e970c988d6e0a501",
-    "web/x0x_breaks.html": "71d44ae5568bae2f1ee9f7c7059d2819ee0fe9c3",
-    "web/fm1pkg.js": "d20fa623d6052f665c4f819aac6e156a57deaf8f",
-    "web/fm1ota.js": "192344e4ceb0bd7423ebcd6c8e7ce3e6cc465db1",
-    "web/x0x_breaks.js": "ee9ab4d92c909e8ef05b4e15b9ae8c55fafb790d",
+    "web/x0x_installer.html": "361bada58a7cb9a99e4339e29c3a722ba6ac1f95",
+    "web/x0x_breaks.html": "6f77ad50dac0648ad784f5b645382b9e5872cf23",
+    "web/fm1pkg.js": "6a0f77e9bafcb8cd246d0fc39c960355f4ed87a2",
+    "web/fm1ota.js": "9d484de40b758c41df5b49ffa0c306be72d9901e",
+    "web/x0x_breaks.js": "2e366981dcd919a9a2da8de336a4a0507cf4fa1a",
     "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
     "web/x0x_projects.html": "f10d6fdace6c2bbf99d7918111a85664e52826c8",
     "web/x0x_projects.js": "4c5f8fafa7c1267dc6aa399a2b2e7a332ee74092",
     "web/test_projects.mjs": "66aea147b85435fd8c1f96eacd2a0b41f17b25ab",
     "web/test_projects_page.mjs": "77009259730b943cfdcff3ef2d3649e72e8df414",
     "web/test_breaks_page.mjs": "d992423c109e9006c64367d92893a10873cf0525",
-    "web/test_midi_port_pairing.mjs": "f66e909f15b889273ca9f3668acf6674d1d13e52"
+    "web/test_midi_port_pairing.mjs": "2868105efe6c50e41d6f999402ec22b6bf0bcd64"
   },
   "sourcePatches": [
     {

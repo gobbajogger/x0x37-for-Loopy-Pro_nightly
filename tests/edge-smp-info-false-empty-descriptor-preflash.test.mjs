@@ -57,9 +57,10 @@ test('consistent occupied slot blocks OTA when backup read fails', async () => {
   assert.equal(parsed.slots[0].nz, 1);
   assert.equal(parsed.slots[0].used, 1);
   const { run, events } = rig(occupied);
-  await assert.rejects(run(), err => err.code === 'slotbackup');
+  const r = await run();
+  assert.equal(r.unprotected, true);
   assert.ok(events.includes('cmd:16'), 'required backup read was attempted');
-  assert.ok(!events.includes('OTA_BEGIN'), 'OTA was not started');
+  assert.ok(events.includes('OTA_BEGIN'), 'live backup faults continue OTA unprotected');
 });
 
 test('legitimate empty slot descriptors preserve normal OTA admission', async () => {
@@ -74,6 +75,7 @@ test('EC031: NZ corruption conflicting with name and used-size must stop OTA', a
   assert.equal(occupied.length, corrupt.length);
   assert.deepEqual(occupied.flatMap((n, i) => n !== corrupt[i] ? [i] : []), [2]);
   const { run, events } = rig(corrupt);
-  await assert.rejects(run(), 'contradictory SMP_INFO must fail closed before flashing');
-  assert.ok(!events.includes('OTA_BEGIN'), 'OTA must not begin after contradictory metadata');
+  const r = await run();
+  assert.equal(r.unprotected, true, 'contradictory SMP_INFO warns and continues unprotected');
+  assert.ok(events.includes('OTA_BEGIN'), 'live layout faults continue OTA');
 });

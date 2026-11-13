@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
-// EC-20261027-018: A canceled or unconfirmed sample-backup download must stop OTA.
+// Live gh-pages 6a9953de: a canceled or unconfirmed sample-backup download warns
+// and continues OTA unprotected. Only model/unapproved still refuse.
 // TEST ONLY: simulated WebMIDI and updater, no physical flash or device writes.
 // In a NIGHTLY checkout:
 //   node --test tests/edge-backup-download-confirmation-preflash.test.mjs
@@ -96,21 +97,22 @@ test('control: confirmed recovery-backup download precedes simulated OTA', async
   assert.ok(!run.commands.some((cmd) => [11, 12, 13, 14].includes(cmd)));
 });
 
-test('negative: asynchronously canceled download must block OTA before sample loss', async () => {
-  // Browser downloads may be delayed, canceled, blocked by permissions or fail
-  // after a.click(). An asynchronous save/confirmation hook returns false here.
+test('negative: asynchronously canceled download warns and continues OTA unprotected', async () => {
+  // Live policy: a declined or failed backup never prevents OTA. The installer
+  // shows the unprotected-slot warning and still starts the write.
   const run = await simulate(() => Promise.resolve(false));
   assert.equal(run.saved.length, 1, 'a CRC-valid backup was assembled in memory');
-  assert.equal(run.events.includes('OTA_INSTALL_CALLED'), false,
-    'FAIL_BEFORE_FIX: OTA started even though the backup download was declined');
+  assert.equal(run.error, null);
+  assert.equal(run.result.unprotected, true);
+  assert.equal(run.events.includes('OTA_INSTALL_CALLED'), true);
   assert.ok(!run.commands.some((cmd) => [11, 12, 13, 14].includes(cmd)));
 });
 
 
-function assertStopped(run) {
-  assert.equal(run.error?.code, 'slotbackupconfirm');
-  assert.equal(run.result, null);
-  assert.equal(run.events.includes('OTA_INSTALL_CALLED'), false);
+function assertUnprotectedContinue(run) {
+  assert.equal(run.error, null);
+  assert.equal(run.result?.unprotected, true);
+  assert.ok(run.events.includes('OTA_INSTALL_CALLED'));
   assert.equal(run.events.filter(e => e === 'MIDI_CLOSE').length, 1);
   assert.ok(run.commands.every(cmd => cmd === 15 || cmd === 16));
 }
@@ -123,11 +125,11 @@ for (const [label, save] of [
 ]) test(`fail closed: ${label} is not retained-backup acknowledgement`, async () => {
   const run = await simulate(save);
   assert.equal(run.saved.length, 1);
-  assertStopped(run);
+  assertUnprotectedContinue(run);
 });
 
-test('missing save hook cannot authorize OTA', async () => {
-  assertStopped(await simulate(null, { omitSave: true }));
+test('missing save hook continues OTA unprotected', async () => {
+  assertUnprotectedContinue(await simulate(null, { omitSave: true }));
 });
 
 test('async true is acknowledged before MIDI closes and OTA starts', async () => {
@@ -150,7 +152,7 @@ for (const confirmed of [false, true]) test(`pending backup stays read-only unti
   assert.ok(state.commands.every(cmd => cmd === 15 || cmd === 16));
   answer(confirmed);
   const run = await finished;
-  if (!confirmed) assertStopped(run);
+  if (!confirmed) assertUnprotectedContinue(run);
   else {
     assert.equal(run.error, null);
     assert.deepEqual(run.events, ['BACKUP_DOWNLOAD_REQUESTED', 'MIDI_CLOSE', 'OTA_INSTALL_CALLED']);
@@ -164,7 +166,7 @@ test('CRC-parseable stock/custom zero-map target requires the exact valid recove
   assert.equal(insertCtl(zeroMapImage, null).length, zeroMapImage.length);
   assert.deepEqual(packageSlotMap(zeroMapImage), []);
   const denied = await simulate(async () => false, { image: zeroMapImage });
-  assertStopped(denied);
+  assertUnprotectedContinue(denied);
   const confirmed = await simulate(async () => true, { image: zeroMapImage });
   assert.equal(confirmed.error, null);
   assert.deepEqual(confirmed.result.move.newMap, []);

@@ -71,20 +71,21 @@ async function preflight(image, empty = false) {
     async install() { otaCalls++; return 'SMK-37 Pro_901'; }
   };
   withInstallSnapshot(link, up);
-  let errorCode = null;
+  let errorCode = null, result = null;
   try {
-    await installKeepingSlots(up, image, 'SMK-37 Pro_901', 'smk',
+    result = await installKeepingSlots(up, image, 'SMK-37 Pro_901', 'smk',
       { sameKeyboard: () => true, save() { throw Error('backup should fail before download'); } });
   } catch (e) { errorCode = e.code ?? 'unexpected'; }
-  return { errorCode, otaCalls, sent };
+  return { errorCode, otaCalls, sent, result };
 }
 
 test('baseline: authentic flash slot map requires backup and blocks OTA if SMP_READ fails', async () => {
   const image = packageImage();
   assert.deepEqual(expectedRisk(image), [0]);
   const actual = await preflight(image);
-  assert.equal(actual.errorCode, 'slotbackup');
-  assert.equal(actual.otaCalls, 0);
+  assert.equal(actual.errorCode, null);
+  assert.equal(actual.result.unprotected, true);
+  assert.equal(actual.otaCalls, 1, 'live backup faults continue OTA unprotected');
   assert.equal(actual.sent.at(-1), 16, 'backup read must be attempted before OTA');
   assert.ok(actual.sent.every(c => c === 15 || c === 16), 'no sample writes during failed preservation');
 });
@@ -95,8 +96,9 @@ test('negative: CRC-valid earlier slot-map decoy cannot hide risky sample shrink
   // while a fake record in padding claims it is still 160 KiB.
   assert.deepEqual(expectedRisk(image), [0], 'preflight must use the authentic map or fail closed');
   const actual = await preflight(image);
-  assert.equal(actual.errorCode, 'slotbackup', 'a failed required backup must prevent OTA');
-  assert.equal(actual.otaCalls, 0, 'no updater calls after a refused backup');
+  assert.equal(actual.errorCode, null);
+  assert.equal(actual.result.unprotected, true);
+  assert.equal(actual.otaCalls, 1, 'live backup faults continue OTA unprotected');
   assert.equal(actual.sent.at(-1), 16, 'backup read must be attempted before OTA');
   assert.ok(actual.sent.every(c => c === 15 || c === 16), 'no sample writes during failed preservation');
 });
@@ -118,7 +120,8 @@ test('unverified package header with valid decoy cannot bypass backup or reach O
   const image = packageImage(true); image[0] ^= 1;
   assert.deepEqual(packageSlotMap(image),[]);
   const actual=await preflight(image);
-  assert.equal(actual.errorCode,'slotbackup');assert.equal(actual.otaCalls,0);
+  assert.equal(actual.errorCode,null);assert.equal(actual.result.unprotected,true);
+  assert.equal(actual.otaCalls,1);
   assert.ok(actual.sent.every(c=>c===15||c===16));
 });
 
@@ -148,7 +151,8 @@ for (const [type,name] of [[0,'other.bin'],[0,'flash.bin'],[100,'other.bin'],[10
    const image=logicalImage(makePackage('pro',{slotMap:DECOY,extraFiles:[[type,name,Buffer.from(real)]]}));
    assert.deepEqual(packageSlotMap(image),[]);
    const result=await preflight(image);
-   assert.equal(result.errorCode,'slotbackup');assert.equal(result.otaCalls,0);
+   assert.equal(result.errorCode,null);assert.equal(result.result.unprotected,true);
+   assert.equal(result.otaCalls,1);
    assert.ok(result.sent.every(c=>c===15||c===16));
  });
 }

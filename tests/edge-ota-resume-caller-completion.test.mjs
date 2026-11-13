@@ -9,10 +9,35 @@ const source = readFileSync(new URL('../web/fm1ota.js', import.meta.url), 'utf8'
 const html = readFileSync(new URL('../web/x0x_installer.html', import.meta.url), 'utf8');
 const product = 'SMK-37 Elite_900', image = new Uint8Array(128);
 function runtime() {
-  let clock = 0;
+  // Host timers: #119 openMidiPort races open() against a 3000ms timeout.
+  // Firing that timeout on a microtask can beat clearTimeout and fail find().
+  // Zero-ms (sleep(0)) yields on a microtask; longer timers use a host macrotask
+  // so a successful open can cancel them first. The fake clock only advances
+  // when a timer actually fires.
+  const hostSetTimeout = setTimeout, hostClearTimeout = clearTimeout;
+  let clock = 0, timerId = 0;
+  const cleared = new Set();
+  const hosts = new Map();
   const context = { TextEncoder, Date: class extends Date { static now() { return clock; } },
-    setTimeout(fn, ms) { clock += ms || 0; fn(); return 0; }, clearTimeout() {} };
-  new Script(source.replace(/^export\s+/gm, '') + '\nthis.api={Updater,pack7,unpack7};').runInNewContext(context);
+    setTimeout(fn, ms) {
+      const id = ++timerId;
+      if (!ms) {
+        queueMicrotask(() => { if (!cleared.has(id)) fn(); });
+        return id;
+      }
+      hosts.set(id, hostSetTimeout(() => {
+        hosts.delete(id);
+        if (cleared.has(id)) return;
+        clock += ms;
+        fn();
+      }, 0));
+      return id;
+    },
+    clearTimeout(id) {
+      cleared.add(id);
+      if (hosts.has(id)) { hostClearTimeout(hosts.get(id)); hosts.delete(id); }
+    } };
+  new Script(source.replace(/^export\s+/gm, '') + '\nthis.api={Updater,sameKeyboard,pack7,unpack7};').runInNewContext(context);
   return context.api;
 }
 function fixture(api, { outcome = 'matching', failAck = false, loaderModel = 'ota-SMK-37 Elite', extraLoader = false, replacePorts = false } = {}) {
@@ -79,7 +104,7 @@ function span(first, next) {
   assert.ok(i >= 0 && j > i); return html.slice(i, j);
 }
 const scan = span('async function scan(', '\n$("connbtn").addEventListener');
-const run = span('async function run(img, product, opts = {}) {', '\n$("go").addEventListener');
+const run = span('async function run(img, product, opts = {}) {', '\n// Never ignore an Install press silently');
 async function caller(options = {}, foreign = false) {
   const api = runtime(), f = fixture(api, options), ui = {}, messages = [], progress = [], instances = [], logs = [];
   const sandbox = {
@@ -90,6 +115,7 @@ async function caller(options = {}, foreign = false) {
     midiAccess: async () => f.access,
     Updater: class extends api.Updater { constructor(...args) { super(...args); instances.push(this); } },
     getSampleWorkspace: () => null, getProjectWorkspace: () => null,
+    sameKeyboard: api.sameKeyboard,
     sayK: key => messages.push({ key, appResponses: f.state.appResponses }), t: key => key, log: value => logs.push(value), led() {},
     updateInstallGate() {}, setConnected() {}, suggestModel() { assert.fail('postwrite scan must not select a package'); },
     installKeepingSlots() { assert.fail('not the resume path'); },
@@ -126,12 +152,12 @@ test('actual resumed caller accepts the matching app on the uninterrupted Elite 
   assert.ok(r.state.returnedInputs.every(p => p.onmidimessage === null));
   assert.equal(r.listeners.size, 0);
 });
-test('actual resumed caller refuses completion after replacement by a matching renamed pair', async () => {
+test('actual resumed caller accepts completion after replacement by a matching renamed pair', async () => {
   const r = await caller({ replacePorts: true });
   assert.equal(r.state.finishAcks, 1); assert.equal(r.state.dataReplies, 1);
-  assert.equal(r.instances[0].verified, false);
-  assert.ok(!r.messages.some(m => ['done','stockdone'].includes(m.key)));
-  assert.ok(r.progress.every(p => p.value < 100));
+  assert.equal(r.instances[0].verified, true, 'live SysEx continuity accepts the same identity on a new pair');
+  assert.ok(r.messages.some(m => m.key === 'done'));
+  assert.ok(r.progress.some(p => p.value === 100));
   assert.equal(r.listeners.size, 0);
 });
 test('foreign policy cannot turn an observed marker mismatch into Done/100', async () => {

@@ -81,3 +81,11 @@ for qualified NIGHTLY; production requires separate same-byte device evidence
 and approval. Reports accompany the result and next action. The assigned owners
 continue accepted qualification/publication work within current authority while
 independent source and history work proceeds in parallel.
+
+## Numeric naming and publication parity
+
+Use the public name **DnBOX** (lowercase n). Every newly published numbered NIGHTLY candidate must have its owner-agreed numeric version bound in `package-version-assignments.json` to the exact catalog ID, source commit/tree and both models' package/product/controller hashes and sizes. Regenerate the embedded assignment table together with the catalog; `display_version` or a title alone does not establish a numeric identity. Preserve immutable package bytes and model identities, including the existing `_900` packaging route. Do not relabel an unverified hash as an assigned build.
+
+Before publishing, test the actual generated `buildDisplayLabel` for the candidate and both model selections, the existing 0.0.25.1 label, and mismatched source/package metadata rejection. Verify the served page, catalog and package hashes after deployment. A numeric version is not a qualification or promotion: hardware-test status, exact build identity and unverified-device warnings remain visible, and existing release gates and owner publication authority are unchanged. Do not leave duplicate selectable entries for a naming-only correction.
+
+New downloadable filenames must identify the product, numeric version, model and exact build: `DnBOX-<version>-SMK37-<Elite|Pro>-<short-source-sha>-hwtest.fwsc` for hardware-test candidates. Use that same basename in repository artifacts and catalog URLs. Keep the SHA-256-addressed directory and unchanged bytes; verify replacement URLs and hashes before removing superseded naming-only aliases. Do not rename unrelated stable release assets as a side effect.

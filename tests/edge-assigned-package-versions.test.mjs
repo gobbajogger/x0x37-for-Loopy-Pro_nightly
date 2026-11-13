@@ -30,9 +30,9 @@ test('all nine real builds and all eighteen packages have assigned numeric label
   assert.equal(catalog.versions.length, 9);
   for (const [id, number] of expected) {
     const v = version(id);
-    assert.equal(ctx.label(v), `DN Box ${number}`);
-    for (const p of Object.values(v.models)) assert.equal(ctx.label(v, p), `DN Box ${number}`);
-    assert.equal(ctx.caption(v), `DN Box ${number} · ${id === catalog.latest ? 'verlatest' : 'verdev'}`);
+    assert.equal(ctx.label(v), `DnBOX ${number}`);
+    for (const p of Object.values(v.models)) assert.equal(ctx.label(v, p), `DnBOX ${number}`);
+    assert.equal(ctx.caption(v), `DnBOX ${number} · ${id === catalog.latest ? 'verlatest' : 'verdev'}`);
   }
 });
 
@@ -40,7 +40,7 @@ test('assignment and descending choice order survive catalog reordering', () => 
   const before = Array.from(ctx.ordered(), v => ctx.label(v));
   ctx.catalogLive = { ...catalog, versions: [...catalog.versions].reverse() };
   assert.deepEqual(Array.from(ctx.ordered(), v => ctx.label(v)), before);
-  assert.deepEqual(before, [...expected].reverse().map(([, n]) => `DN Box ${n}`));
+  assert.deepEqual(before, [...expected].reverse().map(([, n]) => `DnBOX ${n}`));
   ctx.catalogLive = catalog;
 });
 
@@ -69,7 +69,36 @@ test('package numbers do not alter real firmware identities or grant qualificati
   const v = version('nightly-0e77d923-dev');
   v.package_version = '0.0.9';
   v.models.elite.package_version = '0.0.9';
-  assert.equal(ctx.label(v), 'DN Box 0.0.9');
+  assert.equal(ctx.label(v), 'DnBOX 0.0.9');
   v.version = 'unassigned-build';
   assert.match(ctx.label(v), /^verunverified · /);
+});
+
+test('corrected 0.0.26 candidate has a bound numeric identity without hardware promotion', () => {
+ const assignments=JSON.parse(readFileSync(new URL('../package-version-assignments.json',import.meta.url),'utf8'));
+ const a=assignments.assignments.find(a=>a.catalog_id==='nightly-94197fc8-dev');
+ assert.ok(a);
+ const v={version:a.catalog_id,source_commit:a.source_commit,source_tree:a.source_tree,models:structuredClone(a.models),status:'dev-checked',hardware_tested:false};
+ assert.equal(ctx.label(v),'DnBOX 0.0.26');
+ for(const p of Object.values(v.models))assert.equal(ctx.label(v,p),'DnBOX 0.0.26');
+ for(const mutate of [x=>x.source_commit='0'.repeat(40),x=>x.models.pro.sha256='0'.repeat(64),x=>x.models.elite.size++]) {
+ const bad=structuredClone(v);mutate(bad);assert.match(ctx.label(bad),/^verunverified/);
+ }
+ assert.equal(v.hardware_tested,false);
+});
+
+test('real historical catalog revisions survive regeneration without losing firmware identity', () => {
+ const fixture=JSON.parse(readFileSync(new URL('./fixtures/published-revision-labels-80c50ea9.json',import.meta.url),'utf8'));
+ for(const v of fixture.versions) {
+   const fw=v.version==='nightly-79280e76-dev'?'0.0.25':'0.0.24';
+   const expected='DnBOX '+v.display_version+' (firmware '+fw+')';
+   assert.equal(ctx.label(v),expected);
+   for(const p of Object.values(v.models))assert.equal(ctx.label(v,p),expected);
+   for(const mutate of [x=>x.source_commit='0'.repeat(40),x=>x.models.pro.sha256='0'.repeat(64),x=>x.models.elite.size++]) {
+     const bad=structuredClone(v);mutate(bad);assert.match(ctx.label(bad),/^verunverified/);
+   }
+   for(const revision of ['0.0.99.1',fw+'.0',fw+'.01',fw+'.1junk']) {
+     const bad=structuredClone(v);bad.display_version=revision;assert.equal(ctx.label(bad),'DnBOX '+fw);
+   }
+ }
 });

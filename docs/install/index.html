@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Firmware & samples · X0X37 NIGHTLY</title>
+<title>Firmware & samples · DnBOX NIGHTLY</title>
 <style>
 /* X0X37 / firmware control desk. Source-only skin: no flashing logic. */
 :root {
@@ -152,7 +152,7 @@ select:hover { border-color: #718769; }
 .flash-action .step-kicker { margin: 0 0 13px; }
 #go { width: 100%; min-height: 59px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 8px; font: 800 14px var(--mono); text-transform: uppercase; letter-spacing: .055em; padding: 13px 20px; }
 #go:hover:not(:disabled) { filter: brightness(1.1); }
-#go:disabled { filter: saturate(.45); }
+#go:disabled { filter: saturate(.45); opacity: .55; cursor: not-allowed; pointer-events: none; }
 #go::after { content: '  ↗'; margin-left: 15px; font-size: 18px; line-height: 1; }
 .install-hint { color: var(--dim); font-size: 11px; margin: 12px 0 4px; }
 progress { width: 100%; display: block; height: 7px; border-radius: 8px; overflow: hidden; accent-color: var(--accent); margin-top: 12px; }
@@ -433,6 +433,12 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 .prep-options{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;align-content:start}.prep-options label{display:block;font-size:12px;color:var(--prep-muted)}.prep-options select{display:block;width:100%;min-height:44px;margin-top:5px;padding:8px 10px;color:var(--prep-ink);border:1px solid #53616b;border-radius:5px;background:#29333b;font:inherit;font-size:13px}.prep-options .prep-cuts{display:flex;gap:16px;grid-column:1/-1}.prep-cuts label{display:flex;align-items:center;gap:7px;min-height:36px;white-space:nowrap}.prep-cuts input{width:16px;height:16px;accent-color:var(--prep-action)}.sample-prep .prep-quality-help{font-size:12px;line-height:1.5;color:var(--prep-muted);margin:0;grid-column:1/-1;max-width:46ch}
 .prep-footer{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid #44505a}.sample-prep .prep-detail{font-size:12px;color:var(--prep-muted);max-width:65ch}.prep-detail summary{cursor:pointer;min-height:36px;align-content:center}.prep-detail p{font-size:12px;margin:8px 0 0;line-height:1.5}.prep-import{text-align:right;flex-shrink:0}.sample-prep #prep-manage{display:inline-block;font-size:13px;font-weight:600;color:var(--prep-action);min-height:36px;align-content:center;text-decoration:underline}.prep-import small{display:block;font-size:11px;color:var(--prep-muted)}.sample-prep :is(input,select,button,a,summary):focus-visible{outline:3px solid var(--prep-action);outline-offset:3px}
 @media(max-width:700px){.sample-prep{padding:15px}.sample-prep .prep-head{align-items:start;gap:8px}.sample-prep .prep-head p{max-width:18ch}.sample-prep .prep-file{width:130px;flex-shrink:0}.sample-prep input[type=file]{font-size:11px}.sample-prep input::file-selector-button{display:block;margin:0 0 5px;min-height:44px}.prep-workbench{grid-template-columns:1fr;gap:14px}.prep-display{padding:11px}.prep-display canvas{height:60px}.prep-facts{gap:14px}.prep-audio{gap:6px}.sample-prep .prep-audio button{padding:8px 11px}.prep-options{gap:8px 12px}.prep-cuts label{min-height:36px}.prep-options .prep-cuts{gap:14px}.prep-footer{gap:10px}.prep-import small{max-width:23ch;margin-left:auto}.sample-prep h2{font-size:20px}}
+
+/* DnBOX channel identity and release notice; no install behavior changes. */
+.head-nav a{display:inline-flex!important;min-height:44px;align-items:center}
+.channel-label{font:700 11px var(--mono);color:var(--dim);white-space:nowrap;border:1px solid var(--rule);padding:4px 7px;border-radius:3px}
+.release-notice{margin:0 0 20px;border-left:3px solid var(--busy);padding:12px 16px;background:var(--card);font-size:14px}.release-notice p{margin:4px 0 0;color:var(--dim)}
+@media(max-width:600px){.header-top{flex-wrap:wrap;gap:12px}.head-nav{order:4;flex-basis:100%;margin:0;gap:20px;padding-bottom:10px}.channel-label{font-size:10px}.lang{margin-left:auto}.release-notice{font-size:13px}}
 </style>
 </head>
 <body>
@@ -440,9 +446,9 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
 <main id="workspace-main">
   <header class="site-head">
     <div class="header-top">
-      <a class="home" href="../" aria-label="X0X37 home">X0X37</a>
+      <a class="home" href="../" aria-label="DnBOX home">DnBOX</a><span class="channel-label">SMK-37 · NIGHTLY</span>
       <nav class="head-nav" aria-label="Site navigation">
-        <a href="../manual/" data-t="navmanual">Manual</a>
+        <a href="../manual/" data-t="navmanual">Manual</a><a href="../new/">Changes</a><a href="https://github.com/gobbajogger/x0x37-for-Loopy-Pro_nightly">Source</a>
       </nav>
       <button class="lang" id="lang" type="button"></button>
     </div>
@@ -466,6 +472,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   <section id="samples-panel" aria-label="Sample workspace" hidden><iframe id="sample-frame" title="Import break loops, back up or restore sample slots" src="../breaks/?embedded=1" allow="midi"></iframe><p class="small"><a href="../breaks/">Open sample tools separately</a> if this panel does not load.</p></section>
   <section id="projects-panel" aria-label="Songs and projects workspace" hidden><iframe id="project-frame" title="Import or export a whole song project; reset project while keeping samples" src="../projects/?embedded=1" allow="midi"></iframe><p class="small"><a href="../projects/">Open Songs &amp; projects separately</a> if this panel does not load.</p></section>
   <div id="firmware-panel">
+  <aside class="release-notice" aria-label="Release status"><strong>0.0.26 hardware-test candidate available</strong><p>The original 600b build remains withdrawn. Candidate 94197fc8 includes the boot-guard correction, but physical startup/restart is not yet verified. 0.0.25.1 remains the known-good fallback. <a href="../new/">Release status</a></p></aside>
 
   <div class="install-layout">
     <div class="install-primary" id="firmware">
@@ -490,7 +497,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
     <fieldset class="model-select" id="modeldetails">
       <legend data-t="modelheading">Choose your keyboard model</legend>
       <div class="models" id="models" role="radiogroup" aria-label="Keyboard model"></div>
-      <p class="model-prompt">Choose the name printed on your keyboard.</p><details class="model-help"><summary>Model naming help</summary><p data-t="modelwhy"></p></details>
+      <p class="model-prompt">Choose the name printed on your keyboard. The installer also checks the connected device before writing.</p><details class="model-help"><summary>Model naming help</summary><p data-t="modelwhy"></p></details>
     </fieldset>
         <div class="row" id="versionrow">
           <label class="field"><span data-t="versionlabel">Firmware version</span>
@@ -518,18 +525,11 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
           <p class="action-safety">First install replaces previous working data. <a href="#samples">Back up important samples</a> before switching. Keep USB connected until installation finishes.</p>
           <label id="devagreewrap" hidden><input type="checkbox" id="devagree"> <span data-t="devagree">I accept hardware-untested development firmware for my selected keyboard model.</span></label>
           <button id="go" disabled data-t="install">Install</button>
+          <div id="inconfirm" role="alertdialog" aria-live="assertive" hidden style="border:2px solid #c80;padding:8px;margin:6px 0;white-space:pre-wrap"><div id="inconfirmtext"></div><button id="inconfirmok" type="button">OK — write firmware</button> <button id="inconfirmno" type="button">Cancel</button></div>
           <p class="install-hint" id="installhint" aria-live="polite"></p>
           <progress id="bar" max="100" value="0" aria-label="Firmware installation progress"></progress>
           <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
-          <section id="backup-confirmation" class="backup-confirmation" aria-labelledby="backup-heading" hidden>
-            <p id="backup-heading"><strong data-t="slotconfirm">Confirm your recovery backup before installing.</strong></p>
-            <p class="small" data-t="slotconfirmhelp">The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.</p>
-            <p><code id="backup-name"></code></p>
-            <div class="backup-actions">
-              <button type="button" class="quiet" id="backup-cancel" data-t="slotcancel">Cancel installation</button>
-              <button type="button" class="quiet" id="backup-retained" data-t="slotretained">I have saved this backup — continue</button>
-            </div>
-          </section>
+          <p id="backup-warning" class="backup-confirmation" role="alert" aria-live="assertive" hidden></p>
           <details class="diagnostics">
             <summary data-t="diagnostics">Technical details / activity log</summary>
             <pre id="log"></pre>
@@ -576,7 +576,7 @@ p{max-width:76ch}h1,h2,h3{text-wrap:balance}button,a,input,select,summary{touch-
   </details>
 
   <details class="connection-help"><summary>Connection &amp; recovery help</summary><p class="small" data-t="direct"></p><p class="small" data-t="helptext"></p><p class="small"><a href="../manual/" data-t="helpmanual">Open the manual</a></p>  <p class="small" id="recovery"><span data-t="brick"></span>
-    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/blob/main/docs/MANUAL.md#recovering-an-fm-1-that-wont-start" style="color:inherit" data-t="bricklink"></a></p>
+    <a href="https://github.com/gobbajogger/X0X37-for-Loopy-Pro/issues" style="color:inherit" data-t="bricklink"></a></p>
   <p class="small" data-t="back"></p></details>
   <section class="sample-prep" id="prepare-samples" aria-labelledby="prep-title">
     <div class="prep-head"><div><h2 id="prep-title">Prepare a sample</h2><p>Listen first. Connect when you’re ready.</p></div><label class="prep-file" for="prep-file"><span >Choose your audio</span><input id="prep-file" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.flac,.m4a,.ogg" aria-describedby="prep-status"></label></div>
@@ -628,7 +628,7 @@ const BLOCKS = 20, BLK = 0x30, KEEP = 0x2F;
 
 // the package identity ("FM-1_904"): one marker byte after each of the first 20 blocks
 function productOf(fwsc) {
-  if (fwsc.length < BLOCKS * BLK) throw new Error("not an FM-1 package (too short)");
+  if (fwsc.length < BLOCKS * BLK) throw new Error("firmware package is too short");
   let s = "";
   for (let i = 0; i < BLOCKS; i++) {
     const m = fwsc[i * BLK + KEEP];
@@ -720,14 +720,22 @@ function pkHasSlotMap(flash) {
   const map = 0x9CF00; // Fixed SMK flash-map address, not a marker elsewhere in package padding.
   if (flash.length < map + 20 || !CTL_SLOTMAP.every((b, j) => flash[map + j] === b)) return false;
   const count = pkU32(flash, map + 16);
-  // The retained packages contain exactly these two layouts: the current
-  // two-slot map, or the older three-slot map. 0xB0000 is VM recovery spare
-  // in the current layout; it is a sample slot only in that verified old map.
-  if (count !== 2 && count !== 3) return false;
+  // The retained packages contain exactly these layouts: the two-slot map,
+  // the older three-slot map (0xB0000 is a sample slot in that verified old
+  // map; later it is VM recovery spare / sector-0 shadows), and the current
+  // three-slot map with slot 3 at 0xB3000 (32 KiB, after the shadows).
+  // Port of live gh-pages 9fde4dbe so a later site render cannot drop 0.0.25 packages.
+  const allowed = [
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000]],
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]],
+    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB3000, 0x8000]],
+  ];
   const end = map + 20 + 8 * count;
   return flash.length >= end + 4 &&
-    [[0xC2000, 0x14000], [0xD6000, 0x1E000], [0xB0000, 0xB000]].slice(0, count).every(([off, size], j) =>
-      pkU32(flash, map + 20 + j * 8) === off && pkU32(flash, map + 24 + j * 8) === size) &&
+    allowed.some((slots) =>
+      slots.length === count &&
+      slots.every(([off, size], j) =>
+        pkU32(flash, map + 20 + j * 8) === off && pkU32(flash, map + 24 + j * 8) === size)) &&
     pkU32(flash, end) === pkCrc32(flash, map, end);
 }
 const CTL_NO_BLOCK = "the app code of this package goes into the Bluetooth block (flash 0x8B000-0x9AFFF). "
@@ -856,6 +864,7 @@ const PORT_RE = /fm-1|smk|elite|mke-p37|starry|felucca|melodee|fomni|x0x|makkuro
 function keyboardModel(model) {
   if (typeof model !== "string" || !model) return null;
   const name = model.replace(/^ota-/i, "").toLowerCase();
+  if (name === "fm-1") return null; // SMK installer: never admit the other board.
   return name === "starrykey-37 play" || name === "starrykey-37" ? "smk-37 pro" : name;
 }
 const sameKeyboard = (a, b) => keyboardModel(a) !== null && keyboardModel(a) === keyboardModel(b);
@@ -978,14 +987,15 @@ class Link {
   }
 }
 
-async function handshake(link, tries = 3) {
+async function handshake(link, tries = 3, onPacket = null, deadline = Infinity) {
   link.drain();
-  for (let t = 0; t < tries; t++) {
+  for (let t = 0; t < tries && Date.now() < deadline; t++) {
     if (!link.send(HS_QUERY)) return null;
-    const end = Date.now() + 1000;
+    const end = Math.min(Date.now() + 1000, deadline);
     while (Date.now() < end) {
       const p = await link.read(end - Date.now());
       if (!p) break;
+      if (onPacket && onPacket(p)) continue;
       const id = parseIdentity(p);
       if (id) return id;
     }
@@ -993,19 +1003,27 @@ async function handshake(link, tries = 3) {
   return null;
 }
 
-async function openMidiPort(port) {
-  // Reuse the Projects workspace's initial-opening boundary: consume the
-  // closed -> open event before a new session installs its lifecycle guard.
-  // Later events remain observable by every existing bound updater.
-  if (port.connection !== "closed") { await port.open(); return; }
+async function openMidiPort(port, deadline = Infinity) {
+  // Bound the entire opening operation, not just its statechange event.
+  // Some Web MIDI hosts emit statechange but never settle open().
+  const ms = Math.min(3000, deadline - Date.now());
+  if (ms <= 0) throw fail("open", "The MIDI port did not finish opening. Reconnect and try again.");
   let changed, timer;
-  const transition = new Promise((resolve, reject) => {
+  const transition = port.connection === "closed" ? new Promise(resolve => {
     changed = () => resolve();
-    timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), 3000);
     port.addEventListener("statechange", changed, { once: true });
-  });
-  try { await Promise.all([port.open(), transition]); }
-  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+  }) : Promise.resolve();
+  try {
+    await Promise.race([
+      Promise.all([port.open(), transition]),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), ms);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+    if (changed) port.removeEventListener("statechange", changed);
+  }
 }
 
 class Updater {
@@ -1019,6 +1037,7 @@ class Updater {
     this.binding = null;
     this.onPortState = null;
     this.admitted = null;
+    this.finishRetry = null;
   }
 
   ports() {
@@ -1029,17 +1048,16 @@ class Updater {
     // Model/version has no unit serial. A sole keyboard may rename its port on
     // reboot; multiple update-compatible ports cannot be safely distinguished.
     const ports = this.ports();
-    if (ports.length > 1 || (selected !== null && (ports.length !== 1 || ports[0].name !== selected)))
+    // Identity comes from the device-reported model, never from port names/ids.
+    if (ports.length > 1)
       throw fail("ambiguous", "Cannot bind this update to one keyboard across reboot. Disconnect the other update-compatible keyboards and select the target again.");
-    if (this.verified && ports.length && ports[0].name !== this.targetName)
-      throw fail("ambiguous", "The verified keyboard's MIDI port changed before readback or sample restore; refusing another port.");
     return ports;
   }
 
   bind(dev) {
     try {
       this.singlePort(dev.name);
-      if (this.target && (this.targetName !== dev.name || !sameKeyboard(this.target.model, dev.id.model)))
+      if (this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), dev.id.model.replace(/^ota-/i, "")))
         throw fail("ambiguous", "The selected keyboard changed before the update.");
     } catch (e) { dev.link.close(); throw e; }
     this.target = dev.id;
@@ -1052,31 +1070,30 @@ class Updater {
         const p = event.port;
         // Event callbacks can lag a disconnect/reconnect. Current state alone
         // cannot prove that this bound connection remained uninterrupted.
-        if (p && (p === binding.input || p === binding.output ||
-            (p.id && (p.id === binding.input?.id || p.id === binding.output?.id)))) binding.invalid = true;
+        // iOS Web MIDI hosts fire statechange on open/reopen and may swap port
+        // objects/ids without any reconnect. Only a real disconnect counts; the
+        // device is re-identified by its SysEx model reply before continuing.
+        if (p && p.state === "disconnected" && (p === binding.input || p === binding.output)) binding.lostPort = true;
       };
       if (binding.observed) this.access.addEventListener("statechange", this.onPortState);
     }
   }
 
   assertContinuous(dev) {
-    const b = this.binding;
-    if (dev?.id && this.target && !sameKeyboard(dev.id.model, this.target.model))
+    // Continuity = same device-reported model (SysEx identity), not the same
+    // MIDI port object, id or name (those change spuriously on iOS).
+    if (dev?.id && this.target &&
+        !sameKeyboard(dev.id.model.replace(/^ota-/i, ""), this.target.model.replace(/^ota-/i, "")))
       throw fail("model", `The selected keyboard changed model during the update: ${dev.id.text}`);
-    if (!b || !b.observed || b.invalid || !b.input || !b.output ||
-        dev?.link?.input !== b.input || dev?.link?.output !== b.output ||
-        b.input.state !== "connected" || b.output.state !== "connected" ||
-        ![...this.access.inputs.values()].includes(b.input) ||
-        ![...this.access.outputs.values()].includes(b.output)) {
-      if (b) b.invalid = true;
-      throw fail("continuity", "The keyboard's MIDI connection changed. No persistent device identity is available, so automatic continuation and sample restore were stopped. Keep your backup, reconnect the intended keyboard and explicitly retry the matching-model update.");
-    }
+    if (dev?.link && dev.link !== this.binding && dev.link.lost)
+      throw fail("lost", "The keyboard disconnected. Reconnect it and press Install again.");
   }
 
   close() {
     if (this.onPortState && typeof this.access.removeEventListener === "function")
       this.access.removeEventListener("statechange", this.onPortState);
     this.onPortState = null;
+    this.finishRetry = null;
     if (this.binding) this.binding.invalid = true;
   }
 
@@ -1102,16 +1119,20 @@ class Updater {
   }
 
   // every in/out pair with the same port name that answers the handshake
-  async find(filter) {
+  async find(filter, deadline = Infinity) {
     if (this.target) this.singlePort();
-    if (this.binding) this.assertContinuous({ link: this.binding });
     for (const { input, output } of this._portPairs()) {
-      try { await openMidiPort(input); await openMidiPort(output); } catch (_) { continue; }
+      if (Date.now() >= deadline) return null;
+      try { await openMidiPort(input, deadline); await openMidiPort(output, deadline); } catch (_) { continue; }
+      // A timed-out opening can settle later. Never give that stale attempt a
+      // receive handler or let it turn a finished timeout into success.
+      if (Date.now() >= deadline) return null;
       if (!this._portPairs().some((p) => p.input === input && p.output === output)) continue;
       const link = new Link(input, output);
       let id;
-      try { id = await handshake(link, 2); }
+      try { id = await handshake(link, 2, pkt => this.retryFinish(link, pkt), deadline); }
       catch (error) { link.close(); throw error; }
+      if (Date.now() >= deadline) { link.close(); return null; }
       if (id && this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), id.model.replace(/^ota-/i, ""))) {
         link.close();
         throw fail("model", `The selected keyboard changed model during the update: ${id.text}`);
@@ -1120,6 +1141,7 @@ class Updater {
         const dev = { link, id, name: input.name };
         try { if (this.binding) this.assertContinuous(dev); }
         catch (error) { link.close(); throw error; }
+        this.finishRetry = null;
         return dev;
       }
       link.close();
@@ -1130,11 +1152,28 @@ class Updater {
   async waitFor(filter, ms) {
     const end = Date.now() + ms;
     while (Date.now() < end) {
-      const dev = await this.find(filter);
+      const dev = await this.find(filter, end);
       if (dev) return dev;
-      await sleep(1000);
+      if (Date.now() < end) await sleep(Math.min(1000, end - Date.now()));
     }
     return null;
+  }
+
+  // A successful Web MIDI send only queues bytes. Keep the completed-stage
+  // token available during discovery so a loader can retry a lost response.
+  // Never answer image reads or a terminal request from another port pair.
+  retryFinish(link, pkt) {
+    const pending = this.finishRetry;
+    if (!pending || Date.now() > pending.until) return false;
+    if (link.input !== pending.input || link.output !== pending.output) return false;
+    const r = parseRequest(pkt);
+    if (!r || (r.addr !== 0xE0000000 && r.addr !== 0xF0000000)) return false;
+    this.singlePort();
+    if (r.addr !== pending.addr || r.len !== 8)
+      throw fail("badreq", "Unexpected OTA completion during restart");
+    if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0])))
+      throw fail("lost", "The keyboard disconnected during restart.");
+    return true;
   }
 
   // serve read requests until the device asks for one of the finish addresses; stops early
@@ -1143,7 +1182,6 @@ class Updater {
     let served = 0, transferred = 0, startedAtHeader = false, last = Date.now();
     for (;;) {
       const pkt = await link.read(1000);
-      if (this.binding) this.assertContinuous({ link });
       if (!pkt) {
         if (link.lost) return { served, finished: false, lost: true };
         if (Date.now() - last > idleMs) return { served, finished: false };
@@ -1160,12 +1198,13 @@ class Updater {
         if (!link.send(response(r.addr, [...new TextEncoder().encode("success"), 0]))) {
           return { served, finished: false, lost: true };
         }
+        this.finishRetry = { addr: r.addr, input: link.input, output: link.output,
+          until: Date.now() + 70000 };
         if (r.addr === finishAddr) return { served, finished: true };
         continue;
       }
       if (r.len === 0 || r.len > MAXDATA || r.addr + r.len > image.length) throw fail("badreq", `bad request ${r.addr.toString(16)}+${r.len}`);
       await sleep(10);
-      if (this.binding) this.assertContinuous({ link });
       if (finishAddr === 0xF0000000 && transferred === 0) this.assertAdmitted();
       if (!link.send(response(r.addr, Array.from(image.subarray(r.addr, r.addr + r.len)), r.fl))) {
         return { served, finished: false, lost: true };
@@ -1182,7 +1221,7 @@ class Updater {
     this.admitted = admitted;
     const step = onStep || (() => {});
     const dev = await this.find((id) => !IS_OTA(id));
-    if (!dev) throw fail("notfound", "FM-1 not found (USB cable, and no other app using it?)");
+    if (!dev) throw fail("notfound", "SMK-37 not found (USB cable, and no other app using it?)");
     const [model] = product.split("_");
     if (!sameKeyboard(dev.id.model, model)) { dev.link.close(); throw fail("model", `the device is ${dev.id.text}, the package is for ${product}`); }
     this.bind(dev);
@@ -1221,10 +1260,11 @@ class Updater {
     this.verified = false;
     step("reboot");
     await sleep(3000);
-    const back = await this.waitFor((id) => !IS_OTA(id), 40000);
+    // Loader terminal retries can take 4 × 3 × 5 seconds before reset.
+    const back = await this.waitFor((id) => !IS_OTA(id), 70000);
     if (!back) throw fail("noreturn", "the device did not come back: power-cycle it");
     try {
-      this.singlePort(back.name);
+      this.singlePort();
       this.assertContinuous(back);
       if (IS_OTA(back.id)) throw fail("noreturn", "the device is still in update mode");
       if (!sameKeyboard(back.id.model, product.split("_")[0]))
@@ -1240,7 +1280,7 @@ class Updater {
   // step 2 with the loader found by find()/waitFor()
   async write(ota, image, step) {
     try {
-      this.singlePort(ota.name);
+      this.singlePort();
       if (!this.product || !sameKeyboard(ota.id.model.replace(/^ota-/i, ""), this.product.split("_")[0]))
         throw fail("model", `the loader is ${ota.id.text}, the package is for ${this.product || "an unknown model"}`);
       if (!IS_OTA(ota.id)) throw fail("model", "The selected device is not an update loader");
@@ -2168,15 +2208,15 @@ async function cancelInstallSnapshot(link, snapshot) {
 // The install with the slots kept (fm1_install.py's flow, for the installer page). up: fm1ota.js's Updater;
 // hooks: {step(k, a) for up.install, say(key, detail), save(bytes, name) -> true / Promise<true> only after the backup is retained, progress(f),
 // sameKeyboard(model, packageModel) (fm1ota.js's: the slots are read only when the install can go ahead)}.
-// 1. If a slot holds samples the new firmware does not keep: read every slot into an .x0xslots archive and
-//    await explicit retained-backup acknowledgement (only boolean true permits OTA).
+// 1. If slots are at risk, attempt an .x0xslots archive and download.
+//    Backup errors warn but never prevent OTA.
 //    2. Install. 3. Reconnect to the new firmware, write the slots back into its map, read them back.
 // Throws the install's errors as they are; a failure in step 3 throws code "slots" (the archive is saved).
 // -> {product, move: null or {risk, todo, skipped, name}}
 async function installKeepingSlots(up, image, product, board, hooks) {
   const h = Object.assign({ step() {}, say() {}, save() {}, progress() {}, sameKeyboard: () => true, admitted: () => true }, hooks);
   const fail = (code, msg, detail = "") => Object.assign(new Error(msg), { code, detail });
-  let move = null, snapshot = null;
+  let move = null, snapshot = null, unprotected = false;
   const dev = await up.find((id) => !/^ota-/i.test(id.model));
   if (!dev) throw fail("notfound", "No running keyboard was found for sample preflight; no update was started.");
   if (!h.sameKeyboard(dev.id.model, product.split("_")[0])) {
@@ -2194,12 +2234,11 @@ async function installKeepingSlots(up, image, product, board, hooks) {
       let layout;
       try { layout = await readSlotLayout(dev.link, 1000, 2); }
       catch (e) {
-        const stock = dev.id.text === "FM-1_015" || (dev.id.version === 16 && /^(SMK-37[ +].*|MKE-P37|STARRYKEY-37.*)$/i.test(dev.id.model));
-        if (stock && /did not answer \(slot command 15\)/.test(e.message)) layout = null;
-        else throw fail("slotbackup", `The sample layout is unknown (${e.message}). Reconnect and retry; no update was started.`);
+        // Any unsupported/failed slot INFO uses the outer warning-only path.
+        throw fail("slotbackup", `Sample layout unavailable (${e.message}); continuing without backup.`);
       }
       if (layout && !snapshot)
-        throw fail("slotbackup", "This firmware cannot atomically protect the sample backup through update entry. No update was started. A separately verified preservation path is required for this older firmware.");
+        throw fail("slotbackup", "Atomic sample backup unsupported; continuing without backup.");
       if (layout && layout.slots.some((sl) => sl.nz)) {
         const oldMap = flashMap(layout, board), newMap = packageSlotMap(image, board);
         const risk = atRisk(layout, oldMap, newMap);
@@ -2209,13 +2248,17 @@ async function installKeepingSlots(up, image, product, board, hooks) {
           try {
             saved = await backupSlots(dev.link, (k, d, n) => h.progress((k + d / n) / layout.count));
           } catch (e) { throw fail("slotbackup", e.message); }
-          const st = archiveStamp(), file = makeArchive(saved.layout, saved.images, st.created);
-          readArchive(file);                                  // verify the in-memory archive
+          const st = archiveStamp();
+          let file;
+          try {
+            file = makeArchive(saved.layout, saved.images, st.created);
+            readArchive(file);                                // verify the in-memory archive
+          } catch (e) { throw fail("slotbackup", e.message); }
           let retained;
           try { retained = await h.save(file, st.name); }
-          catch (e) { throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name); }
+          catch (e) { throw fail("slotbackup", "The recovery backup could not be downloaded (" + e.message + ")."); }
           if (retained !== true)
-            throw fail("slotbackupconfirm", "The recovery backup was not confirmed; no update was started.", st.name);
+            throw fail("slotbackupconfirm", "The browser could not confirm saving the recovery backup.", st.name);
           // SMP_INFO can change while the backup is read. Use the exact verified
           // snapshot for preservation, just as the Python SlotMove.backup does.
           const savedMap = flashMap(saved.layout, board);
@@ -2224,14 +2267,20 @@ async function installKeepingSlots(up, image, product, board, hooks) {
         }
       }
     } catch (e) {
+      // Sample preservation is best effort on legacy firmware. Never bypass
+      // keyboard model or package/controller admission: those remain enforced
+      // independently by Updater.install() and admitted().
       await cancelInstallSnapshot(dev.link, snapshot);
-      throw e;
+      snapshot = null;
+      move = null; // No verified recovery archive exists.
+      unprotected = true;
+      h.say("slotunprotectedwarning", e?.message || String(e));
     } finally { dev.link.close(); }
   }
-  if (!h.admitted()) throw fail("slotbackup", "The selected package is no longer approved. No update was started.");
+  if (!h.admitted()) throw fail("unapproved", "The selected package is no longer approved. No update was started.");
   const ran = await up.install(image, product, h.step,
     snapshot ? (dev) => commitInstallSnapshot(dev.link, snapshot, h.admitted) : null, h.admitted);
-  if (!move || !move.newMap.length) return { product: ran, move };
+  if (!move || !move.newMap.length) return { product: ran, move, unprotected };
   h.say("slotback");
   const back = await up.waitFor((id) => !/^ota-/i.test(id.model), 20000);
   if (!back) throw fail("slots", "the keyboard did not answer after the install", move.name);
@@ -2248,12 +2297,12 @@ async function installKeepingSlots(up, image, product, board, hooks) {
   } catch (e) {
     throw fail("slots", e.message, move.name);
   } finally { back.link.close(); }
-  return { product: ran, move };
+  return { product: ran, move, unprotected };
 }
 
 const $ = (id) => document.getElementById(id);
 const MODELS = { pro: "SMK-37 Pro", elite: "SMK-37 Elite", mke: "MKE-P37", fm1: "FM-1" };
-const MODEL_KEYS = ["pro", "elite", "mke", "fm1"];
+const MODEL_KEYS = ["pro", "elite", "mke"];
 const STOCK_SHA256_FM1 = "db1642b2b6fa5c2cccb11ffd13878068bb28601678d3644049f99dc40e7edb8a";
 const TEXT = {
   ja: {
@@ -2283,7 +2332,7 @@ const TEXT = {
     evidencelink: "開発検証記録", archiveheading: "ビルド履歴", archiveintro: "SHA確認済みビルドとソースのみの状態・未入手アーカイブ・失敗ビルドを区別します。コミットだけではインストールできません。",
     choosebuild: "このビルドを選ぶ", otherbuilds: "その他のチェックポイント (インストール不可)", unapproved: "このパッケージには機種別検証記録がないため、自動インストールできません。",
     title: "X0X をインストール",
-    intro: "SMK-37 と FM-1 向けファームウェア。USB で接続して機種とビルドを選び、サンプルのバックアップ保護を確認してインストールします。PC の Chrome または Edge をご使用ください。",
+    intro: "SMK-37 Pro / Elite 向けファームウェア。USB で接続して機種とビルドを選び、サンプルのバックアップ保護を確認してインストールします。PC の Chrome または Edge をご使用ください。",
     warn: "書き込み中は USB を抜かないでください。",
     install: "ファームウェアを書き込む", other: "English", connect: "USB 接続",
     connhelp: "Chrome か Edge で開き、USB でつないでから接続を押してください。",
@@ -2295,8 +2344,8 @@ const TEXT = {
     breaks: "サンプル・インポーター：自分のブレイク・ループ",
     untested: "X0X はベータ版です。",
     direct: "USB ケーブルはパソコンに直接つないでください。",
-    brick: "万一 FM-1 が起動しなくなった場合は、Mac から標準ファームウェアに戻せます:",
-    bricklink: "起動しない FM-1 の復旧（マニュアル）",
+    brick: "起動や復旧の問題は、お使いの SMK モデルに対応する手順を確認してください:",
+    bricklink: "SMK の起動・復旧サポート",
     beta: "これはベータ版で、不安定な場合があります。自己責任でお使いください。",
     back: "公式や他のカスタムへ移すには、下に .fwsc を落とすか M-VAVE の M-UPGRADE を使います。",
     noversion: "まだ公開パッケージがありません。下に .fwsc を落として書き込めます（アップグレード・ダウングレード・純正・他カスタム）。",
@@ -2317,7 +2366,7 @@ const TEXT = {
     stockdone: "完了。デバイスは新しいファームウェアで起動しました。",
     confirm: "書き込みますか？\n\n接続中: ",
     confirmto: "\n書き込む: ",
-    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。サンプル・スロットが消える場合は、先にバックアップを保存し、保存できたことを確認してください。USB を抜かないでください。",
+    confirmrisk: "\n\nキャリブレーションとペアリングは触りません。バックアップに失敗しても警告を表示して自動的にインストールを続行します。サンプルが永久に失われる可能性があります。USB を抜かないでください。",
     nomidi: "このブラウザでは使えません。Chrome か Edge で開いてください。", loadfail: "読み込めませんでした: ",
     start: "開始します", verify: "確認中", loader: "書き込みモードに切り替え中", write: "書き込み中",
     reboot: "再起動中", done: "完了しました", stopped: "途中で止まりました。USB を挿し直してもう一度押してください。",
@@ -2333,7 +2382,7 @@ const TEXT = {
     leave: "書き込み中です。ページを閉じないでください。",
     slotsave: "新しいファームウェアではスロットのサンプルが消えます（スロット ",
     slotsave2: "）。先に全スロットをファイルに保存します。",
-    slotdownload: "バックアップのダウンロードを要求しました（保存は未確認）: ",
+    slotdownload: "バックアップのダウンロードを要求しました。保存できたかは確認できないため、ダウンロード先を確認してください: ",
     slotsaved: "バックアップを保管したことをユーザーが確認しました: ",
     slotconfirm: "インストールする前にバックアップの保存を確認してください。",
     slotconfirmhelp: "ブラウザにこのファイルのダウンロードを要求しましたが、保存できたかは確認できません。ダウンロード先でファイルを見つけ、安全な場所に保管してください。ファイルを保管できた場合だけ続行し、それ以外はキャンセルしてください。ファームウェアはまだ書き込んでいません。",
@@ -2347,6 +2396,11 @@ const TEXT = {
     slotstock: "完了。純正ファームウェアには X0X のスロットがありません。サンプルは次のファイルにあります（X0X を入れ直した後にブレークループのページの「Restore」で戻せます）: ",
     slots: "インストールは終わりましたが、スロットを書き戻せませんでした。ブレークループのページの「Restore」か tools/x0x_slots.py restore で、このファイルから戻してください: ",
     slotbackup: "スロットを保存できなかったため、何も書き込んでいません。先にブレークループのページでバックアップしてください。 ",
+    slotbackupcancel: "バックアップがないためインストールをキャンセルしました。何も書き込んでいません。 ",
+    slotunprotectedwarning: "警告：サンプルのバックアップに失敗しました。インストールは自動的に続行します。以前のサンプルや保存したブレークループが永久に失われる可能性があります。保存できなかったスロットは復元できません。エラー：",
+    slotunprotectedquestion: "\n\nバックアップなしでインストールを続行しますか？",
+    slotunprotectedcontinue: "バックアップなしで続行",
+    slotunprotecteddone: "バックアップなしでインストールが完了しました。以前のサンプルスロットは失われた可能性があります。",
     license: "GPL-3.0、無保証。ソース:",
     blewhy: "この旧パッケージには、ble/ctl/build_ctl.sh で作成した一致する ctl.img が必要です。選択するまでインストールできません。検証済みの一体型 NIGHTLY には Bluetooth が含まれ、別ファイルは不要です。",
     ctlreading: "コントローラー画像を読み込み、確認しています…",
@@ -2384,7 +2438,7 @@ const TEXT = {
     evidencelink: "Development validation record", archiveheading: "Build history", archiveintro: "SHA-verified builds are separated from source-only checkpoints, unavailable archives and failed builds. A source commit alone is not flashable firmware.",
     choosebuild: "Select this build", otherbuilds: "Other checkpoints — not available for installation", unapproved: "No model-specific development/release validation for this package. Automatic installation is disabled.",
     title: "Install firmware",
-    intro: "Firmware for SMK-37 and FM-1. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.",
+    intro: "Firmware for SMK-37 Pro and Elite. Connect over USB, choose your build, and install with sample-backup safeguards. Use Chrome or Edge on a computer.",
     warn: "Do not unplug the USB cable while writing.",
     install: "Install firmware", other: "日本語", connect: "Connect USB",
     connhelp: "Plug in by USB. Use Chrome or Edge on a computer.",
@@ -2396,8 +2450,8 @@ const TEXT = {
     breaks: "Sample importer: your own break loops",
     untested: "X0X is a beta.",
     direct: "Connect the USB cable directly to the computer. No probe or Transporter is needed.",
-    brick: "If the FM-1 no longer starts, a Mac can put the stock firmware back:",
-    bricklink: "recovering an FM-1 that won't start (manual)",
+    brick: "For startup or recovery problems, use instructions for your exact SMK model:",
+    bricklink: "SMK startup and recovery support",
     beta: "This is a beta and may be unstable. The author accepts no responsibility if your device is damaged or misbehaves because of this custom firmware. Use it at your own risk.",
     back: "To move to stock or another custom firmware, drop its .fwsc below, or use M-VAVE's M-UPGRADE.",
     noversion: "No packages are included in this source preview. Use the published NIGHTLY installer, or choose a local package below.",
@@ -2418,7 +2472,7 @@ const TEXT = {
     stockdone: "Done. The device has restarted with the new firmware.",
     confirm: "Install this firmware?\n\nConnected: ",
     confirmto: "\nWill write: ",
-    confirmrisk: "\n\nCalibration and pairing are never touched. If sample slots would be lost, you must save and confirm a recovery backup first. Keep USB connected until Done.",
+    confirmrisk: "\n\nCalibration and pairing are never touched. Sample backup is attempted but cannot block installation. If it fails, a warning will appear and saved samples may be lost permanently. Keep USB connected until Done.",
     nomidi: "Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost, and allow MIDI / SysEx permission. Safari and iOS browsers are unsupported.", loadfail: "Could not load: ",
     start: "Starting", verify: "Verifying", loader: "Switching to update mode", write: "Writing",
     reboot: "Restarting", done: "Done", stopped: "Stopped. Replug the USB cable and press Install again.",
@@ -2434,7 +2488,7 @@ const TEXT = {
     leave: "Writing. Do not close the page.",
     slotsave: "The new firmware does not keep the samples in slot ",
     slotsave2: ". Saving every slot to a file first.",
-    slotdownload: "Backup download requested (not yet confirmed): ",
+    slotdownload: "Backup download requested; check Downloads because the browser cannot verify it was saved: ",
     slotsaved: "User confirmed retained recovery backup: ",
     slotconfirm: "Confirm your recovery backup before installing.",
     slotconfirmhelp: "The browser was asked to download this file, but cannot verify that it was saved. Find it in your downloads and keep it somewhere safe. Confirm only after you have the file; otherwise cancel. No firmware has been written yet.",
@@ -2448,6 +2502,11 @@ const TEXT = {
     slotstock: "Done. The stock firmware has no X0X slots. Your samples are in this file (after you install X0X again, restore it with Restore on the break loops page): ",
     slots: "Installed, but the slots were not written back. Restore them from this file with Restore on the break loops page, or with tools/x0x_slots.py restore: ",
     slotbackup: "The slots could not be saved, so nothing was installed. Back them up on the break loops page first. ",
+    slotbackupcancel: "Install cancelled: sample recovery backup unavailable or not retained. Nothing was installed. ",
+    slotunprotectedwarning: "WARNING: Sample backup failed. Installation continues automatically, but existing samples and saved break loops may be permanently lost. The installer cannot restore unbacked-up slots. Backup error: ",
+    slotunprotectedquestion: "\n\nContinue installing WITHOUT a sample backup?",
+    slotunprotectedcontinue: "Continue WITHOUT backup",
+    slotunprotecteddone: "Installation completed WITHOUT a sample backup. Previous sample slots may be permanently lost.",
     license: "GPL-3.0, no warranty. Source:",
     blewhy: "This legacy package requires the exact matching ctl.img built on your computer with ble/ctl/build_ctl.sh. Installation is blocked until it is supplied. Qualified bundled NIGHTLY packages include Bluetooth and need no separate file.",
     ctlreading: "Reading and checking the controller image…",
@@ -2671,11 +2730,10 @@ function suggestModel(deviceModel) {
   const ver = currentVersion();
   if (!ver) return;
   const avail = availableModels(ver);
-  let want = "pro";
-  if (/Elite/i.test(deviceModel)) want = "elite";
-  else if (/MKE/i.test(deviceModel)) want = "mke";
-  else if (/^FM-1/i.test(deviceModel)) want = "fm1";
-  if (!avail.includes(want)) want = avail[0];
+  // Never turn an unknown or non-keyboard identity into a Pro suggestion.
+  const model = String(deviceModel || "").replace(/^ota-/i, "");
+  const want = MODEL_KEYS.find(k => sameKeyboard(MODELS[k], model));
+  if (!want || !avail.includes(want)) return;
   if (want) {
     chosenModel = want;
     const input = document.querySelector(`#models input[value="${want}"]`);
@@ -2787,7 +2845,16 @@ function buildDisplayLabel(v, selectedPackage) {
   const title = typeof v.title === "string" ? v.title.trim().replace(/^DEV \/ HARDWARE TEST — /, "") : "";
   if (!valid) return t("verunverified") + " · " + v.version;
   const assigned = assignedPackageVersion(v, selectedPackage);
-  if (assigned) return assigned.valid ? "DN Box " + assigned.version : t("verunverified") + " · " + v.version;
+  if (assigned) {
+    if (!assigned.valid) return t("verunverified") + " · " + v.version;
+    // A catalog revision may share the same compiled three-part firmware version.
+    // The numeric package assignment remains authoritative for identity checks.
+    const catalogRevision = typeof v.display_version === "string" &&
+      /^[0-9]+\.[0-9]+\.[0-9]+\.[1-9][0-9]*$/.test(v.display_version) &&
+      v.display_version.startsWith(assigned.version + ".");
+    return "DnBOX " + (catalogRevision ?
+      v.display_version + " (firmware " + assigned.version + ")" : assigned.version);
+  }
   const values = [...new Set(identities.map(i => i.version))];
   if (values.length !== 1) return t("vermixed") + " · " + (title || v.version);
   const version = values[0];
@@ -2800,7 +2867,7 @@ function buildDisplayLabel(v, selectedPackage) {
 // Fixed owner assignments; built from package-version-assignments.json.
 // A title, list position or unbound package_version value cannot assign a number.
 function assignedPackageVersion(v, selectedPackage) {
-  const assignments = [{"package_version":"0.0.1","catalog_id":"nightly-54f2ffbc-dev","source_commit":"54f2ffbc3124f7449a69067dc8215a2d91a2e675","source_tree":"3b5cadafba33f4c1b116660bc9d19a27a892337c","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"},"pro":{"product":"SMK-37 Pro_900","sha256":"cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"}}},{"package_version":"0.0.2","catalog_id":"nightly-6df0f81f-dev","source_commit":"6df0f81fbbe0adc3207f67d912d2fe0ab676be04","source_tree":"4dc57f74141fd1f01728a0001025b6e76065bf19","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.3","catalog_id":"nightly-8a74ff52-dev","source_commit":"8a74ff52cba842c3f2d8365600286f94e6bccdf0","source_tree":"33d6950b0a378525f2a8b592672275625893239f","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"d7767bebf1413b5d6fb918ba3893335a7b9fae86078ce895aa3b72df48bedb93","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"b0cecbcff42589cdc71231a16098b7cfc8301a8562aba25362d552b3dcdc5fa0","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.4","catalog_id":"nightly-af494784-dev","source_commit":"af4947846df7233c68a6be72c4d0c634052a2752","source_tree":"c12a7e747b79aa4619466764ecccc88285d4c10d","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"9cba1f3d0bebc2113d59b9bbb3f1ca1a67bb396183be279b74486319ddae8e11","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"5dda4eecd74d96237a3d457a026d7bc04eb3ed570705179ab8e6c15a198fa739","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.5","catalog_id":"nightly-de11b6d7-dev","source_commit":"de11b6d7e3ac3322d2db689675d9ed27ed667785","source_tree":"c143a9f8f5b5d0f6804995829ccbe515c77c6103","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"4841110a274e2212d56abf9234cf0d921b45d915d1ff25fad0727e52edb7d18a","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"b35d587557d9f1d4c72b2c81bc944a1dd129bee625e98ae35f06fe7f653fc720","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.6","catalog_id":"nightly-b42bcba4-dev","source_commit":"b42bcba46ee7255c18f18c10dd1f99b9fc9bb675","source_tree":"a15afc439fc8b7bccd62d50403b925add45ae9e5","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"82ee29d3ede1c17427f2689fbcdd2ab7e2eca7c72df73dcd7694078c9e313b14","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"bc6c04229840c6342f6b8a696939bab7763a934b41d90a95f201250a42bfad34","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.7","catalog_id":"nightly-092589b8-dev","source_commit":"092589b84fd455355216cb0de93c4782236f7524","source_tree":"9382fb1276e320d9f9d290dbad187fa08cdd224c","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"3d107710cde229d7faf3e007ae14e324d7ea5ce209a802642dacf40608b2895e","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"60dc7fda13fdaa3ee456736588e18b2d9e7e50cc34a800504bde678e14ba12d3","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.8","catalog_id":"nightly-b48cd800-dev","source_commit":"b48cd8002a6d4d509010e04b8a8f1cfcbbdee64a","source_tree":"16b3caf29fc3548c290ce97afaed9f44214c1ab5","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"81aaf361cb11717ad0bcee325453e361064506e4d6720781e8eb8ffcc1dadae2","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"e0ac6b68e117ac42eac97944430d1a7ed2cacfba38336676096fa8a09f57319a","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.9","catalog_id":"nightly-0e77d923-dev","source_commit":"0e77d923dfee44a9b64a98c121fac55200b91f20","source_tree":"2b4c32cf531dd3402cc33895e9dbc66ad1aebace","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725","size":651414,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"d05bf2afb76039a2f74d6053afcb228495bb4d90fd87b5404d8bb90ce4dc26b4","size":651414,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}}];
+  const assignments = [{"package_version":"0.0.1","catalog_id":"nightly-54f2ffbc-dev","source_commit":"54f2ffbc3124f7449a69067dc8215a2d91a2e675","source_tree":"3b5cadafba33f4c1b116660bc9d19a27a892337c","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"d14877d6592e6dc158460e960ac5aefd1b2b775588b9f896d3c83f672d61c86c","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"},"pro":{"product":"SMK-37 Pro_900","sha256":"cde289d422b61ee8b1f0a9f04ca92d244f07856667c85d757b9563e0479d3f3c","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a"}}},{"package_version":"0.0.2","catalog_id":"nightly-6df0f81f-dev","source_commit":"6df0f81fbbe0adc3207f67d912d2fe0ab676be04","source_tree":"4dc57f74141fd1f01728a0001025b6e76065bf19","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"8ba23a89f50c70b631927077ec4cfe7c98593870035455261842f1b245b82278","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"d90932115ff47cf421b0ef5caab3b93e730da5810e5b26d4c3ecd2c61c58fecb","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.3","catalog_id":"nightly-8a74ff52-dev","source_commit":"8a74ff52cba842c3f2d8365600286f94e6bccdf0","source_tree":"33d6950b0a378525f2a8b592672275625893239f","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"d7767bebf1413b5d6fb918ba3893335a7b9fae86078ce895aa3b72df48bedb93","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"b0cecbcff42589cdc71231a16098b7cfc8301a8562aba25362d552b3dcdc5fa0","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.4","catalog_id":"nightly-af494784-dev","source_commit":"af4947846df7233c68a6be72c4d0c634052a2752","source_tree":"c12a7e747b79aa4619466764ecccc88285d4c10d","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"9cba1f3d0bebc2113d59b9bbb3f1ca1a67bb396183be279b74486319ddae8e11","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"5dda4eecd74d96237a3d457a026d7bc04eb3ed570705179ab8e6c15a198fa739","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.5","catalog_id":"nightly-de11b6d7-dev","source_commit":"de11b6d7e3ac3322d2db689675d9ed27ed667785","source_tree":"c143a9f8f5b5d0f6804995829ccbe515c77c6103","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"4841110a274e2212d56abf9234cf0d921b45d915d1ff25fad0727e52edb7d18a","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"b35d587557d9f1d4c72b2c81bc944a1dd129bee625e98ae35f06fe7f653fc720","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.6","catalog_id":"nightly-b42bcba4-dev","source_commit":"b42bcba46ee7255c18f18c10dd1f99b9fc9bb675","source_tree":"a15afc439fc8b7bccd62d50403b925add45ae9e5","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"82ee29d3ede1c17427f2689fbcdd2ab7e2eca7c72df73dcd7694078c9e313b14","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"bc6c04229840c6342f6b8a696939bab7763a934b41d90a95f201250a42bfad34","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.7","catalog_id":"nightly-092589b8-dev","source_commit":"092589b84fd455355216cb0de93c4782236f7524","source_tree":"9382fb1276e320d9f9d290dbad187fa08cdd224c","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"3d107710cde229d7faf3e007ae14e324d7ea5ce209a802642dacf40608b2895e","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"60dc7fda13fdaa3ee456736588e18b2d9e7e50cc34a800504bde678e14ba12d3","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.8","catalog_id":"nightly-b48cd800-dev","source_commit":"b48cd8002a6d4d509010e04b8a8f1cfcbbdee64a","source_tree":"16b3caf29fc3548c290ce97afaed9f44214c1ab5","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"81aaf361cb11717ad0bcee325453e361064506e4d6720781e8eb8ffcc1dadae2","size":651396,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"e0ac6b68e117ac42eac97944430d1a7ed2cacfba38336676096fa8a09f57319a","size":651392,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.9","catalog_id":"nightly-0e77d923-dev","source_commit":"0e77d923dfee44a9b64a98c121fac55200b91f20","source_tree":"2b4c32cf531dd3402cc33895e9dbc66ad1aebace","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"afea412ddfe07388be6644f203288ee8afd525b96b3709a03980b6dc17875725","size":651414,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"d05bf2afb76039a2f74d6053afcb228495bb4d90fd87b5404d8bb90ce4dc26b4","size":651414,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.10","catalog_id":"nightly-5bff28ca-dev","source_commit":"5bff28caba24568cd5070acb99aaf37729cd8323","source_tree":"0a6cf3b5668fb9c7bb68ef645cb4a3fcf30af7cc","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"b9a2370557e73ea9373a642f0e67d776e9e0d0dd84813f76fa532fb967c07dcf","size":651457,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"965ca2a0eb9a51e295742e78ca9ffb39f5972405a67f184525e8255ec63cef9b","size":651457,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.11","catalog_id":"nightly-02cc7d10-dev","source_commit":"02cc7d104254b4427f257c310fb366bfc16a8e02","source_tree":"35dc4eaadfb9ac45c37043e84058640081d8f252","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"61c9e8be681be2442b47f3e1184661b7a0afb6bbd61dd6f364d727b553207b34","size":651457,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"92c43ac0efd2450a5929da0eef4aa25c1f287076e2b817b775569bb5a8d91fad","size":651457,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.12","catalog_id":"nightly-c8e1599b-dev","source_commit":"c8e1599b3011e4074b7d21687d628d0115814abc","source_tree":"773e8a9d458afd5b20a3ec03631bac6d07523878","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"395cc75fd50a66b2b72ada97ab19bd84982cd5cf9038fe73564e53a46502e2fa","size":651457,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492},"pro":{"product":"SMK-37 Pro_900","sha256":"c89cd42438bf149cb51a03a6ed70cd7c4c087e0459ce674ee9488af49e790f98","size":651457,"controller_sha256":"956e3e214658aeaa06a8c122809399ef3e430c7192291f4d918b7b1181ec2d0a","controller_strategy":"bundled","controller_size":65492}}},{"package_version":"0.0.12","catalog_id":"nightly-c8e1599b-bt-dev","source_commit":"c8e1599b3011e4074b7d21687d628d0115814abc","source_tree":"773e8a9d458afd5b20a3ec03631bac6d07523878","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"27788268f57fcd6d53c690ced54cd1907d427798fadd73dad785e206d8b4f615","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"dffb6a5e0f319f02ead442fea3e8c5ec59f0f212215eb107e5d2c7005ff22bb7","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.13","catalog_id":"nightly-bb33a8fe-dev","source_commit":"bb33a8fe9830017533cc148c317a56e98ec76003","source_tree":"a96a93095270447103f53fcc3c3209db40fb73a1","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"da044b62c9079bfd3592fb90eb417168470d2efb097322b908a15eee385c8139","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"3bf33b161a393888af64b396ebf0afd88765808f5833c2d1e65d00c5147bb08e","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.14","catalog_id":"nightly-8424c3bb-dev","source_commit":"8424c3bb9c23634b991cc39b64ba9d2fd491d12e","source_tree":"5644e327a4d866ca979ca85b3c80a35ab773afef","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"2bf69b09afbad9cb094279b79891c6f7938a1b4bd28a4b91dac2a08f8f96579c","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"c43d64f8a4ab4ae1aef88941df1f6c366b4cdecf1697f65fdca7742637c06936","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.15","catalog_id":"nightly-5ae6265e-dev","source_commit":"5ae6265e7be722d904edd8502821683a8afc3e88","source_tree":"5b653272ed2c69078621ad87776a84171f5e6f1d","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"c36b3c86cd797fc817f8ed1f793aca73277ea2e69ff0cb6563bb6883b2b51a37","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"1598e6634525f20601d6394daae6ffbe0ee27f83155cce717b3896b610fd7d2d","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.16","catalog_id":"nightly-2ad1b517-dev","source_commit":"2ad1b5171c8425011a9bdfb24b6f63c3d86986c8","source_tree":"67edc1c361687e1e69b6bd187c9169e5400c4d0b","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"2093edc109136fc58b1a51e1f94da3f3fbe18c7b620de73e5b50e73d8f6c462d","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"cf57c7c1fc67809e9f3f7a201ddcf291a3a29df118e56c8b41e8390739ae6d78","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.17","catalog_id":"nightly-6319ffec-dev","source_commit":"6319ffec183555f521412e854308f214ee5ff4c3","source_tree":"75ac2eeb4d652e97c39b6d4d903868efe27a871d","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"5207dc012c44360c209629e6b6ed80452c3fb8ee260e5c894a9f9e545d8e329e","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"80ed187001a059996ebee596bf8fd881687b753b7262f0118ecda9a288ba7b45","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.18","catalog_id":"nightly-dffd05f0-dev","source_commit":"dffd05f0923304e26ac1e93b02fd640118e8d2a0","source_tree":"9a62ecdff23c3a3ecb8dc8fea3bea1251044b73b","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"cf21ce1c901ca22dc4f2a671c82ebe86d1fa26090e1f4f4fb90fb99cea7fa990","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"ee2c99755331c49135e62348c61a0aaae00b64038b81833324e9143faf0a78ae","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.19","catalog_id":"nightly-ed85f5a6-dev","source_commit":"ed85f5a6fdd2ead6c2b3dd3bd3226d9263edf9d6","source_tree":"ed46a568ae04d929b35145937e854cf68799e72c","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"426667e3488773f4f55e6955354553cd10a0eb0fc8bf6a944c4cf0ff035dc6f0","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"98629a8dd0a53d09547ed9ae43ee27e2877f5df65d07edb417d94f4407a096ac","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.20","catalog_id":"nightly-bed393e1-dev","source_commit":"bed393e1b45c9b5057f976613c6f8a853b416671","source_tree":"81560ebc87c447d9a1005d3f0d17819f37d1ef6e","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"33ae9075cd8bea7df3b0c193aa62b3e950b77d11da8b2dc8c65038ddcfd88dc6","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"3e5b606c9a382e015c321d0684954d34e9874e89f414da312bc509d918ba90ef","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.21","catalog_id":"nightly-dd442625-dev","source_commit":"dd4426250797cf102716f142d7f4b785b9bb7ee0","source_tree":"2c46532d86cdef8424655f3c368d9973ddbdeecf","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"4b7e46fd758327cf17fdab818a30afa24c21e06c0d37f81abc2bd61e449b39ba","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"5608eab00eb47fd34a2c9cd14a1b276215854b7877231038a7da300447a13f9c","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.22","catalog_id":"nightly-2456968b-dev","source_commit":"2456968ba39b521610364f3ea17a118b456269c0","source_tree":"97792a22f84b8fd891e120aedb53a6b70118fc5a","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"e4af37f9ee4ef06db1f61de50b3390cbd63a2ae35a38ae69f137a03fd9c80032","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"332b695d9ebc5eefd5c71865cb13d45088975e92466490ffa67472062f85606f","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.23","catalog_id":"nightly-bb190749-dev","source_commit":"bb1907494b8d1b52d52ac220dfeb9a0663ea3ee2","source_tree":"e340d89d180879b8d8a2fea07c56800a2feaac5c","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"cf89c1e4d4845644e1ca834f9a3f6e04a89e5650c5c4fa41f58c68f0ae5b384e","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"cf9312a418e38cb65af3697fbcb23f8a30fbf8096770faaea7e51d0851beb52f","size":651457,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.24","catalog_id":"nightly-d8086cc0-dev","source_commit":"d8086cc09203945919c70d3c805f8ca3e6acbe5a","source_tree":"916ea65587238ea8b16859462ffacbee846652cf","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"de00013dfe988f66855a7e7cbac392813bb6b711e63a1b7effc90e4911074b0d","size":651570,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"97b8708a608a6f3ed379bd2bf4151b474e6037ae2706b1fc414a582d58290f32","size":651566,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.24","catalog_id":"nightly-3d8131f7-dev","source_commit":"3d8131f744b9c740ffa19de5518d1759e6b52142","source_tree":"85030022e17d816ea18219523321375975b92640","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"13231af941bfbbad7a7669379f9a34388139ec593cd97848bf36dcaf4ed267db","size":651570,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"d98a634542cefe483793f677dcbac07a223b47adb6747c8dd3ddf25dc4190ac2","size":651566,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.25","catalog_id":"nightly-1ec5d683-dev","source_commit":"1ec5d683cd5d70ef99415509ff3460c33152bcca","source_tree":"150c68305df079d2738785b5e5d3de1205df239e","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"11b0795fce853bd2ca648a8afe399ce84bf25c572796840ebc9b08581528039a","size":651721,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"f8b2aa2e1f27ea0fc8a1a4f818bffa2bd188f7a1eaa62788c1787c67c0c75d1b","size":651721,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.24","catalog_id":"nightly-8be16486-dev","source_commit":"8be16486e33f65b31c76710e1d825b6aa701c2c9","source_tree":"f952ab4455723e4a1a68fdb3a8eea22d2da59710","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"d0080061064a66b9d203dd9e75956cd59ab9372c2f4fd15769fa9b06b5f2073f","size":651570,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"9ae7214baa0dd79a3709f3845da4481b15311d40c37a8be033dce07c95475dcd","size":651566,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.24","catalog_id":"nightly-179ab384-dev","source_commit":"179ab3840b8db7f5c5fc80fe5dc507ecdba42bf5","source_tree":"ad99a31b04f1f2ef9f8e374b380f6c4cea9ee590","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"7187cdf57161f21aecb1cd576f27fe21d1094212be0fffe3dd491d05ecc07679","size":651570,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"8ae1ee345d1324968e563af45b97c6a95ba8cea83a1500b372415ca41d16f18c","size":651566,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.25","catalog_id":"nightly-79280e76-dev","source_commit":"79280e763341d03ba43266d3e25dad66f12de860","source_tree":"ab2e16a61c81abbcb6c4a71bd83bf0b5d943c120","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"5e24e0d4afccc30906b334fbe73bcad3621df8df3c325790b7af2f94accffb1a","size":651721,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"6f135a3d03bb1a2a4d09d63040c719313612b85590a6af69b293a928e22285bf","size":651721,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.24","catalog_id":"nightly-ce278129-dev","source_commit":"ce27812951555ff7ed9694bf99d20a65dd5f410b","source_tree":"a917fb6a2c738bb410601bd784278bf35c142f1c","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"4ca8b7b3f3c10ee5ca46639635cca4da7f13f49791a3b8a9d5d5cf59df2c8deb","size":651570,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"cbb090311d0d9f9df92bfcf99c70c9354dc135a340d7438053d1c20a66b7acf7","size":651566,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.24","catalog_id":"nightly-2287f113-dev","source_commit":"2287f113fa4bf74757b4e6d758c2e5464eb47036","source_tree":"fc4ac8ba6145451dfa8886e7050759cf848da2d5","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"df0b1f82ffd374ee1628e7cd1b9f0276a761abeb45770f06616bbceb7838560a","size":651457,"controller_sha256":"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7","controller_strategy":"bundled","controller_size":61088},"pro":{"product":"SMK-37 Pro_900","sha256":"2a7ddfcab3299367354f4263efa5ec93710c494f9895362f9f418948b033a770","size":651457,"controller_sha256":"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7","controller_strategy":"bundled","controller_size":61088}}},{"package_version":"0.0.24","catalog_id":"nightly-617c0ff1-dev","source_commit":"617c0ff1d49ccfdd789d358dc962fbfea5f94c15","source_tree":"0c346e5bee8ec20cac7e59ded175085594079e42","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"a79a26b7b2bd14e3e32e2234c076fcd8275788ec2d8f77dfa371ac46c8be570f","size":651457,"controller_sha256":"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7","controller_strategy":"bundled","controller_size":61088},"pro":{"product":"SMK-37 Pro_900","sha256":"a4f93edb6a963e6797e3e12aabc3cca62cc653e6fa8f2a23f3017425de823752","size":651457,"controller_sha256":"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7","controller_strategy":"bundled","controller_size":61088}}},{"package_version":"0.0.24","catalog_id":"nightly-d3510b82-dev","source_commit":"d3510b8274d5c737e1a1aab93f65081b9e28b5e8","source_tree":"0310ab1bb5469c4992302b57a11eb880f8118de2","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"1e6d56a3c4d4bf8d90c8a04f32abadb0b7ca58f5523f45c3036a7d05f8cefbb7","size":651457,"controller_sha256":"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7","controller_strategy":"bundled","controller_size":61088},"pro":{"product":"SMK-37 Pro_900","sha256":"d997fea7b95e157f5c35271c95087d37abab7904668714631162250e8ea867db","size":651457,"controller_sha256":"aafb4542336d7ed192d97052b2effa3929cc3740a0e4051ec43b21be26866af7","controller_strategy":"bundled","controller_size":61088}}},{"package_version":"0.0.24","catalog_id":"nightly-42de2893-dev","source_commit":"42de289338e3fb718423b4eafbefd567115b81bf","source_tree":"cd0e967f410dd5e11c97f2c6c0743baf3c03679f","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"8997b5e437892bb0c543702c042ff304f924f860c272a15b88a42182130b36c2","size":651667,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"0ff74548a1a83ead811b5c5d6780df47788947877c948ffac800f955815cb8fd","size":651667,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.24","catalog_id":"nightly-fc65ca31-dev","source_commit":"fc65ca314334651059d21e5c244212d4594bb52d","source_tree":"aa432b209ac5e0adcac627276d7ec903a1dfa9b1","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"268882188b5e694547dc56d234705c6a546dc2ca39acc5cb6e854650a71747d2","size":651721,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"ffa446e58c74b9f01e95ad928b548a98b50c33d5acb73e192df05b0ecd83d49d","size":651721,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}},{"package_version":"0.0.26","catalog_id":"nightly-94197fc8-dev","source_commit":"94197fc839b00aff47b98ca02f3c6396e4a6eabf","source_tree":"72d28fbc741244d18fa3d18495da16ab0fcb1d24","models":{"elite":{"product":"SMK-37 Elite_900","sha256":"95b3195f4767ef5df33b365197b01203873e5eec3d7fa497c73e5e509484a4a6","size":651732,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552},"pro":{"product":"SMK-37 Pro_900","sha256":"ce67d560eebd03cb8b9087f7723b1e0b71fb7cca256184cdfdd55a8c27c708b8","size":651730,"controller_sha256":"a334208b51f62bc7231ebb76a6de0dfa260033d7f7316e5b92053c540bc1d984","controller_strategy":"bundled","controller_size":61552}}}];
   if (!v || typeof v !== "object" || Array.isArray(v)) return null;
   const models = v.models && typeof v.models === "object" && !Array.isArray(v.models) ? v.models : {};
   const declared = Object.hasOwn(v, "package_version") || Object.values(models).some(p =>
@@ -2827,6 +2894,9 @@ function compareVersionChoices(a, b) {
   if (av?.valid && bv?.valid) {
     const x = av.version.split(".").map(Number), y = bv.version.split(".").map(Number);
     for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return y[i] - x[i];
+    // Among matching firmware identities, show the newest checked catalog revision first.
+    if (a.version === catalogLive.latest) return -1;
+    if (b.version === catalogLive.latest) return 1;
   } else if (!!av?.valid !== !!bv?.valid) return av?.valid ? -1 : 1;
   return b.version.localeCompare(a.version, undefined, { numeric: true });
 }
@@ -3063,11 +3133,19 @@ function fillVersions() {
   renderBuildHistory();
 }
 
+// In-page confirmation: iOS Web MIDI app webviews block or auto-dismiss window.confirm(), which made Install always "cancelled".
 function confirmWrite(product) {
   const from = lastId ? lastId.text : "(not connected yet — Connect first if you can)";
-  return window.confirm(t("confirm") + from + t("confirmto") + product + t("confirmrisk"));
+  const box = $("inconfirm");
+  $("inconfirmtext").textContent = t("confirm") + from + t("confirmto") + product + t("confirmrisk");
+  box.hidden = false; box.scrollIntoView && box.scrollIntoView({ block: "center" });
+  return new Promise((resolve) => {
+    const done = (v) => { box.hidden = true; $("inconfirmok").onclick = $("inconfirmno").onclick = null; resolve(v); };
+    $("inconfirmok").onclick = () => done(true);
+    $("inconfirmno").onclick = () => done(false);
+  });
 }
-$("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
+ $("version").addEventListener("change", () => { refreshModelUi(); loadSelectedPackage(); });
 $("devagree").addEventListener("change", updateInstallGate);
 
 // NIGHTLY is catalog-only. Never import unreviewed GitHub Releases or their direct links.
@@ -3169,10 +3247,9 @@ drop.addEventListener("drop", async (e) => {
   await selectStockFile(f);
 });
 
-// A download request is not proof of a filesystem write. Keep OTA waiting for
-// this archive's explicit user acknowledgement, without a blocking browser dialog.
+// Best effort only: a requested download is not proof it was saved. Do not
+// wait for a backup confirmation or prevent OTA if the browser refuses it.
 async function saveSlotBackup(file, name) {
-  const panel = $("backup-confirmation"), retained = $("backup-retained"), cancel = $("backup-cancel");
   const a = document.createElement("a");
   const url = URL.createObjectURL(new Blob([file], { type: "application/octet-stream" }));
   a.href = url;
@@ -3185,26 +3262,11 @@ async function saveSlotBackup(file, name) {
     setTimeout(() => URL.revokeObjectURL(url), 60000);
   }
   log(t("slotdownload") + name);
-  $("backup-name").textContent = name;
-  try {
-    const confirmation = new Promise((resolve) => {
-      retained.onclick = () => resolve(true);
-      cancel.onclick = () => resolve(false);
-    });
-    panel.hidden = false;
-    sayK("slotconfirm");
-    cancel.focus(); // Enter must not accidentally confirm the irreversible step.
-    const confirmed = await confirmation;
-    if (confirmed === true) log(t("slotsaved") + name);
-    return confirmed;
-  } finally {
-    retained.onclick = cancel.onclick = null;
-    panel.hidden = true;
-  }
+  return true; // Requested only; the browser cannot prove the file was retained.
 }
 
 async function run(img, product, opts = {}) {
-  if (writing || !workspaceActive) return;
+  if (writing || !workspaceActive) { $("status").textContent = writing ? "An install is already running." : "Open the Firmware tab, then press Install again."; updateInstallGate(); return; }
   getSampleWorkspace()?.invalidate();
   getProjectWorkspace()?.invalidate();
   writing = true;
@@ -3212,8 +3274,10 @@ async function run(img, product, opts = {}) {
   ctlLoadSerial++; stockLoadSerial++;
   $("go").disabled = $("stockgo").disabled = true;
   $("bar").value = 0;
+  $("backup-warning").hidden = true;
+  $("backup-warning").textContent = "";
   const foreign = !!opts.foreign;   // stock / other custom: identity text after reboot may differ
-  let access, up;
+  let access, up, unprotected = false;
   try { access = await midiAccess(); }
   catch (e) {
     writing = false;
@@ -3246,14 +3310,19 @@ async function run(img, product, opts = {}) {
       const board = /^(SMK|MKE|STARRY)/i.test(product) ? "smk" : "fm1";
       const r = await installKeepingSlots(up, img, product, board, {
         step, sameKeyboard, admitted: opts.admitted,
-        say: (k, a) => { if (k === "slotsave") sayK("slotsave", a + t("slotsave2")); else sayK(k); log(`${k} ${a ?? ""}`); },
-        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
-        save: async (file, name) => {
-          const retained = await saveSlotBackup(file, name);
-          // The user may change/revoke a NIGHTLY selection while checking the file.
-          return retained === true && (!opts.admitted || opts.admitted());
+        say: (k, a) => {
+          if (k === "slotsave") sayK("slotsave", a + t("slotsave2"));
+          else if (k === "slotunprotectedwarning") {
+            $("backup-warning").textContent = t(k) + (a ?? "");
+            $("backup-warning").hidden = false;
+            sayK(k, a || "");
+          } else sayK(k);
+          log(k + " " + (a ?? ""));
         },
+        progress: (f) => { $("bar").value = Math.min(up.verified ? 100 : 99, f * 100); },
+        save: (file, name) => saveSlotBackup(file, name),
       });
+      unprotected = r.unprotected === true;
       if (r.move && !r.move.newMap.length) sayK("slotstock", r.move.name);
       else if (r.move) {
         $("bar").value = 100;
@@ -3263,6 +3332,10 @@ async function run(img, product, opts = {}) {
       }
     }
     await scan(true);
+    if (unprotected) {
+      sayK("slotunprotecteddone");
+      log("Firmware installed without a recoverable sample-slot backup.");
+    }
   } catch (e) {
     if (e && e.code && TEXT[lang][e.code]) sayK(e.code, e.detail || "");
     else sayK("error", e && e.message);
@@ -3276,9 +3349,23 @@ async function run(img, product, opts = {}) {
   }
 }
 
+// Never ignore an Install press silently: say why it did not start.
+const installBlocked = (why) => { $("status").textContent = why; $("installhint").textContent = why; log("install not started: " + why); };
+$("go").parentElement.addEventListener("click", (e) => {
+  if (e.target !== $("go") && !(e.target.contains && e.target.contains($("go")))) return;
+  if (!$("go").disabled || writing) return;
+  installBlocked(!$("devagree").checked ? "Install is locked: tick the development-firmware consent box above, then press Install."
+    : "Install is locked: the selected package is not downloaded and verified yet. Choose the model/version again and wait for 'Ready to install'.");
+});
 $("go").addEventListener("click", async () => {
-  if (writing || $("go").disabled || !hasCurrentVerifiedSelection() || !$("devagree").checked) return;
-  if (!confirmWrite(selectedProduct)) return;
+  if (writing) { installBlocked("An install is already running."); return; }
+  if (!$("devagree").checked) { installBlocked("Tick the development-firmware consent box above, then press Install."); return; }
+  if ($("go").disabled || !hasCurrentVerifiedSelection()) { installBlocked("The selected package is not verified yet. Choose the model/version again and wait for 'Ready to install'."); return; }
+  $("status").textContent = "Starting install…";
+  $("status").textContent = "Confirm below: press OK — write firmware.";
+  const confirmProduct = selectedProduct, confirmSerial = loadSerial;
+  if (!(await confirmWrite(selectedProduct))) { installBlocked("Install cancelled. Press Install again and choose OK — write firmware."); return; }
+  if (writing || loadSerial !== confirmSerial || selectedProduct !== confirmProduct || !$("devagree").checked || !hasCurrentVerifiedSelection()) { installBlocked("Selection changed while confirming. Press Install again."); return; }
   const { version: ver, pkg } = currentSelection();
   const selectedImage = image, product = selectedProduct, controller = ctl, serial = loadSerial;
   $("go").disabled = true;
@@ -3311,9 +3398,10 @@ $("go").addEventListener("click", async () => {
     image === selectedImage && (bundled || ctl === controller) && $("devagree").checked &&
     hasCurrentVerifiedSelection() });
 });
-$("stockgo").addEventListener("click", () => {
+$("stockgo").addEventListener("click", async () => {
   if (!stock || !$("stockconfirm").checked || writing) return;
-  if (!confirmWrite(stock.product)) return;
+  const st = stock;
+  if (!(await confirmWrite(st.product)) || stock !== st || writing || !$("stockconfirm").checked) return;
   $("stockgo").disabled = true;
   run(stock.image, stock.product, { foreign: true });
 });
@@ -3463,3 +3551,5 @@ navigateWorkspace();
 </script>
 </body>
 </html>
+
+
