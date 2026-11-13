@@ -979,11 +979,11 @@ class Link {
   }
 }
 
-async function handshake(link, tries = 3, onPacket = null) {
+async function handshake(link, tries = 3, onPacket = null, deadline = Infinity) {
   link.drain();
-  for (let t = 0; t < tries; t++) {
+  for (let t = 0; t < tries && Date.now() < deadline; t++) {
     if (!link.send(HS_QUERY)) return null;
-    const end = Date.now() + 1000;
+    const end = Math.min(Date.now() + 1000, deadline);
     while (Date.now() < end) {
       const p = await link.read(end - Date.now());
       if (!p) break;
@@ -995,19 +995,27 @@ async function handshake(link, tries = 3, onPacket = null) {
   return null;
 }
 
-async function openMidiPort(port) {
-  // Reuse the Projects workspace's initial-opening boundary: consume the
-  // closed -> open event before a new session installs its lifecycle guard.
-  // Later events remain observable by every existing bound updater.
-  if (port.connection !== "closed") { await port.open(); return; }
+async function openMidiPort(port, deadline = Infinity) {
+  // Bound the entire opening operation, not just its statechange event.
+  // Some Web MIDI hosts emit statechange but never settle open().
+  const ms = Math.min(3000, deadline - Date.now());
+  if (ms <= 0) throw fail("open", "The MIDI port did not finish opening. Reconnect and try again.");
   let changed, timer;
-  const transition = new Promise((resolve, reject) => {
+  const transition = port.connection === "closed" ? new Promise(resolve => {
     changed = () => resolve();
-    timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), 3000);
     port.addEventListener("statechange", changed, { once: true });
-  });
-  try { await Promise.all([port.open(), transition]); }
-  finally { clearTimeout(timer); port.removeEventListener("statechange", changed); }
+  }) : Promise.resolve();
+  try {
+    await Promise.race([
+      Promise.all([port.open(), transition]),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(fail("open", "The MIDI port did not finish opening. Reconnect and try again.")), ms);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+    if (changed) port.removeEventListener("statechange", changed);
+  }
 }
 
 class Updater {
@@ -1103,15 +1111,20 @@ class Updater {
   }
 
   // every in/out pair with the same port name that answers the handshake
-  async find(filter) {
+  async find(filter, deadline = Infinity) {
     if (this.target) this.singlePort();
     for (const { input, output } of this._portPairs()) {
-      try { await openMidiPort(input); await openMidiPort(output); } catch (_) { continue; }
+      if (Date.now() >= deadline) return null;
+      try { await openMidiPort(input, deadline); await openMidiPort(output, deadline); } catch (_) { continue; }
+      // A timed-out opening can settle later. Never give that stale attempt a
+      // receive handler or let it turn a finished timeout into success.
+      if (Date.now() >= deadline) return null;
       if (!this._portPairs().some((p) => p.input === input && p.output === output)) continue;
       const link = new Link(input, output);
       let id;
-      try { id = await handshake(link, 2, pkt => this.retryFinish(link, pkt)); }
+      try { id = await handshake(link, 2, pkt => this.retryFinish(link, pkt), deadline); }
       catch (error) { link.close(); throw error; }
+      if (Date.now() >= deadline) { link.close(); return null; }
       if (id && this.target && !sameKeyboard(this.target.model.replace(/^ota-/i, ""), id.model.replace(/^ota-/i, ""))) {
         link.close();
         throw fail("model", `The selected keyboard changed model during the update: ${id.text}`);
@@ -1131,9 +1144,9 @@ class Updater {
   async waitFor(filter, ms) {
     const end = Date.now() + ms;
     while (Date.now() < end) {
-      const dev = await this.find(filter);
+      const dev = await this.find(filter, end);
       if (dev) return dev;
-      await sleep(1000);
+      if (Date.now() < end) await sleep(Math.min(1000, end - Date.now()));
     }
     return null;
   }
@@ -3531,4 +3544,5 @@ navigateWorkspace();
 </script>
 </body>
 </html>
+
 
