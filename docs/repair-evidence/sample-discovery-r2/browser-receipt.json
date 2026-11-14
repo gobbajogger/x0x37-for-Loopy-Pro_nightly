@@ -1,0 +1,337 @@
+{
+  "scope": "Chromium / fake endpoints only",
+  "off_origin_requests": [],
+  "errors": [],
+  "checks": [
+    {
+      "name": "keyboard Connect ignores echo, reaches later valid INFO and reads fake empty slot only",
+      "status": "PASS",
+      "state": {
+        "events": [
+          "fake-access",
+          "0:input:open",
+          "0:output:open",
+          "0:command:1",
+          "0:input:close",
+          "0:output:close",
+          "1:input:open",
+          "1:output:open",
+          "1:command:1",
+          "1:command:15"
+        ],
+        "requests": 1,
+        "ports": [
+          {
+            "input": "closed",
+            "output": "closed",
+            "listener": false
+          },
+          {
+            "input": "open",
+            "output": "open",
+            "listener": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "disconnect invalidates ready-to-write state",
+      "status": "PASS"
+    },
+    {
+      "name": "all malformed INFO shows final error with retry enabled and writes disabled",
+      "status": "PASS",
+      "state": {
+        "events": [
+          "fake-access",
+          "0:input:open",
+          "0:output:open",
+          "0:command:1",
+          "0:input:close",
+          "0:output:close",
+          "1:input:open",
+          "1:output:open",
+          "1:command:1",
+          "1:input:close",
+          "1:output:close"
+        ],
+        "requests": 1,
+        "ports": [
+          {
+            "input": "closed",
+            "output": "closed",
+            "listener": false
+          },
+          {
+            "input": "closed",
+            "output": "closed",
+            "listener": false
+          }
+        ]
+      }
+    }
+  ],
+  "browser_version": "154.0.8037.57",
+  "matrix": [
+    {
+      "name": "echoed request is not INFO",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "unterminated version rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "version-only INFO rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "truncated fixed fields rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "foreign firmware rejected despite matching port name",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "non-7bit INFO rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "zero step count rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "unknown trailing data rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "current main XSG extension retained",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "unsupported XSG extension rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "X0X 25.1 identity retained",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "X0X 0.0.26 identity retained",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "FELUCCA legacy optional track field retained",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "FELUCCA older no-track schema retained",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "truncated FELUCCA engine names rejected",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "all malformed INFO yields final discovery failure",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity",
+        "1:input:close",
+        "1:output:close"
+      ],
+      "error": "No SMK-37 running DnBOX found. Connect it by USB, and close other apps that use its MIDI port."
+    }
+  ],
+  "browser_negative_control": {
+    "status": "EXPECTED_FALSE_SUCCESS_REPRODUCED",
+    "state": {
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:command:1",
+        "0:command:15"
+      ],
+      "requests": 1,
+      "ports": [
+        {
+          "input": "open",
+          "output": "open",
+          "listener": true
+        },
+        {
+          "input": "closed",
+          "output": "closed",
+          "listener": false
+        }
+      ]
+    },
+    "detail": "Original selected echo-only endpoint and sent fake slot query without valid INFO"
+  },
+  "status": "PASS"
+}

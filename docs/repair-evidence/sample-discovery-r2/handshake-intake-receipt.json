@@ -1,0 +1,19 @@
+{
+  "event": "ADDITIONAL_FINDING_CONSUMED",
+  "time_utc": "2026-11-14T10:39:00.397129+00:00",
+  "source_thread": "6af7f604-8f70-8191-9f4d-de14954850c8",
+  "finding": "Six-byte echoed cmd1 accepted as success; malformed INFO can mask later valid device",
+  "actual_reads": [
+    "exact current Link message acceptance and connect return",
+    "nightly66073c firmware ED_INFO emitter",
+    "main035026f firmware ED_INFO emitter and XSG extension",
+    "legacy Felucca e5a908d ED_INFO emitter",
+    "protocol ASCII-NUL and7bit schema",
+    "existing project identity parser"
+  ],
+  "disposition": "CONFIRMED BY SOURCE; execute focused negative before production edit",
+  "original_blob": "6f77ad50dac0648ad784f5b645382b9e5872cf23",
+  "prior_candidate_sha256": "135907651ba1d8293def1e10e0126ea4a84b3e1d5114d64762c654b45b0fa64f",
+  "preserved_r1_library_id": "libfile_fde3_f-438fb0c86e8c8191be02bd602464885f_2021479872048191acbfdca1f870a539",
+  "model_limitation": "INFO reports firmware/version and schema only; no physical model or serial identity. No model proof is inferred from a port name."
+}

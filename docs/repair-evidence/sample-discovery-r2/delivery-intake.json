@@ -1,0 +1,19 @@
+{
+  "time_utc": "2026-11-14T11:18:24.450030+00:00",
+  "archive_sha256": "18d53d550aa8f79ed83f40862901008ccbba1d2abaa4b9e9261662c5d34251ae",
+  "version": 1,
+  "manifest_entries": 57,
+  "base": "18e8278031180854437f077f3afc356f567fad97",
+  "first_integration_action": "patch --dry-run -p1 and patch -p1 on isolated exact current main",
+  "result": "PASS",
+  "integrated_files_byte_equal_reviewed": true,
+  "proof_reuse": [
+    "32 Node cases",
+    "16 Chromium handshake cases",
+    "3 actual-page checks",
+    "r2 independent review and boundary cases",
+    "20 unaffected sample cases"
+  ],
+  "focused_checks": "native npm build PASS; exact source/generated parity PASS; integrated page smoke pending",
+  "physical_device": "NOT_RUN"
+}

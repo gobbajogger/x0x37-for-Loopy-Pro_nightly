@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "time_utc": "2026-11-14T10:31:48.005Z",
+  "source_sha256": "135907651ba1d8293def1e10e0126ea4a84b3e1d5114d64762c654b45b0fa64f",
+  "original_sha256": "4f371cd0627ae477adea3ead38083fe5f756244036f8130fc67c090c1878e9b7",
+  "original_negative_control": {
+    "status": "EXPECTED_CLEANUP_FAILURE",
+    "laterCandidateSelected": true,
+    "preopenedInputRetained": true,
+    "replacementListenerRetained": true,
+    "newlyOpenedOutputClosed": false,
+    "successfulPortsRetained": true,
+    "inputCloseNotAttempted": true,
+    "noTimerLeaked": true,
+    "events": [
+      "fake-access",
+      "0:input:open",
+      "0:output:open",
+      "0:identity",
+      "0:identity",
+      "0:identity",
+      "1:input:open",
+      "1:output:open",
+      "1:identity"
+    ]
+  },
+  "candidate_edge": {
+    "laterCandidateSelected": true,
+    "preopenedInputRetained": true,
+    "replacementListenerRetained": true,
+    "newlyOpenedOutputClosed": true,
+    "successfulPortsRetained": true,
+    "inputCloseNotAttempted": true,
+    "noTimerLeaked": true,
+    "events": [
+      "fake-access",
+      "0:input:open",
+      "0:output:open",
+      "0:identity",
+      "0:identity",
+      "0:identity",
+      "0:output:close",
+      "1:input:open",
+      "1:output:open",
+      "1:identity"
+    ]
+  },
+  "scope": "Exact extracted Link + connect; fake endpoints only; source outside connect byte-identical; no full matrix rerun."
+}

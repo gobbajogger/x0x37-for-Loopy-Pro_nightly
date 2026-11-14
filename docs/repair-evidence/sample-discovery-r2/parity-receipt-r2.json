@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "only_changed_function": "connect",
+  "Link_name_regex_transfers_markup_unchanged": true,
+  "source_generated_function_identical": true,
+  "outside_connect_source_and_render_bytes_unchanged": true,
+  "reused_checks": "prior-stage/samples-scoped.log20PASS; prior initial render parity3sizes; no full suite duplication",
+  "candidate_sha256": "c21a286c2b3d3cbee38cb6dc7f7992df143b6ea9081fdb4822b221d5d80eabcc",
+  "candidate_git_blob": "3f5a7dfdddab183ddad9e20a7084b0b467e9d890",
+  "generated_sha256": "b0291fdc3ea38cf985d7a5cf7c46fea2e1ae95e5c0b3b566ce865e9204831240",
+  "combined_patch_sha256": "4495d3ebf5b487371f2e78b24a9ec525c72fb94f7f7937c7bc9b624b9ee38c84",
+  "handshake_patch_sha256": "3e0e576d8c6c3c9796285ec485d583a9a4e60391ed0c9689411039bdfff16737"
+}

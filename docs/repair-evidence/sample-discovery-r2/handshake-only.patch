@@ -1,0 +1,40 @@
+--- a/web/x0x_breaks.html
++++ b/web/x0x_breaks.html
+@@ -454,6 +454,28 @@
+ }
+ 
+ async function connect() {
++  function validInfo(r) {
++    if (r.some(b => !Number.isInteger(b) || b < 0 || b > 127)) return false;
++    const z = r.indexOf(0);
++    if (z < 1 || z > 24 || r.length < z + 6) return false;
++    const id = String.fromCharCode(...r.slice(0, z));
++    const [engines, params, globals, steps, engineBase] = r.slice(z + 1, z + 6);
++    if (!steps) return false;
++    let at = z + 6;
++    if (/^X0X [\x20-\x7e]+$/.test(id)) {
++      // X0X INFO has no editor engines/parameters/tracks; production may append XSG v1.
++      if (engines || params || globals || engineBase || r[at++] !== 0) return false;
++      return at === r.length || r.length === at + 5 && [0x58, 0x53, 0x47, 1, 48].every((b, i) => r[at + i] === b);
++    }
++    if (!/^FELUCCA [\x20-\x7e]+$/.test(id) || !engines) return false;
++    for (let k = 0; k < engines; k++) {
++      const end = r.indexOf(0, at);
++      if (end <= at || end - at > 8 || r.slice(at, end).some(b => b < 32 || b > 126)) return false;
++      at = end + 1;
++    }
++    // Legacy INFO ends after engine names, or includes the v3 track count.
++    return at === r.length || at + 1 === r.length && r[at] > 0;
++  }
+   if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost and allow MIDI / SysEx. Safari and iOS browsers are unsupported.");
+   const midi = await navigator.requestMIDIAccess({ sysex: true });
+   midi.onstatechange = () => {
+@@ -475,7 +497,7 @@
+       await output.open();
+       const l = new Link(input, output);
+       handler = input.onmidimessage;
+-      await l.retry(1, [], 1000);
++      if (!validInfo(await l.retry(1, [], 1000))) throw new Error("Invalid firmware INFO reply.");
+       return l;
+     } catch (_) {
+       if (handler && input.onmidimessage === handler) input.onmidimessage = previousHandler;
