@@ -1,0 +1,95 @@
+{
+  "input_library_id": "libfile_fde3_f-2104ac6d87c88191b4a19c47c7485280_2021479872048191acbfdca1f870a539",
+  "input_sha256": "de22637b94ffbd7c6c095e1d302ccfbcdc874054943ebeec231dcf412ba8ba4e",
+  "expected_sha256": "de22637b94ffbd7c6c095e1d302ccfbcdc874054943ebeec231dcf412ba8ba4e",
+  "match": true,
+  "crc": "PASS",
+  "safe_paths": "PASS",
+  "source_reference": "#890@34c321466ca3ccb5b7f125c3513cebf4ec76640c",
+  "supplemental_research_sha256": "f5d7fa8ebe3910b15a4a51845deac47d5f29caa9b79e7f6c3a86e022b7099238",
+  "consumed_before_edit": [
+    {
+      "path": "original/site-proposals/dnbox-20261114/app.js",
+      "sha256": "a5c9087b6bc4bcf20732518c7bd45ebabe66410139d665cd1f6a56b1ef24a8b3"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/index.html",
+      "sha256": "a88b524909f1ebf051818c31bcce4bc1a83ec9ef213dd3fc0865e66442b7c9fe"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/style.css",
+      "sha256": "2810cb7a566f8661299f37d1b3514a6ec830f164feb17db3e395d0314dcd0f54"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/README.md",
+      "sha256": "a92c6c275a87c47001fe30c758d70d36ac6eafc4eb4a24e0248ee80de6d9b7d4"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/PLAN.md",
+      "sha256": "1440383b66949a9edba54b297f28a52409a18e71ac1028d3c7ba1e972c87c286"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/HANDOFF.md",
+      "sha256": "98eb0fdf007cccf0b00e90b31c8708f5a11e90b14c26fa7b81a015424facb036"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/reviews/control-research.md",
+      "sha256": "233649614c1d14934d4f9f2645164f2d59a775c8d2fdb6d8cac225e8145fa7b7"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/reviews/journey-research.md",
+      "sha256": "1b9cdaf53fcd4d3939f6409e48d71492e848d1494c72dc22e4bb9a222b117ae5"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/reviews/resolution.md",
+      "sha256": "ded191ffc5a150592003ed771233808c97a14df48d6df15f208b6e45230a8a2e"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/evidence/source-receipt.json",
+      "sha256": "74be1967b842ba132d67e950e52325b5509c7d70de4c32643eb29719fadfeed2"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/evidence/browser-check.json",
+      "sha256": "356190cef58d24e86afd996822f645e9fb13ec7c8002d7ac546959c16f522ec4"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/evidence/original-fixtures-NOT-RUN.json",
+      "sha256": "0865a7ae73923ff1ead748dd5a16ca2dee394b76ed43729fecc619e1f1478abb"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/evidence/git-delivery-blocker.json",
+      "sha256": "79df23880170a3799b6fb5042afe062b1992067270be4ce5da9329b3d9ed5b99"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/tests/check.cjs",
+      "sha256": "a5fb33eb1a74edd2a557700f46255338ebb96c6866f4df327ee6ea6c06cbf5b2"
+    },
+    {
+      "path": "original/site-proposals/dnbox-20261114/tests/render.cjs",
+      "sha256": "c14d5f3d1da7a175e901976412b1f873b2662911e437eed2ed67049b563b4dce"
+    },
+    {
+      "path": "research-input/extracted/dnbox-890-research/inputs/v2-preview/docs/journeys-20261114.md",
+      "sha256": "ea3f41494965f1a82ee2eb4a479d4ebee4a33abf4b5f5c38d9301a52d3def2c5"
+    },
+    {
+      "path": "research-input/extracted/dnbox-890-research/website-plan.md",
+      "sha256": "888802092f844317533a6f0b709270d2d88bb99077221f26c8715b5aafe7aa8a"
+    },
+    {
+      "path": "research-input/extracted/dnbox-890-research/setup-scenarios.md",
+      "sha256": "c88f4d5cede6d3f33499c3f8eb5bd38af6e900257919395bcfdb09f64f28c162"
+    },
+    {
+      "path": "research-input/extracted/dnbox-890-research/interaction-fixtures.json",
+      "sha256": "0865a7ae73923ff1ead748dd5a16ca2dee394b76ed43729fecc619e1f1478abb"
+    },
+    {
+      "path": "research-input/extracted/dnbox-890-research/first-sound-branch.md",
+      "sha256": "b7059bcc1e4a331a125dd3a61cf5d4de0bd95c386037be5ae95e1c68b0666059"
+    }
+  ],
+  "scope": "isolated proposal files; no shared branch, firmware or deployment",
+  "browser_not_device": true,
+  "input_version_id": "0"
+}

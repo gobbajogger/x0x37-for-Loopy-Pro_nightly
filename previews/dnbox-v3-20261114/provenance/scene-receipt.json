@@ -1,0 +1,15 @@
+{
+  "method": "observed LCD header color guarded physical-input setup via heavy-observed.cjs; bootmachineack distinct from firmwareUIready; waitactual909and>=12semulatedbeforeprogramming; retries550ms",
+  "pattern": "factorypattern1,16stepsRATE_16;BREAKall16;Chicagozero-based0,2,4,6,8,10,12,14;Miamiall16;909BD0,4,8,12;808inactive",
+  "tempo_bpm": 125,
+  "notes_velocity": {
+    "Miami_A": "factory0/source0,A1/note33,velocity100",
+    "Chicago_B": "factory0/source0,A2/note45,velocity100"
+  },
+  "FX_mix": "unaltered exact firmware source79280e763341d03ba43266d3e25dad66f12de860 engine_sound_defaults/pattern_init/original_sound_init; source/default excerpts and hashes retained",
+  "BREAK": "CRAMEN,70589frames44100Hz;ADPCM9f8605587a8b04ca5ed6c5739cd09d69b307c57e496986cabc786ec547c1f4a8;user-slot1emu-only sparse save sectorsdc063c02b8bda773d8ac9489e2f20966c13995061cd5ab530f1659533fefe9e5;9sectorsC2000..CA000;packagebytesunchanged",
+  "events": "elite-scene-events.json andpro-scene-events.json pin actualorderedhardwareinputevents andemulated/walltimestamps; noMIDI; nofakeaudio",
+  "phases": "boot/setup,BREAK-only4wallseconds,remainingpartsetup,heavy20wallseconds,transportstop/release3wallseconds",
+  "FAIL_history": "TRS-onlyscene renderedzero;clamp/startup-offsetscenes misselectedparts;preservedseparately and excluded from acceptance",
+  "listening": "PCM/rendered audible-content evidence and playableWAV;headlessPlaywright --mute-audiodefault;human/speakerlisteningNOT_RUN"
+}

@@ -1,0 +1,49 @@
+{
+  "received_requirements": [
+    "actual firmware UI and interactions via existing #899 or exact pinned captures",
+    "Apple/Teenage Engineering principles; original charcoal/lime identity; concise product-led hierarchy"
+  ],
+  "owner_contact": {
+    "url": "https://github.com/gobbajogger/X0X37-for-Loopy-Pro/pull/899#issuecomment-6874101664",
+    "status": "Posted and read back; receiver execution not established",
+    "scope": "Request existing immutable artifacts only; no emulator reassignment or build"
+  },
+  "consumed_bundle": {
+    "library_id": "libfile_fde3_f-d3bfdf5ce2588191a9587d372b83fcaf_2021479872048191acbfdca1f870a539",
+    "sha256": "5822db14472ca701db3c17289e5d305e5daeba971223a5cf4de86a56af4d8c57",
+    "manifest_validation": "123/123 entries matched by bounded independent researcher"
+  },
+  "source_head": "431d0db82cbadca761fb32c6548ca4765875324f",
+  "firmware_source": "79280e763341d03ba43266d3e25dad66f12de860",
+  "version": "0.0.25.1",
+  "wasm_sha256": "8f053c488056eed4d3f71d77901ef796e42e055f64eb04fc71a476dd0b58c33d",
+  "approach": "Static unchanged captured firmware output; no live integration because incumbent real-time gate remains NOT_PASS",
+  "capture_hashes": {
+    "elite-909-lcd.png": "fef772cb92a8c347ff0dcec8a04de1a21d40cfcf39cda6fb6599a69c5f9b2973",
+    "elite-break-only-lcd.png": "2161f5178cd2c17c39a4499973829c846de8a17733f36b55d06477a817af3324",
+    "elite-break-setup-lcd.png": "0154563c7c6afdb692e25a3940d07d8eb430ab18908325fe5184bc6dc83c40fe",
+    "elite-chicago-lcd.png": "a6d507d434f4a0dc81977c231ed0efe1aedb8b6cb5b6d3d6a12d54ed354f44a5",
+    "elite-miami-lcd.png": "6161588b07b43ad8c197be6c8ab83fe23b37fb2ce84baf749fd4e7acc434e77b",
+    "independent-qa-pro-playing.png": "7236b2080365a1e3e4eb9c2d5a93556a47fb606be3964e27ebb39cf21c5bbbef",
+    "pro-reset-panel.png": "db93085e6ca96bc22e7ec95fb6d983aca6d7692a48c88a4e7fc0dff5d8deb605"
+  },
+  "new_illustration": {
+    "file": "assets/key-locator.svg",
+    "basis": "C3-C6; F3 fourth white key; F#3 selects BD; F3/C4/G4/D5 steps1/5/9/13 from verified input research",
+    "label": "Guide illustration, separate from recorded firmware"
+  },
+  "printed_button_layout": {
+    "git_blob": "c35f93737f3fc2d892a3ad1e96e56cc418036f3c",
+    "path": "crates/fm1-live/src/panel_smk.rs",
+    "read_source_sha256": "915f6169e8b225673f3826bba2dc85299296f5a6a005d97094f8057026a45632",
+    "use": "SEQ PLAY lower row second from right; BT upper row far right"
+  },
+  "excluded": [
+    "All failed/partial/startup-offset capture runs",
+    "Fabricated intermediate LCD states",
+    "Browser save as proof of hardware save",
+    "Live realtime acceptance",
+    "No firmware/runtime ownership takeover",
+    "No firmware UI edits"
+  ]
+}

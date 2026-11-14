@@ -1,0 +1,149 @@
+{
+  "archive": {
+    "path": "/workspace/dnbox-revision/emulator-input/runtime.tar.gz",
+    "sha256": "5822db14472ca701db3c17289e5d305e5daeba971223a5cf4de86a56af4d8c57"
+  },
+  "read": [
+    {
+      "file": "README.txt",
+      "sha256": "7317fcf4dc8aa3e5585ef72c80a7c322abbec3582b90e69dcfe71572c83c163d"
+    },
+    {
+      "file": "build-provenance.json",
+      "sha256": "1f64ec8a979fb9fc36024f8f6685556a5b9a97720770a0502a98e94a4b0500a4"
+    },
+    {
+      "file": "qualification-report.md",
+      "sha256": "2f8cc0a2462885585bfdefcb7d417bb4c301e72567216b18dce4806541f896c1"
+    },
+    {
+      "file": "MANIFEST.json",
+      "sha256": "1f8f20b07dbe0234c39387a8132a4566f5e23a5f115bf8ffb0ed2b357073a3db"
+    },
+    {
+      "file": "LOCAL_RAW_CAPTURE_HASHES.json",
+      "sha256": "73bc7a5b2679360bf42960a6e33db54d70816ddb9a7eb9618e981276cbc9994e"
+    },
+    {
+      "file": "runtime/dnbox/firmwares.json",
+      "sha256": "9d4f88f458970b40010de9e34edf72e3408a7dffaf13f236ca447558012046fc"
+    },
+    {
+      "file": "heavy-observed.cjs",
+      "sha256": "0bb59d98bdcbcd543459840dfa74d7ac9bc6bfa34004b8a94d96695b7f65b00d"
+    },
+    {
+      "file": "heavy-observed.log",
+      "sha256": "5e7d8ecc7ec519afd5239cf803adf7531d9ae55c5420e225d2745ae290b718ba"
+    },
+    {
+      "file": "lifecycle-qualification.cjs",
+      "sha256": "f21cfa6d83eafdcd4e12e387d7c6760fcffeb36dcb9c8681bdd595034299e03b"
+    },
+    {
+      "file": "scene-receipt.json",
+      "sha256": "453fb2cd262fd52cd080690132180508dcccd406a1cd0d105f5d229ce83467ff"
+    },
+    {
+      "file": "factory-pattern-defaults.txt",
+      "sha256": "7cf82c0967fdcd137e7a221c8dbc3e0ebc8675408ed8d2902af4e88097229c9e"
+    },
+    {
+      "file": "factory-mix-fx-defaults.txt",
+      "sha256": "f1ebd1eaa8e5123e3650a03232de92698813a61f3f4b940529bbd989c692b6fd"
+    },
+    {
+      "file": "runtime/dnbox/controls.js",
+      "sha256": "007d3ee33fbaf4fa1e362a2304429f6b45b600047966afb6992956c32d57a9e6"
+    },
+    {
+      "file": "runtime/dnbox/index.html",
+      "sha256": "e3dfffdbf9844bf8d0a155aa3f03af322b589e8bd30d8d515999808349e1f3d5"
+    },
+    {
+      "file": "runtime/dnbox/main.js",
+      "sha256": "4ab04409fcea4e2cee4cf90718b8416de6711cd1f8e31472dcb6d0743c3d1d03"
+    },
+    {
+      "file": "runtime/qualification.html",
+      "sha256": "b2d82299e57e13cb1b60994a64e8984b5e1e4eeb62990f03a751bbc5300c0de4"
+    },
+    {
+      "file": "elite-scene-events.json",
+      "sha256": "1c73a857baf7088a267b26a8a2c4dedca0136c378e1126175ea06c9eed481208"
+    },
+    {
+      "file": "pro-scene-events.json",
+      "sha256": "f3d8e8237e6779e640a0f0fa6bbd1db0cc3e0784dfa6c62373c0aff3f2ad5067"
+    },
+    {
+      "file": "elite-heavy-compact.json",
+      "sha256": "3832297ad5c6d607ed0a642b834580a02d71e977d1fcad14214f83be1aaa8b3c"
+    },
+    {
+      "file": "pro-heavy-compact.json",
+      "sha256": "80f4e37bfcd47fea368b423bac160e36cab749311b504c7355f267c959bd6ebb"
+    },
+    {
+      "file": "elite-browser-compact.json",
+      "sha256": "7e338776181557356c4feba0f0407c3f979f0ca86c8e61c4263faf64d0b59900"
+    },
+    {
+      "file": "pro-browser-compact.json",
+      "sha256": "72dcac012341ac6cdd23415ddc1f2a22d23c8b981a0681aecb864d642f639027"
+    },
+    {
+      "file": "elite-lifecycle.json",
+      "sha256": "54bdbfbc0d6b4fddee87199bc8fd87e6705bfdd6464e6fafd4f904ef668a3658"
+    },
+    {
+      "file": "pro-lifecycle.json",
+      "sha256": "061963c0353307899a76ad0972aaf57b2e8fd87d394690053407e1fed1edcd23"
+    },
+    {
+      "file": "browser-qualification.cjs",
+      "sha256": "c0afc2dd2121f841805c887effa9f609ebe4fd45dc9f6c8c331d30119505bfae"
+    },
+    {
+      "file": "independent-qa-smoke.cjs",
+      "sha256": "46fe14fe7c0e303084a0aa042ed20bc4ce9bc8191939ec99abc6e7662da39244"
+    },
+    {
+      "file": "independent-qa-smoke.json",
+      "sha256": "84332a52415b824f38d202eef67259b0e49b58a3236183b611e7e06adea88918"
+    },
+    {
+      "file": "qualification-summary.json",
+      "sha256": "67b60a783a9a1c77ccfacce35e6d4b497e5e34899959c96c5f5f6061e450af63"
+    },
+    {
+      "file": "production-summary.json",
+      "sha256": "fab8d2993962684caf9e1180893579667627f9e5896718c60c279f0fad92b338"
+    }
+  ],
+  "visually_inspected": [
+    "elite-909-lcd.png",
+    "elite-break-setup-lcd.png",
+    "elite-heavy-break-lcd.png",
+    "elite-saved-panel.png",
+    "elite-boot.png",
+    "pro-controls.png",
+    "independent-qa-pro-playing.png",
+    "elite-reset-panel.png",
+    "elite-chicago-lcd.png",
+    "elite-miami-lcd.png"
+  ],
+  "manifest_validation": {
+    "files": 123,
+    "mismatches": []
+  },
+  "not_performed": [
+    "website implementation/review access",
+    "emulator execution",
+    "emulator source modification",
+    "firmware rebuild",
+    "device testing",
+    "audio listening",
+    "network actions"
+  ]
+}

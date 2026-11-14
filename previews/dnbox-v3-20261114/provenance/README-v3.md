@@ -1,0 +1,1 @@
+Current v3 evidence is in v3-* files and the paired v3 evidence directories. Other files here are unchanged inherited v2 research and historical evidence; they do not qualify v3 behavior. No historical certificate workaround or denied Git export was repeated. The inherited baseline is not active website code.

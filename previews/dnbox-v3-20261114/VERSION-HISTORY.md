@@ -1,0 +1,5 @@
+# Product revision history
+
+- v3: original invitation-led story; visual teaching animation; source-verified key/pad/screen mappings and mode changes; bounded starting-view and bar-setup guides; opt-in exact captured recording; fresh blind review and corrections.
+- v2 intake: DnBOX-website-v2-runnable-and-evidence.zip, Library libfile_fde3_f-906840b36db481918a2ec7e65adf642b_2021479872048191acbfdca1f870a539, Libraryversion0, SHA25615d736b14b407e5fd282581d80fa2df06ceb14118b31c3c7df4ad9021a43aee0. Independent evidence archive Library libfile_fde3_f-d24f2df67968819192c692dc9cfe1651_2021479872048191acbfdca1f870a539, version0, SHA256aa900ad220c88b322fb120933a2b993bce2e20fbc1a39b562730a2682730fb22. Both exact archives were consumed and extracted together before implementation. Library writeback preserves these identities and their prior versions.
+- Earlier v1 context is retained in inherited v2 provenance; its old QA does not qualify this revision. Current revision evidence is explicitly separated from inherited records.

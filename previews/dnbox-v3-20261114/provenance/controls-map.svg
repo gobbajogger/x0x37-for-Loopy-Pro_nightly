@@ -1,0 +1,354 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1230" viewBox="0 0 1536 1230" role="img" aria-labelledby="title desc">
+<title id="title">DnBOX source control map: C3 to C6, central F3 to G5, and mode-specific pads</title>
+<desc id="desc">Research diagram, not approved product artwork or observed device evidence. Physical key index 5 F3 is W1; index 6 F sharp 3 is B1. First physical black C sharp 3 is outside the control region. Grid pad origin is top source pad zero; ordinary note origin is bottom pad eight. Physical pad left-right orientation is unverified.</desc>
+<style>text{font-family:DejaVu Sans,Arial,sans-serif;fill:#142434}.small{font-size:14px}.body{font-size:18px}.heading{font-size:25px;font-weight:700}.mono{font-family:DejaVu Sans Mono,monospace}.onblack{fill:white}.note{font-size:15px;font-weight:700}</style>
+<rect width="1536" height="1230" fill="white"/>
+<text x="50" y="45" class="heading" text-anchor="start">37 physical keys; 27 central controls</text>
+<text x="50" y="78" class="small" text-anchor="start">SOURCE RESEARCH • proposed teaching aid • S25/S26 scoped mappings agree • device interaction NOT_RUN</text>
+<text x="50" y="108" class="small" text-anchor="start">k = zero-based physical index; W/B = one-based logical colour numbering within F3–G5. Note names use source convention.</text>
+<rect x="75" y="175" width="62" height="280" fill="#e5e8eb" stroke="#506778" stroke-width="1.5" data-k="0"/>
+<text x="106.0" y="370" class="note" text-anchor="middle">C3</text>
+<text x="106.0" y="395" class="small mono" text-anchor="middle">k0</text>
+<text x="106.0" y="422" class="small mono" text-anchor="middle">OUT</text>
+<rect x="137" y="175" width="62" height="280" fill="#e5e8eb" stroke="#506778" stroke-width="1.5" data-k="2"/>
+<text x="168.0" y="370" class="note" text-anchor="middle">D3</text>
+<text x="168.0" y="395" class="small mono" text-anchor="middle">k2</text>
+<text x="168.0" y="422" class="small mono" text-anchor="middle">OUT</text>
+<rect x="199" y="175" width="62" height="280" fill="#e5e8eb" stroke="#506778" stroke-width="1.5" data-k="4"/>
+<text x="230.0" y="370" class="note" text-anchor="middle">E3</text>
+<text x="230.0" y="395" class="small mono" text-anchor="middle">k4</text>
+<text x="230.0" y="422" class="small mono" text-anchor="middle">OUT</text>
+<rect x="261" y="175" width="62" height="280" fill="#cdebf2" stroke="#506778" stroke-width="1.5" data-k="5"/>
+<text x="292.0" y="370" class="note" text-anchor="middle">F3</text>
+<text x="292.0" y="395" class="small mono" text-anchor="middle">k5</text>
+<text x="292.0" y="422" class="small mono" text-anchor="middle">W1</text>
+<rect x="323" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="7"/>
+<text x="354.0" y="370" class="note" text-anchor="middle">G3</text>
+<text x="354.0" y="395" class="small mono" text-anchor="middle">k7</text>
+<text x="354.0" y="422" class="small mono" text-anchor="middle">W2</text>
+<rect x="385" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="9"/>
+<text x="416.0" y="370" class="note" text-anchor="middle">A3</text>
+<text x="416.0" y="395" class="small mono" text-anchor="middle">k9</text>
+<text x="416.0" y="422" class="small mono" text-anchor="middle">W3</text>
+<rect x="447" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="11"/>
+<text x="478.0" y="370" class="note" text-anchor="middle">B3</text>
+<text x="478.0" y="395" class="small mono" text-anchor="middle">k11</text>
+<text x="478.0" y="422" class="small mono" text-anchor="middle">W4</text>
+<rect x="509" y="175" width="62" height="280" fill="#cdebf2" stroke="#506778" stroke-width="1.5" data-k="12"/>
+<text x="540.0" y="370" class="note" text-anchor="middle">C4</text>
+<text x="540.0" y="395" class="small mono" text-anchor="middle">k12</text>
+<text x="540.0" y="422" class="small mono" text-anchor="middle">W5</text>
+<rect x="571" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="14"/>
+<text x="602.0" y="370" class="note" text-anchor="middle">D4</text>
+<text x="602.0" y="395" class="small mono" text-anchor="middle">k14</text>
+<text x="602.0" y="422" class="small mono" text-anchor="middle">W6</text>
+<rect x="633" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="16"/>
+<text x="664.0" y="370" class="note" text-anchor="middle">E4</text>
+<text x="664.0" y="395" class="small mono" text-anchor="middle">k16</text>
+<text x="664.0" y="422" class="small mono" text-anchor="middle">W7</text>
+<rect x="695" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="17"/>
+<text x="726.0" y="370" class="note" text-anchor="middle">F4</text>
+<text x="726.0" y="395" class="small mono" text-anchor="middle">k17</text>
+<text x="726.0" y="422" class="small mono" text-anchor="middle">W8</text>
+<rect x="757" y="175" width="62" height="280" fill="#cdebf2" stroke="#506778" stroke-width="1.5" data-k="19"/>
+<text x="788.0" y="370" class="note" text-anchor="middle">G4</text>
+<text x="788.0" y="395" class="small mono" text-anchor="middle">k19</text>
+<text x="788.0" y="422" class="small mono" text-anchor="middle">W9</text>
+<rect x="819" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="21"/>
+<text x="850.0" y="370" class="note" text-anchor="middle">A4</text>
+<text x="850.0" y="395" class="small mono" text-anchor="middle">k21</text>
+<text x="850.0" y="422" class="small mono" text-anchor="middle">W10</text>
+<rect x="881" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="23"/>
+<text x="912.0" y="370" class="note" text-anchor="middle">B4</text>
+<text x="912.0" y="395" class="small mono" text-anchor="middle">k23</text>
+<text x="912.0" y="422" class="small mono" text-anchor="middle">W11</text>
+<rect x="943" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="24"/>
+<text x="974.0" y="370" class="note" text-anchor="middle">C5</text>
+<text x="974.0" y="395" class="small mono" text-anchor="middle">k24</text>
+<text x="974.0" y="422" class="small mono" text-anchor="middle">W12</text>
+<rect x="1005" y="175" width="62" height="280" fill="#cdebf2" stroke="#506778" stroke-width="1.5" data-k="26"/>
+<text x="1036.0" y="370" class="note" text-anchor="middle">D5</text>
+<text x="1036.0" y="395" class="small mono" text-anchor="middle">k26</text>
+<text x="1036.0" y="422" class="small mono" text-anchor="middle">W13</text>
+<rect x="1067" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="28"/>
+<text x="1098.0" y="370" class="note" text-anchor="middle">E5</text>
+<text x="1098.0" y="395" class="small mono" text-anchor="middle">k28</text>
+<text x="1098.0" y="422" class="small mono" text-anchor="middle">W14</text>
+<rect x="1129" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="29"/>
+<text x="1160.0" y="370" class="note" text-anchor="middle">F5</text>
+<text x="1160.0" y="395" class="small mono" text-anchor="middle">k29</text>
+<text x="1160.0" y="422" class="small mono" text-anchor="middle">W15</text>
+<rect x="1191" y="175" width="62" height="280" fill="#ffffff" stroke="#506778" stroke-width="1.5" data-k="31"/>
+<text x="1222.0" y="370" class="note" text-anchor="middle">G5</text>
+<text x="1222.0" y="395" class="small mono" text-anchor="middle">k31</text>
+<text x="1222.0" y="422" class="small mono" text-anchor="middle">W16</text>
+<rect x="1253" y="175" width="62" height="280" fill="#e5e8eb" stroke="#506778" stroke-width="1.5" data-k="33"/>
+<text x="1284.0" y="370" class="note" text-anchor="middle">A5</text>
+<text x="1284.0" y="395" class="small mono" text-anchor="middle">k33</text>
+<text x="1284.0" y="422" class="small mono" text-anchor="middle">OUT</text>
+<rect x="1315" y="175" width="62" height="280" fill="#e5e8eb" stroke="#506778" stroke-width="1.5" data-k="35"/>
+<text x="1346.0" y="370" class="note" text-anchor="middle">B5</text>
+<text x="1346.0" y="395" class="small mono" text-anchor="middle">k35</text>
+<text x="1346.0" y="422" class="small mono" text-anchor="middle">OUT</text>
+<rect x="1377" y="175" width="62" height="280" fill="#e5e8eb" stroke="#506778" stroke-width="1.5" data-k="36"/>
+<text x="1408.0" y="370" class="note" text-anchor="middle">C6</text>
+<text x="1408.0" y="395" class="small mono" text-anchor="middle">k36</text>
+<text x="1408.0" y="422" class="small mono" text-anchor="middle">OUT</text>
+<rect x="118" y="175" width="38" height="155" fill="#7c858c" stroke="#506778" stroke-width="1.5" data-k="1"/>
+<text x="137" y="218" class="small onblack" text-anchor="middle">C#3</text>
+<text x="137" y="254" class="small mono onblack" text-anchor="middle">k1</text>
+<text x="137" y="295" class="small mono onblack" text-anchor="middle">OUT</text>
+<rect x="180" y="175" width="38" height="155" fill="#7c858c" stroke="#506778" stroke-width="1.5" data-k="3"/>
+<text x="199" y="218" class="small onblack" text-anchor="middle">D#3</text>
+<text x="199" y="254" class="small mono onblack" text-anchor="middle">k3</text>
+<text x="199" y="295" class="small mono onblack" text-anchor="middle">OUT</text>
+<rect x="304" y="175" width="38" height="155" fill="#166b85" stroke="#506778" stroke-width="1.5" data-k="6"/>
+<text x="323" y="218" class="small onblack" text-anchor="middle">F#3</text>
+<text x="323" y="254" class="small mono onblack" text-anchor="middle">k6</text>
+<text x="323" y="295" class="small mono onblack" text-anchor="middle">B1</text>
+<rect x="366" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="8"/>
+<text x="385" y="218" class="small onblack" text-anchor="middle">G#3</text>
+<text x="385" y="254" class="small mono onblack" text-anchor="middle">k8</text>
+<text x="385" y="295" class="small mono onblack" text-anchor="middle">B2</text>
+<rect x="428" y="175" width="38" height="155" fill="#805512" stroke="#506778" stroke-width="1.5" data-k="10"/>
+<text x="447" y="218" class="small onblack" text-anchor="middle">A#3</text>
+<text x="447" y="254" class="small mono onblack" text-anchor="middle">k10</text>
+<text x="447" y="295" class="small mono onblack" text-anchor="middle">B3</text>
+<rect x="552" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="13"/>
+<text x="571" y="218" class="small onblack" text-anchor="middle">C#4</text>
+<text x="571" y="254" class="small mono onblack" text-anchor="middle">k13</text>
+<text x="571" y="295" class="small mono onblack" text-anchor="middle">B4</text>
+<rect x="614" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="15"/>
+<text x="633" y="218" class="small onblack" text-anchor="middle">D#4</text>
+<text x="633" y="254" class="small mono onblack" text-anchor="middle">k15</text>
+<text x="633" y="295" class="small mono onblack" text-anchor="middle">B5</text>
+<rect x="738" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="18"/>
+<text x="757" y="218" class="small onblack" text-anchor="middle">F#4</text>
+<text x="757" y="254" class="small mono onblack" text-anchor="middle">k18</text>
+<text x="757" y="295" class="small mono onblack" text-anchor="middle">B6</text>
+<rect x="800" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="20"/>
+<text x="819" y="218" class="small onblack" text-anchor="middle">G#4</text>
+<text x="819" y="254" class="small mono onblack" text-anchor="middle">k20</text>
+<text x="819" y="295" class="small mono onblack" text-anchor="middle">B7</text>
+<rect x="862" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="22"/>
+<text x="881" y="218" class="small onblack" text-anchor="middle">A#4</text>
+<text x="881" y="254" class="small mono onblack" text-anchor="middle">k22</text>
+<text x="881" y="295" class="small mono onblack" text-anchor="middle">B8</text>
+<rect x="986" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="25"/>
+<text x="1005" y="218" class="small onblack" text-anchor="middle">C#5</text>
+<text x="1005" y="254" class="small mono onblack" text-anchor="middle">k25</text>
+<text x="1005" y="295" class="small mono onblack" text-anchor="middle">B9</text>
+<rect x="1048" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="27"/>
+<text x="1067" y="218" class="small onblack" text-anchor="middle">D#5</text>
+<text x="1067" y="254" class="small mono onblack" text-anchor="middle">k27</text>
+<text x="1067" y="295" class="small mono onblack" text-anchor="middle">B10</text>
+<rect x="1172" y="175" width="38" height="155" fill="#152838" stroke="#506778" stroke-width="1.5" data-k="30"/>
+<text x="1191" y="218" class="small onblack" text-anchor="middle">F#5</text>
+<text x="1191" y="254" class="small mono onblack" text-anchor="middle">k30</text>
+<text x="1191" y="295" class="small mono onblack" text-anchor="middle">B11</text>
+<rect x="1234" y="175" width="38" height="155" fill="#7c858c" stroke="#506778" stroke-width="1.5" data-k="32"/>
+<text x="1253" y="218" class="small onblack" text-anchor="middle">G#5</text>
+<text x="1253" y="254" class="small mono onblack" text-anchor="middle">k32</text>
+<text x="1253" y="295" class="small mono onblack" text-anchor="middle">OUT</text>
+<rect x="1296" y="175" width="38" height="155" fill="#7c858c" stroke="#506778" stroke-width="1.5" data-k="34"/>
+<text x="1315" y="218" class="small onblack" text-anchor="middle">A#5</text>
+<text x="1315" y="254" class="small mono onblack" text-anchor="middle">k34</text>
+<text x="1315" y="295" class="small mono onblack" text-anchor="middle">OUT</text>
+<path d="M261,165 v-16 H1253 v16" fill="none" stroke="#166b85" stroke-width="3"/>
+<text x="757.0" y="138" class="small" text-anchor="middle">CONTROL REGION F3–G5 (physical k5–k31)</text>
+<text x="75" y="489" class="body" text-anchor="start">B1 = F#3 (k6): 909 BD in the appropriate drum view. C#3 (k1) is outside this numbering.</text>
+<text x="75" y="519" class="body" text-anchor="start">Four quarter-note steps: W1/F3 • W5/C4 • W9/G4 • W13/D5 (blue white keys).</text>
+<text x="75" y="549" class="body" text-anchor="start">HOME B3 = A#3 (k10): BREAK part mute. Drum views use a different HOME modifier rule.</text>
+<text x="75" y="579" class="small" text-anchor="start">These are untransposed key labels. Octave, current view and input ownership can change the musical role.</text>
+<text x="50" y="628" class="heading" text-anchor="start">16 pads: three HAL layouts; origin depends on mode</text>
+<text x="50" y="657" class="small" text-anchor="start">Top hardware p0–p7; bottom p8–p15. Columns below are source order 0–7; physical left/right is UNVERIFIED.</text>
+<text x="50" y="700" class="body" text-anchor="start">GRID: steps / tiles</text>
+<rect x="50" y="735" width="52" height="82" fill="#cdebf2" stroke="#506778" stroke-width="1" />
+<text x="76" y="757" class="small mono" text-anchor="middle">p0</text>
+<text x="76" y="781" class="small" text-anchor="middle">W1</text>
+<text x="76" y="802" class="small" text-anchor="middle">F3</text>
+<rect x="106" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="132" y="757" class="small mono" text-anchor="middle">p1</text>
+<text x="132" y="781" class="small" text-anchor="middle">W2</text>
+<text x="132" y="802" class="small" text-anchor="middle">G3</text>
+<rect x="162" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="188" y="757" class="small mono" text-anchor="middle">p2</text>
+<text x="188" y="781" class="small" text-anchor="middle">W3</text>
+<text x="188" y="802" class="small" text-anchor="middle">A3</text>
+<rect x="218" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="244" y="757" class="small mono" text-anchor="middle">p3</text>
+<text x="244" y="781" class="small" text-anchor="middle">W4</text>
+<text x="244" y="802" class="small" text-anchor="middle">B3</text>
+<rect x="274" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="300" y="757" class="small mono" text-anchor="middle">p4</text>
+<text x="300" y="781" class="small" text-anchor="middle">W5</text>
+<text x="300" y="802" class="small" text-anchor="middle">C4</text>
+<rect x="330" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="356" y="757" class="small mono" text-anchor="middle">p5</text>
+<text x="356" y="781" class="small" text-anchor="middle">W6</text>
+<text x="356" y="802" class="small" text-anchor="middle">D4</text>
+<rect x="386" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="412" y="757" class="small mono" text-anchor="middle">p6</text>
+<text x="412" y="781" class="small" text-anchor="middle">W7</text>
+<text x="412" y="802" class="small" text-anchor="middle">E4</text>
+<rect x="442" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="468" y="757" class="small mono" text-anchor="middle">p7</text>
+<text x="468" y="781" class="small" text-anchor="middle">W8</text>
+<text x="468" y="802" class="small" text-anchor="middle">F4</text>
+<rect x="50" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="76" y="851" class="small mono" text-anchor="middle">p8</text>
+<text x="76" y="875" class="small" text-anchor="middle">W9</text>
+<text x="76" y="896" class="small" text-anchor="middle">G4</text>
+<rect x="106" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="132" y="851" class="small mono" text-anchor="middle">p9</text>
+<text x="132" y="875" class="small" text-anchor="middle">W10</text>
+<text x="132" y="896" class="small" text-anchor="middle">A4</text>
+<rect x="162" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="188" y="851" class="small mono" text-anchor="middle">p10</text>
+<text x="188" y="875" class="small" text-anchor="middle">W11</text>
+<text x="188" y="896" class="small" text-anchor="middle">B4</text>
+<rect x="218" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="244" y="851" class="small mono" text-anchor="middle">p11</text>
+<text x="244" y="875" class="small" text-anchor="middle">W12</text>
+<text x="244" y="896" class="small" text-anchor="middle">C5</text>
+<rect x="274" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="300" y="851" class="small mono" text-anchor="middle">p12</text>
+<text x="300" y="875" class="small" text-anchor="middle">W13</text>
+<text x="300" y="896" class="small" text-anchor="middle">D5</text>
+<rect x="330" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="356" y="851" class="small mono" text-anchor="middle">p13</text>
+<text x="356" y="875" class="small" text-anchor="middle">W14</text>
+<text x="356" y="896" class="small" text-anchor="middle">E5</text>
+<rect x="386" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="412" y="851" class="small mono" text-anchor="middle">p14</text>
+<text x="412" y="875" class="small" text-anchor="middle">W15</text>
+<text x="412" y="896" class="small" text-anchor="middle">F5</text>
+<rect x="442" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="468" y="851" class="small mono" text-anchor="middle">p15</text>
+<text x="468" y="875" class="small" text-anchor="middle">W16</text>
+<text x="468" y="896" class="small" text-anchor="middle">G5</text>
+<text x="50" y="943" class="small" text-anchor="start">Origin W1 = top p0</text>
+<text x="545" y="700" class="body" text-anchor="start">Ordinary note fallback</text>
+<rect x="545" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="571" y="757" class="small mono" text-anchor="middle">p0</text>
+<text x="571" y="781" class="small" text-anchor="middle">W9</text>
+<text x="571" y="802" class="small" text-anchor="middle">G4</text>
+<rect x="601" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="627" y="757" class="small mono" text-anchor="middle">p1</text>
+<text x="627" y="781" class="small" text-anchor="middle">W10</text>
+<text x="627" y="802" class="small" text-anchor="middle">A4</text>
+<rect x="657" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="683" y="757" class="small mono" text-anchor="middle">p2</text>
+<text x="683" y="781" class="small" text-anchor="middle">W11</text>
+<text x="683" y="802" class="small" text-anchor="middle">B4</text>
+<rect x="713" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="739" y="757" class="small mono" text-anchor="middle">p3</text>
+<text x="739" y="781" class="small" text-anchor="middle">W12</text>
+<text x="739" y="802" class="small" text-anchor="middle">C5</text>
+<rect x="769" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="795" y="757" class="small mono" text-anchor="middle">p4</text>
+<text x="795" y="781" class="small" text-anchor="middle">W13</text>
+<text x="795" y="802" class="small" text-anchor="middle">D5</text>
+<rect x="825" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="851" y="757" class="small mono" text-anchor="middle">p5</text>
+<text x="851" y="781" class="small" text-anchor="middle">W14</text>
+<text x="851" y="802" class="small" text-anchor="middle">E5</text>
+<rect x="881" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="907" y="757" class="small mono" text-anchor="middle">p6</text>
+<text x="907" y="781" class="small" text-anchor="middle">W15</text>
+<text x="907" y="802" class="small" text-anchor="middle">F5</text>
+<rect x="937" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="963" y="757" class="small mono" text-anchor="middle">p7</text>
+<text x="963" y="781" class="small" text-anchor="middle">W16</text>
+<text x="963" y="802" class="small" text-anchor="middle">G5</text>
+<rect x="545" y="829" width="52" height="82" fill="#cdebf2" stroke="#506778" stroke-width="1" />
+<text x="571" y="851" class="small mono" text-anchor="middle">p8</text>
+<text x="571" y="875" class="small" text-anchor="middle">W1</text>
+<text x="571" y="896" class="small" text-anchor="middle">F3</text>
+<rect x="601" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="627" y="851" class="small mono" text-anchor="middle">p9</text>
+<text x="627" y="875" class="small" text-anchor="middle">W2</text>
+<text x="627" y="896" class="small" text-anchor="middle">G3</text>
+<rect x="657" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="683" y="851" class="small mono" text-anchor="middle">p10</text>
+<text x="683" y="875" class="small" text-anchor="middle">W3</text>
+<text x="683" y="896" class="small" text-anchor="middle">A3</text>
+<rect x="713" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="739" y="851" class="small mono" text-anchor="middle">p11</text>
+<text x="739" y="875" class="small" text-anchor="middle">W4</text>
+<text x="739" y="896" class="small" text-anchor="middle">B3</text>
+<rect x="769" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="795" y="851" class="small mono" text-anchor="middle">p12</text>
+<text x="795" y="875" class="small" text-anchor="middle">W5</text>
+<text x="795" y="896" class="small" text-anchor="middle">C4</text>
+<rect x="825" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="851" y="851" class="small mono" text-anchor="middle">p13</text>
+<text x="851" y="875" class="small" text-anchor="middle">W6</text>
+<text x="851" y="896" class="small" text-anchor="middle">D4</text>
+<rect x="881" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="907" y="851" class="small mono" text-anchor="middle">p14</text>
+<text x="907" y="875" class="small" text-anchor="middle">W7</text>
+<text x="907" y="896" class="small" text-anchor="middle">E4</text>
+<rect x="937" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="963" y="851" class="small mono" text-anchor="middle">p15</text>
+<text x="963" y="875" class="small" text-anchor="middle">W8</text>
+<text x="963" y="896" class="small" text-anchor="middle">F4</text>
+<text x="545" y="943" class="small" text-anchor="start">Origin W1 = bottom p8</text>
+<text x="1040" y="700" class="body" text-anchor="start">PIANO fallback</text>
+<rect x="1040" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1066" y="757" class="small mono" text-anchor="middle">p0</text>
+<text x="1066" y="790" class="small" text-anchor="middle">C4</text>
+<rect x="1096" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1122" y="757" class="small mono" text-anchor="middle">p1</text>
+<text x="1122" y="790" class="small" text-anchor="middle">D4</text>
+<rect x="1152" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1178" y="757" class="small mono" text-anchor="middle">p2</text>
+<text x="1178" y="790" class="small" text-anchor="middle">E4</text>
+<rect x="1208" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1234" y="757" class="small mono" text-anchor="middle">p3</text>
+<text x="1234" y="790" class="small" text-anchor="middle">F4</text>
+<rect x="1264" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1290" y="757" class="small mono" text-anchor="middle">p4</text>
+<text x="1290" y="790" class="small" text-anchor="middle">G4</text>
+<rect x="1320" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1346" y="757" class="small mono" text-anchor="middle">p5</text>
+<text x="1346" y="790" class="small" text-anchor="middle">A4</text>
+<rect x="1376" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1402" y="757" class="small mono" text-anchor="middle">p6</text>
+<text x="1402" y="790" class="small" text-anchor="middle">B4</text>
+<rect x="1432" y="735" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1458" y="757" class="small mono" text-anchor="middle">p7</text>
+<text x="1458" y="790" class="small" text-anchor="middle">C5</text>
+<rect x="1040" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1066" y="851" class="small mono" text-anchor="middle">p8</text>
+<text x="1066" y="884" class="small" text-anchor="middle">C#4</text>
+<rect x="1096" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1122" y="851" class="small mono" text-anchor="middle">p9</text>
+<text x="1122" y="884" class="small" text-anchor="middle">D#4</text>
+<rect x="1152" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1178" y="851" class="small mono" text-anchor="middle">p10</text>
+<text x="1178" y="884" class="small" text-anchor="middle">gap</text>
+<rect x="1208" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1234" y="851" class="small mono" text-anchor="middle">p11</text>
+<text x="1234" y="884" class="small" text-anchor="middle">F#4</text>
+<rect x="1264" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1290" y="851" class="small mono" text-anchor="middle">p12</text>
+<text x="1290" y="884" class="small" text-anchor="middle">G#4</text>
+<rect x="1320" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1346" y="851" class="small mono" text-anchor="middle">p13</text>
+<text x="1346" y="884" class="small" text-anchor="middle">A#4</text>
+<rect x="1376" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1402" y="851" class="small mono" text-anchor="middle">p14</text>
+<text x="1402" y="884" class="small" text-anchor="middle">gap</text>
+<rect x="1432" y="829" width="52" height="82" fill="#f2f5f7" stroke="#506778" stroke-width="1" />
+<text x="1458" y="851" class="small mono" text-anchor="middle">p15</text>
+<text x="1458" y="884" class="small" text-anchor="middle">C#5</text>
+<text x="1040" y="943" class="small" text-anchor="start">Separate C4 origin; p10/p14 gaps</text>
+<text x="50" y="991" class="small" text-anchor="start">Scope: HAL note mappings, not every musical pad role. Free Play division ownership may consume pads before notes.</text>
+<text x="50" y="1017" class="small" text-anchor="start">Do not teach this as a fixed universal pad map; verify the current mode and approved firmware interaction contract.</text>
+<text x="50" y="1058" class="body" text-anchor="start">SAVE: under default panel mapping, unused BT press-release requests save. Hold can enter paste targeting.</text>
+<text x="50" y="1088" class="body" text-anchor="start">STOP ≠ SAVED. REC, held/queued notes, clip activity, storage guards and write failures can still prevent saving.</text>
+<text x="50" y="1124" class="small" text-anchor="start">Primary anchors: firmware/hal/smk_input.h:56,95–104,324–345 • firmware/src/app/ui.c:75–85,2222–2295,8771–8819</text>
+<text x="50" y="1150" class="small mono" text-anchor="start">S25 79280e763341d03ba43266d3e25dad66f12de860 • S26 94197fc839b00aff47b98ca02f3c6396e4a6eabf</text>
+<text x="50" y="1180" class="small" text-anchor="start">Full citations, calibration caveat and higher-level exceptions: controls-save-research.md. No source or device change.</text>
+</svg>

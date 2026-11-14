@@ -1,0 +1,307 @@
+{
+  "reviewer": "/root/independent_browser_qa",
+  "reviewed_utc": "2026-11-14T03:52:24.882069+00:00",
+  "repo": "gobbajogger/X0X37-for-Loopy-Pro",
+  "branch": "emulator/dnbox-public-try-20261113",
+  "head": "431d0db82cbadca761fb32c6548ca4765875324f",
+  "remote_readback": "open draft, unmerged, exact head independently reverified",
+  "verdict": {
+    "functional_browser": "SCOPED_PASS",
+    "hard_realtime_performance": "NOT_PASSED",
+    "overall_runtime_qualification": "MIXED; do not promote to working-trial/realtime acceptance"
+  },
+  "independent_execution": {
+    "command": "node evidence/independent-qa-smoke.cjs > evidence/independent-qa-smoke.log 2>&1",
+    "exit_code": 0,
+    "scope": "one fresh-context real Chromium Pro smoke, light Analyser branch, unchanged production processor; no ScriptProcessor or PCM recording",
+    "assertions": {
+      "board": true,
+      "lcdChanges": true,
+      "padInput": true,
+      "transportInput": true,
+      "nonzeroAudio": true,
+      "noErrors": true,
+      "noHalt": true
+    },
+    "max_rms": 0.0645736229426865,
+    "max_quantum_after_12s_ms": 21
+  },
+  "source_comparison": {
+    "archive": "source.tar.gz",
+    "exact_build_and_runtime_inputs_compared": 62,
+    "mismatches": []
+  },
+  "accepted_evidence_reused": "41/41 held-input tests and prior independent scoped acceptance; not rerun",
+  "models": {
+    "elite": {
+      "boot_board": 1,
+      "controls": "37 UI key IDs,16pad IDs,8encoders,4faders exercised; wheels subsequently exercised in lifecycle. This does not prove37individual sounding pitches.",
+      "input_message_turnaround_ms": {
+        "samples": 40,
+        "medianMs": 59.399999999965075,
+        "p95Ms": 72.59999999997672
+      },
+      "break_only": {
+        "peak": 0.40057373046875,
+        "mean_chunk_rms": 0.05724410207339439
+      },
+      "heavy": {
+        "states": [
+          {
+            "target": "break",
+            "header": 54239,
+            "ms": 13697
+          },
+          {
+            "target": "chicago",
+            "header": 18047,
+            "ms": 23202
+          },
+          {
+            "target": "miami",
+            "header": 34699,
+            "ms": 25883
+          },
+          {
+            "target": "909",
+            "header": 64677,
+            "ms": 32776
+          },
+          {
+            "target": "break",
+            "header": 54239,
+            "ms": 35527
+          }
+        ],
+        "short_delta": 0,
+        "wall_ms": 20026.800000000047,
+        "emulated_ms": 20019,
+        "emulated_per_wall": 0.9996105219006508,
+        "max_reported_quantum_ms": 20,
+        "peak": 0.400665283203125,
+        "errors": [],
+        "jit_failed_last": 0
+      },
+      "lifecycle": {
+        "held_miami_step_preview_rms": 0.06449618748149709,
+        "released_after_3s_rms": 0,
+        "observed_tempo_screenshots": [
+          131,
+          131,
+          125
+        ],
+        "wasm_memory": [
+          {
+            "t": 11648.5,
+            "type": "qa-memory",
+            "request": "boot+6s",
+            "bytes": 96010240,
+            "emulatedMs": 10552,
+            "jit": {
+              "regions": 1335,
+              "failed": 0,
+              "error": "",
+              "bytes": 2072432,
+              "tableSlots": 1644,
+              "compileMs": 260,
+              "compileMaxMs": 6
+            }
+          },
+          {
+            "t": 16750.5,
+            "type": "qa-memory",
+            "request": "held-note",
+            "bytes": 98697216,
+            "emulatedMs": 15548,
+            "jit": {
+              "regions": 1944,
+              "failed": 0,
+              "error": "",
+              "bytes": 3243996,
+              "tableSlots": 2156,
+              "compileMs": 359,
+              "compileMaxMs": 6
+            }
+          },
+          {
+            "t": 25761.199999999953,
+            "type": "qa-memory",
+            "request": "after-save",
+            "bytes": 98697216,
+            "emulatedMs": 24626,
+            "jit": {
+              "regions": 2205,
+              "failed": 0,
+              "error": "",
+              "bytes": 3436458,
+              "tableSlots": 2412,
+              "compileMs": 417,
+              "compileMaxMs": 6
+            }
+          }
+        ],
+        "main_cdp_heap": {
+          "usedSize": 4241788,
+          "totalSize": 5259264,
+          "embedderHeapUsedSize": 2995080,
+          "backingStorageSize": 8517217
+        },
+        "errors": []
+      }
+    },
+    "pro": {
+      "boot_board": 1,
+      "controls": "37 UI key IDs,16pad IDs,8encoders,4faders exercised; wheels subsequently exercised in lifecycle. This does not prove37individual sounding pitches.",
+      "input_message_turnaround_ms": {
+        "samples": 40,
+        "medianMs": 60.79999999998836,
+        "p95Ms": 74.70000000001164
+      },
+      "break_only": {
+        "peak": 0.40057373046875,
+        "mean_chunk_rms": 0.057104153980776395
+      },
+      "heavy": {
+        "states": [
+          {
+            "target": "break",
+            "header": 54239,
+            "ms": 13697
+          },
+          {
+            "target": "chicago",
+            "header": 18047,
+            "ms": 23237
+          },
+          {
+            "target": "miami",
+            "header": 34699,
+            "ms": 25952
+          },
+          {
+            "target": "909",
+            "header": 64677,
+            "ms": 32846
+          },
+          {
+            "target": "break",
+            "header": 54239,
+            "ms": 35597
+          }
+        ],
+        "short_delta": 0,
+        "wall_ms": 20051.0,
+        "emulated_ms": 20019,
+        "emulated_per_wall": 0.9984040696224628,
+        "max_reported_quantum_ms": 55,
+        "peak": 0.400726318359375,
+        "errors": [],
+        "jit_failed_last": 0
+      },
+      "lifecycle": {
+        "held_miami_step_preview_rms": 0.07562890546213664,
+        "released_after_3s_rms": 0,
+        "observed_tempo_screenshots": [
+          131,
+          131,
+          125
+        ],
+        "wasm_memory": [
+          {
+            "t": 11336.200000000186,
+            "type": "qa-memory",
+            "request": "boot+6s",
+            "bytes": 96010240,
+            "emulatedMs": 10540,
+            "jit": {
+              "regions": 1325,
+              "failed": 0,
+              "error": "",
+              "bytes": 2072882,
+              "tableSlots": 1644,
+              "compileMs": 270,
+              "compileMaxMs": 9
+            }
+          },
+          {
+            "t": 16358.600000000093,
+            "type": "qa-memory",
+            "request": "held-note",
+            "bytes": 98697216,
+            "emulatedMs": 15528,
+            "jit": {
+              "regions": 1945,
+              "failed": 0,
+              "error": "",
+              "bytes": 3242562,
+              "tableSlots": 2156,
+              "compileMs": 361,
+              "compileMaxMs": 9
+            }
+          },
+          {
+            "t": 25426.800000000047,
+            "type": "qa-memory",
+            "request": "after-save",
+            "bytes": 98697216,
+            "emulatedMs": 24635,
+            "jit": {
+              "regions": 2211,
+              "failed": 0,
+              "error": "",
+              "bytes": 3442091,
+              "tableSlots": 2412,
+              "compileMs": 414,
+              "compileMaxMs": 9
+            }
+          }
+        ],
+        "main_cdp_heap": {
+          "usedSize": 4238676,
+          "totalSize": 5521408,
+          "embedderHeapUsedSize": 2994440,
+          "backingStorageSize": 8516777
+        },
+        "errors": []
+      }
+    }
+  },
+  "not_run": [
+    "microphone/acoustic key-to-speaker latency",
+    "speaker playback/listening acceptance (headless muted Chromium)",
+    "OS audio-device underrun measurement",
+    "physical-device performance/acceptance",
+    "Firefox/Safari/mobile/Edge-specific validation",
+    "long-duration memory leak test",
+    "complete project/pattern persistence proof; tested saved tempo only",
+    "optional Web MIDI acceptance"
+  ],
+  "findings": [
+    "fm1_midi injects UART1, but pinned SMK37 firmware disables TRS input; optional Web MIDI remains unqualified.",
+    "First scripted MIDI heavy run was silent. Subsequent fixed-time scene had startup input loss/part offset. Another partial lacked 909. These failed/partial artifacts remain separate; only closed-loop observed scene is accepted functional evidence.",
+    "Booted acknowledgement means machine instantiated, not firmware UI initialized. Closed-loop scene waits emulated>=12000ms and observed 909 header, then checks every part selection.",
+    "Reported short counter measures unavailable emulated frames, not OS/device output underruns; zero steady delta does not prove glitch-free audio.",
+    "Worklet time uses Date.now fallback at whole-millisecond precision; maxima may include scheduler/JIT interference. Quanta exceed 128/44100=2.9025ms in capture and independent no-PCM smoke.",
+    "Memory observer wrapper adds on-demand message handling only and imports byte-identical production processor; no process/render override. Request label boot+6s is stale; actual recorded emulatedMs governs."
+  ],
+  "boundaries": "No firmware build, source mutation, GitHub write, publication, merge, device action, #890 or #892 takeover by reviewer.",
+  "tamper_browser": {
+    "status": "DnBOX \u00b7 Elite: firmware bytes failed DnBOX model/version SHA-256 verification",
+    "startVisible": true
+  },
+  "sha256": {
+    "web/dist/fm1_web.wasm": "8f053c488056eed4d3f71d77901ef796e42e055f64eb04fc71a476dd0b58c33d",
+    "source.tar.gz": "3b0aef3b7ef45f8d601e50643864ad508641a459ce5acf5d5c388cd9a7869a4b",
+    "evidence/dnbox-elite-0251.fwsc": "5e24e0d4afccc30906b334fbe73bcad3621df8df3c325790b7af2f94accffb1a",
+    "evidence/dnbox-pro-0251.fwsc": "6f135a3d03bb1a2a4d09d63040c719313612b85590a6af69b293a928e22285bf",
+    "evidence/cramen-slot-sectors.bin": "dc063c02b8bda773d8ac9489e2f20966c13995061cd5ab530f1659533fefe9e5",
+    "evidence/heavy-observed.cjs": "0bb59d98bdcbcd543459840dfa74d7ac9bc6bfa34004b8a94d96695b7f65b00d",
+    "web/dist/qualification.html": "b2d82299e57e13cb1b60994a64e8984b5e1e4eeb62990f03a751bbc5300c0de4",
+    "evidence/elite-heavy.json": "591e69fdc3ed8566f24f9517d2f2a12d5617615a8be1cdcb607a2cbac10ce298",
+    "evidence/pro-heavy.json": "199b4d6cf5ed280df863ac07aab22a2070124e9d8f7319e590ac96c75c6313fe",
+    "evidence/elite-lifecycle.json": "54bdbfbc0d6b4fddee87199bc8fd87e6705bfdd6464e6fafd4f904ef668a3658",
+    "evidence/pro-lifecycle.json": "061963c0353307899a76ad0972aaf57b2e8fd87d394690053407e1fed1edcd23",
+    "evidence/independent-qa-smoke.cjs": "46fe14fe7c0e303084a0aa042ed20bc4ce9bc8191939ec99abc6e7662da39244",
+    "evidence/independent-qa-smoke.json": "84332a52415b824f38d202eef67259b0e49b58a3236183b611e7e06adea88918"
+  }
+}

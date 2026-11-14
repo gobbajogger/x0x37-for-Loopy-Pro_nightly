@@ -1,0 +1,60 @@
+{
+  "stage": "ISOLATED_INERT_PROPOSAL",
+  "date": "2026-11-14",
+  "base_pr": 890,
+  "base_sha": "34c321466ca3ccb5b7f125c3513cebf4ec76640c",
+  "base_tree": "2f0225009e31dfabff3898352a24d53349e32a3c",
+  "policy_nightly_sha": "66073c68dd80d51a7053432c2c161a8b720a1341",
+  "archive_library_id": "libfile_fde3_f-41c92b9d4a0081919f965ae24bb2983a_2021479872048191acbfdca1f870a539",
+  "archive_sha256": "f5d7fa8ebe3910b15a4a51845deac47d5f29caa9b79e7f6c3a86e022b7099238",
+  "archive_crc": "PASS",
+  "safe_paths": "PASS",
+  "internal_manifest": "PASS",
+  "parent_handoff_sha256": "e17df3e758333f434b2bf85d5153446e47b989a4a37b737db9c68f6c71fcdce6",
+  "website_plan_sha256": "888802092f844317533a6f0b709270d2d88bb99077221f26c8715b5aafe7aa8a",
+  "snapshots_verified": [
+    {
+      "path": "inputs/v2-preview/docs/ia.md",
+      "git_blob": "7dbb909abae04e99d3238d624eab3a8d9fe9e290",
+      "match": true
+    },
+    {
+      "path": "inputs/v2-preview/docs/flow.md",
+      "git_blob": "266fe480e7267e5f3f769649c8f7b98dd2917d08",
+      "match": true
+    },
+    {
+      "path": "inputs/v2-preview/first.html",
+      "git_blob": "15e6e9a3a063e6b870e12b3cd75886880227fd8b",
+      "match": true
+    },
+    {
+      "path": "inputs/v2-preview/presets.js",
+      "git_blob": "e144d035fc892e92ee7467a349b0f53f9a360847",
+      "match": true
+    },
+    {
+      "path": "inputs/v2-preview/install.js",
+      "git_blob": "add0898505407739efeace933c55cab50bd11414",
+      "match": true
+    },
+    {
+      "path": "inputs/v2-preview/recover.html",
+      "git_blob": "7f2daaf31f62eb9b4ac0316f55a78331b90ef020",
+      "match": true
+    },
+    {
+      "path": "inputs/v2-preview/docs/journeys-20261114.md",
+      "git_blob": "bcab1ed426857e010023a3f4a8f720e09e6665f3",
+      "match": true
+    },
+    {
+      "path": "inputs/v2-preview/presets.html",
+      "git_blob": "8ed675d39eea7b9d30dec4782f3a9a200f26d0b9",
+      "match": true
+    }
+  ],
+  "direct_remote_journeys_blob": "bcab1ed426857e010023a3f4a8f720e09e6665f3",
+  "original_fixture_status": "ALL_47_NOT_RUN",
+  "evidence_boundary": "Browser tests qualify only this inert mockup, never original firmware/device fixtures."
+}

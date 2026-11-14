@@ -1,0 +1,52 @@
+{
+  "repository": "gobbajogger/X0X37-for-Loopy-Pro",
+  "head": "431d0db82cbadca761fb32c6548ca4765875324f",
+  "branch": "emulator/dnbox-public-try-20261113",
+  "wasm_sha256": "8f053c488056eed4d3f71d77901ef796e42e055f64eb04fc71a476dd0b58c33d",
+  "wasm_bytes": 3391184,
+  "source_archive_sha256": "3b0aef3b7ef45f8d601e50643864ad508641a459ce5acf5d5c388cd9a7869a4b",
+  "files": {
+    "web/build.sh": {
+      "sha256": "e23f622d3139439ca1debb09e22c00115a645d65e04e8a36fc0720ea6ffd5778",
+      "git_blob_sha1": "1c1fea38d0aca652880cc8c4780e832f8dbea28c"
+    },
+    "web/worklet.js": {
+      "sha256": "5f2d9cff23543b39d85122e030746c519309627268855ef0b24d4bde3b5217c1",
+      "git_blob_sha1": "cd35838e84c6e90683d6c1a9323c7176332060b2"
+    },
+    "web/main.js": {
+      "sha256": "4ab04409fcea4e2cee4cf90718b8416de6711cd1f8e31472dcb6d0743c3d1d03",
+      "git_blob_sha1": "987d004c7cc1ab775e490bbc454f91732a8071e6"
+    },
+    "web/dnbox/controls.js": {
+      "sha256": "007d3ee33fbaf4fa1e362a2304429f6b45b600047966afb6992956c32d57a9e6",
+      "git_blob_sha1": "bcbd15eeef70a7688a6ee340622719864d69e49f"
+    },
+    "web/dnbox/firmwares.json": {
+      "sha256": "9d4f88f458970b40010de9e34edf72e3408a7dffaf13f236ca447558012046fc",
+      "git_blob_sha1": "900b7eaa71c843b93a45ad75cf0fd3b14cc57e42"
+    },
+    "Cargo.lock": {
+      "sha256": "89faec398e9954dfc87bc15583f686e0ac810d42c7253d4416189f1dfe338563",
+      "git_blob_sha1": "ab6c7560c6223636d8bd8921781d0b1ab3b3db43"
+    },
+    "Cargo.toml": {
+      "sha256": "54361ff8f3ffae18768adffb1df793a88eecd71193ac46b81dd77be32b4cf6d8",
+      "git_blob_sha1": "f9b11faeaf7d59dd5b2589a12600b289899e0938"
+    },
+    "crates/fm1-web/src/lib.rs": {
+      "sha256": "1298d4276db32e193afe217675cd69e81ff14f16b22357e4534d35a0f8915ba3",
+      "git_blob_sha1": "2f0ebc13b5a1080de99448b47b6dcbed95aa2741"
+    }
+  },
+  "build_command": "CARGO_HOME=/workspace/pr899-toolchain/cargo RUSTUP_HOME=/workspace/pr899-toolchain/rustup PATH=/workspace/pr899-toolchain/cargo/bin:$PATH bash web/build.sh /workspace/pr899-runtime/web/dist",
+  "build_exit_code": 0,
+  "rustc": "1.100.0 (0ef1bc386 2026-11-09),stable-x86_64-unknown-linux-gnu",
+  "target": "wasm32-unknown-unknown",
+  "profile": "release,codegen-units1,LTO,opt3,inline-threshold2000,export/growabletable",
+  "browser": "Chromium154.0.8037.57 Debian13 x86_64 headless,Playwright-core",
+  "CPU": "AMD EPYC9V74;5 vCPUs in cloud,virtualized",
+  "held_input_suite": "41/41 accepted producer/independent evidence reused;NOT_RERUN",
+  "firmware_rebuild": "NOT_RUN,forbidden by stage scope",
+  "production_writes": "none"
+}

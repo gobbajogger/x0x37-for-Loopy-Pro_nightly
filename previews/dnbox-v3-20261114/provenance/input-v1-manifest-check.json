@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "entries": 196,
+  "method": "Compared original archive contents against original manifest, without editing input archive",
+  "archive_sha256": "5019d1baab630b6d19e041496cd109399306704898350ebbee5f0476a14461dd"
+}

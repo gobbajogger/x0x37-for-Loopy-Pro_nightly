@@ -1,0 +1,372 @@
+[
+  {
+    "file": "elite-909-lcd-startup-offset-failed.png",
+    "sha256": "fef772cb92a8c347ff0dcec8a04de1a21d40cfcf39cda6fb6599a69c5f9b2973",
+    "bytes": 13990,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "elite-909-lcd.png",
+    "sha256": "fef772cb92a8c347ff0dcec8a04de1a21d40cfcf39cda6fb6599a69c5f9b2973",
+    "bytes": 13990,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "elite-boot.png",
+    "sha256": "fb64ee76dfb7694d474b105b13564f25a5d7012d1dc86e868c0b1c021c435e15",
+    "bytes": 531435,
+    "dimensions": [
+      1440,
+      3409
+    ],
+    "status": "VALID_FULL_PAGE_BOOT"
+  },
+  {
+    "file": "elite-break-lcd-partial-no909.png",
+    "sha256": "4a3ab0368630b26b79e0f52329b3a0b1a68d515f962025b3931787fda491a352",
+    "bytes": 39407,
+    "dimensions": [
+      1000,
+      800
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "elite-break-lcd-trs-failed.png",
+    "sha256": "b17d23d90a5e10f03226a4bf6e545e4a0a0efaaedfb4f48064bed4ab2e4f5739",
+    "bytes": 35362,
+    "dimensions": [
+      1000,
+      800
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "elite-break-only-lcd-startup-offset-failed.png",
+    "sha256": "bd3a02bce556bc30ac7c983299289aa9e9db77fd4c491087b7a80af698c2a87b",
+    "bytes": 14129,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "elite-break-only-lcd.png",
+    "sha256": "2161f5178cd2c17c39a4499973829c846de8a17733f36b55d06477a817af3324",
+    "bytes": 13854,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "elite-break-setup-lcd.png",
+    "sha256": "0154563c7c6afdb692e25a3940d07d8eb430ab18908325fe5184bc6dc83c40fe",
+    "bytes": 12705,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "elite-chicago-lcd-startup-offset-failed.png",
+    "sha256": "cf5b103cad4be7c59f9d25b65af8c3f9174676bbbd69823dce9b850c2d3b474a",
+    "bytes": 13158,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "elite-chicago-lcd.png",
+    "sha256": "a6d507d434f4a0dc81977c231ed0efe1aedb8b6cb5b6d3d6a12d54ed354f44a5",
+    "bytes": 13612,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "elite-controls.png",
+    "sha256": "7f7f84a9f2651803101f1b3dcf075224b2f8461746e0e30233ca5426f6cef0e6",
+    "bytes": 555202,
+    "dimensions": [
+      1440,
+      3691
+    ],
+    "status": "VALID_FULL_PAGE_MANY_CONTROLS_NOT_SIMPLE_LESSON"
+  },
+  {
+    "file": "elite-heavy-break-lcd-startup-offset-failed.png",
+    "sha256": "dd8d099ca8735f71c78b6d719defe8f94494515144c8641220b20ea626fee9ae",
+    "bytes": 14147,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "elite-heavy-break-lcd.png",
+    "sha256": "2a9c7a9863a209fc77c7ebc7ac809be2267f6ecba427cd5b5048b6df09c23bb9",
+    "bytes": 13829,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "elite-miami-lcd-startup-offset-failed.png",
+    "sha256": "ee70419545b20af1e0047f2f0abebb2345aa41395a3afb0001b8af0446265075",
+    "bytes": 13624,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "elite-miami-lcd.png",
+    "sha256": "6161588b07b43ad8c197be6c8ab83fe23b37fb2ce84baf749fd4e7acc434e77b",
+    "bytes": 13298,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "elite-reloaded-panel.png",
+    "sha256": "db9b07621bdfe38533e428ef254a73d9dbe9abefa6e2c7f6912cbc99d5e9bf9a",
+    "bytes": 63572,
+    "dimensions": [
+      882,
+      405
+    ],
+    "status": "VALID_BROWSER_LIFECYCLE_PANEL"
+  },
+  {
+    "file": "elite-reset-panel.png",
+    "sha256": "db93085e6ca96bc22e7ec95fb6d983aca6d7692a48c88a4e7fc0dff5d8deb605",
+    "bytes": 63683,
+    "dimensions": [
+      882,
+      405
+    ],
+    "status": "VALID_BROWSER_LIFECYCLE_PANEL"
+  },
+  {
+    "file": "elite-saved-panel.png",
+    "sha256": "92ecb4e7404ce20cb34942d4204078f453107fbd727507ee1281c285b3f61a0d",
+    "bytes": 59993,
+    "dimensions": [
+      882,
+      405
+    ],
+    "status": "VALID_BROWSER_LIFECYCLE_PANEL"
+  },
+  {
+    "file": "independent-qa-pro-playing.png",
+    "sha256": "7236b2080365a1e3e4eb9c2d5a93556a47fb606be3964e27ebb39cf21c5bbbef",
+    "bytes": 67344,
+    "dimensions": [
+      882,
+      405
+    ],
+    "status": "VALID_FIRST_BEAT_PLAYING_PANEL"
+  },
+  {
+    "file": "pro-909-lcd-startup-offset-failed.png",
+    "sha256": "fef772cb92a8c347ff0dcec8a04de1a21d40cfcf39cda6fb6599a69c5f9b2973",
+    "bytes": 13990,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "pro-909-lcd.png",
+    "sha256": "fef772cb92a8c347ff0dcec8a04de1a21d40cfcf39cda6fb6599a69c5f9b2973",
+    "bytes": 13990,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "pro-boot.png",
+    "sha256": "284a3b99d44b768a06d49e552a1ef6ad90509f5e9f639fd2952f9be16404bb13",
+    "bytes": 531291,
+    "dimensions": [
+      1440,
+      3409
+    ],
+    "status": "VALID_FULL_PAGE_BOOT"
+  },
+  {
+    "file": "pro-break-lcd-partial-no909.png",
+    "sha256": "557a363a0b97d4c0a8add95ad07839523807ede9a65c3c392bc50b28b7907f08",
+    "bytes": 39531,
+    "dimensions": [
+      1000,
+      800
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "pro-break-lcd-trs-failed.png",
+    "sha256": "721c3dd101643833c47dac530891a1bcb7fe7d0fe3b9213d7ecc0febc0e330b4",
+    "bytes": 35380,
+    "dimensions": [
+      1000,
+      800
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "pro-break-only-lcd-startup-offset-failed.png",
+    "sha256": "7f8f07b01db07be4cfaa86ac946437a411ad14b48535e4484c3b420bf301d5da",
+    "bytes": 14105,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "pro-break-only-lcd.png",
+    "sha256": "1ad944805ca1fe31d3a912d7a67ded0dbff669c1cde3e6ef99f65f70eecc35aa",
+    "bytes": 13831,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "pro-break-setup-lcd.png",
+    "sha256": "0154563c7c6afdb692e25a3940d07d8eb430ab18908325fe5184bc6dc83c40fe",
+    "bytes": 12705,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "pro-chicago-lcd-startup-offset-failed.png",
+    "sha256": "cf5b103cad4be7c59f9d25b65af8c3f9174676bbbd69823dce9b850c2d3b474a",
+    "bytes": 13158,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "pro-chicago-lcd.png",
+    "sha256": "a6d507d434f4a0dc81977c231ed0efe1aedb8b6cb5b6d3d6a12d54ed354f44a5",
+    "bytes": 13612,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "pro-controls.png",
+    "sha256": "3cc35c1cfcb5fe9e5dbb91b6a6644615fd3397ca6728f16d38c593fbfb5a7e74",
+    "bytes": 555447,
+    "dimensions": [
+      1440,
+      3691
+    ],
+    "status": "VALID_FULL_PAGE_MANY_CONTROLS_NOT_SIMPLE_LESSON"
+  },
+  {
+    "file": "pro-heavy-break-lcd-startup-offset-failed.png",
+    "sha256": "dd8d099ca8735f71c78b6d719defe8f94494515144c8641220b20ea626fee9ae",
+    "bytes": 14147,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "pro-heavy-break-lcd.png",
+    "sha256": "2a9c7a9863a209fc77c7ebc7ac809be2267f6ecba427cd5b5048b6df09c23bb9",
+    "bytes": 13829,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "pro-miami-lcd-startup-offset-failed.png",
+    "sha256": "ee70419545b20af1e0047f2f0abebb2345aa41395a3afb0001b8af0446265075",
+    "bytes": 13624,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "EXCLUDED_FAILED_RUN"
+  },
+  {
+    "file": "pro-miami-lcd.png",
+    "sha256": "0eed756bed27a5181e912db4a8584029689024329662c3d0e5ba3b49137afe53",
+    "bytes": 12563,
+    "dimensions": [
+      481,
+      480
+    ],
+    "status": "VALID_OBSERVED_LCD_SCENE"
+  },
+  {
+    "file": "pro-reloaded-panel.png",
+    "sha256": "db9b07621bdfe38533e428ef254a73d9dbe9abefa6e2c7f6912cbc99d5e9bf9a",
+    "bytes": 63572,
+    "dimensions": [
+      882,
+      405
+    ],
+    "status": "VALID_BROWSER_LIFECYCLE_PANEL"
+  },
+  {
+    "file": "pro-reset-panel.png",
+    "sha256": "db93085e6ca96bc22e7ec95fb6d983aca6d7692a48c88a4e7fc0dff5d8deb605",
+    "bytes": 63683,
+    "dimensions": [
+      882,
+      405
+    ],
+    "status": "VALID_BROWSER_LIFECYCLE_PANEL"
+  },
+  {
+    "file": "pro-saved-panel.png",
+    "sha256": "92ecb4e7404ce20cb34942d4204078f453107fbd727507ee1281c285b3f61a0d",
+    "bytes": 59993,
+    "dimensions": [
+      882,
+      405
+    ],
+    "status": "VALID_BROWSER_LIFECYCLE_PANEL"
+  }
+]

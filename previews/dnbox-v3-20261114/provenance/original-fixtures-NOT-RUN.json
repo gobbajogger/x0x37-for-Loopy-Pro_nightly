@@ -1,0 +1,434 @@
+{
+  "fixture_version": 1,
+  "website_source": "34c321466ca3ccb5b7f125c3513cebf4ec76640c",
+  "firmware_sources": {
+    "S25": "79280e763341d03ba43266d3e25dad66f12de860",
+    "S26": "94197fc839b00aff47b98ca02f3c6396e4a6eabf"
+  },
+  "status": "SPEC_ONLY_NOT_RUN",
+  "execution": "These are implementation acceptance specifications, not executed firmware, browser or device tests.",
+  "evidence_rules": [
+    "Source trace proves predicates only.",
+    "Device cases require model, installed-byte identity, actual actions and observed messages/audio.",
+    "No filesystem, protocol, atomicity, write or rollback capability is invented by this fixture."
+  ],
+  "save_fixtures": [
+    {
+      "id": "SAVE-01",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Stopped; REC off; no notes, transport requests, performance/project/clip flash owners; supported storage.",
+      "action": "Use unused BT/SAVE press-release.",
+      "expect": "Only actual successful project_save rc=0 clears dirty and reports SAVED.",
+      "retry": "Edit again, repeat; new change remains dirty until next success."
+    },
+    {
+      "id": "SAVE-02",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Pattern playing, dirty project, REC off.",
+      "action": "Request SAVE, then stop.",
+      "expect": "Request is queued. STOP does not prove write; only SAVED confirms completion after all guards clear.",
+      "retry": "If another guard remains, preserve pending state; do not power off."
+    },
+    {
+      "id": "SAVE-03",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "REC on, project dirty.",
+      "action": "Request SAVE; stop while leaving REC on; then turn REC off.",
+      "expect": "REC OFF TO SAVE is a queued-save condition. No flash save while REC remains on, even when stopped.",
+      "retry": "After REC off and other guards clear, verify pending request succeeds."
+    },
+    {
+      "id": "SAVE-04",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Stopped, REC off, keyboard/pad/MIDI note held.",
+      "action": "Request SAVE, then release the note.",
+      "expect": "Held project note prevents flash write; a retained request can proceed only when notes and other owners clear.",
+      "retry": "Verify no premature SAVED; release/retry only after readiness."
+    },
+    {
+      "id": "SAVE-05",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Stopped in clip mode, clip controls recently active.",
+      "action": "Request SAVE; continue activity; then leave quiet.",
+      "expect": "No save during clip flash owner or before 4000 ms since activity; keep pending request. No STOP-only persistence claim.",
+      "retry": "After quiet and clear owners, verify SAVED, without claiming exact wall-clock latency."
+    },
+    {
+      "id": "SAVE-06",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Project transfer already busy; no earlier save pending.",
+      "action": "Attempt SAVE.",
+      "expect": "PROJECT TRANSFER BUSY; request is not represented as a newly queued save.",
+      "retry": "Wait for transfer outcome and explicitly request SAVE after transfer completes."
+    },
+    {
+      "id": "SAVE-07",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Existing save_wait=1 followed by transient project/transport/notes/clip owner.",
+      "action": "Service autosave while busy, then clear owner.",
+      "expect": "Existing request is not consumed while busy. An engine readiness race returning UI_PROJECT_BUSY retains explicit intent.",
+      "retry": "Verify service resumes safely; distinguish from a new transfer-busy rejection."
+    },
+    {
+      "id": "SAVE-08",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Supported storage; eligible save returns -9.",
+      "action": "Request SAVE.",
+      "expect": "NEWER DATA: NOT SAVED, save_failed true, dirty not cleared. No power-off recommendation or force/downgrade cure.",
+      "retry": "Retain unsaved work; resolve compatibility under approved procedure; success must be observed separately."
+    },
+    {
+      "id": "SAVE-09",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Eligible save returns -7.",
+      "action": "Request SAVE.",
+      "expect": "MEMORY FULL: NOT SAVED, save_failed true; pending attempt is not success.",
+      "retry": "Preserve work, follow approved capacity remedy, request again; another -7 remains failed."
+    },
+    {
+      "id": "SAVE-10",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Eligible save returns other nonzero rc.",
+      "action": "Request SAVE twice with first and second attempts failing.",
+      "expect": "SAVE FAILED after each failed attempt; dirty retained; no fabricated automatic durable retry/success.",
+      "retry": "Only rc=0 on a later eligible explicit attempt permits SAVED."
+    },
+    {
+      "id": "SAVE-11",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "project_storage_unsupported()==2.",
+      "action": "Request SAVE.",
+      "expect": "save_wait cleared and save_failed true; sticky warning remains; absence of a new SAVED banner cannot mean success.",
+      "retry": "No forced write; only validated adoption/unlock procedure may change protection."
+    },
+    {
+      "id": "SAVE-12",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Dirty; autosave enabled; no busy owner; stopped, REC off; quiet <4000ms or last autosave <20000ms.",
+      "action": "Wait/adjust controls; later meet both timing conditions.",
+      "expect": "No autosave while guards/timers block. AUTOSAVED only after actual success; dirty/save_failed clear on rc=0.",
+      "retry": "Autosave failure preserves failed state and gap semantics; do not equate elapsed timer with success."
+    },
+    {
+      "id": "SAVE-13",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "SAVE held at least 250ms or SAVE used with a paste target.",
+      "action": "Hold SAVE, then release / select white target.",
+      "expect": "Hold invokes source-specific CHOOSE PASTE TARGET/paste grammar; it is not a universal save-status shortcut.",
+      "retry": "Teach unused press-release only under default mapping; get #891 approved control contract."
+    },
+    {
+      "id": "SAVE-14",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Saved project plus live chain/mutes/queued state.",
+      "action": "Observe save success, then proposed model-specific power-cycle test after authorization.",
+      "expect": "Recalled data matches actual persistent project scope. Live chain must not be promised persistent; characterize mute and queued-state scope separately.",
+      "retry": "No power-cycle performed in this stage; retain exact observation gaps."
+    },
+    {
+      "id": "SAVE-15",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Independent device Bluetooth-settings save retry underway.",
+      "action": "Observe BLUETOOTH SAVED / BT SAVE FAILED: RETRYING.",
+      "expect": "Bluetooth-settings persistence is not evidence the musical project was saved.",
+      "retry": "Obtain project-specific SAVED/AUTOSAVED evidence."
+    },
+    {
+      "id": "SAVE-16",
+      "scope": "source-derived firmware acceptance",
+      "status": "NOT_RUN",
+      "initial": "Calibration maps physical button differently from default.",
+      "action": "Follow first-beat guide.",
+      "expect": "Guide identifies default BT=SAVE/PATCH=HOME mapping and offers reviewed mapping help; no universal guarantee from printed legend alone.",
+      "retry": "Confirm actual mapping through approved contract before teaching a gesture."
+    }
+  ],
+  "destination_and_parity_fixtures": [
+    {
+      "id": "SLOT-01",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Future qualified transport; occupied destination A; matching identity, readable validated A backup.",
+      "action": "Explicitly replace A, atomically check expected destination and commit.",
+      "expect": "Only A changes; backup maps to old A, new incoming bytes read back. Warnings persist.",
+      "retry": "Any post-send uncertain result requires readback before retry."
+    },
+    {
+      "id": "SLOT-02",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Incoming file has the same display name as existing A.",
+      "action": "Download incoming file and acknowledge checkbox.",
+      "expect": "Neither action qualifies as a backup of A. Replacement remains unavailable until actual destination bytes validate.",
+      "retry": "Read and validate old A, retain readable copy."
+    },
+    {
+      "id": "SLOT-03",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Destination occupied/unknown; reading slot fails, truncates or has invalid CRC.",
+      "action": "Attempt backup.",
+      "expect": "Backup unreadable/unverified; no empty-slot inference; zero writes.",
+      "retry": "Retry read or choose another verified slot."
+    },
+    {
+      "id": "SLOT-04",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Backup export/save chooser cancelled.",
+      "action": "Return from cancel.",
+      "expect": "No overwrite; original destination unchanged; preview and warnings remain.",
+      "retry": "Retry backup; fresh explicit confirmation only after verification."
+    },
+    {
+      "id": "SLOT-05",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Backup permission denied, disk full, failed browser download or file cannot be reopened.",
+      "action": "Attempt backup/retention verification.",
+      "expect": "No successful backup receipt; no warning-only bypass; zero writes.",
+      "retry": "Resolve host issue and validate a readable destination backup."
+    },
+    {
+      "id": "SLOT-06",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Backup of A verified; target changes to B, even with same name.",
+      "action": "Open confirmation using stale receipt.",
+      "expect": "Invalidate backup and authorization; exact slot identity remains visible; no writes.",
+      "retry": "Read/backup B and reconfirm."
+    },
+    {
+      "id": "SLOT-07",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Backup verified; same A changes after read.",
+      "action": "Attempt commit with stale version/checksum.",
+      "expect": "Device atomically rejects stale expected state; no overwrite. If protocol cannot do this, overwrite unavailable.",
+      "retry": "Read current A, produce new backup, reconfirm."
+    },
+    {
+      "id": "SLOT-08",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Device disconnect/reconnect, model change or new session after backup.",
+      "action": "Resume old browser history/URL/confirmation.",
+      "expect": "History cannot restore verified identity or permission. Zero writes; old receipt remains historical evidence.",
+      "retry": "Re-identify, read target, requalify backup and confirm."
+    },
+    {
+      "id": "SLOT-09",
+      "scope": "current file validation and proposed transport",
+      "status": "NOT_RUN",
+      "initial": "Incoming CRC/length/version/schema/actual engine invalid.",
+      "action": "Import locally then attempt transfer.",
+      "expect": "Reject without mutation; keep original input bytes. Exact validation class visible.",
+      "retry": "Select compatible valid input; do not patch bytes to force acceptance."
+    },
+    {
+      "id": "SLOT-10",
+      "scope": "current warning requirement / future transaction",
+      "status": "NOT_RUN",
+      "initial": "Valid DNPR with missing/changed sample references.",
+      "action": "Preview → confirmation → result.",
+      "expect": "Warnings remain attached to the same record at every state. No implicit PCM upload or full-kit claim.",
+      "retry": "Provide reviewed sample-resolution path."
+    },
+    {
+      "id": "SLOT-11",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Destination bank full or multi-record ZIP exceeds capacity.",
+      "action": "Plan batch.",
+      "expect": "No silent eviction, overwrites or partial-success summary. Validate records/capacity before sending; any allowed subset must be explicit.",
+      "retry": "Choose capacity/explicit subset under actual transport contract."
+    },
+    {
+      "id": "SLOT-12",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Transport loss after commit begins.",
+      "action": "Reconnect.",
+      "expect": "Outcome uncertain until verified readback; no blind overwrite retry or invented rollback. Distinguish queued/transferred/persisted.",
+      "retry": "Read actual destination and use qualified recovery procedure."
+    },
+    {
+      "id": "SLOT-13",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Slot explicitly read/verified empty; same identity and atomic check available.",
+      "action": "Confirm import into empty slot.",
+      "expect": "No fabricated backup of empty data. Fresh empty-state check protects against concurrent occupation.",
+      "retry": "If no longer empty, require real occupied-slot backup."
+    },
+    {
+      "id": "SLOT-14",
+      "scope": "proposed #900 device transaction",
+      "status": "NOT_RUN",
+      "initial": "Existing record export prohibited/unavailable.",
+      "action": "Attempt replacement.",
+      "expect": "Cannot manufacture backup or enable occupied-slot overwrite; retain old slot.",
+      "retry": "Choose verified empty writable user slot or await qualified export route."
+    },
+    {
+      "id": "DNPR-P1",
+      "scope": "cross-lane static source fixture",
+      "status": "NOT_RUN",
+      "initial": "Canonical schema1 actual Chicago1, origin user2, originalEngine Miami2; 22 params; no samples; valid CRC/length122.",
+      "action": "Import with target Chicago into native #900 and parse with explicit Chicago target in #901.",
+      "expect": "Static trace: native accepts actual engine; current web rejects differing provenance. No executed reproduction is claimed.",
+      "retry": "Existing #901 owner disposes parity finding and adds narrow tests."
+    },
+    {
+      "id": "DNPR-P2",
+      "scope": "cross-lane static source fixture",
+      "status": "NOT_RUN",
+      "initial": "Canonical schema1 actual Miami2, origin user2, originalEngine Chicago1; 18 params; no samples; valid CRC/length118.",
+      "action": "Target Chicago; separately target Miami.",
+      "expect": "Actual engine mismatch must fail Chicago import. Target Miami exposes analogous provenance parity drift. Provenance never licenses cross-engine payload.",
+      "retry": "Recompute CRC after metadata changes."
+    }
+  ],
+  "journey_fixtures": [
+    {
+      "id": "J1",
+      "actor": "New visitor without keyboard knowledge",
+      "action": "Explain product, hardware scope and first musical task before technical choice.",
+      "expect": "Source-accurate identity/engines; no second-303 or working-demo claim.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J2",
+      "actor": "Existing player's nonempty project or accidental HOME/clip view",
+      "action": "Follow first beat and return safely.",
+      "expect": "Annotated span/mode; preserve work; exact return gesture supplied by #891, never invented.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J3",
+      "actor": "Musician captures useful variation",
+      "action": "Save/undo/perform with note held or REC on.",
+      "expect": "Run save fixtures; document bounded undo and persistence; no power-off on queued/failed state.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J4",
+      "actor": "Computer/other gear owner",
+      "action": "Trace MIDI and audio in both directions.",
+      "expect": "Name tested host/interface; no unsupported TRS route or universal driver claim.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J5",
+      "actor": "Phone/tablet visitor without Web MIDI",
+      "action": "Browse musical setup and installation expectations.",
+      "expect": "Browsing remains useful; app/adapter/OS/transport proof distinct from firmware install.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J6",
+      "actor": "SMC live mixer owner",
+      "action": "Select role/preset, pair and control intended part.",
+      "expect": "Approved labels and physical pairing evidence; no simultaneous-role promise.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J7",
+      "actor": "Factory firmware user",
+      "action": "Identify state, model, backup scope and permissions.",
+      "expect": "Never request nonexistent DnBOX exports; no-write errors truthful.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J8",
+      "actor": "Running DnBOX user",
+      "action": "Update and preserve separate project/sample data.",
+      "expect": "Actual selected channel policy; backup/restore failure and partial-data outcomes distinct.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J9",
+      "actor": "Uncertain stopped write or restart",
+      "action": "Choose recovery from observed state.",
+      "expect": "Preserve log/model/package; transfer != boot; no hidden chooser or generic rescue route.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J10",
+      "actor": "User shares/imports a sound",
+      "action": "Choose file object and use file-only path; future overwrite explicitly gated.",
+      "expect": "Run slot fixtures; current file results do not imply a device write.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J11",
+      "actor": "Visitor tries instrument before install",
+      "action": "Open demo or honest availability explanation.",
+      "expect": "Qualified real binary/audio before play claim; emulator != hardware.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    },
+    {
+      "id": "J12",
+      "actor": "Keyboard/screen reader/narrow viewport user",
+      "action": "Traverse forward/back/cancel/error and reload.",
+      "expect": "Meaningful focus/selection/warnings; URL/history never restores write authority.",
+      "status": "NOT_RUN",
+      "scope": "future independent task observation"
+    }
+  ],
+  "first_sound_fixtures": [
+    {
+      "id": "AUDIO-01",
+      "status": "NOT_RUN",
+      "scope": "planned first-sound task observation",
+      "initial": "BD steps already lit; transport advances; no audible output on chosen path",
+      "action": "Use first-sound-branch.md; inspect monitoring/master, selected track, levels and mutes before any deliberate correction",
+      "expect": "Same pattern retained; no repeated step toggles/clear/load/reset/reflash/power-cycle. Only identified correction changes; audible beat required for task success. Unknown output stays unresolved.",
+      "retry": "Return to same pattern/failed point; explicit save contract follows audible success."
+    },
+    {
+      "id": "AUDIO-02",
+      "status": "NOT_RUN",
+      "scope": "planned first-sound task observation",
+      "initial": "PLAY does not advance; WAITING FOR CLOCK visible",
+      "action": "Distinguish external-clock wait from moving-but-silent steps",
+      "expect": "Preserve live clock context unless intentionally choosing reviewed standalone setting; no reset/reflash or false save/ready claim.",
+      "retry": "Start intended clock or deliberately follow approved standalone clock choice, then same pattern."
+    },
+    {
+      "id": "AUDIO-03",
+      "status": "NOT_RUN",
+      "scope": "planned first-sound task observation",
+      "initial": "Pattern playing with documented KEY SOUND=STOPPED; BD selection produces no new audition hit",
+      "action": "Read versioned running silent-selection behavior",
+      "expect": "Do not call F#3 mapping wrong or invent KEY SOUND=OFF. Running selection normally adds no stray hit; actual sequence/audio observation is separate.",
+      "retry": "Use approved intended audition/monitoring path and return to same pattern."
+    }
+  ]
+}

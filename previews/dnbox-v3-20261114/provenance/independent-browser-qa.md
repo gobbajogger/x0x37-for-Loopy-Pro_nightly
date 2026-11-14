@@ -1,0 +1,17 @@
+**Independent browser QA: functional SCOPED PASS; realtime-performance gate NOT PASSED.**
+
+Reviewed PR #899 at `431d0db82cbadca761fb32c6548ca4765875324f`; independently reverified the open draft head. Compared 62 compile/runtime inputs to the pinned source archive with no mismatches. Runtime SHA-256: `8f053c488056eed4d3f71d77901ef796e42e055f64eb04fc71a476dd0b58c33d`. Elite/Pro fixtures retain their published hashes and 651,721-byte sizes.
+
+Producer captures support both board-1 boots, changing LCDs, all 37 UI key IDs, 16 pads, 8 encoders, 4 faders, wheels, actual audio, sustained Miami step-preview release, saved tempo 131 surviving reload and browser reset returning to 125, plus real-browser rejection of tampered firmware. Accepted 41/41 held-input evidence was reused without rerun.
+
+The final scene uses closed-loop observed part selection after firmware UI initialization. Actual screenshots and state records show BREAK all 16 steps, Chicago eight alternating A2 steps, Miami sixteen A1 steps, and 909 BD steps 1/5/9/13 at 125 BPM with pinned factory defaults. The unchanged packages boot with a separately pinned CRAMEN user-slot save state; no firmware composition or rebuild. Isolated BREAK peak is 0.40057373 for both models. Both 20-second combined scenes have zero new short-audio quanta and no halt/error/JIT failure. Failed silent-MIDI, missing-909 and startup-offset captures remain separately labelled.
+
+Independent real Chromium Pro smoke passed all seven checks: board 1, LCD changes, real DOM pad and SEQ PLAY input, nonzero audio RMS (0.0645736), no error and no halt. It used a fresh context and only a lightweight Analyser branch; the production worklet and direct output connection were unchanged. Command exited 0. See `independent-qa-smoke.{cjs,json,log}` and `independent-qa-pro-playing.png`.
+
+Realtime acceptance remains open: observed-heavy maximum reported worklet quanta were 20 ms Elite and 55 ms Pro, against a 2.9025 ms quantum. The independent smoke still observed 21 ms without PCM recording. Zero short-counter delta does not establish absence of output-device glitches. Last-40-input message turnaround was Elite p50/p95 59.4/72.6 ms and Pro 60.8/74.7 ms; this is not acoustic latency. Browser-reported base/output latency was 10/32 ms, separately from the 512-frame queue allowance.
+
+WASM linear memory grew from 96,010,240 to 98,697,216 bytes after the first Miami audition and stayed there through the next sample roughly nine seconds later. This is a short-run plateau, not a leak-test or hardware RAM result. Main-thread CDP heap was about 4.24 MB without PCM arrays. The on-demand memory wrapper imports the exact original processor and does not override rendering. Use recorded emulated times; its `boot+6s` request label is stale.
+
+NOT_RUN: acoustic latency, speaker/listening acceptance, OS audio underruns, physical devices, other browsers/mobile, long-duration memory testing, complete project/pattern persistence. Optional Web MIDI is unqualified: its current route feeds UART1 while these SMK-37 fixtures disable TRS input. Headless Chromium is muted; isolated nonzero CRAMEN PCM proves rendered audio content and workload, not a speaker/ear result.
+
+No source edits, firmware builds, external writes, publication, merge or device actions were performed by this reviewer. Exact measurements and evidence hashes are in `independent-browser-qa.json`.
