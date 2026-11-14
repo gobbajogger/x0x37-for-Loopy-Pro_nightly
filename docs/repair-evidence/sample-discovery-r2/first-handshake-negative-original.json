@@ -1,0 +1,8 @@
+{
+  "event": "FIRST_HANDSHAKE_NEGATIVE_EXECUTED",
+  "time_utc": "2026-11-14T10:39:40.170Z",
+  "filename": "original/web/x0x_breaks.html",
+  "source_sha256": "4f371cd0627ae477adea3ead38083fe5f756244036f8130fc67c090c1878e9b7",
+  "status": "FAIL",
+  "error": "echoed request must not mask later valid INFO: expected later successful candidate 1, got wrong candidate"
+}

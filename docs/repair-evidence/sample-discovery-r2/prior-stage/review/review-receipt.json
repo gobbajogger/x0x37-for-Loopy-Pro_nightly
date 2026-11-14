@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "time_utc": "2026-11-14T10:33:27.234Z",
+  "reviewer_scope": "Independent exact-patch source review, one new fake-only cleanup/ownership edge, and two affected browser-state capture inspections; report-only",
+  "base_main": "18e8278031180854437f077f3afc356f567fad97",
+  "original_blob": "6f77ad50dac0648ad784f5b645382b9e5872cf23",
+  "consumed_sha256": {
+    "plan.json": "95d8d827c23d144872c3f8427169c94ab35c76b13f946dcfe7604ac3303d02b1",
+    "original/web/x0x_breaks.html": "4f371cd0627ae477adea3ead38083fe5f756244036f8130fc67c090c1878e9b7",
+    "candidate/web/x0x_breaks.html": "135907651ba1d8293def1e10e0126ea4a84b3e1d5114d64762c654b45b0fa64f",
+    "candidate.patch": "d5dd10ad94107d6910c32dc7a3bd046941ba22f2e427acea04d8fc8ef6a3bb23",
+    "parity-receipt.json": "9fba836973def19d9390dfde11815af601a1a2c12d039db899c4cd9ba58c6526",
+    "synthetic-matrix.json": "051cb7fcbc6747413f418cd56823e13b6f45a841b648f7d2cbb5260bc9c540a1",
+    "first-negative-control.json": "9f73e814ffd8335f262ae3ee60395a774481cee392e73eac98ec146bcedf7a51",
+    "fake-midi-harness.mjs": "df56dcf479e0e83be7a4ca9e5d2a9c1a24a945983a2f12ff3da4175b67107b4d",
+    "candidate/AGENTS.md": "d4f647b8aa927bb6789f84703da88d8f5de5a6bf53c95a1ddc7558169f2c5610",
+    "candidate/docs/nightly-first-development-gate.md": "794c72c1a78aec95f20794fb4edb755a3b4d2ff017fb8903376fa6857c146560",
+    "candidate/package.json": "8e18e20305bc1e0812e1e68c418ad344a670b88db5bfa42f2e4c1af297af630f",
+    "review/independent-edge.mjs": "d589b61543735a7ddcf9f567fce109946e7dfe99014bfc407ae787831bc3171f",
+    "review/independent-edge-result.json": "e9606b2c1b7baba07b746b89bcdbd01dd69f728b0e3f47fc6f1652490c4e874e",
+    "review/review.md": "85ec9df791e99ef3039a1239d00731000b6ed656ff8ca8039598d76aa13cb800",
+    "browser-receipt.json": "d6b1deab80a7d53d9a4bf1e2932fa00a78eed14d1596aa39007fe10b256a6af9",
+    "browser/candidate-connected-desktop.png": "cb0ff4b7b91ce71e02dce40b34efdea3f7c345a184f935488cee6ff2cec9843a",
+    "browser/candidate-all-fail-mobile.png": "eca0f37e559d7ed9997f98a291f5122488a3fcfecdfc6f2f183aba64eaba5edd"
+  },
+  "findings": [],
+  "first_substantive_review_action": "Read exact plan, patch, parity, first executed negative control, synthetic matrix and complete fake harness",
+  "first_independent_dynamic_check": {
+    "command": "node review/independent-edge.mjs",
+    "input": "original/web/x0x_breaks.html",
+    "result": "Expected failure: failed-handshake newly opened output remains open; later candidate succeeds",
+    "followed_by": "Exact candidate PASS on mixed ownership and replacement listener edge",
+    "exit_code": 0
+  },
+  "reused_proof": "synthetic-matrix.json: 16 PASS cases; no full-suite duplication",
+  "limitations": [
+    "No independent browser execution; inspected two affected producer captures and consumed browser receipt",
+    "No hardware, real permissions, physical SysEx, samples, shared-ref writes or publication",
+    "Head and ownership reconciliation consumed from producer plan, not independently remote-resolved"
+  ],
+  "next_consumer": "creator / current incumbent via parent patch packet",
+  "visual_supplement": {
+    "status": "PASS",
+    "method": "view_image: actually opened both affected producer captures; no browser rerun",
+    "captures": [
+      "browser/candidate-connected-desktop.png",
+      "browser/candidate-all-fail-mobile.png"
+    ],
+    "findings": [],
+    "observations": [
+      "Desktop Read again focus ring visible, empty-slot state readable, controls fit",
+      "Mobile error readable and wrapped; Connect retry visible; add/backup/restore appear disabled; no visible clipping or horizontal overflow"
+    ],
+    "interaction_evidence": "Consumed producer Chromium154 receipt:16 fake matrix cases +6 UI checks; screenshot cannot independently prove DOM or keyboard behavior"
+  }
+}

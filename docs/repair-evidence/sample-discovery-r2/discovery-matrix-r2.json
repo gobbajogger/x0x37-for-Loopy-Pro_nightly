@@ -1,0 +1,229 @@
+{
+  "mode": "matrix",
+  "filename": "candidate/web/x0x_breaks.html",
+  "time_utc": "2026-11-14T10:40:15.016Z",
+  "source_sha256": "c21a286c2b3d3cbee38cb6dc7f7992df143b6ea9081fdb4822b221d5d80eabcc",
+  "function_sha256": "82cca3ae58d5db93e51e503a49c9a21b136767cd71681354dfb0d99063f058d5",
+  "results": [
+    {
+      "name": "input-open rejection then good",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:input:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "output-open rejection after input success then good",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "failed handshake then good",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:identity",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "wrong handshake identity then good",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:identity",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "send throws then good",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:identity",
+        "0:identity",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "disconnected input skipped",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "disconnected output skipped",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "all candidates fail",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:input:close",
+        "1:input:open",
+        "1:output:open",
+        "1:input:close",
+        "1:output:close",
+        "2:input:open",
+        "2:output:open",
+        "2:identity",
+        "2:identity",
+        "2:identity",
+        "2:input:close",
+        "2:output:close"
+      ],
+      "error": "No SMK-37 running DnBOX found. Connect it by USB, and close other apps that use its MIDI port."
+    },
+    {
+      "name": "success retained and later candidate untouched",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "preopened ports and listener preserved after failure",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity",
+        "0:identity",
+        "0:identity",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "cleanup rejection does not abort discovery",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:input:close",
+        "0:output:close",
+        "1:input:open",
+        "1:output:open",
+        "1:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "empty port list",
+      "status": "PASS",
+      "events": [
+        "fake-access"
+      ],
+      "error": "No SMK-37 running DnBOX found. Connect it by USB, and close other apps that use its MIDI port."
+    },
+    {
+      "name": "legacy X0X naming still succeeds",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "legacy Felucca naming still succeeds",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "DnBOX 25.1 naming still succeeds",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    },
+    {
+      "name": "DnBOX 0.0.26 naming still succeeds",
+      "status": "PASS",
+      "events": [
+        "fake-access",
+        "0:input:open",
+        "0:output:open",
+        "0:identity"
+      ],
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}

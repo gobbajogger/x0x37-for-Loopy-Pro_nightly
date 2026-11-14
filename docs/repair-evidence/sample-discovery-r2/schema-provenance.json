@@ -1,0 +1,57 @@
+{
+  "repository": "gobbajogger/X0X37-for-Loopy-Pro",
+  "scope": "Read-only emitter/schema evidence; no firmware tree adoption or hardware proof",
+  "files": [
+    {
+      "filename": "editor.c",
+      "path": "firmware/src/app/editor.c",
+      "commit": "66073c68dd80d51a7053432c2c161a8b720a1341",
+      "blob": "6ae85624bc70358e7e7eb99f303bf39442cfde1b",
+      "sha256": "018c8e2756cc1da53a027b8476d3ba43336319b379a79689c86f820e7dcbdc34",
+      "bytes": 37443
+    },
+    {
+      "filename": "editor-main.c",
+      "path": "firmware/src/app/editor.c",
+      "commit": "035026fe70059af35e25c7c121b40f318b732fe3",
+      "blob": "fc9fc24ccbd8d5dd77f40a5d29d01b38b01ffa8a",
+      "sha256": "4e6a28ed194bd458c7aaba63622e8d6cb2f1b7edcdb74e20155468ff29919ae9",
+      "bytes": 40777
+    },
+    {
+      "filename": "editor-felucca.c",
+      "path": "firmware/src/editor.c",
+      "commit": "e5a908d0383848cd85149de6dc35150c792231fc",
+      "blob": "640c059f7fd2781c26b2429acb25f096867bc8e1",
+      "sha256": "699127f1f78b0a9891413c4a264aa78594ef1990eb14df092f9764a10920219a",
+      "bytes": 24797
+    },
+    {
+      "filename": "version-main.h",
+      "path": "firmware/src/app/version.h",
+      "commit": "035026fe70059af35e25c7c121b40f318b732fe3",
+      "blob": "b390842bae9788b0f596e65c1aeb2f5adc5bd93f",
+      "sha256": "8d11a2ef671657898d1fd64b7b2fa64a0d41edb5b74781f58ff9170dd8c6ca57",
+      "bytes": 390
+    },
+    {
+      "filename": "pattern.h",
+      "path": "firmware/src/seq/pattern.h",
+      "commit": "66073c68dd80d51a7053432c2c161a8b720a1341",
+      "blob": "19dc003c8bc3e43d94dd4b4e9c1c068030a84cd2",
+      "sha256": "a388f452c4f4b8b1d564313b5a865d87726c7af23496196eb5663fd95899f662",
+      "bytes": 4666
+    },
+    {
+      "filename": "EDITOR_PROTOCOL.md",
+      "path": "web/EDITOR_PROTOCOL.md",
+      "commit": "66073c68dd80d51a7053432c2c161a8b720a1341",
+      "blob": "2ff1217c83de2515bea2876a2a12acdb55d53439",
+      "sha256": "0dcc027513efd4316a1b7cf527f1f8bbb36d8566fc5bf8e32b4490a4bbad3745",
+      "bytes": 21613
+    }
+  ],
+  "model_limitation": "INFO has no model/serial field. Version/protocol recognition does not establish physical keyboard pairing, model, authenticity or firmware byte identity.",
+  "status": "PASS",
+  "time_utc": "2026-11-14T10:41:51.829279+00:00"
+}

@@ -1439,6 +1439,28 @@ class Link {
 }
 
 async function connect() {
+  function validInfo(r) {
+    if (r.some(b => !Number.isInteger(b) || b < 0 || b > 127)) return false;
+    const z = r.indexOf(0);
+    if (z < 1 || z > 24 || r.length < z + 6) return false;
+    const id = String.fromCharCode(...r.slice(0, z));
+    const [engines, params, globals, steps, engineBase] = r.slice(z + 1, z + 6);
+    if (!steps) return false;
+    let at = z + 6;
+    if (/^X0X [\x20-\x7e]+$/.test(id)) {
+      // X0X INFO has no editor engines/parameters/tracks; production may append XSG v1.
+      if (engines || params || globals || engineBase || r[at++] !== 0) return false;
+      return at === r.length || r.length === at + 5 && [0x58, 0x53, 0x47, 1, 48].every((b, i) => r[at + i] === b);
+    }
+    if (!/^FELUCCA [\x20-\x7e]+$/.test(id) || !engines) return false;
+    for (let k = 0; k < engines; k++) {
+      const end = r.indexOf(0, at);
+      if (end <= at || end - at > 8 || r.slice(at, end).some(b => b < 32 || b > 126)) return false;
+      at = end + 1;
+    }
+    // Legacy INFO ends after engine names, or includes the v3 track count.
+    return at === r.length || at + 1 === r.length && r[at] > 0;
+  }
   if (!navigator.requestMIDIAccess) throw new Error("Web MIDI is unavailable. Use desktop Chrome or Edge over HTTPS or localhost and allow MIDI / SysEx. Safari and iOS browsers are unsupported.");
   const midi = await navigator.requestMIDIAccess({ sysex: true });
   midi.onstatechange = () => {
@@ -1449,12 +1471,26 @@ async function connect() {
   const outs = [...midi.outputs.values()];
   for (const input of midi.inputs.values()) {
     if (input.state === "disconnected" || !(/x0x|felucca/i.test(input.name || "") || /\bDnBOX\b.*\b(?:SMK-37 (?:Elite|Pro)|37(?:ELITE|PRO))\b/i.test(input.name || ""))) continue;
-    const output = outs.find((o) => o.name === input.name);
+    const output = outs.find((o) => o.state !== "disconnected" && o.name === input.name);
     if (!output) continue;
-    await input.open();
-    await output.open();
-    const l = new Link(input, output);
-    try { await l.retry(1, [], 1000); return l; } catch (_) { /* not answering: the next */ }
+    const previousHandler = input.onmidimessage;
+    const inputWasClosed = input.connection === "closed", outputWasClosed = output.connection === "closed";
+    let handler = null, outputAttempted = false;
+    try {
+      await input.open();
+      outputAttempted = true;
+      await output.open();
+      const l = new Link(input, output);
+      handler = input.onmidimessage;
+      if (!validInfo(await l.retry(1, [], 1000))) throw new Error("Invalid firmware INFO reply.");
+      return l;
+    } catch (_) {
+      if (handler && input.onmidimessage === handler) input.onmidimessage = previousHandler;
+      // Release only ports this attempt opened; preserve preexisting shared connections.
+      for (const port of [inputWasClosed ? input : null, outputAttempted && outputWasClosed ? output : null]) {
+        if (port) try { await port.close(); } catch (_) { /* cleanup must not stop discovery */ }
+      }
+    }
   }
   throw new Error("No SMK-37 running DnBOX found. Connect it by USB, and close other apps that use its MIDI port.");
 }

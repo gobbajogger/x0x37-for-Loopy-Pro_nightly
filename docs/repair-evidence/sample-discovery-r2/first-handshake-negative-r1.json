@@ -1,0 +1,8 @@
+{
+  "event": "FIRST_HANDSHAKE_NEGATIVE_EXECUTED",
+  "time_utc": "2026-11-14T10:39:40.229Z",
+  "filename": "r1-baseline.html",
+  "source_sha256": "135907651ba1d8293def1e10e0126ea4a84b3e1d5114d64762c654b45b0fa64f",
+  "status": "FAIL",
+  "error": "echoed request must not mask later valid INFO: expected later successful candidate 1, got wrong candidate"
+}

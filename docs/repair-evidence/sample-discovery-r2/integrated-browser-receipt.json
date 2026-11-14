@@ -1,0 +1,78 @@
+{
+  "time_utc": "2026-11-14T11:19:31.099698+00:00",
+  "scope": "integrated generated breaks page, injected fake endpoints only",
+  "source_sha256": "b0291fdc3ea38cf985d7a5cf7c46fea2e1ae95e5c0b3b566ce865e9204831240",
+  "checks": [
+    {
+      "name": "keyboard Connect skips echo; later valid fake selected; empty slot read; writes disabled",
+      "status": "PASS",
+      "state": {
+        "events": [
+          "fake-access",
+          "0:input:open",
+          "0:output:open",
+          "0:command:1",
+          "0:input:close",
+          "0:output:close",
+          "1:input:open",
+          "1:output:open",
+          "1:command:1",
+          "1:command:15"
+        ],
+        "requests": 1,
+        "ports": [
+          {
+            "input": "closed",
+            "output": "closed",
+            "listener": false
+          },
+          {
+            "input": "open",
+            "output": "open",
+            "listener": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "disconnect invalidates ready state",
+      "status": "PASS"
+    },
+    {
+      "name": "all malformed: retry enabled, writes disabled, no mobile overflow",
+      "status": "PASS",
+      "state": {
+        "events": [
+          "fake-access",
+          "0:input:open",
+          "0:output:open",
+          "0:command:1",
+          "0:input:close",
+          "0:output:close",
+          "1:input:open",
+          "1:output:open",
+          "1:command:1",
+          "1:input:close",
+          "1:output:close"
+        ],
+        "requests": 1,
+        "ports": [
+          {
+            "input": "closed",
+            "output": "closed",
+            "listener": false
+          },
+          {
+            "input": "closed",
+            "output": "closed",
+            "listener": false
+          }
+        ]
+      }
+    }
+  ],
+  "page_errors": [],
+  "off_origin_requests": [],
+  "browser_version": "154.0.8037.57",
+  "status": "PASS"
+}
