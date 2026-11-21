@@ -1,0 +1,136 @@
+[
+  {
+    "viewport": [
+      1440,
+      900
+    ],
+    "captures": [
+      {
+        "method": "networkidle",
+        "sha256": "8c03323ab032d7a0675558ec81ad2789b4692ea2c0def56de26ec72a4d025e3d",
+        "dimensions": [
+          1440,
+          4549
+        ],
+        "elapsedSec": 2.199
+      },
+      {
+        "method": "rendered",
+        "sha256": "8c03323ab032d7a0675558ec81ad2789b4692ea2c0def56de26ec72a4d025e3d",
+        "dimensions": [
+          1440,
+          4549
+        ],
+        "elapsedSec": 1.028
+      }
+    ]
+  },
+  {
+    "viewport": [
+      1024,
+      640
+    ],
+    "captures": [
+      {
+        "method": "networkidle",
+        "sha256": "d01bc1393424f5e6d8869734e70f2fed788cb8a0c41b8285299e5d66466aa467",
+        "dimensions": [
+          1024,
+          4464
+        ],
+        "elapsedSec": 1.354
+      },
+      {
+        "method": "rendered",
+        "sha256": "d01bc1393424f5e6d8869734e70f2fed788cb8a0c41b8285299e5d66466aa467",
+        "dimensions": [
+          1024,
+          4464
+        ],
+        "elapsedSec": 1.016
+      }
+    ]
+  },
+  {
+    "viewport": [
+      844,
+      390
+    ],
+    "captures": [
+      {
+        "method": "networkidle",
+        "sha256": "873ba332676f8c7027192784ef23c3beaeed4a56cdc7fa8ed9e0449f0e228aff",
+        "dimensions": [
+          844,
+          4473
+        ],
+        "elapsedSec": 1.24
+      },
+      {
+        "method": "rendered",
+        "sha256": "873ba332676f8c7027192784ef23c3beaeed4a56cdc7fa8ed9e0449f0e228aff",
+        "dimensions": [
+          844,
+          4473
+        ],
+        "elapsedSec": 1.338
+      }
+    ]
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "captures": [
+      {
+        "method": "networkidle",
+        "sha256": "d50ea9309044d500cfad13ecbaee038ba46327fd06e306558e6f524532d7f879",
+        "dimensions": [
+          476,
+          6734
+        ],
+        "elapsedSec": 1.478
+      },
+      {
+        "method": "rendered",
+        "sha256": "d50ea9309044d500cfad13ecbaee038ba46327fd06e306558e6f524532d7f879",
+        "dimensions": [
+          476,
+          6734
+        ],
+        "elapsedSec": 1.18
+      }
+    ]
+  },
+  {
+    "broken": "site.css",
+    "rejected": true,
+    "reason": "Page.evaluate: SecurityError: Failed to read the 'cssRules' property from 'CSSStyleSheet': Cannot access rules"
+  },
+  {
+    "broken": "*Medium.ttf",
+    "rejected": true,
+    "reason": "Page.evaluate: Error: Homepage capture: Barlow normal did not load"
+  },
+  {
+    "broken": "app.mjs",
+    "rejected": true,
+    "reason": "Page.evaluate: Error: Homepage capture: reduced-motion replay is not initialized"
+  },
+  {
+    "broken": "replay.mjs",
+    "rejected": true,
+    "reason": "Page.evaluate: Error: Homepage capture: reduced-motion replay is not initialized"
+  },
+  {
+    "broken": "display",
+    "rejected": true,
+    "reason": "Page.evaluate: Error: Homepage capture: initial voice frame is missing or differs from source"
+  },
+  {
+    "broken": "layout",
+    "rejected": true,
+    "reason": "Page.wait_for_function: Timeout 1000ms exceeded."
+  }
+]

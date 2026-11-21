@@ -1,0 +1,39 @@
+{
+  "base": "9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab",
+  "currentFileHashes": {
+    "tests/product-remote/envelope-browser.py": "8580a52669ed922ce4d2c2900576575ae79ee0491a5bdc276115db833ff8aa1e",
+    "web/product-site/remote/envelope-view.mjs": "bb0ea4fdb883caa0f22938ba78edd4f740a78b192a59e09f7411eee081ddcffd",
+    "web/product-site/remote/envelope-observations.mjs": "925d3648652b8cdb0aee639479f1f62c7b48323b654af56c2b5a79f16ff264bf",
+    "scripts/emulator-runtime-pin.json": "c42ad2d0e9f163087b15d293217589d094a6560d97afd64bf93931293be1250f",
+    "web/product-site/SOURCE-MANIFEST.json": "d283bdb038ff8887f026b270c1fba34fcfe02f33a7f92b50c17be3a09dcb2690"
+  },
+  "nodeObserverMarkupAndDataCasesPassed": 17,
+  "predicatePositive": 1,
+  "predicateNegatives": 16,
+  "harness": "Node-only evaluation of exact OBSERVED_GRAPH with independent DOM selector/visibility/geometry/packet test doubles. Actual integrated native browser proof is separately owned.",
+  "cases": [
+    "right observed graph admitted",
+    "wrong owner rejected",
+    "wrong graph engine rejected",
+    "wrong graph role rejected",
+    "wrong packet owner rejected",
+    "wrong packet engine rejected",
+    "wrong packet role rejected",
+    "old sequence rejected",
+    "unavailable observation rejected",
+    "wrong level rejected",
+    "zero note-held readout rejected",
+    "invalid path rejected",
+    "hidden host rejected",
+    "collapsed plot rejected",
+    "CSS-hidden plot rejected",
+    "CSS-collapsed plot rejected",
+    "zero-width plot rejected"
+  ],
+  "restoredOriginalHostVisibleExpectation": true,
+  "latestNewerPacketRequired": true,
+  "sameEngineSlotRoleRequired": true,
+  "heldRequiresPositiveMatchedNativeLevel": true,
+  "portIdentityAnd1000msExpirySourceUntouched": true,
+  "actualPinnedRuntimeFilesRehashed": 10
+}

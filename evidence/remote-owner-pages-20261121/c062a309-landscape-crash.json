@@ -1,0 +1,67 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "parent": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "result": "Independent complete R5 failed after 117 of 127. The 5,393 recorded enabled controls were reachable.",
+  "lastObserved": {
+    "device": {
+      "identicalPng": true,
+      "sha256": "2c91ce00a8b2ac64cae86410789ffd0d2b06312b574626f136f8e9abe08b57ff",
+      "capturedUtc": "2026-11-21T06:57:00.225600+00:00"
+    },
+    "identity": {
+      "identicalPng": true,
+      "sha256": "03d3673e140499f1511fafe6d9279d2862bd3e7af519f5bce8063934e3bf2d10",
+      "capturedUtc": "2026-11-21T06:57:01.560987+00:00"
+    }
+  },
+  "transition": [
+    "Real selected Bass A Chicago owner; native Mix Master recorded 27 enabled controls. The ordinary handler subsequently clicked Emulator Stop. Its source clears the audio monitor and playing/observer bindings, then awaits old.close internally. Landscape does not separately assert an AudioContext close event.",
+    "The same tab navigated with networkidle to /remote/device/ then /remote/identity/. Both public disconnected states returned an owned screenshot and DOM geometry; these two images match the passing parent byte for byte.",
+    "The next group starts a new top-level navigation to /remote/ before its explicit BREAK selection, Notes action, lane or pointer edit. This navigation returned Page.goto: Page crashed. Incoming default is Bass A Draft on a successful fresh load; there is no observation that it initialized in the failed run.",
+    "The two following groups use that same crashed Playwright page. Their own entry navigations also returned Page crashed, with zero source action/fixture assertions reached in those groups."
+  ],
+  "unavailableTelemetry": [
+    "The original fixture listens to pageerror only. No pageerror was recorded. It does not record crash lifecycle events, CDP request/response activity, worker close acknowledgements, RSS or process victim IDs. The failure-only screenshots produced no image.",
+    "Host oom_kill was 45 at 06:49:48.412Z and 49 at 06:57:42.415Z. These observations bracket the scoped 06:55:53\u201306:57:20 run and cannot date or attribute an OOM event to it. The environment journal contains no matching kernel records."
+  ],
+  "graphicsObservation": {
+    "fixture": "tests/product-remote/native-sound-instrument.js",
+    "sha256": "39c311b4ae7def3c5e71aa81461db80ffde256c0e554cf3852fb875601095f0f",
+    "latestOnly": "Landscape never enables scalar-history mode. Only latest playing, time and framebufferLength are retained. The newest five complete envelope packets are retained; sound requests/replies/errors are separate consumer-specific arrays.",
+    "test": "node --test tests/product-remote/native-sound-instrument.test.mjs",
+    "testCases": 2,
+    "framesEach": 2048,
+    "shape": [
+      240,
+      240
+    ],
+    "bytesEach": 115200,
+    "deliveredBytesPerMode": 235929600,
+    "framebufferBytesRetained": 0,
+    "testLogSha256": "a0ec96cbb580f3cd2768bd472647eb1ca2d4a062cd201ffcb6c2395d4ebe2839",
+    "masterAudio": "The separate master audio tap reads two fixed 2,048-float channel samples and a three-second history. Stop unmounts/closes the monitor; it has no 240x240 video history."
+  },
+  "freshCases": {
+    "normalCaseHelpersMatchParent": [
+      "snap",
+      "case",
+      "part",
+      "view",
+      "break_chance",
+      "pattern_locks",
+      "synth_files",
+      "author_break_chance",
+      "inspect_pattern_locks",
+      "inspect_synth_files"
+    ],
+    "groups": [
+      "authored BREAK on silent step 3",
+      "three independently selected pattern locks in original owner order",
+      "both source file owners, preserving shared original bank import and partial/complete selection sequence"
+    ],
+    "preflight": "remaining-ten-preflight.json",
+    "preflightSha256": "118ada68cd623d8f193879dcc769284b6656049a5f3133e22b88fe6550eb12ed",
+    "recoveryScriptSha256": "0cefa18562286d1226ee049e90cebe84ddced2a1b2bb22662ed2c6e9ad4f9e72",
+    "mode": "Prepared only. One browser, three separate normal contexts; original case actions, deadlines and geometry are read directly from the exact fixture. It records only its ten required states as a supplement."
+  }
+}

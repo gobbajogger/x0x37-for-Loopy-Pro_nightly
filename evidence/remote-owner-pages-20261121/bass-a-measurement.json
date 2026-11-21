@@ -1,0 +1,666 @@
+{
+  "parent": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "browser": "151.0.7922.34",
+  "before": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            77,
+            657,
+            201,
+            689
+          ],
+          "fill": "rgb(255, 179, 55)",
+          "edge": "0px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            413,
+            377,
+            508,
+            409
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            496,
+            297,
+            536,
+            329
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            1419,
+            657,
+            1427,
+            689
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        77,
+        180,
+        1419,
+        811
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 0,
+          "area": 3968
+        },
+        "n5": {
+          "selected": false,
+          "green": 0,
+          "area": 3040
+        },
+        "n6": {
+          "selected": false,
+          "green": 0,
+          "area": 1280
+        }
+      },
+      "png": "before-1440x900.png",
+      "sha256": "c57898ea1bde393adf7d0683ffd45ad95f08ad0b74768fc2ddc51789d605c17e",
+      "pageErrors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            77,
+            643,
+            103,
+            675
+          ],
+          "fill": "rgb(255, 179, 55)",
+          "edge": "0px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            152,
+            363,
+            172,
+            395
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            171,
+            283,
+            179,
+            315
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            377,
+            643,
+            385,
+            675
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        77,
+        204,
+        377,
+        759
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 0,
+          "area": 832
+        },
+        "n5": {
+          "selected": false,
+          "green": 0,
+          "area": 640
+        },
+        "n6": {
+          "selected": false,
+          "green": 0,
+          "area": 256
+        }
+      },
+      "png": "before-390x844.png",
+      "sha256": "92dc53f88a0defb62329ce59d3bb42810647ab3e0b06e00fa09df2269ba1a931",
+      "pageErrors": []
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            69,
+            295,
+            138,
+            311
+          ],
+          "fill": "rgb(255, 179, 55)",
+          "edge": "0px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            260,
+            183,
+            313,
+            199
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            307,
+            151,
+            329,
+            167
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            831,
+            295,
+            839,
+            311
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        69,
+        103,
+        831,
+        360
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 0,
+          "area": 1104
+        },
+        "n5": {
+          "selected": false,
+          "green": 0,
+          "area": 848
+        },
+        "n6": {
+          "selected": false,
+          "green": 0,
+          "area": 352
+        }
+      },
+      "png": "before-844x390.png",
+      "sha256": "ece04aacada1f6895a67241bba7a216470715b76b1f34ada20e088c0b0148ee5",
+      "pageErrors": []
+    },
+    {
+      "viewport": [
+        1024,
+        640
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            77,
+            499,
+            162,
+            524
+          ],
+          "fill": "rgb(255, 179, 55)",
+          "edge": "0px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            309,
+            268,
+            374,
+            293
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            366,
+            202,
+            393,
+            227
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            1003,
+            499,
+            1011,
+            524
+          ],
+          "fill": "rgb(153, 170, 169)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        77,
+        180,
+        1003,
+        551
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 0,
+          "area": 2125
+        },
+        "n5": {
+          "selected": false,
+          "green": 0,
+          "area": 1625
+        },
+        "n6": {
+          "selected": false,
+          "green": 0,
+          "area": 675
+        }
+      },
+      "png": "before-1024x640.png",
+      "sha256": "e2618a770c082b25b34072b1aeb4b30c88af97e359d732fb0f49d990516bfe48",
+      "pageErrors": []
+    }
+  ],
+  "after": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            77,
+            657,
+            201,
+            689
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "2px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            413,
+            377,
+            508,
+            409
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            496,
+            297,
+            536,
+            329
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            1419,
+            657,
+            1427,
+            689
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        77,
+        180,
+        1419,
+        811
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 3255,
+          "area": 3968
+        },
+        "n5": {
+          "selected": false,
+          "green": 2914,
+          "area": 3040
+        },
+        "n6": {
+          "selected": false,
+          "green": 1159,
+          "area": 1280
+        }
+      },
+      "png": "after-1440x900.png",
+      "sha256": "923292655812df24b2e189eebbe932f4bbf7a94100d03a42e95784cc2898fa38",
+      "pageErrors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            77,
+            643,
+            103,
+            675
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "2px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            152,
+            363,
+            172,
+            395
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            171,
+            283,
+            179,
+            315
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            377,
+            643,
+            385,
+            675
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        77,
+        204,
+        377,
+        759
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 534,
+          "area": 832
+        },
+        "n5": {
+          "selected": false,
+          "green": 538,
+          "area": 640
+        },
+        "n6": {
+          "selected": false,
+          "green": 196,
+          "area": 256
+        }
+      },
+      "png": "after-390x844.png",
+      "sha256": "c852a893ce6ab6a9a8b55daf3235a4289106bdfd3a7cff7c30eb28d70a5a9a61",
+      "pageErrors": []
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            69,
+            295,
+            138,
+            311
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "2px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            260,
+            183,
+            313,
+            199
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            307,
+            151,
+            329,
+            167
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            831,
+            295,
+            839,
+            311
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        69,
+        103,
+        831,
+        360
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 679,
+          "area": 1104
+        },
+        "n5": {
+          "selected": false,
+          "green": 722,
+          "area": 848
+        },
+        "n6": {
+          "selected": false,
+          "green": 245,
+          "area": 352
+        }
+      },
+      "png": "after-844x390.png",
+      "sha256": "b880e6104c7db2a7f83ac9e321ae47c2f2d41a9e73cb4be3a5f24cc8fa46e4a3",
+      "pageErrors": []
+    },
+    {
+      "viewport": [
+        1024,
+        640
+      ],
+      "notes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "box": [
+            77,
+            499,
+            162,
+            524
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "2px"
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "box": [
+            309,
+            268,
+            374,
+            293
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "box": [
+            366,
+            202,
+            393,
+            227
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        },
+        {
+          "id": "n9",
+          "selected": false,
+          "box": [
+            1003,
+            499,
+            1011,
+            524
+          ],
+          "fill": "rgb(130, 240, 90)",
+          "edge": "0px"
+        }
+      ],
+      "roll": [
+        77,
+        180,
+        1003,
+        551
+      ],
+      "pixels": {
+        "n1": {
+          "selected": true,
+          "green": 1597,
+          "area": 2125
+        },
+        "n5": {
+          "selected": false,
+          "green": 1500,
+          "area": 1625
+        },
+        "n6": {
+          "selected": false,
+          "green": 561,
+          "area": 675
+        }
+      },
+      "png": "after-1024x640.png",
+      "sha256": "cd974b6c7e8cc3ca6bd0f049ebdb02339deaa110bad9211aa52f0bf08774daf5",
+      "pageErrors": []
+    }
+  ],
+  "originalJourney": "PASS",
+  "reference": "reference.json"
+}

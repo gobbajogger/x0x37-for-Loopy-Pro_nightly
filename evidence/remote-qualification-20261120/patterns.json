@@ -1,0 +1,266 @@
+[
+  {
+    "width": 844,
+    "mode": "selected",
+    "scope": [
+      {
+        "text": "Selected part",
+        "rect": [
+          12,
+          312,
+          108,
+          356
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "All parts",
+        "rect": [
+          112,
+          312,
+          183,
+          356
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "Review draft",
+        "rect": [
+          448,
+          312,
+          540,
+          356
+        ],
+        "fullyVisible": true,
+        "hit": true
+      }
+    ],
+    "actions": "Bass A\nNot selected\n\nDraft \u00b7 Not loaded\n\nSong arrangement",
+    "pageWidth": 844,
+    "cellCount": 32,
+    "visibleCells": 32,
+    "centerHits": 32
+  },
+  {
+    "width": 844,
+    "mode": "all",
+    "scope": [
+      {
+        "text": "Selected part",
+        "rect": [
+          12,
+          312,
+          108,
+          356
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "All parts",
+        "rect": [
+          112,
+          312,
+          183,
+          356
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "Review draft",
+        "rect": [
+          448,
+          312,
+          540,
+          356
+        ],
+        "fullyVisible": true,
+        "hit": true
+      }
+    ],
+    "actions": "Draft \u00b7 Not loaded\n\nSong arrangement",
+    "pageWidth": 844,
+    "cellCount": 160,
+    "visibleCells": 24,
+    "centerHits": 24
+  },
+  {
+    "width": 390,
+    "mode": "selected",
+    "scope": [
+      {
+        "text": "Selected part",
+        "rect": [
+          12,
+          672.390625,
+          108,
+          716.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "All parts",
+        "rect": [
+          112,
+          672.390625,
+          183,
+          716.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "Review draft",
+        "rect": [
+          286,
+          672.390625,
+          378,
+          716.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      }
+    ],
+    "actions": "Bass A\nNot selected\n\nDraft \u00b7 Not loaded\n\nSong arrangement",
+    "pageWidth": 390,
+    "cellCount": 32,
+    "visibleCells": 32,
+    "centerHits": 32
+  },
+  {
+    "width": 390,
+    "mode": "all",
+    "scope": [
+      {
+        "text": "Selected part",
+        "rect": [
+          12,
+          707.578125,
+          108,
+          751.578125
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "All parts",
+        "rect": [
+          112,
+          707.578125,
+          183,
+          751.578125
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "Review draft",
+        "rect": [
+          286,
+          707.578125,
+          378,
+          751.578125
+        ],
+        "fullyVisible": true,
+        "hit": true
+      }
+    ],
+    "actions": "Draft \u00b7 Not loaded\n\nSong arrangement",
+    "pageWidth": 390,
+    "cellCount": 160,
+    "visibleCells": 32,
+    "centerHits": 32
+  },
+  {
+    "width": 1440,
+    "mode": "selected",
+    "scope": [
+      {
+        "text": "Selected part",
+        "rect": [
+          20,
+          416.390625,
+          116,
+          460.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "All parts",
+        "rect": [
+          120,
+          416.390625,
+          191,
+          460.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "Review draft",
+        "rect": [
+          1036,
+          416.390625,
+          1128,
+          460.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      }
+    ],
+    "actions": "Bass A\nNot selected\n\nDraft \u00b7 Not loaded\n\nSong arrangement",
+    "pageWidth": 1440,
+    "cellCount": 32,
+    "visibleCells": 32,
+    "centerHits": 32
+  },
+  {
+    "width": 1440,
+    "mode": "all",
+    "scope": [
+      {
+        "text": "Selected part",
+        "rect": [
+          20,
+          710.390625,
+          116,
+          754.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "All parts",
+        "rect": [
+          120,
+          710.390625,
+          191,
+          754.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      },
+      {
+        "text": "Review draft",
+        "rect": [
+          1036,
+          710.390625,
+          1128,
+          754.390625
+        ],
+        "fullyVisible": true,
+        "hit": true
+      }
+    ],
+    "actions": "Draft \u00b7 Not loaded\n\nSong arrangement",
+    "pageWidth": 1440,
+    "cellCount": 160,
+    "visibleCells": 64,
+    "centerHits": 64
+  }
+]

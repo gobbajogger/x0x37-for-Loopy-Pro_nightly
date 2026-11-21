@@ -1,0 +1,50 @@
+[
+  {
+    "mode": "before",
+    "file": "envelope-browser.py",
+    "frames": 2048,
+    "pixelBytes": 235929600,
+    "envelopePackets": 2048,
+    "exit": 1
+  },
+  {
+    "mode": "before",
+    "file": "composition-browser.py",
+    "frames": 2048,
+    "pixelBytes": 235929600,
+    "envelopePackets": 2048,
+    "exit": 1
+  },
+  {
+    "mode": "before",
+    "file": "master-more-browser.py",
+    "frames": 2048,
+    "pixelBytes": 235929600,
+    "envelopePackets": 0,
+    "exit": 1
+  },
+  {
+    "mode": "after",
+    "file": "envelope-browser.py",
+    "frames": 2048,
+    "pixelBytes": 0,
+    "envelopePackets": 2048,
+    "exit": 0
+  },
+  {
+    "mode": "after",
+    "file": "composition-browser.py",
+    "frames": 2048,
+    "pixelBytes": 0,
+    "envelopePackets": 2048,
+    "exit": 0
+  },
+  {
+    "mode": "after",
+    "file": "master-more-browser.py",
+    "frames": 2048,
+    "pixelBytes": 0,
+    "envelopePackets": 0,
+    "exit": 0
+  }
+]

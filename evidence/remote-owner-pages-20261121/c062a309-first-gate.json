@@ -1,0 +1,144 @@
+{
+  "sha": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "tree": "73807d4b346d09de2b21f54e05ea67c8df6e1b5b",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "lane": "remote",
+  "result": "FAIL",
+  "exitCode": 1,
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "offline": true,
+  "startedUtc": "2026-11-21T06:57:42.563Z",
+  "startedGateLabel": "DNBOX-GATE repo=nightly lane=remote sha=c062a3090b1fa8620b707ed50c5757586ebfaa6b started=20261121-1657 (UTC+10)",
+  "endedUtc": "2026-11-21T07:04:30.146Z",
+  "cleanTrackedAfter": true,
+  "rawLogBytes": 136915,
+  "rawLogSha256": "69cc032589db289a550ff34fe0711bd9d93752b05dd600da46a6c515807e889c",
+  "repositoryLog": "build/dnbox-gate/c062a309-20261121-1657.log",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "FAIL"
+    },
+    {
+      "name": "browser-tests",
+      "result": "FAIL"
+    }
+  ],
+  "visualHeader": null,
+  "terminal": "DNBOX-GATE RESULT FAIL sha=c062a3090b1fa8620b707ed50c5757586ebfaa6b lane=remote log=build/dnbox-gate/c062a309-20261121-1657.log",
+  "structural": null,
+  "visual": null,
+  "errors": [
+    {
+      "line": 1906,
+      "message": "playwright._impl._errors.Error: Page.screenshot: Target crashed "
+    },
+    {
+      "line": 1912,
+      "message": "[FAIL] unit-tests"
+    },
+    {
+      "line": 1995,
+      "message": "playwright._impl._errors.TimeoutError: Locator.select_option: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 2002,
+      "message": "[FAIL] browser-tests"
+    },
+    {
+      "line": 2003,
+      "message": "DNBOX-GATE RESULT FAIL sha=c062a3090b1fa8620b707ed50c5757586ebfaa6b lane=remote log=build/dnbox-gate/c062a309-20261121-1657.log"
+    }
+  ],
+  "published": false,
+  "workflowDispatched": false,
+  "physicalDeviceAccess": false,
+  "compressedLogSha256": "1f64b4b29b4e315c61ae79470990d3c6620c8f43df50ab4eb2fd48fbbe98166b",
+  "compressedLogBytes": 41144,
+  "durationSeconds": 407.583,
+  "providers": {
+    "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+    "tree": "73807d4b346d09de2b21f54e05ea67c8df6e1b5b",
+    "sources": "6466a3715c96b7ecf1dd255a218cbd571408a314",
+    "banks": 12,
+    "presets": 694,
+    "bankManifestSha256": "806d92dae2ef75b073168e5b85ee2dc6055f2c3b10ceca3a0e40933514c37622",
+    "superJ6ArchiveBytes": 451262,
+    "superJ6ArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+    "runtimePinSha256": "c42ad2d0e9f163087b15d293217589d094a6560d97afd64bf93931293be1250f",
+    "predecessorExitCode": 0,
+    "predecessorEndedUtc": "2026-11-21T06:50:05.723Z",
+    "explicitOriginalFirmwareInputs": [
+      "DNBOX_MIAMI_FIRMWARE",
+      "DNBOX_DRUM_FIRMWARE",
+      "DNBOX_SYNTH_ONE_FIRMWARE"
+    ],
+    "superJ6Input": "DNBOX_SUPERJ6_ARCHIVE",
+    "runtimeInput": "DNBOX_EMULATOR_RUNTIME",
+    "pinnedRuntimeFiles": 10
+  },
+  "passiveTiming": {
+    "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+    "intervalSec": 2.0,
+    "samples": 203,
+    "maximumSampleGapSec": 3.117,
+    "maximumSampleGapObservedUtc": "2026-11-21T07:04:19.708Z",
+    "pressureSourcesPresent": [],
+    "failureWindows": [
+      {
+        "when": "2026-11-21T07:01:18.596Z",
+        "observedSignals": [
+          "playwright._impl._errors.Error: Page.screenshot: Target crashed",
+          "[FAIL] unit-tests",
+          "== browser-tests"
+        ],
+        "previous45sMaxGap": 2.043,
+        "previous45sMaxLate": 0.043
+      },
+      {
+        "when": "2026-11-21T07:04:30.196Z",
+        "observedSignals": [
+          "playwright._impl._errors.TimeoutError: Locator.select_option: Timeout 30000ms exceeded.",
+          "[FAIL] browser-tests",
+          "DNBOX-GATE RESULT FAIL sha=c062a3090b1fa8620b707ed50c5757586ebfaa6b lane=remote log=build/dnbox-gate/c062a309-20261121-1657.log"
+        ],
+        "previous45sMaxGap": 3.117,
+        "previous45sMaxLate": 1.117
+      }
+    ],
+    "scope": "Read-only system-wide observations, not per-process attribution. Gate events are timestamped when first seen in the raw stream.",
+    "dataSha256": "746b0887e588d34c90e15d839a3a21c9adb5bf4b61d4d976a6967fcb9974fe4f",
+    "gzipSha256": "a5babfa2c0ede50816225825b698cdcf75c386da76c8df741669a2e243594c9b",
+    "summarySha256": "f44ea34d48866ce933579e2781bcabe970672f8720f94cdbbfef1621cba345c0"
+  },
+  "executor": {
+    "launch-single-v3.py": "0ed53879f3cda04e1bf23c49e259689efd721916739ba85758738168dea0ece7",
+    "coordinate-single-v6.py": "7fdb21142dd173bf92ed05caebed5ef02dd19c2f2c1d2b6103d5281b017b010c",
+    "passive-gate-heartbeat.py": "3f1219d6f358081ea0302285efef018e08e18ceaf2824cb7f5b9b5027b52f383"
+  },
+  "lastCompletedAdmissionCheck": null
+}

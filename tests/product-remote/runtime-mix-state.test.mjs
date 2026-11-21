@@ -71,3 +71,21 @@ test('consumer Undo history never advertises beyond native sixteen-record retent
  for(let i=0;i<16;i++)await s.undo();
  assert.equal(s.snapshot().canUndo,false);assert.equal(s.snapshot().values.get('5:0:0'),51);
 });
+
+test('a valid token cannot confirm a Mix edit with an unchanged stored value',async()=>{
+ const state=make();
+ await state.connect({read:async()=>snap(75),set:async()=>({...snap(75),undoToken:'one'}),undo(){},close(){}});
+ await assert.rejects(state.change('5:0:0',80),/not confirmed/);
+ assert.equal(state.snapshot().phase,'unavailable');
+ assert.equal(state.snapshot().canUndo,false);
+});
+
+test('a Mix Undo requires the previous stored value in the native readback',async()=>{
+ const state=make();
+ await state.connect({read:async()=>snap(75),set:async()=>({...snap(80),undoToken:'one'}),
+  undo:async()=>({...snap(80),undoToken:null}),close(){}});
+ await state.change('5:0:0',80);
+ await assert.rejects(state.undo(),/not confirmed/);
+ assert.equal(state.snapshot().phase,'unavailable');
+ assert.equal(state.snapshot().values.size,0);
+});

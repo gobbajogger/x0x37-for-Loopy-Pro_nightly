@@ -1,0 +1,202 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "test": "full_envelopes",
+  "viewport": [
+    844,
+    390
+  ],
+  "sourceSha256": "8ff28fad4cc3d21366993dc5c04fb614f4ac78637f491c4b2694a7da27dc18c5",
+  "productBuildAppSha256": "d89dbac4823798268d7c301e9d2dda7cc4f8223d403848600ff50ef73f390c87",
+  "selectOptionObservation": "One DOM read before each original #sound-bank select_option call; observed for at most 1s; original normal locator deadline unchanged.",
+  "observations": [
+    {
+      "requested": "CHICAGO",
+      "elapsedMs": 1575,
+      "dom": {
+        "part": "chicago",
+        "source": "draft",
+        "picker": {
+          "value": "JUNO",
+          "disabled": false,
+          "display": "block",
+          "visibility": "visible",
+          "width": 119,
+          "height": 40,
+          "options": [
+            {
+              "value": "CHICAGO",
+              "disabled": false
+            },
+            {
+              "value": "MIAMI",
+              "disabled": false
+            },
+            {
+              "value": "Synth One",
+              "disabled": false
+            },
+            {
+              "value": "SuperJ6",
+              "disabled": false
+            },
+            {
+              "value": "JUNO",
+              "disabled": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "requested": "CHICAGO",
+      "elapsedMs": 3350,
+      "dom": {
+        "part": "chicago",
+        "source": "draft",
+        "picker": {
+          "value": "JUNO",
+          "disabled": false,
+          "display": "block",
+          "visibility": "visible",
+          "width": 119,
+          "height": 40,
+          "options": [
+            {
+              "value": "CHICAGO",
+              "disabled": false
+            },
+            {
+              "value": "MIAMI",
+              "disabled": false
+            },
+            {
+              "value": "Synth One",
+              "disabled": false
+            },
+            {
+              "value": "SuperJ6",
+              "disabled": false
+            },
+            {
+              "value": "JUNO",
+              "disabled": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "requested": "CHICAGO",
+      "elapsedMs": 5121,
+      "dom": {
+        "part": "miami",
+        "source": "draft",
+        "picker": {
+          "value": "JUNO",
+          "disabled": false,
+          "display": "block",
+          "visibility": "visible",
+          "width": 119,
+          "height": 40,
+          "options": [
+            {
+              "value": "CHICAGO",
+              "disabled": false
+            },
+            {
+              "value": "MIAMI",
+              "disabled": false
+            },
+            {
+              "value": "Synth One",
+              "disabled": false
+            },
+            {
+              "value": "SuperJ6",
+              "disabled": false
+            },
+            {
+              "value": "JUNO",
+              "disabled": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "requested": "CHICAGO",
+      "elapsedMs": 7158,
+      "dom": {
+        "part": "miami",
+        "source": "draft",
+        "picker": {
+          "value": "JUNO",
+          "disabled": false,
+          "display": "block",
+          "visibility": "visible",
+          "width": 119,
+          "height": 40,
+          "options": [
+            {
+              "value": "CHICAGO",
+              "disabled": false
+            },
+            {
+              "value": "MIAMI",
+              "disabled": false
+            },
+            {
+              "value": "Synth One",
+              "disabled": false
+            },
+            {
+              "value": "SuperJ6",
+              "disabled": false
+            },
+            {
+              "value": "JUNO",
+              "disabled": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "requested": "MIAMI",
+      "elapsedMs": 8836,
+      "dom": {
+        "part": "miami",
+        "source": "draft",
+        "picker": {
+          "value": "CHICAGO",
+          "disabled": false,
+          "display": "block",
+          "visibility": "visible",
+          "width": 97,
+          "height": 40,
+          "options": [
+            {
+              "value": "CHICAGO",
+              "disabled": false
+            },
+            {
+              "value": "MIAMI",
+              "disabled": false
+            },
+            {
+              "value": "Synth One",
+              "disabled": false
+            },
+            {
+              "value": "SuperJ6",
+              "disabled": false
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "pageErrors": [],
+  "result": "PASS",
+  "durationMs": 8928
+}

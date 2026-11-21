@@ -1,0 +1,11 @@
+{"files":238,"output":"/workspace/scratch/537b1f88ce48/miami-remote/envelope-9c35/.output/native-envelope-igq0wspl","emulator":true,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+PASS native observer expiry and resume {"observed": {"sequence": 113, "engine": "CHICAGO", "slot": 1, "role": "amp", "level": 1}, "last": 115, "resumed": {"sequence": 116, "engine": "CHICAGO", "slot": 1, "role": "amp", "level": 1}}
+PASS actual native CHICAGO slot1 observed level/curve 1440x900
+PASS actual native JUNO slot1 observed level/curve 1440x900
+PASS actual native envelope 1440x900: source=06bd40c57cefcdf6c751b318b1cbaea0914fa8bb role=909/0/amp draft-preserved MIDI=0
+PASS actual native CHICAGO slot1 observed level/curve 390x844
+PASS actual native JUNO slot1 observed level/curve 390x844
+PASS actual native envelope 390x844: source=06bd40c57cefcdf6c751b318b1cbaea0914fa8bb role=909/0/amp draft-preserved MIDI=0
+PASS actual native CHICAGO slot1 observed level/curve 844x390
+PASS actual native JUNO slot1 observed level/curve 844x390
+PASS actual native envelope 844x390: source=06bd40c57cefcdf6c751b318b1cbaea0914fa8bb role=909/0/amp draft-preserved MIDI=0

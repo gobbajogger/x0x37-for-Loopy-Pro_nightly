@@ -1,0 +1,920 @@
+[
+  {
+    "bin": 0,
+    "bpm": 90,
+    "normalized": 1.0,
+    "hz": 24.0,
+    "sample_rate": 8000,
+    "frames": 1001,
+    "falling_edges": [
+      334,
+      667,
+      1000
+    ],
+    "measured_quarter_beats": 0.0624375,
+    "equivalent": "1/64 note",
+    "equivalent_quarter_beats": "1/16",
+    "wav_sha256": "a8ebdd48107fc2d57e68fdeaf207798dddb5a7c88e0caa783e681e9e2a22dbc2"
+  },
+  {
+    "bin": 1,
+    "bpm": 90,
+    "normalized": 0.9411764741,
+    "hz": 18.0,
+    "sample_rate": 8000,
+    "frames": 1335,
+    "falling_edges": [
+      445,
+      889,
+      1334
+    ],
+    "measured_quarter_beats": 0.08334375000000001,
+    "equivalent": "1/32-note triplet",
+    "equivalent_quarter_beats": "1/12",
+    "wav_sha256": "7b9c5f9a6728efd2f3057995e11520a482e25cd8a602bbb094be3bbb12116c6d"
+  },
+  {
+    "bin": 2,
+    "bpm": 90,
+    "normalized": 0.8823529482,
+    "hz": 12.0,
+    "sample_rate": 8000,
+    "frames": 2002,
+    "falling_edges": [
+      667,
+      1334,
+      2001
+    ],
+    "measured_quarter_beats": 0.1250625,
+    "equivalent": "1/32 note",
+    "equivalent_quarter_beats": "1/8",
+    "wav_sha256": "17ed133981d00cac5b6868a95693e295f65e6d94d64528c56d97614b5339e8e4"
+  },
+  {
+    "bin": 3,
+    "bpm": 90,
+    "normalized": 0.8235294223,
+    "hz": 9.0,
+    "sample_rate": 8000,
+    "frames": 2668,
+    "falling_edges": [
+      889,
+      1778,
+      2667
+    ],
+    "measured_quarter_beats": 0.16668750000000002,
+    "equivalent": "1/16-note triplet",
+    "equivalent_quarter_beats": "1/6",
+    "wav_sha256": "56e33161bc40ff61f00954684198ccdc21498e36a2843423c45cf32da48fe8ec"
+  },
+  {
+    "bin": 4,
+    "bpm": 90,
+    "normalized": 0.7647058964,
+    "hz": 6.0,
+    "sample_rate": 8000,
+    "frames": 4001,
+    "falling_edges": [
+      1334,
+      2667,
+      4000
+    ],
+    "measured_quarter_beats": 0.2499375,
+    "equivalent": "1/16 note",
+    "equivalent_quarter_beats": "1/4",
+    "wav_sha256": "1b7bfe91cd8f928d02997249b7f260fd4ee50c8bc6d2b9073b7b384b0e9ac253"
+  },
+  {
+    "bin": 5,
+    "bpm": 90,
+    "normalized": 0.7058823705,
+    "hz": 4.5,
+    "sample_rate": 8000,
+    "frames": 5335,
+    "falling_edges": [
+      1778,
+      3556,
+      5334
+    ],
+    "measured_quarter_beats": 0.33337500000000003,
+    "equivalent": "1/8-note triplet",
+    "equivalent_quarter_beats": "1/3",
+    "wav_sha256": "f2ff9c780b02883bed9758f0760b6766f56559ccb89b7cf45e75fbdfb7c8c176"
+  },
+  {
+    "bin": 6,
+    "bpm": 90,
+    "normalized": 0.6470588446,
+    "hz": 3.0,
+    "sample_rate": 8000,
+    "frames": 8001,
+    "falling_edges": [
+      2667,
+      5334,
+      8000
+    ],
+    "measured_quarter_beats": 0.49996875,
+    "equivalent": "1/8 note",
+    "equivalent_quarter_beats": "1/2",
+    "wav_sha256": "481a866e1eeae64c58c1f86ecfd2dd11ab8f2b6c3d080464c7d45e3e191208fb"
+  },
+  {
+    "bin": 7,
+    "bpm": 90,
+    "normalized": 0.5882353187,
+    "hz": 2.25,
+    "sample_rate": 8000,
+    "frames": 10668,
+    "falling_edges": [
+      3556,
+      7112,
+      10667
+    ],
+    "measured_quarter_beats": 0.6666562500000001,
+    "equivalent": "1/4-note triplet",
+    "equivalent_quarter_beats": "2/3",
+    "wav_sha256": "62949d072526e9008fcf0ea809380b13867226601a653967090d5e7f3d5adcfb"
+  },
+  {
+    "bin": 8,
+    "bpm": 90,
+    "normalized": 0.5294117928,
+    "hz": 1.5,
+    "sample_rate": 8000,
+    "frames": 16001,
+    "falling_edges": [
+      5334,
+      10667,
+      16000
+    ],
+    "measured_quarter_beats": 0.9999375,
+    "equivalent": "1/4 note",
+    "equivalent_quarter_beats": "1",
+    "wav_sha256": "c5cb447ce71d82947533e6f403e2a899c48eeeb750d7e6ec52fae7a84b45ecb0"
+  },
+  {
+    "bin": 9,
+    "bpm": 90,
+    "normalized": 0.470588237,
+    "hz": 1.125,
+    "sample_rate": 8000,
+    "frames": 21335,
+    "falling_edges": [
+      7112,
+      14223,
+      21334
+    ],
+    "measured_quarter_beats": 1.3333125000000001,
+    "equivalent": "1/2-note triplet",
+    "equivalent_quarter_beats": "4/3",
+    "wav_sha256": "632de10958a587da124d39b4be9f9156a62ba22ad3e0e1eb69f694cb1933f8c1"
+  },
+  {
+    "bin": 10,
+    "bpm": 90,
+    "normalized": 0.4117647111,
+    "hz": 0.75,
+    "sample_rate": 8000,
+    "frames": 32001,
+    "falling_edges": [
+      10667,
+      21334,
+      32000
+    ],
+    "measured_quarter_beats": 1.99996875,
+    "equivalent": "1/2 note",
+    "equivalent_quarter_beats": "2",
+    "wav_sha256": "3f12ddd685d359bfb8f67116c8639f6c571cdffa18331158f5ccc9872c1d4252"
+  },
+  {
+    "bin": 11,
+    "bpm": 90,
+    "normalized": 0.3529411852,
+    "hz": 0.5625,
+    "sample_rate": 8000,
+    "frames": 42668,
+    "falling_edges": [
+      14223,
+      28445,
+      42667
+    ],
+    "measured_quarter_beats": 2.6666250000000002,
+    "equivalent": "whole-note triplet",
+    "equivalent_quarter_beats": "8/3",
+    "wav_sha256": "fad94d04bd9d0dfc4218d73791bcea3db15bc6d5adb44cc12f9b14050e137e9e"
+  },
+  {
+    "bin": 12,
+    "bpm": 90,
+    "normalized": 0.2941176593,
+    "hz": 0.375,
+    "sample_rate": 8000,
+    "frames": 64001,
+    "falling_edges": [
+      21334,
+      42667,
+      64000
+    ],
+    "measured_quarter_beats": 3.9999375,
+    "equivalent": "whole note",
+    "equivalent_quarter_beats": "4",
+    "wav_sha256": "b873f7078c839af32a6e0a329de771a7ac2c777f726f9d9de91eb80bf90fd0ac"
+  },
+  {
+    "bin": 13,
+    "bpm": 90,
+    "normalized": 0.2352941185,
+    "hz": 0.1875,
+    "sample_rate": 8000,
+    "frames": 128001,
+    "falling_edges": [
+      42667,
+      85334,
+      128000
+    ],
+    "measured_quarter_beats": 7.99996875,
+    "equivalent": "2 whole notes",
+    "equivalent_quarter_beats": "8",
+    "wav_sha256": "6af00acb949ed4c3154a3d306da9cf0c6d0261a8d49e8100215c0fd1986039f5"
+  },
+  {
+    "bin": 14,
+    "bpm": 90,
+    "normalized": 0.1764705926,
+    "hz": 0.1249874979,
+    "sample_rate": 8000,
+    "frames": 192021,
+    "falling_edges": [
+      64007,
+      128013,
+      192020
+    ],
+    "measured_quarter_beats": 12.00121875,
+    "equivalent": "about 3 whole notes",
+    "equivalent_quarter_beats": "12",
+    "wav_sha256": "911231cf594977f5b9987abea50a03928af197071dd3c9d23737115fb8bb15a4"
+  },
+  {
+    "bin": 15,
+    "bpm": 90,
+    "normalized": 0.1176470593,
+    "hz": 0.09375,
+    "sample_rate": 8000,
+    "frames": 256002,
+    "falling_edges": [
+      85334,
+      170667,
+      256001
+    ],
+    "measured_quarter_beats": 16.00003125,
+    "equivalent": "4 whole notes",
+    "equivalent_quarter_beats": "16",
+    "wav_sha256": "b9da717d11150f7365238adebb50f07767037a6ab522f3af2ab76d2bf2f35875"
+  },
+  {
+    "bin": 16,
+    "bpm": 90,
+    "normalized": 0.05882352963,
+    "hz": 0.06251250207,
+    "sample_rate": 8000,
+    "frames": 383925,
+    "falling_edges": [
+      127975,
+      255949,
+      383924
+    ],
+    "measured_quarter_beats": 23.99521875,
+    "equivalent": "about 6 whole notes",
+    "equivalent_quarter_beats": "24",
+    "wav_sha256": "6d35d1cf3d01f16f8cba7591eed009a500df8908a586231274bdff83b0487644"
+  },
+  {
+    "bin": 17,
+    "bpm": 90,
+    "normalized": 0.0,
+    "hz": 0.046875,
+    "sample_rate": 8000,
+    "frames": 512002,
+    "falling_edges": [
+      170667,
+      341334,
+      512001
+    ],
+    "measured_quarter_beats": 32.0000625,
+    "equivalent": "8 whole notes",
+    "equivalent_quarter_beats": "32",
+    "wav_sha256": "a15b95031177873373030ad786116b7182aa5268dbe706fcc09d8cb07c73c35d"
+  },
+  {
+    "bin": 0,
+    "bpm": 120,
+    "normalized": 1.0,
+    "hz": 32.0,
+    "sample_rate": 8000,
+    "frames": 751,
+    "falling_edges": [
+      250,
+      500,
+      750
+    ],
+    "measured_quarter_beats": 0.0625,
+    "equivalent": "1/64 note",
+    "equivalent_quarter_beats": "1/16",
+    "wav_sha256": "e472e8ef274c8289215248f8a879c7dd60c523b28435c21e1b8ef1530ded4393"
+  },
+  {
+    "bin": 1,
+    "bpm": 120,
+    "normalized": 0.9411764741,
+    "hz": 24.0,
+    "sample_rate": 8000,
+    "frames": 1001,
+    "falling_edges": [
+      334,
+      667,
+      1000
+    ],
+    "measured_quarter_beats": 0.08325,
+    "equivalent": "1/32-note triplet",
+    "equivalent_quarter_beats": "1/12",
+    "wav_sha256": "a8ebdd48107fc2d57e68fdeaf207798dddb5a7c88e0caa783e681e9e2a22dbc2"
+  },
+  {
+    "bin": 2,
+    "bpm": 120,
+    "normalized": 0.8823529482,
+    "hz": 16.0,
+    "sample_rate": 8000,
+    "frames": 1501,
+    "falling_edges": [
+      500,
+      1000,
+      1500
+    ],
+    "measured_quarter_beats": 0.125,
+    "equivalent": "1/32 note",
+    "equivalent_quarter_beats": "1/8",
+    "wav_sha256": "da325eb8fc28bfccc64ff0a985f05b05a17df54709d21b7dd33d774048462404"
+  },
+  {
+    "bin": 3,
+    "bpm": 120,
+    "normalized": 0.8235294223,
+    "hz": 12.0,
+    "sample_rate": 8000,
+    "frames": 2002,
+    "falling_edges": [
+      667,
+      1334,
+      2001
+    ],
+    "measured_quarter_beats": 0.16675,
+    "equivalent": "1/16-note triplet",
+    "equivalent_quarter_beats": "1/6",
+    "wav_sha256": "17ed133981d00cac5b6868a95693e295f65e6d94d64528c56d97614b5339e8e4"
+  },
+  {
+    "bin": 4,
+    "bpm": 120,
+    "normalized": 0.7647058964,
+    "hz": 8.0,
+    "sample_rate": 8000,
+    "frames": 3001,
+    "falling_edges": [
+      1000,
+      2000,
+      3000
+    ],
+    "measured_quarter_beats": 0.25,
+    "equivalent": "1/16 note",
+    "equivalent_quarter_beats": "1/4",
+    "wav_sha256": "a88a709bdca09ea6c70cc08f054b65aaed304b3cf1888cbea80d4f401829ea0b"
+  },
+  {
+    "bin": 5,
+    "bpm": 120,
+    "normalized": 0.7058823705,
+    "hz": 6.0,
+    "sample_rate": 8000,
+    "frames": 4001,
+    "falling_edges": [
+      1334,
+      2667,
+      4000
+    ],
+    "measured_quarter_beats": 0.33325,
+    "equivalent": "1/8-note triplet",
+    "equivalent_quarter_beats": "1/3",
+    "wav_sha256": "1b7bfe91cd8f928d02997249b7f260fd4ee50c8bc6d2b9073b7b384b0e9ac253"
+  },
+  {
+    "bin": 6,
+    "bpm": 120,
+    "normalized": 0.6470588446,
+    "hz": 4.0,
+    "sample_rate": 8000,
+    "frames": 6002,
+    "falling_edges": [
+      2001,
+      4001,
+      6001
+    ],
+    "measured_quarter_beats": 0.5,
+    "equivalent": "1/8 note",
+    "equivalent_quarter_beats": "1/2",
+    "wav_sha256": "16e465fef66a4f846aee7c8162cd9959fc9ff63cf2c4d13f2dcd3ce63e98deb9"
+  },
+  {
+    "bin": 7,
+    "bpm": 120,
+    "normalized": 0.5882353187,
+    "hz": 3.0,
+    "sample_rate": 8000,
+    "frames": 8001,
+    "falling_edges": [
+      2667,
+      5334,
+      8000
+    ],
+    "measured_quarter_beats": 0.666625,
+    "equivalent": "1/4-note triplet",
+    "equivalent_quarter_beats": "2/3",
+    "wav_sha256": "481a866e1eeae64c58c1f86ecfd2dd11ab8f2b6c3d080464c7d45e3e191208fb"
+  },
+  {
+    "bin": 8,
+    "bpm": 120,
+    "normalized": 0.5294117928,
+    "hz": 2.0,
+    "sample_rate": 8000,
+    "frames": 12002,
+    "falling_edges": [
+      4001,
+      8001,
+      12001
+    ],
+    "measured_quarter_beats": 1.0,
+    "equivalent": "1/4 note",
+    "equivalent_quarter_beats": "1",
+    "wav_sha256": "ad357fb32aeef600a5d12cffd3c2069fa714bf64a58849427671a07824ea911c"
+  },
+  {
+    "bin": 9,
+    "bpm": 120,
+    "normalized": 0.470588237,
+    "hz": 1.5,
+    "sample_rate": 8000,
+    "frames": 16001,
+    "falling_edges": [
+      5334,
+      10667,
+      16000
+    ],
+    "measured_quarter_beats": 1.33325,
+    "equivalent": "1/2-note triplet",
+    "equivalent_quarter_beats": "4/3",
+    "wav_sha256": "c5cb447ce71d82947533e6f403e2a899c48eeeb750d7e6ec52fae7a84b45ecb0"
+  },
+  {
+    "bin": 10,
+    "bpm": 120,
+    "normalized": 0.4117647111,
+    "hz": 1.0,
+    "sample_rate": 8000,
+    "frames": 24001,
+    "falling_edges": [
+      8000,
+      16000,
+      24000
+    ],
+    "measured_quarter_beats": 2.0,
+    "equivalent": "1/2 note",
+    "equivalent_quarter_beats": "2",
+    "wav_sha256": "d43ebea7ff7c57069f54dc5cd5770b1ada79bdfbd44babf253d1a45c52494ebd"
+  },
+  {
+    "bin": 11,
+    "bpm": 120,
+    "normalized": 0.3529411852,
+    "hz": 0.75,
+    "sample_rate": 8000,
+    "frames": 32001,
+    "falling_edges": [
+      10667,
+      21334,
+      32000
+    ],
+    "measured_quarter_beats": 2.6666250000000002,
+    "equivalent": "whole-note triplet",
+    "equivalent_quarter_beats": "8/3",
+    "wav_sha256": "3f12ddd685d359bfb8f67116c8639f6c571cdffa18331158f5ccc9872c1d4252"
+  },
+  {
+    "bin": 12,
+    "bpm": 120,
+    "normalized": 0.2941176593,
+    "hz": 0.5,
+    "sample_rate": 8000,
+    "frames": 48002,
+    "falling_edges": [
+      16001,
+      32001,
+      48001
+    ],
+    "measured_quarter_beats": 4.0,
+    "equivalent": "whole note",
+    "equivalent_quarter_beats": "4",
+    "wav_sha256": "a31b72f7cd14e42c256e23e7a98e73b3432571f5b6dd515cea5a63e09e6a3366"
+  },
+  {
+    "bin": 13,
+    "bpm": 120,
+    "normalized": 0.2352941185,
+    "hz": 0.25,
+    "sample_rate": 8000,
+    "frames": 96001,
+    "falling_edges": [
+      32000,
+      64000,
+      96000
+    ],
+    "measured_quarter_beats": 8.0,
+    "equivalent": "2 whole notes",
+    "equivalent_quarter_beats": "8",
+    "wav_sha256": "17827c2aeb1a094ea2ea5e61d8b27bc7e1ff49e1734378a8d31554dd16dcd95f"
+  },
+  {
+    "bin": 14,
+    "bpm": 120,
+    "normalized": 0.1764705926,
+    "hz": 0.1666499972,
+    "sample_rate": 8000,
+    "frames": 144016,
+    "falling_edges": [
+      48005,
+      96010,
+      144015
+    ],
+    "measured_quarter_beats": 12.00125,
+    "equivalent": "about 3 whole notes",
+    "equivalent_quarter_beats": "12",
+    "wav_sha256": "811ac0c09db6514d799d7b9b05665bb0e07f367f5a59a9856c54336ce85de8d1"
+  },
+  {
+    "bin": 15,
+    "bpm": 120,
+    "normalized": 0.1176470593,
+    "hz": 0.125,
+    "sample_rate": 8000,
+    "frames": 192002,
+    "falling_edges": [
+      64001,
+      128001,
+      192001
+    ],
+    "measured_quarter_beats": 16.0,
+    "equivalent": "4 whole notes",
+    "equivalent_quarter_beats": "16",
+    "wav_sha256": "934f5e3fec7c30329e5178161a707ce52219159ff479fad663a2e6303d3a0260"
+  },
+  {
+    "bin": 16,
+    "bpm": 120,
+    "normalized": 0.05882352963,
+    "hz": 0.08335000277,
+    "sample_rate": 8000,
+    "frames": 287944,
+    "falling_edges": [
+      95981,
+      191962,
+      287943
+    ],
+    "measured_quarter_beats": 23.99525,
+    "equivalent": "about 6 whole notes",
+    "equivalent_quarter_beats": "24",
+    "wav_sha256": "3b21642313f2d56f26453d6c89aad5c9441387e28f8ec8724918609823083dab"
+  },
+  {
+    "bin": 17,
+    "bpm": 120,
+    "normalized": 0.0,
+    "hz": 0.0625,
+    "sample_rate": 8000,
+    "frames": 384001,
+    "falling_edges": [
+      128000,
+      256000,
+      384000
+    ],
+    "measured_quarter_beats": 32.0,
+    "equivalent": "8 whole notes",
+    "equivalent_quarter_beats": "32",
+    "wav_sha256": "cac7904c9a87d747255bbf3e84b85d206e17d597b9fdef4d7e85cc453e33c4de"
+  },
+  {
+    "bin": 0,
+    "bpm": 180,
+    "normalized": 1.0,
+    "hz": 48.0,
+    "sample_rate": 8000,
+    "frames": 501,
+    "falling_edges": [
+      167,
+      334,
+      500
+    ],
+    "measured_quarter_beats": 0.0624375,
+    "equivalent": "1/64 note",
+    "equivalent_quarter_beats": "1/16",
+    "wav_sha256": "e22f3cd842597609d0f93164798fe9b5eef56bf6536a343c0efaa5b7fecfc08d"
+  },
+  {
+    "bin": 1,
+    "bpm": 180,
+    "normalized": 0.9411764741,
+    "hz": 36.0,
+    "sample_rate": 8000,
+    "frames": 668,
+    "falling_edges": [
+      223,
+      445,
+      667
+    ],
+    "measured_quarter_beats": 0.08325,
+    "equivalent": "1/32-note triplet",
+    "equivalent_quarter_beats": "1/12",
+    "wav_sha256": "cc1786da4babcdb49e4695c0d7771410a15aede55d114f90ebc788ad93cc89da"
+  },
+  {
+    "bin": 2,
+    "bpm": 180,
+    "normalized": 0.8823529482,
+    "hz": 24.0,
+    "sample_rate": 8000,
+    "frames": 1001,
+    "falling_edges": [
+      334,
+      667,
+      1000
+    ],
+    "measured_quarter_beats": 0.124875,
+    "equivalent": "1/32 note",
+    "equivalent_quarter_beats": "1/8",
+    "wav_sha256": "a8ebdd48107fc2d57e68fdeaf207798dddb5a7c88e0caa783e681e9e2a22dbc2"
+  },
+  {
+    "bin": 3,
+    "bpm": 180,
+    "normalized": 0.8235294223,
+    "hz": 18.0,
+    "sample_rate": 8000,
+    "frames": 1335,
+    "falling_edges": [
+      445,
+      889,
+      1334
+    ],
+    "measured_quarter_beats": 0.16668750000000002,
+    "equivalent": "1/16-note triplet",
+    "equivalent_quarter_beats": "1/6",
+    "wav_sha256": "7b9c5f9a6728efd2f3057995e11520a482e25cd8a602bbb094be3bbb12116c6d"
+  },
+  {
+    "bin": 4,
+    "bpm": 180,
+    "normalized": 0.7647058964,
+    "hz": 12.0,
+    "sample_rate": 8000,
+    "frames": 2002,
+    "falling_edges": [
+      667,
+      1334,
+      2001
+    ],
+    "measured_quarter_beats": 0.250125,
+    "equivalent": "1/16 note",
+    "equivalent_quarter_beats": "1/4",
+    "wav_sha256": "17ed133981d00cac5b6868a95693e295f65e6d94d64528c56d97614b5339e8e4"
+  },
+  {
+    "bin": 5,
+    "bpm": 180,
+    "normalized": 0.7058823705,
+    "hz": 9.0,
+    "sample_rate": 8000,
+    "frames": 2668,
+    "falling_edges": [
+      889,
+      1778,
+      2667
+    ],
+    "measured_quarter_beats": 0.33337500000000003,
+    "equivalent": "1/8-note triplet",
+    "equivalent_quarter_beats": "1/3",
+    "wav_sha256": "56e33161bc40ff61f00954684198ccdc21498e36a2843423c45cf32da48fe8ec"
+  },
+  {
+    "bin": 6,
+    "bpm": 180,
+    "normalized": 0.6470588446,
+    "hz": 6.0,
+    "sample_rate": 8000,
+    "frames": 4001,
+    "falling_edges": [
+      1334,
+      2667,
+      4000
+    ],
+    "measured_quarter_beats": 0.499875,
+    "equivalent": "1/8 note",
+    "equivalent_quarter_beats": "1/2",
+    "wav_sha256": "1b7bfe91cd8f928d02997249b7f260fd4ee50c8bc6d2b9073b7b384b0e9ac253"
+  },
+  {
+    "bin": 7,
+    "bpm": 180,
+    "normalized": 0.5882353187,
+    "hz": 4.5,
+    "sample_rate": 8000,
+    "frames": 5335,
+    "falling_edges": [
+      1778,
+      3556,
+      5334
+    ],
+    "measured_quarter_beats": 0.6667500000000001,
+    "equivalent": "1/4-note triplet",
+    "equivalent_quarter_beats": "2/3",
+    "wav_sha256": "f2ff9c780b02883bed9758f0760b6766f56559ccb89b7cf45e75fbdfb7c8c176"
+  },
+  {
+    "bin": 8,
+    "bpm": 180,
+    "normalized": 0.5294117928,
+    "hz": 3.0,
+    "sample_rate": 8000,
+    "frames": 8001,
+    "falling_edges": [
+      2667,
+      5334,
+      8000
+    ],
+    "measured_quarter_beats": 0.9999375,
+    "equivalent": "1/4 note",
+    "equivalent_quarter_beats": "1",
+    "wav_sha256": "481a866e1eeae64c58c1f86ecfd2dd11ab8f2b6c3d080464c7d45e3e191208fb"
+  },
+  {
+    "bin": 9,
+    "bpm": 180,
+    "normalized": 0.470588237,
+    "hz": 2.25,
+    "sample_rate": 8000,
+    "frames": 10668,
+    "falling_edges": [
+      3556,
+      7112,
+      10667
+    ],
+    "measured_quarter_beats": 1.3333125000000001,
+    "equivalent": "1/2-note triplet",
+    "equivalent_quarter_beats": "4/3",
+    "wav_sha256": "62949d072526e9008fcf0ea809380b13867226601a653967090d5e7f3d5adcfb"
+  },
+  {
+    "bin": 10,
+    "bpm": 180,
+    "normalized": 0.4117647111,
+    "hz": 1.5,
+    "sample_rate": 8000,
+    "frames": 16001,
+    "falling_edges": [
+      5334,
+      10667,
+      16000
+    ],
+    "measured_quarter_beats": 1.999875,
+    "equivalent": "1/2 note",
+    "equivalent_quarter_beats": "2",
+    "wav_sha256": "c5cb447ce71d82947533e6f403e2a899c48eeeb750d7e6ec52fae7a84b45ecb0"
+  },
+  {
+    "bin": 11,
+    "bpm": 180,
+    "normalized": 0.3529411852,
+    "hz": 1.125,
+    "sample_rate": 8000,
+    "frames": 21335,
+    "falling_edges": [
+      7112,
+      14223,
+      21334
+    ],
+    "measured_quarter_beats": 2.6666250000000002,
+    "equivalent": "whole-note triplet",
+    "equivalent_quarter_beats": "8/3",
+    "wav_sha256": "632de10958a587da124d39b4be9f9156a62ba22ad3e0e1eb69f694cb1933f8c1"
+  },
+  {
+    "bin": 12,
+    "bpm": 180,
+    "normalized": 0.2941176593,
+    "hz": 0.75,
+    "sample_rate": 8000,
+    "frames": 32001,
+    "falling_edges": [
+      10667,
+      21334,
+      32000
+    ],
+    "measured_quarter_beats": 3.9999375,
+    "equivalent": "whole note",
+    "equivalent_quarter_beats": "4",
+    "wav_sha256": "3f12ddd685d359bfb8f67116c8639f6c571cdffa18331158f5ccc9872c1d4252"
+  },
+  {
+    "bin": 13,
+    "bpm": 180,
+    "normalized": 0.2352941185,
+    "hz": 0.375,
+    "sample_rate": 8000,
+    "frames": 64001,
+    "falling_edges": [
+      21334,
+      42667,
+      64000
+    ],
+    "measured_quarter_beats": 7.999875,
+    "equivalent": "2 whole notes",
+    "equivalent_quarter_beats": "8",
+    "wav_sha256": "b873f7078c839af32a6e0a329de771a7ac2c777f726f9d9de91eb80bf90fd0ac"
+  },
+  {
+    "bin": 14,
+    "bpm": 180,
+    "normalized": 0.1764705926,
+    "hz": 0.2499749959,
+    "sample_rate": 8000,
+    "frames": 96011,
+    "falling_edges": [
+      32004,
+      64007,
+      96010
+    ],
+    "measured_quarter_beats": 12.001125,
+    "equivalent": "about 3 whole notes",
+    "equivalent_quarter_beats": "12",
+    "wav_sha256": "d93fb9e90549e5dc3986c2b0b07555d7b68561238a8bedb55dacd225db7494ee"
+  },
+  {
+    "bin": 15,
+    "bpm": 180,
+    "normalized": 0.1176470593,
+    "hz": 0.1875,
+    "sample_rate": 8000,
+    "frames": 128001,
+    "falling_edges": [
+      42667,
+      85334,
+      128000
+    ],
+    "measured_quarter_beats": 15.9999375,
+    "equivalent": "4 whole notes",
+    "equivalent_quarter_beats": "16",
+    "wav_sha256": "6af00acb949ed4c3154a3d306da9cf0c6d0261a8d49e8100215c0fd1986039f5"
+  },
+  {
+    "bin": 16,
+    "bpm": 180,
+    "normalized": 0.05882352963,
+    "hz": 0.1250250041,
+    "sample_rate": 8000,
+    "frames": 191963,
+    "falling_edges": [
+      63988,
+      127975,
+      191962
+    ],
+    "measured_quarter_beats": 23.995124999999998,
+    "equivalent": "about 6 whole notes",
+    "equivalent_quarter_beats": "24",
+    "wav_sha256": "4c7c14b4f683ff9835f5cc53e5f1f26ba46148cd39afdddbddb565b311940454"
+  },
+  {
+    "bin": 17,
+    "bpm": 180,
+    "normalized": 0.0,
+    "hz": 0.09375,
+    "sample_rate": 8000,
+    "frames": 256002,
+    "falling_edges": [
+      85334,
+      170667,
+      256001
+    ],
+    "measured_quarter_beats": 32.0000625,
+    "equivalent": "8 whole notes",
+    "equivalent_quarter_beats": "32",
+    "wav_sha256": "b9da717d11150f7365238adebb50f07767037a6ab522f3af2ab76d2bf2f35875"
+  }
+]

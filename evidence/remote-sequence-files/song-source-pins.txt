@@ -1,0 +1,3 @@
+db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17  docs/design/OWNER-BASELINE-1836.pdf
+40a393b76de9f11d41bf99828fab99f87f91e29ed3b21f672c9ab1cf984b8156  firmware/src/seq/sequencer.c
+1fffaf171bf1ec6d7575486dbb2d2c8bffc0801c6bf1cab0a213ddc072d1f3cd  firmware/src/seq/sequencer.h

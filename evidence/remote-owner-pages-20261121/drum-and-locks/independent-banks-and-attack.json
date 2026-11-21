@@ -1,0 +1,23 @@
+{
+  "1440": {
+    "miami": "61 %",
+    "chicago": "24 %",
+    "review": "Bass B / CHICAGO \u00b7 P01 \u00b7 Step 1 \u00b7 Cutoff lock: 24 % Bass B / MIAMI \u00b7 P01 \u00b7 Step 1 \u00b7 Cutoff lock: 61 %",
+    "attackBefore": "M1 12L4.0709 0L31 0",
+    "attackAfter": "M1 12L5.8904 0L31 0"
+  },
+  "390": {
+    "miami": "61 %",
+    "chicago": "24 %",
+    "review": "Bass B / CHICAGO \u00b7 P01 \u00b7 Step 1 \u00b7 Cutoff lock: 24 % Bass B / MIAMI \u00b7 P01 \u00b7 Step 1 \u00b7 Cutoff lock: 61 %",
+    "attackBefore": "M1 12L4.0709 0L31 0",
+    "attackAfter": "M1 12L5.3377 0L31 0"
+  },
+  "844": {
+    "miami": "61 %",
+    "chicago": "24 %",
+    "review": "Bass B / CHICAGO \u00b7 P01 \u00b7 Step 1 \u00b7 Cutoff lock: 24 % Bass B / MIAMI \u00b7 P01 \u00b7 Step 1 \u00b7 Cutoff lock: 61 %",
+    "attackBefore": "M1 12L4.0709 0L31 0",
+    "attackAfter": "M1 12L5.5354 0L31 0"
+  }
+}

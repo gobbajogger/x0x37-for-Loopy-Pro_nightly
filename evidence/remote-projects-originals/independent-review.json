@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "repository": "gobbajogger/DnBOX-nightly",
+  "pullRequest": 169,
+  "base": "982deaf7b9cc6bbcf71db4d232e4c354e98d67d3",
+  "scope": "Remote Projects original-preset card and dialog, owner PDF pages 12 and 20. Open an original, inspect one preset, rename, Keep and download the retained original-format copy. Standalone Presets uses the same working-file model.",
+  "excluded": [
+    "connected backup or device transfer",
+    "MIDI export",
+    "full Remote lane and full unfiltered gate"
+  ],
+  "reviewDisposition": "pass for the named scope",
+  "lexicalVerification": {
+    "executor": "Independent reviewer, Node against candidate shared model and original inputs.",
+    "method": "Opened all 24 banks and compared kept unchanged downloads byte for byte. For first and last program per file, independently located its one literal JSON name token, replaced only this token with a Unicode-suffixed name, and required exact equality with the edited download. The original download retained its complete bytes and source filename.",
+    "formats": {
+      "Synth One": {
+        "files": 12,
+        "presets": 694,
+        "unchangedByteComparisons": 12,
+        "uniqueSingleNameTokenComparisons": 24
+      },
+      "SuperJ6": {
+        "files": 12,
+        "presets": 640,
+        "unchangedByteComparisons": 12,
+        "uniqueSingleNameTokenComparisons": 24
+      }
+    }
+  },
+  "uiVerification": {
+    "execution": "Reference worker ran Chromium 151.0.7922.34 and the product journey. Independent reviewer inspected 17 screenshots, checked per-state geometry and computed field contrast.",
+    "stateOrder": [
+      "initial",
+      "empty",
+      "invalid",
+      "opened",
+      "kept",
+      "inspect if available"
+    ],
+    "reachableControlPresentations": {
+      "1440x900": [
+        27,
+        3,
+        3,
+        6,
+        29,
+        4
+      ],
+      "844x390": [
+        27,
+        3,
+        3,
+        6,
+        28
+      ],
+      "390x844": [
+        27,
+        3,
+        3,
+        6,
+        29,
+        4
+      ]
+    },
+    "passedReachable": 211,
+    "totalPresented": 211,
+    "pageErrors": 0,
+    "blockedControls": 0,
+    "horizontallyClippedControls": 0,
+    "midiCalls": 0,
+    "fieldForeground": "#dde7de",
+    "fieldBackground": "#16242b",
+    "fieldContrastRatio": 12.53,
+    "saveCopyHeightPxAtEachSize": 44,
+    "page12": "Desktop and portrait have separate Open original, Inspect contents and Save a copy actions. Inspect requires a loaded source, hides replacement controls and focuses the current preset. Open exposes the original-file chooser.",
+    "page20": "Compact landscape presents the two-action layout. Open original includes inspection and editing. Keep enables Save a copy and availability is visible.",
+    "normalR5Inventory": [
+      "projects",
+      "projects-original-empty",
+      "projects-original-invalid",
+      "projects-original-editor",
+      "projects-original-kept"
+    ],
+    "flows": [
+      "Both format copies download and reimport on all three sizes. Browser status matches actual kept-prefixed download filename.",
+      "Consecutive selections, file rejection, Return, Escape, pagehide and deferred close preserve correct working-file ownership. Existing inspected data survives closing."
+    ]
+  },
+  "inputsAndEvidenceSha256": {
+    "owner-pdf": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "synth-one-factory-manifest": "806d92dae2ef75b073168e5b85ee2dc6055f2c3b10ceca3a0e40933514c37622",
+    "superj6-original-archive": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+    "candidate-patch": "6a001d0c00547ab01eee28e3578cde17aef492b16ba8d94f0bf93074e3f2a3d2",
+    "browser.json": "fa415a836bb63b26f6c6250f814cedc11f24711f04ada44d9de2cb2bda2d186d",
+    "lifecycle.log": "329325edae4afc8c9213449746a9c270da9f366141a3e203ba6f2c2cb6e1416e",
+    "working-file.mjs": "86a426c59fe28e64f934e5f8acf22fa0ef73bdfb8c437b21527000b532367f19",
+    "interchange.mjs": "7c64284b97feb69bdf135b99ab7c8e56ce82acc5ef1f23e385292ad9d4401a57",
+    "project-preset.mjs": "5b990f5c7cc783aa51517bcaab51c17fc0c8967c4ff3862a44a506d5b0376957",
+    "SOURCE-MANIFEST.json": "8f57ae81494f0bd9bc52ebc276dbb368127a62ffa36221e4ca408720b3a0ca00"
+  }
+}

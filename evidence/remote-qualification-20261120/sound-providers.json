@@ -1,0 +1,140 @@
+{
+  "firmwareRepository": "gobbajogger/DnBOX",
+  "producerPr": 973,
+  "producerHead": "fcf82f607cd35a263c9923071aaa25066ff6d60f",
+  "previousHead": "933a6f40e8aca72607a258ab42ff21265489903d",
+  "producerBase": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+  "remote": {
+    "soundCatalogSource": "ffd31a735acc5721d1f90a30fc1ceb283aad6fc5",
+    "emulatorFirmware": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb",
+    "emulatorKernel": "4758a9573e0a2a95e73cb054a74e0aad39d5741e",
+    "synthOneBank2CatalogRows": 0,
+    "superJ6CatalogRows": 0,
+    "nativeSoundBinding": "40 Chicago scalar controls across both bass slots"
+  },
+  "synthOne": {
+    "stockEngineKind": 2,
+    "persistentId": "0x4f533131",
+    "factorySelector": [
+      {
+        "index": 0,
+        "name": "INIT",
+        "originalFactoryBinding": null
+      }
+    ],
+    "voicesPerPart": 6,
+    "owners": 2,
+    "runtime": "original_runtime_init/key/param/render route Synth One to the dry part. Each newly allocated voice uses s1_dry_frozen_controls.",
+    "independentSetterProbe": {
+      "function": "s1_part_param",
+      "testValue": 0.5,
+      "accepted": {
+        "0": "pitch bend",
+        "1": "damper"
+      },
+      "editablePatchParameters": 0,
+      "testedIdRangeInclusive": [
+        0,
+        149
+      ],
+      "testedIds": 150,
+      "rejectedIdRangeInclusive": [
+        2,
+        149
+      ]
+    },
+    "producerComparisons": {
+      "staticDryNotes": [
+        180,
+        180
+      ],
+      "modulatedDryNotes": [
+        72,
+        72
+      ],
+      "actualPartScenes": [
+        8,
+        8
+      ],
+      "controlledOscillatorNotes": [
+        18,
+        18
+      ]
+    },
+    "originalFormat": {
+      "metadataParameters": 150,
+      "banks": 12,
+      "factoryRecords": 694,
+      "orderedPreSetterWritesPerProgram": 144,
+      "unwrittenIds": [
+        18,
+        31,
+        33,
+        140,
+        144,
+        145
+      ],
+      "preSetterRangeExceptions": 9,
+      "commandStreamSha256": "460d0869c7287ab10dc2ac1928e56b899e8dc089df021ab82d8704ab28cfe7af",
+      "originalPresetsBytePreservedByNightlyInterchange": 694
+    },
+    "factoryAdmission": {
+      "replayed": "experiments/sound-hardware-v1/factory-admission/report.py",
+      "csvIdenticalToProducer": true,
+      "csvSha256": "0814d28172321e6368e46cd8d93e425af5f50366ba4f11b9f304d19742789b5f",
+      "boundOriginalPresets": 0,
+      "unboundOriginalPresets": 694
+    },
+    "independentlyReplayedInit": {
+      "command": "sh tests/host/synthone_init_audio.sh",
+      "exit": 0,
+      "output": "Synth One INIT: stock and legacy cells, audible MIDI, two owners, sustain, pitch, release, voice steal and panic PASS",
+      "logSha256": "c65295b17348fb3e7c47cf44fcf64add21080e776d1337e9dff33f381925abe6"
+    }
+  },
+  "superJ6": {
+    "publicAppIds": 218,
+    "mainApplyPositions": 170,
+    "mainAppliedControls": 167,
+    "declaredUnestablishedPhysicalLawRows": 112,
+    "originalComparisonBankArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+    "producerCompactCandidate": {
+      "programsDecoded": 640,
+      "serializedFields": 90549,
+      "layer2AmpIds": [
+        119,
+        120,
+        121,
+        122
+      ],
+      "appliedFieldWrites": 2560,
+      "wholeAppTaggedEditChangedWords": 0,
+      "wholeAppStockAttackControlChangedWords": 65396,
+      "wholeAppComparisonStereoFrames": 32768
+    },
+    "stockBank3": {
+      "persistentId": "0x4f4a5531",
+      "engine": "JUNO",
+      "factoryCount": 4,
+      "editableMacros": 16,
+      "performanceControls": 2
+    }
+  },
+  "producerHandoff": {
+    "owner": "Sound #973 for independent engine and factory bindings, firmware/Emu for descriptor and per-slot readback, Remote for rendering after admission",
+    "synthOne": "Publish selectable original program IDs and resolved per-slot factory values, editable patch IDs and domains, and a kernel that exposes them. INIT currently supports performance input and audio.",
+    "superJ6": "Publish the independent two-layer engine identity, complete factory dictionary, typed controls and a reachable per-slot event/readback path. The current app macro path omits the compact candidate's tagged AMP2 controls."
+  },
+  "sources": [
+    "docs/lanes/sound.md",
+    "firmware/src/app/original_sound.h",
+    "firmware/src/app/original_runtime.c",
+    "firmware/src/app/s1_dry_part.c",
+    "experiments/sound-hardware-v1/factory-admission/programs.csv",
+    "experiments/sound-hardware-v1/mapping/synthone_followup/results/factory_coverage.json",
+    "experiments/sound-hardware-v1/mapping/results/implementer_brief/public_control_catalog.json",
+    "experiments/sound-hardware-v1/sj6-amp2/results.json",
+    "experiments/sound-hardware-v1/sj6-amp2/entry/results.json",
+    "tests/host/synthone_init_audio.c"
+  ]
+}

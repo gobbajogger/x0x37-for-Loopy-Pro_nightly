@@ -1,0 +1,89 @@
+{
+  "sourceCommit": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+  "sourceSha256": {
+    "seq/pattern.h": "39ba28ac063a3df864d498f1cce5ae153b0037767ffdf82315e7827411421191",
+    "seq/sequencer.c": "40a393b76de9f11d41bf99828fab99f87f91e29ed3b21f672c9ab1cf984b8156",
+    "app/project.c": "6e6d692942b6823130b67f978528d1d7ac5fb7ed8783cf194a0c807d546fe190",
+    "app/ui.c": "21397ecfba51c71ed2be66ec6dd126f2c352ca88a60672d6779a25e79acafddc"
+  },
+  "compiledHeaderWords": 256,
+  "oracleSha256": "e2528f4a83fcc2e29afe1e43efeec098d3b4f8d32ecb6567fc12032d248b31a8",
+  "stockCompatible": 132,
+  "rejected": 124,
+  "owners": [
+    "Bass A",
+    "Bass B"
+  ],
+  "editableStepsPerOwner": 16,
+  "release": [
+    "Legacy",
+    "1/15…15/15"
+  ],
+  "olderDraftFieldsAdded": 0,
+  "notesInferred": false,
+  "hardwareWrites": 0,
+  "browserViewports": [
+    [
+      844,
+      390
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "landscapeStates": [
+    {
+      "name": "bass-chicago-gate",
+      "enabledControls": 38,
+      "screenshotSha256": "3074be2a154846528890114892c6c3eb082bc58d191dfe174fbe8ce14fc12ca2",
+      "completePitchRows": 16
+    },
+    {
+      "name": "bass-chicago-slide",
+      "enabledControls": 38,
+      "screenshotSha256": "402a434b93c22dc044d814f0b3e658b7820930e813c87a64eb00ed51c956510b",
+      "completePitchRows": 16
+    },
+    {
+      "name": "bass-chicago-accent",
+      "enabledControls": 38,
+      "screenshotSha256": "87138bc0489448c0fa2c0e8de0742622ad173a45818bc97bb426ea53117fc1a3",
+      "completePitchRows": 16
+    },
+    {
+      "name": "bass-chicago-release",
+      "enabledControls": 38,
+      "screenshotSha256": "68ed23bd16fea665374587151a52de71d44a09f56e05bf50dfecd68537a25bcb",
+      "completePitchRows": 16
+    },
+    {
+      "name": "bass-miami-gate",
+      "enabledControls": 35,
+      "screenshotSha256": "33d6d9aa0c33783bd74ebb1833109e03e85823e2b0e97efdb4289f7ace5759e5",
+      "completePitchRows": 16
+    },
+    {
+      "name": "bass-miami-slide",
+      "enabledControls": 35,
+      "screenshotSha256": "4b5df162a5fddcaaec6f34cbe2cd1f1229bf03e3597a1e06a88a2fb9c70c158e",
+      "completePitchRows": 16
+    },
+    {
+      "name": "bass-miami-accent",
+      "enabledControls": 35,
+      "screenshotSha256": "b3fb37412153285849fe4f91820cdb7add1445b1c01afa13f0b92541cfc21e84",
+      "completePitchRows": 16
+    },
+    {
+      "name": "bass-miami-release",
+      "enabledControls": 35,
+      "screenshotSha256": "7433374f569af40ea243f4d1951d33a765a7fdfee9f760cfb8051f39bed122aa",
+      "completePitchRows": 16
+    }
+  ]
+}

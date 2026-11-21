@@ -1,0 +1,18 @@
+{
+  "BB Nonpareil 1989": {
+    "value": "120.00000476837158",
+    "min": "0",
+    "max": "120.00000476837158",
+    "valid": true,
+    "tooLarge": false,
+    "tooSmall": false
+  },
+  "BB Crush On The Choir": {
+    "value": "4.999999888241291",
+    "min": "4.999999888241291",
+    "max": "2000",
+    "valid": true,
+    "tooLarge": false,
+    "tooSmall": false
+  }
+}

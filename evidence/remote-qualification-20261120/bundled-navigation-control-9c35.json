@@ -1,0 +1,32 @@
+{
+  "scope": "Single known-good empty-catalog navigation control only. The original Elite/ctl-crc binary was cleaned by the fixture, so this case does not test its negative package semantics.",
+  "exactHead": "9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab",
+  "testFileSha256": "bb41b35746b8997f484fb811063620a90b281e604edbfbbe53e1651bb07ff2c6",
+  "catalog": "preview-catalog.json",
+  "catalogSha256": "7cc76dd383c3c46a822102ee1ebebc73b4cd0af4f4219335250a93b25797d7db",
+  "expectedTimeoutMs": 30000,
+  "startedUtc": "2026-11-21T05:03:55.520Z",
+  "browser": "151.0.7922.34",
+  "navigationMs": 1059,
+  "url": "https://installer.example.invalid/install/",
+  "waitUntil": "domcontentloaded",
+  "viewport": {
+    "width": 390,
+    "height": 900
+  },
+  "state": {
+    "image": false,
+    "disabled": true,
+    "status": "",
+    "hidden": true,
+    "blehidden": true,
+    "controllerstatus": "",
+    "permissions": 0,
+    "writes": 0,
+    "writing": false
+  },
+  "pageErrors": [],
+  "domContentLoaded": "complete",
+  "pass": true,
+  "endedUtc": "2026-11-21T05:04:00.493Z"
+}

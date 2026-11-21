@@ -1,0 +1,6 @@
+{"files":262,"output":"/workspace/scratch/7113924d764d/remote-final/.output/source-banks-kqmrlst5","emulator":true,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+LOCAL_SUPERJ6_BANK 26 programs, absent fields, both owners, original-byte exports, per-program edits, Undo/Redo, digest reattachment, copy reimport and Draft recovery PASS
+SOURCE_BANKS 1440x900 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0
+SOURCE_BANKS 844x390 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0
+SOURCE_BANKS 390x844 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0
+SOURCE_BANKS 1024x640 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0

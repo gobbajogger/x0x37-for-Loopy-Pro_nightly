@@ -1,0 +1,138 @@
+{
+  "date_utc": "2026-11-21",
+  "nightly_consumer_parent": "90cf5429a0aac5929c72d8abf387d70c399488ad",
+  "stock_firmware_tested": "1c82772bac9a33f030bf954ec6151987aef2cbb8",
+  "same_dispatcher_blobs_at": {
+    "firmware_integration_pr_976": "57f70f2f9f7a72d8256918d1370c23c686b9ef92",
+    "sound_pr_973": "63278e3322aefa89b25f129ca2fccc35ef3b3b3d"
+  },
+  "stock_inputs": {
+    "firmware/src/app/editor.c": "d3d8e8d5237b00d96cea5c0c7474536e3fb15853",
+    "firmware/src/ota.c": "af42a32311ec8ea41167dd0b5abbc1fbeeeba506",
+    "tests/host/project_protocol_test.c": "832cf02369a5d15f5d2f6b6d189ba0d0833f3b07",
+    "tests/product-remote/stock-editor-probe.c": "bc7a18bf5edad035d82e793a48d09f2f7e347fe1"
+  },
+  "stock_commands": [
+    "python3 tools/gen_drum_samples.py",
+    "cc -std=c11 -O2 -I. -Ibuild/gen tests/product-remote/stock-editor-probe.c -o stock-editor",
+    "stock-identity-browser.py check_identity(site, stock-editor)"
+  ],
+  "stock_browser": {
+    "chromium": "151.0.7922.34",
+    "status": "Firmware replied: X0X DEV",
+    "exchanges": [
+      {
+        "request_hex": "f07d464c01f7",
+        "editor_deferred": false,
+        "reply_hex": "f07d464c0158305820444556000000004000005853470130f7"
+      },
+      {
+        "request_hex": "f07d444e0200000000005b000000000000000100000000000000000000000000000000000000000000000000000000000000f7",
+        "editor_deferred": true,
+        "reply_hex": ""
+      }
+    ]
+  },
+  "stock_result": "Identity is available. HELLO is consumed without a reply. No stock catalog, parameter read, write or Undo was admitted.",
+  "reference_test_scope": "The DNR2 core and wire are original C with synthetic parameter callbacks. The shipped controller runs under Node DOM doubles and in a normally sandboxed Chromium. No attached keyboard was used.",
+  "regression_on_unmodified_consumer": {
+    "test": "Apply and instrument Undo require independent reads of the committed revision",
+    "exit": 1,
+    "actual_opcodes_after_edit": [
+      3
+    ],
+    "required_opcodes_after_edit": [
+      3,
+      2,
+      2,
+      2
+    ]
+  },
+  "focused_commands": {
+    "node --test tests/product-remote/firmware-link.test.mjs tests/product-remote/identity-protocol.test.mjs": {
+      "exit": 0,
+      "passed": 15
+    },
+    "python3 tests/product-remote/firmware-browser.py": {
+      "exit": 0,
+      "passed": 27
+    }
+  },
+  "candidate_sha256": {
+    "web/product-site/remote/firmware-link.mjs": "9b329e7f7df7adf1e009b243771b291b4c3ee9e70cd786340887bc70ae0b185a",
+    "tests/product-remote/firmware-link.test.mjs": "6025db579e581d95dbd29334741db96a21055b6f23d74809648bf370347e60a3",
+    "tests/product-remote/firmware-browser.py": "6c1a64839a7cc9e09e8e690b1b9cec93074659e2d2fefac57a8697805f4d3cbb"
+  },
+  "reference_checks": {
+    "scalar_read": 500,
+    "apply_readback": 800,
+    "undo_readback": 500,
+    "final_revision": 3,
+    "tested_refusals": [
+      "stale before Undo",
+      "intervening change between Undo READ and SET",
+      "queued response",
+      "different readback value or revision",
+      "retirement during readback",
+      "expired lease",
+      "old Undo after pagehide and reconnect"
+    ]
+  },
+  "logs": {
+    "native-tests.log": [
+      "✔ a page with no reviewed catalog sends nothing and leaves Apply disabled (229.05673ms)",
+      "✔ the C fixture handshake reads confirmed values and a conflicting Apply is refused (373.108514ms)",
+      "✔ an unsupported C control stays unconfirmed and cannot be applied (84.146639ms)",
+      "✔ Apply and instrument Undo require independent reads of the committed revision (140.468436ms)",
+      "✔ Undo keeps a later firmware revision even when the parameter value matches (93.760281ms)",
+      "✔ the C revision guard refuses a change between the Undo read and write (118.11546ms)",
+      "▶ queued or unverifiable writes do not create an Undo action",
+      "  ✔ queued (99.975031ms)",
+      "  ✔ different revision (56.419003ms)",
+      "  ✔ different stored value (99.993016ms)",
+      "✔ queued or unverifiable writes do not create an Undo action (258.681144ms)",
+      "✔ destroy during a pending readback retires the old connection and Undo (116.180839ms)",
+      "✔ expired firmware lease rejects Undo even if a READ is still available (106.767129ms)",
+      "✔ returning to a cached page requires a new handshake and drops the prior Undo (159.057886ms)",
+      "✔ legacy and stock snapshot-capable replies identify firmware without admitting controls (12.746798ms)",
+      "✔ identity rejects partial, unknown and extended XSG capabilities (13.581223ms)",
+      "ℹ tests 15",
+      "ℹ suites 0",
+      "ℹ pass 15",
+      "ℹ fail 0",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0",
+      "ℹ duration_ms 4143.976532"
+    ],
+    "firmware-browser.log": [
+      "PASS no catalog sends no handshake",
+      "PASS MIDI permission stays unrequested without a catalog",
+      "PASS missing ports show an actionable message and keep Apply disabled",
+      "PASS Return to draft dismisses connection details",
+      "PASS loading the Remote sends no SysEx",
+      "PASS READ returns the C scalar",
+      "PASS READ returns the C float",
+      "PASS connect does not SET",
+      "PASS FX workspace selected before local Wear edit",
+      "PASS BREAK assignments, slices and Wear edits send zero protocol frames",
+      "PASS draft status retains confirmed simulator identity",
+      "PASS Undo preserves simulator status",
+      "PASS play reports the local transport and actual connection",
+      "PASS stop reports the local transport and actual connection",
+      "PASS rec reports the local transport and actual connection",
+      "PASS draft history and transport buttons send zero protocol frames",
+      "PASS offline edits do not arm native Apply",
+      "PASS Apply stays disabled before an edit",
+      "PASS an edit arms Apply and still sends nothing",
+      "PASS editing does not SET",
+      "PASS Apply writes the edited control once",
+      "PASS Apply reads the committed catalog back",
+      "PASS Undo checks the revision, writes once and shows the fresh stored value",
+      "PASS confirmed instrument Undo is consumed",
+      "PASS a C revision conflict is shown and not treated as applied",
+      "PASS Disconnect closes the C lease",
+      "PASS the page raised no script errors"
+    ]
+  }
+}

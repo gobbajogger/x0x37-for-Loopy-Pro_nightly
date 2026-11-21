@@ -1,0 +1,245 @@
+[
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "geometry": {
+      "drum909": {
+        "rect": [
+          1007.5,
+          743.390625,
+          57.5,
+          44
+        ],
+        "hit": true,
+        "text": "909 Accent step 16, Not set"
+      },
+      "drum808": {
+        "rect": [
+          85,
+          743.390625,
+          57.5,
+          44
+        ],
+        "hit": true,
+        "text": "808 Accent step 1, Not set"
+      },
+      "review-keep": {
+        "rect": [
+          495.5,
+          472.15625,
+          88,
+          40
+        ],
+        "hit": true,
+        "text": "Keep editing"
+      },
+      "review-reset": {
+        "rect": [
+          586.5,
+          472.15625,
+          91,
+          40
+        ],
+        "hit": true,
+        "text": "Discard draft"
+      }
+    },
+    "baselineSha": "5ae8e98370213fe7c2ccef89690a92918675fe885495f897710e83337349a260",
+    "beforeDiscardSha": "1fb43d4a7f26e51e7e7e942951a7582f51abe4c4522ae62c39bb9f6ea162c0f0",
+    "afterDiscardSha": "5ae8e98370213fe7c2ccef89690a92918675fe885495f897710e83337349a260",
+    "bothKitAccentRows": true,
+    "explicitFalseSurvivesUndo": true,
+    "cancelEscapeAndKeep": true,
+    "discardUndoRedo": true,
+    "patternLockRestored": [
+      {
+        "catalogId": 4098,
+        "pattern": 6,
+        "values": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          33,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "pageErrors": [],
+    "midiCalls": 0
+  },
+  {
+    "size": [
+      844,
+      390
+    ],
+    "geometry": {
+      "drum909": {
+        "rect": [
+          437,
+          286.59375,
+          40,
+          44
+        ],
+        "hit": true,
+        "text": "909 Accent step 16, Not set"
+      },
+      "drum808": {
+        "rect": [
+          77,
+          286.59375,
+          40,
+          44
+        ],
+        "hit": true,
+        "text": "808 Accent step 1, Not set"
+      },
+      "review-keep": {
+        "rect": [
+          197.5,
+          217.15625,
+          88,
+          40
+        ],
+        "hit": true,
+        "text": "Keep editing"
+      },
+      "review-reset": {
+        "rect": [
+          288.5,
+          217.15625,
+          91,
+          40
+        ],
+        "hit": true,
+        "text": "Discard draft"
+      }
+    },
+    "baselineSha": "5ae8e98370213fe7c2ccef89690a92918675fe885495f897710e83337349a260",
+    "beforeDiscardSha": "1fb43d4a7f26e51e7e7e942951a7582f51abe4c4522ae62c39bb9f6ea162c0f0",
+    "afterDiscardSha": "5ae8e98370213fe7c2ccef89690a92918675fe885495f897710e83337349a260",
+    "bothKitAccentRows": true,
+    "explicitFalseSurvivesUndo": true,
+    "cancelEscapeAndKeep": true,
+    "discardUndoRedo": true,
+    "patternLockRestored": [
+      {
+        "catalogId": 4098,
+        "pattern": 6,
+        "values": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          33,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "pageErrors": [],
+    "midiCalls": 0
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "geometry": {
+      "drum909": {
+        "rect": [
+          335,
+          496.390625,
+          40,
+          44
+        ],
+        "hit": true,
+        "text": "909 Accent step 16, Not set"
+      },
+      "drum808": {
+        "rect": [
+          77,
+          496.390625,
+          40,
+          44
+        ],
+        "hit": true,
+        "text": "808 Accent step 1, Not set"
+      },
+      "review-keep": {
+        "rect": [
+          26,
+          451.953125,
+          88,
+          40
+        ],
+        "hit": true,
+        "text": "Keep editing"
+      },
+      "review-reset": {
+        "rect": [
+          117,
+          451.953125,
+          91,
+          40
+        ],
+        "hit": true,
+        "text": "Discard draft"
+      }
+    },
+    "baselineSha": "5ae8e98370213fe7c2ccef89690a92918675fe885495f897710e83337349a260",
+    "beforeDiscardSha": "1fb43d4a7f26e51e7e7e942951a7582f51abe4c4522ae62c39bb9f6ea162c0f0",
+    "afterDiscardSha": "5ae8e98370213fe7c2ccef89690a92918675fe885495f897710e83337349a260",
+    "bothKitAccentRows": true,
+    "explicitFalseSurvivesUndo": true,
+    "cancelEscapeAndKeep": true,
+    "discardUndoRedo": true,
+    "patternLockRestored": [
+      {
+        "catalogId": 4098,
+        "pattern": 6,
+        "values": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          33,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "pageErrors": [],
+    "midiCalls": 0
+  }
+]

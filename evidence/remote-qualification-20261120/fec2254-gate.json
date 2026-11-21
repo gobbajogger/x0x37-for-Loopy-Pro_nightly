@@ -1,0 +1,96 @@
+{
+  "sha": "fec2254c187f2884230b08921b0337b95da8f8d0",
+  "tree": "37e6626c93a36050ba5680887945752c400ebc08",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "lane": "remote",
+  "result": "FAIL",
+  "exitCode": 1,
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "offline": true,
+  "startedUtc": "2026-11-21T01:49:04Z",
+  "startedGateLabel": "DNBOX-GATE repo=nightly lane=remote sha=fec2254c187f2884230b08921b0337b95da8f8d0 started=20261121-1149 (UTC+10)",
+  "endedUtc": "2026-11-21T02:27:30Z",
+  "cleanTrackedAfter": true,
+  "rawLogBytes": 249314,
+  "rawLogSha256": "a217554aefb759e309e318fbba9ef3341f86599e0c1b12a4e7a1591f47120d9b",
+  "repositoryLog": "build/dnbox-gate/fec2254c-20261121-1149.log",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "FAIL"
+    },
+    {
+      "name": "browser-tests",
+      "result": "FAIL"
+    }
+  ],
+  "visualHeader": "header SSIM vs page-01 = 0.9059 (gate >= 0.90)",
+  "terminal": "DNBOX-GATE RESULT FAIL sha=fec2254c187f2884230b08921b0337b95da8f8d0 lane=remote log=build/dnbox-gate/fec2254c-20261121-1149.log",
+  "structural": null,
+  "visual": null,
+  "errors": [
+    {
+      "line": 1814,
+      "message": "playwright._impl._errors.TimeoutError: Page.screenshot: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 1820,
+      "message": "[FAIL] unit-tests"
+    },
+    {
+      "line": 3506,
+      "message": "playwright._impl._errors.Error: Page.screenshot: Target crashed "
+    },
+    {
+      "line": 3512,
+      "message": "[FAIL] browser-tests"
+    },
+    {
+      "line": 3513,
+      "message": "DNBOX-GATE RESULT FAIL sha=fec2254c187f2884230b08921b0337b95da8f8d0 lane=remote log=build/dnbox-gate/fec2254c-20261121-1149.log"
+    }
+  ],
+  "visualFailureScope": "Full-page website screenshot timed out after 30000 ms, following the passing 1024 header check. The failing website target was not printed; no exact route or causal attribution.",
+  "published": false,
+  "workflowDispatched": false,
+  "physicalDeviceAccess": false,
+  "compressedLogSha256": "9fef21e05870fe88f99adc60ff4eee1f875859056ab4dfc4e8e8b8ec16874891",
+  "compressedLogBytes": 49577,
+  "exitCodeSource": "The unmodified gate wrote terminal FAIL. Its implementation exits 1 for FAIL. The outer wrapper later returned 130 when its unintended second launch was interrupted.",
+  "originalLogSource": "Intact gate-owned 1149 log, independently preserved before the outer log was restored. Compared byte-for-byte with its archival copy.",
+  "nativeSoundFailureScope": "Native sound passed at 1440x900 and 390x844. In 844x390, both voice screenshots and the stale/reconnect screenshot exist. The failure-handler screenshot at native-sound-browser.py:477 raised Target crashed. The original exception was suppressed by this handler and cannot be identified from the log. Later browser cases and structural fixtures were not executed.",
+  "interruptedDuplicate": {
+    "startedUtc": "2026-11-21T02:27:30.951Z",
+    "lastOutputUtc": "2026-11-21T02:27:45.587Z",
+    "exitCode": 130,
+    "disposition": "Stopped after original gate terminal. Excluded from gate results. Editing the outer shell helper in place let its resumed interpreter read a changed tail and invoke the same gate again. Future launchers are immutable.",
+    "bytes": 3575,
+    "sha256": "a27e625f2c122532547e69d037d85cb6d0db29918df98b689ba895a424576b6f"
+  },
+  "fullRawLogFirstComment": "https://github.com/gobbajogger/DnBOX-nightly/pull/169#issuecomment-7055947322",
+  "rawLogPostedVerifiedBytes": 249314
+}

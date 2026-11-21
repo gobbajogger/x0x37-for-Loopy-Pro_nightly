@@ -1,0 +1,65 @@
+{
+  "ref": "ffd31a735acc5721d1f90a30fc1ceb283aad6fc5",
+  "files": [
+    {
+      "path": "firmware/src/app/engine.c",
+      "bytes": 144752,
+      "sha256": "67c77e856e761f29f646c9f5842d99db87c284c8a0a38fc2ade128ebab27f580",
+      "gitBlob": "f89648044587c0f3326588ffcaa3a3b721d0d120"
+    },
+    {
+      "path": "firmware/src/app/ui.c",
+      "bytes": 393330,
+      "sha256": "d7f9db8ec08f62ae65a6a6d6e9a25f26aaf7069143a8b4b54a78d7d6f6d6526a",
+      "gitBlob": "8cb35150b9294aad0d8e1d3d78069e1802fdbf89"
+    },
+    {
+      "path": "firmware/src/dsp/drum909.c",
+      "bytes": 44815,
+      "sha256": "d558f150acfafa82eb5cc7fdd1d384e8bb18b3cf773032507cad3ff3675df584",
+      "gitBlob": "2033c80d2ff3989bf3ea7374ab79cd3b0f8fab42"
+    },
+    {
+      "path": "firmware/src/dsp/fastmath.h",
+      "bytes": 8246,
+      "sha256": "fbe052086010b17d8194b9cd3d61d3cb349cc1def3817ae9651a6683d7850b09",
+      "gitBlob": "666d8e1325d32a76f7b4b964f2808420d3987104"
+    },
+    {
+      "path": "firmware/src/dsp/fxbus.c",
+      "bytes": 21423,
+      "sha256": "4cf2d2bdcc777af47333ce2d658aad605e658912898517197ddf898f270dee78",
+      "gitBlob": "41d4ad8c3e8001b9141782f6fbdfc06000b985a1"
+    },
+    {
+      "path": "firmware/src/dsp/fxbus.h",
+      "bytes": 3792,
+      "sha256": "492402f5570faa15b24241259c1e76011bfb3054fdee0d2e320b3e9171ca519c",
+      "gitBlob": "2b18d8581dd86539437c1d4eb39be2f78928ab5b"
+    },
+    {
+      "path": "firmware/src/dsp/master.c",
+      "bytes": 20645,
+      "sha256": "ff3486879de216c5447c2a301456abc6cf7cd46c4643d93e500d5e6890e966b7",
+      "gitBlob": "bbcc1c73eae575752b60a572747ecfcd5088f6ae"
+    },
+    {
+      "path": "firmware/src/dsp/master.h",
+      "bytes": 3823,
+      "sha256": "b4a216724544f1eb3e924a81cefa38cd68257fcccb908bc17a21d8eb9ffbcebd",
+      "gitBlob": "66c358aefe0533f0e07f11cb0e0d59a5e20bb168"
+    },
+    {
+      "path": "firmware/src/dsp/x0x_param.h",
+      "bytes": 1761,
+      "sha256": "a9341e448f8e2e7c880734f6758df46c0e43669b4c6252b429f7070425b4c800",
+      "gitBlob": "79d0f38d30190eceeda1226f58e631921e29d06f"
+    },
+    {
+      "path": "firmware/src/x0x_cold.h",
+      "bytes": 428,
+      "sha256": "e95f4037d8f8e0dca5c32ba9253fb8aba7baf1d098407998f6a9c0d1857ba663",
+      "gitBlob": "089256ed4b45ceb220aa713a9dfa023efe9b85ad"
+    }
+  ]
+}

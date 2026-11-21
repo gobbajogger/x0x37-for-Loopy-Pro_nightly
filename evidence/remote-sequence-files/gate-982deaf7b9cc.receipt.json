@@ -1,0 +1,76 @@
+{
+  "sha": "982deaf7b9cc6bbcf71db4d232e4c354e98d67d3",
+  "tree": "a25b0c2b2a752e0148a3f0c6e2053aff7f9fbd74",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "lane": "remote",
+  "result": "PASS",
+  "exitCode": 0,
+  "startedUtc": "2026-11-21T05:58:24.268Z",
+  "endedUtc": "2026-11-21T06:23:10.141Z",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "PASS"
+    },
+    {
+      "name": "browser-tests",
+      "result": "PASS"
+    }
+  ],
+  "offline": true,
+  "trackedCleanAfter": true,
+  "qualifiedRuntimeFiles": 10,
+  "superJ6ArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+  "originalsEnabled": [
+    "Miami firmware",
+    "drum firmware",
+    "Synth One firmware",
+    "SuperJ6 archive"
+  ],
+  "browser": "Playwright bundled Chromium, normal sandbox",
+  "terminal": "DNBOX-GATE RESULT PASS sha=982deaf7b9cc6bbcf71db4d232e4c354e98d67d3 lane=remote log=build/dnbox-gate/982deaf7-20261121-1558.log",
+  "repositoryLog": "build/dnbox-gate/982deaf7-20261121-1558.log",
+  "rawLogSha256": "9c516b126c93f08f0d141517af3d7ad018c2465108830f5180650486d4c648a1",
+  "rawLogBytes": 245132,
+  "compressedLogSha256": "aa0a7f6f7b708f7552a4bc473ef667f7c701cf8fbb140a76d56778a8852717f8",
+  "compressedLogBytes": 54472,
+  "structural": {
+    "accepted": false,
+    "cases": 9,
+    "sha256": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356"
+  },
+  "visual": {
+    "screens": 109,
+    "pass": 5,
+    "fail": 0,
+    "no_baseline": 104,
+    "baseline_written": 0,
+    "header_fail": 0,
+    "page_errors": 0
+  }
+}

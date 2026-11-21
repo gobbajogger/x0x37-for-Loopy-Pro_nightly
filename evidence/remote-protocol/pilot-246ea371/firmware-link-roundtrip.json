@@ -1,0 +1,98 @@
+{
+  "firmware": "246ea3718c6c72ba80bbd1aafcd5356f871c78c8",
+  "binarySha256": "a0cbddb2e7325580201ec4e88427ba85e9b4511e23bac0bf5bb75495fef53200",
+  "catalogSha256": "eee1004e1ceeaa329929812e79d95f68b9097630310b8a85337cfe6d080c6b0b",
+  "firmwareLinkSha256": "99907240de38b84cadc3151b2d49f2839254443651c07dda46063ce8b20eaa95",
+  "catalogCrc": 4005792705,
+  "catalogCount": 326,
+  "testOnly": true,
+  "edits": [
+    {
+      "id": 257,
+      "label": "CUTOFF",
+      "old": 32,
+      "value": 33,
+      "editRevision": 2,
+      "undoRevision": 3,
+      "changed": [
+        {
+          "id": 257,
+          "label": "CUTOFF",
+          "before": 32,
+          "after": 33
+        }
+      ],
+      "remaining": [],
+      "expectedMessage": "Restored stored value 32. Update queued."
+    },
+    {
+      "id": 277,
+      "label": "CUTOFF",
+      "old": 32,
+      "value": 33,
+      "editRevision": 4,
+      "undoRevision": 5,
+      "changed": [
+        {
+          "id": 277,
+          "label": "CUTOFF",
+          "before": 32,
+          "after": 33
+        }
+      ],
+      "remaining": [],
+      "expectedMessage": "Restored stored value 32. Update queued."
+    },
+    {
+      "id": 253,
+      "label": "COMP",
+      "old": 95,
+      "value": 96,
+      "editRevision": 6,
+      "changed": [
+        {
+          "id": 241,
+          "label": "THRESH",
+          "before": 64,
+          "after": 60
+        },
+        {
+          "id": 253,
+          "label": "COMP",
+          "before": 95,
+          "after": 96
+        }
+      ],
+      "undoOffered": false,
+      "editMessage": "Stored 96. Update queued. Other control values changed (THRESH)."
+    }
+  ],
+  "confirmed": 294,
+  "reads": 1958,
+  "writes": 5,
+  "transport": "Host standard input and output carry the unmodified DNR2 MIDI frames between the page connection handler and the archived native firmware parameter callbacks. The UI test drives Connect, Apply and Undo instrument edit. USB/BLE, a physical keyboard and audio-applied values are outside this run.",
+  "hostBuild": {
+    "command": "sh tests/host/remote_actual_core_test.sh",
+    "checkedGitBlobs": 1312,
+    "gitBlobMismatches": 0,
+    "exit": 0,
+    "actualAppChecks": 7242,
+    "nativeParameterEdits": 978,
+    "inactiveBankReadRejections": 72,
+    "wirePilotExchanges": 8,
+    "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+    "node": "v24.22.3",
+    "fullLogSha256": "d5eb3bcc30e34d51a43e6eb918f7c65ce12d16fa6e6c92008918351bb2004b18"
+  },
+  "before": {
+    "remoteHead": "242f0189af17d7c48b3b7274dea064a84dbc6664",
+    "firmwareLinkGitBlob": "dfb1d2ac7e7fd0e19d5b7fbba21204f18cad2686",
+    "exit": 1,
+    "diagnostic": "Error: CUTOFF edit failed. Page status: Change queued. Reconnect to read the stored value."
+  },
+  "after": {
+    "firmwareLinkGitBlob": "04fec008cc323a6af8a05effd9ff3bfef1e1b00c",
+    "exit": 0,
+    "test": "node tests/product-remote/firmware-link-actual-host.mjs /path/to/firmware/build/host/remote-actual-core/test"
+  }
+}

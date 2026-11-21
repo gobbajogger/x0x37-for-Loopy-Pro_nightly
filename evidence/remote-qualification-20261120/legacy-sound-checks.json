@@ -1,0 +1,90 @@
+{
+  "sourceCommit": "44f057a30d1b6155fca625f5a2ef5c8c9fc122a8",
+  "predecessor": "8734a199697fbe986e18ef35d82dba0ef0ea58c5",
+  "legacyDownloaded": {
+    "sourceCommit": "44f057a30d1b6155fca625f5a2ef5c8c9fc122a8",
+    "sourceTree": "255eae754ba67758284b97c3d9cfb2b9b56f9c1d",
+    "browser": "151.0.7922.34",
+    "viewport": [
+      1280,
+      720
+    ],
+    "method": "Original stock browser app. Open Sound, select JUNO for Bass A and Bass B, then Save Draft from the project menu. The exact downloaded bytes are stored.",
+    "file": "both-owners.json",
+    "bytes": 3164,
+    "sha256": "ea14c9f6521c87b70f4f1bdebe197017c0000051f0df17b5034e8e65f7507b52",
+    "sourceBlobs": {
+      "web/product-site/remote/app.mjs": "8074c4ab513929b1169ccbc69926f888a749c811",
+      "web/product-site/remote/draft-file.mjs": "72e71b3e5968ef834016410be4535547dfe7bff0",
+      "web/product-site/remote/draft-ui.mjs": "5b592e6f845cd430fd19dfedc1fff37386acdd4e",
+      "web/product-site/remote/source-sounds.json": "fcbd6cb6b45c5449be0ff2d3c350790c04966fe9"
+    },
+    "additionalFixture": {
+      "file": "inactive-owner-a.json",
+      "bytes": 3248,
+      "sha256": "5f60ef9e49ecc54ade6fe8d73b573a4990ff36217771d84bd38b7e3061754e79",
+      "method": "Source-event DOM harness executing the original app from the same revision. On Bass A, select JUNO, edit its first scalar, switch to Chicago and save via the original Draft export handler."
+    }
+  },
+  "sourceBankBrowser": [
+    "SOURCE_BANKS 1440x900 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0",
+    "SOURCE_BANKS 844x390 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0",
+    "SOURCE_BANKS 390x844 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0",
+    "SOURCE_BANKS 1024x640 PASS both parts, independent edit, Draft round trip, old-file recovery and reset, MIDI=0"
+  ],
+  "appChecks": [
+    "PASS only the owner of an archived scalar can restore its original bank",
+    "PASS all104 original bass scalars reachable under both local slot/bank previews including restored legacy owners",
+    "PASS same target/voice/parameter in different banks remain reversible independent drafts",
+    "PASS bank change cancels active raw drag, does not commit or leak into next bank",
+    "PASS BREAK empty loop state visible but cannot be selected as scalar; numeric roles editable",
+    "PASS native observer renders only selected engine and clears on page teardown",
+    "PASS two-layer original Draft edits use distinct part/field IDs and ordinary review, Undo and Redo",
+    "SOURCE_SOUND_APP_CASES 7; FAILURES 0; source-event stub, NOT DOM/touch"
+  ],
+  "lifecycle": "Fresh Draft exposes four choices. A recovered selection is a disabled current value in the picker; Restore is scoped to the owner whose imported file retained JUNO or an original JUNO scalar. Replacing the file recalculates the two owner scopes.",
+  "nativeEnvelope": {
+    "applicationManifest": "4898d1d08fff7b681141fcb64ba6503406a166d813c963b2892c2f04310dacd9",
+    "commands": [
+      "PASS actual native CHICAGO slot1 observed level/curve 1440x900",
+      "PASS actual native JUNO slot1 observed level/curve 1440x900",
+      "PASS actual native envelope 1440x900: source=06bd40c57cefcdf6c751b318b1cbaea0914fa8bb role=909/0/amp draft-preserved MIDI=0",
+      "PASS actual native CHICAGO slot1 observed level/curve 390x844",
+      "PASS actual native JUNO slot1 observed level/curve 390x844",
+      "PASS actual native envelope 390x844: source=06bd40c57cefcdf6c751b318b1cbaea0914fa8bb role=909/0/amp draft-preserved MIDI=0",
+      "PASS actual native CHICAGO slot1 observed level/curve 844x390",
+      "PASS actual native JUNO slot1 observed level/curve 844x390",
+      "PASS actual native envelope 844x390: source=06bd40c57cefcdf6c751b318b1cbaea0914fa8bb role=909/0/amp draft-preserved MIDI=0"
+    ],
+    "exit": 0,
+    "mode": "actual pinned AudioWorklet, separate observer on explicitly selected Emulator Sound"
+  },
+  "candidateInventory": {
+    "browser": "151.0.7922.34",
+    "count": 98,
+    "failures": [],
+    "pageErrors": [],
+    "enabledControlPresentations": 3937,
+    "reachablePresentations": 3937,
+    "manifestSha256": "4898d1d08fff7b681141fcb64ba6503406a166d813c963b2892c2f04310dacd9",
+    "kernelSha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b"
+  },
+  "unitSuites": {
+    "workspace": {
+      "exit": 0,
+      "nodeTests": 105,
+      "appSoundCases": 7,
+      "otherAppFixtures": "all passed"
+    },
+    "remote": {
+      "exit": 0,
+      "nodeTests": 196
+    },
+    "originalInputs": [
+      "Miami firmware",
+      "909 and 808 C formatter",
+      "Synth One six original C inputs",
+      "SuperJ6 original preset archive"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+PASS Review discard, keep/escape, all Draft domains, prior shared history, original file copies
+844 390 PASS errors and MIDI 0
+PASS Review discard, keep/escape, all Draft domains, prior shared history, original file copies
+390 844 PASS errors and MIDI 0
+PASS Review discard, keep/escape, all Draft domains, prior shared history, original file copies
+1440 900 PASS errors and MIDI 0

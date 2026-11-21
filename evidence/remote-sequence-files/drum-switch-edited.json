@@ -1,0 +1,74 @@
+{
+  "head": "1767bd8f828884d1b06da9b2b4eee7ba2d71e84a",
+  "viewport": [
+    844,
+    390
+  ],
+  "realOriginalParams": [
+    {
+      "id": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+      "value": 35
+    },
+    {
+      "id": "current-state-and-reference/808-voice-00.svg|1:1:0:3",
+      "value": 65
+    }
+  ],
+  "saved": [
+    {
+      "id": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+      "value": 35
+    },
+    {
+      "id": "current-state-and-reference/808-voice-00.svg|1:1:0:3",
+      "value": 65
+    }
+  ],
+  "after": [
+    {
+      "id": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+      "value": 35
+    },
+    {
+      "id": "current-state-and-reference/808-voice-00.svg|1:1:0:3",
+      "value": 65
+    }
+  ],
+  "reopened": [
+    {
+      "id": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+      "value": 35
+    },
+    {
+      "id": "current-state-and-reference/808-voice-00.svg|1:1:0:3",
+      "value": 65
+    }
+  ],
+  "notes": 10,
+  "audit": {
+    "events": [
+      {
+        "kit": "drum909",
+        "syncMs": 0.09999999962747097,
+        "nextFrameMs": 13.400000000372529
+      },
+      {
+        "kit": "drum808",
+        "syncMs": 0,
+        "nextFrameMs": 14.700000001117587
+      },
+      {
+        "kit": "drum909",
+        "syncMs": 0,
+        "nextFrameMs": 12.099999999627471
+      },
+      {
+        "kit": "drum808",
+        "syncMs": 0.19999999925494194,
+        "nextFrameMs": 24.5
+      }
+    ],
+    "midi": 0
+  },
+  "errors": []
+}

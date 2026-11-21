@@ -1,0 +1,344 @@
+{
+  "firmware": "f1786ebec2616477163b62b029c7e77405a9c3de",
+  "tree": "a4876790880cae769298f6701e8ab5db1d970b30",
+  "publicSoundPR973": "f013ecc653f2b9f0006e976a1097250e9356ce14",
+  "publishedLinuxBenchDonor": "49662e4d437421e686a6cc04b806cd0d700bab74",
+  "originalDerivedConductorDonor": "74b50bdfe2e1d9ac7f22445cdf5ab3726bb85272",
+  "limits": {
+    "maxDecompressedStreamMiB": 96,
+    "maxArchiveMemberMiB": 64,
+    "maxDepth": 5,
+    "limited": []
+  },
+  "coverage": {
+    "tracked_blob_paths": 6865,
+    "distinct_blobs": 6102,
+    "bytes_hashed_from_distinct_git_blobs": 135050332,
+    "decoded_streams": 334,
+    "archive_members_hashed": 5532,
+    "archive_member_bytes_hashed": 476542588
+  },
+  "exactPins": {
+    "build9 IPA": {
+      "sha256": "dde4992f24f52d4390391069025b27092a2f327e3a53115bdd53a6ede0dffa8e",
+      "found": []
+    },
+    "AU archive": {
+      "sha256": "abe2f2e089306770489fb30c8870f608dc2f2e0804541f624337523679638a28",
+      "found": []
+    },
+    "AU executable": {
+      "sha256": "a5243e50bda6bd44f463c6e63ea3137802142f55f3c1ea25a5a6e046acba81a1",
+      "found": []
+    },
+    "standalone app": {
+      "sha256": "931976820fc5f967a979661aac52e508277e9164fdc33e6b68b1573b69cf290a",
+      "found": []
+    },
+    "factory ZIP": {
+      "sha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+      "found": []
+    },
+    "bounded bench": {
+      "sha256": "c1b7e99bf4f3054f114557a66c5ad8060525a5f8065e3ff3c7d208dbe2d9bf9c",
+      "found": []
+    },
+    "active matrix": {
+      "sha256": "08b912309b24edceebb159b8e3b1be1b3befc706201602212885ad73dd6cd3e0",
+      "found": []
+    },
+    "later decision ZIP": {
+      "sha256": "8f99329155a1b075b81319937bd0187a7d196c65f8bf6eda1cc9ea8c7ab97c6f",
+      "found": []
+    },
+    "later decision markdown": {
+      "sha256": "e1a4cac2a8f0fddd2ab62608d08d3e6df26be0023cbe78ff2688de2a6b53e7c6",
+      "found": []
+    },
+    "later picks PNG": {
+      "sha256": "d219ab459a456553399fca5d7d65b1f713c4ec0766240c35bddf0b4b6a07bd6b",
+      "found": []
+    },
+    "R22 source map archive": {
+      "sha256": "9bdc25287049626bb7daa45c5d2dbd071a790f4361be1922156c0f0e28b54c91",
+      "found": []
+    },
+    "later R22 approved MIX owner PNG": {
+      "sha256": "a22f56bd5404ccc3f0b29adc2c4c7e022e103985a04c3a154fd3d4891717dea7",
+      "found": []
+    },
+    "R22 approved MIX archive": {
+      "sha256": "fe054e752b3c2790bc30b037d1945e3f5f98146654121cfa013eb4d605d229f2",
+      "found": []
+    },
+    "recorded component / original-chorus-mode1-mix0-start1.f32le-stereo.private.pcm": {
+      "sha256": "91c0d1714393d7bae29b14b259af99290c99383d620846a10bc569bd4fcf50f7",
+      "found": []
+    },
+    "recorded component / original-chorus-mode1-mix1-start0.f32le-stereo.private.pcm": {
+      "sha256": "91c0d1714393d7bae29b14b259af99290c99383d620846a10bc569bd4fcf50f7",
+      "found": []
+    },
+    "recorded component / original-chorus-mode1-mix1-start1.f32le-stereo.private.pcm": {
+      "sha256": "e653e0b415a812fe1540d4966afccbdcca5030573aea0157377d48ada19c35b4",
+      "found": []
+    },
+    "recorded component / original-chorus-mode2-mix1-start1.f32le-stereo.private.pcm": {
+      "sha256": "7a942b0dcbda97058afd41b725d5b0fe8f751ac323146bb05687ea93f5b9c4cb",
+      "found": []
+    },
+    "recorded component / original-chorus-mode3-mix1-start1.f32le-stereo.private.pcm": {
+      "sha256": "761a38c63404a8c6ab7d4e08c1b6b78ec9887758d5bb8a18729413f782ad4237",
+      "found": []
+    },
+    "recorded component / original-sampler-synthetic-C4-v100.f32le-stereo.private.pcm": {
+      "sha256": "99224d97daf82878b8fa39a6d6e4d6dabffecabf9f7bacff670cde7c580187b7",
+      "found": []
+    },
+    "recorded component / original-synth-default-C4-v100.f32le-stereo.private.pcm": {
+      "sha256": "237c56e1af64427c0145a75352a2de0645717e05a637384db3bda2717f1997e1",
+      "found": []
+    }
+  },
+  "joinedParts": [
+    "assets/test-inputs/synthone/inputs.tar.gz.part00",
+    "assets/test-inputs/synthone/inputs.tar.gz.part01"
+  ],
+  "linuxDonorFiles": [
+    {
+      "file": "README.md",
+      "historical973Blob": "4255e9ecc538279e052838a375854ab9ac7c12a8",
+      "live973Blob": "9c60f94836331586fada18b9f9e7b91ed48e121d",
+      "consolidatedBlob": "4255e9ecc538279e052838a375854ab9ac7c12a8"
+    },
+    {
+      "file": "all-programs.json",
+      "historical973Blob": "9952b403a374f74e0b6e9df1d0970ce5b7e9a336",
+      "live973Blob": "9952b403a374f74e0b6e9df1d0970ce5b7e9a336",
+      "consolidatedBlob": "9952b403a374f74e0b6e9df1d0970ce5b7e9a336"
+    },
+    {
+      "file": "apple-host/Package.swift",
+      "historical973Blob": "325f5cdf4b6e945dff31ad37fe87574148d379ab",
+      "live973Blob": "325f5cdf4b6e945dff31ad37fe87574148d379ab",
+      "consolidatedBlob": "325f5cdf4b6e945dff31ad37fe87574148d379ab"
+    },
+    {
+      "file": "apple-host/Sources/ReferenceBench/ReferenceBench.swift",
+      "historical973Blob": "500efef9e5d7fa0920b2aa983eded7ea01e41684",
+      "live973Blob": "012b4f1ea55f4a5525a4eef73ef2e996e10ab2ae",
+      "consolidatedBlob": "500efef9e5d7fa0920b2aa983eded7ea01e41684"
+    },
+    {
+      "file": "apple-host/Tests/ReferenceBenchTests/Inputs/README.md",
+      "historical973Blob": "9bdc22c438af7b66cc3c336e1fe83b38c68a83b0",
+      "live973Blob": "9bdc22c438af7b66cc3c336e1fe83b38c68a83b0",
+      "consolidatedBlob": "9bdc22c438af7b66cc3c336e1fe83b38c68a83b0"
+    },
+    {
+      "file": "apple-host/Tests/ReferenceBenchTests/SuperJ6ReferenceTests.swift",
+      "historical973Blob": "1a3f486e590172141609a073fda2017ff23c15ae",
+      "live973Blob": "1a3f486e590172141609a073fda2017ff23c15ae",
+      "consolidatedBlob": "1a3f486e590172141609a073fda2017ff23c15ae"
+    },
+    {
+      "file": "audit_all_programs.py",
+      "historical973Blob": "0ced71fba2834016aebe1858d36ced414103f41b",
+      "live973Blob": "0ced71fba2834016aebe1858d36ced414103f41b",
+      "consolidatedBlob": "0ced71fba2834016aebe1858d36ced414103f41b"
+    },
+    {
+      "file": "audit_bundled_banks.py",
+      "historical973Blob": "97c76a9c3330c66b64fe55b37907844660a6ffb1",
+      "live973Blob": "97c76a9c3330c66b64fe55b37907844660a6ffb1",
+      "consolidatedBlob": "97c76a9c3330c66b64fe55b37907844660a6ffb1"
+    },
+    {
+      "file": "bundled-bank-audit.json",
+      "historical973Blob": "9bcd16663c063e5c16a1b20904cf200d1cb35e6b",
+      "live973Blob": "9bcd16663c063e5c16a1b20904cf200d1cb35e6b",
+      "consolidatedBlob": "9bcd16663c063e5c16a1b20904cf200d1cb35e6b"
+    },
+    {
+      "file": "component-replay.json",
+      "historical973Blob": "580749654176c8676b1cea1a67a5a14ffa4d13ed",
+      "live973Blob": "580749654176c8676b1cea1a67a5a14ffa4d13ed",
+      "consolidatedBlob": "580749654176c8676b1cea1a67a5a14ffa4d13ed"
+    },
+    {
+      "file": "graph_entry.py",
+      "historical973Blob": "16db44b3736ccf468a52254a79880679f2c367f9",
+      "live973Blob": "16db44b3736ccf468a52254a79880679f2c367f9",
+      "consolidatedBlob": "16db44b3736ccf468a52254a79880679f2c367f9"
+    },
+    {
+      "file": "instrument-init.json",
+      "historical973Blob": "09415e771cb46c3022d39fb297ee0feab3deb5a8",
+      "live973Blob": "09415e771cb46c3022d39fb297ee0feab3deb5a8",
+      "consolidatedBlob": "09415e771cb46c3022d39fb297ee0feab3deb5a8"
+    },
+    {
+      "file": "replay_reference.py",
+      "historical973Blob": "f86aaccfdf4166ea7798c1392bdc67c93e1b40a8",
+      "live973Blob": "f86aaccfdf4166ea7798c1392bdc67c93e1b40a8",
+      "consolidatedBlob": "f86aaccfdf4166ea7798c1392bdc67c93e1b40a8"
+    }
+  ],
+  "numericSourceDonor": {
+    "lfo_laws.cpp": {
+      "donorBlob": "7c9b13697fe4a8c0c5f7ff046a2ff2854bc0665f",
+      "exactContentPathsInConsolidated": []
+    },
+    "lfo_laws.hpp": {
+      "donorBlob": "e7dbbda88db16aabc97060d5a4b2c76af77b57db",
+      "exactContentPathsInConsolidated": []
+    },
+    "conductor.hpp": {
+      "donorBlob": "4ace071e4455203f2ab96a91e9de19f0532bd08f",
+      "exactContentPathsInConsolidated": []
+    },
+    "test_lfo_laws.cpp": {
+      "donorBlob": "aeef79cb6170f32e3c3259bfb82aba77fcc8ae18",
+      "exactContentPathsInConsolidated": []
+    }
+  },
+  "catalog": {
+    "file": "screen-index.tsv",
+    "firmwareRevision": "199f0444a4cf27374112a5fdf48f82005b070bbc",
+    "frames": 1968,
+    "active": 1952,
+    "historical": 16,
+    "historicalScope": "Two retired ordinary aliases and 14 earlier three-entry INIT selector captures.",
+    "indexSHA256": "9aa3a8b48b82001ffcff065968ca31a429099e943587fb9707de3cf8ca20e9ab",
+    "screenGuide": "README.md",
+    "ordinaryStates": 1538,
+    "ordinaryReplay": "../current/panel-routes/ordinary-current/routes.json",
+    "defaultSynthOneStates": 132,
+    "defaultSynthOneReview": "../current/synthone-editor/default-review/review.md",
+    "defaultSynthOneViewports": "../current/synthone-editor/default-review/comparison.json",
+    "safeRecoveryReview": "../current/native-routes/recovery-review.json",
+    "ordinaryStartupReplay": "../current/native-routes/normal-loop/replay-199f0444.json",
+    "previousCatalogScope": "Earlier 1,944-state shell run and independent panel review are retained in previousCatalog.",
+    "viewports": "../current/panel-routes/catalog-viewport-199f0444.json",
+    "indexedJ6Frames": 28,
+    "stockCompactRGBsIndependentlyVerified": 28,
+    "provider": "Stock compact juno6 slot",
+    "stockLFOAndChorusFrames": [
+      {
+        "state_id": "superj6/slot-a-matrix-lfo-chorus",
+        "archive": "../current/superj6-slot/frames.tar.gz",
+        "png_path": "slot-a-matrix-lfo-chorus.png",
+        "evidence_kind": "stock / compact SuperJ6",
+        "rgb_sha256": "c3e485fca99e2b9598bb452132596d45715868dcdd55b525cd5489f9efb0928c"
+      },
+      {
+        "state_id": "superj6/slot-a-list-lfo-chorus",
+        "archive": "../current/superj6-slot/frames.tar.gz",
+        "png_path": "slot-a-list-lfo-chorus.png",
+        "evidence_kind": "stock / compact SuperJ6",
+        "rgb_sha256": "278c7f974cab7f5c9b45c925f1d3f277568f17fca70c7271df29fb3b53d39c29"
+      },
+      {
+        "state_id": "superj6/slot-b-matrix-lfo-chorus",
+        "archive": "../current/superj6-slot/frames.tar.gz",
+        "png_path": "slot-b-matrix-lfo-chorus.png",
+        "evidence_kind": "stock / compact SuperJ6",
+        "rgb_sha256": "9b0c258677abe6d7d39572f385f14c931b2d25b7638e63859c470928ed0511cf"
+      },
+      {
+        "state_id": "superj6/slot-b-list-lfo-chorus",
+        "archive": "../current/superj6-slot/frames.tar.gz",
+        "png_path": "slot-b-list-lfo-chorus.png",
+        "evidence_kind": "stock / compact SuperJ6",
+        "rgb_sha256": "51c2dd449c6773c76bda23032359e2996c93f4d3bda7583cad6c53abb27d6a99"
+      }
+    ]
+  },
+  "catalogViewportReport": {
+    "production": "199f0444a4cf27374112a5fdf48f82005b070bbc",
+    "screenIndexSha256": "9aa3a8b48b82001ffcff065968ca31a429099e943587fb9707de3cf8ca20e9ab",
+    "nativeSize": [
+      240,
+      240
+    ],
+    "nativeStates": 1968,
+    "viewportLCDComparisons": 5904,
+    "results": [
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "lcdBounds": [
+          263,
+          142,
+          503,
+          382
+        ],
+        "shellRGB": "20436d3f91d7a00733ebbb0da5ef82d3374a57b8a2ea5ac70b64f0ab1a5000b5",
+        "checked": 1968,
+        "clippedOrResampledLCDs": 0
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "lcdBounds": [
+          75,
+          203,
+          315,
+          443
+        ],
+        "shellRGB": "af664933b2f867e357ef235a45ea1004c5a519b8d07effb8cf78c08434b7ea9a",
+        "checked": 1968,
+        "clippedOrResampledLCDs": 0
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "lcdBounds": [
+          43,
+          142,
+          283,
+          382
+        ],
+        "shellRGB": "9e96f81ddcd47206f97b1e85529b112958bd51b7c2a2f5e1cda87190ff157ec9",
+        "checked": 1968,
+        "clippedOrResampledLCDs": 0
+      }
+    ],
+    "method": "Decode each indexed native PNG, verify its full RGB SHA-256, and replace the LCD rectangle in each previously recorded Qt WebKit shell raster. Verify all decoded RGB bytes in the full LCD rectangle. These are deterministic replay checks of the previously measured viewport layout.",
+    "independentOrdinaryInspection": "All 24 changed or newly active ordinary screens were inspected at native size. Twelve Synth One engine frames show the selected oscillator, filter, envelopes, EFFECT or SOUND on A and B. The twelve BREAK and BREAK SEQ captures retain waveform, slice counts and footer controls. Previous archived selectors and current Synth One, safe and retry screens also have separate before/after reviews.",
+    "independentDefaultEditor": "../synthone-editor/default-review/review.md",
+    "independentRecovery": "../native-routes/recovery-review.json"
+  },
+  "stockOriginalLinuxReceipt": {
+    "original_au_sha256": "a5243e50bda6bd44f463c6e63ea3137802142f55f3c1ea25a5a6e046acba81a1",
+    "unicorn_version": "2.1.4",
+    "scenes": {
+      "original-chorus-mode1-mix0-start1.f32le-stereo.private.pcm": "91c0d1714393d7bae29b14b259af99290c99383d620846a10bc569bd4fcf50f7",
+      "original-chorus-mode1-mix1-start0.f32le-stereo.private.pcm": "91c0d1714393d7bae29b14b259af99290c99383d620846a10bc569bd4fcf50f7",
+      "original-chorus-mode1-mix1-start1.f32le-stereo.private.pcm": "e653e0b415a812fe1540d4966afccbdcca5030573aea0157377d48ada19c35b4",
+      "original-chorus-mode2-mix1-start1.f32le-stereo.private.pcm": "7a942b0dcbda97058afd41b725d5b0fe8f751ac323146bb05687ea93f5b9c4cb",
+      "original-chorus-mode3-mix1-start1.f32le-stereo.private.pcm": "761a38c63404a8c6ab7d4e08c1b6b78ec9887758d5bb8a18729413f782ad4237",
+      "original-sampler-synthetic-C4-v100.f32le-stereo.private.pcm": "99224d97daf82878b8fa39a6d6e4d6dabffecabf9f7bacff670cde7c580187b7",
+      "original-synth-default-C4-v100.f32le-stereo.private.pcm": "237c56e1af64427c0145a75352a2de0645717e05a637384db3bda2717f1997e1"
+    },
+    "matches_prior_components": true,
+    "complete_preset_renders": 0
+  },
+  "stockOriginalInitReceipt": {
+    "au_sha256": "a5243e50bda6bd44f463c6e63ea3137802142f55f3c1ea25a5a6e046acba81a1",
+    "instrument": "KoFMInstrument",
+    "initializer": "0x100059aec",
+    "call_site": "0x100059b14",
+    "import_stub": "0x1005d762c",
+    "reached_import": "_$s10Foundation4UUIDVMa",
+    "exception": "Unimplemented/error-path import trapped: _$s10Foundation4UUIDVMa",
+    "guest_basic_blocks_entered": 3,
+    "full_graph_instances": 0
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "namesInTrackedOrArchivedContent": [],
+  "datedGlyphMentions": [
+    "RULES.md",
+    "docs/design/OWNER-BASELINE-1836-NOTES.md",
+    "docs/design/UI-SOURCE-OF-TRUTH.md",
+    "docs/lanes/fwui/current/panel-routes/independent-review.md",
+    "docs/ui/UI-SOURCE-OF-TRUTH.md"
+  ],
+  "fieldSpecificIdentifierAndDivisionText": [
+    "experiments/sound-hardware-v1/hardware_candidate/evidence/raw_control_coverage.csv",
+    "experiments/sound-hardware-v1/mapping/results/implementer_brief/public_control_catalog.json"
+  ],
+  "originalFactoryValuesAudited": {
+    "shared_programs": 640,
+    "ordered_export_fields": 90549,
+    "same_order_and_all_float32_words": 640,
+    "all_nonparameter_metadata_equal": 90,
+    "record_objects_equal": 86,
+    "programs_with_equal_float_decimal_changes": 200
+  },
+  "comparableSource": {
+    "docs/design/UI-SOURCE-OF-TRUTH.md": {
+      "base": "1d9dff79654f7cbf63b861e51fc9d33a71b134c7",
+      "consolidated": "1d9dff79654f7cbf63b861e51fc9d33a71b134c7"
+    },
+    "docs/design/OWNER-BASELINE-1836-NOTES.md": {
+      "base": "05bb730886a51853786740285cbc38e53287f8a6",
+      "consolidated": "05bb730886a51853786740285cbc38e53287f8a6"
+    },
+    "docs/design/OWNER-BASELINE-1836.pdf": {
+      "base": "e5f2e0a79126f0171582d59c5842338e9c275062",
+      "consolidated": "e5f2e0a79126f0171582d59c5842338e9c275062"
+    },
+    "reference/recovered-ui/mocks/glyphs": {
+      "base": "65f7b7a719e549664aa24f30d8675bc36db069e4",
+      "consolidated": "65f7b7a719e549664aa24f30d8675bc36db069e4"
+    }
+  },
+  "linuxSubtree": {
+    "f1786ebec2616477163b62b029c7e77405a9c3de": "e2f4932fcbaedab1c714a7b1bc40ab0dbe660cf3",
+    "49662e4d437421e686a6cc04b806cd0d700bab74": "e2f4932fcbaedab1c714a7b1bc40ab0dbe660cf3",
+    "f013ecc653f2b9f0006e976a1097250e9356ce14": "3180baee16e80f6592f1e989ee84b1a220b95c0c"
+  },
+  "bindingControls": [
+    {
+      "id": 88,
+      "identifier": "neonlfo1Rate",
+      "field": "lfo1Rate",
+      "role": "main_preset_control",
+      "type_from_public_audit": "continuous Float control",
+      "units_or_remaining_question": "Hz or tempo division according to HzEnable 195",
+      "main_apply_position": 126,
+      "exact_stock_superj6_mapping_verified": false,
+      "bank_occurrences": 640
+    },
+    {
+      "id": 96,
+      "identifier": "neonlfo2Rate",
+      "field": "lfo2Rate",
+      "role": "main_preset_control",
+      "type_from_public_audit": "continuous Float control",
+      "units_or_remaining_question": "Hz or tempo division according to HzEnable 196",
+      "main_apply_position": 135,
+      "exact_stock_superj6_mapping_verified": false,
+      "bank_occurrences": 640
+    },
+    {
+      "id": 100,
+      "identifier": "neonlfo3Rate",
+      "field": "lfo3Rate",
+      "role": "main_preset_control",
+      "type_from_public_audit": "continuous Float control",
+      "units_or_remaining_question": "Hz or tempo division according to HzEnable 197",
+      "main_apply_position": 142,
+      "exact_stock_superj6_mapping_verified": false,
+      "bank_occurrences": 640
+    },
+    {
+      "id": 195,
+      "identifier": "neonlfo1HzEnable",
+      "field": "lfo1HzEnable",
+      "role": "main_preset_control",
+      "type_from_public_audit": "switch stored as Float",
+      "units_or_remaining_question": "off/on; exact callback threshold must match original",
+      "main_apply_position": 155,
+      "exact_stock_superj6_mapping_verified": false,
+      "bank_occurrences": 640
+    },
+    {
+      "id": 196,
+      "identifier": "neonlfo2HzEnable",
+      "field": "lfo2HzEnable",
+      "role": "main_preset_control",
+      "type_from_public_audit": "switch stored as Float",
+      "units_or_remaining_question": "off/on; exact callback threshold must match original",
+      "main_apply_position": 156,
+      "exact_stock_superj6_mapping_verified": false,
+      "bank_occurrences": 640
+    },
+    {
+      "id": 197,
+      "identifier": "neonlfo3HzEnable",
+      "field": "lfo3HzEnable",
+      "role": "main_preset_control",
+      "type_from_public_audit": "switch stored as Float",
+      "units_or_remaining_question": "off/on; exact callback threshold must match original",
+      "main_apply_position": 157,
+      "exact_stock_superj6_mapping_verified": false,
+      "bank_occurrences": 640
+    }
+  ],
+  "numericSource": {
+    "experiments/sound-hardware-v1/mapping/results/implementer_brief/BEHAVIOR-BRIEF.md": {
+      "03f92a7d": "05e89528a828db536ce621f6cad0cd0e741e6f5c",
+      "f1786ebe": "05e89528a828db536ce621f6cad0cd0e741e6f5c"
+    },
+    "experiments/sound-hardware-v1/mapping/results/implementer_brief/public_control_catalog.json": {
+      "03f92a7d": "394b90fb833a9dba90563b71fbf0c63e24172107",
+      "f1786ebe": "394b90fb833a9dba90563b71fbf0c63e24172107"
+    },
+    "experiments/sound-hardware-v1/mapping/results/implementer_brief/numeric_behavior_targets.json": {
+      "03f92a7d": "99f3844733183cd4502d347206a31f26a5ae6363",
+      "f1786ebe": "99f3844733183cd4502d347206a31f26a5ae6363"
+    }
+  },
+  "compactFirmwareReview": {
+    "ordinaryScreens": 1528,
+    "geometryFindings": 0,
+    "presenceChecks": 19593,
+    "presenceMissing": 0,
+    "glyphChecks": 249,
+    "glyphMissing": 0,
+    "glyphDamaged": 0
+  }
+}

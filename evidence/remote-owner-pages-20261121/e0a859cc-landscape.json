@@ -1,0 +1,10 @@
+{
+  "browser": "151.0.7922.34",
+  "count": 127,
+  "failures": [],
+  "pageErrors": [],
+  "enabledControlPresentations": 5716,
+  "reachablePresentations": 5716,
+  "manifestSha256": "60f1274db962266f9ec8cc25c4209e49cec4fcef463209047689e65afc676ea1",
+  "kernelSha256": "9ad1ab9c533ccda4b506a0b0cc281de50af3dcd57370ffa916a5174277cbdbd0"
+}

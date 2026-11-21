@@ -1,0 +1,71 @@
+{
+  "head": "cc53d936c178f33e6c5890c108f798a10bc98149",
+  "tree": "22eb6bbbf84ce449d985a3fc41afb40fa3c31731",
+  "originalSuperJ6archiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+  "runtimeFilesSha256": {
+    "index.html": "010718d268ec15e83da8c641eb82ec30588d3d001bd4cf07fb15a182bd82fc0b",
+    "kernel.wasm": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+    "native-session.mjs": "077161f1641a927df241112b71bfa46e25023d3808d08469851838dd9c876360",
+    "observer.mjs": "525c2437315760e448e4f631ca9ba1a9e2311d216b18ef93852969d09098b2d3",
+    "page.mjs": "f4348ebcbedc94495c60f6bcf93848567fc6a0d3d9961f08c81c613fab5d9966",
+    "runtime.json": "f11271f85ad61c9c5bc5f3959f8b5ffa2e3a8c8cbab90f4b43c7aeb94676b4e0",
+    "session-codec.mjs": "5924c689e512fc1c4e14718e0d267dce7ef287ec51183d1902e3d7902134845d",
+    "style.css": "f9d8c09ebe689442f027b038482488a6e02db255db7553127b92b907b68cd5b8",
+    "wasi.mjs": "76221f9d11ff8be10d9844f0ecc696ddc0bafb694775a12a6b665c4d77a78f18",
+    "worklet.mjs": "3841c8754053df804e103dc80ea31ab3dc0c4063112aa20b45f3b1421adbd034"
+  },
+  "commands": [
+    {
+      "stage": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "started": "2026-11-21T05:22:25.697002+00:00",
+      "ended": "2026-11-21T05:22:26.786858+00:00",
+      "exit": 0,
+      "logSha256": "741d3b8496fdd1892002c72c894c4b3bffdc26aea61e98372425c3869a8528b5"
+    },
+    {
+      "stage": "R5",
+      "command": [
+        "python3",
+        "tests/product-remote/landscape-browser.py",
+        "--output",
+        "/workspace/scratch/7113924d764d/qualified-cc53d936/evidence/landscape"
+      ],
+      "started": "2026-11-21T05:22:26.787338+00:00",
+      "ended": "2026-11-21T05:23:13.676499+00:00",
+      "exit": 0,
+      "logSha256": "c44029b68ae4c98151575311d8753c467f8b6231ebd86a26ecfd8c656b71ec42"
+    },
+    {
+      "stage": "structural",
+      "command": [
+        "python3",
+        "tests/visual/fixtures/web-structural/browser_fixtures.py",
+        "--fixtures-only",
+        "--output",
+        "/workspace/scratch/7113924d764d/qualified-cc53d936/evidence/structural.json"
+      ],
+      "started": "2026-11-21T05:23:13.677357+00:00",
+      "ended": "2026-11-21T05:23:17.045874+00:00",
+      "exit": 0,
+      "logSha256": "836f51ebe0c8d381bcce71650fb8a7b8f1207acc19d90cf32efd61b6f0d01bbf"
+    },
+    {
+      "stage": "header",
+      "command": [
+        "npm",
+        "run",
+        "test:visual"
+      ],
+      "started": "2026-11-21T05:23:17.046973+00:00",
+      "ended": "2026-11-21T05:23:25.575348+00:00",
+      "exit": 1,
+      "logSha256": "eed060d0d98ace234d173e95568431ab6a38954fd8ad7a790738c933b436299b"
+    }
+  ],
+  "cleanTrackedAfter": true
+}

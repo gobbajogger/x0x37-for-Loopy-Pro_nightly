@@ -1,0 +1,849 @@
+{
+  "assets": {
+    "remote/FUNKYBEATS-MIT-NOTICE.md": "fa7db763a62dcc5ead1535692673d5a2b35270afe2c454e89d0ddb49fba67b80",
+    "remote/SOURCE-PINS.json": "a0084bd01f70e6adb19fc4e78a3e2b9e860524ff19014822c0cd29b264fa536d",
+    "remote/WORKSPACE-SOURCE-PINS.json": "23d640e39e20d5a32416b602a90fd7f09260c0e311aadeae8d6ced20c1863de4",
+    "remote/aa-ease.mjs": "3206359dd72f6e551676f7cf8a81178b34e96b04ea2e64700c6abcb54a49e11d",
+    "remote/app.mjs": "5efd6a6387126401ee303e135fb0f3c17a4f812824f3e1c66b3c921fa65d2b3f",
+    "remote/assets/Barlow-OFL.txt": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+    "remote/assets/BarlowSemiCondensed-Bold.ttf": "5bd6757e459a110da81b44532f0f43058e2dab2401688abca84f2fdbde193cbb",
+    "remote/assets/BarlowSemiCondensed-Medium.ttf": "4998b693a190b76f2b11315844345a8546c1e2e6a320905507a9eed04edf8b48",
+    "remote/break-sequence.mjs": "7b543ff3e4ec0579219771a3907b7cbc85fad821335679d1d0fb6b62779d99c1",
+    "remote/catalog.json": "5852d63f7f634b3d430082c0f8f3d8cd8451dc4ec31302baf00000cd5b0028c0",
+    "remote/catalog.mjs": "855de076fd76ea4c6ccd508f8a6d55e0996657e937dd08952266256af6c58ee0",
+    "remote/components.json": "2882a2af257df5f3c4ddfe261e839da7304203522d7905d00b74dd0d74b5d507",
+    "remote/connection.mjs": "7aea9eb2db084653cf261fc75f3b437ec7c324299fb29cfd722cd4d1cc815977",
+    "remote/device/app.mjs": "e2b87b25b03a1340958154b593692f254f94201b9bfb1e7096199089d351d8ae",
+    "remote/device/catalog.mjs": "855de076fd76ea4c6ccd508f8a6d55e0996657e937dd08952266256af6c58ee0",
+    "remote/device/connection.mjs": "7aea9eb2db084653cf261fc75f3b437ec7c324299fb29cfd722cd4d1cc815977",
+    "remote/device/index.html": "d1acd2401e1c1f6b27680cc99d6009e648fdafb9f5b6e6025ae289c312e60a4d",
+    "remote/device/page.mjs": "8ff67bf4d71dc2153aa91e25e66f7bf8e44da32497f8fdd599cb8c3d885b083b",
+    "remote/device/session.mjs": "e5917644216089c9d0e34700f3e04676529f1b2eb202f4b0d660f8f05bd394f2",
+    "remote/device/style.css": "70886214b7febfb46c74968500ad12d92d01184a6141ebaf887fb594345abfd1",
+    "remote/device/vendor/client.mjs": "6e71fb9674cc2eecbe48ad7ef12dbecd6fbaae1c82e90416f9e046b84fe2643b",
+    "remote/device/vendor/codec.mjs": "2ba77fa371114c978dc00d25f2205ff69593a9ab4f24a3a406c262426bdf50d2",
+    "remote/device/view.mjs": "1ba2d5554e49540af599e8c65dbe26290b5d3d691229d5f55c866f69f1a344ba",
+    "remote/draft-file.mjs": "2f7baad242c2c2b41c1b1b245392cc5f0ae06a11d8fe56149259417829341154",
+    "remote/draft-identity.mjs": "46b03d40fd30b8e08de33e234d24c67fcbda7af9c8ed662f9eacb3974b206753",
+    "remote/draft-ui.mjs": "6b1c5003dd6e88e18a53d2dcb7670e7f2ade6c0573e2607f953d805b942f91c1",
+    "remote/envelope-observations.mjs": "925d3648652b8cdb0aee639479f1f62c7b48323b654af56c2b5a79f16ff264bf",
+    "remote/envelope-view.mjs": "bb0ea4fdb883caa0f22938ba78edd4f740a78b192a59e09f7411eee081ddcffd",
+    "remote/firmware-link.mjs": "9b329e7f7df7adf1e009b243771b291b4c3ee9e70cd786340887bc70ae0b185a",
+    "remote/frame.mjs": "78b6d3d55944cd33c593485748a74c441aef46ba5c66c4024e83d7b895cc9f09",
+    "remote/funkybeats-view.mjs": "246d96ed404e977c1d540c15ac8e9077df93e331d7c6180096a6e7114914b030",
+    "remote/glyph-live.mjs": "7eea540c787c503227f2b219b7181e1451dcb60c356b493d912f822cef2eb363",
+    "remote/glyph-registry.mjs": "210cddcd07e3f7423f3f290e48e37d18c1933f3d2b4dd54ab0a047e379a1a40e",
+    "remote/glyph-render.mjs": "f8a2d9d3fc3eb7fad9227ed49637b4376eca38980df2769279e90b277c705aa8",
+    "remote/glyphs.mjs": "4dc717f77f1d6f3a2ae58411df4648753354bf33f7921be78c6da22d7246ae1e",
+    "remote/grid.mjs": "6a14e0e046eed76a41c541e5bc205fce1ee4fa8a7a54be1ebf820ec16b1382c3",
+    "remote/identity/app.mjs": "9eba18e1d701402c1eac4a329fc7cdb5411b5093c0c1b53b8babd8481b8dcfee",
+    "remote/identity/index.html": "af6c4c0f407473962038e05843a68cfe29f4b4f9c3f9eaa002c2dd29451ae26f",
+    "remote/identity/remote.mjs": "e070d1c419ad9cb1a52c2fa1b2f8a8fcf51a72bfd93d0d5e0fb7e2b90422d5e1",
+    "remote/index.html": "e35b871e096dd4bb1f3088839ef50b2b3186840f025c00935ed853914cebcaa7",
+    "remote/lane.mjs": "144af779aed9642acd7fdabc5a091f29f55413ffc9e3d682cb61e5d0f2855288",
+    "remote/local-instrument.mjs": "6d75866785544da285c088d8cf9c274e8c24950e1e914db81342a9ec525d8b70",
+    "remote/mix-aliases.mjs": "ce42742a4c3908e480d8511f52897ae7facbaf238662971671ca01523ef1a0c5",
+    "remote/mix-workspace.mjs": "1ba2e99afbba3b3ba98e6eeef49b5431e89f987e8923468e4c2bbeb3f2c5cdf1",
+    "remote/fx-format.json": "ed4cfc2f43ebdf2a191543cfa70f3660b824af10388ae13a2f4508d4784e09f1",
+    "remote/mixer-format.json": "8450ace83796652fdf59058c67b3342082c8a38f37e4e148734e04c97f59ec69",
+    "remote/mixer-format.mjs": "a2cdf9ef8f5f0689e4a3e8728d49961c2562e0dc5b90f3ea7e27da7c469bda38",
+    "remote/model.mjs": "f6773866a57f0bc23b96b6b94f42b0ebf782aa8bd7f5af186549ff5e65f8577c",
+    "remote/motion.mjs": "f65eedc0c106b2259b9a64c2c29d22d52fb963742138d207f46ba086551f3eab",
+    "remote/page.mjs": "19dc0169e109ce5e6b7619bca40f33001d4569ae1c0be7bfd320d9c72a1c4ac6",
+    "remote/pan.mjs": "c07a75811fd0df011d5226963eda44b01acd28398018f85dcfb9c4ca78a536a6",
+    "remote/parameter.mjs": "0cad6cffbc0f5ff58765eed37082303380045a9517dd9de02deb4c7d6d8b63d6",
+    "remote/remote.mjs": "adb9403995a8b728cc057ecddd7af29c66fdfd53f461e99a40d58727e0e9276f",
+    "remote/roll.mjs": "7167c3c9c3c892244026dc2660176336b3b43d1dc4af2279b71c5a70c046bc3d",
+    "remote/runtime-mix-map.mjs": "b3a7f44bb361f970340a4349ae8c3838262cf8306690c0e78be35c6e2b4a3ec2",
+    "remote/runtime-mix-state.mjs": "684ff1192e27d2afacbdec08187d1884b1c1a1aaf9cd142f05c797c2446f3469",
+    "remote/runtime-sound-map.mjs": "44b1e6ec4dea9730bb7db3484bcbd1784d9d0f731cbfecbd2c294219d559df6d",
+    "remote/runtime-sound-state.mjs": "54055bc5278e6fbb65756eb9fe6af356b10d75f07a12e4d5293911c2094e9ebd",
+    "remote/sequence.mjs": "318ee8c81788af37ed1f836a18e302728dde36fb9ee2edfe2433c2ee6e1938f9",
+    "remote/session.mjs": "7ccfbb84d1700a81dfd2c6a1ebbc433aefea6780177f33abefd5817a646ce521",
+    "remote/sound.mjs": "76a3aff4663130dcf9af060c70fe94a85eaab295eda67ebc226df3e0fb4a7c10",
+    "remote/source-sounds.json": "a15c137f94b3a2e722ec80f6c720ee988da08d86b78cfe90de7a142e0985dfb7",
+    "remote/startup.mjs": "2adef9575b8914f420fa12dcdc1a2225aee88162602ec89615e89473c4cc13c6",
+    "remote/step-lane.mjs": "2cc0796299aa898dd5550ff4db8541a25b053bd4ae50b65e129a2627f29c8be6",
+    "remote/style.css": "69f81cb00ad3ae93162d5667071ff0f622f3854f3fed93dbd51ff577b5410b46",
+    "remote/timeline.mjs": "adc75e204a4f2f15af7b9be524c99e34c8b06684c587d5cf4bbadc82b8c59152",
+    "remote/trace.json": "67e1e9e48264a79c1e47dd760e1e0e898b65796041a1489b88d724789e5e3a55",
+    "remote/vendor/client.mjs": "0a9a11b4514fab1fdbb905f1385c1c5f54986acae924fd6de5f9f5ec71a3176c",
+    "remote/vendor/codec.mjs": "c4836c6aff371cc21ae790b51804b9634d9118c2ef3d05da9d05b54388303d40",
+    "remote/vendor/funkybeats-core.mjs": "36b2947334e951d31604ba3ebd7efa9ada5a5ed26939f324ce9160b51a25039c",
+    "remote/view.mjs": "e058cd9c3869d5cedb3f5e851a7ebdf4c1b7e2b2ab64df1cf87f6cbb4ba59ff9",
+    "remote/wave-display.mjs": "6287ea63be3f5f30620316a49ba190001bf164afe3e496440d2491438575621b",
+    "remote/workspace.mjs": "3a41b283b95cc4916817e3389adf4150bda30ffd31715cdb045d261e4ed54f5f",
+    "remote/break-chance.mjs": "9f0045cc91f5b3fb8161fd7242e4bf35e027a0a10e9198401671360c8b662dee",
+    "remote/runtime-playing-state.mjs": "c41a6629933f007c176ada0811a4eb77d754318ddf75c1f3a554ddaa9046c4ab",
+    "remote/song-view.mjs": "f635f81419be7ade91854197ef6a7d4bfb8e144fcecbe5b4c83aed26c3d22ca2",
+    "remote/master-draft.mjs": "3394d9d987a66ec8051e8fddc462c19ecae6c6bb19c72fe1195370b568c4bdda",
+    "remote/master-source.mjs": "c438d05e6b298cc7d1f88c785fbe87ef6f3d7039f41c3f3db054ec333161f783",
+    "remote/drum-strip.mjs": "038a933aae89587fc8b83eb48883159369f319bbaa040d93a5cfcd0060b179f3",
+    "remote/drum-format.mjs": "9c9a85676a3692f878e53b67c894d0505f2197137f42af7570c37f0bef836753",
+    "remote/superj6.mjs": "ecb63d261f32f59fc564927f4fb22d01d8230f7f14635d366883e2c80bc63193",
+    "remote/synth-one-init.mjs": "7e0d7d4c05d605d5c0f66cf084ed81ff160163380677630ed2ece1ff8a5f7efd",
+    "remote/synth-one-init-data.mjs": "6ffd2c5c0dc99722ef55bb85c75e8cdfe0bcc187f12cf7608ed38748d77d3107",
+    "remote/superj6-banks.mjs": "fae58489a87f4a181c9b4fd249b9a5761660d5c640cd4821a53353fea25a3cd5",
+    "remote/synth-one-banks/BankA.json": "1486c2b1fcb922d145541c96f436e7e15d755dba72ff9a8030052ef22d224bed",
+    "remote/synth-one-banks/Bonus.json": "e189a9782469bd851d97a2bd157cfdd43692621287de68eb2909e8aabbd4b996",
+    "remote/synth-one-banks/Brice Beasley.json": "a42a515cc66fc392f8831efa4865145dc9e2c8a8d9bc2554d1fd8a1aed242d45",
+    "remote/synth-one-banks/DJ Puzzle.json": "6263b4c08143d5f62192ad48c881129ae0c2df80256abd010dee89ede10b6506",
+    "remote/synth-one-banks/Electronisounds.json": "94447bcafd93b8e534b99347ef1a2ab7f96006364c36e85c88825e2480a026e7",
+    "remote/synth-one-banks/Francis Preve.json": "7e45e985951bcff09de2745d7223a8523c559f7ae30c032cfeed81c6bf317187",
+    "remote/synth-one-banks/JEC.json": "9af56a4f52d050c98da8bfc6bc355ac872772cdd419def188bb644b0c9dff0c0",
+    "remote/synth-one-banks/LICENSE": "71ac2b8af8849096ba2d0f3510972b8384204f17517e773bfa52fc755fb0fc49",
+    "remote/synth-one-banks/MANIFEST.json": "806d92dae2ef75b073168e5b85ee2dc6055f2c3b10ceca3a0e40933514c37622",
+    "remote/synth-one-banks/Red Sky Lullaby.json": "db813fe373ebd0c2434c8c0af376b245c331c35080b396bce83bc4d9f2fb0aac",
+    "remote/synth-one-banks/Sound of Izrael 2.json": "edf48f200ed2510b03d4b5e9e4c92c0306af0e38776c0916794d90e79572d861",
+    "remote/synth-one-banks/Sound of Izrael.json": "1f100f20227401a47e17f91bac5be44efc6d5fef8d97f7ed2a64a2a7e1426462",
+    "remote/synth-one-banks/Spidericemidas.json": "1cb034e91677be3b7bc0cddca64d821ddbfc132d79f98e4211053867f76eec35",
+    "remote/synth-one-banks/Starter Bank.json": "f4da92584505084e3b0277cf1e1f1911050837014a5fa7371cc6879421cbe908",
+    "remote/synth-one-file-model.mjs": "e0c736d2e2a941983ad6e64a3b6045f15b7d15666f4f30d2daf811d7483b8d47",
+    "remote/synth-one-files.css": "2100256691982be1db8932187540e517e85a462d681b21b89ff147d387db8061",
+    "remote/synth-one-files.mjs": "dd8a7a6fe80058a9f292b6cfb8e37925fb0a2cc8e2357f7bfa15ff91c67bdaa2",
+    "remote/master-output.mjs": "627640f3c1d5a4230e8eefa9880aedef40fe866641be92b91f8e4a7d0f6877ff",
+    "remote/synth-one-wave.mjs": "e8c3852f18364b01c191071aa0ff3ded8bb90a6415615b859fbf0269ec635061",
+    "remote/drum-accent.mjs": "6d814dee3b196a307ced2cbb1b18115a82834ecde22bb61bfabec8178f19d2ea",
+    "remote/local-step-rows.mjs": "1396e5d26291c92eecfdb02edbf48b9d9a3d20cc2af799fd0ccd158774c4ae0f",
+    "remote/step-value-gesture.mjs": "909d6ffe9ee9ed61e1ecace101aac40ce4947b6c6de299f914476a54b986ab0c",
+    "remote/pattern-locks.mjs": "82d1fb2c3a3489b450d469c9fa20e9220a6b5a4e360e075f4862c5cb791decdb",
+    "remote/project-preset.mjs": "5b990f5c7cc783aa51517bcaab51c17fc0c8967c4ff3862a44a506d5b0376957"
+  },
+  "sizes": {
+    "1440": {
+      "rows": [
+        {
+          "kit": "909",
+          "voice": 0,
+          "controls": 6,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 173.56625366210938,
+            "bottom": 123.80874633789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 1,
+          "controls": 5,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 2,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 3,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 4,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 5,
+          "controls": 2,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 82.91000366210938,
+            "bottom": 214.46499633789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 6,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 7,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 8,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 9,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 10,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "808",
+          "voice": 0,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 1,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 2,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 3,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 4,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 5,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 6,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 7,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 8,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 9,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 10,
+          "controls": 3,
+          "label": {}
+        }
+      ],
+      "shots": {
+        "909-review": "f469c13ccfddc84b0a11e5b0da42276afce77327585a9954f494afdc31c31d04",
+        "909-sound": "5e0558f990de33634bde8bf14eea042535b81d6286068d365326d4c2c4e05a40",
+        "909-steps": "afa6fe0734a5c8d2081d6c929153c1c9453d9045c77bb3701762914e2027e84b",
+        "808-review": "237e34efa4efcd1f26d787d212aacf46c330cbedba6c8600e53eddac3c7e8b9e",
+        "808-sound": "beed25e4cad6d8431a1ceae5fe5d5a44d1adf5e96a6194c055af0e76ebc3c84a",
+        "808-steps": "98acbd117c543afca3b3b879b658c626cbf4a9b37cccaaf73170c67ab390102d"
+      }
+    },
+    "390": {
+      "rows": [
+        {
+          "kit": "909",
+          "voice": 0,
+          "controls": 6,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 186.85064697265625,
+            "bottom": 133.27435302734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 1,
+          "controls": 5,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 2,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 3,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 4,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 5,
+          "controls": 2,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 89.25689697265625,
+            "bottom": 230.86810302734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 6,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 7,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 8,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 9,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 10,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 64.82186889648438,
+            "left": 16.765625,
+            "right": 288.234375,
+            "top": 131.96002197265625,
+            "bottom": 188.16497802734375
+          }
+        },
+        {
+          "kit": "808",
+          "voice": 0,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 1,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 2,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 3,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 4,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 5,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 6,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 7,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 8,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 9,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 10,
+          "controls": 3,
+          "label": {}
+        }
+      ],
+      "shots": {
+        "909-review": "c6d80b1167e524eddbdda6ec164a89c2e4fed8f3ad8f338423916d6e9584a225",
+        "909-sound": "0dd76ea8341d31a1d8ee67e3b897b7242f8067bef828edf75ba668021c40d447",
+        "909-steps": "15625a25586d6660a305f40b05f25abe14a882f4533575d5e4e52b6060a79140",
+        "808-review": "7708909230047dcb27a895516356eae06551283b6fc8ded2b0c1642414cff730",
+        "808-sound": "2cbe6565f80d8ad2f7bb9f3f2742b4d790607b1e48d98141b4db61d91c8a2731",
+        "808-steps": "593ec1d4047db475adce901eab2738ca7465579eac6f5e31bf2e6430d8906c46"
+      }
+    },
+    "844": {
+      "rows": [
+        {
+          "kit": "909",
+          "voice": 0,
+          "controls": 6,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 173.56625366210938,
+            "bottom": 123.80874633789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 1,
+          "controls": 5,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 2,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 3,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 4,
+          "controls": 4,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 5,
+          "controls": 2,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 82.91000366210938,
+            "bottom": 214.46499633789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 6,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 7,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 8,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 9,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "909",
+          "voice": 10,
+          "controls": 3,
+          "label": {
+            "name": "Velocity",
+            "old": "hidden",
+            "new": "visible",
+            "gap": 58.8814697265625,
+            "left": 15.578125,
+            "right": 266.421875,
+            "top": 122.58187866210938,
+            "bottom": 174.79312133789062
+          }
+        },
+        {
+          "kit": "808",
+          "voice": 0,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 1,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 2,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 3,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 4,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 5,
+          "controls": 4,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 6,
+          "controls": 5,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 7,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 8,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 9,
+          "controls": 3,
+          "label": {}
+        },
+        {
+          "kit": "808",
+          "voice": 10,
+          "controls": 3,
+          "label": {}
+        }
+      ],
+      "shots": {
+        "909-review": "3f36bd779fb6824f0950afa868f95f99809438566c1212bd2721028e55c99fa1",
+        "909-sound": "9fe6b5cb52ed84978f071fad91a577f40b80d179457477ed9afc661d89e18845",
+        "909-original": "e0ab06fd7c02df226a3470d8ba286b760b3b835077ef3facda6c88e0a56d0d2b",
+        "909-steps": "1378ed86ffcaf32a4f5deab76bc31b39ba58ee6a7bee99bec9604ae3cad14322",
+        "808-review": "e48541161915e4ab80235cb9fbc971d3522cb1e8a8e67f178238f84b3a30458c",
+        "808-sound": "574d585b1b9a0f0090030754ccb0ee3e3db59665a4f8d9233e0a05b0b83e3f6c",
+        "808-original": "c3c8580bae2d230649b8c80c6b22945feae359dd51a243e0cc2c924ac5392c20",
+        "808-steps": "c61a1252aa77014a80098c7768fabff436a62cdb9b28eee5e183c924c6c6aec4"
+      }
+    }
+  },
+  "controlsChecked": 249,
+  "pdf": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+  "manifest": "e4dfe9c3a36f156dc6b3bb67b01c0b71841cbd9cfb57bfdb8bf30065c0f61994",
+  "chromium": "151.0.7922.34"
+}

@@ -1,0 +1,93 @@
+{
+  "source_repo": "AudioKit/AudioKitSynthOne",
+  "source_pin": "6466a3715c96b7ecf1dd255a218cbd571408a314",
+  "source_directory": "AudioKitSynthOne/Presets/Data",
+  "license_blob": "be8551b835e760f321887b531d2f09d8ffa05c5a",
+  "scope": "All12 non-User JSON banks (694entries), not SuperJ6 banks; original raw bytes",
+  "files": [
+    {
+      "name": "BankA.json",
+      "sha": "723cc1cb74d5bbecee4cb5bf60e010fb9228252a",
+      "size": 152843,
+      "count": 41,
+      "sha256": "1486c2b1fcb922d145541c96f436e7e15d755dba72ff9a8030052ef22d224bed"
+    },
+    {
+      "name": "Bonus.json",
+      "sha": "6adbabd040f6bd59bef662db873b3c825eae7d77",
+      "size": 392851,
+      "count": 94,
+      "sha256": "e189a9782469bd851d97a2bd157cfdd43692621287de68eb2909e8aabbd4b996"
+    },
+    {
+      "name": "Brice Beasley.json",
+      "sha": "6ba771934ac7c714ad871c24970084bcf3fb5659",
+      "size": 141354,
+      "count": 46,
+      "sha256": "a42a515cc66fc392f8831efa4865145dc9e2c8a8d9bc2554d1fd8a1aed242d45"
+    },
+    {
+      "name": "DJ Puzzle.json",
+      "sha": "039dad5e39b626962e552415d56357a7dd697f8f",
+      "size": 83700,
+      "count": 28,
+      "sha256": "6263b4c08143d5f62192ad48c881129ae0c2df80256abd010dee89ede10b6506"
+    },
+    {
+      "name": "Electronisounds.json",
+      "sha": "a83bcd0a1e1e38001185672566f251cd9863d618",
+      "size": 130496,
+      "count": 43,
+      "sha256": "94447bcafd93b8e534b99347ef1a2ab7f96006364c36e85c88825e2480a026e7"
+    },
+    {
+      "name": "Francis Preve.json",
+      "sha": "4b33f55830cf723878da2100e3a3a7d16401b916",
+      "size": 75532,
+      "count": 26,
+      "sha256": "7e45e985951bcff09de2745d7223a8523c559f7ae30c032cfeed81c6bf317187"
+    },
+    {
+      "name": "JEC.json",
+      "sha": "fe92950eb09db26d00b68d77678902f8e0e89f4e",
+      "size": 377802,
+      "count": 88,
+      "sha256": "9af56a4f52d050c98da8bfc6bc355ac872772cdd419def188bb644b0c9dff0c0"
+    },
+    {
+      "name": "Red Sky Lullaby.json",
+      "sha": "076386d63fd887ed7e75e44fe06a8de005bcca60",
+      "size": 311963,
+      "count": 100,
+      "sha256": "db813fe373ebd0c2434c8c0af376b245c331c35080b396bce83bc4d9f2fb0aac"
+    },
+    {
+      "name": "Sound of Izrael 2.json",
+      "sha": "96534fa47d9abbd7bc84291aa6bd1dd25b9bdc33",
+      "size": 163872,
+      "count": 51,
+      "sha256": "edf48f200ed2510b03d4b5e9e4c92c0306af0e38776c0916794d90e79572d861"
+    },
+    {
+      "name": "Sound of Izrael.json",
+      "sha": "bbf62c44ce685f79f7569383e71da3b74e47567f",
+      "size": 382672,
+      "count": 101,
+      "sha256": "1f100f20227401a47e17f91bac5be44efc6d5fef8d97f7ed2a64a2a7e1426462"
+    },
+    {
+      "name": "Spidericemidas.json",
+      "sha": "1ebc40169e567ed7712180b285ed356af1b50092",
+      "size": 195532,
+      "count": 61,
+      "sha256": "1cb034e91677be3b7bc0cddca64d821ddbfc132d79f98e4211053867f76eec35"
+    },
+    {
+      "name": "Starter Bank.json",
+      "sha": "4b8f43f53b8e5e7d333a5d2d609415998840c15d",
+      "size": 58280,
+      "count": 15,
+      "sha256": "f4da92584505084e3b0277cf1e1f1911050837014a5fa7371cc6879421cbe908"
+    }
+  ]
+}

@@ -1,0 +1,997 @@
+pdf_page	owner_control_or_readout	mapping
+1	Workspace: Sequence	M001
+1	Workspace: Sound	M002
+1	Workspace: Mix & FX	M003
+1	Workspace: Patterns & Song	M004
+1	Workspace: Projects	M005
+1	Connect	M006
+1	Part: 909	M007
+1	Part: 808	M008
+1	Part: Bass A	M009
+1	Part: Bass B	M010
+1	Part: BREAK	M011
+1	Transport: Play	M012
+1	Transport: Stop	M012
+1	Transport: Rec	M012
+1	Pitch	M013
+1	Velocity	M014
+1	Note	M015
+1	Tie	M016
+1	Rest	M017
+1	Accent	M018
+1	Slide	M019
+1	Select	M020
+1	Draw	M020
+1	Erase	M020
+1	Pan / zoom	M020
+1	Undo draft	M021
+1	Review draft	M021
+1	Step details	M022
+1	Playhead	M023
+2	Workspace: Sequence	M001
+2	Workspace: Sound	M002
+2	Workspace: Mix & FX	M003
+2	Workspace: Patterns & Song	M004
+2	Workspace: Projects	M005
+2	Connect	M006
+2	Part: 909	M007
+2	Part: 808	M008
+2	Part: Bass A	M009
+2	Part: Bass B	M010
+2	Part: BREAK	M011
+2	Transport: Play	M012
+2	Transport: Stop	M012
+2	Transport: Rec	M012
+2	909 Bass drum step 01	M024
+2	909 Bass drum step 02	M024
+2	909 Bass drum step 03	M024
+2	909 Bass drum step 04	M024
+2	909 Bass drum step 05	M024
+2	909 Bass drum step 06	M024
+2	909 Bass drum step 07	M024
+2	909 Bass drum step 08	M024
+2	909 Bass drum step 09	M024
+2	909 Bass drum step 10	M024
+2	909 Bass drum step 11	M024
+2	909 Bass drum step 12	M024
+2	909 Bass drum step 13	M024
+2	909 Bass drum step 14	M024
+2	909 Bass drum step 15	M024
+2	909 Bass drum step 16	M024
+2	909 Snare step 01	M024
+2	909 Snare step 02	M024
+2	909 Snare step 03	M024
+2	909 Snare step 04	M024
+2	909 Snare step 05	M024
+2	909 Snare step 06	M024
+2	909 Snare step 07	M024
+2	909 Snare step 08	M024
+2	909 Snare step 09	M024
+2	909 Snare step 10	M024
+2	909 Snare step 11	M024
+2	909 Snare step 12	M024
+2	909 Snare step 13	M024
+2	909 Snare step 14	M024
+2	909 Snare step 15	M024
+2	909 Snare step 16	M024
+2	909 Low tom step 01	M024
+2	909 Low tom step 02	M024
+2	909 Low tom step 03	M024
+2	909 Low tom step 04	M024
+2	909 Low tom step 05	M024
+2	909 Low tom step 06	M024
+2	909 Low tom step 07	M024
+2	909 Low tom step 08	M024
+2	909 Low tom step 09	M024
+2	909 Low tom step 10	M024
+2	909 Low tom step 11	M024
+2	909 Low tom step 12	M024
+2	909 Low tom step 13	M024
+2	909 Low tom step 14	M024
+2	909 Low tom step 15	M024
+2	909 Low tom step 16	M024
+2	909 Mid tom step 01	M024
+2	909 Mid tom step 02	M024
+2	909 Mid tom step 03	M024
+2	909 Mid tom step 04	M024
+2	909 Mid tom step 05	M024
+2	909 Mid tom step 06	M024
+2	909 Mid tom step 07	M024
+2	909 Mid tom step 08	M024
+2	909 Mid tom step 09	M024
+2	909 Mid tom step 10	M024
+2	909 Mid tom step 11	M024
+2	909 Mid tom step 12	M024
+2	909 Mid tom step 13	M024
+2	909 Mid tom step 14	M024
+2	909 Mid tom step 15	M024
+2	909 Mid tom step 16	M024
+2	909 High tom step 01	M024
+2	909 High tom step 02	M024
+2	909 High tom step 03	M024
+2	909 High tom step 04	M024
+2	909 High tom step 05	M024
+2	909 High tom step 06	M024
+2	909 High tom step 07	M024
+2	909 High tom step 08	M024
+2	909 High tom step 09	M024
+2	909 High tom step 10	M024
+2	909 High tom step 11	M024
+2	909 High tom step 12	M024
+2	909 High tom step 13	M024
+2	909 High tom step 14	M024
+2	909 High tom step 15	M024
+2	909 High tom step 16	M024
+2	909 Rim shot step 01	M024
+2	909 Rim shot step 02	M024
+2	909 Rim shot step 03	M024
+2	909 Rim shot step 04	M024
+2	909 Rim shot step 05	M024
+2	909 Rim shot step 06	M024
+2	909 Rim shot step 07	M024
+2	909 Rim shot step 08	M024
+2	909 Rim shot step 09	M024
+2	909 Rim shot step 10	M024
+2	909 Rim shot step 11	M024
+2	909 Rim shot step 12	M024
+2	909 Rim shot step 13	M024
+2	909 Rim shot step 14	M024
+2	909 Rim shot step 15	M024
+2	909 Rim shot step 16	M024
+2	909 Clap step 01	M024
+2	909 Clap step 02	M024
+2	909 Clap step 03	M024
+2	909 Clap step 04	M024
+2	909 Clap step 05	M024
+2	909 Clap step 06	M024
+2	909 Clap step 07	M024
+2	909 Clap step 08	M024
+2	909 Clap step 09	M024
+2	909 Clap step 10	M024
+2	909 Clap step 11	M024
+2	909 Clap step 12	M024
+2	909 Clap step 13	M024
+2	909 Clap step 14	M024
+2	909 Clap step 15	M024
+2	909 Clap step 16	M024
+2	909 Closed hat step 01	M024
+2	909 Closed hat step 02	M024
+2	909 Closed hat step 03	M024
+2	909 Closed hat step 04	M024
+2	909 Closed hat step 05	M024
+2	909 Closed hat step 06	M024
+2	909 Closed hat step 07	M024
+2	909 Closed hat step 08	M024
+2	909 Closed hat step 09	M024
+2	909 Closed hat step 10	M024
+2	909 Closed hat step 11	M024
+2	909 Closed hat step 12	M024
+2	909 Closed hat step 13	M024
+2	909 Closed hat step 14	M024
+2	909 Closed hat step 15	M024
+2	909 Closed hat step 16	M024
+2	909 Open hat step 01	M024
+2	909 Open hat step 02	M024
+2	909 Open hat step 03	M024
+2	909 Open hat step 04	M024
+2	909 Open hat step 05	M024
+2	909 Open hat step 06	M024
+2	909 Open hat step 07	M024
+2	909 Open hat step 08	M024
+2	909 Open hat step 09	M024
+2	909 Open hat step 10	M024
+2	909 Open hat step 11	M024
+2	909 Open hat step 12	M024
+2	909 Open hat step 13	M024
+2	909 Open hat step 14	M024
+2	909 Open hat step 15	M024
+2	909 Open hat step 16	M024
+2	909 Crash step 01	M024
+2	909 Crash step 02	M024
+2	909 Crash step 03	M024
+2	909 Crash step 04	M024
+2	909 Crash step 05	M024
+2	909 Crash step 06	M024
+2	909 Crash step 07	M024
+2	909 Crash step 08	M024
+2	909 Crash step 09	M024
+2	909 Crash step 10	M024
+2	909 Crash step 11	M024
+2	909 Crash step 12	M024
+2	909 Crash step 13	M024
+2	909 Crash step 14	M024
+2	909 Crash step 15	M024
+2	909 Crash step 16	M024
+2	909 Ride step 01	M024
+2	909 Ride step 02	M024
+2	909 Ride step 03	M024
+2	909 Ride step 04	M024
+2	909 Ride step 05	M024
+2	909 Ride step 06	M024
+2	909 Ride step 07	M024
+2	909 Ride step 08	M024
+2	909 Ride step 09	M024
+2	909 Ride step 10	M024
+2	909 Ride step 11	M024
+2	909 Ride step 12	M024
+2	909 Ride step 13	M024
+2	909 Ride step 14	M024
+2	909 Ride step 15	M024
+2	909 Ride step 16	M024
+2	909 Accent step 01	M024
+2	909 Accent step 02	M024
+2	909 Accent step 03	M024
+2	909 Accent step 04	M024
+2	909 Accent step 05	M024
+2	909 Accent step 06	M024
+2	909 Accent step 07	M024
+2	909 Accent step 08	M024
+2	909 Accent step 09	M024
+2	909 Accent step 10	M024
+2	909 Accent step 11	M024
+2	909 Accent step 12	M024
+2	909 Accent step 13	M024
+2	909 Accent step 14	M024
+2	909 Accent step 15	M024
+2	909 Accent step 16	M024
+2	Bass drum Tune	M025
+2	Bass drum Attack	M025
+2	Bass drum Decay	M025
+2	Bass drum Pitch depth	M025
+2	Step locks	M026
+2	Voice sound	M026
+2	Chance / 100%	M027
+3	Workspace: Sequence	M001
+3	Workspace: Sound	M002
+3	Workspace: Mix & FX	M003
+3	Workspace: Patterns & Song	M004
+3	Workspace: Projects	M005
+3	Connect	M006
+3	Part: 909	M007
+3	Part: 808	M008
+3	Part: Bass A	M009
+3	Part: Bass B	M010
+3	Part: BREAK	M011
+3	Transport: Play	M012
+3	Transport: Stop	M012
+3	Transport: Rec	M012
+3	Start	M028
+3	End	M028
+3	Release endpoint	M029
+3	Add lock	M030
+3	Choose lane	M030
+3	Clear override	M030
+3	Chance / condition	M031
+3	Cutoff override step 01	M032
+3	Cutoff override step 02	M032
+3	Cutoff override step 03	M032
+3	Cutoff override step 04	M032
+3	Cutoff override step 05	M032
+3	Cutoff override step 06	M032
+3	Cutoff override step 07	M032
+3	Cutoff override step 08	M032
+3	Cutoff override step 09	M032
+3	Cutoff override step 10	M032
+3	Cutoff override step 11	M032
+3	Cutoff override step 12	M032
+3	Cutoff override step 13	M032
+3	Cutoff override step 14	M032
+3	Cutoff override step 15	M032
+3	Cutoff override step 16	M032
+3	Review draft	M033
+4	Workspace: Sequence	M001
+4	Workspace: Sound	M002
+4	Workspace: Mix & FX	M003
+4	Workspace: Patterns & Song	M004
+4	Workspace: Projects	M005
+4	Connect	M006
+4	Part: 909	M007
+4	Part: 808	M008
+4	Part: Bass A	M009
+4	Part: Bass B	M010
+4	Part: BREAK	M011
+4	Transport: Play	M012
+4	Transport: Stop	M012
+4	Transport: Rec	M012
+4	Chicago Wave	M034
+4	Chicago Glide	M034
+4	Chicago Cutoff	M034
+4	Chicago Peak	M034
+4	Chicago EnvAmt	M034
+4	Chicago Bite	M034
+4	Chicago Gnaw	M034
+4	Chicago Attack	M034
+4	Chicago Decay	M034
+4	Chicago Sust	M034
+4	Chicago Rel	M034
+4	Chicago AmpMod	M034
+4	Chicago Level	M034
+4	Chicago ArpOn	M034
+4	Chicago ArpMod	M034
+4	Chicago ArpRng	M034
+4	Chicago ArpSpd	M034
+4	Chicago FxType	M034
+4	Chicago FxEd1	M034
+4	Chicago FxEd2	M034
+4	Open original	M035
+4	Save a copy	M035
+4	Engine / page	M036
+5	Workspace: Sequence	M001
+5	Workspace: Sound	M002
+5	Workspace: Mix & FX	M003
+5	Workspace: Patterns & Song	M004
+5	Workspace: Projects	M005
+5	Connect	M006
+5	Part: 909	M007
+5	Part: 808	M008
+5	Part: Bass A	M009
+5	Part: Bass B	M010
+5	Part: BREAK	M011
+5	Transport: Play	M012
+5	Transport: Stop	M012
+5	Transport: Rec	M012
+5	Open original	M035
+5	Save a copy	M035
+5	Parameter pages	M036
+5	Miami Carrier Wave	M037
+5	Miami Carrier Level	M037
+5	Miami Carrier Sub	M037
+5	Miami Carrier Pitch	M037
+5	Miami Xmod Wave	M038
+5	Miami Xmod Level	M038
+5	Miami Xmod Tune	M038
+5	Miami Xmod Depth	M038
+5	Miami Filter Cutoff	M039
+5	Miami Filter Crush	M039
+5	Miami Filter Wobble	M039
+5	Miami Wobble Shape	M040
+5	Miami Wobble Rate	M040
+5	JUNO Oscillator Wave	M041
+5	JUNO Oscillator Sub	M041
+5	JUNO Oscillator P Width	M041
+5	JUNO Oscillator Level	M041
+5	JUNO Filter Cutoff	M041
+5	JUNO Filter Res	M041
+5	JUNO Filter Env	M041
+5	JUNO Filter HPF	M041
+5	JUNO Envelope A	M041
+5	JUNO Envelope D	M041
+5	JUNO Envelope S	M041
+5	JUNO Envelope R	M041
+5	JUNO LFO / Chorus LFO Rate	M041
+5	JUNO LFO / Chorus PW Depth	M041
+5	JUNO LFO / Chorus Cho Rate	M041
+5	JUNO LFO / Chorus Chorus	M041
+6	Workspace: Sequence	M001
+6	Workspace: Sound	M002
+6	Workspace: Mix & FX	M003
+6	Workspace: Patterns & Song	M004
+6	Workspace: Projects	M005
+6	Connect	M006
+6	Part: 909	M007
+6	Part: 808	M008
+6	Part: Bass A	M009
+6	Part: Bass B	M010
+6	Part: BREAK	M011
+6	Transport: Play	M012
+6	Transport: Stop	M012
+6	Transport: Rec	M012
+6	909 level	M042
+6	909 peak	M043
+6	909 Mute	M044
+6	909 Solo	M045
+6	909 controls	M046
+6	808 level	M042
+6	808 peak	M043
+6	808 Mute	M044
+6	808 Solo	M045
+6	808 controls	M046
+6	Bass A level	M042
+6	Bass A peak	M043
+6	Bass A Mute	M044
+6	Bass A Solo	M045
+6	Bass A controls	M046
+6	Bass B level	M042
+6	Bass B peak	M043
+6	Bass B Mute	M044
+6	Bass B Solo	M045
+6	Bass B controls	M046
+6	BREAK level	M042
+6	BREAK peak	M043
+6	BREAK Mute	M044
+6	BREAK Solo	M045
+6	BREAK controls	M046
+6	Master Drive	M047
+6	Master Comp	M047
+6	Master Pump	M047
+6	Master Filter	M047
+6	Master more	M048
+6	Wave / GR	M049
+7	Workspace: Sequence	M001
+7	Workspace: Sound	M002
+7	Workspace: Mix & FX	M003
+7	Workspace: Patterns & Song	M004
+7	Workspace: Projects	M005
+7	Connect	M006
+7	Part: 909	M007
+7	Part: 808	M008
+7	Part: Bass A	M009
+7	Part: Bass B	M010
+7	Part: BREAK	M011
+7	Transport: Play	M012
+7	Transport: Stop	M012
+7	Transport: Rec	M012
+7	Drive	M050
+7	Comp	M050
+7	Pump	M050
+7	Filter	M050
+7	Threshold	M050
+7	Ratio	M050
+7	Attack	M050
+7	Release	M050
+7	Makeup	M050
+7	Mix	M050
+7	Pump source	M050
+7	Resonance	M050
+7	Limiter	M050
+7	Distortion	M050
+7	Glue	M050
+7	Volume	M050
+7	Master	M051
+7	Wave	M051
+7	Peak history	M051
+7	Gain reduction	M052
+8	Workspace: Sequence	M001
+8	Workspace: Sound	M002
+8	Workspace: Mix & FX	M003
+8	Workspace: Patterns & Song	M004
+8	Workspace: Projects	M005
+8	Connect	M006
+8	Part: 909	M007
+8	Part: 808	M008
+8	Part: Bass A	M009
+8	Part: Bass B	M010
+8	Part: BREAK	M011
+8	Transport: Play	M012
+8	Transport: Stop	M012
+8	Transport: Rec	M012
+8	Reverb Decay	M053
+8	Reverb Tone	M053
+8	Reverb Low cut	M053
+8	Reverb Return	M053
+8	Delay Time	M054
+8	Delay Feedback	M054
+8	Delay Tone	M054
+8	Delay Return	M054
+8	909 Rev send	M055
+8	909 Dly send	M055
+8	808 Rev send	M055
+8	808 Dly send	M055
+8	Bass A Rev send	M055
+8	Bass A Dly send	M055
+8	Bass B Rev send	M055
+8	Bass B Dly send	M055
+8	BREAK Rev send	M055
+8	BREAK Dly send	M055
+8	Tape	M056
+8	Delay type	M057
+9	Workspace: Sequence	M001
+9	Workspace: Sound	M002
+9	Workspace: Mix & FX	M003
+9	Workspace: Patterns & Song	M004
+9	Workspace: Projects	M005
+9	Connect	M006
+9	Part: 909	M007
+9	Part: 808	M008
+9	Part: Bass A	M009
+9	Part: Bass B	M010
+9	Part: BREAK	M011
+9	Transport: Play	M012
+9	Transport: Stop	M012
+9	Transport: Rec	M012
+9	Pad P01	M058
+9	Pad P02	M058
+9	Pad P03	M058
+9	Pad P04	M058
+9	Pad P05	M058
+9	Pad P06	M058
+9	Pad P07	M058
+9	Pad P08	M058
+9	Pad P09	M058
+9	Pad P10	M058
+9	Pad P11	M058
+9	Pad P12	M058
+9	Pad P13	M058
+9	Pad P14	M058
+9	Pad P15	M058
+9	Pad P16	M058
+9	Pad P17	M058
+9	Pad P18	M058
+9	Pad P19	M058
+9	Pad P20	M058
+9	Pad P21	M058
+9	Pad P22	M058
+9	Pad P23	M058
+9	Pad P24	M058
+9	Pad P25	M058
+9	Pad P26	M058
+9	Pad P27	M058
+9	Pad P28	M058
+9	Pad P29	M058
+9	Pad P30	M058
+9	Pad P31	M058
+9	Pad P32	M058
+9	Cue at wrap	M059
+9	Copy selected part	M059
+9	Paste selected part	M059
+9	Chain bounds	M059
+9	Clear selected part	M059
+9	Open song arrangement	M060
+10	Workspace: Sequence	M001
+10	Workspace: Sound	M002
+10	Workspace: Mix & FX	M003
+10	Workspace: Patterns & Song	M004
+10	Workspace: Projects	M005
+10	Connect	M006
+10	Part: 909	M007
+10	Part: 808	M008
+10	Part: Bass A	M009
+10	Part: Bass B	M010
+10	Part: BREAK	M011
+10	Transport: Play	M012
+10	Transport: Stop	M012
+10	Transport: Rec	M012
+10	Row 01 909 Pattern	M061
+10	Row 01 909 On	M061
+10	Row 01 808 Pattern	M061
+10	Row 01 808 On	M061
+10	Row 01 Bass A Pattern	M061
+10	Row 01 Bass A On	M061
+10	Row 01 Bass B Pattern	M061
+10	Row 01 Bass B On	M061
+10	Row 01 BREAK Pattern	M061
+10	Row 01 BREAK On	M061
+10	Row 01 repeats	M062
+10	Row 02 909 Pattern	M061
+10	Row 02 909 On	M061
+10	Row 02 808 Pattern	M061
+10	Row 02 808 On	M061
+10	Row 02 Bass A Pattern	M061
+10	Row 02 Bass A On	M061
+10	Row 02 Bass B Pattern	M061
+10	Row 02 Bass B On	M061
+10	Row 02 BREAK Pattern	M061
+10	Row 02 BREAK On	M061
+10	Row 02 repeats	M062
+10	Row 03 909 Pattern	M061
+10	Row 03 909 On	M061
+10	Row 03 808 Pattern	M061
+10	Row 03 808 On	M061
+10	Row 03 Bass A Pattern	M061
+10	Row 03 Bass A On	M061
+10	Row 03 Bass B Pattern	M061
+10	Row 03 Bass B On	M061
+10	Row 03 BREAK Pattern	M061
+10	Row 03 BREAK On	M061
+10	Row 03 repeats	M062
+10	Row 04 909 Pattern	M061
+10	Row 04 909 On	M061
+10	Row 04 808 Pattern	M061
+10	Row 04 808 On	M061
+10	Row 04 Bass A Pattern	M061
+10	Row 04 Bass A On	M061
+10	Row 04 Bass B Pattern	M061
+10	Row 04 Bass B On	M061
+10	Row 04 BREAK Pattern	M061
+10	Row 04 BREAK On	M061
+10	Row 04 repeats	M062
+10	Row 05 909 Pattern	M061
+10	Row 05 909 On	M061
+10	Row 05 808 Pattern	M061
+10	Row 05 808 On	M061
+10	Row 05 Bass A Pattern	M061
+10	Row 05 Bass A On	M061
+10	Row 05 Bass B Pattern	M061
+10	Row 05 Bass B On	M061
+10	Row 05 BREAK Pattern	M061
+10	Row 05 BREAK On	M061
+10	Row 05 repeats	M062
+10	Add row	M063
+10	Move row	M063
+10	Remove selected	M063
+10	Review draft	M063
+11	Workspace: Sequence	M001
+11	Workspace: Sound	M002
+11	Workspace: Mix & FX	M003
+11	Workspace: Patterns & Song	M004
+11	Workspace: Projects	M005
+11	Connect	M006
+11	Part: 909	M007
+11	Part: 808	M008
+11	Part: Bass A	M009
+11	Part: Bass B	M010
+11	Part: BREAK	M011
+11	Transport: Play	M012
+11	Transport: Stop	M012
+11	Transport: Rec	M012
+11	Loop A	M064
+11	Loop B	M064
+11	Rate	M064
+11	Step 01 slice	M065
+11	Step 02 slice	M065
+11	Step 03 slice	M065
+11	Step 04 slice	M065
+11	Step 05 slice	M065
+11	Step 06 slice	M065
+11	Step 07 slice	M065
+11	Step 08 slice	M065
+11	Step 09 slice	M065
+11	Step 10 slice	M065
+11	Step 11 slice	M065
+11	Step 12 slice	M065
+11	Step 13 slice	M065
+11	Step 14 slice	M065
+11	Step 15 slice	M065
+11	Step 16 slice	M065
+11	All	M066
+11	None	M066
+11	Select BR1 1	M066
+11	Listen BR1 1	M066
+11	Select BR1 2	M066
+11	Listen BR1 2	M066
+11	Select BR1 3	M066
+11	Listen BR1 3	M066
+11	Select BR2 1	M066
+11	Listen BR2 1	M066
+11	Select BR2 2	M066
+11	Listen BR2 2	M066
+11	Slice 1–32	M067
+11	Generator	M068
+11	Motion	M069
+11	Step locks	M070
+11	Review draft	M071
+12	Workspace: Sequence	M001
+12	Workspace: Sound	M002
+12	Workspace: Mix & FX	M003
+12	Workspace: Patterns & Song	M004
+12	Workspace: Projects	M005
+12	Connect	M006
+12	Part: 909	M007
+12	Part: 808	M008
+12	Part: Bass A	M009
+12	Part: Bass B	M010
+12	Part: BREAK	M011
+12	Transport: Play	M012
+12	Transport: Stop	M012
+12	Transport: Rec	M012
+12	Export backup	M072
+12	Inspect restore	M072
+12	Read project	M073
+12	Open original	M074
+12	Save a copy	M074
+12	Inspect contents	M074
+12	Choose range	M075
+12	Export MIDI	M076
+12	Open DAW guide	M077
+13	Workspace: Sequence	M001
+13	Workspace: Sound	M002
+13	Workspace: Mix & FX	M003
+13	Workspace: Patterns & Song	M004
+13	Workspace: Projects	M005
+13	Connect	M006
+13	Part: 909	M007
+13	Part: 808	M008
+13	Part: Bass A	M009
+13	Part: Bass B	M010
+13	Part: BREAK	M011
+13	Transport: Play	M012
+13	Transport: Stop	M012
+13	Transport: Rec	M012
+13	USB MIDI Choose	M078
+13	Bluetooth MIDI Choose	M078
+13	Read state	M078
+13	Read latest	M078
+13	Compare changes	M078
+13	Keep editing	M079
+13	Discard draft	M079
+13	Pitch change	M079
+13	Velocity change	M079
+14	Workspace: Sequence	M001
+14	Workspace: Sound	M002
+14	Workspace: Mix & FX	M003
+14	Workspace: Patterns & Song	M004
+14	Workspace: Projects	M005
+14	Connect	M006
+14	Pitch	M013
+14	Velocity	M014
+14	Note	M015
+14	Tie	M016
+14	Rest	M017
+14	Accent	M018
+14	Slide	M019
+14	Select	M020
+14	Draw	M020
+14	Erase	M020
+14	Pan / zoom	M020
+14	Review draft	M021
+14	Step details	M022
+14	Details	M080
+14	Playhead	M023
+15	Workspace: Sequence	M001
+15	Workspace: Sound	M002
+15	Workspace: Mix & FX	M003
+15	Workspace: Patterns & Song	M004
+15	Workspace: Projects	M005
+15	Connect	M006
+15	909 Bass drum step 01	M024
+15	909 Bass drum step 02	M024
+15	909 Bass drum step 03	M024
+15	909 Bass drum step 04	M024
+15	909 Bass drum step 05	M024
+15	909 Bass drum step 06	M024
+15	909 Bass drum step 07	M024
+15	909 Bass drum step 08	M024
+15	909 Bass drum step 09	M024
+15	909 Bass drum step 10	M024
+15	909 Bass drum step 11	M024
+15	909 Bass drum step 12	M024
+15	909 Bass drum step 13	M024
+15	909 Bass drum step 14	M024
+15	909 Bass drum step 15	M024
+15	909 Bass drum step 16	M024
+15	909 Snare step 01	M024
+15	909 Snare step 02	M024
+15	909 Snare step 03	M024
+15	909 Snare step 04	M024
+15	909 Snare step 05	M024
+15	909 Snare step 06	M024
+15	909 Snare step 07	M024
+15	909 Snare step 08	M024
+15	909 Snare step 09	M024
+15	909 Snare step 10	M024
+15	909 Snare step 11	M024
+15	909 Snare step 12	M024
+15	909 Snare step 13	M024
+15	909 Snare step 14	M024
+15	909 Snare step 15	M024
+15	909 Snare step 16	M024
+15	909 Low tom step 01	M024
+15	909 Low tom step 02	M024
+15	909 Low tom step 03	M024
+15	909 Low tom step 04	M024
+15	909 Low tom step 05	M024
+15	909 Low tom step 06	M024
+15	909 Low tom step 07	M024
+15	909 Low tom step 08	M024
+15	909 Low tom step 09	M024
+15	909 Low tom step 10	M024
+15	909 Low tom step 11	M024
+15	909 Low tom step 12	M024
+15	909 Low tom step 13	M024
+15	909 Low tom step 14	M024
+15	909 Low tom step 15	M024
+15	909 Low tom step 16	M024
+15	909 Mid tom step 01	M024
+15	909 Mid tom step 02	M024
+15	909 Mid tom step 03	M024
+15	909 Mid tom step 04	M024
+15	909 Mid tom step 05	M024
+15	909 Mid tom step 06	M024
+15	909 Mid tom step 07	M024
+15	909 Mid tom step 08	M024
+15	909 Mid tom step 09	M024
+15	909 Mid tom step 10	M024
+15	909 Mid tom step 11	M024
+15	909 Mid tom step 12	M024
+15	909 Mid tom step 13	M024
+15	909 Mid tom step 14	M024
+15	909 Mid tom step 15	M024
+15	909 Mid tom step 16	M024
+15	909 High tom step 01	M024
+15	909 High tom step 02	M024
+15	909 High tom step 03	M024
+15	909 High tom step 04	M024
+15	909 High tom step 05	M024
+15	909 High tom step 06	M024
+15	909 High tom step 07	M024
+15	909 High tom step 08	M024
+15	909 High tom step 09	M024
+15	909 High tom step 10	M024
+15	909 High tom step 11	M024
+15	909 High tom step 12	M024
+15	909 High tom step 13	M024
+15	909 High tom step 14	M024
+15	909 High tom step 15	M024
+15	909 High tom step 16	M024
+15	909 Rim shot step 01	M024
+15	909 Rim shot step 02	M024
+15	909 Rim shot step 03	M024
+15	909 Rim shot step 04	M024
+15	909 Rim shot step 05	M024
+15	909 Rim shot step 06	M024
+15	909 Rim shot step 07	M024
+15	909 Rim shot step 08	M024
+15	909 Rim shot step 09	M024
+15	909 Rim shot step 10	M024
+15	909 Rim shot step 11	M024
+15	909 Rim shot step 12	M024
+15	909 Rim shot step 13	M024
+15	909 Rim shot step 14	M024
+15	909 Rim shot step 15	M024
+15	909 Rim shot step 16	M024
+15	Bass drum Tune	M025
+15	Bass drum Attack	M025
+15	Step locks	M026
+15	Voice sound	M026
+15	Voices 1–6	M081
+15	Voices 7–11	M081
+15	Accent lane	M081
+15	Review draft	M081
+16	Workspace: Sequence	M001
+16	Workspace: Sound	M002
+16	Workspace: Mix & FX	M003
+16	Workspace: Patterns & Song	M004
+16	Workspace: Projects	M005
+16	Connect	M006
+16	909 level	M042
+16	909 peak	M043
+16	808 level	M042
+16	808 peak	M043
+16	Bass A level	M042
+16	Bass A peak	M043
+16	Bass B level	M042
+16	Bass B peak	M043
+16	BREAK level	M042
+16	BREAK peak	M043
+16	Mute	M082
+16	Solo	M082
+16	Master Drive	M047
+16	Master Comp	M047
+16	Master Pump	M047
+16	Master Filter	M047
+16	Master more	M048
+16	Master / FX	M083
+16	Review draft	M033
+17	Workspace: Sequence	M001
+17	Workspace: Sound	M002
+17	Workspace: Mix & FX	M003
+17	Workspace: Patterns & Song	M004
+17	Workspace: Projects	M005
+17	Connect	M006
+17	Start	M028
+17	End	M028
+17	Release endpoint	M029
+17	Locks	M030
+17	Motion	M030
+17	Select	M084
+17	Pan / zoom	M084
+17	Back to note	M084
+17	Review draft	M033
+18	Workspace: Sequence	M001
+18	Workspace: Sound	M002
+18	Workspace: Mix & FX	M003
+18	Workspace: Patterns & Song	M004
+18	Workspace: Projects	M005
+18	Connect	M006
+18	909 bass drum Tune	M085
+18	909 bass drum Attack	M085
+18	909 bass drum Decay	M085
+18	909 bass drum Pitch depth	M085
+18	909 bass drum Pitch	M085
+18	909 bass drum Accent	M086
+18	Open original	M087
+18	Save a copy	M088
+18	Engine / page	M089
+18	Review draft	M090
+19	Workspace: Sequence	M001
+19	Workspace: Sound	M002
+19	Workspace: Mix & FX	M003
+19	Workspace: Patterns & Song	M004
+19	Workspace: Projects	M005
+19	Connect	M006
+19	Pad P01	M058
+19	Pad P02	M058
+19	Pad P03	M058
+19	Pad P04	M058
+19	Pad P05	M058
+19	Pad P06	M058
+19	Pad P07	M058
+19	Pad P08	M058
+19	Pad P09	M058
+19	Pad P10	M058
+19	Pad P11	M058
+19	Pad P12	M058
+19	Pad P13	M058
+19	Pad P14	M058
+19	Pad P15	M058
+19	Pad P16	M058
+19	Pad P17	M058
+19	Pad P18	M058
+19	Pad P19	M058
+19	Pad P20	M058
+19	Pad P21	M058
+19	Pad P22	M058
+19	Pad P23	M058
+19	Pad P24	M058
+19	Pad P25	M058
+19	Pad P26	M058
+19	Pad P27	M058
+19	Pad P28	M058
+19	Pad P29	M058
+19	Pad P30	M058
+19	Pad P31	M058
+19	Pad P32	M058
+19	Cue at wrap	M059
+19	Copy selected part	M059
+19	Paste selected part	M059
+19	Chain bounds	M059
+19	Open song arrangement	M060
+19	Selected part	M091
+19	All parts	M091
+19	Review draft	M091
+20	Workspace: Sequence	M001
+20	Workspace: Sound	M002
+20	Workspace: Mix & FX	M003
+20	Workspace: Patterns & Song	M004
+20	Workspace: Projects	M005
+20	Connect	M006
+20	Export backup	M072
+20	Inspect restore	M072
+20	Open original	M074
+20	Save a copy	M074
+20	Choose range	M075
+20	Export MIDI	M076
+20	Samples	M077
+20	Manual	M077
+21	Workspace: Sequence	M001
+21	Workspace: Sound	M002
+21	Workspace: Mix & FX	M003
+21	Workspace: Patterns & Song	M004
+21	Workspace: Projects	M005
+21	Pitch	M013
+21	Velocity	M014
+21	Select	M020
+21	Draw	M020
+21	Pan	M020
+21	Zoom	M020
+21	Undo draft	M021
+21	Review draft	M021
+21	Edit note	M092
+21	Playhead	M023
+22	Workspace: Sequence	M001
+22	Workspace: Sound	M002
+22	Workspace: Mix & FX	M003
+22	Workspace: Patterns & Song	M004
+22	Workspace: Projects	M005
+22	Pitch	M013
+22	Velocity	M014
+22	Note	M015
+22	Tie	M016
+22	Rest	M017
+22	Accent	M018
+22	Slide	M019
+22	Review draft	M021
+22	Step details	M022
+22	Back to roll / Details	M080
+23	Workspace: Sequence	M001
+23	Workspace: Sound	M002
+23	Workspace: Mix & FX	M003
+23	Workspace: Patterns & Song	M004
+23	Workspace: Projects	M005
+23	909 level	M042
+23	909 peak	M043
+23	808 level	M042
+23	808 peak	M043
+23	Bass A level	M042
+23	Bass A peak	M043
+23	Bass B level	M042
+23	Bass B peak	M043
+23	BREAK level	M042
+23	BREAK peak	M043
+23	Mute	M082
+23	Solo	M082
+23	Master Drive	M047
+23	Master Comp	M047
+23	Master Pump	M047
+23	Master Filter	M047
+24	Evidence appendix	M093

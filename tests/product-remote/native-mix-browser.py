@@ -5,6 +5,32 @@ from pathlib import Path
 from playwright.async_api import async_playwright,expect
 ROOT=Path(__file__).resolve().parents[2]
 spec=importlib.util.spec_from_file_location('envelope_core',Path(__file__).with_name('envelope-browser.py'));core=importlib.util.module_from_spec(spec);spec.loader.exec_module(core)
+FX_READOUTS = json.loads((ROOT / 'web/product-site/remote/fx-format.json').read_text())
+
+async def check_feedback_boundary(page, baseline):
+    control = next(c for c in baseline if (c['target'], c['voice'], c['parameter']) == (4, 0, 9))
+    readouts = FX_READOUTS['1:4:0:9']
+    assert control['value'] == 52 and readouts[52:55] == ['35%', '35%', '36%']
+    target = page.locator('[data-runtime-key="4:0:9"]')
+    await expect(target.locator('output')).to_have_text(readouts[52])
+    await target.press('Enter')
+    field = page.locator('#parameter-value')
+    await expect(field).to_have_value('52')
+    count = await page.evaluate('controlPackets.length')
+    await field.fill('54')
+    await field.press('Tab')
+    await page.wait_for_function('n=>controlPackets.length>n', arg=count)
+    expected = [dict(c, value=54) if c == control else c for c in baseline]
+    assert await page.evaluate('controlPackets.at(-1).controls') == expected
+    await expect(target.locator('output')).to_have_text(readouts[54])
+    await expect(target).to_have_accessible_name('Delay FEEDBACK ' + readouts[54])
+    await page.locator('#undo').click()
+    await page.wait_for_function('n=>controlPackets.length>n', arg=count + 1)
+    assert await page.evaluate('controlPackets.at(-1).controls') == baseline
+    await expect(target.locator('output')).to_have_text(readouts[52])
+    await expect(target).to_have_accessible_name('Delay FEEDBACK ' + readouts[52])
+    print('PASS Delay FEEDBACK raw 52/53 = 35%, cross to 54 = 36%, Undo to 52 = 35%', flush=True)
+
 async def cases(origin):
  async with async_playwright() as pw:
   browser=await pw.chromium.launch(chromium_sandbox=True)
@@ -26,12 +52,31 @@ async def cases(origin):
        await target.press('ArrowLeft' if delta<0 else 'ArrowRight')
        await page.wait_for_function('n=>controlPackets.length>n',arg=before_count)
        packet=await page.evaluate('controlPackets.at(-1)');actual=next(c for c in packet['controls'] if ':'.join(str(c[k]) for k in ['target','voice','parameter'])==key);assert actual['value']==value+delta,(key,value,actual)
-       new_text=await target.evaluate("e=>e.tagName==='INPUT'?e.value:e.querySelector('output')?.textContent");assert new_text!=old_text,(key,old_text,new_text)
+       new_text=await target.evaluate("e=>e.tagName==='INPUT'?e.value:e.querySelector('output')?.textContent")
+       readouts=FX_READOUTS.get('1:'+key)
+       if readouts is not None:
+        assert (old_text,new_text)==(readouts[value],readouts[actual['value']]),(key,value,actual['value'],old_text,new_text)
+       else:
+        assert new_text!=old_text,(key,old_text,new_text)
        if await target.evaluate("e=>e.tagName==='BUTTON' && e.classList.contains('encoder')"):assert new_text in (await target.get_attribute('aria-label') or ''),(key,'stale accessible value',new_text,await target.get_attribute('aria-label'))
        if await target.evaluate("e=>e.tagName==='INPUT'"):assert await target.get_attribute('aria-valuetext')==await target.evaluate("e=>e.closest('.funkybeats-typed-unit').querySelector('[data-param-value]').textContent")
        await page.locator('#undo').click();await page.wait_for_function('n=>controlPackets.length>n',arg=before_count+1);assert await page.evaluate('controlPackets.at(-1).controls')==baseline
        assert await target.evaluate("e=>e.tagName==='INPUT'?e.value:e.querySelector('output')?.textContent")==old_text
      assert len(seen)==29,seen
+     await check_feedback_boundary(page,baseline)
+     fx_send_keys=await page.locator('.mix-fx-sends [data-runtime-key]').evaluate_all('els=>els.map(e=>e.dataset.runtimeKey)')
+     assert fx_send_keys==[f'5:{part}:{effect}' for part in range(5) for effect in (1,2)],fx_send_keys
+     fx_send=page.locator('.mix-fx-sends [data-runtime-key="5:0:1"]')
+     before_count=await page.evaluate('controlPackets.length')
+     before=next(c for c in baseline if (c['target'],c['voice'],c['parameter'])==(5,0,1))
+     delta=-1 if before['value']==before['max'] else 1
+     await fx_send.press('ArrowLeft' if delta<0 else 'ArrowRight')
+     await page.wait_for_function('n=>controlPackets.length>n',arg=before_count)
+     expected=[dict(c,value=c['value']+delta) if c==before else c for c in baseline]
+     assert await page.evaluate('controlPackets.at(-1).controls')==expected
+     await page.locator('#undo').click()
+     await page.wait_for_function('n=>controlPackets.length>n',arg=before_count+1)
+     assert await page.evaluate('controlPackets.at(-1).controls')==baseline
      # Actual pointer/touch edits and cancellation use the same native owner.
      await page.locator('[data-mix-mode="sends"]').click()
      slider=page.locator('[data-runtime-key="5:0:1"]');await slider.scroll_into_view_if_needed();box=await slider.bounding_box();count=await page.evaluate('controlPackets.length')

@@ -1,0 +1,77 @@
+{
+  "trace": {
+    "firmware": "ffd31a735acc5721d1f90a30fc1ceb283aad6fc5",
+    "fixture": "project-source-trace-20261115/SOURCE-EXECUTED-TRACE.json",
+    "sha256": "67e1e9e48264a79c1e47dd760e1e0e898b65796041a1489b88d724789e5e3a55",
+    "seed": 625341585,
+    "projectSha256": "56c451e60cbde73663ec4204973d40131bcc3e99bcac8c48e98464830900b1b0"
+  },
+  "matchingOriginalFile": null,
+  "matchingProducer": null,
+  "stockTree": {
+    "recursiveEntries": 5895,
+    "truncated": false,
+    "targetedSourcePaths": 165,
+    "exactLocalBlobs": 159,
+    "exactGitHubBlobs": 6,
+    "sourceMarkersMatched": 0,
+    "pathIndex": "pattern-donor-pins.tsv",
+    "exportGenerator": "tests/host/project_export_fixture.c",
+    "exportGeneratorBlob": "fd55039dbb0acb19d0b9356627264d4b9bac403a",
+    "excludedBecause": "It zeros sound and installs MIDI note 60 velocity 90 as the first Bass A note. The retained trace opens Bass A at 48 velocity 93."
+  },
+  "transfer": {
+    "archiveSha256": "d673a99b3707ce7bdcba518b9c07a4ba90dc21a831da208833d339d1329a2e71",
+    "nestedSourceSha256": "133370824ef7478610254480aee9cd27c3ed232a2c57a8964b80c88be59d833a",
+    "nestedSourceFilesScanned": 999,
+    "matches": [
+      "web/product-site/remote/trace.json",
+      "web/product-site/remote/SOURCE-PINS.json",
+      "web/product-site/remote/WORKSPACE-SOURCE-PINS.json"
+    ],
+    "recoveryFilesScanned": 1088,
+    "recoveryMatches": 0,
+    "bootstrapOctoberTarFiles": 1745,
+    "bootstrapNestedHostMembers": 34,
+    "bootstrapMatches": 0
+  },
+  "localProjectInputs": {
+    "lengths": [
+      36420,
+      36452,
+      36428
+    ],
+    "candidates": 65,
+    "uniqueDigests": 23,
+    "fullOrPayloadHashMatches": 0,
+    "otherCompressedNightlyExportFixturesReconstituted": 4,
+    "compressedFixtureMatches": 0
+  },
+  "separateAuthenticStockFixture": {
+    "name": "old-s13.bin",
+    "projectSha256": "cce3735db834cfcfafebc5a2bb4b3e5fdc1986e73839495b42d9fb7f677d58f2",
+    "fileBytes": 36452,
+    "headerFormatStreamSound": [
+      1,
+      13,
+      13
+    ],
+    "openAndExportByteIdentical": true,
+    "engines": [
+      "Miami",
+      "Chicago"
+    ],
+    "negativeControls": [
+      "rates 1/stream 14 rejected",
+      "rates 1/stream 15 rejected",
+      "rates 2/stream 13 rejected"
+    ]
+  },
+  "separateUpstreamTimingDonor": {
+    "head": "a9211cbf454797cc1f23092f5b632c017492b6cb",
+    "donorPayloadBytes": 36420,
+    "payloadSha256": "892c2e5e4657d690e4c7ba2f3e5c3eba11df735764b90480e31e575c8ecfd3e6",
+    "exactPayloadPresent": false,
+    "X0XPHeaderPresent": false
+  }
+}

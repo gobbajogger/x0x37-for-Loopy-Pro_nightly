@@ -1,0 +1,182 @@
+{
+  "execution.json": {
+    "browser": "151.0.7922.34",
+    "count": 98,
+    "failures": [],
+    "pageErrors": [],
+    "enabledControlPresentations": 3937,
+    "reachablePresentations": 3937,
+    "manifestSha256": "4898d1d08fff7b681141fcb64ba6503406a166d813c963b2892c2f04310dacd9",
+    "kernelSha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b"
+  },
+  "verification.json": {
+    "distinctMatchedScreenshotHashes": 98,
+    "missingStates": [],
+    "unexpectedStates": [],
+    "allNativeStates": [
+      "native-mix-fx",
+      "native-mix-levels",
+      "native-mix-pan",
+      "native-mix-sends",
+      "native-sound-chicago",
+      "native-sound-choice-unavailable",
+      "native-sound-miami"
+    ],
+    "sourceBankStates": [
+      "sound-chicago-SuperJ6",
+      "sound-chicago-Synth One",
+      "sound-miami-SuperJ6",
+      "sound-miami-Synth One"
+    ],
+    "bodyOverflow": [],
+    "geometryClips": [],
+    "rollChecks": {
+      "roll-chicago": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 71,
+        "lastRow": 86
+      },
+      "locks-chicago": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 71,
+        "lastRow": 86
+      },
+      "roll-miami": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "locks-miami": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "roll-drum909": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 83,
+        "lastRow": 98
+      },
+      "locks-drum909": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 83,
+        "lastRow": 98
+      },
+      "roll-drum808": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 81,
+        "lastRow": 96
+      },
+      "locks-drum808": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 81,
+        "lastRow": 96
+      },
+      "break-notes": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 54,
+        "lastRow": 69
+      },
+      "locks-breaks": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      }
+    },
+    "sha256": {
+      "states.json": "96d35583de12c0329c46093ff4a0e370a0c610b8d62f4a1a333508cdafc2be9c",
+      "execution.json": "36173bc8960782c48a5d63822d01603359f2485aae477c33a7523788d1dab9b4",
+      "identity.json": "2d5c70f32311d5aa7934b69b59e09e315e9a28f1248b8e4f3e94dc6f8e898a3d"
+    }
+  },
+  "identity.json": {
+    "build": {
+      "files": 238,
+      "output": "/workspace/scratch/537b1f88ce48/header-work/r5-451be1fafd0a/.output/r5-landscape",
+      "emulator": true,
+      "published": false,
+      "firmwareWrites": false,
+      "catalogMutations": []
+    },
+    "head": "451be1fafd0a328c0f489084d3807da216024d7e",
+    "tree": "a47b67383d00316a22bc370a503af8f5d32d7022",
+    "startedUtc": "2026-11-21T03:46:13.477281+00:00",
+    "runtime": {
+      "runtime.json": {
+        "bytes": 285,
+        "sha256": "f11271f85ad61c9c5bc5f3959f8b5ffa2e3a8c8cbab90f4b43c7aeb94676b4e0"
+      },
+      "kernel.wasm": {
+        "bytes": 941835,
+        "sha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b"
+      },
+      "native-session.mjs": {
+        "bytes": 13837,
+        "sha256": "077161f1641a927df241112b71bfa46e25023d3808d08469851838dd9c876360"
+      },
+      "observer.mjs": {
+        "bytes": 2631,
+        "sha256": "525c2437315760e448e4f631ca9ba1a9e2311d216b18ef93852969d09098b2d3"
+      },
+      "session-codec.mjs": {
+        "bytes": 1982,
+        "sha256": "5924c689e512fc1c4e14718e0d267dce7ef287ec51183d1902e3d7902134845d"
+      },
+      "worklet.mjs": {
+        "bytes": 10887,
+        "sha256": "3841c8754053df804e103dc80ea31ab3dc0c4063112aa20b45f3b1421adbd034"
+      },
+      "wasi.mjs": {
+        "bytes": 1507,
+        "sha256": "76221f9d11ff8be10d9844f0ecc696ddc0bafb694775a12a6b665c4d77a78f18"
+      },
+      "index.html": {
+        "bytes": 2083,
+        "sha256": "010718d268ec15e83da8c641eb82ec30588d3d001bd4cf07fb15a182bd82fc0b"
+      },
+      "page.mjs": {
+        "bytes": 9154,
+        "sha256": "f4348ebcbedc94495c60f6bcf93848567fc6a0d3d9961f08c81c613fab5d9966"
+      },
+      "style.css": {
+        "bytes": 1903,
+        "sha256": "f9d8c09ebe689442f027b038482488a6e02db255db7553127b92b907b68cd5b8"
+      }
+    },
+    "expectedStates": 98,
+    "fixtureSha256": "025913756bc5d705db48c4a8da844744d0456e095111c7865659bb9759ab4aa0",
+    "manifestSha256": "4898d1d08fff7b681141fcb64ba6503406a166d813c963b2892c2f04310dacd9",
+    "memAvailableKiB": 3478652,
+    "endedUtc": "2026-11-21T03:47:09.970565+00:00",
+    "processExit": 0
+  }
+}

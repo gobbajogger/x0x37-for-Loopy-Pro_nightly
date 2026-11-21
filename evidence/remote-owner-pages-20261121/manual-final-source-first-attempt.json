@@ -1,0 +1,606 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "started": "2026-11-21T07:18:29.801+00:00",
+  "stage": "closed",
+  "canonicalCapture": "visual_gate.capture_site_page -> page.screenshot(full_page=True), original 30s; captured exactly once",
+  "renderData": {
+    "viewport": [
+      1024,
+      640
+    ],
+    "body": [
+      1024,
+      23618
+    ],
+    "root": [
+      1024,
+      23618
+    ],
+    "fonts": "loaded",
+    "ready": "complete",
+    "images": [
+      {
+        "path": "/product-site/manual/original/img/fm1-panel.svg",
+        "complete": true,
+        "w": 208,
+        "h": 150,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/fm1-keys.svg",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-list.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-ask.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-909.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-readout.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-303.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-tb3po.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-break.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-home.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-motion.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-song.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-fx.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-mix.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-global.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      }
+    ],
+    "fixedSticky": []
+  },
+  "primary": {
+    "size": [
+      1440,
+      23921
+    ],
+    "pngBytes": 3705915,
+    "sha256": "f2649331b4c982a18e0ad68a03b975e1138d9c0cdc096c3966df7c9eddbef70d",
+    "rawRGBAbytes": 137784960
+  },
+  "captureStarted": "2026-11-21T07:18:38.932+00:00",
+  "entryState": {
+    "width": 1024,
+    "height": 23618,
+    "viewport": [
+      1024,
+      640,
+      1,
+      0,
+      0
+    ],
+    "fonts": "loaded",
+    "images": [
+      [
+        "http://127.0.0.1:45977/product-site/manual/original/img/fm1-panel.svg",
+        true,
+        208,
+        150
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ],
+      [
+        "",
+        false,
+        0,
+        0
+      ]
+    ]
+  },
+  "captureFinished": "2026-11-21T07:18:56.836+00:00",
+  "captures": [
+    {
+      "initial": {
+        "width": 1440,
+        "height": 23921,
+        "viewport": [
+          1440,
+          900,
+          1,
+          0,
+          0
+        ],
+        "fonts": "loaded",
+        "images": [
+          [
+            "http://127.0.0.1:45977/product-site/manual/original/img/fm1-panel.svg",
+            true,
+            208,
+            150
+          ],
+          [
+            "http://127.0.0.1:45977/product-site/manual/original/img/fm1-keys.svg",
+            true,
+            300,
+            99
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ]
+        ]
+      },
+      "rest": {
+        "width": 1440,
+        "height": 23925,
+        "viewport": [
+          1440,
+          900,
+          1,
+          0,
+          0
+        ],
+        "fonts": "loaded",
+        "images": [
+          [
+            "http://127.0.0.1:45977/product-site/manual/original/img/fm1-panel.svg",
+            true,
+            208,
+            150
+          ],
+          [
+            "http://127.0.0.1:45977/product-site/manual/original/img/fm1-keys.svg",
+            true,
+            300,
+            99
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ],
+          [
+            "",
+            false,
+            0,
+            0
+          ]
+        ]
+      },
+      "dimensions": [
+        1440,
+        23921
+      ],
+      "primary": {
+        "size": [
+          1440,
+          23921
+        ],
+        "pngBytes": 3705915,
+        "sha256": "f2649331b4c982a18e0ad68a03b975e1138d9c0cdc096c3966df7c9eddbef70d",
+        "rawRGBAbytes": 137784960
+      },
+      "data": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "body": [
+          1440,
+          23921
+        ],
+        "root": [
+          1440,
+          23921
+        ],
+        "fonts": "loaded",
+        "ready": "complete",
+        "images": [
+          {
+            "path": "/product-site/manual/original/img/fm1-panel.svg",
+            "complete": true,
+            "w": 208,
+            "h": 150,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/fm1-keys.svg",
+            "complete": true,
+            "w": 300,
+            "h": 99,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-list.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-ask.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-909.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-readout.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-303.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-tb3po.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-break.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-home.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-motion.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-song.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-fx.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-mix.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          },
+          {
+            "path": "/product-site/manual/original/img/screen-global.png",
+            "complete": false,
+            "w": 0,
+            "h": 0,
+            "loading": "lazy"
+          }
+        ],
+        "fixedSticky": []
+      },
+      "start": "2026-11-21T07:18:33.074+00:00",
+      "end": "2026-11-21T07:18:37.576+00:00"
+    }
+  ],
+  "error": "Error('Page.screenshot: Target crashed \\nCall log:\\n  - taking page screenshot\\n  - waiting for fonts to load...\\n  - fonts loaded\\n')",
+  "closed": "2026-11-21T07:18:57.139+00:00",
+  "systemOomKills": [
+    76,
+    83
+  ],
+  "peakDescendantsRssKiB": 632500,
+  "peakDescendantsPssKiB": 434826,
+  "peakRendererRssKiB": 163656,
+  "minimumSystemAvailableKiB": 1380800
+}

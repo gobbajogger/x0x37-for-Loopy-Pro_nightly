@@ -1,0 +1,14 @@
+{
+  "mixedInstall": true,
+  "rejectedInvalidBreak": true,
+  "rejectedInvalidBank": true,
+  "replacedWithOldFile": true,
+  "gestureGuards": true,
+  "originalBanks": 12,
+  "programs": 640,
+  "parameterEdits": 11720,
+  "exportBytes": 2668942,
+  "limit": 4194304,
+  "bothParts": true,
+  "allEditsRoundTrip": true
+}

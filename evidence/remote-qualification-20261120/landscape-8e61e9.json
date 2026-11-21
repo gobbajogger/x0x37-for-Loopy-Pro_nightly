@@ -1,0 +1,160 @@
+{
+  "older": "9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab",
+  "newer": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "changedInputs": {
+    "web/product-site/SOURCE-MANIFEST.json": {
+      "previous": {
+        "blob": "a054b7ed575d6b1920980f9219bca369507cb58c",
+        "bytes": 37997,
+        "sha256": "4898d1d08fff7b681141fcb64ba6503406a166d813c963b2892c2f04310dacd9"
+      },
+      "current": {
+        "blob": "864345c9f82e8824e91cc286916b585d7e635255",
+        "bytes": 37997,
+        "sha256": "d283bdb038ff8887f026b270c1fba34fcfe02f33a7f92b50c17be3a09dcb2690"
+      }
+    },
+    "web/product-site/remote/envelope-view.mjs": {
+      "previous": {
+        "blob": "ce4481b132032861f099709c867fbacbf3481a5e",
+        "bytes": 4734,
+        "sha256": "75dc2e79346fc70bf4ec927929e9368814eb1d40587fcc6116c423b9431b3b48"
+      },
+      "current": {
+        "blob": "506cf768bd22b9c71b7d7fdd40ba5f56aaf46b39",
+        "bytes": 4802,
+        "sha256": "bb0ea4fdb883caa0f22938ba78edd4f740a78b192a59e09f7411eee081ddcffd"
+      }
+    },
+    "tests/product-remote/envelope-browser.py": {
+      "previous": {
+        "blob": "36dd0802ab90b8b6d75b33a8b415f22ec2442930",
+        "bytes": 9867,
+        "sha256": "8b764b49ca4a2ee7e1fa9a1327ee69d52f1f60ce34826479a12f287298a25bdd"
+      },
+      "current": {
+        "blob": "6f52dfd2c473407238995de2d59a12f58ebbc4fe",
+        "bytes": 11236,
+        "sha256": "8580a52669ed922ce4d2c2900576575ae79ee0491a5bdc276115db833ff8aa1e"
+      }
+    }
+  },
+  "unchangedGitObjects": {
+    "web/product-site/remote/app.mjs": "88cf1f8e1a75fa1fd8b9c38e9a664be5229caf22",
+    "web/product-site/remote/envelope-observations.mjs": "49e1ba8d1ef81ba027d99875f558f81a23281e2c",
+    "tests/product-remote/landscape-browser.py": "45da8a949d51031fb74ce729df6a467c5683a15a",
+    "scripts/build-product-site.mjs": "1feaa469cefe147500f6148ae2a7c6dc5edd3384",
+    "scripts/emulator-runtime-pin.json": "5a8582b4bc8e871914022f85bcfd9bb46090520c"
+  },
+  "changedPaths": [
+    "M\tdocs/lanes/remote.md",
+    "A\tevidence/remote-qualification-20261120/451be1-gate.json",
+    "A\tevidence/remote-qualification-20261120/451be1-gate.log.gz",
+    "A\tevidence/remote-qualification-20261120/header-structural-9c35ce.json",
+    "A\tevidence/remote-qualification-20261120/landscape-9c35ce.json",
+    "A\tevidence/remote-qualification-20261120/native-envelope-expiry-red.log",
+    "A\tevidence/remote-qualification-20261120/native-envelope-observation.json",
+    "A\tevidence/remote-qualification-20261120/native-envelope-review.json",
+    "A\tevidence/remote-qualification-20261120/native-envelope-three-sizes.log",
+    "M\ttests/product-remote/envelope-browser.py",
+    "M\tweb/product-site/SOURCE-MANIFEST.json",
+    "M\tweb/product-site/remote/envelope-view.mjs"
+  ],
+  "identicalNonImageGeometryStates": 98,
+  "statesWithChangedMetrics": {},
+  "identicalPngs": 95,
+  "statesWithChangedPngs": {
+    "native-sound-miami": {
+      "previous": "24467ecdf79f6016507a2376cc15803de378da8d5bb230cde111e4a47a0df412",
+      "current": "c50713928f600a16471adecf49647d5e03f3b0fc9bd10bb3861aaae5c6e3e2b2",
+      "differentPixels": 25,
+      "bounds": [
+        566,
+        60,
+        659,
+        87
+      ]
+    },
+    "native-sound-choice-unavailable": {
+      "previous": "4badbad525477de9654116f2932971f3c9c537654ce5335e0f1fb1d5872c1faa",
+      "current": "5ee6e911ba806240e0abaad29a3a442f76295f6b1823024a29b512279eb7b7fb",
+      "differentPixels": 25,
+      "bounds": [
+        566,
+        60,
+        659,
+        87
+      ]
+    },
+    "native-sound-chicago": {
+      "previous": "d45cd538d5e124f76a7b8243571c461d401f284e504f899c1422b3d78e0f2288",
+      "current": "23282ed25d395ab25791551216b87b3f74948ca24e3253ffd5dd0b8d0d6fff59",
+      "differentPixels": 25,
+      "bounds": [
+        566,
+        60,
+        659,
+        87
+      ]
+    }
+  },
+  "verifiedPngs": 98,
+  "newTotalBytes": 3524456,
+  "minimumBytes": 21874,
+  "maximumBytes": 46928,
+  "pixelInspection": {
+    "screenshotDeltaCases": [
+      {
+        "name": "native-sound-miami",
+        "changedPixels": 25,
+        "maximumChannelDelta": 1,
+        "signedChangedChannelRange": [
+          -1,
+          0
+        ],
+        "changedPositionsSha256": "dcaea730958351fdd798bfbf533f53cd69387b6ca457fd23497ba382ebeb5901",
+        "bounds": [
+          566,
+          60,
+          659,
+          87
+        ]
+      },
+      {
+        "name": "native-sound-choice-unavailable",
+        "changedPixels": 25,
+        "maximumChannelDelta": 1,
+        "signedChangedChannelRange": [
+          -1,
+          0
+        ],
+        "changedPositionsSha256": "dcaea730958351fdd798bfbf533f53cd69387b6ca457fd23497ba382ebeb5901",
+        "bounds": [
+          566,
+          60,
+          659,
+          87
+        ]
+      },
+      {
+        "name": "native-sound-chicago",
+        "changedPixels": 25,
+        "maximumChannelDelta": 1,
+        "signedChangedChannelRange": [
+          0,
+          1
+        ],
+        "changedPositionsSha256": "dcaea730958351fdd798bfbf533f53cd69387b6ca457fd23497ba382ebeb5901",
+        "bounds": [
+          566,
+          60,
+          659,
+          87
+        ]
+      }
+    ],
+    "changedRegion": "Rounded antialiased edges of Play and Stop. Control labels, the native-playing readout, envelope plots and remaining page are pixel-identical.",
+    "observedPerChangedChannelDifference": "Maximum absolute difference is 1 on the 8-bit channel scale. Exact raster/compositing cause unproven.",
+    "sourceReview": "Transport, its styling, the landscape fixture and all ten native runtime files are byte-identical at the two commits. Envelope markup adds engine and slot DOM attributes."
+  }
+}

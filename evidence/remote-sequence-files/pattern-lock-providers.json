@@ -1,0 +1,184 @@
+{
+  "firmwareRepo": "gobbajogger/DnBOX",
+  "nativeStock": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+  "sourceCatalogFirmware": "ffd31a735acc5721d1f90a30fc1ceb283aad6fc5",
+  "qualifiedRows": [
+    {
+      "id": 1153,
+      "kind": "U32",
+      "min": 0,
+      "max": 127,
+      "label": "Level",
+      "readSemantics": "stored-parameter-target",
+      "target": 3,
+      "voice": 0,
+      "parameter": 0,
+      "sourceBank": -1,
+      "targetLabel": "BREAK",
+      "voiceLabel": "BREAK",
+      "bankLabel": "",
+      "availability": "source-context-check-per-read"
+    },
+    {
+      "id": 4098,
+      "kind": "U32",
+      "min": 0,
+      "max": 127,
+      "label": "Cutoff",
+      "readSemantics": "stored-parameter-target",
+      "target": 2,
+      "voice": 0,
+      "parameter": 2,
+      "sourceBank": 0,
+      "targetLabel": "BASS",
+      "voiceLabel": "BASS A",
+      "bankLabel": "CHICAGO",
+      "availability": "source-context-check-per-read"
+    },
+    {
+      "id": 4130,
+      "kind": "U32",
+      "min": 0,
+      "max": 127,
+      "label": "Cutoff",
+      "readSemantics": "stored-parameter-target",
+      "target": 2,
+      "voice": 1,
+      "parameter": 2,
+      "sourceBank": 0,
+      "targetLabel": "BASS",
+      "voiceLabel": "BASS B",
+      "bankLabel": "CHICAGO",
+      "availability": "source-context-check-per-read"
+    }
+  ],
+  "sourceFiles": {
+    "BEHAVIOR-BRIEF.md": {
+      "sha256": "a6d6856c4ad2f1487ddd2cebacaf0416449c7307a61db2f0c4c6834b056c16eb",
+      "gitBlob": "05e89528a828db536ce621f6cad0cd0e741e6f5c"
+    },
+    "app-bass_note_sound.h": {
+      "sha256": "9c21ee6ae0a3a42cd869ffbabf4fe986ed31e0cc3ae186b188d0e49ae491ec83",
+      "gitBlob": "41bdf43c4bb21d62485676fd74c867ed5eb047fb"
+    },
+    "app-engine.c": {
+      "sha256": "8f2245ddae4e472e6a32e1a8733295753ea91b1ac63411c6d1313aa502094bf5",
+      "gitBlob": "5c81586dfecf743dccc55ab4f3ca44d94d7f284a"
+    },
+    "seq-motion.c": {
+      "sha256": "6d907f90ac8aa6077aef51e4bdfa25fdbcdac0c1497b70d17279a64c4fd742bf",
+      "gitBlob": "3834afe5f0a16eebca66f73f26edbfb8e64cc39a"
+    },
+    "app-ui.c": {
+      "sha256": "21397ecfba51c71ed2be66ec6dd126f2c352ca88a60672d6779a25e79acafddc",
+      "gitBlob": "de3898e639ed8a8bdfcce4c37f40d82c9372b18d"
+    },
+    "public_control_catalog.json": {
+      "sha256": "e1be22d91887954da614cf197ef98680d0f21dfc8b9ca9bec1dba0a304f6e711",
+      "gitBlob": "394b90fb833a9dba90563b71fbf0c63e24172107"
+    },
+    "app-ui_step_lane.inc": {
+      "sha256": "91c2fb6e4118e30fb4d9693814faf46de7171288956cb34ea04fea5f384dd5c2",
+      "gitBlob": "473f1c52d811666f038d3abdf16c676e91cff7a8"
+    },
+    "app-engine.h": {
+      "sha256": "26709f6ef876e0a072bb38bd677a15cdcc63fed5c15d9e21616cac678227b937",
+      "gitBlob": "837228376ab751a2146586f8fdae37f0d04f4eba"
+    },
+    "app-smc_mixer.c": {
+      "sha256": "07fd6018789c33049d28678d2c160a9d42d2611085337573dc15dfcd588a61c1",
+      "gitBlob": "1e1e8d2dc9653ddce205d9f9d7c6a4ec57415262"
+    },
+    "seq-motion.h": {
+      "sha256": "1eac93af3698769b22a5141e32431bfc46e7926c344dbcc2ac328f66d0f6b4f4",
+      "gitBlob": "fcb39561683aa7531fdeeef5d78ae6e0d194425d"
+    }
+  },
+  "stockLockSemantics": {
+    "ui.c:2959-2974": "Held bass, kit or BREAK step resolves a writable R_ENG control on the same owner and the currently selected pattern.",
+    "ui.c:3042-3116": "Allocate exact (pattern,part,target,voice,parameter) lane; unset reads the current sound base; authored raw values clamp to descriptor; clear reverts to MOT_NONE.",
+    "motion.h:25-36": "160-lane pool, MOT_NONE 255, 64 source-step bytes in lane_t.val. The Remote grid exposes its first sixteen.",
+    "engine.c:1348-1360": "T_303 voice 0/1 -> parts 2/3; T_BRK -> part 4."
+  },
+  "stockPlaybackEvidence": "PASS 96 unique part/pattern/catalog addresses, 196608 applied value points and 196608 cell clears restoring the base, 64 source steps per lane (16 exposed).",
+  "liveKernel": {
+    "commit": "4758a9573e0a2a95e73cb054a74e0aad39d5741e",
+    "sourceFirmware": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb",
+    "files": {
+      "kernel.wasm": {
+        "sha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+        "gitBlob": "ba12127861cbe12e579984f7f1e0dec94abb9d1d"
+      },
+      "worklet.mjs": {
+        "sha256": "3841c8754053df804e103dc80ea31ab3dc0c4063112aa20b45f3b1421adbd034",
+        "gitBlob": "8ce402ccace4232de17a08b90c1697e86c61ccd9"
+      },
+      "native-session.mjs": {
+        "sha256": "077161f1641a927df241112b71bfa46e25023d3808d08469851838dd9c876360",
+        "gitBlob": "7c8042e9a9eaca4ad67938a44ab8893896ecba08"
+      },
+      "observer.mjs": {
+        "sha256": "525c2437315760e448e4f631ca9ba1a9e2311d216b18ef93852969d09098b2d3",
+        "gitBlob": "e67e86722e24d13686d51585b86950e87b100d2f"
+      }
+    },
+    "exports": [
+      "memory",
+      "__indirect_function_table",
+      "web_boot",
+      "web_render",
+      "web_output",
+      "web_framebuffer",
+      "web_blits",
+      "web_time",
+      "web_envelope_data",
+      "web_envelope_read",
+      "web_playing",
+      "web_keys_lit",
+      "web_keys_dim",
+      "web_buttons_lit",
+      "web_buttons",
+      "web_keys",
+      "web_turn",
+      "web_midi",
+      "web_store_buffer",
+      "web_store_capacity",
+      "web_snapshot",
+      "web_restore_store",
+      "web_mix_poll",
+      "web_mix_token",
+      "web_mix_data",
+      "web_mix_read",
+      "web_mix_set",
+      "web_mix_undo",
+      "web_sound_poll",
+      "web_sound_token",
+      "web_sound_revision",
+      "web_sound_data",
+      "web_sound_text",
+      "web_sound_read",
+      "web_sound_set",
+      "web_sound_undo",
+      "web_sound_choice",
+      "web_sound_set_voice",
+      "web_sound_undo_voice",
+      "_initialize",
+      "setThrew",
+      "_emscripten_stack_restore",
+      "emscripten_stack_get_current"
+    ],
+    "observations": {
+      "worklet.mjs:113-114": "Stereo samples, cumulative peak, framebuffer, playing, key/dim/button bits and time; optional envelope observer.",
+      "native-session.mjs:70-107 and 108-149": "Mix scalar provider and 20 voiced Chicago scalar controls; neither has a step/pattern argument, per-strip telemetry, or mute/solo ownership.",
+      "engine.h:191-204 and 297": "SMC solo and five decaying Q15 part meters, and master gain reduction exist in firmware. No corresponding browser exports.",
+      "smc_mixer.c:254-293,2188-2202": "Solo depends on union of actual controller owners and held/toggled S keys; stock note/mute operations cannot be inferred from the master waveform."
+    }
+  },
+  "superJ6": {
+    "soundProducer": "d1c7205eb9004a5c3ea8a142ac0c93163a1a64d9",
+    "behavior": "experiments/sound-hardware-v1/mapping/results/implementer_brief/BEHAVIOR-BRIEF.md:41 confirms 16u^3.33 Hz, and names tempo-mode division table/boundary behavior as required.",
+    "catalog": "public_control_catalog.json: 218 public identities and semantic roles. LFO rates 88/96/100, Hz-enable 195/196/197; the bank stores normalized positions.",
+    "currentDisplay": "Frequency in Hz mode; normalized tempo position in tempo mode."
+  },
+  "nativeStepTiming": "Required per-part on_step callback, absolute step, concrete pattern identity/revision and target/edit/acknowledged Undo are absent in the pinned browser provider. Reverse/forward stock traces with identical outgoing clock distinguish global tick from real part position."
+}

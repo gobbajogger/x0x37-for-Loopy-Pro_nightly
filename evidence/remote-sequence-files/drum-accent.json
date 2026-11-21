@@ -1,0 +1,319 @@
+{
+  "base": "cc53d936c178f33e6c5890c108f798a10bc98149",
+  "baseTree": "22eb6bbbf84ce449d985a3fc41afb40fa3c31731",
+  "scope": "Pages 2/15. Local Draft, 16 slots per displayed kit. The source firmware supports a larger mask. No native project, audio or MIDI write.",
+  "owner": {
+    "pdf": "docs/design/OWNER-BASELINE-1836.pdf",
+    "sha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "pages": [
+      2,
+      15
+    ]
+  },
+  "source": {
+    "repo": "gobbajogger/DnBOX",
+    "sha": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+    "sourceInputs": {
+      "firmware/src/seq/sequencer.c": "1c92a17d43a444d067a8aff60eb0f3a5e8e3fc8f",
+      "firmware/src/seq/sequencer.h": "f4b5d83735db10bc6cf16abdf70241d1093117ca",
+      "firmware/src/seq/pattern.c": "6f25c2a2f448273f5dffd7befc0d8a2ea6a5888c",
+      "firmware/src/seq/pattern.h": "9810f8977dccb726e09d34666657f1e01bf83b1e",
+      "firmware/src/seq/tb3po.c": "fc4cb5363f12d05d1f5e0d4ab7f6e620820897ec",
+      "firmware/src/seq/tb3po.h": "299225dfe4cb0fa847dc0fd2aa1958d5b93f2f1c",
+      "firmware/src/x0x_cold.h": "089256ed4b45ceb220aa713a9dfa023efe9b85ad"
+    }
+  },
+  "host": {
+    "build": "cc -std=c11 -Wall -Wextra -Werror -Wno-unused-parameter -I\"$stock/firmware/src/seq\" tests/product-remote/stock-drum-accent.c \"$stock\"/firmware/src/seq/{sequencer.c,pattern.c,tb3po.c} -lm -o stock-drum-accent",
+    "test": "tests/product-remote/stock-drum-accent.c",
+    "sha256": "2d2e3f263d76644333c7bdd4f55801415096354ea4b04afc09b218201e63d631",
+    "result": "PASS stock 909/808 independent step masks, shared across voices, T_VEL override, identical drum and MIDI events from different stored accents on silent/overridden steps."
+  },
+  "draft": {
+    "field": "stepLanes.{drum909|drum808}.drumAccent (shared step-lane patch)",
+    "type": "sixteen entries: null unrecorded, boolean off/on; omitted before authorship",
+    "newRow": "Sixteen kit-wide, note-independent controls after all eleven voices. Switching voice does not change the row.",
+    "routing": "Drums opened from either bass or BREAK uses the same 909 kit as existing hit buttons.",
+    "history": "Touch, Undo/Redo, v1 export/import; rejects integer instead of a boolean while preserving active draft."
+  },
+  "unit": {
+    "passed": 12,
+    "failed": 0
+  },
+  "browser": {
+    "chromium": "151.0.7922.34",
+    "sandbox": true,
+    "touchViewports": [
+      [
+        844,
+        390
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "owners": [
+      "drum909",
+      "drum808"
+    ],
+    "archivedFixture": {
+      "sourceCommit": "44f057a30d1b6155fca625f5a2ef5c8c9fc122a8",
+      "sourceTree": "255eae754ba67758284b97c3d9cfb2b9b56f9c1d",
+      "browser": "151.0.7922.34",
+      "viewport": [
+        1280,
+        720
+      ],
+      "method": "Original stock browser app. Open Sound, select JUNO for Bass A and Bass B, then Save Draft from the project menu. The exact downloaded bytes are stored.",
+      "file": "both-owners.json",
+      "bytes": 3164,
+      "sha256": "ea14c9f6521c87b70f4f1bdebe197017c0000051f0df17b5034e8e65f7507b52",
+      "sourceBlobs": {
+        "web/product-site/remote/app.mjs": "8074c4ab513929b1169ccbc69926f888a749c811",
+        "web/product-site/remote/draft-file.mjs": "72e71b3e5968ef834016410be4535547dfe7bff0",
+        "web/product-site/remote/draft-ui.mjs": "5b592e6f845cd430fd19dfedc1fff37386acdd4e",
+        "web/product-site/remote/source-sounds.json": "fcbd6cb6b45c5449be0ff2d3c350790c04966fe9"
+      },
+      "additionalFixture": {
+        "file": "inactive-owner-a.json",
+        "bytes": 3248,
+        "sha256": "5f60ef9e49ecc54ade6fe8d73b573a4990ff36217771d84bd38b7e3061754e79",
+        "method": "Source-event DOM harness executing the original app from the same revision. On Bass A, select JUNO, edit its first scalar, switch to Chicago and save via the original Draft export handler."
+      }
+    },
+    "screenshots": [
+      {
+        "viewport": "1440x900",
+        "part": "drum909",
+        "renderedVoiceCells": 176,
+        "beforeAccentCells": 0,
+        "afterAccentCells": 16,
+        "authoredStates": [
+          "false",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "true"
+        ],
+        "firstAccent": {
+          "x": 85,
+          "y": 743.390625,
+          "width": 57.5,
+          "height": 44,
+          "hit": true
+        },
+        "afterPngSha256": "2a20689b39d0d6e5416e2e0c5be6a0b6382e245d4968ad5e72a4cbc4a25cfda7"
+      },
+      {
+        "viewport": "1440x900",
+        "part": "drum808",
+        "renderedVoiceCells": 176,
+        "beforeAccentCells": 0,
+        "afterAccentCells": 16,
+        "authoredStates": [
+          "false",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "true"
+        ],
+        "firstAccent": {
+          "x": 85,
+          "y": 743.390625,
+          "width": 57.5,
+          "height": 44,
+          "hit": true
+        },
+        "afterPngSha256": "574625a89321f4a158144e0a6a90c00e2a82f5cf0c317621f8e36cb73575b75c"
+      },
+      {
+        "viewport": "844x390",
+        "part": "drum909",
+        "renderedVoiceCells": 176,
+        "beforeAccentCells": 0,
+        "afterAccentCells": 16,
+        "authoredStates": [
+          "false",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "true"
+        ],
+        "firstAccent": {
+          "x": 77,
+          "y": 286.59375,
+          "width": 40,
+          "height": 44,
+          "hit": true
+        },
+        "reachability": {
+          "body": [
+            844,
+            844,
+            390
+          ],
+          "blocked": [],
+          "horizontalClips": [],
+          "reachable": 214,
+          "controlCount": 214
+        },
+        "afterPngSha256": "4679ce135d168fc6151aee98a8134e6198df0e2a8441fd837d10f317542c70c8"
+      },
+      {
+        "viewport": "844x390",
+        "part": "drum808",
+        "renderedVoiceCells": 176,
+        "beforeAccentCells": 0,
+        "afterAccentCells": 16,
+        "authoredStates": [
+          "false",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "true"
+        ],
+        "firstAccent": {
+          "x": 77,
+          "y": 286.59375,
+          "width": 40,
+          "height": 44,
+          "hit": true
+        },
+        "reachability": {
+          "body": [
+            844,
+            844,
+            390
+          ],
+          "blocked": [],
+          "horizontalClips": [],
+          "reachable": 211,
+          "controlCount": 211
+        },
+        "afterPngSha256": "b55f39fd4c176efe40ec4ba5d6ef3ab400f8773a35c79d49ff1e100573556b91"
+      },
+      {
+        "viewport": "390x844",
+        "part": "drum909",
+        "renderedVoiceCells": 176,
+        "beforeAccentCells": 0,
+        "afterAccentCells": 16,
+        "authoredStates": [
+          "false",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "true"
+        ],
+        "firstAccent": {
+          "x": 77,
+          "y": 496.390625,
+          "width": 40,
+          "height": 44,
+          "hit": true
+        },
+        "afterPngSha256": "1239eb0ef74356d8c76de72045640f5ebef9d89bc003f76cae5e8f79e8fa5f64"
+      },
+      {
+        "viewport": "390x844",
+        "part": "drum808",
+        "renderedVoiceCells": 176,
+        "beforeAccentCells": 0,
+        "afterAccentCells": 16,
+        "authoredStates": [
+          "false",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "mixed",
+          "true"
+        ],
+        "firstAccent": {
+          "x": 77,
+          "y": 496.390625,
+          "width": 40,
+          "height": 44,
+          "hit": true
+        },
+        "afterPngSha256": "1858c3eec9d861f66e0e5733596f919971ad97c62b61e3429822b99ba0e82d58"
+      }
+    ],
+    "archivedFileResults": [
+      "Chromium 151.0.7922.34",
+      "PASS 909 kit Accent 16 real touch targets 844x390, two voices, Undo/Redo, unknown/off/on, v1 file and invalid rejection",
+      "PASS 808 kit Accent 16 real touch targets 844x390, two voices, Undo/Redo, unknown/off/on, v1 file and invalid rejection",
+      "PASS 909 kit Accent 16 real touch targets 390x844, two voices, Undo/Redo, unknown/off/on, v1 file and invalid rejection",
+      "PASS 808 kit Accent 16 real touch targets 390x844, two voices, Undo/Redo, unknown/off/on, v1 file and invalid rejection",
+      "PASS browser errors 0"
+    ],
+    "archivedFileLogSha256": "908d220897bc15875a263a561a331cdba34f448532663eabe41ef4a100a31dc6"
+  },
+  "additionalReachability": "Two authored 844x390 states using normal product probe. 214/214 (909) + 211/211 (808), zero blocked or horizontal clips. The default selected BD is used in both for this scoped check; other voice selections have different control counts.",
+  "patchSha256": "7be8071ceee6dd3879e2569a9a3e47c83d96898f709f3ee1796086697390a4c2"
+}

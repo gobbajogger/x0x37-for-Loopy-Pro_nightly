@@ -1,0 +1,16 @@
+{
+  "laterBankWins": true,
+  "badDigestPreservesEditedCopy": true,
+  "closedDialogResponseIgnored": true,
+  "separateBassModels": true,
+  "duplicateKeyAtomic": true,
+  "pageErrors": [],
+  "midiCalls": 0,
+  "chromium": "151.0.7922.34",
+  "files": {
+    "synth-one-file-model.mjs": "fa2b7252fcfab2ab1b985e9765f281ed4ba8585803c69ff35da82c39f4eb74c0",
+    "synth-one-files.mjs": "fdd39fd670fdcf6c95bf34551ed8c24f3cb075e2eecdf3b104c12334c17ed2db",
+    "app.mjs": "e248fda2729885c5071b4beec5a74f84f16f8619af623e6a996386b1a0fa72fc",
+    "synth-one-files.css": "2100256691982be1db8932187540e517e85a462d681b21b89ff147d387db8061"
+  }
+}

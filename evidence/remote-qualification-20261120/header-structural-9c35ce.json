@@ -1,0 +1,147 @@
+{
+  "head": "9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab",
+  "tree": "2016693ffa74437d4429d5390df2627b6c927b5c",
+  "cleanBefore": true,
+  "cleanAfter": true,
+  "verifiedBlobs": 248,
+  "changedVerifiedInputsVs451": [
+    "package.json",
+    "tests/visual/test_visual_gate.py",
+    "tests/visual/visual_gate.py"
+  ],
+  "structural": {
+    "command": [
+      "python3",
+      "tests/visual/fixtures/web-structural/browser_fixtures.py",
+      "--fixtures-only",
+      "--output",
+      "/workspace/scratch/537b1f88ce48/evidence-local/structural-header-9c35ce1e/browser-fixtures.json"
+    ],
+    "started": "2026-11-21T04:16:14.712+00:00",
+    "ended": "2026-11-21T04:16:18.663+00:00",
+    "exit": 0
+  },
+  "build": {
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "started": "2026-11-21T04:16:18.663+00:00",
+    "ended": "2026-11-21T04:16:21.261+00:00",
+    "exit": 0
+  },
+  "header": {
+    "command": [
+      "npm",
+      "run",
+      "test:visual"
+    ],
+    "started": "2026-11-21T04:16:21.261+00:00",
+    "ended": "2026-11-21T04:16:31.644+00:00",
+    "exit": 1
+  },
+  "browser": {
+    "status": "RUN",
+    "version": "151.0.7922.34",
+    "sandbox": true
+  },
+  "structuralFixturesAccepted": true,
+  "fixtureFiles": [
+    {
+      "file": "r3-909-distinct-fork.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "duplicate-ref-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "r3-808-sparse.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "r3-808-full-source.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "r3-cryptic-caption.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "missing-caption-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "positive-dense.html",
+      "matched": true,
+      "observedExit": 0
+    },
+    {
+      "file": "hidden-caption-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "aria-only-caption-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    }
+  ],
+  "productStatus": "NOT_RUN",
+  "visualFilter": "^remote-sequence-1024x640$",
+  "visualContractCount": 12,
+  "headerSummary": {
+    "summary": {
+      "screens": 3,
+      "pass": 2,
+      "fail": 0,
+      "no_baseline": 1,
+      "baseline_written": 0,
+      "header_fail": 0,
+      "page_errors": 0
+    },
+    "results": [
+      [
+        "grid-continuity-1024x640",
+        "PASS",
+        512
+      ],
+      [
+        "header-ssim-1024x640",
+        "PASS",
+        0.905927401190831
+      ],
+      [
+        "remote-sequence-1024x640",
+        "NOBASE",
+        0.0
+      ]
+    ],
+    "header_fails": [],
+    "errors": []
+  },
+  "filesSha256": {
+    "inputs.json": "614704a74b399ad414f44dde8012e8bad818da7b410307e26a27bff894e6bcfc",
+    "browser-fixtures.json": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356",
+    "header/summary.json": "832c83df462e51fe698e9e8c04f6018558af3724bd712f76b2eb73f99fd2cd3d",
+    "header.log": "c79b158fdce445b46dbe58491937d2f5df29a1ba65e0ebb6c2ffa91133bf50f5",
+    "fixtures.log": "04920d833af4307a43b3d1c8bbb2a98b25f59f096a9f1d86af7719e075de63cc",
+    "build.log": "5f87dc6d12c917d2279318a0a63aa46a4da508ddd3b9526472eab94b27b74bf4"
+  },
+  "byteIdenticalWith451": {
+    "inputs.json": false,
+    "browser-fixtures.json": true,
+    "header/summary.json": true,
+    "header.log": false,
+    "fixtures.log": false,
+    "build.log": false
+  },
+  "browserDiscovery": "Initial setup used an empty default browser cache, so no Chromium launched. Evidence here comes from the official bundled browser. Setup logs preserved in browser-discovery/."
+}

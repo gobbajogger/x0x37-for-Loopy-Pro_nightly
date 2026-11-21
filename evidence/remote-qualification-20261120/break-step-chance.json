@@ -1,0 +1,64 @@
+{
+  "base": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "firmware": {
+    "repository": "gobbajogger/DnBOX",
+    "ref": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+    "blobIds": {
+      "firmware/src/app/ui_step_lane.inc": "473f1c52d811666f038d3abdf16c676e91cff7a8",
+      "firmware/src/app/ui.c": "de3898e639ed8a8bdfcce4c37f40d82c9372b18d",
+      "firmware/src/app/engine.c": "5c81586dfecf743dccc55ab4f3ca44d94d7f284a",
+      "firmware/src/seq/sequencer.h": "f4b5d83735db10bc6cf16abdf70241d1093117ca",
+      "firmware/src/seq/motion.h": "fcb39561683aa7531fdeeef5d78ae6e0d194425d",
+      "firmware/src/app/project.c": "8d69214ce9840865a1a007e7fc9d6033a09961d0"
+    },
+    "nativeOwner": "Playing BREAK pattern seq.ppat[PART_BRK], part 4, T_PROB, packed voice 64, parameter 0, native step. s_brk tests prob_skip(PART_BRK,0) once before firing.",
+    "sourceDomain": "The physical editor steps 100 to 5 percent in increments of five and then 1:2, 2:2 through 8:8. Raw 101 through 135 encode the 35 conditions. The native renderer evaluates condition A:B using the part pass counter modulo B. All 35 labels and numeric codes were compared to compiled stock prob_cond().",
+    "nativeDefault": "The native UI removes its point for 100 percent using MOT_NONE=255. A missing motion point falls back to 100 percent. Native raw zero is distinct and absent from the physical editor. The local Draft rejects explicit 0, 100, 255 and codes outside the UI vocabulary."
+  },
+  "draft": {
+    "scope": "A single local 16-step overlay on the pinned one-bar BREAK Draft. Launch target changes do not bind or replace this overlay. No native import, pattern transaction, per-loop RNG execution, hardware write or strike-velocity mapping is claimed.",
+    "encoding": "Optional breakSequence.chance, exactly 16 entries, null for default or a native editor code. The whole field is omitted at default. Previous no-Chance shape and note identities are preserved. Grouped MIDI notes own no BREAK chance property. Empty-step points persist across note edits.",
+    "proof": "Real 844x390 browser: two notes at one onset, default reset without edits, 100%\u219295%, multi-step drag through a silent cell to 8:8, shared Undo/Redo, save/open, target P2 isolation, held drag subview cancellation and owner-focus transfer. Normal native Apply remains disabled; MIDI permission calls=0. Legacy audition regression retains five choices and exercises one real preview."
+  },
+  "browser": {
+    "previous": "Real 8e61e906 stopped at a disabled step: expected 95%, actual 100%.",
+    "candidate": "Existing mandatory FunkyBeats break_and_tape case passed on the candidate using the normal sandbox. One instrumented local negative and one focused positive run; independent reviewer verified the new landscape state."
+  },
+  "tests": {
+    "focused": {
+      "tests": 30,
+      "failed": 0
+    },
+    "remote": {
+      "tests": 196,
+      "failed": 0
+    },
+    "workspace": {
+      "tests": 105,
+      "failed": 0
+    }
+  },
+  "manifestFilesVerified": 219,
+  "filesSha256": {
+    "web/product-site/remote/break-chance.mjs": "602f991dab5fc2fc78566784f4f39a2cb46859f90cdf66c995942f91ec68b3e3",
+    "web/product-site/remote/app.mjs": "43310d1260a561feeaa8415908c4de51aba676d458d9d6bb9460d6d214fce6e6",
+    "web/product-site/remote/break-sequence.mjs": "7b543ff3e4ec0579219771a3907b7cbc85fad821335679d1d0fb6b62779d99c1",
+    "web/product-site/remote/step-lane.mjs": "ffd0b814cd82452f4e0569bebbf8ec1ae599dca83acc2a90b33f47248e3396f9",
+    "web/product-site/remote/draft-file.mjs": "fd4a6bce6de51a7593c29097768be53ce241d5e8cbfd6949800370b05a6cb5d7",
+    "tests/product-remote/funkybeats-browser.py": "2a29e26d3d71705d36066df43e46d3efcce855d0d34cad6f4df999902aaeb722",
+    "tests/product-remote/step-lane.test.mjs": "209dd890845e923f6d6c096e21478bcee5e1ee628bf8828c8b822a12da06c201",
+    "tests/product-workspace/draft-file.test.mjs": "909b7858c62c6e2b4e48c47a91a1feb6310d760b4012ff54ee524e2ede5f113f",
+    "web/product-site/SOURCE-MANIFEST.json": "f832388a628142593746ef357b36805153771d0c62dfda8bab8bba4719002af7"
+  },
+  "logsSha256": {
+    "previous-red.log": "6e9ea04bba647f3e415de21f9ebc80ceb7afa2310de01b983851f1da25937f6c",
+    "mandatory-break-final.log": "a15470c36a4c244387b11a5797e51cce7f5d2dcde3b22b2b314af40d012248be",
+    "remote.log": "4831aaba6c6f8adf3a537884889b41e15fa6b056c8c8e45dd7bd67af8fc80bf7",
+    "workspace.log": "13e10c4218e7f8a119ec9f72b6d8946ff8ebb3de650e544962b7fd52769c0af6",
+    "focused.log": "dbda0be4b7c5bcc13c51667bab9156ff0a11cbb06ef2832a69deee53adf75621",
+    "native-domain.txt": "a4b9e795e3fa9eef56abd8278800a34cdf1f7ab435c6fe12ec185bd80c308bf4",
+    "independent-replay.json": "4363cfbdedfde90f3d5ac10d613795862fe992f96dc3a73b4a14c981efd3f3a6",
+    "independent-landscape.json": "98d97d311b6483809e8631d758d1e5899a44a8228de989432729fc3ef8a5c8af",
+    "independent-landscape.png": "8882bd8241683f61ce8b601bf1f73dbd971aa240f25887d3cf781346e2b0bd55"
+  }
+}

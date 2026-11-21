@@ -1,0 +1,1 @@
+PASS 96 unique part/pattern/catalog addresses, 196608 applied value points and 196608 cell clears restoring the base, 64 source steps per lane (16 exposed).

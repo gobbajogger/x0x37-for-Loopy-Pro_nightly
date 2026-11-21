@@ -1,0 +1,115 @@
+{
+  "base": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+  "sourcePdf": {
+    "path": "docs/design/OWNER-BASELINE-1836.pdf",
+    "sha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "page": 9,
+    "gridBounds": [
+      53,
+      296,
+      892,
+      691
+    ],
+    "heading": "32 PATTERNS, Barlow Semi Condensed Bold, 28 pt, #dde7de"
+  },
+  "browser": "151.0.7922.34",
+  "before": {
+    "gridBounds": [
+      41,
+      230.390625,
+      903.125,
+      624.5625
+    ],
+    "desktopRegression": "FAIL, missing 32 patterns heading; first pad 65.609375px above reference"
+  },
+  "after": {
+    "gridBounds": [
+      52.671875,
+      297.78125,
+      891.453125,
+      691.953125
+    ],
+    "firstPad": [
+      52.671875,
+      297.78125,
+      142.640625,
+      378.78125
+    ],
+    "lastPad": [
+      801.46875,
+      610.953125,
+      891.453125,
+      691.953125
+    ],
+    "heading": {
+      "text": "32 PATTERNS",
+      "box": [
+        52.671875,
+        235.59375,
+        205.671875,
+        269.1875
+      ],
+      "fontSize": "28px",
+      "fontWeight": "700",
+      "fontFamily": "Barlow, sans-serif",
+      "color": "rgb(221, 231, 222)"
+    },
+    "presentedAndHit": 32,
+    "flatCells": 32,
+    "expandedUniqueAddresses": 160,
+    "freshSelection": "Bass A · Not selected · Draft",
+    "geometryAndFunction": "PASS in normal 1440x900,844x390,390x844 fixture paths. Desktop checks physical Tab order, modal return focus, responsive relocation and retained focus through a 1024x640 resize. Every size checked original selection, 160 expanded pads, live P32, export integrity and no horizontal overflow."
+  },
+  "comparisons": [
+    {
+      "viewport": "1440x900",
+      "scope": "selected",
+      "beforeSha256": "bfdcdd4c9be53edbe079e9a33a5e7bd7b98123a4f06421cc8eec69a2c57cb507",
+      "afterSha256": "9e1fa2366bf425718f278971e5c815e56c037f2f50279295b38500fc1535fbef",
+      "samePixels": false
+    },
+    {
+      "viewport": "1440x900",
+      "scope": "all",
+      "beforeSha256": "82a6384bdab3ebfd3135b781462956ecd8f2d3db027438a8c91521b6786ef01b",
+      "afterSha256": "82a6384bdab3ebfd3135b781462956ecd8f2d3db027438a8c91521b6786ef01b",
+      "samePixels": true
+    },
+    {
+      "viewport": "844x390",
+      "scope": "selected",
+      "beforeSha256": "0403536c6f1c15c5f2e80b6242476a8fc4ccc846f6c4b829bcf81ab1885745ef",
+      "afterSha256": "0403536c6f1c15c5f2e80b6242476a8fc4ccc846f6c4b829bcf81ab1885745ef",
+      "samePixels": true
+    },
+    {
+      "viewport": "844x390",
+      "scope": "all",
+      "beforeSha256": "2cef4e9847762141750da7897a4c164882478b6e59202f09f665f11b2c6c8035",
+      "afterSha256": "2cef4e9847762141750da7897a4c164882478b6e59202f09f665f11b2c6c8035",
+      "samePixels": true
+    },
+    {
+      "viewport": "390x844",
+      "scope": "selected",
+      "beforeSha256": "c7170a4d9fdb3d61f6c03f9f32b94f8aff0efd68ff2d9c4e8c8686acd0deef1a",
+      "afterSha256": "c7170a4d9fdb3d61f6c03f9f32b94f8aff0efd68ff2d9c4e8c8686acd0deef1a",
+      "samePixels": true
+    },
+    {
+      "viewport": "390x844",
+      "scope": "all",
+      "beforeSha256": "629b0d1c024a572ed8dd529ebf938a82d86cd5b456513c83cd848b5c868df27c",
+      "afterSha256": "629b0d1c024a572ed8dd529ebf938a82d86cd5b456513c83cd848b5c868df27c",
+      "samePixels": true
+    }
+  ],
+  "controls": "The final 28px computed heading and desktop PNG were verified in one separate short closeout; the other five captures refer to identical narrow/all-scope CSS and DOM from the preceding paired run.",
+  "sourceTests": {
+    "funkybeatsPort": 8,
+    "appCorrection": 7,
+    "verifiedManifestRecords": 243
+  },
+  "productScope": "Selected desktop only. All-parts, portrait and phone landscape remain visually identical. No live/native launcher claim.",
+  "patchSha256": "648267c52ece59253908b568b30a122130ebefcc2e4c29357309bbabe601cf86"
+}

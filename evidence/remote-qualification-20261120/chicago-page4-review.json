@@ -1,0 +1,79 @@
+{
+  "reference": "24-page owner PDF page 4, Chicago grouped controls, four-stage envelope and curve within its sound panel. The duplicate raw list in the reference is superseded.",
+  "referencePdfSHA256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+  "baseCommit": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "patchSha256": "cb878ffe861adf8ddd6c2b389ac31e0c1c7e3ad4e13ce8027c4212d73800064f",
+  "beforeGraphVisible": 0.41484373807907104,
+  "beforeStageTops": [
+    930.515625,
+    930.515625,
+    930.515625,
+    930.515625
+  ],
+  "afterGraphFraction": 1.0,
+  "envelopePanelWidth": 692,
+  "graphWidth": 676,
+  "graphLeftInset": 8,
+  "graphRightInset": 8,
+  "stageCount": 4,
+  "fullyVisibleTargets": [
+    {
+      "label": "ADSR envelope",
+      "fullyVisible": true
+    },
+    {
+      "label": "ATTACK\n27%",
+      "fullyVisible": true
+    },
+    {
+      "label": "DECAY\n40%",
+      "fullyVisible": true
+    },
+    {
+      "label": "SUSTAIN\n57%",
+      "fullyVisible": true
+    },
+    {
+      "label": "RELEASE\n17%",
+      "fullyVisible": true
+    }
+  ],
+  "distinctChicagoControlIDs": 20,
+  "rasterComparison": [
+    {
+      "state": "chicago-chicago-1440x900",
+      "identical": false
+    },
+    {
+      "state": "chicago-chicago-1024x640",
+      "identical": true
+    },
+    {
+      "state": "chicago-chicago-844x390",
+      "identical": true
+    },
+    {
+      "state": "chicago-chicago-390x844",
+      "identical": true
+    },
+    {
+      "state": "chicago-miami-1440x900",
+      "identical": true
+    },
+    {
+      "state": "chicago-juno-1440x900",
+      "identical": true
+    },
+    {
+      "state": "chicago-superj6-1440x900",
+      "identical": true
+    },
+    {
+      "state": "chicago-synth-one-1440x900",
+      "identical": true
+    }
+  ],
+  "reviewedBehavior": "Mandatory new fixture verifies editable Chicago Draft at 1440x900/scrollTop0; all four exact stage percentages, SAW waveform, all five viewport intersections and first-to-second Tab. Existing passing full_envelopes exercises both bass slots with real stage clicks/numeric changes, graph path changes, Undo and Draft persistence, and asserts graph >= enclosing row width minus 18 at desktop/portrait/landscape.",
+  "limits": "The image/geometry proves the first desktop envelope composition. The Effect section begins below the first view. The green fourth stage and its values/controls fit; the envelope spans the padded width of its own section, not the entire application. The scratch red ninth case was inconclusive. Both-slot behavior uses the existing completed full_envelopes test; the independent audit recomputed fixture and raster checks from supplied measurements, without launching another browser.",
+  "decision": "PASS for the scoped page-4 geometry, bank isolation and tested interactions."
+}

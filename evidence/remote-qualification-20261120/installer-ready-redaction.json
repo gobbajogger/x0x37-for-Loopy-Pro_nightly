@@ -1,0 +1,125 @@
+[
+  {
+    "mode": "closed",
+    "seconds": 0.00015,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "directFrameCount": 9,
+      "framePaths": [
+        "/breaks/",
+        "other",
+        "other",
+        "other",
+        "other",
+        "other",
+        "about:blank",
+        "other"
+      ],
+      "pageErrorTypes": [
+        "TypeError",
+        "ValueError",
+        "RuntimeError",
+        "KeyError",
+        "IndexError",
+        "LookupError",
+        "AttributeError",
+        "ConnectionError"
+      ],
+      "topState": null
+    }
+  },
+  {
+    "mode": "responsive",
+    "seconds": 0.00015,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "directFrameCount": 9,
+      "framePaths": [
+        "/breaks/",
+        "other",
+        "other",
+        "other",
+        "other",
+        "other",
+        "about:blank",
+        "other"
+      ],
+      "pageErrorTypes": [
+        "TypeError",
+        "ValueError",
+        "RuntimeError",
+        "KeyError",
+        "IndexError",
+        "LookupError",
+        "AttributeError",
+        "ConnectionError"
+      ],
+      "topState": {
+        "hasReadyHook": true,
+        "pendingLength": 2
+      }
+    }
+  },
+  {
+    "mode": "disconnected",
+    "seconds": 0.0001,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "directFrameCount": 9,
+      "framePaths": [
+        "/breaks/",
+        "other",
+        "other",
+        "other",
+        "other",
+        "other",
+        "about:blank",
+        "other"
+      ],
+      "pageErrorTypes": [
+        "TypeError",
+        "ValueError",
+        "RuntimeError",
+        "KeyError",
+        "IndexError",
+        "LookupError",
+        "AttributeError",
+        "ConnectionError"
+      ],
+      "topState": null
+    }
+  },
+  {
+    "mode": "blocked",
+    "seconds": 0.65407,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "directFrameCount": 9,
+      "framePaths": [
+        "/breaks/",
+        "other",
+        "other",
+        "other",
+        "other",
+        "other",
+        "about:blank",
+        "other"
+      ],
+      "pageErrorTypes": [
+        "TypeError",
+        "ValueError",
+        "RuntimeError",
+        "KeyError",
+        "IndexError",
+        "LookupError",
+        "AttributeError",
+        "ConnectionError"
+      ],
+      "topState": null
+    }
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "triples": 3402,
+  "paintAxes": 3,
+  "integerCoordinates": 510300,
+  "animatedFrames": 10,
+  "fractionalCoordinates": 500,
+  "comparedCoordinates": 510800,
+  "maxDifference": 0.00005116999999987826,
+  "nativeRoundedDigest": "279e5531e1e5e9ac9c1da29032e465b8d2dee1c1d5782713a09c3ec182fd8f59"
+}

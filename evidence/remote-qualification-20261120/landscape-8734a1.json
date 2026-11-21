@@ -1,0 +1,182 @@
+{
+  "identity": {
+    "build": {
+      "files": 238,
+      "output": "/workspace/scratch/537b1f88ce48/header-work/r5-8734a199697f/.output/r5-landscape",
+      "emulator": true,
+      "published": false,
+      "firmwareWrites": false,
+      "catalogMutations": []
+    },
+    "head": "8734a199697fbe986e18ef35d82dba0ef0ea58c5",
+    "tree": "3504660593c2eaa708533201ac9a454147d7ffe0",
+    "startedUtc": "2026-11-21T03:32:29.252851+00:00",
+    "runtime": {
+      "runtime.json": {
+        "bytes": 285,
+        "sha256": "f11271f85ad61c9c5bc5f3959f8b5ffa2e3a8c8cbab90f4b43c7aeb94676b4e0"
+      },
+      "kernel.wasm": {
+        "bytes": 941835,
+        "sha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b"
+      },
+      "native-session.mjs": {
+        "bytes": 13837,
+        "sha256": "077161f1641a927df241112b71bfa46e25023d3808d08469851838dd9c876360"
+      },
+      "observer.mjs": {
+        "bytes": 2631,
+        "sha256": "525c2437315760e448e4f631ca9ba1a9e2311d216b18ef93852969d09098b2d3"
+      },
+      "session-codec.mjs": {
+        "bytes": 1982,
+        "sha256": "5924c689e512fc1c4e14718e0d267dce7ef287ec51183d1902e3d7902134845d"
+      },
+      "worklet.mjs": {
+        "bytes": 10887,
+        "sha256": "3841c8754053df804e103dc80ea31ab3dc0c4063112aa20b45f3b1421adbd034"
+      },
+      "wasi.mjs": {
+        "bytes": 1507,
+        "sha256": "76221f9d11ff8be10d9844f0ecc696ddc0bafb694775a12a6b665c4d77a78f18"
+      },
+      "index.html": {
+        "bytes": 2083,
+        "sha256": "010718d268ec15e83da8c641eb82ec30588d3d001bd4cf07fb15a182bd82fc0b"
+      },
+      "page.mjs": {
+        "bytes": 9154,
+        "sha256": "f4348ebcbedc94495c60f6bcf93848567fc6a0d3d9961f08c81c613fab5d9966"
+      },
+      "style.css": {
+        "bytes": 1903,
+        "sha256": "f9d8c09ebe689442f027b038482488a6e02db255db7553127b92b907b68cd5b8"
+      }
+    },
+    "expectedStates": 98,
+    "fixtureSha256": "ad69cb84aeaadd8057afeac47b5bb7ed87d202837822229eb07cf15af86087c6",
+    "manifestSha256": "b544f49039f87e0860e7903fc22bbff5050f79070903f2d18986cedf40f66a53",
+    "memAvailableKiB": 3614104,
+    "endedUtc": "2026-11-21T03:33:27.890874+00:00",
+    "processExit": 0
+  },
+  "execution": {
+    "browser": "151.0.7922.34",
+    "count": 98,
+    "failures": [],
+    "pageErrors": [],
+    "enabledControlPresentations": 3937,
+    "reachablePresentations": 3937,
+    "manifestSha256": "b544f49039f87e0860e7903fc22bbff5050f79070903f2d18986cedf40f66a53",
+    "kernelSha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b"
+  },
+  "verification": {
+    "distinctMatchedScreenshotHashes": 98,
+    "missingStates": [],
+    "unexpectedStates": [],
+    "allNativeStates": [
+      "native-mix-fx",
+      "native-mix-levels",
+      "native-mix-pan",
+      "native-mix-sends",
+      "native-sound-chicago",
+      "native-sound-choice-unavailable",
+      "native-sound-miami"
+    ],
+    "sourceBankStates": [
+      "sound-chicago-SuperJ6",
+      "sound-chicago-Synth One",
+      "sound-miami-SuperJ6",
+      "sound-miami-Synth One"
+    ],
+    "bodyOverflow": [],
+    "geometryClips": [],
+    "rollChecks": {
+      "roll-chicago": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 71,
+        "lastRow": 86
+      },
+      "locks-chicago": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 71,
+        "lastRow": 86
+      },
+      "roll-miami": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "locks-miami": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "roll-drum909": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 83,
+        "lastRow": 98
+      },
+      "locks-drum909": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 83,
+        "lastRow": 98
+      },
+      "roll-drum808": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 81,
+        "lastRow": 96
+      },
+      "locks-drum808": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 81,
+        "lastRow": 96
+      },
+      "break-notes": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 54,
+        "lastRow": 69
+      },
+      "locks-breaks": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      }
+    },
+    "sha256": {
+      "states.json": "703fe35bf4535b496806671f7f8c7eb559ba56eb43f6a759dcf2f64bf2b4d167",
+      "execution.json": "d06724a598c61d8e83ffe9e8063b9661d0da556cbb2c4c930574c6a6063a1452",
+      "identity.json": "7f48884cd2f55811c4bf2d4bf28091f5b3ac937b4cf2cbf1b5432d570e2537a3"
+    }
+  }
+}

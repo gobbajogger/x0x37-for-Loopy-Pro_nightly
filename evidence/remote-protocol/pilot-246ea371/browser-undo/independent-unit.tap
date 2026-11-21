@@ -1,0 +1,125 @@
+TAP version 13
+# Subtest: a page with no reviewed catalog sends nothing and leaves Apply disabled
+ok 1 - a page with no reviewed catalog sends nothing and leaves Apply disabled
+  ---
+  duration_ms: 3.117455
+  type: 'test'
+  ...
+# Subtest: the C fixture handshake reads confirmed values and a conflicting Apply is refused
+ok 2 - the C fixture handshake reads confirmed values and a conflicting Apply is refused
+  ---
+  duration_ms: 177.984959
+  type: 'test'
+  ...
+# Subtest: an unsupported C control stays unconfirmed and cannot be applied
+ok 3 - an unsupported C control stays unconfirmed and cannot be applied
+  ---
+  duration_ms: 44.17093
+  type: 'test'
+  ...
+# Subtest: Apply and instrument Undo require independent reads of the committed revision
+ok 4 - Apply and instrument Undo require independent reads of the committed revision
+  ---
+  duration_ms: 92.185441
+  type: 'test'
+  ...
+# Subtest: Undo keeps a later firmware revision even when the parameter value matches
+ok 5 - Undo keeps a later firmware revision even when the parameter value matches
+  ---
+  duration_ms: 73.681631
+  type: 'test'
+  ...
+# Subtest: the C revision guard refuses a change between the Undo read and write
+ok 6 - the C revision guard refuses a change between the Undo read and write
+  ---
+  duration_ms: 94.816971
+  type: 'test'
+  ...
+# Subtest: queued scalar Apply and inverse SET confirm the stored target at the acknowledged revision
+ok 7 - queued scalar Apply and inverse SET confirm the stored target at the acknowledged revision
+  ---
+  duration_ms: 86.133761
+  type: 'test'
+  ...
+# Subtest: queued confirmation uses the canonical float returned by firmware
+ok 8 - queued confirmation uses the canonical float returned by firmware
+  ---
+  duration_ms: 92.145413
+  type: 'test'
+  ...
+# Subtest: a queued edit that changes another control refreshes both values and offers no scalar Undo
+ok 9 - a queued edit that changes another control refreshes both values and offers no scalar Undo
+  ---
+  duration_ms: 139.607881
+  type: 'test'
+  ...
+# Subtest: an immediate inverse of a queued edit reports changes outside the addressed stored value
+ok 10 - an immediate inverse of a queued edit reports changes outside the addressed stored value
+  ---
+  duration_ms: 128.603913
+  type: 'test'
+  ...
+# Subtest: a queued inverse whose prior value is not read back fails closed
+ok 11 - a queued inverse whose prior value is not read back fails closed
+  ---
+  duration_ms: 60.982496
+  type: 'test'
+  ...
+# Subtest: unverifiable writes do not create an Undo action
+    # Subtest: queued not stored
+    ok 1 - queued not stored
+      ---
+      duration_ms: 76.327054
+      type: 'test'
+      ...
+    # Subtest: queued with different revision
+    ok 2 - queued with different revision
+      ---
+      duration_ms: 85.510342
+      type: 'test'
+      ...
+    # Subtest: different revision
+    ok 3 - different revision
+      ---
+      duration_ms: 129.015901
+      type: 'test'
+      ...
+    # Subtest: different stored value
+    ok 4 - different stored value
+      ---
+      duration_ms: 89.153178
+      type: 'test'
+      ...
+    1..4
+ok 12 - unverifiable writes do not create an Undo action
+  ---
+  duration_ms: 382.21154
+  type: 'test'
+  ...
+# Subtest: destroy during a pending readback retires the old connection and Undo
+ok 13 - destroy during a pending readback retires the old connection and Undo
+  ---
+  duration_ms: 109.468785
+  type: 'test'
+  ...
+# Subtest: expired firmware lease rejects Undo even if a READ is still available
+ok 14 - expired firmware lease rejects Undo even if a READ is still available
+  ---
+  duration_ms: 86.356108
+  type: 'test'
+  ...
+# Subtest: returning to a cached page requires a new handshake and drops the prior Undo
+ok 15 - returning to a cached page requires a new handshake and drops the prior Undo
+  ---
+  duration_ms: 109.456894
+  type: 'test'
+  ...
+1..15
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4337.16242

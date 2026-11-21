@@ -1,0 +1,65 @@
+[
+  {
+    "mode": "closed",
+    "seconds": 8e-05,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "framePaths": [
+        "/breaks/"
+      ],
+      "pageErrorTypes": [
+        "TypeError"
+      ],
+      "topState": null
+    }
+  },
+  {
+    "mode": "responsive",
+    "seconds": 5e-05,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "framePaths": [
+        "/breaks/"
+      ],
+      "pageErrorTypes": [
+        "TypeError"
+      ],
+      "topState": {
+        "hasReadyHook": true,
+        "pendingLength": 2
+      }
+    }
+  },
+  {
+    "mode": "disconnected",
+    "seconds": 3e-05,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "framePaths": [
+        "/breaks/"
+      ],
+      "pageErrorTypes": [
+        "TypeError"
+      ],
+      "topState": null
+    }
+  },
+  {
+    "mode": "blocked",
+    "seconds": 0.65486,
+    "originalException": true,
+    "sample": {
+      "topPath": "/install/",
+      "framePaths": [
+        "/breaks/"
+      ],
+      "pageErrorTypes": [
+        "TypeError"
+      ],
+      "topState": null
+    }
+  }
+]

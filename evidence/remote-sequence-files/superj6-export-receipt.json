@@ -1,0 +1,19 @@
+{
+  "base": "cc53d936c178f33e6c5890c108f798a10bc98149 plus independent Song patch",
+  "patchSha256": "2e9197593b4e57348a73447ac5d239661b395eaf30690f8b47bc0f34eb5abe00",
+  "originalArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+  "archiveBanks": 12,
+  "archivePrograms": 640,
+  "separateOwnerExports": 24,
+  "independentlyVerifiedNumericEdits": 74,
+  "unchangedTokens": "verified byte for byte",
+  "realArchiveBrowserSizes": [
+    "1440x900",
+    "844x390",
+    "390x844",
+    "1024x640"
+  ],
+  "unitTests": 38,
+  "savedFileUsesOriginalFilename": true,
+  "workspaceRestoresOriginalBytes": false
+}

@@ -1,0 +1,12 @@
+{
+  "before": {
+    "open": false,
+    "replace": false,
+    "status": "Local draft: unknown or missing fields"
+  },
+  "after": {
+    "open": true,
+    "replace": true,
+    "status": "10 notes \u00b7 0 parameter entries \u00b7 0 Motion points \u00b7 0 song rows. Exact source identity matches. Replace current local draft? Undo/Redo and clipboard will reset; original source stays separate. Save current work first. No native apply, playback or connected state."
+  }
+}

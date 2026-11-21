@@ -30,8 +30,23 @@ async def cases(origin):
       source='catalog' if bad=='malformed' else bad
       async def refuse(route):await route.fulfill(status=200 if bad=='malformed' else 503,content_type='application/json',body='invalid')
       await page.route('**/remote/'+source+'.json',refuse)
-      await page.goto(origin+'/remote/');await expect(page.locator('#workspace-error')).to_be_visible();await expect(page.locator('#workspace-retry')).to_be_focused();await expect(page.locator('[data-view="sound"]')).to_be_disabled();assert await page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-      await page.unroute('**/remote/'+source+'.json',refuse);await page.locator('#workspace-retry').click();await expect(page.locator('main')).to_have_attribute('aria-busy','false');await expect(page.locator('[data-view="sound"]')).to_be_enabled();await page.locator('[data-view="sound"]').click();await page.locator('#part').select_option('chicago');await expect(page.locator('#workspace-error')).to_be_hidden()
+      # Start the UI assertion deadline when the browser receives the injected failure.
+      # Module loading can continue after the document load event.
+      async with page.expect_response(lambda response: response.url == f'{origin}/remote/{source}.json') as pending_response:
+       await page.goto(origin+'/remote/')
+      response=await pending_response.value
+      assert response.status == (200 if bad=='malformed' else 503), (source,response.status)
+      await expect(page.locator('#workspace-error')).to_be_visible();await expect(page.locator('#workspace-retry')).to_be_focused();await expect(page.locator('[data-view="sound"]')).to_be_disabled();assert await page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+      await page.unroute('**/remote/'+source+'.json',refuse)
+      async with page.expect_event('domcontentloaded'):
+       await page.locator('#workspace-retry').click()
+      # Retry starts a new document. Wait until its four source files finish
+      # loading before measuring whether the UI becomes usable.
+      await page.wait_for_function('''() => ['trace', 'catalog', 'components', 'source-sounds'].every(name => {
+       const url = new URL(name + '.json', location.href).href;
+       return performance.getEntriesByName(url, 'resource').some(entry => entry.responseEnd > 0);
+      })''')
+      await expect(page.locator('main')).to_have_attribute('aria-busy','false');await expect(page.locator('[data-view="sound"]')).to_be_enabled();await page.locator('[data-view="sound"]').click();await page.locator('#part').select_option('chicago');await expect(page.locator('#workspace-error')).to_be_hidden()
       wave=page.locator('[data-native-param="source-sound/CHICAGO/0|1:2:0:0:0"]');await wave.press('Home');await wave.press('ArrowRight');await expect(wave).to_have_value('1')
       main_geometry=await geometry(page)
       await page.locator('#draft-file').set_input_files({'name':'bad.json','mimeType':'application/json','buffer':b'invalid'})

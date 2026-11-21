@@ -1,0 +1,124 @@
+{
+  "sha": "0753ff3fd6ac01fc528f978e882b389e402c06b9",
+  "tree": "97bbcf9bffa477f65aadfa15da7b6e46a55d4c74",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "lane": "remote",
+  "result": "FAIL",
+  "exitCode": 1,
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "offline": true,
+  "startedUtc": "2026-11-21T05:12:27.110Z",
+  "startedGateLabel": "DNBOX-GATE repo=nightly lane=remote sha=0753ff3fd6ac01fc528f978e882b389e402c06b9 started=20261121-1512 (UTC+10)",
+  "endedUtc": "2026-11-21T05:28:38.307Z",
+  "cleanTrackedAfter": true,
+  "rawLogBytes": 248037,
+  "rawLogSha256": "b9acbdd704f9a8e84ad48c5bbd3ca40df6f542a17e76b86d0cfd7a1b2cecf443",
+  "repositoryLog": "build/dnbox-gate/0753ff3f-20261121-1512.log",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "PASS"
+    },
+    {
+      "name": "browser-tests",
+      "result": "FAIL"
+    }
+  ],
+  "visualHeader": "header SSIM vs page-01 = 0.9059 (gate >= 0.90)",
+  "terminal": "DNBOX-GATE RESULT FAIL sha=0753ff3fd6ac01fc528f978e882b389e402c06b9 lane=remote log=build/dnbox-gate/0753ff3f-20261121-1512.log",
+  "structural": null,
+  "visual": {
+    "screens": 109,
+    "pass": 5,
+    "fail": 0,
+    "no_baseline": 104,
+    "baseline_written": 0,
+    "header_fail": 0,
+    "page_errors": 0
+  },
+  "errors": [
+    {
+      "line": 3514,
+      "message": "playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 3515,
+      "message": "[FAIL] browser-tests"
+    },
+    {
+      "line": 3516,
+      "message": "DNBOX-GATE RESULT FAIL sha=0753ff3fd6ac01fc528f978e882b389e402c06b9 lane=remote log=build/dnbox-gate/0753ff3f-20261121-1512.log"
+    }
+  ],
+  "published": false,
+  "workflowDispatched": false,
+  "physicalDeviceAccess": false,
+  "compressedLogSha256": "b3cff5852d01f12c3febd4ba2ed4e94cd2aa44bee8b5d389d5c54173ac846729",
+  "compressedLogBytes": 47768,
+  "lastCompletedAdmissionCheck": "CHECK 660 write lock released revoked",
+  "timeout": {
+    "scope": "test fixture readiness before qa.installMocks() in next case",
+    "file": "tests/browser-admission.py",
+    "callerLine": 386,
+    "readyLine": 98,
+    "freshLine": 95,
+    "remainingCondition": "window.qa && pending.length===1",
+    "timeoutMs": 30000
+  },
+  "passiveTiming": {
+    "samples": 481,
+    "maximumFullRunGapSec": 6.392,
+    "maximumFullRunGapObservedUtc": "2026-11-21T05:28:09.503Z",
+    "preceding45sSamples": 15,
+    "preceding45sMaxGapSec": 6.392,
+    "preceding45sMaxDelaySec": 4.392,
+    "baselineMaxGapSec": 2.031,
+    "baselineSamples": 166,
+    "previous45sMinimumMemAvailableKiB": 1450816,
+    "previous45sOomKillCounterDelta": 0,
+    "previous45sLoad1MinRange": [
+      32.08,
+      57.93
+    ],
+    "pressureSourcesPresent": [],
+    "heartbeatJsonlSha256": "0907b9d7344b79dbf2f16513c32a23940a1a3371732564abfd537af2157e2dc2",
+    "heartbeatJsonlGzipSha256": "39f9f422fbd804688b93e99f4c35a8c8909f4a0ab610624511bc406b5d8d8848",
+    "heartbeatSummarySha256": "97c3a188437bf5b9269dca3d8e6e21a5fc44085d1170982db50a2b7a0af999df",
+    "scope": "System-wide observations only. The instrument measured no interval of 30 seconds. It cannot determine how often individual browser processes ran or attribute the timeout."
+  },
+  "executor": {
+    "launcherSha256": "0ed53879f3cda04e1bf23c49e259689efd721916739ba85758738168dea0ece7",
+    "passiveSamplerSha256": "3f1219d6f358081ea0302285efef018e08e18ceaf2824cb7f5b9b5027b52f383",
+    "sources": [
+      "DNBOX_EMULATOR_RUNTIME: 10 original pinned file lengths and SHA-256 checked",
+      "DNBOX_MIAMI_FIRMWARE: miami-remote/pin",
+      "DNBOX_DRUM_FIRMWARE: evidence-local/drum-firmware",
+      "DNBOX_SYNTH_ONE_FIRMWARE: miami-remote/contracts/fcf82",
+      "DNBOX_SUPERJ6_ARCHIVE: originals/J6presets.zip"
+    ]
+  }
+}

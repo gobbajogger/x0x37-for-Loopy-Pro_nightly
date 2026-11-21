@@ -1,0 +1,210 @@
+{
+  "scope": "Read-only comparison and one local authoring-and-Undo journey in isolated normal sandbox Chromium. No hardware.",
+  "remoteHead": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "firmware": {
+    "sourceTree": "956a004d8abc991093318b1d067bfe32e6b914c7",
+    "qualifiedState": {
+      "view": 8,
+      "part": 4,
+      "voice": 0,
+      "page": 0,
+      "overlay": 0,
+      "help": 0,
+      "lane": 0,
+      "battery": 3,
+      "playing": 0,
+      "smcKind": 0,
+      "smcPeek": 0
+    },
+    "capture": "edited-part4-kind0",
+    "nativePNGsha256": "addb0f303f04fd6bd7fbdf487614afa3898955d34f01804c54dd4c79799ea4a6",
+    "screenshotSize": [
+      240,
+      240
+    ],
+    "footerRows": [
+      227,
+      239
+    ],
+    "stepRailY": [
+      230,
+      237
+    ],
+    "stepCenterX": [
+      69,
+      79,
+      89,
+      99,
+      109,
+      119,
+      129,
+      139,
+      149,
+      159,
+      169,
+      179,
+      189,
+      199,
+      209,
+      219
+    ],
+    "marker": "All 16 unavailable dashes are 3 px wide at y=236. The native read returns -1. The host physical-input fixture asserts the held-step turn preserves the unavailable BREAK velocity.",
+    "proof": "firmware/src/app/ui_step_lane.inc:19\u201324,45\u201349,66\u201368,97\u2013114; tests/host/ui_step_lane_edit_test.c:84\u201399."
+  },
+  "owner": {
+    "pdfSHA256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "p15": "909 / Steps 1-16, BASS DRUM, Accent lane button. No BREAK velocity source or per-step value.",
+    "correction4": "One label-switched velocity/chance/pitch/pan lane beneath the roll. Remove tool modes and the selected-note panel."
+  },
+  "remote": {
+    "reviewedCaptures": {
+      "break-notes": {
+        "sha256": "d2a4d38607f69ea10c34ce25702736f8ad2296c671840f9c98b8e90a2752a581",
+        "pdfPages": [
+          11
+        ],
+        "titles": []
+      },
+      "roll-breaks": {
+        "sha256": "7e8e9dccb16d264c4cc89c860cf4fa8373ef7681577024329427dabfd3a76f26",
+        "pdfPages": [
+          11
+        ],
+        "titles": [
+          "Starting breaks"
+        ]
+      },
+      "drums-breaks": {
+        "sha256": "c8359984304940b3a82d8faea877677cfce13a3df27036f2322eb116412e56e9",
+        "pdfPages": [
+          2,
+          15
+        ],
+        "titles": [
+          "909 \u00b7 Draft",
+          "Sound \u00b7 BD"
+        ]
+      }
+    },
+    "empty": {
+      "lane": [
+        82,
+        360,
+        749,
+        30
+      ],
+      "viewport": [
+        138,
+        361,
+        693,
+        29
+      ],
+      "ruler": [
+        138,
+        103,
+        693,
+        257
+      ],
+      "label": [
+        84,
+        363,
+        52,
+        25
+      ],
+      "track": [
+        138,
+        361,
+        762,
+        29
+      ],
+      "step": [
+        138,
+        361,
+        47.63,
+        29
+      ],
+      "kind": "velocity",
+      "count": 16,
+      "active": [],
+      "notes": [],
+      "kindName": "VELOCITY",
+      "visibleLanes": 1,
+      "overflow": false,
+      "scroll": 0,
+      "gridScroll": 0
+    },
+    "cycle": [
+      {
+        "kind": "velocity",
+        "active": [
+          [
+            "0",
+            "100"
+          ]
+        ],
+        "count": 16,
+        "visibleLanes": 1
+      },
+      {
+        "kind": "chance",
+        "active": [],
+        "count": 16,
+        "visibleLanes": 1
+      },
+      {
+        "kind": "pitch",
+        "active": [
+          [
+            "0",
+            "0st"
+          ]
+        ],
+        "count": 16,
+        "visibleLanes": 1
+      },
+      {
+        "kind": "pan",
+        "active": [
+          [
+            "0",
+            "C"
+          ]
+        ],
+        "count": 16,
+        "visibleLanes": 1
+      }
+    ],
+    "draftVelocity": {
+      "initial": [
+        [
+          "0",
+          "100"
+        ]
+      ],
+      "edited": [
+        [
+          "0",
+          "101"
+        ]
+      ],
+      "undo": [
+        [
+          "0",
+          "100"
+        ]
+      ],
+      "undoCreation": [],
+      "note": [
+        "draft0",
+        "G\u266f5, velocity 100, 0 to 5513 samples"
+      ]
+    },
+    "browser": "151.0.7922.34",
+    "pageErrors": []
+  },
+  "verdict": {
+    "layout": "One 16-group lane sits flush beneath the selected BREAK notes grid. The single label switches four modes. The physical and PDF sources depict different screens.",
+    "velocity": "Remote edits the local MIDI note velocity with Undo. The native BREAK strike has no per-step velocity binding.",
+    "chance": "The verified native source handles per-pattern, per-step BREAK chance using T_PROB and PART_BRK<<4. Remote rejects BREAK note chance at step-lane.mjs:11, sequence.mjs:12 and draft-file.mjs. A single authored note produced zero enabled chance sliders but one for each other mode. Extending Draft requires clear native-step versus MIDI-note semantics, legacy imports, group Undo and physical Apply isolation."
+  }
+}

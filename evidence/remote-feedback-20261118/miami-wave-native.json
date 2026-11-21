@@ -1,0 +1,32 @@
+{
+  "firmware": "ffd31a735acc5721d1f90a30fc1ceb283aad6fc5",
+  "sourceFiles": [
+    "firmware/src/app/ui.c",
+    "firmware/src/app/ui_original_controls.h",
+    "firmware/src/app/ui_original_wave.h",
+    "firmware/src/app/original_sound.c",
+    "experiments/original_synth/miami_program.c"
+  ],
+  "hostProjection": {
+    "factories": 30,
+    "bassSlots": 2,
+    "parameters": [
+      0,
+      6,
+      11
+    ],
+    "rawValuesPerParameter": 128,
+    "untouchedSnapshots": 180,
+    "editedProjections": 23040,
+    "totalProjections": 23220,
+    "nativeRowsPerShape": 29,
+    "rawOutputSha256": "0a66fbbe2320837e7d2b48eb3871179d8e96858bfc2dce06fdbd1298febd9ff3",
+    "formattedSelectorMatrixSha256": "eac79d8a9b4325506161c5d687ae29e5421bf9a50e90359da7258783ac4019f2"
+  },
+  "commands": [
+    "DNBOX_MIAMI_FIRMWARE=/path/to/firmware node --test tests/product-remote/miami-wave.test.mjs",
+    "python3 tests/product-remote/glyph-domain-browser.py"
+  ],
+  "scope": "Remote local Sound draft, native names and oscillator shape cues",
+  "hardwareObserved": false
+}

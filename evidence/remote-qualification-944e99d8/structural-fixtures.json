@@ -1,0 +1,6378 @@
+{
+  "schema": "dnbox-web-structural-fixtures/1",
+  "accepted": false,
+  "tools": {
+    "web_structural_slice.py": "59fa3242e87fc5981dd585ae4708d372d49ef7132be6659439a45faa126504de",
+    "browser_fixtures.py": "9278e60069867557823e358dd1c01af8b1249005744dbd2d7acec8548f3b098e"
+  },
+  "fixtures": {
+    "aria-only-caption-mutant.html": "87471308a7755d7b76f274ee928aaf1ced55e04f8ea6487253ec054919202025",
+    "duplicate-ref-mutant.html": "4e89432b8b5ad275d13f9b45672841281133d70ec71550138fd4b7efb761ed3c",
+    "hidden-caption-mutant.html": "9f9c48fead21a8448f36646ca0427f0ec489159564d438be7b8293a88588c53e",
+    "missing-caption-mutant.html": "6b9987c9a8c1a1eac9309566a10493921bd515dbbcaf7209b05d9f3a8e541313",
+    "positive-dense.html": "e3a8633534ac845db818fe00e80e0f8a0a9708c1aef9596a780251818956bb13",
+    "r3-808-full-source.html": "94720d84df1ddc611aec9b48a1cac2d01d7397eddbb69a4841ce37bc82054569",
+    "r3-808-sparse.html": "3497f6b436fb23d2ef0f7912e3909a7b51b059e77ff6d6ba056301df574380a3",
+    "r3-909-distinct-fork.html": "378dc9c6ce63fa7a9ba8d29452d6213e785cccc645b74cd1f883921ea51f8b86",
+    "r3-cryptic-caption.html": "6993288644c6eb372e94fb9f36a23629d0ca7611ba765ad5aa9ee6ae403d50fe"
+  },
+  "cases": [
+    {
+      "file": "r3-909-distinct-fork.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  11,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "ATTACK",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "DECAY",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "P.DPTH",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "PITCH",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "ACCENT",
+                "typedRef": [
+                  1,
+                  0,
+                  11,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "status": "FAIL",
+            "failures": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "panelId": "current-state-and-reference/909-voice-00.svg#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.6488200524176997,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 230.88333333333333,
+                  "h": 118.34375
+                },
+                "largestEmptyScreenFraction": 0.22769666232638888,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              },
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "panelId": "div.encoder-grid#1",
+                "panelRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.7919798361294869,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 217.88333333333333,
+                  "h": 105.34375
+                },
+                "largestEmptyScreenFraction": 0.19127206163194443,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              }
+            ],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "panelId": "current-state-and-reference/909-voice-00.svg#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.6488200524176997,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 230.88333333333333,
+                  "h": 118.34375
+                },
+                "largestEmptyScreenFraction": 0.22769666232638888,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              },
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "panelId": "div.encoder-grid#1",
+                "panelRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.7919798361294869,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 217.88333333333333,
+                  "h": 105.34375
+                },
+                "largestEmptyScreenFraction": 0.19127206163194443,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#3",
+                  "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+                  "type": "P.DPTH",
+                  "rect": {
+                    "x": 308.5,
+                    "y": 22,
+                    "w": 69.5,
+                    "h": 32.328125
+                  },
+                  "paintRects": [
+                    {
+                      "x": 318.3833333333333,
+                      "y": 47.79999745686849,
+                      "w": 41.73333333333335,
+                      "h": 1.7333333333333343
+                    }
+                  ],
+                  "caption": "P.DEPTH",
+                  "captionPainted": true,
+                  "captionRects": [
+                    {
+                      "x": 308.5,
+                      "y": 79.65625,
+                      "w": 46.265625,
+                      "h": 12
+                    }
+                  ]
+                }
+              }
+            ],
+            "measurements": [
+              {
+                "id": "span.glyph#0",
+                "caption": "TUNE",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#1",
+                "caption": "ATTACK",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#2",
+                "caption": "DECAY",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#3",
+                "caption": "P.DEPTH",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#4",
+                "caption": "PITCH",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#5",
+                "caption": "ACCENT",
+                "captionPainted": true
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "id": "button.parameter.encoder#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+            "occurrence": "0",
+            "rect": {
+              "x": 13,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#1",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:1",
+            "occurrence": "1",
+            "rect": {
+              "x": 108.5,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#2",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:2",
+            "occurrence": "2",
+            "rect": {
+              "x": 204,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#3",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "occurrence": "3",
+            "rect": {
+              "x": 299.5,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#4",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:5",
+            "occurrence": "4",
+            "rect": {
+              "x": 13,
+              "y": 109,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#5",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:11:1",
+            "occurrence": "5",
+            "rect": {
+              "x": 108.5,
+              "y": 109,
+              "w": 87.5,
+              "h": 88
+            }
+          }
+        ],
+        "glyphs": [
+          {
+            "id": "span.glyph#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+            "type": "TUNE",
+            "rect": {
+              "x": 22,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 29.21666539510091,
+                "y": 33.666666158040364,
+                "w": 55.06667302449545,
+                "h": 15.333331807454428
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 29.953125,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#1",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:1",
+            "type": "ATTACK",
+            "rect": {
+              "x": 117.5,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 127.38333333333334,
+                "y": 40.6000005086263,
+                "w": 52.40000508626302,
+                "h": 8.933330281575522
+              }
+            ],
+            "caption": "ATTACK",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 117.5,
+                "y": 79.65625,
+                "w": 43.59375,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#2",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:2",
+            "type": "DECAY",
+            "rect": {
+              "x": 213,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 220.21666158040364,
+                "y": 26.466667302449544,
+                "w": 55.06666158040366,
+                "h": 19.59999631245931
+              }
+            ],
+            "caption": "DECAY",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 213,
+                "y": 79.65625,
+                "w": 37.5,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#3",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "type": "P.DPTH",
+            "rect": {
+              "x": 308.5,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 318.3833333333333,
+                "y": 47.79999745686849,
+                "w": 41.73333333333335,
+                "h": 1.7333333333333343
+              }
+            ],
+            "caption": "P.DEPTH",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 308.5,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#4",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:5",
+            "type": "PITCH",
+            "rect": {
+              "x": 22,
+              "y": 118,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 29.21666539510091,
+                "y": 129.800005086263,
+                "w": 55.06667302449545,
+                "h": 15.466655476888036
+              }
+            ],
+            "caption": "PITCH",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 22,
+                "y": 175.65625,
+                "w": 33,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#5",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:11:1",
+            "type": "ACCENT",
+            "rect": {
+              "x": 117.5,
+              "y": 118,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 127.38333333333334,
+                "y": 127.80000508626303,
+                "w": 41.733333333333334,
+                "h": 15.066661580403647
+              }
+            ],
+            "caption": "ACCENT",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 117.5,
+                "y": 175.65625,
+                "w": 45.84375,
+                "h": 12
+              }
+            ]
+          }
+        ],
+        "panels": [
+          {
+            "id": "current-state-and-reference/909-voice-00.svg#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 210
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 210
+            },
+            "contentRects": [
+              {
+                "x": 22,
+                "y": 58.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 29.953125,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 58.328125,
+                "w": 30.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 79.65625,
+                "w": 43.59375,
+                "h": 12
+              },
+              {
+                "x": 213,
+                "y": 58.328125,
+                "w": 29.203125,
+                "h": 17
+              },
+              {
+                "x": 213,
+                "y": 79.65625,
+                "w": 37.5,
+                "h": 12
+              },
+              {
+                "x": 308.5,
+                "y": 58.328125,
+                "w": 21.6875,
+                "h": 17
+              },
+              {
+                "x": 308.5,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              },
+              {
+                "x": 22,
+                "y": 154.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 175.65625,
+                "w": 33,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 154.328125,
+                "w": 25.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 175.65625,
+                "w": 45.84375,
+                "h": 12
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 33.666666158040364,
+                "w": 55.06667302449545,
+                "h": 15.333331807454428
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 40.6000005086263,
+                "w": 52.40000508626302,
+                "h": 8.933330281575522
+              },
+              {
+                "x": 220.21666158040364,
+                "y": 26.466667302449544,
+                "w": 55.06666158040366,
+                "h": 19.59999631245931
+              },
+              {
+                "x": 318.3833333333333,
+                "y": 47.79999745686849,
+                "w": 41.73333333333335,
+                "h": 1.7333333333333343
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 129.800005086263,
+                "w": 55.06667302449545,
+                "h": 15.466655476888036
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 127.80000508626303,
+                "w": 41.733333333333334,
+                "h": 15.066661580403647
+              }
+            ]
+          },
+          {
+            "id": "div.encoder-grid#1",
+            "rect": {
+              "x": 13,
+              "y": 13,
+              "w": 374,
+              "h": 184
+            },
+            "visibleRect": {
+              "x": 13,
+              "y": 13,
+              "w": 374,
+              "h": 184
+            },
+            "contentRects": [
+              {
+                "x": 22,
+                "y": 58.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 29.953125,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 58.328125,
+                "w": 30.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 79.65625,
+                "w": 43.59375,
+                "h": 12
+              },
+              {
+                "x": 213,
+                "y": 58.328125,
+                "w": 29.203125,
+                "h": 17
+              },
+              {
+                "x": 213,
+                "y": 79.65625,
+                "w": 37.5,
+                "h": 12
+              },
+              {
+                "x": 308.5,
+                "y": 58.328125,
+                "w": 21.6875,
+                "h": 17
+              },
+              {
+                "x": 308.5,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              },
+              {
+                "x": 22,
+                "y": 154.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 175.65625,
+                "w": 33,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 154.328125,
+                "w": 25.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 175.65625,
+                "w": 45.84375,
+                "h": 12
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 33.666666158040364,
+                "w": 55.06667302449545,
+                "h": 15.333331807454428
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 40.6000005086263,
+                "w": 52.40000508626302,
+                "h": 8.933330281575522
+              },
+              {
+                "x": 220.21666158040364,
+                "y": 26.466667302449544,
+                "w": 55.06666158040366,
+                "h": 19.59999631245931
+              },
+              {
+                "x": 318.3833333333333,
+                "y": 47.79999745686849,
+                "w": 41.73333333333335,
+                "h": 1.7333333333333343
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 129.800005086263,
+                "w": 55.06667302449545,
+                "h": 15.466655476888036
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 127.80000508626303,
+                "w": 41.733333333333334,
+                "h": 15.066661580403647
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "duplicate-ref-mutant.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "duplicate-engine-param",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "controls": [
+                  {
+                    "id": "button.parameter.encoder#0",
+                    "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+                    "occurrence": "0",
+                    "rect": {
+                      "x": 13,
+                      "y": 13,
+                      "w": 87.5,
+                      "h": 88
+                    }
+                  },
+                  {
+                    "id": "button.parameter.encoder#4",
+                    "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+                    "occurrence": "4",
+                    "rect": {
+                      "x": 13,
+                      "y": 109,
+                      "w": 87.5,
+                      "h": 88
+                    }
+                  }
+                ]
+              }
+            ],
+            "measurements": [
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 2
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  11,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "duplicate-glyph-binding",
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "glyphs": [
+                  {
+                    "id": "span.glyph#0",
+                    "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+                    "type": "TUNE",
+                    "rect": {
+                      "x": 22,
+                      "y": 22,
+                      "w": 69.5,
+                      "h": 32.328125
+                    },
+                    "paintRects": [
+                      {
+                        "x": 29.21666539510091,
+                        "y": 33.666666158040364,
+                        "w": 55.06667302449545,
+                        "h": 15.333331807454428
+                      }
+                    ],
+                    "caption": "TUNE",
+                    "captionPainted": true,
+                    "captionRects": [
+                      {
+                        "x": 22,
+                        "y": 79.65625,
+                        "w": 29.953125,
+                        "h": 12
+                      }
+                    ]
+                  },
+                  {
+                    "id": "span.glyph#4",
+                    "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+                    "type": "TUNE",
+                    "rect": {
+                      "x": 22,
+                      "y": 118,
+                      "w": 69.5,
+                      "h": 32.328125
+                    },
+                    "paintRects": [
+                      {
+                        "x": 29.21666539510091,
+                        "y": 129.800005086263,
+                        "w": 55.06667302449545,
+                        "h": 15.466655476888036
+                      }
+                    ],
+                    "caption": "PITCH",
+                    "captionPainted": true,
+                    "captionRects": [
+                      {
+                        "x": 22,
+                        "y": 175.65625,
+                        "w": 33,
+                        "h": 12
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "measurements": [
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 2
+              },
+              {
+                "type": "ATTACK",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "DECAY",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "P.DPTH",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "ACCENT",
+                "typedRef": [
+                  1,
+                  0,
+                  11,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "status": "FAIL",
+            "failures": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "panelId": "current-state-and-reference/909-voice-00.svg#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.6488200524176997,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 230.88333333333333,
+                  "h": 118.34375
+                },
+                "largestEmptyScreenFraction": 0.22769666232638888,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              },
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "panelId": "div.encoder-grid#1",
+                "panelRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.7919798361294869,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 217.88333333333333,
+                  "h": 105.34375
+                },
+                "largestEmptyScreenFraction": 0.19127206163194443,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              }
+            ],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "panelId": "current-state-and-reference/909-voice-00.svg#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 210
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.6488200524176997,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 230.88333333333333,
+                  "h": 118.34375
+                },
+                "largestEmptyScreenFraction": 0.22769666232638888,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              },
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "panelId": "div.encoder-grid#1",
+                "panelRect": {
+                  "x": 13,
+                  "y": 13,
+                  "w": 374,
+                  "h": 184
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 26.466667302449544,
+                  "w": 338.1166666666667,
+                  "h": 161.18958269755046
+                },
+                "contentCoverage": 0.7919798361294869,
+                "largestEmptyRect": {
+                  "x": 169.11666666666667,
+                  "y": 91.65625,
+                  "w": 217.88333333333333,
+                  "h": 105.34375
+                },
+                "largestEmptyScreenFraction": 0.19127206163194443,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 18
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#3",
+                  "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+                  "type": "P.DPTH",
+                  "rect": {
+                    "x": 308.5,
+                    "y": 22,
+                    "w": 69.5,
+                    "h": 32.328125
+                  },
+                  "paintRects": [
+                    {
+                      "x": 318.3833333333333,
+                      "y": 47.79999745686849,
+                      "w": 41.73333333333335,
+                      "h": 1.7333333333333343
+                    }
+                  ],
+                  "caption": "P.DEPTH",
+                  "captionPainted": true,
+                  "captionRects": [
+                    {
+                      "x": 308.5,
+                      "y": 79.65625,
+                      "w": 46.265625,
+                      "h": 12
+                    }
+                  ]
+                }
+              }
+            ],
+            "measurements": [
+              {
+                "id": "span.glyph#0",
+                "caption": "TUNE",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#1",
+                "caption": "ATTACK",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#2",
+                "caption": "DECAY",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#3",
+                "caption": "P.DEPTH",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#4",
+                "caption": "PITCH",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#5",
+                "caption": "ACCENT",
+                "captionPainted": true
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "id": "button.parameter.encoder#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+            "occurrence": "0",
+            "rect": {
+              "x": 13,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#1",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:1",
+            "occurrence": "1",
+            "rect": {
+              "x": 108.5,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#2",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:2",
+            "occurrence": "2",
+            "rect": {
+              "x": 204,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#3",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "occurrence": "3",
+            "rect": {
+              "x": 299.5,
+              "y": 13,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#4",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+            "occurrence": "4",
+            "rect": {
+              "x": 13,
+              "y": 109,
+              "w": 87.5,
+              "h": 88
+            }
+          },
+          {
+            "id": "button.parameter.encoder#5",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:11:1",
+            "occurrence": "5",
+            "rect": {
+              "x": 108.5,
+              "y": 109,
+              "w": 87.5,
+              "h": 88
+            }
+          }
+        ],
+        "glyphs": [
+          {
+            "id": "span.glyph#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+            "type": "TUNE",
+            "rect": {
+              "x": 22,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 29.21666539510091,
+                "y": 33.666666158040364,
+                "w": 55.06667302449545,
+                "h": 15.333331807454428
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 29.953125,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#1",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:1",
+            "type": "ATTACK",
+            "rect": {
+              "x": 117.5,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 127.38333333333334,
+                "y": 40.6000005086263,
+                "w": 52.40000508626302,
+                "h": 8.933330281575522
+              }
+            ],
+            "caption": "ATTACK",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 117.5,
+                "y": 79.65625,
+                "w": 43.59375,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#2",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:2",
+            "type": "DECAY",
+            "rect": {
+              "x": 213,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 220.21666158040364,
+                "y": 26.466667302449544,
+                "w": 55.06666158040366,
+                "h": 19.59999631245931
+              }
+            ],
+            "caption": "DECAY",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 213,
+                "y": 79.65625,
+                "w": 37.5,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#3",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "type": "P.DPTH",
+            "rect": {
+              "x": 308.5,
+              "y": 22,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 318.3833333333333,
+                "y": 47.79999745686849,
+                "w": 41.73333333333335,
+                "h": 1.7333333333333343
+              }
+            ],
+            "caption": "P.DEPTH",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 308.5,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#4",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:0",
+            "type": "TUNE",
+            "rect": {
+              "x": 22,
+              "y": 118,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 29.21666539510091,
+                "y": 129.800005086263,
+                "w": 55.06667302449545,
+                "h": 15.466655476888036
+              }
+            ],
+            "caption": "PITCH",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 22,
+                "y": 175.65625,
+                "w": 33,
+                "h": 12
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#5",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:11:1",
+            "type": "ACCENT",
+            "rect": {
+              "x": 117.5,
+              "y": 118,
+              "w": 69.5,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 127.38333333333334,
+                "y": 127.80000508626303,
+                "w": 41.733333333333334,
+                "h": 15.066661580403647
+              }
+            ],
+            "caption": "ACCENT",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 117.5,
+                "y": 175.65625,
+                "w": 45.84375,
+                "h": 12
+              }
+            ]
+          }
+        ],
+        "panels": [
+          {
+            "id": "current-state-and-reference/909-voice-00.svg#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 210
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 210
+            },
+            "contentRects": [
+              {
+                "x": 22,
+                "y": 58.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 29.953125,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 58.328125,
+                "w": 30.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 79.65625,
+                "w": 43.59375,
+                "h": 12
+              },
+              {
+                "x": 213,
+                "y": 58.328125,
+                "w": 29.203125,
+                "h": 17
+              },
+              {
+                "x": 213,
+                "y": 79.65625,
+                "w": 37.5,
+                "h": 12
+              },
+              {
+                "x": 308.5,
+                "y": 58.328125,
+                "w": 21.6875,
+                "h": 17
+              },
+              {
+                "x": 308.5,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              },
+              {
+                "x": 22,
+                "y": 154.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 175.65625,
+                "w": 33,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 154.328125,
+                "w": 25.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 175.65625,
+                "w": 45.84375,
+                "h": 12
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 33.666666158040364,
+                "w": 55.06667302449545,
+                "h": 15.333331807454428
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 40.6000005086263,
+                "w": 52.40000508626302,
+                "h": 8.933330281575522
+              },
+              {
+                "x": 220.21666158040364,
+                "y": 26.466667302449544,
+                "w": 55.06666158040366,
+                "h": 19.59999631245931
+              },
+              {
+                "x": 318.3833333333333,
+                "y": 47.79999745686849,
+                "w": 41.73333333333335,
+                "h": 1.7333333333333343
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 129.800005086263,
+                "w": 55.06667302449545,
+                "h": 15.466655476888036
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 127.80000508626303,
+                "w": 41.733333333333334,
+                "h": 15.066661580403647
+              }
+            ]
+          },
+          {
+            "id": "div.encoder-grid#1",
+            "rect": {
+              "x": 13,
+              "y": 13,
+              "w": 374,
+              "h": 184
+            },
+            "visibleRect": {
+              "x": 13,
+              "y": 13,
+              "w": 374,
+              "h": 184
+            },
+            "contentRects": [
+              {
+                "x": 22,
+                "y": 58.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 29.953125,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 58.328125,
+                "w": 30.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 79.65625,
+                "w": 43.59375,
+                "h": 12
+              },
+              {
+                "x": 213,
+                "y": 58.328125,
+                "w": 29.203125,
+                "h": 17
+              },
+              {
+                "x": 213,
+                "y": 79.65625,
+                "w": 37.5,
+                "h": 12
+              },
+              {
+                "x": 308.5,
+                "y": 58.328125,
+                "w": 21.6875,
+                "h": 17
+              },
+              {
+                "x": 308.5,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              },
+              {
+                "x": 22,
+                "y": 154.328125,
+                "w": 16.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 175.65625,
+                "w": 33,
+                "h": 12
+              },
+              {
+                "x": 117.5,
+                "y": 154.328125,
+                "w": 25.03125,
+                "h": 17
+              },
+              {
+                "x": 117.5,
+                "y": 175.65625,
+                "w": 45.84375,
+                "h": 12
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 33.666666158040364,
+                "w": 55.06667302449545,
+                "h": 15.333331807454428
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 40.6000005086263,
+                "w": 52.40000508626302,
+                "h": 8.933330281575522
+              },
+              {
+                "x": 220.21666158040364,
+                "y": 26.466667302449544,
+                "w": 55.06666158040366,
+                "h": 19.59999631245931
+              },
+              {
+                "x": 318.3833333333333,
+                "y": 47.79999745686849,
+                "w": 41.73333333333335,
+                "h": 1.7333333333333343
+              },
+              {
+                "x": 29.21666539510091,
+                "y": 129.800005086263,
+                "w": 55.06667302449545,
+                "h": 15.466655476888036
+              },
+              {
+                "x": 127.38333333333334,
+                "y": 127.80000508626303,
+                "w": 41.733333333333334,
+                "h": 15.066661580403647
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "r3-808-sparse.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "NOT_RUN",
+            "failures": [],
+            "measurements": []
+          },
+          {
+            "id": 2,
+            "status": "NOT_RUN",
+            "failures": [],
+            "measurements": []
+          },
+          {
+            "id": 3,
+            "status": "FAIL",
+            "failures": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 240,
+                  "h": 220
+                },
+                "panelId": "div.source-scene#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 240,
+                  "h": 220
+                },
+                "contentBBox": {
+                  "x": 11.224374771118164,
+                  "y": 8.920000076293945,
+                  "w": 217.39750022888185,
+                  "h": 86.16000175476074
+                },
+                "contentCoverage": 0.3547532007803231,
+                "largestEmptyRect": {
+                  "x": -2.842170943040401e-14,
+                  "y": 95.08000183105469,
+                  "w": 240.00000000000003,
+                  "h": 124.91999816894531
+                },
+                "largestEmptyScreenFraction": 0.24983999633789067,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 42
+              }
+            ],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 240,
+                  "h": 220
+                },
+                "panelId": "div.source-scene#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 240,
+                  "h": 220
+                },
+                "contentBBox": {
+                  "x": 11.224374771118164,
+                  "y": 8.920000076293945,
+                  "w": 217.39750022888185,
+                  "h": 86.16000175476074
+                },
+                "contentCoverage": 0.3547532007803231,
+                "largestEmptyRect": {
+                  "x": -2.842170943040401e-14,
+                  "y": 95.08000183105469,
+                  "w": 240.00000000000003,
+                  "h": 124.91999816894531
+                },
+                "largestEmptyScreenFraction": 0.24983999633789067,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 42
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "NOT_RUN",
+            "failures": [],
+            "measurements": []
+          }
+        ],
+        "controls": [],
+        "glyphs": [],
+        "panels": [
+          {
+            "id": "div.source-scene#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 240,
+              "h": 220
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 240,
+              "h": 220
+            },
+            "contentRects": [
+              {
+                "x": 11.380000114440918,
+                "y": 8.920000076293945,
+                "w": 4.380000114440918,
+                "h": 7.160001754760742
+              },
+              {
+                "x": 16.489999771118164,
+                "y": 8.920000076293945,
+                "w": 4.460000991821289,
+                "h": 7.170000076293945
+              },
+              {
+                "x": 21.579999923706055,
+                "y": 9,
+                "w": 4.409999847412109,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 27.6299991607666,
+                "y": 9,
+                "w": 4.620000839233398,
+                "h": 7
+              },
+              {
+                "x": 33.63999938964844,
+                "y": 9,
+                "w": 4.3300018310546875,
+                "h": 7
+              },
+              {
+                "x": 214.72000122070312,
+                "y": 9,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 219.24110412597656,
+                "y": 9,
+                "w": 3.3977813720703125,
+                "h": 7
+              },
+              {
+                "x": 223.4499969482422,
+                "y": 8.920000076293945,
+                "w": 4.2100067138671875,
+                "h": 7.079999923706055
+              },
+              {
+                "x": 22.378125,
+                "y": 16.9125,
+                "w": 21.243750000000002,
+                "h": 27.675000000000004
+              },
+              {
+                "x": 14.979999542236328,
+                "y": 53.275001525878906,
+                "w": 6.045000076293945,
+                "h": 6.0449981689453125
+              },
+              {
+                "x": 22.25,
+                "y": 50.36499786376953,
+                "w": 5.909999847412109,
+                "h": 10.785003662109375
+              },
+              {
+                "x": 29.309999465942383,
+                "y": 59.08000183105469,
+                "w": 1.9200000762939453,
+                "h": 1.9199981689453125
+              },
+              {
+                "x": 33.595001220703125,
+                "y": 50.5,
+                "w": 4.244998931884766,
+                "h": 10.5
+              },
+              {
+                "x": 40.130001068115234,
+                "y": 53.290000915527344,
+                "w": 5.430000305175781,
+                "h": 7.799995422363281
+              },
+              {
+                "x": 46.904998779296875,
+                "y": 51.43000030517578,
+                "w": 3.8850021362304688,
+                "h": 9.584999084472656
+              },
+              {
+                "x": 68.003125,
+                "y": 19.9125,
+                "w": 44.61874999999999,
+                "h": 18.675000000000004
+              },
+              {
+                "x": 78.67500305175781,
+                "y": 50.5,
+                "w": 5.864997863769531,
+                "h": 10.620002746582031
+              },
+              {
+                "x": 85.67500305175781,
+                "y": 50.5,
+                "w": 5.864997863769531,
+                "h": 10.620002746582031
+              },
+              {
+                "x": 93.08000183105469,
+                "y": 50.36499786376953,
+                "w": 9.989997863769531,
+                "h": 10.770004272460938
+              },
+              {
+                "x": 127.378125,
+                "y": 16.9125,
+                "w": 43.24374999999999,
+                "h": 20.175000000000004
+              },
+              {
+                "x": 137.09500122070312,
+                "y": 50.5,
+                "w": 4.2449951171875,
+                "h": 10.5
+              },
+              {
+                "x": 143.66000366210938,
+                "y": 50.37999725341797,
+                "w": 5.864990234375,
+                "h": 10.740005493164062
+              },
+              {
+                "x": 151.0800018310547,
+                "y": 50.36499786376953,
+                "w": 9.990005493164062,
+                "h": 10.770004272460938
+              },
+              {
+                "x": 185.378125,
+                "y": 16.9125,
+                "w": 43.243750000000006,
+                "h": 20.175000000000004
+              },
+              {
+                "x": 200.80999755859375,
+                "y": 50.334999084472656,
+                "w": 5.8050079345703125,
+                "h": 10.785003662109375
+              },
+              {
+                "x": 207.69000244140625,
+                "y": 50.5,
+                "w": 6.17999267578125,
+                "h": 10.5
+              },
+              {
+                "x": 11.640000343322754,
+                "y": 73,
+                "w": 4.660000801086426,
+                "h": 7
+              },
+              {
+                "x": 16.639999389648438,
+                "y": 73,
+                "w": 1.1599998474121094,
+                "h": 7
+              },
+              {
+                "x": 18.309999465942383,
+                "y": 73,
+                "w": 4.540000915527344,
+                "h": 7
+              },
+              {
+                "x": 214.4499969482422,
+                "y": 72.91999816894531,
+                "w": 4.2100067138671875,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 219.24110412597656,
+                "y": 73,
+                "w": 3.3977813720703125,
+                "h": 7
+              },
+              {
+                "x": 223.4499969482422,
+                "y": 72.91999816894531,
+                "w": 4.2100067138671875,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 11.224374771118164,
+                "y": 88,
+                "w": 5.075626373291016,
+                "h": 7
+              },
+              {
+                "x": 17.489999771118164,
+                "y": 87.91999816894531,
+                "w": 4.400001525878906,
+                "h": 7.160003662109375
+              },
+              {
+                "x": 22.489999771118164,
+                "y": 87.91999816894531,
+                "w": 4.400001525878906,
+                "h": 7.160003662109375
+              },
+              {
+                "x": 27.639999389648438,
+                "y": 88,
+                "w": 4.1100006103515625,
+                "h": 7
+              },
+              {
+                "x": 32.630001068115234,
+                "y": 88,
+                "w": 4.619998931884766,
+                "h": 7
+              },
+              {
+                "x": 38.310001373291016,
+                "y": 88,
+                "w": 4.539997100830078,
+                "h": 7
+              },
+              {
+                "x": 92.59375,
+                "y": 81.35555546432734,
+                "w": 31.8125,
+                "h": 11.955560824275011
+              },
+              {
+                "x": 208.09500122070312,
+                "y": 83.5,
+                "w": 4.2449951171875,
+                "h": 10.5
+              },
+              {
+                "x": 214.73500061035156,
+                "y": 83.37999725341797,
+                "w": 6.0449981689453125,
+                "h": 10.620002746582031
+              },
+              {
+                "x": 221.69000244140625,
+                "y": 83.5,
+                "w": 6.17999267578125,
+                "h": 10.5
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "r3-808-full-source.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "NOT_RUN",
+            "failures": [],
+            "measurements": []
+          },
+          {
+            "id": 2,
+            "status": "NOT_RUN",
+            "failures": [],
+            "measurements": []
+          },
+          {
+            "id": 3,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 240,
+                  "h": 220
+                },
+                "panelId": "div.source-scene#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 240,
+                  "h": 220
+                },
+                "contentBBox": {
+                  "x": 11.224374771118164,
+                  "y": 8.920000076293945,
+                  "w": 217.39750022888185,
+                  "h": 201.19000053405762
+                },
+                "contentCoverage": 0.8283750603627184,
+                "largestEmptyRect": {
+                  "x": 61.149996948242205,
+                  "y": 130.0800018310547,
+                  "w": 178.8500030517578,
+                  "h": 72.80000305175781
+                },
+                "largestEmptyScreenFraction": 0.10850233973312386,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 74
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "NOT_RUN",
+            "failures": [],
+            "measurements": []
+          }
+        ],
+        "controls": [],
+        "glyphs": [],
+        "panels": [
+          {
+            "id": "div.source-scene#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 240,
+              "h": 220
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 240,
+              "h": 220
+            },
+            "contentRects": [
+              {
+                "x": 11.380000114440918,
+                "y": 8.920000076293945,
+                "w": 4.380000114440918,
+                "h": 7.160001754760742
+              },
+              {
+                "x": 16.489999771118164,
+                "y": 8.920000076293945,
+                "w": 4.460000991821289,
+                "h": 7.170000076293945
+              },
+              {
+                "x": 21.579999923706055,
+                "y": 9,
+                "w": 4.409999847412109,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 27.6299991607666,
+                "y": 9,
+                "w": 4.620000839233398,
+                "h": 7
+              },
+              {
+                "x": 33.63999938964844,
+                "y": 9,
+                "w": 4.3300018310546875,
+                "h": 7
+              },
+              {
+                "x": 214.72000122070312,
+                "y": 9,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 219.24110412597656,
+                "y": 9,
+                "w": 3.3977813720703125,
+                "h": 7
+              },
+              {
+                "x": 223.4499969482422,
+                "y": 8.920000076293945,
+                "w": 4.2100067138671875,
+                "h": 7.079999923706055
+              },
+              {
+                "x": 22.378125,
+                "y": 16.9125,
+                "w": 21.243750000000002,
+                "h": 27.675000000000004
+              },
+              {
+                "x": 14.979999542236328,
+                "y": 53.275001525878906,
+                "w": 6.045000076293945,
+                "h": 6.0449981689453125
+              },
+              {
+                "x": 22.25,
+                "y": 50.36499786376953,
+                "w": 5.909999847412109,
+                "h": 10.785003662109375
+              },
+              {
+                "x": 29.309999465942383,
+                "y": 59.08000183105469,
+                "w": 1.9200000762939453,
+                "h": 1.9199981689453125
+              },
+              {
+                "x": 33.595001220703125,
+                "y": 50.5,
+                "w": 4.244998931884766,
+                "h": 10.5
+              },
+              {
+                "x": 40.130001068115234,
+                "y": 53.290000915527344,
+                "w": 5.430000305175781,
+                "h": 7.799995422363281
+              },
+              {
+                "x": 46.904998779296875,
+                "y": 51.43000030517578,
+                "w": 3.8850021362304688,
+                "h": 9.584999084472656
+              },
+              {
+                "x": 68.003125,
+                "y": 19.9125,
+                "w": 44.61874999999999,
+                "h": 18.675000000000004
+              },
+              {
+                "x": 78.67500305175781,
+                "y": 50.5,
+                "w": 5.864997863769531,
+                "h": 10.620002746582031
+              },
+              {
+                "x": 85.67500305175781,
+                "y": 50.5,
+                "w": 5.864997863769531,
+                "h": 10.620002746582031
+              },
+              {
+                "x": 93.08000183105469,
+                "y": 50.36499786376953,
+                "w": 9.989997863769531,
+                "h": 10.770004272460938
+              },
+              {
+                "x": 127.378125,
+                "y": 16.9125,
+                "w": 43.24374999999999,
+                "h": 20.175000000000004
+              },
+              {
+                "x": 137.09500122070312,
+                "y": 50.5,
+                "w": 4.2449951171875,
+                "h": 10.5
+              },
+              {
+                "x": 143.66000366210938,
+                "y": 50.37999725341797,
+                "w": 5.864990234375,
+                "h": 10.740005493164062
+              },
+              {
+                "x": 151.0800018310547,
+                "y": 50.36499786376953,
+                "w": 9.990005493164062,
+                "h": 10.770004272460938
+              },
+              {
+                "x": 185.378125,
+                "y": 16.9125,
+                "w": 43.243750000000006,
+                "h": 20.175000000000004
+              },
+              {
+                "x": 200.80999755859375,
+                "y": 50.334999084472656,
+                "w": 5.8050079345703125,
+                "h": 10.785003662109375
+              },
+              {
+                "x": 207.69000244140625,
+                "y": 50.5,
+                "w": 6.17999267578125,
+                "h": 10.5
+              },
+              {
+                "x": 11.640000343322754,
+                "y": 73,
+                "w": 4.660000801086426,
+                "h": 7
+              },
+              {
+                "x": 16.639999389648438,
+                "y": 73,
+                "w": 1.1599998474121094,
+                "h": 7
+              },
+              {
+                "x": 18.309999465942383,
+                "y": 73,
+                "w": 4.540000915527344,
+                "h": 7
+              },
+              {
+                "x": 214.4499969482422,
+                "y": 72.91999816894531,
+                "w": 4.2100067138671875,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 219.24110412597656,
+                "y": 73,
+                "w": 3.3977813720703125,
+                "h": 7
+              },
+              {
+                "x": 223.4499969482422,
+                "y": 72.91999816894531,
+                "w": 4.2100067138671875,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 11.224374771118164,
+                "y": 88,
+                "w": 5.075626373291016,
+                "h": 7
+              },
+              {
+                "x": 17.489999771118164,
+                "y": 87.91999816894531,
+                "w": 4.400001525878906,
+                "h": 7.160003662109375
+              },
+              {
+                "x": 22.489999771118164,
+                "y": 87.91999816894531,
+                "w": 4.400001525878906,
+                "h": 7.160003662109375
+              },
+              {
+                "x": 27.639999389648438,
+                "y": 88,
+                "w": 4.1100006103515625,
+                "h": 7
+              },
+              {
+                "x": 32.630001068115234,
+                "y": 88,
+                "w": 4.619998931884766,
+                "h": 7
+              },
+              {
+                "x": 38.310001373291016,
+                "y": 88,
+                "w": 4.539997100830078,
+                "h": 7
+              },
+              {
+                "x": 92.59375,
+                "y": 81.35555546432734,
+                "w": 31.8125,
+                "h": 11.955560824275011
+              },
+              {
+                "x": 208.09500122070312,
+                "y": 83.5,
+                "w": 4.2449951171875,
+                "h": 10.5
+              },
+              {
+                "x": 214.73500061035156,
+                "y": 83.37999725341797,
+                "w": 6.0449981689453125,
+                "h": 10.620002746582031
+              },
+              {
+                "x": 221.69000244140625,
+                "y": 83.5,
+                "w": 6.17999267578125,
+                "h": 10.5
+              },
+              {
+                "x": 27.999999237060546,
+                "y": 118.2,
+                "w": 29.99999771118164,
+                "h": 29.999993896484384
+              },
+              {
+                "x": 24.849999237060548,
+                "y": 141.15000610351564,
+                "w": 36.299997711181646,
+                "h": 10.79999389648438
+              },
+              {
+                "x": 88.63999938964844,
+                "y": 123,
+                "w": 4.660003662109375,
+                "h": 7
+              },
+              {
+                "x": 93.63999938964844,
+                "y": 123,
+                "w": 1.160003662109375,
+                "h": 7
+              },
+              {
+                "x": 95.48999786376953,
+                "y": 122.91999816894531,
+                "w": 4.400001525878906,
+                "h": 7.160003662109375
+              },
+              {
+                "x": 100.63999938964844,
+                "y": 123,
+                "w": 4.660003662109375,
+                "h": 7
+              },
+              {
+                "x": 212.24110412597656,
+                "y": 123,
+                "w": 3.3977813720703125,
+                "h": 7
+              },
+              {
+                "x": 218.72000122070312,
+                "y": 123,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 223.5399932861328,
+                "y": 122.91999816894531,
+                "w": 4.100006103515625,
+                "h": 7.1500091552734375
+              },
+              {
+                "x": 14.720000267028809,
+                "y": 203,
+                "w": 3.0099992752075195,
+                "h": 7
+              },
+              {
+                "x": 28.25,
+                "y": 202.9199981689453,
+                "w": 4.209999084472656,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 42.019996643066406,
+                "y": 203,
+                "w": 4.100002288818359,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 55.6400032043457,
+                "y": 203,
+                "w": 4.529998779296875,
+                "h": 7
+              },
+              {
+                "x": 69.75,
+                "y": 203,
+                "w": 4.089996337890625,
+                "h": 7.07000732421875
+              },
+              {
+                "x": 83.54000091552734,
+                "y": 202.9199981689453,
+                "w": 4.099998474121094,
+                "h": 7.1500091552734375
+              },
+              {
+                "x": 97.2300033569336,
+                "y": 203,
+                "w": 4.279998779296875,
+                "h": 7
+              },
+              {
+                "x": 111.0999984741211,
+                "y": 202.8800048828125,
+                "w": 4.069999694824219,
+                "h": 7.1999969482421875
+              },
+              {
+                "x": 124.80000305175781,
+                "y": 202.92999267578125,
+                "w": 4.1001739501953125,
+                "h": 7.1500091552734375
+              },
+              {
+                "x": 136.4199981689453,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 141.1699981689453,
+                "y": 202.89999389648438,
+                "w": 4.1199951171875,
+                "h": 7.2100067138671875
+              },
+              {
+                "x": 150.22000122070312,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 155.22000122070312,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 164.02000427246094,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 168.75,
+                "y": 202.9199981689453,
+                "w": 4.2100067138671875,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 177.82000732421875,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 182.52000427246094,
+                "y": 203,
+                "w": 4.100006103515625,
+                "h": 7.0800018310546875
+              },
+              {
+                "x": 191.6199951171875,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 196.13999938964844,
+                "y": 203,
+                "w": 4.529998779296875,
+                "h": 7
+              },
+              {
+                "x": 205.4199981689453,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 210.25,
+                "y": 203,
+                "w": 4.089996337890625,
+                "h": 7.07000732421875
+              },
+              {
+                "x": 219.22000122070312,
+                "y": 203,
+                "w": 3.0099945068359375,
+                "h": 7
+              },
+              {
+                "x": 224.0399932861328,
+                "y": 202.9199981689453,
+                "w": 4.100006103515625,
+                "h": 7.1500091552734375
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "r3-cryptic-caption.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "type": "P.DPTH",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "status": "FAIL",
+            "failures": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "panelId": "section.controls-screen#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 47.79904449462891,
+                  "w": 46.265625,
+                  "h": 43.85720550537109
+                },
+                "contentCoverage": 0.04449739086533847,
+                "largestEmptyRect": {
+                  "x": 68.265625,
+                  "y": 0,
+                  "w": 331.734375,
+                  "h": 114
+                },
+                "largestEmptyScreenFraction": 0.31514765625,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 3
+              }
+            ],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "panelId": "section.controls-screen#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 47.79904449462891,
+                  "w": 46.265625,
+                  "h": 43.85720550537109
+                },
+                "contentCoverage": 0.04449739086533847,
+                "largestEmptyRect": {
+                  "x": 68.265625,
+                  "y": 0,
+                  "w": 331.734375,
+                  "h": 114
+                },
+                "largestEmptyScreenFraction": 0.31514765625,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 3
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#0",
+                  "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+                  "type": "P.DPTH",
+                  "rect": {
+                    "x": 22,
+                    "y": 22,
+                    "w": 53.328125,
+                    "h": 32.328125
+                  },
+                  "paintRects": [
+                    {
+                      "x": 23.799824600219726,
+                      "y": 47.79904449462891,
+                      "w": 41.72925781250001,
+                      "h": 1.733164062500002
+                    }
+                  ],
+                  "caption": "P.DEPTH",
+                  "captionPainted": true,
+                  "captionRects": [
+                    {
+                      "x": 22,
+                      "y": 79.65625,
+                      "w": 46.265625,
+                      "h": 12
+                    }
+                  ]
+                }
+              }
+            ],
+            "measurements": [
+              {
+                "id": "span.glyph#0",
+                "caption": "P.DEPTH",
+                "captionPainted": true
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "id": "button.parameter.encoder#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "occurrence": "3",
+            "rect": {
+              "x": 13,
+              "y": 13,
+              "w": 71.328125,
+              "h": 88
+            }
+          }
+        ],
+        "glyphs": [
+          {
+            "id": "span.glyph#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "type": "P.DPTH",
+            "rect": {
+              "x": 22,
+              "y": 22,
+              "w": 53.328125,
+              "h": 32.328125
+            },
+            "paintRects": [
+              {
+                "x": 23.799824600219726,
+                "y": 47.79904449462891,
+                "w": 41.72925781250001,
+                "h": 1.733164062500002
+              }
+            ],
+            "caption": "P.DEPTH",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              }
+            ]
+          }
+        ],
+        "panels": [
+          {
+            "id": "section.controls-screen#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 114
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 114
+            },
+            "contentRects": [
+              {
+                "x": 22,
+                "y": 58.328125,
+                "w": 21.6875,
+                "h": 17
+              },
+              {
+                "x": 22,
+                "y": 79.65625,
+                "w": 46.265625,
+                "h": 12
+              },
+              {
+                "x": 23.799824600219726,
+                "y": 47.79904449462891,
+                "w": 41.72925781250001,
+                "h": 1.733164062500002
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "missing-caption-mutant.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "type": "P.DPTH",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "status": "FAIL",
+            "failures": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "panelId": "section.controls-screen#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 47.79904449462891,
+                  "w": 43.52908241271973,
+                  "h": 31.52908050537109
+                },
+                "contentCoverage": 0.030097191748148535,
+                "largestEmptyRect": {
+                  "x": 65.52908241271973,
+                  "y": 0,
+                  "w": 334.47091758728027,
+                  "h": 114
+                },
+                "largestEmptyScreenFraction": 0.3177473717079163,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 2
+              }
+            ],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "panelId": "section.controls-screen#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "h": 114
+                },
+                "contentBBox": {
+                  "x": 22,
+                  "y": 47.79904449462891,
+                  "w": 43.52908241271973,
+                  "h": 31.52908050537109
+                },
+                "contentCoverage": 0.030097191748148535,
+                "largestEmptyRect": {
+                  "x": 65.52908241271973,
+                  "y": 0,
+                  "w": 334.47091758728027,
+                  "h": 114
+                },
+                "largestEmptyScreenFraction": 0.3177473717079163,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 2
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#0",
+                  "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+                  "type": "P.DPTH",
+                  "rect": {
+                    "x": 22,
+                    "y": 22,
+                    "w": 53.328125,
+                    "h": 36.328125
+                  },
+                  "paintRects": [
+                    {
+                      "x": 23.799824600219726,
+                      "y": 47.79904449462891,
+                      "w": 41.72925781250001,
+                      "h": 1.733164062500002
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              }
+            ],
+            "measurements": [
+              {
+                "id": "span.glyph#0",
+                "caption": "",
+                "captionPainted": false
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "id": "button.parameter.encoder#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "occurrence": "3",
+            "rect": {
+              "x": 13,
+              "y": 13,
+              "w": 71.328125,
+              "h": 88
+            }
+          }
+        ],
+        "glyphs": [
+          {
+            "id": "span.glyph#0",
+            "param": "current-state-and-reference/909-voice-00.svg|1:0:0:4",
+            "type": "P.DPTH",
+            "rect": {
+              "x": 22,
+              "y": 22,
+              "w": 53.328125,
+              "h": 36.328125
+            },
+            "paintRects": [
+              {
+                "x": 23.799824600219726,
+                "y": 47.79904449462891,
+                "w": 41.72925781250001,
+                "h": 1.733164062500002
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          }
+        ],
+        "panels": [
+          {
+            "id": "section.controls-screen#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 114
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 400,
+              "h": 114
+            },
+            "contentRects": [
+              {
+                "x": 22,
+                "y": 62.328125,
+                "w": 21.6875,
+                "h": 17
+              },
+              {
+                "x": 23.799824600219726,
+                "y": 47.79904449462891,
+                "w": 41.72925781250001,
+                "h": 1.733164062500002
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "positive-dense.html",
+      "expectationMatched": true,
+      "actualExit": 0,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  3,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  3,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 300,
+                  "h": 200
+                },
+                "panelId": "positive#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 300,
+                  "h": 200
+                },
+                "contentBBox": {
+                  "x": 6,
+                  "y": 6,
+                  "w": 288,
+                  "h": 193
+                },
+                "contentCoverage": 0.9264,
+                "largestEmptyRect": {
+                  "x": 0.0,
+                  "y": 74,
+                  "w": 300.0,
+                  "h": 11
+                },
+                "largestEmptyScreenFraction": 0.0275,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 12
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "id": "span.glyph#0",
+                "caption": "TUNE",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#1",
+                "caption": "TUNE",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#2",
+                "caption": "TUNE",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#3",
+                "caption": "TUNE",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#4",
+                "caption": "TUNE",
+                "captionPainted": true
+              },
+              {
+                "id": "span.glyph#5",
+                "caption": "TUNE",
+                "captionPainted": true
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "id": "button.calibration#0",
+            "param": "positive.svg|1:0:0:0",
+            "occurrence": null,
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#1",
+            "param": "positive.svg|1:0:0:1",
+            "occurrence": null,
+            "rect": {
+              "x": 100,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#2",
+            "param": "positive.svg|1:0:0:2",
+            "occurrence": null,
+            "rect": {
+              "x": 200,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#3",
+            "param": "positive.svg|1:0:0:3",
+            "occurrence": null,
+            "rect": {
+              "x": 0,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#4",
+            "param": "positive.svg|1:0:0:4",
+            "occurrence": null,
+            "rect": {
+              "x": 100,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#5",
+            "param": "positive.svg|1:0:0:5",
+            "occurrence": null,
+            "rect": {
+              "x": 200,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          }
+        ],
+        "glyphs": [
+          {
+            "id": "span.glyph#0",
+            "param": "positive.svg|1:0:0:0",
+            "type": "TUNE",
+            "rect": {
+              "x": 5,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 6,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 33.65625,
+                "y": 85,
+                "w": 32.671875,
+                "h": 14
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#1",
+            "param": "positive.svg|1:0:0:1",
+            "type": "TUNE",
+            "rect": {
+              "x": 105,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 106,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 133.65625,
+                "y": 85,
+                "w": 32.671875,
+                "h": 14
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#2",
+            "param": "positive.svg|1:0:0:2",
+            "type": "TUNE",
+            "rect": {
+              "x": 205,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 206,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 233.65625,
+                "y": 85,
+                "w": 32.671875,
+                "h": 14
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#3",
+            "param": "positive.svg|1:0:0:3",
+            "type": "TUNE",
+            "rect": {
+              "x": 5,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 6,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 33.65625,
+                "y": 185,
+                "w": 32.671875,
+                "h": 14
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#4",
+            "param": "positive.svg|1:0:0:4",
+            "type": "TUNE",
+            "rect": {
+              "x": 105,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 106,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 133.65625,
+                "y": 185,
+                "w": 32.671875,
+                "h": 14
+              }
+            ]
+          },
+          {
+            "id": "span.glyph#5",
+            "param": "positive.svg|1:0:0:5",
+            "type": "TUNE",
+            "rect": {
+              "x": 205,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 206,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "TUNE",
+            "captionPainted": true,
+            "captionRects": [
+              {
+                "x": 233.65625,
+                "y": 185,
+                "w": 32.671875,
+                "h": 14
+              }
+            ]
+          }
+        ],
+        "panels": [
+          {
+            "id": "positive#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 300,
+              "h": 200
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 300,
+              "h": 200
+            },
+            "contentRects": [
+              {
+                "x": 33.65625,
+                "y": 85,
+                "w": 32.671875,
+                "h": 14
+              },
+              {
+                "x": 133.65625,
+                "y": 85,
+                "w": 32.671875,
+                "h": 14
+              },
+              {
+                "x": 233.65625,
+                "y": 85,
+                "w": 32.671875,
+                "h": 14
+              },
+              {
+                "x": 33.65625,
+                "y": 185,
+                "w": 32.671875,
+                "h": 14
+              },
+              {
+                "x": 133.65625,
+                "y": 185,
+                "w": 32.671875,
+                "h": 14
+              },
+              {
+                "x": 233.65625,
+                "y": 185,
+                "w": 32.671875,
+                "h": 14
+              },
+              {
+                "x": 6,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 106,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 206,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 6,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 106,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 206,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": true,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "hidden-caption-mutant.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  3,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  3,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 300,
+                  "h": 200
+                },
+                "panelId": "positive#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 300,
+                  "h": 200
+                },
+                "contentBBox": {
+                  "x": 6,
+                  "y": 6,
+                  "w": 288,
+                  "h": 168
+                },
+                "contentCoverage": 0.8064,
+                "largestEmptyRect": {
+                  "x": 0,
+                  "y": 74,
+                  "w": 300,
+                  "h": 32
+                },
+                "largestEmptyScreenFraction": 0.08,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 6
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#0",
+                  "param": "positive.svg|1:0:0:0",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 5,
+                    "y": 0,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 6,
+                      "y": 6,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#1",
+                  "param": "positive.svg|1:0:0:1",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 105,
+                    "y": 0,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 106,
+                      "y": 6,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#2",
+                  "param": "positive.svg|1:0:0:2",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 205,
+                    "y": 0,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 206,
+                      "y": 6,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#3",
+                  "param": "positive.svg|1:0:0:3",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 5,
+                    "y": 100,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 6,
+                      "y": 106,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#4",
+                  "param": "positive.svg|1:0:0:4",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 105,
+                    "y": 100,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 106,
+                      "y": 106,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#5",
+                  "param": "positive.svg|1:0:0:5",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 205,
+                    "y": 100,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 206,
+                      "y": 106,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              }
+            ],
+            "measurements": [
+              {
+                "id": "span.glyph#0",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#1",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#2",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#3",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#4",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#5",
+                "caption": "",
+                "captionPainted": false
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "id": "button.calibration#0",
+            "param": "positive.svg|1:0:0:0",
+            "occurrence": null,
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#1",
+            "param": "positive.svg|1:0:0:1",
+            "occurrence": null,
+            "rect": {
+              "x": 100,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#2",
+            "param": "positive.svg|1:0:0:2",
+            "occurrence": null,
+            "rect": {
+              "x": 200,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#3",
+            "param": "positive.svg|1:0:0:3",
+            "occurrence": null,
+            "rect": {
+              "x": 0,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#4",
+            "param": "positive.svg|1:0:0:4",
+            "occurrence": null,
+            "rect": {
+              "x": 100,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#5",
+            "param": "positive.svg|1:0:0:5",
+            "occurrence": null,
+            "rect": {
+              "x": 200,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          }
+        ],
+        "glyphs": [
+          {
+            "id": "span.glyph#0",
+            "param": "positive.svg|1:0:0:0",
+            "type": "TUNE",
+            "rect": {
+              "x": 5,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 6,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#1",
+            "param": "positive.svg|1:0:0:1",
+            "type": "TUNE",
+            "rect": {
+              "x": 105,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 106,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#2",
+            "param": "positive.svg|1:0:0:2",
+            "type": "TUNE",
+            "rect": {
+              "x": 205,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 206,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#3",
+            "param": "positive.svg|1:0:0:3",
+            "type": "TUNE",
+            "rect": {
+              "x": 5,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 6,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#4",
+            "param": "positive.svg|1:0:0:4",
+            "type": "TUNE",
+            "rect": {
+              "x": 105,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 106,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#5",
+            "param": "positive.svg|1:0:0:5",
+            "type": "TUNE",
+            "rect": {
+              "x": 205,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 206,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          }
+        ],
+        "panels": [
+          {
+            "id": "positive#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 300,
+              "h": 200
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 300,
+              "h": 200
+            },
+            "contentRects": [
+              {
+                "x": 6,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 106,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 206,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 6,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 106,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 206,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    },
+    {
+      "file": "aria-only-caption-mutant.html",
+      "expectationMatched": true,
+      "actualExit": 1,
+      "result": {
+        "schema": "dnbox-web-structural/1",
+        "screen": {
+          "id": "Structural regression fixture/",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300
+          }
+        },
+        "checks": [
+          {
+            "id": 1,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  3,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  2,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  3,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  4,
+                  -1,
+                  0
+                ],
+                "count": 1
+              },
+              {
+                "type": "TUNE",
+                "typedRef": [
+                  1,
+                  0,
+                  0,
+                  5,
+                  -1,
+                  0
+                ],
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "status": "PASS",
+            "failures": [],
+            "measurements": [
+              {
+                "partialView": false,
+                "visibleRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 300,
+                  "h": 200
+                },
+                "panelId": "positive#0",
+                "panelRect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 300,
+                  "h": 200
+                },
+                "contentBBox": {
+                  "x": 6,
+                  "y": 6,
+                  "w": 288,
+                  "h": 168
+                },
+                "contentCoverage": 0.8064,
+                "largestEmptyRect": {
+                  "x": 0,
+                  "y": 74,
+                  "w": 300,
+                  "h": 32
+                },
+                "largestEmptyScreenFraction": 0.08,
+                "minimumCoverage": 0.7,
+                "maximumEmptyScreenFraction": 0.12,
+                "paintRectCount": 6
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "status": "FAIL",
+            "failures": [
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#0",
+                  "param": "positive.svg|1:0:0:0",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 5,
+                    "y": 0,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 6,
+                      "y": 6,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#1",
+                  "param": "positive.svg|1:0:0:1",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 105,
+                    "y": 0,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 106,
+                      "y": 6,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#2",
+                  "param": "positive.svg|1:0:0:2",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 205,
+                    "y": 0,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 206,
+                      "y": 6,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#3",
+                  "param": "positive.svg|1:0:0:3",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 5,
+                    "y": 100,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 6,
+                      "y": 106,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#4",
+                  "param": "positive.svg|1:0:0:4",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 105,
+                    "y": 100,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 106,
+                      "y": 106,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              },
+              {
+                "reason": "missing-unpainted-or-cryptic-caption",
+                "glyph": {
+                  "id": "span.glyph#5",
+                  "param": "positive.svg|1:0:0:5",
+                  "type": "TUNE",
+                  "rect": {
+                    "x": 205,
+                    "y": 100,
+                    "w": 90,
+                    "h": 80
+                  },
+                  "paintRects": [
+                    {
+                      "x": 206,
+                      "y": 106,
+                      "w": 88,
+                      "h": 68
+                    }
+                  ],
+                  "caption": "",
+                  "captionPainted": false,
+                  "captionRects": []
+                }
+              }
+            ],
+            "measurements": [
+              {
+                "id": "span.glyph#0",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#1",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#2",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#3",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#4",
+                "caption": "",
+                "captionPainted": false
+              },
+              {
+                "id": "span.glyph#5",
+                "caption": "",
+                "captionPainted": false
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "id": "button.calibration#0",
+            "param": "positive.svg|1:0:0:0",
+            "occurrence": null,
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#1",
+            "param": "positive.svg|1:0:0:1",
+            "occurrence": null,
+            "rect": {
+              "x": 100,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#2",
+            "param": "positive.svg|1:0:0:2",
+            "occurrence": null,
+            "rect": {
+              "x": 200,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#3",
+            "param": "positive.svg|1:0:0:3",
+            "occurrence": null,
+            "rect": {
+              "x": 0,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#4",
+            "param": "positive.svg|1:0:0:4",
+            "occurrence": null,
+            "rect": {
+              "x": 100,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "id": "button.calibration#5",
+            "param": "positive.svg|1:0:0:5",
+            "occurrence": null,
+            "rect": {
+              "x": 200,
+              "y": 100,
+              "w": 100,
+              "h": 100
+            }
+          }
+        ],
+        "glyphs": [
+          {
+            "id": "span.glyph#0",
+            "param": "positive.svg|1:0:0:0",
+            "type": "TUNE",
+            "rect": {
+              "x": 5,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 6,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#1",
+            "param": "positive.svg|1:0:0:1",
+            "type": "TUNE",
+            "rect": {
+              "x": 105,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 106,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#2",
+            "param": "positive.svg|1:0:0:2",
+            "type": "TUNE",
+            "rect": {
+              "x": 205,
+              "y": 0,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 206,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#3",
+            "param": "positive.svg|1:0:0:3",
+            "type": "TUNE",
+            "rect": {
+              "x": 5,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 6,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#4",
+            "param": "positive.svg|1:0:0:4",
+            "type": "TUNE",
+            "rect": {
+              "x": 105,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 106,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          },
+          {
+            "id": "span.glyph#5",
+            "param": "positive.svg|1:0:0:5",
+            "type": "TUNE",
+            "rect": {
+              "x": 205,
+              "y": 100,
+              "w": 90,
+              "h": 80
+            },
+            "paintRects": [
+              {
+                "x": 206,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ],
+            "caption": "",
+            "captionPainted": false,
+            "captionRects": []
+          }
+        ],
+        "panels": [
+          {
+            "id": "positive#0",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 300,
+              "h": 200
+            },
+            "visibleRect": {
+              "x": 0,
+              "y": 0,
+              "w": 300,
+              "h": 200
+            },
+            "contentRects": [
+              {
+                "x": 6,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 106,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 206,
+                "y": 6,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 6,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 106,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              },
+              {
+                "x": 206,
+                "y": 106,
+                "w": 88,
+                "h": 68
+              }
+            ]
+          }
+        ],
+        "collectionErrors": [],
+        "thresholds": {
+          "minimumPanelContentBBoxCoverage": 0.7,
+          "maximumEmptyRectangleScreenFraction": 0.12
+        },
+        "captionPolicy": {
+          "words": [
+            "1",
+            "2",
+            "808",
+            "909",
+            "A",
+            "ACCENT",
+            "AMOUNT",
+            "ATTACK",
+            "B",
+            "BALANCE",
+            "BASS",
+            "BREAK",
+            "CHANCE",
+            "CHICAGO",
+            "COLOR",
+            "COLOUR",
+            "CRUSH",
+            "CUT",
+            "CUTOFF",
+            "DECAY",
+            "DELAY",
+            "DEPTH",
+            "DESTINATION",
+            "DETUNE",
+            "DIRECTION",
+            "DRIVE",
+            "EDIT",
+            "ENVELOPE",
+            "FEEDBACK",
+            "FILTER",
+            "FOLD",
+            "GAIN",
+            "GATE",
+            "GLIDE",
+            "HOLD",
+            "KEY",
+            "KIT",
+            "LENGTH",
+            "LEVEL",
+            "LOW",
+            "MASTER",
+            "MIAMI",
+            "MIX",
+            "MODE",
+            "NOISE",
+            "OCTAVE",
+            "OCTAVES",
+            "OFF",
+            "OFFSET",
+            "ON",
+            "PAN",
+            "PEAK",
+            "PITCH",
+            "PULSE",
+            "RANGE",
+            "RATE",
+            "RELEASE",
+            "RESONANCE",
+            "RETURN",
+            "REVERB",
+            "SEND",
+            "SHAPE",
+            "SLICES",
+            "SOUND",
+            "SOURCE",
+            "SPEED",
+            "SPREAD",
+            "STEREO",
+            "SUSTAIN",
+            "SWITCH",
+            "SYNC",
+            "TIME",
+            "TONE",
+            "TRACKING",
+            "TUNE",
+            "TYPE",
+            "VELOCITY",
+            "VOICE",
+            "VOLUME",
+            "WAVE",
+            "WIDTH"
+          ],
+          "abbreviations": [
+            "AM",
+            "BD",
+            "BPF",
+            "CB",
+            "CH",
+            "CHO",
+            "CP",
+            "CR",
+            "CY",
+            "DIST",
+            "DLY",
+            "ENV",
+            "ENV/GATE",
+            "FM",
+            "FX",
+            "HPF",
+            "HT",
+            "LFO",
+            "LPF",
+            "LT",
+            "MT",
+            "OH",
+            "OSC",
+            "PM",
+            "PWM",
+            "RD",
+            "RES",
+            "REV",
+            "RS",
+            "SD",
+            "SUB",
+            "XMOD"
+          ]
+        },
+        "accepted": false,
+        "limitations": [
+          "DOM foreground geometry, not a screenshot visibility/occlusion audit.",
+          "Uniform canvas face color is excluded by exact modal-color foreground extraction.",
+          "Checks1/2 intentionally do not conflate different engine refs with similar glyph shapes."
+        ]
+      }
+    }
+  ],
+  "actualSources": [
+    {
+      "source": "old",
+      "status": "NOT_RUN",
+      "exit": null,
+      "reason": "No served source URL supplied"
+    },
+    {
+      "source": "current",
+      "status": "NOT_RUN",
+      "exit": null,
+      "reason": "No served source URL supplied"
+    }
+  ],
+  "browser": {
+    "status": "RUN",
+    "version": "151.0.7922.34",
+    "sandbox": true
+  },
+  "sourcePinsBefore": {
+    "old": null,
+    "current": null
+  },
+  "fixturesAccepted": true,
+  "productStatus": "NOT_RUN",
+  "sourcePinsAfter": {
+    "old": null,
+    "current": null
+  },
+  "sourceStability": {
+    "old": "NOT_RUN",
+    "current": "NOT_RUN"
+  },
+  "exit": 0
+}

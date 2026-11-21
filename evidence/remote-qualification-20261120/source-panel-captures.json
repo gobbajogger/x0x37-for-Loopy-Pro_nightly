@@ -1,0 +1,36 @@
+{
+  "viewport": [
+    844,
+    390
+  ],
+  "originalPngSha256": {
+    "superj6-0-844x390.png": "093b5281c27dafc2dc3c1c97bdd1f07b4ee73e972de4757037d6c5abafe01086",
+    "synth-one-0-844x390.png": "880f1bd92f66b672435bba3720da37e58e10dc38938f4ddd78eae5f2f2cbdfa3"
+  },
+  "file": "source-panels-844.webp",
+  "composition": "two complete initial views with captions; RGB pixels retained losslessly",
+  "actualBrowserResults": [
+    "SOURCE_BANKS 1440x900 PASS both parts, independent edit, genuine Draft round trip, MIDI=0",
+    "SOURCE_BANKS 844x390 PASS both parts, independent edit, genuine Draft round trip, MIDI=0",
+    "SOURCE_BANKS 390x844 PASS both parts, independent edit, genuine Draft round trip, MIDI=0",
+    "SOURCE_BANKS 1024x640 PASS both parts, independent edit, genuine Draft round trip, MIDI=0"
+  ],
+  "allScreenshots": {
+    "superj6-0-1024x640.png": "a8de234dce81b0dc2009ff8e8e084e7afa642aa43122ffd0127ee69a735d5504",
+    "superj6-0-1440x900.png": "96824d352fb5270e1f0eb259dfd3d09176d5e974b4b5d12b149be8edca017210",
+    "superj6-0-390x844.png": "8855bf2cab9e53031335fe424689f77de73e550a365304ac0c125ca66f697618",
+    "superj6-0-844x390.png": "093b5281c27dafc2dc3c1c97bdd1f07b4ee73e972de4757037d6c5abafe01086",
+    "superj6-1-1024x640.png": "7112633161133767c0256ccf16aada54b57e2823c4b258caededd4b8a1ea5d06",
+    "superj6-1-1440x900.png": "59390cf89ce2f84b935fad1f5b3aadc25a4a874adf368054a2b9ebb6f797925f",
+    "superj6-1-390x844.png": "c8999f3b42f7a44895727b6c4139f3c83f71686281459042ac58fb341269c3f0",
+    "superj6-1-844x390.png": "fffd5fc8627332335a411b3eb7a318239bdade75e4f2f6816fedce1b4f9f041d",
+    "synth-one-0-1024x640.png": "26e2fafdca931bcc0fb4be3061e458f68e58555346f13dd7bb23ead94780a16b",
+    "synth-one-0-1440x900.png": "42a4c04971b92bcc66f3611a483e3c75533deba399846712dafd264e630ec627",
+    "synth-one-0-390x844.png": "7d42c76e05388c42afeb3efac4b15d682d0363a6e701eed8a0100201e4428c93",
+    "synth-one-0-844x390.png": "880f1bd92f66b672435bba3720da37e58e10dc38938f4ddd78eae5f2f2cbdfa3",
+    "synth-one-1-1024x640.png": "9174bfd541b2ffba59d5287f8ed8367f5453addc3674d9d7cfac7ab7b2ec6cd9",
+    "synth-one-1-1440x900.png": "663ab7f93fe987e8ce4313ae485a9ccd4cf80b5bb3d92f45faa8504d5823c1ba",
+    "synth-one-1-390x844.png": "b5ffb743f1af3e51331288da4ccf24a2a157815e9788bbcc05e1e56e2317b4bc",
+    "synth-one-1-844x390.png": "4ec8fc5a8080bd74d08075bc25f2f9b4722fd7ed113019d317bb39e1663db9b0"
+  }
+}

@@ -17,12 +17,31 @@ export class SequenceDraft extends RollDraft{
  toggleHit(track,note,start){if(!['drum909','drum808'].includes(track)||!Number.isInteger(start)||start<0||start>=this.endSample)throw Error('Invalid drum step');const found=this._notes.find(n=>n.track===track&&n.note===note&&n.start===start);if(found){this.selectIds([found.id]);this.deleteSelected();return null;}const id=this.add({track,note,start,end:start+1,velocity:100,channel:9});const n=this._notes.find(n=>n.id===id);n.end=start;n.pulse=true;return id;}
  changes(){const ids=new Set([...this.original.map(n=>n.id),...this._notes.map(n=>n.id)]);return [...ids].flatMap(id=>{const before=this.original.find(n=>n.id===id)??null,after=this._notes.find(n=>n.id===id)??null;return JSON.stringify(before)===JSON.stringify(after)?[]:[{id,track:(after??before).track,before:structuredClone(before),after:structuredClone(after),status:'local-draft'}];});}
 }
+export const MAX_SONG_ROWS = 1024;
 export class Arrangement{
  constructor(){this.rows=[];this.history=[];this.future=[];}
- save(next){this.history.push(structuredClone(this.rows));this.future=[];this.rows=next;}
- check(row){if(!Array.isArray(row.patterns)||row.patterns.length!==5||row.patterns.some(n=>!Number.isInteger(n)||n<0||n>31)||!Number.isInteger(row.repeats)||row.repeats<1||row.repeats>8)throw Error('Invalid song row');return row;}
+ save(next){
+  if(next.length>MAX_SONG_ROWS)throw Error('Song row limit reached');
+  this.history.push(structuredClone(this.rows));this.future=[];this.rows=next;
+ }
+ check(row){if(!Array.isArray(row.patterns)||row.patterns.length!==5||row.patterns.some(n=>!Number.isInteger(n)||n<0||n>31)||!Number.isInteger(row.repeats)||row.repeats<1||row.repeats>8)throw Error('Invalid song row');
+  if(Object.hasOwn(row,'muteMask')&&(!Number.isInteger(row.muteMask)||row.muteMask<0||row.muteMask>31))throw Error('Invalid song mute mask');
+  return {patterns:[...row.patterns],repeats:row.repeats,...(row.muteMask?{muteMask:row.muteMask}:{})};
+ }
  add(patterns,repeats=1){this.save([...this.rows,this.check({patterns:[...patterns],repeats})]);}
- update(i,patch){if(!this.rows[i]||Object.keys(patch).some(k=>!['patterns','repeats'].includes(k)))throw Error('Invalid song row');const row=this.check({...structuredClone(this.rows[i]),...structuredClone(patch)});this.save(this.rows.map((r,j)=>i===j?row:r));}
+ update(i,patch){this.row(i);if(Object.keys(patch).some(k=>!['patterns','repeats','muteMask'].includes(k)))throw Error('Invalid song row');const row=this.check({...structuredClone(this.rows[i]),...structuredClone(patch)});this.save(this.rows.map((r,j)=>i===j?row:r));}
+ row(i){if(!Number.isInteger(i)||i<0||i>=this.rows.length)throw Error('Invalid song row');return this.rows[i];}
+ setPattern(i,part,pattern){const row=this.row(i);if(!Number.isInteger(part)||part<0||part>=5||!Number.isInteger(pattern)||pattern<0||pattern>31)throw Error('Invalid song pattern');const patterns=[...row.patterns];patterns[part]=pattern;this.update(i,{patterns});}
+ setPartOn(i,part,on){
+  const row=this.row(i);
+  if(!Number.isInteger(part)||part<0||part>=5||typeof on!=='boolean')throw Error('Invalid song part switch');
+  const before=row.muteMask??0,bit=1<<part;
+  const muteMask=on?before&~bit:before|bit;
+  if(muteMask===before)return false;
+  this.update(i,{muteMask});return true;
+ }
+ move(i,direction){this.row(i);if(direction!==-1&&direction!==1)throw Error('Invalid song move');const next=i+direction;if(next<0||next>=this.rows.length)return false;const rows=structuredClone(this.rows);[rows[i],rows[next]]=[rows[next],rows[i]];this.save(rows);return true;}
+ remove(i){this.row(i);this.save(this.rows.filter((_,index)=>index!==i));}
  undo(){if(!this.history.length)return;this.future.push(this.rows);this.rows=this.history.pop();}
  redo(){if(!this.future.length)return;this.history.push(this.rows);this.rows=this.future.pop();}
 }

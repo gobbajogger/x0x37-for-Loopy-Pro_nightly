@@ -1,0 +1,505 @@
+{
+  "scope": "4398 original 1440x900 through third Master control, actual tab, input/blur, bounds, native glyph, full local Draft downloads and default restore; passive listeners",
+  "started": "2026-11-21T06:14:44.694801+00:00",
+  "ended": "2026-11-21T06:14:55.323182+00:00",
+  "fixtureSha256": "73bd96ebf286a7c454ab587720278e19e2d3176cc8c7eee7f7465c270f87efe3",
+  "assets": {
+    "app.mjs": "9aadf91c495b5a4eda4372e26b7b0713485de488fe51edaf954b95fdf12a2920",
+    "style.css": "a1a2db04f0ad46441f8d4f94c2ee3abb5526e744382bb342cfb5a2db734c912a",
+    "master-draft.mjs": "3394d9d987a66ec8051e8fddc462c19ecae6c6bb19c72fe1195370b568c4bdda",
+    "master-source.mjs": "c438d05e6b298cc7d1f88c785fbe87ef6f3d7039f41c3f3db054ec333161f783",
+    "timeline.mjs": "adc75e204a4f2f15af7b9be524c99e34c8b06684c587d5cf4bbadc82b8c59152"
+  },
+  "calls": [
+    {
+      "selector": "#undo",
+      "elapsedMs": 97.16,
+      "pending": 0
+    },
+    {
+      "selector": "#redo",
+      "elapsedMs": 92.3,
+      "pending": 0
+    },
+    {
+      "selector": "#undo",
+      "elapsedMs": 73.46,
+      "pending": 0
+    },
+    {
+      "selector": "#redo",
+      "elapsedMs": 69.52,
+      "pending": 0
+    },
+    {
+      "selector": "#undo",
+      "elapsedMs": 72.06,
+      "pending": 0
+    },
+    {
+      "selector": "#redo",
+      "elapsedMs": 69.87,
+      "pending": 0
+    }
+  ],
+  "states": [
+    {
+      "at": 4362.900000002235,
+      "phase": "capture",
+      "id": "undo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": true,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "undo",
+      "status": "Download requested. Keep the local draft file and reopen it to verify. Not a native project; not applied.",
+      "raw": "127",
+      "control": "Master \u00b7 Threshold",
+      "modal": false
+    },
+    {
+      "at": 4393.5,
+      "phase": "bubble",
+      "id": "undo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "undo",
+      "status": "Undo Master Threshold \u00b7 Draft \u00b7 Not connected",
+      "raw": "0",
+      "control": "Master \u00b7 Threshold",
+      "modal": false
+    },
+    {
+      "at": 4459.300000000745,
+      "phase": "capture",
+      "id": "redo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "redo",
+      "status": "Undo Master Threshold \u00b7 Draft \u00b7 Not connected",
+      "raw": "0",
+      "control": "Master \u00b7 Threshold",
+      "modal": false
+    },
+    {
+      "at": 4489.20000000298,
+      "phase": "bubble",
+      "id": "redo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": true,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "",
+      "status": "Redo Master Threshold \u00b7 Draft \u00b7 Not connected",
+      "raw": "127",
+      "control": "Master \u00b7 Threshold",
+      "modal": false
+    },
+    {
+      "at": 7806.20000000298,
+      "phase": "capture",
+      "id": "undo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": true,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "undo",
+      "status": "Download requested. Keep the local draft file and reopen it to verify. Not a native project; not applied.",
+      "raw": "9",
+      "control": "Master \u00b7 Ratio",
+      "modal": false
+    },
+    {
+      "at": 7824.70000000298,
+      "phase": "bubble",
+      "id": "undo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "undo",
+      "status": "Undo Master Ratio \u00b7 Draft \u00b7 Not connected",
+      "raw": "8",
+      "control": "Master \u00b7 Ratio",
+      "modal": false
+    },
+    {
+      "at": 7875.20000000298,
+      "phase": "capture",
+      "id": "redo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "redo",
+      "status": "Undo Master Ratio \u00b7 Draft \u00b7 Not connected",
+      "raw": "8",
+      "control": "Master \u00b7 Ratio",
+      "modal": false
+    },
+    {
+      "at": 7892.70000000298,
+      "phase": "bubble",
+      "id": "redo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": true,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "",
+      "status": "Redo Master Ratio \u00b7 Draft \u00b7 Not connected",
+      "raw": "9",
+      "control": "Master \u00b7 Ratio",
+      "modal": false
+    },
+    {
+      "at": 8892.5,
+      "phase": "capture",
+      "id": "undo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": true,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "undo",
+      "status": "Download requested. Keep the local draft file and reopen it to verify. Not a native project; not applied.",
+      "raw": "127",
+      "control": "Master \u00b7 Attack",
+      "modal": false
+    },
+    {
+      "at": 8913.900000002235,
+      "phase": "bubble",
+      "id": "undo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "undo",
+      "status": "Undo Master Attack \u00b7 Draft \u00b7 Not connected",
+      "raw": "0",
+      "control": "Master \u00b7 Attack",
+      "modal": false
+    },
+    {
+      "at": 8974.300000000745,
+      "phase": "capture",
+      "id": "redo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "redo",
+      "status": "Undo Master Attack \u00b7 Draft \u00b7 Not connected",
+      "raw": "0",
+      "control": "Master \u00b7 Attack",
+      "modal": false
+    },
+    {
+      "at": 8992.70000000298,
+      "phase": "bubble",
+      "id": "redo",
+      "undo": {
+        "disabled": false,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1300,
+          109,
+          36,
+          32
+        ]
+      },
+      "redo": {
+        "disabled": true,
+        "visible": true,
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "owned": true,
+        "rect": [
+          1344,
+          109,
+          36,
+          32
+        ]
+      },
+      "focus": "",
+      "status": "Redo Master Attack \u00b7 Draft \u00b7 Not connected",
+      "raw": "127",
+      "control": "Master \u00b7 Attack",
+      "modal": false
+    }
+  ],
+  "failedRequests": [],
+  "remainingRequests": 0
+}

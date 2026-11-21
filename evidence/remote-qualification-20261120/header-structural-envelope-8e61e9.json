@@ -1,0 +1,155 @@
+{
+  "head": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "tree": "2fb817f42421b9bb99eaab1b95ee85e0398eccc7",
+  "verifiedInputs": 251,
+  "verifiedReviewedFiles": [
+    "web/product-site/remote/envelope-view.mjs",
+    "web/product-site/SOURCE-MANIFEST.json",
+    "tests/product-remote/envelope-browser.py",
+    "evidence/remote-qualification-20261120/native-envelope-observation.json"
+  ],
+  "verifiedRuntimeFiles": 10,
+  "browser": {
+    "status": "RUN",
+    "version": "151.0.7922.34",
+    "sandbox": true
+  },
+  "conditions": {
+    "structural": true,
+    "build": true,
+    "header": true,
+    "envelope": true,
+    "cleanAfter": true
+  },
+  "runs": {
+    "fixtures": {
+      "command": [
+        "python3",
+        "tests/visual/fixtures/web-structural/browser_fixtures.py",
+        "--fixtures-only",
+        "--output",
+        "/workspace/scratch/537b1f88ce48/evidence-local/scoped-8e61e906/browser-fixtures.json"
+      ],
+      "started": "2026-11-21T04:33:38.916+00:00",
+      "ended": "2026-11-21T04:33:42.869+00:00",
+      "exit": 0
+    },
+    "build": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "started": "2026-11-21T04:33:42.869+00:00",
+      "ended": "2026-11-21T04:33:44.272+00:00",
+      "exit": 0
+    },
+    "header": {
+      "command": [
+        "npm",
+        "run",
+        "test:visual"
+      ],
+      "started": "2026-11-21T04:33:44.273+00:00",
+      "ended": "2026-11-21T04:33:55.034+00:00",
+      "exit": 1
+    },
+    "envelope": {
+      "command": [
+        "python3",
+        "tests/product-remote/envelope-browser.py"
+      ],
+      "started": "2026-11-21T04:33:55.040+00:00",
+      "ended": "2026-11-21T04:34:26.521+00:00",
+      "exit": 0
+    }
+  },
+  "structural": {
+    "matched": 9,
+    "accepted": true,
+    "productStatus": "NOT_RUN"
+  },
+  "headerSummary": {
+    "summary": {
+      "screens": 3,
+      "pass": 2,
+      "fail": 0,
+      "no_baseline": 1,
+      "baseline_written": 0,
+      "header_fail": 0,
+      "page_errors": 0
+    },
+    "results": [
+      [
+        "grid-continuity-1024x640",
+        "PASS",
+        512
+      ],
+      [
+        "header-ssim-1024x640",
+        "PASS",
+        0.905927401190831
+      ],
+      [
+        "remote-sequence-1024x640",
+        "NOBASE",
+        0.0
+      ]
+    ],
+    "header_fails": [],
+    "errors": []
+  },
+  "identicalTo9c35": {
+    "browser-fixtures.json": true,
+    "header/summary.json": true
+  },
+  "visualContractTests": 12,
+  "actualEnvelopes": {
+    "actualFirmWare": {
+      "firmware_source": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb",
+      "kernel_source": "4758a9573e0a2a95e73cb054a74e0aad39d5741e",
+      "wasm_bytes": 941835,
+      "wasm_sha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+      "device_control": false,
+      "full_physical_panel": false
+    },
+    "suspendAndResume": {
+      "observed": {
+        "sequence": 114,
+        "engine": "CHICAGO",
+        "slot": 1,
+        "role": "amp",
+        "level": 1
+      },
+      "last": 116,
+      "resumed": {
+        "sequence": 118,
+        "engine": "CHICAGO",
+        "slot": 1,
+        "role": "amp",
+        "level": 1
+      }
+    },
+    "screenshotsSha256": {
+      "1440x900.png": "6a15b0786ecdc5ebe8d7a1b1168ee87dcc85c5d8395b0b2581cec25c040e53ce",
+      "390x844.png": "efb0030ffa686847385d465c50bc14ebea2877d76b73d3b32de4b572e6b71848",
+      "844x390.png": "6c324c6bc796e12d1837990870d82765e90ec989e430c1d2ca545ce1e0a5be24",
+      "chicago-1440x900.png": "e6e55ea44e68c570dd546fc2b4d52a25bfc641457200ba85ba6493d433eb018f",
+      "chicago-390x844.png": "47f5f6c49ef329e4916962e85f627fb56ee84c7e8ede46efc4235b56c1683164",
+      "chicago-844x390.png": "5f09c9cafdae8abd236807a9aa950a896fa7fc66ce4e2a10ab04b86d612b2c64",
+      "juno-1440x900.png": "c3d9df000dec4b6466112415f559b3b5829b9c2fbd98a3dd1df2dac64b1aa04f",
+      "juno-390x844.png": "0b80fe6813382b0a695ad333554582671ff2e2e4d82331f7f9a8503c7f4de2f7",
+      "juno-844x390.png": "21d9851f4ded1ab5f46c118e8ca695c4fda5f57b5f0a72c3e198ae34ece51a68"
+    }
+  },
+  "outputHashes": {
+    "inputs.json": "4c67455410befbfe4b075f726fb0a2f626ff23738e2b064cdb0c5a0ca776f3bd",
+    "runs.json": "a3cd234c3b381fede245fc85dad745ac188a32e1823e5d3cdb7bf9673ec3b2ce",
+    "browser-fixtures.json": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356",
+    "header/summary.json": "832c83df462e51fe698e9e8c04f6018558af3724bd712f76b2eb73f99fd2cd3d",
+    "header.log": "b7dda83573ace4beb3328012f647152f478ecfe35b0bbcb95725825fe7ef05bb",
+    "fixtures.log": "da9de79ed934989cc1ed570e30d53f6a2c3618a79f1c34bf2cd5b7f153e0d7a4",
+    "build.log": "8002e7d7b3e66837084ffecedc8f74b82c802fc2b2cfea6e89d8de55c1ab692e",
+    "envelope.log": "bb1e871a527f667ff697b0c8f6163bcc464d31467f0ed60b090949d1de476cd7"
+  }
+}

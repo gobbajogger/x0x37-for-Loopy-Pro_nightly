@@ -1,0 +1,37 @@
+{
+  "repository": "AudioKit/AudioKitSynthOne",
+  "sourceCommit": "6466a3715c96b7ecf1dd255a218cbd571408a314",
+  "sources": [
+    {
+      "path": "AudioKitSynthOne/DSP/BandlimitedWavetables/Triangle/triangle_0000.json",
+      "gitBlob": "09715c184266f3097347514f31d5c11ba07746f7"
+    },
+    {
+      "path": "AudioKitSynthOne/DSP/BandlimitedWavetables/Square/square_0000.json",
+      "gitBlob": "51ba01e8812dc1ad6de343e1dab8416cb940cfea"
+    },
+    {
+      "path": "AudioKitSynthOne/DSP/BandlimitedWavetables/PWM/pwm_0000.json",
+      "gitBlob": "34a9836c31fa77c2dcda8478deeba3373fddd7a7"
+    },
+    {
+      "path": "AudioKitSynthOne/DSP/BandlimitedWavetables/Sawtooth/sawtooth_0000.json",
+      "gitBlob": "e95b66977b233851412677748252432770069129"
+    },
+    {
+      "path": "AudioKitSynthOne/DSP/Kernel/oscmorph2d.c",
+      "gitBlob": "4fa225bc80e40fc71c601bfcca04ce932a39a2c2"
+    },
+    {
+      "path": "AudioKitSynthOne/Generators/UI Components/MorphSelector.swift",
+      "gitBlob": "78a69e9eafc8e1ac6d981c020b863cb4c89f3770"
+    }
+  ],
+  "baseTableSamplesVerified": 16384,
+  "midpointSamplesVerified": 12288,
+  "method": "Match all 4096 binary32 samples in each base table. Compare every phase in the three halfway blends with the original table-weight equation. File selectors display the base shapes independently of note and oscillator band limiting.",
+  "fileExtensions": [
+    ".synth1",
+    ".json"
+  ]
+}

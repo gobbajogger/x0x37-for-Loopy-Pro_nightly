@@ -1,0 +1,8 @@
+PATTERN_LOCK_BROWSER PASS owners 2/3/4, separate P01/P32, explicit target, empty steps, multi-point 127-to-0 gesture, Undo/Redo, delete, review and round trip
+PASS 1440x900 MIDI 0 errors 0
+PATTERN_LOCK_BROWSER PASS owners 2/3/4, separate P01/P32, explicit target, empty steps, multi-point 127-to-0 gesture, Undo/Redo, delete, review and round trip
+PASS 844x390 MIDI 0 errors 0
+PATTERN_LOCK_BROWSER PASS owners 2/3/4, separate P01/P32, explicit target, empty steps, multi-point 127-to-0 gesture, Undo/Redo, delete, review and round trip
+PASS 390x844 MIDI 0 errors 0
+PATTERN_LOCK_BROWSER PASS owners 2/3/4, separate P01/P32, explicit target, empty steps, multi-point 127-to-0 gesture, Undo/Redo, delete, review and round trip
+PASS 1024x640 MIDI 0 errors 0

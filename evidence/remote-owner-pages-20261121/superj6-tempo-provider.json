@@ -1,0 +1,300 @@
+{
+  "soundHead": "03f92a7d94ad29bdb4a6bb238311ba12776401ea",
+  "firmwareBase": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+  "remoteHead": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+  "producerOpen": true,
+  "publicEvidence": [
+    {
+      "path": "docs/lanes/sound.md",
+      "gitBlob": "6d44e0d3ea4e70771d190954043a0bbe4432aa67",
+      "url": "https://github.com/gobbajogger/DnBOX/blob/03f92a7d94ad29bdb4a6bb238311ba12776401ea/docs/lanes/sound.md#L232"
+    },
+    {
+      "path": "experiments/sound-hardware-v1/mapping/results/implementer_brief/BEHAVIOR-BRIEF.md",
+      "gitBlob": "05e89528a828db536ce621f6cad0cd0e741e6f5c",
+      "url": "https://github.com/gobbajogger/DnBOX/blob/03f92a7d94ad29bdb4a6bb238311ba12776401ea/experiments/sound-hardware-v1/mapping/results/implementer_brief/BEHAVIOR-BRIEF.md#L41"
+    },
+    {
+      "path": "experiments/sound-hardware-v1/mapping/results/implementer_brief/public_control_catalog.json",
+      "gitBlob": "394b90fb833a9dba90563b71fbf0c63e24172107",
+      "url": "https://github.com/gobbajogger/DnBOX/blob/03f92a7d94ad29bdb4a6bb238311ba12776401ea/experiments/sound-hardware-v1/mapping/results/implementer_brief/public_control_catalog.json#L954"
+    },
+    {
+      "path": "experiments/sound-hardware-v1/mapping/results/implementer_brief/numeric_behavior_targets.json",
+      "gitBlob": "99f3844733183cd4502d347206a31f26a5ae6363",
+      "url": "https://github.com/gobbajogger/DnBOX/blob/03f92a7d94ad29bdb4a6bb238311ba12776401ea/experiments/sound-hardware-v1/mapping/results/implementer_brief/numeric_behavior_targets.json#L1"
+    }
+  ],
+  "bindings": [
+    {
+      "id": 88,
+      "identifier": "neonlfo1Rate",
+      "occurrences": 640,
+      "publicUnits": "Hz or tempo division according to HzEnable 195"
+    },
+    {
+      "id": 96,
+      "identifier": "neonlfo2Rate",
+      "occurrences": 640,
+      "publicUnits": "Hz or tempo division according to HzEnable 196"
+    },
+    {
+      "id": 100,
+      "identifier": "neonlfo3Rate",
+      "occurrences": 640,
+      "publicUnits": "Hz or tempo division according to HzEnable 197"
+    },
+    {
+      "id": 195,
+      "identifier": "neonlfo1HzEnable",
+      "occurrences": 640,
+      "publicUnits": "off/on; exact callback threshold must match original"
+    },
+    {
+      "id": 196,
+      "identifier": "neonlfo2HzEnable",
+      "occurrences": 640,
+      "publicUnits": "off/on; exact callback threshold must match original"
+    },
+    {
+      "id": 197,
+      "identifier": "neonlfo3HzEnable",
+      "occurrences": 640,
+      "publicUnits": "off/on; exact callback threshold must match original"
+    }
+  ],
+  "originalBankArchive": {
+    "sha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+    "banks": 12,
+    "programs": 640,
+    "rateModeRecords": 3840,
+    "recordKeys": [
+      "identifier",
+      "value"
+    ],
+    "distinctRawRates": [
+      288,
+      382,
+      333
+    ],
+    "distinctRawModes": [
+      2,
+      2,
+      2
+    ]
+  },
+  "reference": {
+    "version": "0.999.8",
+    "build": 9,
+    "auExecutableSha256": "a5243e50bda6bd44f463c6e63ea3137802142f55f3c1ea25a5a6e046acba81a1",
+    "englishLocalizationKeys": 1181,
+    "qualifyingFieldSpecificTempoLabelTableInLocalization": false,
+    "knownCountFromPriorPageAudit": 18,
+    "isolatedComparisonEndpointsAt120BpmHz": [
+      0.0625,
+      32
+    ],
+    "priorMillionCaseLfoIndexScope": "256-sample oscillator phase index, distinct from tempo selection",
+    "referenceImplementationIsOriginalFormatter": false
+  },
+  "missing": "An authenticated field-specific formatter or captured display strings from the original build-9 AU for all 18 divisions of rate IDs 88, 96 and 100. Period measurements resolve duration and ordering; multiple strings can name any one duration.",
+  "immediatelyActionableNamedRemoteMapping": false,
+  "existingRemoteProjection": "The Remote displays the binary32 Hz value to three decimal places or the selected period in quarter-note beats. The figures near 12 and 24 beats are marked approximate.",
+  "currentRemoteHead": "242f0189af17d7c48b3b7274dea064a84dbc6664",
+  "currentSoundBenchHead": "49662e4d437421e686a6cc04b806cd0d700bab74",
+  "linuxControlReference": {
+    "source": "https://github.com/gobbajogger/DnBOX/tree/74b50bdfe2e1d9ac7f22445cdf5ab3726bb85272/experiments/superj6-conductor-source-20261115",
+    "lfoLawsGitBlob": "7c9b13697fe4a8c0c5f7ff046a2ff2854bc0665f",
+    "consumerGitBlob": "866cf1397f91893f31fd4a29f327b35bc902e730",
+    "scope": "Reconstructed control waveform. Compiled lfo_rate, lfo_phase, lfo_index and shape_table_sample on Linux. The original AU executable and its display formatter did not run in this check.",
+    "method": "Binary search over contiguous nonnegative binary32 words on [0,1] found 18 rate ranges. At each endpoint the six Remote LFO rate fields produced the same label. Sampled falling edges of the reconstructed square LFO at 48000 frames/s for three clock rates. The two observed complete periods at each clock matched 48000 / reference frequency within one frame.",
+    "ratesBpm": [
+      93,
+      120,
+      137
+    ],
+    "boundaries": 17,
+    "remoteReadoutsChecked": 216,
+    "completePeriodsMeasured": 108,
+    "checks": "node --test tests/product-workspace/superj6.test.mjs tests/product-workspace/superj6-banks.test.mjs",
+    "unitResults": [
+      {
+        "revision": "944e99d87125e60aff9e3020ead7212fb47687d6",
+        "passed": 6
+      },
+      {
+        "revision": "242f0189af17d7c48b3b7274dea064a84dbc6664",
+        "passed": 9
+      }
+    ],
+    "ratesAt120Bpm": [
+      {
+        "startInclusiveFloat32": "00000000",
+        "endInclusiveFloat32": "3cf0f110",
+        "remoteReadout": "32 beats",
+        "measuredPeriodFrames": [
+          768000,
+          768000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3cf0f111",
+        "endInclusiveFloat32": "3db4b4bb",
+        "remoteReadout": "≈24 beats",
+        "measuredPeriodFrames": [
+          575885,
+          575885
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3db4b4bc",
+        "endInclusiveFloat32": "3e16969a",
+        "remoteReadout": "16 beats",
+        "measuredPeriodFrames": [
+          384000,
+          384000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3e16969b",
+        "endInclusiveFloat32": "3e52d2d5",
+        "remoteReadout": "≈12 beats",
+        "measuredPeriodFrames": [
+          288029,
+          288029
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3e52d2d6",
+        "endInclusiveFloat32": "3e878789",
+        "remoteReadout": "8 beats",
+        "measuredPeriodFrames": [
+          192000,
+          192000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3e87878a",
+        "endInclusiveFloat32": "3ea5a5a6",
+        "remoteReadout": "4 beats",
+        "measuredPeriodFrames": [
+          96000,
+          96000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3ea5a5a7",
+        "endInclusiveFloat32": "3ec3c3c5",
+        "remoteReadout": "8/3 beats",
+        "measuredPeriodFrames": [
+          64000,
+          64000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3ec3c3c6",
+        "endInclusiveFloat32": "3ee1e1e2",
+        "remoteReadout": "2 beats",
+        "measuredPeriodFrames": [
+          48000,
+          48000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3ee1e1e3",
+        "endInclusiveFloat32": "3f000000",
+        "remoteReadout": "4/3 beats",
+        "measuredPeriodFrames": [
+          32000,
+          32000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f000001",
+        "endInclusiveFloat32": "3f0f0f0f",
+        "remoteReadout": "1 beat",
+        "measuredPeriodFrames": [
+          24000,
+          24000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f0f0f10",
+        "endInclusiveFloat32": "3f1e1e1e",
+        "remoteReadout": "2/3 beat",
+        "measuredPeriodFrames": [
+          16000,
+          16000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f1e1e1f",
+        "endInclusiveFloat32": "3f2d2d2d",
+        "remoteReadout": "1/2 beat",
+        "measuredPeriodFrames": [
+          12000,
+          12000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f2d2d2e",
+        "endInclusiveFloat32": "3f3c3c3c",
+        "remoteReadout": "1/3 beat",
+        "measuredPeriodFrames": [
+          8000,
+          8000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f3c3c3d",
+        "endInclusiveFloat32": "3f4b4b4b",
+        "remoteReadout": "1/4 beat",
+        "measuredPeriodFrames": [
+          6000,
+          6000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f4b4b4c",
+        "endInclusiveFloat32": "3f5a5a5a",
+        "remoteReadout": "1/6 beat",
+        "measuredPeriodFrames": [
+          4000,
+          4000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f5a5a5b",
+        "endInclusiveFloat32": "3f696969",
+        "remoteReadout": "1/8 beat",
+        "measuredPeriodFrames": [
+          3000,
+          3000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f69696a",
+        "endInclusiveFloat32": "3f787878",
+        "remoteReadout": "1/12 beat",
+        "measuredPeriodFrames": [
+          2000,
+          2000
+        ]
+      },
+      {
+        "startInclusiveFloat32": "3f787879",
+        "endInclusiveFloat32": "3f800000",
+        "remoteReadout": "1/16 beat",
+        "measuredPeriodFrames": [
+          1500,
+          1500
+        ]
+      }
+    ]
+  },
+  "originalLinuxBench": {
+    "url": "https://github.com/gobbajogger/DnBOX/tree/49662e4d437421e686a6cc04b806cd0d700bab74/experiments/sound-hardware-v1/sj6-factory/original",
+    "inputs": "The checked private AU extension and Linux bounded reference bench supply the executable and runner. The published original replay script also reads the matrix archive for its Mach-O parser. J6presets.zip is not an input to these component checks.",
+    "availableRecordedCases": "Five stereo chorus recordings, one CoreSynth note and one CoreSampler note; no tempo-name readbacks."
+  }
+}

@@ -1,0 +1,30 @@
+{
+ "summary": {
+  "screens": 3,
+  "pass": 2,
+  "fail": 0,
+  "no_baseline": 1,
+  "baseline_written": 0,
+  "header_fail": 0,
+  "page_errors": 0
+ },
+ "results": [
+  [
+   "grid-continuity-1024x640",
+   "PASS",
+   512
+  ],
+  [
+   "header-ssim-1024x640",
+   "PASS",
+   0.905927401190831
+  ],
+  [
+   "remote-sequence-1024x640",
+   "NOBASE",
+   0.0
+  ]
+ ],
+ "header_fails": [],
+ "errors": []
+}

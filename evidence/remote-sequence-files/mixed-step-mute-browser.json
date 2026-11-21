@@ -1,0 +1,12 @@
+{
+  "originalBytes": 2670390,
+  "inputSha256": "7086a6e6c873699174bab7bbb6b502950ca97a6442ed1ed23bd88514692fa172",
+  "initialExact": true,
+  "normalGateField": "Tie\u2192Note",
+  "endpoint": "15/15\u2192Legacy",
+  "neighbourDomainsExact": true,
+  "UndoRedo": true,
+  "saveReopenExact": true,
+  "programs": 640,
+  "edits": 11720
+}

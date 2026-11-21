@@ -1,0 +1,177 @@
+browser: Playwright bundled Chromium (normal sandbox)
+DNBOX-GATE repo=nightly lane=remote sha=944e99d87125e60aff9e3020ead7212fb47687d6 started=20261121-2336 (UTC+10)
+== clean-tree
+[PASS] clean-tree
+== setup
+[PASS] setup
+== fetch-base
+SKIP fetch of origin/integration/dnbox-consolidated: offline default (set DNBOX_GATE_ONLINE=1 to fetch)
+[SKIP] fetch-base
+== no-loss
+using BASE=origin/integration/dnbox-consolidated
+[PASS] no-loss
+== limits
+using BASE=origin/integration/dnbox-consolidated
+[PASS] limits
+== build
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> x0x37-nightly-installer-preview@0.0.0-dev build
+> node scripts/build-preview.mjs && npm run build:product
+
+BUILD PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> x0x37-nightly-installer-preview@0.0.0-dev build:product
+> node scripts/build-product-site.mjs
+
+{"files":302,"output":"/workspace/scratch/9e49eae90574/nightly/.output/product-site","emulator":true,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+[PASS] build
+== unit-tests
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> x0x37-nightly-installer-preview@0.0.0-dev test
+> python3 tests/browser-sandbox-gate-test.py && python3 tests/browser-sandbox-contract.py && node scripts/build-preview.mjs --check && node tests/nightly-preview.test.mjs && node tests/manual-help-links.test.mjs && node tests/installer-scan-order.test.mjs && node tests/controller-padding.test.mjs && node tests/bundled-controller.test.mjs && node tests/installer-download-admission.test.mjs && node --test tests/installer-download-deadline.test.mjs && node tests/qualified-catalog.test.mjs && npm run catalog:check && node tests/build-status-negatives.test.mjs && node tests/build-history-continuity.test.mjs && node tests/installer-write-boundaries.test.mjs && node tests/installer-write-lock.test.mjs && node tests/installer-qualified-selection.test.mjs && node web/test_midi_port_pairing.mjs && node web/test_projects.mjs && node web/test_projects_page.mjs && npm run test:edge && node web/test_breaks_page.mjs && npm run test:product && npm run test:workspace && npm run test:remote && npm run test:sample-discovery && npm run test:presets && npm run test:origin && npm run test:visual
+
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.050s
+
+OK
+browser sandbox contract: launches=34 negative_controls=10 findings=0
+CHECK PASS — self-contained nightly installer, samples, projects and empty catalog; no firmware files
+PASS: generated scripts, accessibility, safeguards, empty firmware catalog, site links
+PASS: Nightly versus production gates, history read-only and renderer syntax
+PASS: four source/generated help destinations and no nonexistent local-manual fragments
+PASS stale not-found scan cannot replace new connected result
+PASS stale disconnect error cannot replace new connected result
+PASS older Elite scan cannot overwrite newer Pro selection
+PASS in-flight scan does not disturb active flashing status
+PASS latest error, not-found and OTA result still work
+PASS scan-race regression (5 scenarios; production function, simulated MIDI)
+PASS: controller-image non-erased tail rejected, erased bytes retained, CRC/bounds guarded
+PASS bundled-controller: 62 actual parser, composition, renderer, qualification and denial assertions; synthetic Elite/Pro only
+PASS: 58 admission cases, including all six independent audit negatives
+✔ ../web/x0x_installer.html: stalled headers stops without enabling Install (35.782319ms)
+✔ ../web/x0x_installer.html: stalled body stops without enabling Install (13.895032ms)
+✔ ../web/x0x_installer.html: late digest cannot admit expired bytes (7.243078ms)
+✔ ../web/x0x_installer.html: canceled old selection cannot report timeout over the new selection (3.937481ms)
+✔ ../web/x0x_installer.html: prompt valid response retained and deadline cleaned (7.966007ms)
+✔ ../web/x0x_installer.html: bundled controller resolve after expiry cannot change the timeout state (15.231965ms)
+✔ ../web/x0x_installer.html: stale bundled controller resolve leaves the pending replacement alone (19.064408ms)
+✔ ../web/x0x_installer.html: stale bundled controller resolve leaves the verified replacement alone (10.491116ms)
+✔ ../web/x0x_installer.html: bundled controller reject after expiry cannot change the timeout state (14.599472ms)
+✔ ../web/x0x_installer.html: stale bundled controller reject leaves the pending replacement alone (8.926383ms)
+✔ ../web/x0x_installer.html: stale bundled controller reject leaves the verified replacement alone (8.664452ms)
+✔ ../web/x0x_installer.html: timely bundled controller verification admits the package after acknowledgment (9.519537ms)
+✔ ../web/product-site/install/index.html: stalled headers stops without enabling Install (16.964202ms)
+✔ ../web/product-site/install/index.html: stalled body stops without enabling Install (7.92799ms)
+✔ ../web/product-site/install/index.html: late digest cannot admit expired bytes (9.712939ms)
+✔ ../web/product-site/install/index.html: canceled old selection cannot report timeout over the new selection (11.046994ms)
+✔ ../web/product-site/install/index.html: prompt valid response retained and deadline cleaned (13.709583ms)
+✔ ../web/product-site/install/index.html: bundled controller resolve after expiry cannot change the timeout state (5.603928ms)
+✔ ../web/product-site/install/index.html: stale bundled controller resolve leaves the pending replacement alone (6.174689ms)
+✔ ../web/product-site/install/index.html: stale bundled controller resolve leaves the verified replacement alone (14.033496ms)
+✔ ../web/product-site/install/index.html: bundled controller reject after expiry cannot change the timeout state (10.245587ms)
+✔ ../web/product-site/install/index.html: stale bundled controller reject leaves the pending replacement alone (6.872779ms)
+✔ ../web/product-site/install/index.html: stale bundled controller reject leaves the verified replacement alone (6.400003ms)
+✔ ../web/product-site/install/index.html: timely bundled controller verification admits the package after acknowledgment (7.908512ms)
+✔ ../docs/install/index.html: stalled headers stops without enabling Install (12.844497ms)
+✔ ../docs/install/index.html: stalled body stops without enabling Install (84.10684ms)
+✔ ../docs/install/index.html: late digest cannot admit expired bytes (9.801771ms)
+✔ ../docs/install/index.html: canceled old selection cannot report timeout over the new selection (38.639928ms)
+✔ ../docs/install/index.html: prompt valid response retained and deadline cleaned (3.952432ms)
+✔ ../docs/install/index.html: bundled controller resolve after expiry cannot change the timeout state (6.22206ms)
+✔ ../docs/install/index.html: stale bundled controller resolve leaves the pending replacement alone (7.291153ms)
+✔ ../docs/install/index.html: stale bundled controller resolve leaves the verified replacement alone (8.771586ms)
+✔ ../docs/install/index.html: bundled controller reject after expiry cannot change the timeout state (11.856539ms)
+✔ ../docs/install/index.html: stale bundled controller reject leaves the pending replacement alone (14.000533ms)
+✔ ../docs/install/index.html: stale bundled controller reject leaves the verified replacement alone (48.311433ms)
+✔ ../docs/install/index.html: timely bundled controller verification admits the package after acknowledgment (19.589837ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1137.980531
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: genuine nested outside output remains valid
+
+null !== 0
+
+    at file:///workspace/scratch/9e49eae90574/nightly/tests/qualified-catalog.test.mjs:221:10
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: null,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.3
+[FAIL] unit-tests
+== browser-tests
+browser sandbox contract: launches=34 negative_controls=10 findings=0
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> x0x37-nightly-installer-preview@0.0.0-dev test:browser
+> python3 tests/browser-sandbox-contract.py && python3 tests/product-remote/funkybeats-browser.py && python3 tests/product-remote/mix-family-browser.py && python3 tests/browser-admission.py && python3 tests/history-response.py && python3 tests/bundled-browser.py && python3 tests/workspace-browser.py && python3 tests/presentation-browser.py && python3 tests/project-workspace-browser.py && python3 tests/product-remote/firmware-browser.py && python3 tests/product-remote/envelope-browser.py && python3 tests/product-remote/native-mix-browser.py && python3 tests/product-remote/native-master-output.py && python3 tests/product-remote/glyph-domain-browser.py && python3 tests/installer-deadline-browser.py && python3 tests/presets-browser.py && python3 tests/manual-browser.py && python3 tests/product-workspace/recovery-browser.py && python3 tests/product-remote/native-sound-browser.py && python3 tests/product-remote/r22-panels-browser.py && python3 tests/product-remote/drum-controls-browser.py && python3 tests/product-remote/song-browser.py && python3 tests/product-remote/playing-browser.py && python3 tests/product-remote/motion-composition-browser.py && python3 tests/product-remote/composition-browser.py && python3 tests/product-remote/master-more-browser.py && python3 tests/product-remote/navigation-state-browser.py && python3 tests/product-remote/source-banks-browser.py && python3 tests/product-remote/landscape-browser.py && python3 tests/emulator-lcd-browser.py && python3 tests/admin-browser.py && python3 tests/firmware-reference-browser.py
+
+browser sandbox contract: launches=34 negative_controls=10 findings=0
+{"files":302,"output":"/workspace/scratch/9e49eae90574/nightly/.output/funkybeats-browser-_nfmhbin","emulator":true,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+Traceback (most recent call last):
+  File "/workspace/scratch/9e49eae90574/nightly/tests/product-remote/funkybeats-browser.py", line 1019, in <module>
+    asyncio.run(main())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9e49eae90574/nightly/tests/product-remote/funkybeats-browser.py", line 1016, in main
+    await browser_cases()
+  File "/workspace/scratch/9e49eae90574/nightly/tests/product-remote/funkybeats-browser.py", line 1001, in browser_cases
+    await case(page)
+  File "/workspace/scratch/9e49eae90574/nightly/tests/product-remote/funkybeats-browser.py", line 981, in discard_draft
+    await review_discard(page,draft_state,load_draft)
+  File "/workspace/scratch/9e49eae90574/nightly/tests/product-remote/discard_draft_journey.py", line 80, in exercise
+    initial = await save(page)
+              ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9e49eae90574/nightly/tests/product-remote/funkybeats-browser.py", line 413, in draft_state
+    if not await menu.evaluate('e=>e.open'):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 18104, in evaluate
+    await self._impl_obj.evaluate(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 195, in evaluate
+    return await self._with_element(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 114, in _with_element
+    handle = await self.element_handle(timeout=timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 325, in element_handle
+    handle = await self._frame.wait_for_selector(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 394, in wait_for_selector
+    await self._channel.send(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.evaluate: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator(".overflow")
+
+[FAIL] browser-tests
+DNBOX-GATE RESULT FAIL sha=944e99d87125e60aff9e3020ead7212fb47687d6 lane=remote log=build/dnbox-gate/944e99d8-20261121-2336.log

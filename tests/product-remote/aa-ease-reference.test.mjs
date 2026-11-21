@@ -15,7 +15,8 @@ test('vendored Wu/px_blend coverage buffers are identical to the reference',()=>
 });
 test('live glyphs use the reference painter for its four kinds',()=>{
  assert.equal(referenceKind('G023','chicago'),'chicago-wave');
- assert.equal(referenceKind('WAVE','miami'),'juno-wave');
+ assert.equal(referenceKind('WAVE','juno'),'juno-wave');
+ assert.equal(referenceKind('WAVE','miami'),null);
  assert.equal(referenceKind('G026','miami'),'juno-width');
  assert.equal(referenceKind('DECAY','drum909'),'909-bd-decay');
  const w=102,h=26,a=face(w,h),b=face(w,h);paintPixels(a,w,h,'G023',64/127,'chicago');

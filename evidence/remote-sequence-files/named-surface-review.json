@@ -1,0 +1,545 @@
+{
+  "kind": "Independent review of four named changes in the pending working tree",
+  "baseline": "cc53d936c178f33e6c5890c108f798a10bc98149",
+  "parentAtCapture": "1767bd8f828884d1b06da9b2b4eee7ba2d71e84a",
+  "pendingProductsSha256": {
+    "app.mjs": "fe0390306e7e1b74d76c31bbfee33060a53c8adb759f5b20f48bf2c661d32704",
+    "style.css": "1a4163ef1117d58f4d2cffac98fe85739759609a53bb97f8e42ef15193acb7fc",
+    "song-view.mjs": "cece58447a4b4c53521f835a11b6407699fa7a4f2585afba82265bcade72478e",
+    "synth-one-wave.mjs": "e8c3852f18364b01c191071aa0ff3ded8bb90a6415615b859fbf0269ec635061",
+    "synth-one-files.mjs": "dd8a7a6fe80058a9f292b6cfb8e37925fb0a2cc8e2357f7bfa15ff91c67bdaa2",
+    "synth-one-files.css": "2100256691982be1db8932187540e517e85a462d681b21b89ff147d387db8061",
+    "superj6.mjs": "429fd2c9e2de54745865ff159ebb4d6c29fe6564e9c59f2ff21c19c098049b6a"
+  },
+  "ownerReferenceSha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+  "ownerReferencePages": [
+    5,
+    10,
+    12,
+    20
+  ],
+  "method": "Visual inspection of captured before/after states, original-source comparisons, control inventory and interaction tests. Two points per criterion, recorded per viewport; a score covers the named changes only. No pixel-approved full page or whole-lane score.",
+  "screensCompared": 24,
+  "matrixEvidenceSha256": "7b7213922a9242fb784cf6ca06920380e26bdb12999f8eacfc3f9d3415a6c4ef",
+  "pages": {
+    "Projects": {
+      "criteria": [
+        "Three distinct task cards follow the reference",
+        "Backup and original presets use distinct labels and actions",
+        "DAW range control and guide act as labeled",
+        "Original Draft bytes survive tool visits and invalid reopening",
+        "All visible controls fit or scroll into view and hit-testing succeeds"
+      ],
+      "support": {
+        "projects.log": "cb8eeea56a2c5112e67ee4a460e336ef16effe9964bdd766feb40116b3b8cbcb"
+      },
+      "viewports": {
+        "1440x900": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 27,
+          "before": {
+            "reachable": 23,
+            "controlCount": 23,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "cards": [
+              "Projects",
+              "Samples",
+              "Presets",
+              "MIDI exchange"
+            ]
+          },
+          "after": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "cards": [
+              "Project backup",
+              "Original presets",
+              "MIDI for a DAW"
+            ]
+          },
+          "beforeImageSha256": "da7864f14e98d91291dc6d8f850faaf4ce02e90a222a0c8f2c1a1857f235d1e1",
+          "afterImageSha256": "a75e7dd8c08f4981a435ac0b00b021be967e29a88e17f1fccb606929d8036e9a"
+        },
+        "844x390": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 27,
+          "before": {
+            "reachable": 23,
+            "controlCount": 23,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "cards": [
+              "Projects",
+              "Samples",
+              "Presets",
+              "MIDI exchange"
+            ]
+          },
+          "after": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "cards": [
+              "Project backup",
+              "Original presets",
+              "MIDI for a DAW"
+            ]
+          },
+          "beforeImageSha256": "5a3eb5228654e301b9258724c538be8499872500090aa6610267de6a8f2d616d",
+          "afterImageSha256": "b77153e031e0c75773a6f7875193a97b0f413bf8267fed0dfb8a170d98547190"
+        },
+        "390x844": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 27,
+          "before": {
+            "reachable": 23,
+            "controlCount": 23,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "cards": [
+              "Projects",
+              "Samples",
+              "Presets",
+              "MIDI exchange"
+            ]
+          },
+          "after": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "cards": [
+              "Project backup",
+              "Original presets",
+              "MIDI for a DAW"
+            ]
+          },
+          "beforeImageSha256": "2c675beea41096b3005ece6c52871bb1b6beac39ecee45b29f05b4142dbb5a94",
+          "afterImageSha256": "d4d70f390b99540590f63554b688a66249a9dd629df1c244b9c04bcb25a187c4"
+        }
+      }
+    },
+    "Song": {
+      "criteria": [
+        "Five switches per seeded row match original track order",
+        "On/off and selected row remain legible",
+        "Touch targets are at least 44 \u00d7 44",
+        "All 32 mask values and eight repeat counts match original C read/write semantics",
+        "Control hit-testing, focus and overflow checks pass"
+      ],
+      "support": {
+        "song-source.log": "a96e1e2bfed4a22a9973b5489eff4d4a15698f59ca3c872edcd49abf4b4e1f13",
+        "../song-proof/browser.json": "113d03c32600f7295095316537e982dae1194f8f9986259b66985b1869ac630d"
+      },
+      "viewports": {
+        "1440x900": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 46,
+          "before": {
+            "reachable": 34,
+            "controlCount": 34,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "switches": 0
+          },
+          "after": {
+            "reachable": 46,
+            "controlCount": 46,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "switches": 10,
+            "switchWidthHeight": [
+              44,
+              44
+            ]
+          },
+          "beforeImageSha256": "f312725951d9e16ece8c5257d7862cef7a71b325d19b43eb10a2d233223cc916",
+          "afterImageSha256": "66b6aa1a76d4304c1f67d26d6bae115e67e6943a995a60a74d05710a5683b6d7"
+        },
+        "844x390": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 46,
+          "before": {
+            "reachable": 34,
+            "controlCount": 34,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "switches": 0
+          },
+          "after": {
+            "reachable": 46,
+            "controlCount": 46,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "switches": 10,
+            "switchWidthHeight": [
+              44,
+              44
+            ]
+          },
+          "beforeImageSha256": "2aef1105cd717b5cd8a2ff066987c7ad28dbc508bd6c1a2b02fabd09d17742a2",
+          "afterImageSha256": "f8c783be295465b7a151669ecb93ac3403e9c447cb37753292e1caa91dd77574"
+        },
+        "390x844": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 46,
+          "before": {
+            "reachable": 34,
+            "controlCount": 34,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "switches": 0
+          },
+          "after": {
+            "reachable": 46,
+            "controlCount": 46,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "switches": 10,
+            "switchWidthHeight": [
+              44,
+              44
+            ]
+          },
+          "beforeImageSha256": "bcd23b1fa476dd1ecd7c97fadfbdad420e1f8ead97a2dc2060ab135c5b8f2859",
+          "afterImageSha256": "99f16b2fae076dad75cb33d11f02f0be71e6b26af8c0fedcadc1a2086beab2ca"
+        }
+      }
+    },
+    "Synth One": {
+      "criteria": [
+        "Labels match original triangle, square, narrow pulse and saw tables",
+        "A midpoint blend depicts the original interpolation",
+        "Raw values outside the original domain remain visible without a glyph",
+        "Original file bytes survive no-op editing and both file owners remain distinct",
+        "Touch controls, labels and glyphs remain reachable in the file editor"
+      ],
+      "support": {
+        "wave-source.json": "849ff30968f120ec1cdcb7388b48ce88150fa022743eff44f47fd289ce218454",
+        "out-of-domain.json": "76df8b80d176706177a74324e2de1d1946ef16d7de6cb45a9a485acd241690b4"
+      },
+      "viewports": {
+        "1440x900": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 27,
+          "before": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "shapes": [
+              [
+                "0",
+                "Morph",
+                1
+              ],
+              [
+                "50",
+                "Morph",
+                1
+              ],
+              [
+                "100",
+                "Morph",
+                1
+              ]
+            ]
+          },
+          "after": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "shapes": [
+              [
+                "0",
+                "Wave \u00b7 Triangle",
+                1
+              ],
+              [
+                "50",
+                "Wave \u00b7 Square \u2194 Narrow pulse",
+                1
+              ],
+              [
+                "100",
+                "Wave \u00b7 Saw",
+                1
+              ]
+            ]
+          },
+          "beforeImageSha256": "089e566dca8415bd13b24e168a8906ff3ba17ce22b112889b17cbfc0708319bb",
+          "afterImageSha256": "024b7e717a3f999e17661178b926ec0317ef94fb29356c36a2f8a1e006be2744"
+        },
+        "844x390": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 27,
+          "before": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "shapes": [
+              [
+                "0",
+                "Morph",
+                1
+              ],
+              [
+                "50",
+                "Morph",
+                1
+              ],
+              [
+                "100",
+                "Morph",
+                1
+              ]
+            ]
+          },
+          "after": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "shapes": [
+              [
+                "0",
+                "Wave \u00b7 Triangle",
+                1
+              ],
+              [
+                "50",
+                "Wave \u00b7 Square \u2194 Narrow pulse",
+                1
+              ],
+              [
+                "100",
+                "Wave \u00b7 Saw",
+                1
+              ]
+            ]
+          },
+          "beforeImageSha256": "123f13131820a9cd8877e499aac0827c11f29171cc65ce5b7616d67bcd5c555d",
+          "afterImageSha256": "bf2534ffcd27c55ea2ac8d5f00a64fa61fbaafe9b71080bfef5c25ceaeac6b02"
+        },
+        "390x844": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 27,
+          "before": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "shapes": [
+              [
+                "0",
+                "Morph",
+                1
+              ],
+              [
+                "50",
+                "Morph",
+                1
+              ],
+              [
+                "100",
+                "Morph",
+                1
+              ]
+            ]
+          },
+          "after": {
+            "reachable": 27,
+            "controlCount": 27,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "shapes": [
+              [
+                "0",
+                "Wave \u00b7 Triangle",
+                1
+              ],
+              [
+                "50",
+                "Wave \u00b7 Square \u2194 Narrow pulse",
+                1
+              ],
+              [
+                "100",
+                "Wave \u00b7 Saw",
+                1
+              ]
+            ]
+          },
+          "beforeImageSha256": "9922aacf0f7f90bb17d0eedd917c85dbff6240b3d7c3b6fa27d1d8ab274f66de",
+          "afterImageSha256": "5a375d6473ee40c94e97bce831957e789f74e599821ac103f6c071396668028b"
+        }
+      }
+    },
+    "SuperJ6": {
+      "criteria": [
+        "The original bank copy action is distinct from the workspace Draft",
+        "Built-in and genuine imported bank actions are reachable with 44 px target height",
+        "All 13 available parameters remain reachable and absent original fields are identified",
+        "Both owners, per-program edits and Undo/Redo preserve the original and neighboring programs",
+        "No-op downloads preserve original bytes and reattachment requires the original digest"
+      ],
+      "support": {
+        "sj6.log": "ab28ec2046d8031d9dfd38a749ee7031aaa5a7060c5d5ec74c033d73c7080515",
+        "sj6-1767.json": "5815f195abf443b0c5a7617629c38b5beca51898bdabc61e6c01aa97d0662df6"
+      },
+      "viewports": {
+        "1440x900": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 34,
+          "before": {
+            "reachable": 32,
+            "controlCount": 32,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "copy": 0
+          },
+          "after": {
+            "reachable": 34,
+            "controlCount": 34,
+            "body": [
+              1440,
+              1440,
+              900
+            ],
+            "copy": 1
+          },
+          "beforeImageSha256": "60736432752a8fb66f86d4eb4b28553235382980f9855d687f8be72ebf846865",
+          "afterImageSha256": "dfc11de05aa8fe52f2eff03b317bf30fd43bb3597f6751f17b5e21105096c897"
+        },
+        "844x390": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 34,
+          "before": {
+            "reachable": 32,
+            "controlCount": 32,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "copy": 0
+          },
+          "after": {
+            "reachable": 34,
+            "controlCount": 34,
+            "body": [
+              844,
+              844,
+              390
+            ],
+            "copy": 1
+          },
+          "beforeImageSha256": "56804cc187aa53fce4df0069fe852ed92ed43a054e4e695416699639234caaf6",
+          "afterImageSha256": "8c77b5ad2be7980cb411df6fa0598d4fd2b83548216a695d2b8a189b708c6043"
+        },
+        "390x844": {
+          "score": 10,
+          "max": 10,
+          "reachableControls": 34,
+          "before": {
+            "reachable": 32,
+            "controlCount": 32,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "copy": 0
+          },
+          "after": {
+            "reachable": 34,
+            "controlCount": 34,
+            "body": [
+              390,
+              390,
+              844
+            ],
+            "copy": 1
+          },
+          "beforeImageSha256": "130f646ddddda2d673eab10d47264d7548aa3be9670d5fb5c0b7f0d8020f32d5",
+          "afterImageSha256": "31dea542c58488e9be5e893c468a92888200b36b330e35f9b4fa1830384bc631"
+        }
+      }
+    }
+  },
+  "remaining": "Qualifies only four named touched surfaces. Complete hardware/live behavior, reference-page parity and independent exact-head full-gate results require their own evidence."
+}

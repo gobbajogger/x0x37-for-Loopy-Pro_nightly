@@ -1,0 +1,313 @@
+{
+  "kits": {
+    "909": {
+      "wholeVisibleAtOpen": 33,
+      "fullTabTargets": 176,
+      "reverseTabs": 16,
+      "kitActions": 4,
+      "physicalWheelAxes": 2,
+      "rightEdgeTapAndUndo": true,
+      "sourceFrames": 11,
+      "frameValuesExercised": 5120,
+      "sideInspectorEditUndoRedo": true
+    },
+    "808": {
+      "wholeVisibleAtOpen": 33,
+      "fullTabTargets": 176,
+      "reverseTabs": 16,
+      "kitActions": 4,
+      "physicalWheelAxes": 2,
+      "rightEdgeTapAndUndo": true,
+      "sourceFrames": 11,
+      "frameValuesExercised": 4874,
+      "sideInspectorEditUndoRedo": true
+    }
+  },
+  "geometry": {
+    "909": {
+      "original": {
+        "wholeCount": 27,
+        "notes": [
+          "36",
+          "38",
+          "41"
+        ],
+        "steps": [
+          "0",
+          "5513",
+          "11025",
+          "16538",
+          "22050",
+          "27563",
+          "33075",
+          "38588",
+          "44100"
+        ],
+        "cell": {
+          "x": 77,
+          "y": 152.59375,
+          "width": 40,
+          "height": 40,
+          "top": 152.59375,
+          "right": 117,
+          "bottom": 192.59375,
+          "left": 77
+        },
+        "panel": {
+          "x": 492,
+          "y": 125.59375,
+          "width": 340,
+          "height": 256.40625,
+          "top": 125.59375,
+          "right": 832,
+          "bottom": 382,
+          "left": 492
+        },
+        "gridClip": [
+          12,
+          149.59375,
+          480,
+          286
+        ],
+        "bodyOverflow": 0
+      },
+      "candidate": {
+        "wholeCount": 33,
+        "notes": [
+          "36",
+          "38",
+          "41"
+        ],
+        "steps": [
+          "0",
+          "5513",
+          "11025",
+          "16538",
+          "22050",
+          "27563",
+          "33075",
+          "38588",
+          "44100",
+          "49613",
+          "55125"
+        ],
+        "cell": {
+          "x": 75,
+          "y": 152.59375,
+          "width": 40,
+          "height": 40,
+          "top": 152.59375,
+          "right": 115,
+          "bottom": 192.59375,
+          "left": 75
+        },
+        "panel": {
+          "x": 552,
+          "y": 125.59375,
+          "width": 280,
+          "height": 256.40625,
+          "top": 125.59375,
+          "right": 832,
+          "bottom": 382,
+          "left": 552
+        },
+        "gridClip": [
+          12,
+          149.59375,
+          540,
+          286
+        ],
+        "bodyOverflow": 0
+      },
+      "resize": [
+        [
+          740,
+          8,
+          280
+        ],
+        [
+          844,
+          11,
+          280
+        ],
+        [
+          900,
+          12,
+          280
+        ],
+        [
+          901,
+          12,
+          280
+        ],
+        [
+          1000,
+          14,
+          280
+        ],
+        [
+          1024,
+          15,
+          280
+        ],
+        [
+          1100,
+          16,
+          336
+        ],
+        [
+          1200,
+          16,
+          340
+        ]
+      ]
+    },
+    "808": {
+      "original": {
+        "wholeCount": 27,
+        "notes": [
+          "36",
+          "38",
+          "41"
+        ],
+        "steps": [
+          "0",
+          "5513",
+          "11025",
+          "16538",
+          "22050",
+          "27563",
+          "33075",
+          "38588",
+          "44100"
+        ],
+        "cell": {
+          "x": 77,
+          "y": 152.59375,
+          "width": 40,
+          "height": 40,
+          "top": 152.59375,
+          "right": 117,
+          "bottom": 192.59375,
+          "left": 77
+        },
+        "panel": {
+          "x": 492,
+          "y": 125.59375,
+          "width": 340,
+          "height": 256.40625,
+          "top": 125.59375,
+          "right": 832,
+          "bottom": 382,
+          "left": 492
+        },
+        "gridClip": [
+          12,
+          149.59375,
+          480,
+          286
+        ],
+        "bodyOverflow": 0
+      },
+      "candidate": {
+        "wholeCount": 33,
+        "notes": [
+          "36",
+          "38",
+          "41"
+        ],
+        "steps": [
+          "0",
+          "5513",
+          "11025",
+          "16538",
+          "22050",
+          "27563",
+          "33075",
+          "38588",
+          "44100",
+          "49613",
+          "55125"
+        ],
+        "cell": {
+          "x": 75,
+          "y": 152.59375,
+          "width": 40,
+          "height": 40,
+          "top": 152.59375,
+          "right": 115,
+          "bottom": 192.59375,
+          "left": 75
+        },
+        "panel": {
+          "x": 552,
+          "y": 125.59375,
+          "width": 280,
+          "height": 256.40625,
+          "top": 125.59375,
+          "right": 832,
+          "bottom": 382,
+          "left": 552
+        },
+        "gridClip": [
+          12,
+          149.59375,
+          540,
+          286
+        ],
+        "bodyOverflow": 0
+      },
+      "resize": [
+        [
+          740,
+          8,
+          280
+        ],
+        [
+          844,
+          11,
+          280
+        ],
+        [
+          900,
+          12,
+          280
+        ],
+        [
+          901,
+          12,
+          280
+        ],
+        [
+          1000,
+          14,
+          280
+        ],
+        [
+          1024,
+          15,
+          280
+        ],
+        [
+          1100,
+          16,
+          336
+        ],
+        [
+          1200,
+          16,
+          340
+        ]
+      ]
+    }
+  },
+  "pageErrors": [],
+  "baseSHA": "08fd065316c2234b77f9cac2050414dc18b54cb7",
+  "candidateSHA": "7bc9b1a9840ff47ec49d098ed563a9c6f463d5cd",
+  "candidateBlobs": {
+    "web/product-site/remote/style.css": "1cf62210b8570103e9796ae139cbf943907c3947",
+    "tests/product-remote/drum_navigation_journey.py": "9188e697f7ec209ff665f8e29a7722cca70a2152",
+    "web/product-site/SOURCE-MANIFEST.json": "70b0d6b7c150902fc0433c6c1f9dc19bc7384e96"
+  },
+  "chromium": "151.0.7922.34"
+}

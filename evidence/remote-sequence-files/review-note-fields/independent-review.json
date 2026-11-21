@@ -1,0 +1,51 @@
+{
+  "scope": "Owner PDF page 13 field-level before/after readout for a local 909 note Pan and Pitch offset in Draft Review",
+  "verdict": "PASS",
+  "parent": "982deaf7b9cc6bbcf71db4d232e4c354e98d67d3",
+  "patchSha256": "6fa46708ec84b8e79acaac49a3cd4c1d97651e04bb86051af5fbba7d275f6ecb",
+  "ownerPdf": {
+    "path": "docs/design/OWNER-BASELINE-1836.pdf",
+    "sha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "page": 13,
+    "observed": "Local review gives a musical owner and before/after per edited field; example uses Bass A/P01/Step 01, Pitch C3 > D3 and Velocity 93 > 100."
+  },
+  "visualReview": {
+    "images": [
+      {
+        "file": "before-1440x900.png",
+        "sha256": "b2d7a0f72a0a1372e2bbe724407cfb025cd33a5e31053ea5a4d2dc0ca6c11de3"
+      },
+      {
+        "file": "before-844x390.png",
+        "sha256": "09cf6f1c3393dd0795a21fb02dd639154b95b7f8ddbc475fb5b7684d0aa0f696"
+      },
+      {
+        "file": "before-390x844.png",
+        "sha256": "2872833992bf594f42f4baa0d4d67e20182d043a58d04aa4a5f4b11cbc9e2941"
+      },
+      {
+        "file": "after-1440x900.png",
+        "sha256": "0c48ef6fd0c718a8ef914c5b361d8db0818836ccce5c7dd5a4599683c59afc86"
+      },
+      {
+        "file": "after-844x390.png",
+        "sha256": "61763fbb462bf2180cf9c6e3a18831efddf53cd3436edff17d8ff074dd8bab43"
+      },
+      {
+        "file": "after-390x844.png",
+        "sha256": "2c606346ebfb399efd619d5c3bcdbac0ee4138a6b3dcf91f7a2aba73ca20290b"
+      }
+    ],
+    "old": "All three old screenshots present matching sides for the changed 909 C2 note.",
+    "new": "All three candidate screenshots visibly identify 909, C2 at sample 0, Pan C → R1 and Pitch offset 0st → -1st. Return and Discard draft remain visible.",
+    "newTextBounds": "336 px client/scroll width at all three sizes. The portrait line spans x=27–363 inside its 390 px viewport."
+  },
+  "verified": [
+    "Six native screenshots decoded at their recorded dimensions and SHA-256 hashes. Compared all before/after crops with rendered owner page 13.",
+    "Candidate app, source manifest, mandatory test and supplied evidence hashes matched the developer receipt.",
+    "Trace-linked and source-verified model record n0, drum909, note 36, velocity 88, sample 0; the only changed raw fields are pan 65 (center default 64) and pitchOffset -1 (default 0).",
+    "changeLines uses the normal lane formatters and musical part mapping. Omitted and explicit center/zero remain distinguishable, including raw values when formatted strings match.",
+    "Mandatory real keyboard actions, local downloads, two Undo and two Redo operations verify the intermediate and restored Review and saved notes. Existing complete Discard journey reports PASS at 844×390."
+  ],
+  "scopeRemaining": "The excerpt concerns local before/after semantics. Complete page layout, the owner PDF’s pattern/step addressing, a connected instrument selector, physical transport, stock state read/compare/apply, and overall C3/R1 remain separate."
+}

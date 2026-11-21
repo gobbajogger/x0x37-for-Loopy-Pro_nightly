@@ -1,0 +1,394 @@
+{
+  "sourceHead": "451be1fafd0a328c0f489084d3807da216024d7e",
+  "archivedHead": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "gateSha256": "782f13f787f1a1ba6141d5a9611c31ef83ed8c537900ebc37daca7033fb31368",
+  "method": "Unmodified capture_site_page, one Chromium, a new context for each normal viewport, one native full-page PNG per width; gate defaults for fonts, freeze, page errors and DPR.",
+  "flags": [
+    "--font-render-hinting=none",
+    "--disable-lcd-text",
+    "--force-color-profile=srgb"
+  ],
+  "loadBefore": "31.28 39.66 38.36 29/1267 19",
+  "memAvailBeforeKiB": 4068496,
+  "sourceIdentities": {
+    "builds/index.html": "804efb7bccb2a13a878d2a5cbb1e4e3206288da4d276378a3f1014f7d5eeb59d",
+    "builds/history.mjs": "a009a008798a98d67b46832600dca3f69502770ac242b1f0635b8a19098d3080",
+    "builds/history-filter.mjs": "9ebfb0b241de121011e7dabd3cecaf052060838f3009a9bf7d822bf4382b8cd7",
+    "data/history.json": "ad782e5bb3cc16bae209515ce41ae4c20a4508cb1ebed22cf0836e0cef471cfe",
+    "site.css": "62579cf8f5058cc79137d96005634c8d2a032b5a8dfce1dae2fc79bf7230c605",
+    "assets/BarlowSemiCondensed-Medium.ttf": "4998b693a190b76f2b11315844345a8546c1e2e6a320905507a9eed04edf8b48",
+    "assets/BarlowSemiCondensed-Bold.ttf": "5bd6757e459a110da81b44532f0f43058e2dab2401688abca84f2fdbde193cbb"
+  },
+  "cases": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "pageErrors": [],
+      "geometry": {
+        "document": [
+          1440,
+          72069
+        ],
+        "viewport": [
+          1440,
+          900,
+          1,
+          0,
+          0,
+          1440,
+          900,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fonts": "loaded",
+        "moving": false,
+        "fixed": false,
+        "filter": [
+          "197 of 197 records",
+          "",
+          "all",
+          "all"
+        ]
+      },
+      "fonts": [
+        [
+          "Barlow",
+          "normal",
+          "loaded"
+        ],
+        [
+          "Barlow",
+          "700",
+          "loaded"
+        ]
+      ],
+      "nativeCalls": [
+        {
+          "options": {
+            "full_page": true,
+            "timeout": 120000
+          },
+          "seconds": 31.181
+        }
+      ],
+      "policyOutput": "Builds native full-page PNG: 1440x72069, timeout 120000 ms",
+      "capture": {
+        "seconds": 31.254,
+        "pythonPeakRssBytes": 95006720,
+        "processTreePeakSummedRssBytes": 2436931584,
+        "processTreeMaxChildren": 8
+      },
+      "validationAndPolicySeconds": 0.073,
+      "compressed": {
+        "actual": {
+          "length": 10384257,
+          "sha256": "15c1dff66f076737ca031a6f921e4faff2e87f8f4bd1cfafba77ca7d337f84a8"
+        },
+        "archive": {
+          "length": 10384257,
+          "sha256": "15c1dff66f076737ca031a6f921e4faff2e87f8f4bd1cfafba77ca7d337f84a8"
+        }
+      },
+      "comparison": {
+        "equal": true,
+        "size": [
+          1440,
+          72069,
+          3
+        ],
+        "rows": 72069,
+        "bytes": 311338080,
+        "differentRows": 0,
+        "firstDifference": null,
+        "pixelSha256": [
+          "5cc7cc1539df5fa19861f96df066bd7c21a729ae5aaaeaa23b191d7701a879c5",
+          "5cc7cc1539df5fa19861f96df066bd7c21a729ae5aaaeaa23b191d7701a879c5"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "viewport": [
+        1024,
+        640
+      ],
+      "pageErrors": [],
+      "geometry": {
+        "document": [
+          1024,
+          72467
+        ],
+        "viewport": [
+          1024,
+          640,
+          1,
+          0,
+          0,
+          1024,
+          640,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fonts": "loaded",
+        "moving": false,
+        "fixed": false,
+        "filter": [
+          "197 of 197 records",
+          "",
+          "all",
+          "all"
+        ]
+      },
+      "fonts": [
+        [
+          "Barlow",
+          "normal",
+          "loaded"
+        ],
+        [
+          "Barlow",
+          "700",
+          "loaded"
+        ]
+      ],
+      "nativeCalls": [
+        {
+          "options": {
+            "full_page": true,
+            "timeout": 111309
+          },
+          "seconds": 21.955
+        }
+      ],
+      "policyOutput": "Builds native full-page PNG: 1024x72467, timeout 111309 ms",
+      "capture": {
+        "seconds": 22.001,
+        "pythonPeakRssBytes": 71561216,
+        "processTreePeakSummedRssBytes": 2040541184,
+        "processTreeMaxChildren": 8
+      },
+      "validationAndPolicySeconds": 0.046,
+      "compressed": {
+        "actual": {
+          "length": 10104060,
+          "sha256": "57c07688cfa12c2d14967d85b1ca54c162682f2acb854f38af82ef273eb53590"
+        },
+        "archive": {
+          "length": 10104060,
+          "sha256": "57c07688cfa12c2d14967d85b1ca54c162682f2acb854f38af82ef273eb53590"
+        }
+      },
+      "comparison": {
+        "equal": true,
+        "size": [
+          1024,
+          72467,
+          3
+        ],
+        "rows": 72467,
+        "bytes": 222618624,
+        "differentRows": 0,
+        "firstDifference": null,
+        "pixelSha256": [
+          "1d7de4201ef6957c1a3860f6f972de4878ce8feaa2273f574325e598c1664a1f",
+          "1d7de4201ef6957c1a3860f6f972de4878ce8feaa2273f574325e598c1664a1f"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "pageErrors": [],
+      "geometry": {
+        "document": [
+          844,
+          73237
+        ],
+        "viewport": [
+          844,
+          390,
+          1,
+          0,
+          0,
+          844,
+          390,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fonts": "loaded",
+        "moving": false,
+        "fixed": false,
+        "filter": [
+          "197 of 197 records",
+          "",
+          "all",
+          "all"
+        ]
+      },
+      "fonts": [
+        [
+          "Barlow",
+          "normal",
+          "loaded"
+        ],
+        [
+          "Barlow",
+          "700",
+          "loaded"
+        ]
+      ],
+      "nativeCalls": [
+        {
+          "options": {
+            "full_page": true,
+            "timeout": 92718
+          },
+          "seconds": 29.821
+        }
+      ],
+      "policyOutput": "Builds native full-page PNG: 844x73237, timeout 92718 ms",
+      "capture": {
+        "seconds": 30.052,
+        "pythonPeakRssBytes": 95297536,
+        "processTreePeakSummedRssBytes": 1943478272,
+        "processTreeMaxChildren": 8
+      },
+      "validationAndPolicySeconds": 0.231,
+      "compressed": {
+        "actual": {
+          "length": 9961355,
+          "sha256": "5019ec375931cf095c95ac44d6180216e42dedbc2a022e3d4d4d3d00fa336758"
+        },
+        "archive": {
+          "length": 9961355,
+          "sha256": "5019ec375931cf095c95ac44d6180216e42dedbc2a022e3d4d4d3d00fa336758"
+        }
+      },
+      "comparison": {
+        "equal": true,
+        "size": [
+          844,
+          73237,
+          3
+        ],
+        "rows": 73237,
+        "bytes": 185436084,
+        "differentRows": 0,
+        "firstDifference": null,
+        "pixelSha256": [
+          "19c4118740c69d1d50b6364a3fae20a356f038dc7ddc5321e448c6066d110b4a",
+          "19c4118740c69d1d50b6364a3fae20a356f038dc7ddc5321e448c6066d110b4a"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "pageErrors": [],
+      "geometry": {
+        "document": [
+          593,
+          102256
+        ],
+        "viewport": [
+          390,
+          844,
+          1,
+          0,
+          0,
+          390,
+          844,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fonts": "loaded",
+        "moving": false,
+        "fixed": false,
+        "filter": [
+          "197 of 197 records",
+          "",
+          "all",
+          "all"
+        ]
+      },
+      "fonts": [
+        [
+          "Barlow",
+          "normal",
+          "loaded"
+        ],
+        [
+          "Barlow",
+          "700",
+          "loaded"
+        ]
+      ],
+      "nativeCalls": [
+        {
+          "options": {
+            "full_page": true,
+            "timeout": 90957
+          },
+          "seconds": 26.492
+        }
+      ],
+      "policyOutput": "Builds native full-page PNG: 593x102256, timeout 90957 ms",
+      "capture": {
+        "seconds": 26.599,
+        "pythonPeakRssBytes": 105140224,
+        "processTreePeakSummedRssBytes": 1738330112,
+        "processTreeMaxChildren": 8
+      },
+      "validationAndPolicySeconds": 0.107,
+      "compressed": {
+        "actual": {
+          "length": 11545933,
+          "sha256": "ca85e0659973c48f6ada2017c83f63ee7dbb83355a9be2822fdde0d420d06d82"
+        },
+        "archive": {
+          "length": 11545933,
+          "sha256": "ca85e0659973c48f6ada2017c83f63ee7dbb83355a9be2822fdde0d420d06d82"
+        }
+      },
+      "comparison": {
+        "equal": true,
+        "size": [
+          593,
+          102256,
+          3
+        ],
+        "rows": 102256,
+        "bytes": 181913424,
+        "differentRows": 0,
+        "firstDifference": null,
+        "pixelSha256": [
+          "347dd89a597936dd4005e424adb35e1b085e1e5ae86df275ee8841643a246f01",
+          "347dd89a597936dd4005e424adb35e1b085e1e5ae86df275ee8841643a246f01"
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "passed": true
+}

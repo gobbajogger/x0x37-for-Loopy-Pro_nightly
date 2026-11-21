@@ -1,0 +1,196 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "tree": "73807d4b346d09de2b21f54e05ea67c8df6e1b5b",
+  "clean": true,
+  "original": {
+    "scope": "once-only uninterrupted R5",
+    "states": 117,
+    "expected": 127,
+    "exit": 1,
+    "statesSha256": "b7dae791fcaec058cdef22c3d5b6e4e5198bdafb0e82de051a7201a220768660",
+    "executionSha256": "5f667081c6a3169f08c88700f87fdee56ce4f19d026d1c67ade7916b70a8be5b"
+  },
+  "supplemental": {
+    "scope": "three fresh contexts, once each, one bundled sandbox Chromium",
+    "browser": "151.0.7922.34",
+    "states": 10,
+    "expected": 10,
+    "missing": [],
+    "extra": [],
+    "exit": 0,
+    "pageErrors": [],
+    "failures": [],
+    "enabled": 337,
+    "reachable": 337,
+    "pngBytes": 370787,
+    "bodyOverflow": 0,
+    "horizontalClips": 0,
+    "blocked": 0,
+    "statesSha256": "3c212417177fb537b695dc0d46d5a46b607c7bdad806adf326b7cb309fb21f34",
+    "receiptSha256": "3d3e013f0b67020c4f52c92a5407809bc4897ad84d620f59bb4c100f25bf64a6",
+    "contextsClosed": 3,
+    "crashEvents": 0
+  },
+  "timing": {
+    "start": "2026-11-21T07:09:09.616287+00:00",
+    "end": "2026-11-21T07:09:21.411016+00:00",
+    "seconds": 11.795,
+    "minAvailableKiB": 1437632,
+    "maxAvailableKiB": 1972476,
+    "systemOomKillsStart": 63,
+    "systemOomKillsEnd": 63,
+    "maxIndividualChildRssKiB": 147560
+  },
+  "inventory": [
+    {
+      "state": "break-chance-authored",
+      "png": "break-chance-authored.png",
+      "bytes": 30531,
+      "sha256": "43626534bb4bcfcd709d14d859ffd166dc09f9c6d3113db133f174cfff095ca3",
+      "enabled": 36,
+      "reachable": 36,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "pattern-lock-bass-a-cutoff",
+      "png": "pattern-lock-bass-a-cutoff.png",
+      "bytes": 30596,
+      "sha256": "c68d8d64c29f616b67700405a12e07b69849d5b9415ad7e21b16875699a9e059",
+      "enabled": 38,
+      "reachable": 38,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "pattern-lock-bass-b-cutoff",
+      "png": "pattern-lock-bass-b-cutoff.png",
+      "bytes": 29838,
+      "sha256": "74b27378fe3395ecc2a211450f64288b7e276662351ea20077dbceca85276f56",
+      "enabled": 35,
+      "reachable": 35,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "pattern-lock-break-level",
+      "png": "pattern-lock-break-level.png",
+      "bytes": 30829,
+      "sha256": "882c818325eebc17e343d9f276c9e838fd1ffe20cb908935a0c1fe1201981809",
+      "enabled": 36,
+      "reachable": 36,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "sound-chicago-synth-one-file",
+      "png": "sound-chicago-synth-one-file.png",
+      "bytes": 28760,
+      "sha256": "3282ce31474abe1e847eb9d250343f7449ab19937bb826d5b269d03361964beb",
+      "enabled": 28,
+      "reachable": 28,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "sound-chicago-superj6-import-partial",
+      "png": "sound-chicago-superj6-import-partial.png",
+      "bytes": 46756,
+      "sha256": "fd5d8b17a87335f4cb6e0285783e8cdb2dc14bf6e00e7ccf09614b8ccb0047d5",
+      "enabled": 32,
+      "reachable": 32,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "sound-chicago-superj6-import-complete",
+      "png": "sound-chicago-superj6-import-complete.png",
+      "bytes": 49288,
+      "sha256": "992530f51a8e522bc41f61c564eb0ac676593d18825be0b8fa1d609167bf465b",
+      "enabled": 36,
+      "reachable": 36,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "sound-miami-synth-one-file",
+      "png": "sound-miami-synth-one-file.png",
+      "bytes": 28526,
+      "sha256": "52bee6d15fa386a817527a52788814dffbc43bac620233e23e14d609a300518d",
+      "enabled": 28,
+      "reachable": 28,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "sound-miami-superj6-import-partial",
+      "png": "sound-miami-superj6-import-partial.png",
+      "bytes": 46564,
+      "sha256": "21eeaa8d688a18e1a2a8b4269aac78d205ae1d3c820e4d7cda67e2ce887b120b",
+      "enabled": 32,
+      "reachable": 32,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    },
+    {
+      "state": "sound-miami-superj6-import-complete",
+      "png": "sound-miami-superj6-import-complete.png",
+      "bytes": 49099,
+      "sha256": "690ad84686f6d6710deeb1dc7bd81f5b2f781212acdd7821e37ee50bccc26dba",
+      "enabled": 36,
+      "reachable": 36,
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "blocked": [],
+      "horizontalClips": []
+    }
+  ]
+}

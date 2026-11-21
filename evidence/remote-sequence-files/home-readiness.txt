@@ -1,0 +1,10 @@
+1440 900 [{'method': 'networkidle', 'sha256': '8c03323ab032d7a0675558ec81ad2789b4692ea2c0def56de26ec72a4d025e3d', 'dimensions': [1440, 4549], 'elapsedSec': 2.199}, {'method': 'rendered', 'sha256': '8c03323ab032d7a0675558ec81ad2789b4692ea2c0def56de26ec72a4d025e3d', 'dimensions': [1440, 4549], 'elapsedSec': 1.028}]
+1024 640 [{'method': 'networkidle', 'sha256': 'd01bc1393424f5e6d8869734e70f2fed788cb8a0c41b8285299e5d66466aa467', 'dimensions': [1024, 4464], 'elapsedSec': 1.354}, {'method': 'rendered', 'sha256': 'd01bc1393424f5e6d8869734e70f2fed788cb8a0c41b8285299e5d66466aa467', 'dimensions': [1024, 4464], 'elapsedSec': 1.016}]
+844 390 [{'method': 'networkidle', 'sha256': '873ba332676f8c7027192784ef23c3beaeed4a56cdc7fa8ed9e0449f0e228aff', 'dimensions': [844, 4473], 'elapsedSec': 1.24}, {'method': 'rendered', 'sha256': '873ba332676f8c7027192784ef23c3beaeed4a56cdc7fa8ed9e0449f0e228aff', 'dimensions': [844, 4473], 'elapsedSec': 1.338}]
+390 844 [{'method': 'networkidle', 'sha256': 'd50ea9309044d500cfad13ecbaee038ba46327fd06e306558e6f524532d7f879', 'dimensions': [476, 6734], 'elapsedSec': 1.478}, {'method': 'rendered', 'sha256': 'd50ea9309044d500cfad13ecbaee038ba46327fd06e306558e6f524532d7f879', 'dimensions': [476, 6734], 'elapsedSec': 1.18}]
+site.css rejected
+*Medium.ttf rejected
+app.mjs rejected
+replay.mjs rejected
+display rejected
+layout rejected

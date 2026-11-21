@@ -6,7 +6,9 @@ import hashlib
 import io
 import json
 import subprocess
+import sys
 import tempfile
+from contextlib import contextmanager
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -58,30 +60,128 @@ def rgb565(image, *, browser):
     return packed
 
 
+@contextmanager
+def capture_lcd_clock(page):
+    # Observe just the context created by Start, including an inherited resume().
+    page.evaluate("""() => {
+        const proto = AudioContext.prototype;
+        const resume = proto.resume;
+        const original = Object.getOwnPropertyDescriptor(proto, 'resume');
+        function restore() {
+            if (proto.resume !== observe) return;
+            if (original) Object.defineProperty(proto, 'resume', original);
+            else delete proto.resume;
+        }
+        function observe(...args) {
+            restore();
+            clock.audio = this;
+            return resume.apply(this, args);
+        }
+        const clock = {audio: null, pause: null, restore};
+        window.lcdTestClock = clock;
+        proto.resume = observe;
+    }""")
+    try:
+        yield
+    finally:
+        primary_error = sys.exc_info()[1]
+        try:
+            page.evaluate("""async () => {
+                const clock = window.lcdTestClock;
+                if (!clock) return;
+                delete window.lcdTestClock;
+                clock.restore();
+                if (clock.pause) {
+                    await clock.pause;
+                    if (clock.audio.state === 'suspended') await clock.audio.resume();
+                }
+            }""")
+        except Exception as cleanup_error:
+            if primary_error is None:
+                raise
+            print(f"LCD clock cleanup also failed: {cleanup_error}", file=sys.stderr)
+
+
+def advance_lcd(page, delay_ms):
+    # Keep test-runner latency outside the native input scenario. Four seconds
+    # without input legitimately autosaves the edited mix and changes the LCD.
+    start = page.evaluate("""async () => {
+        const clock = window.lcdTestClock;
+        const start = [clock.audio.currentTime, Number(document.querySelector('#lcd').dataset.time) || 0];
+        await clock.audio.resume();
+        clock.pause = null;
+        return start;
+    }""")
+    page.wait_for_function("""([audio, frame, delay]) => {
+        const clock = window.lcdTestClock;
+        if ((clock.audio.currentTime - audio) * 1000 < delay ||
+            Number(document.querySelector('#lcd').dataset.time) <= frame + delay) return false;
+        if (clock.audio.state !== 'running') return false;
+        clock.pause = clock.audio.suspend();
+        return clock.pause.then(() => true);
+    }""", arg=[*start, delay_ms])
+
+
+def press_lcd_control(page, name):
+    # Preserve real pointer delivery while the worker samples the held input.
+    page.get_by_role("button", name=name, exact=True).hover()
+    page.mouse.down()
+    try:
+        advance_lcd(page, 80)
+    finally:
+        page.mouse.up()
+    page.wait_for_function("() => !document.querySelector('button.held')")
+
+
+def store_mismatch(fixtures, name, native, actual, expected_pixels, actual_pixels, stamp):
+    output_root = ROOT / '.output'
+    output_root.mkdir(exist_ok=True)
+    output = Path(tempfile.mkdtemp(prefix=f'lcd-{name}-mismatch-', dir=output_root))
+    (output / 'actual.png').write_bytes(actual)
+    (output / 'expected.png').write_bytes(native)
+    mask = Image.frombytes('L', (240, 240), bytes(
+        255 if actual_pixels[i:i+2] != expected_pixels[i:i+2] else 0
+        for i in range(0, len(actual_pixels), 2)))
+    mask.save(output / 'difference.png')
+    (output / 'frame.json').write_text(json.dumps({
+        'fixture': fixtures.name, 'state': name, 'simulated_ms': stamp,
+        'rgb565_actual': hashlib.sha256(actual_pixels).hexdigest(),
+        'rgb565_expected': hashlib.sha256(expected_pixels).hexdigest(),
+        'changed_pixels': mask.histogram()[255], 'bounds': mask.getbbox()
+    }, indent=2) + '\n')
+    return output
+
+
+def check_frame(name, fixtures, manifest, stamp, actual_png):
+    with Image.open(io.BytesIO(actual_png)) as actual:
+        pixels = rgb565(actual, browser=True)
+    with Image.open(fixtures / f"{name}.png") as native:
+        expected = rgb565(native, browser=False)
+    assert hashlib.sha256(expected).hexdigest() == manifest["frames"][name], name
+    if pixels != expected:
+        changed = sum(pixels[i:i+2] != expected[i:i+2] for i in range(0, len(pixels), 2))
+        output = store_mismatch(fixtures, name, (fixtures / f"{name}.png").read_bytes(),
+                                actual_png, expected, pixels, stamp)
+        raise AssertionError(f"{name}: {changed}/57600 RGB565 pixels differ from native; frames at {output}")
+    print(f"PASS {name}: 57600/57600 RGB565 pixels match {manifest['frames'][name]}")
+
+
 def check_page(page, url, manifest, fixtures=FIXTURES):
     page.goto(url)
-    page.locator("#start").click()
-    lcd = page.locator("#lcd")
-    for name, button, delay_ms in STATES:
-        before = 0
-        if button:
-            before = lcd.evaluate("c => Number(c.dataset.time)")
-            page.get_by_role("button", name=button, exact=True).click(delay=80)
-        page.wait_for_function("t => Number(document.querySelector('#lcd').dataset.time) > t",
-                               arg=before + delay_ms)
-        source = page.locator("#source").text_content()
-        assert source == f"Firmware source {manifest['firmware']} · kernel {manifest['kernel']}", source
-        assert page.locator("#transport").text_content() == "Stopped"
-        png = lcd.evaluate("c => c.toDataURL('image/png').split(',')[1]")
-        with Image.open(io.BytesIO(base64.b64decode(png))) as actual:
-            pixels = rgb565(actual, browser=True)
-        with Image.open(fixtures / f"{name}.png") as native:
-            expected = rgb565(native, browser=False)
-        assert hashlib.sha256(expected).hexdigest() == manifest["frames"][name], name
-        if pixels != expected:
-            changed = sum(pixels[i:i+2] != expected[i:i+2] for i in range(0, len(pixels), 2))
-            raise AssertionError(f"{name}: {changed}/57600 RGB565 pixels differ from native")
-        print(f"PASS {name}: 57600/57600 RGB565 pixels match {manifest['frames'][name]}")
+    with capture_lcd_clock(page):
+        page.locator("#start").click()
+        page.wait_for_function("() => window.lcdTestClock.audio && Number(document.querySelector('#lcd').dataset.time) > 0")
+        lcd = page.locator("#lcd")
+        for name, button, delay_ms in STATES:
+            if button:
+                press_lcd_control(page, button)
+            advance_lcd(page, delay_ms)
+            source = page.locator("#source").text_content()
+            assert source == f"Firmware source {manifest['firmware']} · kernel {manifest['kernel']}", source
+            assert page.locator("#transport").text_content() == "Stopped"
+            stamp, png = lcd.evaluate("c => [Number(c.dataset.time), c.toDataURL('image/png').split(',')[1]]")
+            actual_png = base64.b64decode(png)
+            check_frame(name, fixtures, manifest, stamp, actual_png)
 
 
 def check_historical_reference(page, origin, presentation):

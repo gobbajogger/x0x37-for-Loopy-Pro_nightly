@@ -1,0 +1,850 @@
+{
+  "reference": "tests/visual/fixtures/page-01.png",
+  "threshold": 0.9,
+  "historical": [
+    {
+      "capture": "cb29",
+      "ref": "cb29d66c15c7dda3cdabddcfb0dffebd62332b31",
+      "score": 0.8973681065066039,
+      "pageErrors": [],
+      "headerChecks": []
+    },
+    {
+      "capture": "ce0d",
+      "ref": "ce0d629bd0e575aabc18f30a71f1f4f52e6f6a05",
+      "score": 0.905927401190831,
+      "pageErrors": [],
+      "headerChecks": []
+    },
+    {
+      "capture": "runtime-ink-only",
+      "ref": "cb29d66c15c7dda3cdabddcfb0dffebd62332b31",
+      "score": 0.905927401190831,
+      "pageErrors": [],
+      "headerChecks": []
+    }
+  ],
+  "candidate": [
+    {
+      "size": "1024x640",
+      "pageErrors": [],
+      "failures": [],
+      "browser": "151.0.7922.34",
+      "score": 0.905927401190831
+    },
+    {
+      "size": "1440x900",
+      "pageErrors": [],
+      "failures": [],
+      "browser": "151.0.7922.34"
+    },
+    {
+      "size": "390x844",
+      "pageErrors": [],
+      "failures": [],
+      "browser": "151.0.7922.34"
+    },
+    {
+      "size": "844x390",
+      "pageErrors": [],
+      "failures": [],
+      "browser": "151.0.7922.34"
+    }
+  ],
+  "beforeAfterInkReview": [
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "roll",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "sound",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "mix",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "patterns",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "files",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "drums",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "locks",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "song",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "roll",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "sound",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "mix",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "patterns",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "files",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "drums",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "locks",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "song",
+      "visiblePixels": 273
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "roll",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "sound",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "mix",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "patterns",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "files",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "drums",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "locks",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "song",
+      "visiblePixels": 330
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "roll",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "sound",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "mix",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "patterns",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "files",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "drums",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "locks",
+      "visiblePixels": 329
+    },
+    {
+      "state": "before",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "song",
+      "visiblePixels": 329
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "roll",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "sound",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "mix",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "patterns",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "files",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "drums",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "locks",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "view": "song",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "roll",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "sound",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "mix",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "patterns",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "files",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "drums",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "locks",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "view": "song",
+      "visiblePixels": 278
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "roll",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "sound",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "mix",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "patterns",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "files",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "drums",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "locks",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "view": "song",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "roll",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "sound",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "mix",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "patterns",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "files",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "drums",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "locks",
+      "visiblePixels": 327
+    },
+    {
+      "state": "after",
+      "viewport": [
+        1024,
+        640
+      ],
+      "view": "song",
+      "visiblePixels": 327
+    }
+  ],
+  "deviceNavigation": [
+    {
+      "state": "base",
+      "viewport": [
+        1440,
+        900
+      ],
+      "documentWidth": 1440,
+      "tabOrder": [
+        "Skip to content",
+        "DnBOX INSTRUMENTS",
+        "Sounds",
+        "Remote",
+        "Samples",
+        "Projects",
+        "Presets",
+        "Manual",
+        "History",
+        "Install nightly",
+        "Connection information for earlier firmware",
+        "DnBOX",
+        "Manual",
+        "Build history",
+        "What\u2019s new"
+      ],
+      "errors": [],
+      "hit": {
+        "Sounds": true,
+        "Remote": true,
+        "Samples": true,
+        "Projects": true,
+        "Presets": true,
+        "Manual": true,
+        "History": true,
+        "Install nightly": true
+      }
+    },
+    {
+      "state": "base",
+      "viewport": [
+        390,
+        844
+      ],
+      "documentWidth": 695,
+      "tabOrder": [
+        "Skip to content",
+        "DnBOX INSTRUMENTS",
+        "Remote",
+        "Samples",
+        "Projects",
+        "Presets",
+        "Manual",
+        "History",
+        "Install nightly",
+        "Connection information for earlier firmware",
+        "DnBOX",
+        "Manual",
+        "Build history",
+        "What\u2019s new",
+        "Setup & help"
+      ],
+      "errors": [],
+      "hit": {
+        "Sounds": false,
+        "Remote": true,
+        "Samples": true,
+        "Projects": true,
+        "Presets": true,
+        "Manual": false,
+        "History": false,
+        "Install nightly": false
+      }
+    },
+    {
+      "state": "base",
+      "viewport": [
+        844,
+        390
+      ],
+      "documentWidth": 1000,
+      "tabOrder": [
+        "Skip to content",
+        "DnBOX INSTRUMENTS",
+        "Sounds",
+        "Remote",
+        "Samples",
+        "Projects",
+        "Presets",
+        "Manual",
+        "History",
+        "Install nightly",
+        "Connection information for earlier firmware",
+        "DnBOX",
+        "Manual",
+        "Build history",
+        "What\u2019s new"
+      ],
+      "errors": [],
+      "hit": {
+        "Sounds": true,
+        "Remote": true,
+        "Samples": true,
+        "Projects": true,
+        "Presets": true,
+        "Manual": true,
+        "History": true,
+        "Install nightly": false
+      }
+    },
+    {
+      "state": "candidate",
+      "viewport": [
+        1440,
+        900
+      ],
+      "documentWidth": 1440,
+      "tabOrder": [
+        "Skip to content",
+        "DnBOX INSTRUMENTS",
+        "Sounds",
+        "Remote",
+        "Samples",
+        "Projects",
+        "Presets",
+        "Manual",
+        "History",
+        "Install nightly",
+        "Connection information for earlier firmware",
+        "DnBOX",
+        "Manual",
+        "Build history",
+        "What\u2019s new"
+      ],
+      "errors": [],
+      "hit": {
+        "Sounds": true,
+        "Remote": true,
+        "Samples": true,
+        "Projects": true,
+        "Presets": true,
+        "Manual": true,
+        "History": true,
+        "Install nightly": true
+      }
+    },
+    {
+      "state": "candidate",
+      "viewport": [
+        390,
+        844
+      ],
+      "documentWidth": 390,
+      "tabOrder": [
+        "Skip to content",
+        "DnBOX INSTRUMENTS",
+        "Sounds",
+        "Remote",
+        "Samples",
+        "Projects",
+        "Presets",
+        "Manual",
+        "History",
+        "Install nightly",
+        "Connection information for earlier firmware",
+        "DnBOX",
+        "Manual",
+        "Build history",
+        "What\u2019s new"
+      ],
+      "errors": [],
+      "hit": {
+        "Sounds": true,
+        "Remote": true,
+        "Samples": true,
+        "Projects": true,
+        "Presets": true,
+        "Manual": true,
+        "History": true,
+        "Install nightly": true
+      }
+    },
+    {
+      "state": "candidate",
+      "viewport": [
+        844,
+        390
+      ],
+      "documentWidth": 844,
+      "tabOrder": [
+        "Skip to content",
+        "DnBOX INSTRUMENTS",
+        "Sounds",
+        "Remote",
+        "Samples",
+        "Projects",
+        "Presets",
+        "Manual",
+        "History",
+        "Install nightly",
+        "Connection information for earlier firmware",
+        "DnBOX",
+        "Manual",
+        "Build history",
+        "What\u2019s new"
+      ],
+      "errors": [],
+      "hit": {
+        "Sounds": true,
+        "Remote": true,
+        "Samples": true,
+        "Projects": true,
+        "Presets": true,
+        "Manual": true,
+        "History": true,
+        "Install nightly": true
+      }
+    }
+  ]
+}

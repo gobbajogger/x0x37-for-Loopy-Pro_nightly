@@ -1,0 +1,22 @@
+{"files":238,"output":"/workspace/scratch/537b1f88ce48/miami-remote/envelope-9c35/.output/native-envelope-bkqlvr80","emulator":true,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+RED BEFORE ASSERTION {"positive": {"sequence": 113, "kernel": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b", "firmware": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb", "owner": 1, "role": "amp", "available": true, "sourceLevel": 1, "displayLevel": "1", "graphs": 1, "hidden": false, "context": "running", "time": 6130.9000000003725}, "expired": {"sequence": 114, "kernel": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b", "firmware": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb", "owner": 1, "role": "amp", "available": true, "sourceLevel": 1, "displayLevel": null, "graphs": 0, "hidden": true, "context": "suspended", "time": 7711}}
+Traceback (most recent call last):
+  File "/workspace/scratch/537b1f88ce48/evidence-local/envelope-9c35/expiry-red.py", line 109, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/537b1f88ce48/evidence-local/envelope-9c35/expiry-red.py", line 108, in main
+    with server(temp) as origin:asyncio.run(cases(origin,meta))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/scratch/537b1f88ce48/evidence-local/envelope-9c35/expiry-red.py", line 89, in cases
+    assert await page.locator('#native-envelopes .envelope-graph').count()>0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

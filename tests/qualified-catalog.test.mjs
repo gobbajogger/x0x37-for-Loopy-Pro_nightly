@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync, mkdtempSync, rmSync, existsSync, symlinkSy
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawnSync } from 'node:child_process';
+import { runNodeCli } from './fixtures/node-cli.mjs';
 import { Script } from 'node:vm';
 import { makePackage, makeController } from './fixtures/bundled-synthetic.mjs';
 import { validateCatalog, verifyDownloads, renderInstaller, installerFingerprint, requiredGates,
@@ -191,15 +191,18 @@ for (const inject of [
 const dir = mkdtempSync(join(tmpdir(), 'nightly-public-projection-'));
 try {
   const catPath = join(dir,'catalog.json'), qualPath = join(dir,'private-qualification.json');
+  const fixturePath = join(dir,'synthetic.fwsc');
+  writeFileSync(fixturePath,raw);
+  const response = `new Response(readFileSync(${JSON.stringify(fixturePath)}))`;
   const shim = join(dir,'fetch.mjs');
-  writeFileSync(shim, `globalThis.fetch=async()=>new Response(new Uint8Array(${JSON.stringify([...raw])}));`);
+  writeFileSync(shim, `import {readFileSync} from 'node:fs'; globalThis.fetch=async()=>${response};`);
   const cli = (c,q,out) => {
     writeFileSync(catPath, JSON.stringify(c));writeFileSync(qualPath, JSON.stringify(q));
-    return spawnSync(process.execPath,['--import',shim,fileURLToPath(new URL('../scripts/render-qualified-nightly.mjs',import.meta.url)),
-      '--catalog',catPath,'--qualification',qualPath,'--out',out],{encoding:'utf8',timeout:15000});
+    return runNodeCli(fileURLToPath(new URL('../scripts/render-qualified-nightly.mjs',import.meta.url)), [
+      '--catalog',catPath,'--qualification',qualPath,'--out',out],{nodeArgs:['--import',shim]});
   };
   const out = join(dir,'valid-public-output');
-  const valid = cli(catalog,qualification,out);
+  const valid = await cli(catalog,qualification,out);
   assert.equal(valid.status,0,valid.stderr);
   {
     const published=JSON.parse(readFileSync(join(out,'versions.json'),'utf8'));
@@ -213,62 +216,79 @@ try {
   const alias = join(dir,'outside-alias');
   symlinkSync(root,alias,'dir');
   for (const target of [inside,join(inside,'site'),join(alias,'.hidden-synthetic-'+process.pid)]) {
-    const rejected=cli(catalog,qualification,target);
-    assert.notEqual(rejected.status,0,'inside/aliased output must be rejected');
+    const rejected=await cli(catalog,qualification,target);
+    assert.equal(rejected.status,1,'inside/aliased output must be rejected');
+    assert.match(rejected.stderr,/output must be a new directory outside the repository/);
     assert.equal(existsSync(target),false,'rejected path must remain absent');
   }
   const nested=join(dir,'new-outside-parent','site');
-  assert.equal(cli(catalog,qualification,nested).status,0,'genuine nested outside output remains valid');
+  const nestedResult=await cli(catalog,qualification,nested);
+  assert.equal(nestedResult.status,0,'genuine nested outside output remains valid: '+nestedResult.stderr);
   const bad = structuredClone(catalog), privateQ = structuredClone(qualification);
   bad.internal_controller_image_base64='SYNTHETIC_PRIVATE_BINARY_BYTES_DO_NOT_PUBLISH';
   bad.versions[0].models.pro.auth_token='SYNTHETIC_PRIVATE_TOKEN';
   privateQ.internal_library_locator='SYNTHETIC_PRIVATE_LIBRARY_LOCATOR';
   privateQ.packages[digest].controller.vendor_payload='SYNTHETIC_PRIVATE_CTL_IMG';
   const rejectedOut=join(dir,'rejected-output');
-  assert.notEqual(cli(bad,privateQ,rejectedOut).status,0);
+  const rejected=await cli(bad,privateQ,rejectedOut);
+  assert.equal(rejected.status,1,rejected.stderr);
+  assert.match(rejected.stderr,/unknown\/private field/);
   assert.equal(existsSync(rejectedOut),false,'invalid input must produce no public folder');
   assert.doesNotMatch(renderInstaller(bad),/SYNTHETIC_PRIVATE_/,'renderer public projection strips unknown fields');
+  await checkOutputRebind(response);
 } finally { rmSync(dir,{recursive:true,force:true}); }
 
 // Actual CLI regression for the publisher's async output-parent rebind.
 // Copy source to scratch so RED writes can never touch the real checkout.
-const raceDir = mkdtempSync(join(tmpdir(), 'nightly-output-rebind-'));
-try {
-  const replica=join(raceDir,'repo');mkdirSync(replica);
-  const root=fileURLToPath(new URL('../',import.meta.url));
-  for(const name of ['web','scripts','docs','package-version-assignments.json'])cpSync(join(root,name),join(replica,name),{recursive:true});
-  writeFileSync(join(replica,'package.json'),'{"type":"module"}');
-  const inside=join(replica,'review-preview');mkdirSync(inside);
-  writeFileSync(join(inside,'keep.txt'),'source sentinel');
-  const catPath=join(raceDir,'catalog.json'),qualPath=join(raceDir,'qualification.json');
-  writeFileSync(catPath,JSON.stringify(catalog));writeFileSync(qualPath,JSON.stringify(qualification));
-  for(const rebind of [false,true]){
-    const parent=join(raceDir,rebind?'rebound-parent':'stable-parent');mkdirSync(parent);
-    const output=join(parent,'candidate'),shim=join(raceDir,`fetch-${rebind}.mjs`);
-    writeFileSync(shim,`import{renameSync,symlinkSync,existsSync}from'node:fs';
-      globalThis.fetch=async()=>{await Promise.resolve();
-      if(existsSync(${JSON.stringify(output)}))throw Error('output visible before verification');
-      ${rebind?`renameSync(${JSON.stringify(parent)},${JSON.stringify(parent+'.moved')});symlinkSync(${JSON.stringify(inside)},${JSON.stringify(parent)},'dir');`:''}
-      return new Response(new Uint8Array(${JSON.stringify([...raw])}));};`);
-    const result=spawnSync(process.execPath,['--import',shim,join(replica,'scripts/render-qualified-nightly.mjs'),
-      '--catalog',catPath,'--qualification',qualPath,'--out',output],{encoding:'utf8',timeout:15000});
-    console.log(JSON.stringify({case:rebind?'async-parent-rebind':'stable-parent-control',exit:result.status,
-      wrote_inside:existsSync(join(inside,'candidate/versions.json')),stderr:result.stderr.trim()}));
-    if(rebind){
-      assert.notEqual(result.status,0,'parent rebound inside source during awaited fetch must reject');
-      assert.equal(existsSync(join(inside,'candidate')),false,'rebound destination must remain untouched');
-      assert.equal(readFileSync(join(inside,'keep.txt'),'utf8'),'source sentinel');
-    }else{
-      assert.equal(result.status,0,result.stderr);
-      {
-    const published=JSON.parse(readFileSync(join(output,'versions.json'),'utf8'));
-    const expected={...catalog}; delete expected.history; // live picker omits empty history
-    assert.deepEqual(published,expected);
-  }
-      assert.ok(readFileSync(join(output,'install/index.html'),'utf8').includes(digest));
+async function checkOutputRebind(response) {
+  const raceDir = mkdtempSync(join(tmpdir(), 'nightly-output-rebind-'));
+  try {
+    const replica=join(raceDir,'repo');mkdirSync(replica);
+    const root=fileURLToPath(new URL('../',import.meta.url));
+    // The renderer uses product-site modules and data, but these standalone site
+    // assets are outside its inputs. Keep all other source files and the full docs tree.
+    const productSite = join(root, 'web', 'product-site');
+    const unusedAssets = new Set(['reference', 'remote', 'index.html'].map(name => join(productSite, name)));
+    for (const name of ['web', 'scripts', 'docs', 'package-version-assignments.json']) {
+      cpSync(join(root, name), join(replica, name), {
+        recursive: true,
+        filter: source => !unusedAssets.has(source),
+      });
     }
-  }
-} finally {rmSync(raceDir,{recursive:true,force:true});}
+    writeFileSync(join(replica,'package.json'),'{"type":"module"}');
+    const inside=join(replica,'review-preview');mkdirSync(inside);
+    writeFileSync(join(inside,'keep.txt'),'source sentinel');
+    const catPath=join(raceDir,'catalog.json'),qualPath=join(raceDir,'qualification.json');
+    writeFileSync(catPath,JSON.stringify(catalog));writeFileSync(qualPath,JSON.stringify(qualification));
+    for(const rebind of [false,true]){
+      const parent=join(raceDir,rebind?'rebound-parent':'stable-parent');mkdirSync(parent);
+      const output=join(parent,'candidate'),shim=join(raceDir,`fetch-${rebind}.mjs`);
+      writeFileSync(shim,`import{renameSync,symlinkSync,existsSync,readFileSync}from'node:fs';
+        globalThis.fetch=async()=>{await Promise.resolve();
+        if(existsSync(${JSON.stringify(output)}))throw Error('output visible before verification');
+        ${rebind?`renameSync(${JSON.stringify(parent)},${JSON.stringify(parent+'.moved')});symlinkSync(${JSON.stringify(inside)},${JSON.stringify(parent)},'dir');`:''}
+        return ${response};};`);
+      const result=await runNodeCli(join(replica,'scripts/render-qualified-nightly.mjs'), [
+        '--catalog',catPath,'--qualification',qualPath,'--out',output],{nodeArgs:['--import',shim],label:rebind?'async-parent-rebind':'stable-parent-control'});
+      console.log(JSON.stringify({case:rebind?'async-parent-rebind':'stable-parent-control',exit:result.status,
+        wrote_inside:existsSync(join(inside,'candidate/versions.json')),stderr:result.stderr.trim()}));
+      if(rebind){
+        assert.equal(result.status,1,'parent rebound inside source during awaited fetch must reject');
+        assert.match(result.stderr,/output must be a new directory outside the repository/);
+        assert.equal(existsSync(join(inside,'candidate')),false,'rebound destination must remain untouched');
+        assert.equal(readFileSync(join(inside,'keep.txt'),'utf8'),'source sentinel');
+      }else{
+        assert.equal(result.status,0,result.stderr);
+        {
+      const published=JSON.parse(readFileSync(join(output,'versions.json'),'utf8'));
+      const expected={...catalog}; delete expected.history; // live picker omits empty history
+      assert.deepEqual(published,expected);
+    }
+        assert.ok(readFileSync(join(output,'install/index.html'),'utf8').includes(digest));
+      }
+    }
+  } finally {rmSync(raceDir,{recursive:true,force:true});}
+}
 
 let calls = 0;
 await verifyDownloads(catalog, async (url, opts) => {

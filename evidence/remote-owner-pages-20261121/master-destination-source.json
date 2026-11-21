@@ -1,0 +1,8 @@
+{
+  "base": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "originalError": "Unknown Mix view",
+  "oldModuleSha256": "c82e5e7f698498696d4e2a3bf130b1b8217691ced2af2659ab0603cdea4f5b4e",
+  "candidateModuleSha256": "1ba2e99afbba3b3ba98e6eeef49b5431e89f987e8923468e4c2bbeb3f2c5cdf1",
+  "dedicatedRegion": true,
+  "priorFourModeRenderingsIdenticalApartFromNavigationButton": true
+}

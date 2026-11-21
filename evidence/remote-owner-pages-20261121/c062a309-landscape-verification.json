@@ -1,0 +1,443 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "pngCount": 117,
+  "pngBytes": 4211873,
+  "verifiedPngHashes": 117,
+  "expectedStates": 127,
+  "observedStates": 117,
+  "missing": [
+    "break-chance-authored",
+    "pattern-lock-bass-a-cutoff",
+    "pattern-lock-bass-b-cutoff",
+    "pattern-lock-break-level",
+    "sound-chicago-superj6-import-complete",
+    "sound-chicago-superj6-import-partial",
+    "sound-chicago-synth-one-file",
+    "sound-miami-superj6-import-complete",
+    "sound-miami-superj6-import-partial",
+    "sound-miami-synth-one-file"
+  ],
+  "extra": [],
+  "exactExecutionSha256": "5f667081c6a3169f08c88700f87fdee56ce4f19d026d1c67ade7916b70a8be5b",
+  "exactStatesSha256": "b7dae791fcaec058cdef22c3d5b6e4e5198bdafb0e82de051a7201a220768660",
+  "reachable": 5393,
+  "enabled": 5393,
+  "canReachAll": true,
+  "pageErrors": [],
+  "failures": [
+    [
+      "authored BREAK Chance",
+      "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://127.0.0.1:41943/remote/\", waiting until \"networkidle\"\n"
+    ],
+    [
+      "authored pattern locks",
+      "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://127.0.0.1:41943/remote/\", waiting until \"networkidle\"\n"
+    ],
+    [
+      "Synth One files and imported SuperJ6 programs",
+      "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://127.0.0.1:41943/remote/\", waiting until \"networkidle\"\n"
+    ],
+    [
+      "coverage",
+      [
+        "break-chance-authored",
+        "pattern-lock-bass-a-cutoff",
+        "pattern-lock-bass-b-cutoff",
+        "pattern-lock-break-level",
+        "sound-chicago-superj6-import-complete",
+        "sound-chicago-superj6-import-partial",
+        "sound-chicago-synth-one-file",
+        "sound-miami-superj6-import-complete",
+        "sound-miami-superj6-import-partial",
+        "sound-miami-synth-one-file"
+      ],
+      []
+    ]
+  ],
+  "priorHead": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "geometryDifferences": [
+    [
+      "drums-chicago",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "drums-miami",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "drums-drum909",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "drums-accent-drum909",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "drums-drum808",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "drums-accent-drum808",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "drums-breaks",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "draft-mix-levels",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "draft-mix-pan",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "draft-mix-sends",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "draft-mix-fx",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "native-mix-levels",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "native-mix-pan",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "native-mix-sends",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ],
+    [
+      "native-mix-fx",
+      [
+        "reachable",
+        "controlCount"
+      ]
+    ]
+  ],
+  "visuallyCompared": 113,
+  "pixelDifferences": [
+    {
+      "name": "roll-chicago",
+      "pixels": 1898,
+      "maxRgbDelta": 250,
+      "bounds": [
+        69,
+        119,
+        312,
+        246
+      ]
+    },
+    {
+      "name": "bass-chicago-gate",
+      "pixels": 1898,
+      "maxRgbDelta": 80,
+      "bounds": [
+        69,
+        119,
+        312,
+        246
+      ]
+    },
+    {
+      "name": "bass-chicago-slide",
+      "pixels": 1898,
+      "maxRgbDelta": 80,
+      "bounds": [
+        69,
+        119,
+        312,
+        246
+      ]
+    },
+    {
+      "name": "bass-chicago-accent",
+      "pixels": 1898,
+      "maxRgbDelta": 80,
+      "bounds": [
+        69,
+        119,
+        312,
+        246
+      ]
+    },
+    {
+      "name": "bass-chicago-release",
+      "pixels": 1898,
+      "maxRgbDelta": 80,
+      "bounds": [
+        69,
+        119,
+        312,
+        246
+      ]
+    },
+    {
+      "name": "locks-chicago",
+      "pixels": 896,
+      "maxRgbDelta": 250,
+      "bounds": [
+        69,
+        119,
+        188,
+        246
+      ]
+    },
+    {
+      "name": "drums-chicago",
+      "pixels": 36835,
+      "maxRgbDelta": 239,
+      "bounds": [
+        12,
+        286,
+        479,
+        381
+      ]
+    },
+    {
+      "name": "drums-miami",
+      "pixels": 36835,
+      "maxRgbDelta": 239,
+      "bounds": [
+        12,
+        286,
+        479,
+        381
+      ]
+    },
+    {
+      "name": "drums-drum909",
+      "pixels": 36755,
+      "maxRgbDelta": 239,
+      "bounds": [
+        12,
+        286,
+        479,
+        381
+      ]
+    },
+    {
+      "name": "drums-accent-drum909",
+      "pixels": 46361,
+      "maxRgbDelta": 250,
+      "bounds": [
+        12,
+        150,
+        479,
+        381
+      ]
+    },
+    {
+      "name": "drums-drum808",
+      "pixels": 36755,
+      "maxRgbDelta": 239,
+      "bounds": [
+        12,
+        286,
+        479,
+        381
+      ]
+    },
+    {
+      "name": "drums-accent-drum808",
+      "pixels": 46347,
+      "maxRgbDelta": 250,
+      "bounds": [
+        12,
+        150,
+        479,
+        381
+      ]
+    },
+    {
+      "name": "drums-breaks",
+      "pixels": 36835,
+      "maxRgbDelta": 239,
+      "bounds": [
+        12,
+        286,
+        479,
+        381
+      ]
+    },
+    {
+      "name": "draft-mix-levels",
+      "pixels": 4332,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        144,
+        382,
+        187
+      ]
+    },
+    {
+      "name": "draft-mix-pan",
+      "pixels": 4332,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        144,
+        382,
+        187
+      ]
+    },
+    {
+      "name": "draft-mix-sends",
+      "pixels": 4332,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        144,
+        382,
+        187
+      ]
+    },
+    {
+      "name": "draft-mix-fx",
+      "pixels": 4332,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        144,
+        382,
+        187
+      ]
+    },
+    {
+      "name": "projects-original-invalid",
+      "pixels": 19,
+      "maxRgbDelta": 1,
+      "bounds": [
+        162,
+        64,
+        164,
+        325
+      ]
+    },
+    {
+      "name": "projects-original-editor",
+      "pixels": 19,
+      "maxRgbDelta": 1,
+      "bounds": [
+        162,
+        64,
+        164,
+        325
+      ]
+    },
+    {
+      "name": "native-sound-choice-unavailable",
+      "pixels": 25,
+      "maxRgbDelta": 1,
+      "bounds": [
+        566,
+        60,
+        658,
+        86
+      ]
+    },
+    {
+      "name": "native-sound-chicago",
+      "pixels": 64,
+      "maxRgbDelta": 1,
+      "bounds": [
+        566,
+        60,
+        831,
+        86
+      ]
+    },
+    {
+      "name": "native-mix-levels",
+      "pixels": 4362,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        62,
+        831,
+        268
+      ]
+    },
+    {
+      "name": "native-mix-pan",
+      "pixels": 4332,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        144,
+        382,
+        187
+      ]
+    },
+    {
+      "name": "native-mix-sends",
+      "pixels": 4332,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        144,
+        382,
+        187
+      ]
+    },
+    {
+      "name": "native-mix-fx",
+      "pixels": 4332,
+      "maxRgbDelta": 221,
+      "bounds": [
+        284,
+        144,
+        382,
+        187
+      ]
+    }
+  ]
+}

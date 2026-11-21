@@ -14,3 +14,17 @@ test('Stop invalidates a late confirmed write without changing inactive state',a
 test('unconfirmed requested value cannot create a false successful edit',async()=>{const p=provider(),s=createRuntimeSoundState(bindings,{voice:0});await s.connect(p);p.set=async()=>reply(0,'r2','undo1');await assert.rejects(s.change('CHICAGO:0:2:0:0',7),/not confirmed/);assert.equal(s.snapshot().phase,'unavailable');assert.equal(s.snapshot().canUndo,false);});
 test('malformed close field cannot leave loading admission behind',async()=>{const p=provider();p.close=1;const s=createRuntimeSoundState(bindings,{voice:0});await assert.rejects(s.connect(p));assert.equal(s.snapshot().phase,'unavailable');assert.equal(s.snapshot().values.size,0);});
 test('connecting the same admitted provider is idempotent and preserves native Undo',async()=>{let reads=0;const p=provider(async()=>{reads++;return reply()}),s=createRuntimeSoundState(bindings,{voice:0});await s.connect(p);await s.change('CHICAGO:0:2:0:0',1);await s.connect(p);assert.equal(reads,1);assert.equal(s.snapshot().values.get('CHICAGO:0:2:0:0'),1);assert.equal(s.snapshot().canUndo,true);await s.undo();assert.equal(s.snapshot().canUndo,false);});
+
+test('a Chicago Undo requires the previous stored value in the native readback',async()=>{
+ const p=provider(),state=createRuntimeSoundState(bindings,{voice:0});
+ p.undo=async()=>{
+  const result=reply(0,'r3');
+  result.controls[0].value=7;
+  return result;
+ };
+ await state.connect(p);
+ await state.change('CHICAGO:0:2:0:0',7);
+ await assert.rejects(state.undo(),/not confirmed/);
+ assert.equal(state.snapshot().phase,'unavailable');
+ assert.equal(state.snapshot().canUndo,false);
+});

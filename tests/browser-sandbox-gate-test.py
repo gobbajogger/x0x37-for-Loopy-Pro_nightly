@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Exercise gate control flow with shell stubs; never launches browsers."""
 import json
+import os
 import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -31,6 +33,26 @@ class GateGuard(unittest.TestCase):
         # Current gate uses a single-line function; fail clearly if redesigned.
         function = next(line for line in source.splitlines() if line.startswith('browser()'))
         return function + '\nbrowser\n'
+
+    def test_setup_exports_physical_temp_directory_to_browser_processes(self):
+        source = (ROOT / 'scripts/dnbox-gate.sh').read_text()
+        export = next(line for line in source.splitlines() if line.startswith('export TMPDIR='))
+        setup = source[source.index('setup()'):source.index('fetch_base()')]
+        command = '\n'.join([
+            'node() { :; }', 'python3() { :; }', export, setup,
+            """setup && bash -c 'printf "%s" "$TMPDIR"'""",
+        ])
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            (base / 'workspace').mkdir()
+            requested = base / 'workspace' / '..' / 'browser downloads'
+            result = subprocess.run(
+                ['bash', '-c', command], cwd=base, capture_output=True, text=True,
+                env={**os.environ, 'DNBOX_GATE_TMPDIR': str(requested)},
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, str(requested.resolve()))
+            self.assertTrue(requested.is_dir())
 
     def test_gate_stops_before_browser_on_audit_failure(self):
         result = stub_run(self.gate(), True)

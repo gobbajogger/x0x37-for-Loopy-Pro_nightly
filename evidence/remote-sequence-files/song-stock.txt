@@ -1,0 +1,1 @@
+PASS stock song_read/song_write: 256 packed rows, 1280 per-part mute observations; repeats 1-8 and track order verified.

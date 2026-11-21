@@ -1,0 +1,217 @@
+{
+  "scope": "Bass A local piano-roll note fill and selection visibility",
+  "verdict": "PASS",
+  "parent": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "pdfSha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+  "pdfVectorEvidence": [
+    {
+      "page": 1,
+      "verifiedNotePaths": 3,
+      "noteSizes": [
+        [
+          80.21,
+          30.38
+        ],
+        [
+          61.58,
+          30.38
+        ],
+        [
+          25.4,
+          30.38
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "verifiedNotePaths": 3,
+      "noteSizes": [
+        [
+          119.11,
+          10.69
+        ],
+        [
+          91.66,
+          10.69
+        ],
+        [
+          38.37,
+          10.69
+        ]
+      ]
+    },
+    {
+      "page": 14,
+      "verifiedNotePaths": 3,
+      "noteSizes": [
+        [
+          44.78,
+          6.46
+        ],
+        [
+          34.17,
+          6.46
+        ],
+        [
+          13.59,
+          6.46
+        ]
+      ]
+    },
+    {
+      "page": 17,
+      "verifiedNotePaths": 3,
+      "noteSizes": [
+        [
+          44.78,
+          9.0
+        ],
+        [
+          34.17,
+          9.0
+        ],
+        [
+          13.59,
+          9.0
+        ]
+      ]
+    },
+    {
+      "page": 21,
+      "verifiedNotePaths": 3,
+      "noteSizes": [
+        [
+          26.78,
+          24.15
+        ],
+        [
+          20.26,
+          24.15
+        ],
+        [
+          7.59,
+          24.15
+        ]
+      ]
+    }
+  ],
+  "ownerColor": "#82f05a, opacity 1",
+  "newSelection": "2px inset edge, retained fill and original hit/resize geometry; edge pointer events none",
+  "geometry": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "sameFourNoteRectanglesSelectionAndRollBounds": true,
+      "visibleNotes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "exactGreenPixels": 3255
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "exactGreenPixels": 2914
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "exactGreenPixels": 1159
+        }
+      ],
+      "changedPixelsOutsideClippedRollNotes": 0,
+      "beforeSha256": "c57898ea1bde393adf7d0683ffd45ad95f08ad0b74768fc2ddc51789d605c17e",
+      "afterSha256": "923292655812df24b2e189eebbe932f4bbf7a94100d03a42e95784cc2898fa38",
+      "changedPixelsOutsideNoteAndItsVisibleLabel": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "sameFourNoteRectanglesSelectionAndRollBounds": true,
+      "visibleNotes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "exactGreenPixels": 534
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "exactGreenPixels": 538
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "exactGreenPixels": 196
+        }
+      ],
+      "changedPixelsOutsideClippedRollNotes": 349,
+      "beforeSha256": "92dc53f88a0defb62329ce59d3bb42810647ab3e0b06e00fa09df2269ba1a931",
+      "afterSha256": "c852a893ce6ab6a9a8b55daf3235a4289106bdfd3a7cff7c30eb28d70a5a9a61",
+      "changedPixelsOutsideNoteAndItsVisibleLabel": 0
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "sameFourNoteRectanglesSelectionAndRollBounds": true,
+      "visibleNotes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "exactGreenPixels": 679
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "exactGreenPixels": 722
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "exactGreenPixels": 245
+        }
+      ],
+      "changedPixelsOutsideClippedRollNotes": 82,
+      "beforeSha256": "ece04aacada1f6895a67241bba7a216470715b76b1f34ada20e088c0b0148ee5",
+      "afterSha256": "b880e6104c7db2a7f83ac9e321ae47c2f2d41a9e73cb4be3a5f24cc8fa46e4a3",
+      "changedPixelsOutsideNoteAndItsVisibleLabel": 0
+    },
+    {
+      "viewport": [
+        1024,
+        640
+      ],
+      "sameFourNoteRectanglesSelectionAndRollBounds": true,
+      "visibleNotes": [
+        {
+          "id": "n1",
+          "selected": true,
+          "exactGreenPixels": 1597
+        },
+        {
+          "id": "n5",
+          "selected": false,
+          "exactGreenPixels": 1500
+        },
+        {
+          "id": "n6",
+          "selected": false,
+          "exactGreenPixels": 561
+        }
+      ],
+      "changedPixelsOutsideClippedRollNotes": 11,
+      "beforeSha256": "e2618a770c082b25b34072b1aeb4b30c88af97e359d732fb0f49d990516bfe48",
+      "afterSha256": "cd974b6c7e8cc3ca6bd0f049ebdb02339deaa110bad9211aa52f0bf08774daf5",
+      "changedPixelsOutsideNoteAndItsVisibleLabel": 0
+    }
+  ],
+  "normalRollJourney": "PASS",
+  "otherOwners": "Source limits new rules to roll notes when Chicago/Bass A is active; actual normal journey verifies Bass B retains a different fill, then returns to Bass A.",
+  "labelPaint": "All residual pixels beyond the note rectangle fall in its inherited-color note-name span (4px note inset and 24px minimum label width); no rendered pixel differs outside the union of notes and those label spans."
+}

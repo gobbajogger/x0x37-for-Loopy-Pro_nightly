@@ -1,0 +1,149 @@
+{
+  "firmware": "246ea3718c6c72ba80bbd1aafcd5356f871c78c8",
+  "firmwareTree": "91ad1154ab6999f328a9941d44ef0e75b01fbd7c",
+  "buildCommand": "npm run build:product",
+  "matchedBuiltRemoteFiles": 109,
+  "firmwareLinkGitBlob": "04fec008cc323a6af8a05effd9ff3bfef1e1b00c",
+  "remoteStylesheetGitBlob": "291d0eca95e0cc1749756df4b15b6cfe56ecd28c",
+  "fixture": {
+    "path": "tests/product-remote/firmware_queued_host.py",
+    "gitBlob": "f809e1c695c750968d05db954239eb29e5af2c86",
+    "entry": "verify_queued_cutoff",
+    "transport": "Test-only Web MIDI ports backed by the compiled archived firmware host on standard input and output."
+  },
+  "browser": "151.0.7922.34",
+  "chromiumSandbox": true,
+  "viewport": [
+    1280,
+    900
+  ],
+  "hasTouch": true,
+  "exit": 0,
+  "pageErrors": 0,
+  "productionDeviceAdmitted": false,
+  "cutoffActions": [
+    "Connect",
+    "Open More actions",
+    "Click Bass A cutoff",
+    "Tap cutoff",
+    "Enter 33",
+    "Apply",
+    "Undo stored CUTOFF value"
+  ],
+  "wireColumns": [
+    "op",
+    "status",
+    "control",
+    "revision",
+    "value"
+  ],
+  "results": [
+    {
+      "test": "Chicago stored cutoff through Remote Apply and Undo",
+      "source": "246ea3718c6c72ba80bbd1aafcd5356f871c78c8",
+      "control": 257,
+      "browser": "151.0.7922.34",
+      "wire": [
+        [
+          2,
+          0,
+          257,
+          1,
+          32
+        ],
+        [
+          3,
+          1,
+          257,
+          2,
+          33
+        ],
+        [
+          2,
+          0,
+          257,
+          2,
+          33
+        ],
+        [
+          2,
+          0,
+          257,
+          2,
+          33
+        ],
+        [
+          3,
+          1,
+          257,
+          3,
+          32
+        ],
+        [
+          2,
+          0,
+          257,
+          3,
+          32
+        ]
+      ]
+    },
+    {
+      "test": "Coupled COMP uses explicit Apply in both directions; scalar Undo withheld",
+      "THRESH": [
+        [
+          0,
+          64
+        ],
+        [
+          0,
+          60
+        ],
+        [
+          0,
+          61
+        ]
+      ],
+      "MAKEUP": [
+        [
+          0,
+          85
+        ],
+        [
+          0,
+          85
+        ],
+        [
+          0,
+          84
+        ]
+      ],
+      "COMP": [
+        [
+          0,
+          95
+        ],
+        [
+          0,
+          96
+        ],
+        [
+          0,
+          95
+        ]
+      ]
+    }
+  ],
+  "compMessages": [
+    "Stored 96. Update queued. Other control values changed (THRESH).",
+    "Stored 95. Update queued. Other control values changed (THRESH, MAKEUP)."
+  ],
+  "focusedNode": {
+    "command": "node --test tests/product-remote/firmware-link.test.mjs",
+    "passed": 23,
+    "failed": 0,
+    "rerunLogSha256": "cca3cd8dc75a825543d313f6aacb26042a565c36a597516432654bfcfd995d01",
+    "firstRun": "22/23; queued-inverse fixture timed out during the initial connection. The case passed independently before the complete rerun."
+  },
+  "browserTraceSha256": "4349818fddcda160d3729ebfc17f5b65fb15b1759f3258bea3b47c0c401829af"
+}

@@ -1,0 +1,79 @@
+{
+  "name": "break-chance-authored",
+  "browser": "151.0.7922.34",
+  "sha256": "8882bd8241683f61ce8b601bf1f73dbd971aa240f25887d3cf781346e2b0bd55",
+  "geometry": {
+    "enabledSteps": 16,
+    "values": [
+      "100%",
+      "100%",
+      "8:8",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%",
+      "100%"
+    ],
+    "lane": {
+      "x": 138,
+      "y": 361,
+      "width": 693,
+      "height": 29
+    },
+    "roll": {
+      "x": 138,
+      "y": 103,
+      "width": 693,
+      "height": 257
+    },
+    "authoredCell": {
+      "x": 313,
+      "y": 361,
+      "width": 87.5,
+      "height": 29
+    }
+  },
+  "structure": {
+    "viewport": [
+      844,
+      390
+    ],
+    "body": [
+      844,
+      844,
+      390
+    ],
+    "titles": [],
+    "controlCount": 36,
+    "reachable": 36,
+    "blocked": [],
+    "nestedScroll": [
+      {
+        "tag": "DIV",
+        "id": "roll-scroll",
+        "cls": "",
+        "client": 693,
+        "scroll": 1400
+      }
+    ],
+    "horizontalClips": [],
+    "roll": {
+      "completeRows": 16,
+      "clippedLabels": [],
+      "row": 16,
+      "paneHeight": 257,
+      "firstRow": 45,
+      "lastRow": 60
+    }
+  },
+  "expectedStates": 99,
+  "pageErrors": []
+}

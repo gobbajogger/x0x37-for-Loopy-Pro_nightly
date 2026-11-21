@@ -1,0 +1,414 @@
+{
+  "reference": {
+    "file": "docs/design/OWNER-BASELINE-1836.pdf",
+    "sha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17"
+  },
+  "pages": [
+    {
+      "page": 1,
+      "name": "Sequence",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "79cca49b08816540720b6677521fec165cb061df1349e80f61fd28d74af401a1",
+      "originalCaptureName": "after-1440-roll.png",
+      "sheet": "pages-01-04.webp"
+    },
+    {
+      "page": 2,
+      "name": "Drum sequence",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "7653af7541319a2fd217164512c0b403fffa43a38adb02b8c678fda6efcd4805",
+      "originalCaptureName": "after-1440-drums.png",
+      "sheet": "pages-01-04.webp"
+    },
+    {
+      "page": 3,
+      "name": "Timing and Motion",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Motion candidate",
+      "originalCaptureSha256": "a50548efec18564970784e5b21fccb2b17332ff3b5c7ee11f0f6662fabe3b277",
+      "originalCaptureName": "1440x900-point10-77.png",
+      "sheet": "pages-01-04.webp"
+    },
+    {
+      "page": 4,
+      "name": "Chicago Sound",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "199da1b3c6fa3c5963dee15caee2830a68149eb607da623353d3319b647a8e01",
+      "originalCaptureName": "after-1440-sound.png",
+      "sheet": "pages-01-04.webp"
+    },
+    {
+      "page": 5,
+      "name": "Miami and JUNO",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Combined candidate",
+      "originalCaptureSha256": "fa8733764342f29857b94864415e4b47cf1e8c5bbc7f7dc7042293f5f756dccd",
+      "originalCaptureName": "p05-miami.png",
+      "sheet": "pages-05-08.webp"
+    },
+    {
+      "page": 6,
+      "name": "Mix levels",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "f188ecd2882d914d83c4bc9d27b2d4c0b56328c9714894bb1ee26ac43e611b28",
+      "originalCaptureName": "after-1440-mix.png",
+      "sheet": "pages-05-08.webp"
+    },
+    {
+      "page": 7,
+      "name": "Master More",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Combined candidate",
+      "originalCaptureSha256": "10f71b2775cf560ec25271b37f0ce703b8c563e4a0be154446ea5aa7132529b6",
+      "originalCaptureName": "p07-master-more.png",
+      "sheet": "pages-05-08.webp"
+    },
+    {
+      "page": 8,
+      "name": "Effects and sends",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Combined candidate",
+      "originalCaptureSha256": "2708c9f126e63ee711e6725e73f6ae31e39f8dcfcc01d8ea86c5f3f01fccd576",
+      "originalCaptureName": "p08-fx.png",
+      "sheet": "pages-05-08.webp"
+    },
+    {
+      "page": 9,
+      "name": "Patterns",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Patterns candidate",
+      "originalCaptureSha256": "7bbf513633e861cf0b1951c948af851e8fe8bf2c3d40ffcb9eb86897e5346d82",
+      "originalCaptureName": "1440-selected.png",
+      "sheet": "pages-09-12.webp"
+    },
+    {
+      "page": 10,
+      "name": "Song rows",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Combined candidate",
+      "originalCaptureSha256": "22a1ea2e52fc532694d880b1ab4969329bf201b0e26ca3ca347a33f98a22c3c4",
+      "originalCaptureName": "p10-populated-song.png",
+      "sheet": "pages-09-12.webp"
+    },
+    {
+      "page": 11,
+      "name": "BREAK",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Combined candidate",
+      "originalCaptureSha256": "06ba7b44fcf08125b4714419da8e4eedb05754d44c42702076b0e82ca5c0f517",
+      "originalCaptureName": "p11-break.png",
+      "sheet": "pages-09-12.webp"
+    },
+    {
+      "page": 12,
+      "name": "Projects",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "8550ba7a0f9b83c02958be256132b1064787a2489d5c75b3407c7db7ce0bcbd6",
+      "originalCaptureName": "after-1440-files.png",
+      "sheet": "pages-09-12.webp"
+    },
+    {
+      "page": 13,
+      "name": "Connection and Review",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Combined candidate",
+      "originalCaptureSha256": "ad18e851459ca2ae9b2f931be2b9e15642ddf721d0b2a67a11e68f1cc1cdfbc5",
+      "originalCaptureName": "p13-connection.png",
+      "sheet": "pages-13-16.webp"
+    },
+    {
+      "page": 14,
+      "name": "Sequence",
+      "referenceViewport": [
+        844,
+        390
+      ],
+      "cohort": "Density candidate",
+      "originalCaptureSha256": "ce85baf190941f1a962b923de7ae58b469a7167343c8d65e9ec9a8ede589c353",
+      "originalCaptureName": "sequence-chicago.png",
+      "sheet": "pages-13-16.webp"
+    },
+    {
+      "page": 15,
+      "name": "909 drum sequence",
+      "referenceViewport": [
+        844,
+        390
+      ],
+      "cohort": "Density candidate",
+      "originalCaptureSha256": "fd85267aecbba3f58308bc2e856673fa2c416f6923bcb98d91a942a70227dd91",
+      "originalCaptureName": "drums-drum909.png",
+      "sheet": "pages-13-16.webp"
+    },
+    {
+      "page": 16,
+      "name": "Mix levels",
+      "referenceViewport": [
+        844,
+        390
+      ],
+      "cohort": "Density candidate",
+      "originalCaptureSha256": "020f746e1583aad14403d85eef9e66424feeec4081a5674c02ef71c4c2282853",
+      "originalCaptureName": "draft-mix-levels.png",
+      "sheet": "pages-13-16.webp"
+    },
+    {
+      "page": 17,
+      "name": "Timing and Motion",
+      "referenceViewport": [
+        844,
+        390
+      ],
+      "cohort": "Motion candidate",
+      "originalCaptureSha256": "ac7ba871259b49a389584bab4edfb61f7a986c1319a8c6fa401d3c75a43d0599",
+      "originalCaptureName": "844x390-point10-77.png",
+      "sheet": "pages-17-20.webp"
+    },
+    {
+      "page": 18,
+      "name": "909 Sound",
+      "referenceViewport": [
+        844,
+        390
+      ],
+      "cohort": "Density candidate",
+      "originalCaptureSha256": "b61d7e6ceca8a9bbfd2f6306e174b657e31d366c0d1e911ed3d8221a41d60820",
+      "originalCaptureName": "sound-drum909-0.png",
+      "sheet": "pages-17-20.webp"
+    },
+    {
+      "page": 19,
+      "name": "Patterns",
+      "referenceViewport": [
+        844,
+        390
+      ],
+      "cohort": "Patterns candidate",
+      "originalCaptureSha256": "37e4ae7213ec6d2e4dbc406a06bb9f6da0694e87607b6b8158908be2ef10da07",
+      "originalCaptureName": "844-selected.png",
+      "sheet": "pages-17-20.webp"
+    },
+    {
+      "page": 20,
+      "name": "Projects",
+      "referenceViewport": [
+        844,
+        390
+      ],
+      "cohort": "Density candidate",
+      "originalCaptureSha256": "ff911c82eb5d6cd2920c495b68eccfe36405fd9edfce5947388bd04098060087",
+      "originalCaptureName": "projects.png",
+      "sheet": "pages-17-20.webp"
+    },
+    {
+      "page": 21,
+      "name": "Sequence",
+      "referenceViewport": [
+        390,
+        844
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "9051e2414516e695b14c90cf08ff78f06a86fcfe8f6b9094e613e4aba7051fc1",
+      "originalCaptureName": "after-390-roll.png",
+      "sheet": "pages-21-24.webp"
+    },
+    {
+      "page": 22,
+      "name": "Step inspector replacement",
+      "referenceViewport": [
+        390,
+        844
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "9051e2414516e695b14c90cf08ff78f06a86fcfe8f6b9094e613e4aba7051fc1",
+      "originalCaptureName": "after-390-roll.png",
+      "sheet": "pages-21-24.webp"
+    },
+    {
+      "page": 23,
+      "name": "Mix levels",
+      "referenceViewport": [
+        390,
+        844
+      ],
+      "cohort": "Header candidate",
+      "originalCaptureSha256": "f748e5a92fb2f26f407c3c9d98241943100e3e39461ac2f6d84b59c8e1eab9d2",
+      "originalCaptureName": "after-390-mix.png",
+      "sheet": "pages-21-24.webp"
+    },
+    {
+      "page": 24,
+      "name": "Evidence appendix",
+      "referenceViewport": [
+        1440,
+        900
+      ],
+      "cohort": "Reference only",
+      "originalCaptureSha256": null,
+      "originalCaptureName": null,
+      "sheet": "pages-21-24.webp"
+    }
+  ],
+  "combinedCandidate": {
+    "browser": "Chromium normal sandbox",
+    "dimensions": [
+      1440,
+      900
+    ],
+    "assets": {
+      "app.mjs": "8c6fb9c9d829564470e3190133ba014786159cbac93db53f418d5a7b826aec59",
+      "index.html": "e81cd02e81346a411f4f971e70678b0c69fc47e363963662d8adde40845d2f01",
+      "style.css": "3ca7c0c8cdeea6f68eeea7209978e8e8306338e46419aa156795d4bd36e30a66",
+      "workspace.mjs": "964b5cf89db760ae6c84a51d551b37b6607e3f3afc35b029d94a156bc10d13b6",
+      "funkybeats-view.mjs": "69b240f29756d699df299f9dbf1265b69cb94761218a880c248a41e873b4570f",
+      "wave-display.mjs": "6287ea63be3f5f30620316a49ba190001bf164afe3e496440d2491438575621b"
+    },
+    "states": [
+      {
+        "page": 5,
+        "state": "miami",
+        "capture": "p05-miami.png",
+        "sha256": "fa8733764342f29857b94864415e4b47cf1e8c5bbc7f7dc7042293f5f756dccd"
+      },
+      {
+        "page": 5,
+        "state": "juno",
+        "capture": "p05-juno.png",
+        "sha256": "faddb7df7eb66f26cf7a5065ddbd8abe74de6310be83cc1283eba26dad1a4345"
+      },
+      {
+        "page": 7,
+        "state": "master-more",
+        "capture": "p07-master-more.png",
+        "sha256": "10f71b2775cf560ec25271b37f0ce703b8c563e4a0be154446ea5aa7132529b6"
+      },
+      {
+        "page": 8,
+        "state": "fx",
+        "capture": "p08-fx.png",
+        "sha256": "2708c9f126e63ee711e6725e73f6ae31e39f8dcfcc01d8ea86c5f3f01fccd576"
+      },
+      {
+        "page": 8,
+        "state": "sends",
+        "capture": "p08-sends.png",
+        "sha256": "982fb4dbae8621972e5f34a90a7c7282dbe07d9f0f59d99605011bddd8847c3a"
+      },
+      {
+        "page": 10,
+        "state": "populated-song",
+        "capture": "p10-populated-song.png",
+        "sha256": "22a1ea2e52fc532694d880b1ab4969329bf201b0e26ca3ca347a33f98a22c3c4"
+      },
+      {
+        "page": 11,
+        "state": "break",
+        "capture": "p11-break.png",
+        "sha256": "06ba7b44fcf08125b4714419da8e4eedb05754d44c42702076b0e82ca5c0f517"
+      },
+      {
+        "page": 13,
+        "state": "connection",
+        "capture": "p13-connection.png",
+        "sha256": "ad18e851459ca2ae9b2f931be2b9e15642ddf721d0b2a67a11e68f1cc1cdfbc5"
+      },
+      {
+        "page": 13,
+        "state": "review",
+        "capture": "p13-review.png",
+        "sha256": "6fda40279d2c2e4e667f555444fcccf05a93c9cb2d788caa2725ac6ec0fa668b"
+      }
+    ]
+  },
+  "densityCandidateManifest": "33c8d89fdba9a8c47e5b1b129d32c8538aed695140105a4254d37f5ddcf4fdfb",
+  "sheets": {
+    "pages-01-04.webp": "3d4e2fcc375aa83cc80a6cd913df3a083119656619dfe618d06de6d19b582228",
+    "pages-05-08.webp": "b1d5f8cb5562eb27617c98ca41226b9c22c28cb08e91f207619066fd5b031d49",
+    "pages-09-12.webp": "a62e0d7c3e6f1d56895f958639b4fe54e5479a2af516666413f35511f145dc34",
+    "pages-13-16.webp": "df6f5b11605bb509068f514cd824518e45a174b0b7c1ac2cce80b7d865e0086f",
+    "pages-17-20.webp": "a7a5c2076e4ea645edf5625ac7c72c9cf29dd9caa0152dd8630f2c9266e2e318",
+    "pages-21-24.webp": "90157689be2062efc3d0677ede26ad1fd719ea25862986e37a89bf9a99181608",
+    "alternate-states.webp": "044b8e67fdbb2e70a7c84f732e642e1915076255b01eacb1697c80e082abc591",
+    "page-09-desktop.webp": "6c924eb7142f25c1d2ec3f876ba5951207e17c9068e0fd91a17b1b5633a518f0"
+  },
+  "alternateStates": [
+    {
+      "label": "05 \u00b7 Current JUNO Draft",
+      "source": "p05-juno.png",
+      "sha256": "faddb7df7eb66f26cf7a5065ddbd8abe74de6310be83cc1283eba26dad1a4345"
+    },
+    {
+      "label": "08 \u00b7 Sends",
+      "source": "p08-sends.png",
+      "sha256": "982fb4dbae8621972e5f34a90a7c7282dbe07d9f0f59d99605011bddd8847c3a"
+    },
+    {
+      "label": "13 \u00b7 Draft review",
+      "source": "p13-review.png",
+      "sha256": "6fda40279d2c2e4e667f555444fcccf05a93c9cb2d788caa2725ac6ec0fa668b"
+    },
+    {
+      "label": "19 \u00b7 All parts",
+      "source": "844-all.png",
+      "sha256": "38c22dccce61380c29c7e59a2c31928fd3b79e6807158cdae2fa2bb552ed680e"
+    }
+  ],
+  "captureCohorts": {
+    "Header candidate": "Independently rendered scoped header change based on f7867dc8571ccb7d6248a849ac268524a51ddc73 and subsequently published in fec2254c187f2884230b08921b0337b95da8f8d0.",
+    "Combined candidate": "Independent desktop snapshot taken from the combined lane after fec2254 and before subsequent pinch-to-bar assembly. Each sampled asset is individually identified in combinedCandidate.",
+    "Patterns candidate": "Independent three-size browser review on the corrected selected/all grid, after fec2254.",
+    "Motion candidate": "Density/Motion follow-up after fec2254, with a deliberately edited step-10 value.",
+    "Density candidate": "Landscape layout qualification after fec2254. Page 14 uses the later corrected 16-row fixture.",
+    "Reference only": "The owner PDF is the sole source for the appendix."
+  },
+  "page09Supplement": {
+    "geometry": "page-09-geometry.json",
+    "geometrySha256": "a6fb644c126230146f22cc0c73c7afce59c187c84f153e20a3e5079bcf60232e",
+    "sheet": "page-09-desktop.webp",
+    "historicalBeforeStillIn": "pages-09-12.webp"
+  }
+}

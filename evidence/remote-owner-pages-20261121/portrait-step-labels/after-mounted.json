@@ -1,0 +1,82 @@
+{
+  "style": "7a20a0a07a3cb5759c99c394295c85abe5700b7fed169ec0b67e630cbd0a4d6d",
+  "browser": "151.0.7922.34",
+  "viewports": {
+    "390x844": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": []
+    },
+    "844x390": {
+      "tests": 320,
+      "inkTests": 640,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": []
+    },
+    "320x640": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": []
+    },
+    "360x780": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": []
+    },
+    "1024x640": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [
+        [
+          "FX type lock",
+          "COMPRESSOR",
+          "value",
+          [
+            [
+              2,
+              0.7999725341796875,
+              37,
+              -1
+            ]
+          ]
+        ]
+      ],
+      "aria": [],
+      "cells": []
+    },
+    "1440x900": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [
+        [
+          "FX type lock",
+          "COMPRESSOR",
+          "value",
+          [
+            [
+              2,
+              0.7999725341796875,
+              37,
+              -1
+            ]
+          ]
+        ]
+      ],
+      "aria": [],
+      "cells": []
+    }
+  }
+}

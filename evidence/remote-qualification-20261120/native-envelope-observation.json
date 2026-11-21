@@ -1,0 +1,105 @@
+{
+  "schema": "dnbox-native-envelope-observation-proof/1",
+  "base": "9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab",
+  "previousGate": {
+    "sha": "451be1fafd0a328c0f489084d3807da216024d7e",
+    "outcome": "FAIL",
+    "assertion": "tests/product-remote/envelope-browser.py:85",
+    "observed": "First CHICAGO slot 1 cycle, desktop 1440x900. Prior observation matched; next independent curve-count assertion failed. The gate did not record the intervening packet or audio context state."
+  },
+  "browser": {
+    "chromium": "151.0.7922.34",
+    "chromiumSandbox": true
+  },
+  "producer": {
+    "runtime": "4758a9573e0a2a95e73cb054a74e0aad39d5741e",
+    "firmware": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb",
+    "wasmSha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b"
+  },
+  "historicalTwoReadControl": {
+    "input": "Actual held CHICAGO slot 1 key, stock worklet; suspend its real AudioContext between the original separate DOM reads and wait for the existing observer to hide stale data.",
+    "assertion": "The original zero-argument graph count fails. No synthetic packet or product edit needed.",
+    "exit": 1,
+    "before": {
+      "sequence": 113,
+      "kernel": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+      "firmware": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb",
+      "owner": 1,
+      "role": "amp",
+      "available": true,
+      "sourceLevel": 1,
+      "displayLevel": "1",
+      "graphs": 1,
+      "hidden": false,
+      "context": "running",
+      "time": 6130.9000000003725
+    },
+    "expired": {
+      "sequence": 114,
+      "kernel": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+      "firmware": "06bd40c57cefcdf6c751b318b1cbaea0914fa8bb",
+      "owner": 1,
+      "role": "amp",
+      "available": true,
+      "sourceLevel": 1,
+      "displayLevel": null,
+      "graphs": 0,
+      "hidden": true,
+      "context": "suspended",
+      "time": 7711
+    },
+    "differenceMs": 1580.1,
+    "ordinaryReferencePath": "Prior assertions without deliberate suspension also passed all three viewports on the same host."
+  },
+  "repairedContract": {
+    "command": "python3 tests/product-remote/envelope-browser.py",
+    "exit": 0,
+    "sourceIdentitiesAndValues": "One browser task compares the visible nonempty SVG for the exact engine/slot/role against the latest available worklet packet and displayed raw level; held-note cases require an actual positive post-key value.",
+    "freshnessControl": "After a real AudioContext suspension the observer hid its graph and the combined predicate returned false. After resumption a newer genuine packet restored the matched curve.",
+    "desktopControl": {
+      "observed": {
+        "sequence": 113,
+        "engine": "CHICAGO",
+        "slot": 1,
+        "role": "amp",
+        "level": 1
+      },
+      "last": 115,
+      "resumed": {
+        "sequence": 116,
+        "engine": "CHICAGO",
+        "slot": 1,
+        "role": "amp",
+        "level": 1
+      }
+    },
+    "viewports": [
+      "1440x900",
+      "390x844",
+      "844x390"
+    ],
+    "heldEngines": [
+      "CHICAGO/1/amp",
+      "JUNO/1/amp-filter"
+    ],
+    "initialObserved": "909/0/amp",
+    "additionalChecks": "Each viewport verified no page error, zero MIDI access, disabled Apply, closed AudioContext, cleared observations, and preserved undoable Draft note.",
+    "hostVisibility": "Default five-second Playwright to_be_visible contract retained independently. Atomic graph check requires CSS visibility, positive rendered width and height, and nonzero SVG path length.",
+    "unitTests": {
+      "command": "node --test tests/product-remote/envelope-view.test.mjs tests/product-remote/envelope-observations.test.mjs",
+      "passed": 13,
+      "failed": 0
+    }
+  },
+  "sourceHashes": {
+    "web/product-site/remote/envelope-view.mjs": "bb0ea4fdb883caa0f22938ba78edd4f740a78b192a59e09f7411eee081ddcffd",
+    "tests/product-remote/envelope-browser.py": "8580a52669ed922ce4d2c2900576575ae79ee0491a5bdc276115db833ff8aa1e"
+  },
+  "logsSha256": {
+    "expiry-red.log": "390dbcf90f4fc152fdb60143257b0d86962cfae5ae712c71fcfdd8193889d1cc",
+    "green.log": "fafcbf3eff5a8275027e97d6eaa796f2bb1a8f09ff97167e1794e5378456d9cc",
+    "unmodified-diagnostic.log": "cbad99537db0c794f663a39786605bb03447a97c6c8dfcfa7f5eb2dca3935227",
+    "green-reviewed.log": "7faf5ffc6b6762c60643aa1f0469ca305a90c7ef3718bba2cde6e9f0f2c7988a",
+    "unit.log": "eb52204a8deedb1c5817c3a36c89b652fada83b6f0edfb0ffbf28d7f04ce5ea9"
+  }
+}

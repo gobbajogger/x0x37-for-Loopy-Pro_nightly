@@ -1,0 +1,101 @@
+{
+  "fields": 21,
+  "banks": [
+    {
+      "name": "BankA.json",
+      "size": 152843,
+      "count": 41,
+      "edits": 861,
+      "originalSha256": "1486c2b1fcb922d145541c96f436e7e15d755dba72ff9a8030052ef22d224bed",
+      "changedSha256": "052a371eebd27ad45e423813bb107c51b9ade59b715e7634893d6a7ea9e2c3bd"
+    },
+    {
+      "name": "Bonus.json",
+      "size": 392851,
+      "count": 94,
+      "edits": 1974,
+      "originalSha256": "e189a9782469bd851d97a2bd157cfdd43692621287de68eb2909e8aabbd4b996",
+      "changedSha256": "06ade33444f6837e4607f07cbd7bd1aea9c5c97ed961f0212e34bb6471786fab"
+    },
+    {
+      "name": "Brice Beasley.json",
+      "size": 141354,
+      "count": 46,
+      "edits": 966,
+      "originalSha256": "a42a515cc66fc392f8831efa4865145dc9e2c8a8d9bc2554d1fd8a1aed242d45",
+      "changedSha256": "ef1585b35820db487442c8df4fd53414349c8a19bbe75d563aa9fdcc89d6fd9f"
+    },
+    {
+      "name": "DJ Puzzle.json",
+      "size": 83700,
+      "count": 28,
+      "edits": 588,
+      "originalSha256": "6263b4c08143d5f62192ad48c881129ae0c2df80256abd010dee89ede10b6506",
+      "changedSha256": "b19156d9467b630fe55c2a5912641667ca2d7e67bdb895d8286ae15af94238e5"
+    },
+    {
+      "name": "Electronisounds.json",
+      "size": 130496,
+      "count": 43,
+      "edits": 903,
+      "originalSha256": "94447bcafd93b8e534b99347ef1a2ab7f96006364c36e85c88825e2480a026e7",
+      "changedSha256": "ed52ff0d057e6ca37e027a5fd663d6cf8e81701bdfac1d6150524a0cfecc6e89"
+    },
+    {
+      "name": "Francis Preve.json",
+      "size": 75532,
+      "count": 26,
+      "edits": 546,
+      "originalSha256": "7e45e985951bcff09de2745d7223a8523c559f7ae30c032cfeed81c6bf317187",
+      "changedSha256": "833298e4d8174e8115733922f6349b45c87b0b7506e66d04eea81e8439f2f4b8"
+    },
+    {
+      "name": "JEC.json",
+      "size": 377802,
+      "count": 88,
+      "edits": 1848,
+      "originalSha256": "9af56a4f52d050c98da8bfc6bc355ac872772cdd419def188bb644b0c9dff0c0",
+      "changedSha256": "b355d68b7767c92d5c6933fe9cd02e04bbcb429d05c724b1b8c848e85c94388c"
+    },
+    {
+      "name": "Red Sky Lullaby.json",
+      "size": 311963,
+      "count": 100,
+      "edits": 2100,
+      "originalSha256": "db813fe373ebd0c2434c8c0af376b245c331c35080b396bce83bc4d9f2fb0aac",
+      "changedSha256": "0ac65f0cdff39f758a5582daf7b76f2ffc202cd655aa0e12850f346f002fd60b"
+    },
+    {
+      "name": "Sound of Izrael 2.json",
+      "size": 163872,
+      "count": 51,
+      "edits": 1071,
+      "originalSha256": "edf48f200ed2510b03d4b5e9e4c92c0306af0e38776c0916794d90e79572d861",
+      "changedSha256": "f9c10b89e52d51e5bcd8abe1ca22d1a541cbce0dd367027fa1e93e89754bddd3"
+    },
+    {
+      "name": "Sound of Izrael.json",
+      "size": 382672,
+      "count": 101,
+      "edits": 2121,
+      "originalSha256": "1f100f20227401a47e17f91bac5be44efc6d5fef8d97f7ed2a64a2a7e1426462",
+      "changedSha256": "86f59a7280c4c344fc6fcbf03c490f4b1c992df9226a4799f0fcc01b786eac91"
+    },
+    {
+      "name": "Spidericemidas.json",
+      "size": 195532,
+      "count": 61,
+      "edits": 1281,
+      "originalSha256": "1cb034e91677be3b7bc0cddca64d821ddbfc132d79f98e4211053867f76eec35",
+      "changedSha256": "00fcde22ee6bb3f2af0e3594af35c58cf23f0977189193c62c4536e0d9b09b70"
+    },
+    {
+      "name": "Starter Bank.json",
+      "size": 58280,
+      "count": 15,
+      "edits": 315,
+      "originalSha256": "f4da92584505084e3b0277cf1e1f1911050837014a5fa7371cc6879421cbe908",
+      "changedSha256": "e370d34bdabf8d6971cceb89b76000cc72a8a5b92abf44e369592c241c1da01a"
+    }
+  ]
+}

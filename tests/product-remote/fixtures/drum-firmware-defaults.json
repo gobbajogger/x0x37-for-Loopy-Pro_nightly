@@ -1,0 +1,129 @@
+{
+  "current-state-and-reference/909-voice-00.svg": [
+    "13ms",
+    "10%",
+    "1.0s",
+    "0%",
+    "+0.1st",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-01.svg": [
+    "205Hz",
+    "841ms",
+    "340ms",
+    "50%",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-02.svg": [
+    "68Hz",
+    "18%",
+    "996ms",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-03.svg": [
+    "102Hz",
+    "18%",
+    "763ms",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-04.svg": [
+    "132Hz",
+    "18%",
+    "720ms",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-05.svg": [
+    "210Hz",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-06.svg": [
+    "951Hz",
+    "344ms",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-07.svg": [
+    "+0.2st",
+    "109ms",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-08.svg": [
+    "+0.2st",
+    "456ms",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-09.svg": [
+    "+0.2st",
+    "1.8s",
+    "100%"
+  ],
+  "current-state-and-reference/909-voice-10.svg": [
+    "+0.2st",
+    "1.8s",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-00.svg": [
+    "+0.1st",
+    "33%",
+    "19%",
+    "69%",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-01.svg": [
+    "+0.1st",
+    "50%",
+    "85%",
+    "70%",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-02.svg": [
+    "0.0st",
+    "TOM",
+    "392ms",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-03.svg": [
+    "0.0st",
+    "TOM",
+    "282ms",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-04.svg": [
+    "0.0st",
+    "TOM",
+    "259ms",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-05.svg": [
+    "+0.1st",
+    "RIM",
+    "31%",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-06.svg": [
+    "+0.1st",
+    "6ms",
+    "CLAP",
+    "50%",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-07.svg": [
+    "+0.1st",
+    "49%",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-08.svg": [
+    "+0.1st",
+    "55%",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-09.svg": [
+    "+0.1st",
+    "58%",
+    "100%"
+  ],
+  "current-state-and-reference/808-voice-10.svg": [
+    "+0.1st",
+    "37%",
+    "100%"
+  ]
+}

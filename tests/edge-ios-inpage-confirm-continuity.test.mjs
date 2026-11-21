@@ -4,16 +4,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { execSync } from 'node:child_process';
 import { Script, createContext } from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { renderInstaller } from '../scripts/render-qualified-nightly.mjs';
 
+import { liveInstaller as live, readLiveCatalog } from './fixtures/pinned-live-installer.mjs';
+
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const LIVE_INSTALL_BLOB = '15d43a0a8398a69c70e73aa7b6a6dc6bbe5bace0';
-const LIVE_CATALOG_BLOB = '24a8b208aa01d539b5ef4e23af73d9c4aa2ac3d8';
-const gitBlob = sha => execSync(`git cat-file -p ${sha}`, { cwd: root, encoding: 'utf8', maxBuffer: 10e6 });
 
 function extractFn(text, sig) {
   const idx = text.indexOf(sig);
@@ -31,8 +29,7 @@ function extractFn(text, sig) {
 }
 const norm = s => s.replace(/\r\n/g, '\n').replace(/[ \t]+$/gm, '').trim();
 
-const live = gitBlob(LIVE_INSTALL_BLOB);
-const catalog = JSON.parse(gitBlob(LIVE_CATALOG_BLOB));
+const catalog = readLiveCatalog();
 const rendered = renderInstaller(catalog);
 const srcOta = readFileSync(join(root, 'web/fm1ota.js'), 'utf8');
 const srcHtml = readFileSync(join(root, 'web/x0x_installer.html'), 'utf8');

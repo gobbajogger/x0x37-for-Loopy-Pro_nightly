@@ -1,0 +1,8 @@
+LOCAL_SUPERJ6_BANK 26 programs, absent fields, both owners, original-byte exports, per-program edits, Undo/Redo, digest reattachment, copy reimport and Draft recovery PASS
+PASS 1440x900 MIDI 0 errors 0
+LOCAL_SUPERJ6_BANK 26 programs, absent fields, both owners, original-byte exports, per-program edits, Undo/Redo, digest reattachment, copy reimport and Draft recovery PASS
+PASS 844x390 MIDI 0 errors 0
+LOCAL_SUPERJ6_BANK 26 programs, absent fields, both owners, original-byte exports, per-program edits, Undo/Redo, digest reattachment, copy reimport and Draft recovery PASS
+PASS 390x844 MIDI 0 errors 0
+LOCAL_SUPERJ6_BANK 26 programs, absent fields, both owners, original-byte exports, per-program edits, Undo/Redo, digest reattachment, copy reimport and Draft recovery PASS
+PASS 1024x640 MIDI 0 errors 0

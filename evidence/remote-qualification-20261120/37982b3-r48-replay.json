@@ -1,0 +1,13 @@
+{
+  "node": "v24.22.3",
+  "fixtureSha256": "6202f06d06aed644fcf8aff6492120bace6239e7a684143beb56317ead6524e5",
+  "verifierSha256": "79935513e75baf060b3dc5b85ebb22e97c880fd30db1a305a3d4361e41a398d0",
+  "original": "67258e6d6234f84440495efe8aba6732688c232b8e2cc50a41c97ed867d26288",
+  "forged": "7cbe01367f6d2cbab151dbaa0646bd57da62c4912857989bd38e862e862beba8",
+  "timeoutMs": 15000,
+  "elapsedMs": 427,
+  "status": 1,
+  "signal": null,
+  "launchError": null,
+  "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: historical row tampered at 145\n+ actual - expected\n\n+ '7cbe01367f6d2cbab151dbaa0646bd57da62c4912857989bd38e862e862beba8'\n- '67258e6d6234f84440495efe8aba6732688c232b8e2cc50a41c97ed867d26288'\n\n    at file:///tmp/x0x37-status-focused-BLyhZe/scripts/verify-build-status.mjs:526:11\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '7cbe01367f6d2cbab151dbaa0646bd57da62c4912857989bd38e862e862beba8',\n  expected: '67258e6d6234f84440495efe8aba6732688c232b8e2cc50a41c97ed867d26288',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.22.3\n"
+}

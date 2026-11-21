@@ -1,0 +1,94 @@
+mapping	comparison	remote_observation
+M001	Route	Shared workspace tab: Sequence. The corrected phone design uses the desktop components.
+M002	Route	Shared workspace tab: Sound. The corrected phone design uses the desktop components.
+M003	Route	Shared workspace tab: Mix & FX. The corrected phone design uses the desktop components.
+M004	Route	Shared workspace tab: Patterns & Song. The corrected phone design uses the desktop components.
+M005	Route	Shared workspace tab: Projects. The corrected phone design uses the desktop components.
+M006	Route	Connect opens connection feedback. Stock parameter-catalog admission is unresolved.
+M007	Route	Shared part selector for 909.
+M008	Route	Shared part selector for 808.
+M009	Route	Shared part selector for Bass A.
+M010	Route	Shared part selector for Bass B.
+M011	Route	Shared part selector for BREAK.
+M012	Draft	Local transport intent. Native playing/stopped is observed independently; selected-part position is unavailable.
+M013	Owner correction	Pitch lane or roll gesture. The separate inspector is superseded by the shared roll and one switchable step lane.
+M014	Owner correction	Velocity lane. The separate inspector is superseded by the shared roll and one switchable step lane.
+M015	Owner correction	Gate lane: Note. The separate inspector is superseded by the shared roll and one switchable step lane.
+M016	Owner correction	Gate lane: Tie. The separate inspector is superseded by the shared roll and one switchable step lane.
+M017	Owner correction	Gate lane: Rest. The separate inspector is superseded by the shared roll and one switchable step lane.
+M018	Owner correction	Accent lane. The separate inspector is superseded by the shared roll and one switchable step lane.
+M019	Owner correction	Slide lane. The separate inspector is superseded by the shared roll and one switchable step lane.
+M020	Owner correction	Direct gestures on the roll replace the pictured tool modes.
+M021	Route	Shared history Undo or More actions → Review.
+M022	Owner correction	Gate, release, accent and slide share the thin lane; no separate details panel.
+M023	Open	Only the start marker and independent native playing/stopped state are supported; no selected-part musical position.
+M024	Draft	Voice-step grid or kit Accent row. On 844×390, the first 3 voices × 11 steps fit beside Sound; the rest scroll.
+M025	Draft	Adjacent Sound has the editable source parameter with a firmware-unit readout.
+M026	Partial	The adjacent voice editor and thin lane are available; arbitrary per-voice keyboard step locks are unqualified.
+M027	Partial	Chance is a switchable Draft lane. Selected-step values from stock are unavailable.
+M028	Owner correction	Direct note position and length editing replaces the numeric panel; no equivalent numeric field.
+M029	Draft	Local bass Release lane, Legacy or 1–15. Positive endpoints require an eligible gate.
+M030	Partial	Chicago target picker and sixteen local per-pattern overrides. Separate Motion grid addresses MIAMI Wave. Native arbitrary lock playback is unqualified.
+M031	Draft	Chance lane provides percentages and conditional values where supported.
+M032	Draft	Chicago Cutoff lock, selected bass slot and pattern; change or clear the override on the thin lane.
+M033	Route	More actions → Review.
+M034	Draft	Grouped Chicago sound controls on both slots; the owner removed the duplicate raw list. Wave uses selector names.
+M035	Partial	Projects edits and saves original Synth One/SuperJ6 files. No comparable original Chicago/Miami file route is evidenced here.
+M036	Route	Sound engine chooser for the active slot.
+M037	Draft	Selected slot → Sound → MIAMI → Carrier. The drawing puts the two engines side by side.
+M038	Draft	Selected slot → Sound → MIAMI → Xmod. The drawing puts the two engines side by side.
+M039	Draft	Selected slot → Sound → MIAMI → Filter. The drawing puts the two engines side by side.
+M040	Draft	Selected slot → Sound → MIAMI → Wobble. The drawing puts the two engines side by side.
+M041	Owner correction	Use the actual SuperJ6 bank, layers, waveform, PWM width/enable, sub and three LFOs. Legacy fields have no inferred one-to-one mapping.
+M042	Draft / emulator	Mix → Levels, source-mapped level fader.
+M043	Open	Per-part peak signal absent. A separate real stereo master output exists in Emulator.
+M044	Open	Independent per-part mixer mute control absent.
+M045	Open	Independent per-part mixer solo control absent.
+M046	Route	Mix strip opens the selected part’s Sound controls.
+M047	Draft / emulator	Mix master macros. Source defaults can differ from the PDF sample values.
+M048	Route	Mix → Master / More.
+M049	Partial	Emulator provides stereo waveform and master peak history. Gain reduction is unavailable.
+M050	Draft	Master / More. The four macros also have Emulator controls; the additional twelve controls are Draft.
+M051	Route	Emulator master stereo samples drive peak history and the two-channel waveform. No gain-reduction signal.
+M052	Open	Emulator master stereo samples drive peak history and the two-channel waveform. No gain-reduction signal.
+M053	Draft	Reverb source-format control. Reverb Decay 73 on the source scale displays as 62% feedback.
+M054	Draft	Delay source-format control. Reverb Decay 73 on the source scale displays as 62% feedback.
+M055	Draft	Part send on Mix → FX or Sends.
+M056	Partial	Tape Wear is editable. Tape activity is unobserved.
+M057	Open	A separate Delay type action is absent from the captured FX controls.
+M058	Draft	Selected-part grid, 32 choices. The All parts view exposes each bank independently.
+M059	Open	Pattern-content action or provider-backed queue is unavailable.
+M060	Route	Patterns → Song.
+M061	Draft	Authored row accepts an actual pattern and independent On switch. Four blank Choose rows do not appear at startup.
+M062	Draft	Repeat 1–8 on authored rows.
+M063	Draft	Song offers add, move up/down, remove and Review.
+M064	Draft	BREAK → Slices. Loop pickers use the five available assets; rate supports 1/16, 1/8 and 1/4.
+M065	Draft	Choose Auto or a slice from 1–32 for this step.
+M066	Route	Starting-break selection and individual audio previews.
+M067	Draft	Slices view exposes the sixteen step selectors.
+M068	Draft	Selected BREAK pattern owns eleven Generator controls and B chance in Sound.
+M069	Open	Only MIAMI Wave has a free-motion editor. No genuine BREAK routing supports the proposed action.
+M070	Repaired	New Step locks action opens the sixteen Level lock cells for the selected BREAK pattern.
+M071	Repaired	New Review draft action opens the shared modal directly from BREAK.
+M072	Partial	Link to Projects tool. Stock backup retrieval/restore transactions need a provider.
+M073	Open	No stock complete-project reader in this screen.
+M074	Route	Original Synth One/SuperJ6 editor. Inspect and save depend on a loaded file.
+M075	Partial	MIDI exchange destination; execution needs a provider.
+M076	Open	Export availability is shown; the Remote does not execute the requested export.
+M077	Route	Available from Projects.
+M078	Partial	Connect and versioned protocol implementation exist separately. The stock keyboard lacks the admitted round-trip provider in this revision.
+M079	Draft	Local changes, keep or confirmed discard in Review. Connect and Review are separate surfaces.
+M080	Owner correction	The roll remains visible while editing the thin lane.
+M081	Route	Dedicated drum navigation action.
+M082	Open	The pictured mixer action is absent.
+M083	Route	Mix mode navigation to FX or Master / More.
+M084	Owner correction	Gesture roll stays present with the single step lane.
+M085	Draft	Firmware-unit drum control with decrement/increment. The final pictured Accent slot actually addresses kit-wide 909 Velocity sensitivity; 909 Accent gain has a separate identity.
+M086	Source correction	Firmware-unit drum control with decrement/increment. The final pictured Accent slot actually addresses kit-wide 909 Velocity sensitivity; 909 Accent gain has a separate identity.
+M087	Route	Read-only source frame.
+M088	Route	Save the local Draft.
+M089	Route	Kit/voice selection in Sound.
+M090	Route	Shared Review dialog.
+M091	Route	Dedicated Patterns action.
+M092	Owner correction	Edit the note on the roll or the selected thin lane.
+M093	Reference	The drawing distinguishes proposed composition, source captures, host tests and outstanding device/interaction evidence.

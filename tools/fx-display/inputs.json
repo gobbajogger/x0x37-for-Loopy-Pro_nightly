@@ -1,0 +1,8 @@
+{
+  "firmware/src/app/ui.c": "27cbf21dde4d75c1676cfa40ff564a31a0b82b851ba73830d9facf4945b67596",
+  "firmware/src/dsp/fxbus.c": "e76e82082eb9618858b484fbe9956f204adca852b35be4c4bd931ac11757fd3b",
+  "firmware/src/dsp/fxbus.h": "492402f5570faa15b24241259c1e76011bfb3054fdee0d2e320b3e9171ca519c",
+  "firmware/src/dsp/fastmath.h": "fbe052086010b17d8194b9cd3d61d3cb349cc1def3817ae9651a6683d7850b09",
+  "firmware/src/dsp/x0x_param.h": "a9341e448f8e2e7c880734f6758df46c0e43669b4c6252b429f7070425b4c800",
+  "tools/gen_drum_samples.py": "ff2a5d642d30b495fe6b1ddc7c6646ff9211333c082bbfd744cf2f6f6cc1dedc"
+}

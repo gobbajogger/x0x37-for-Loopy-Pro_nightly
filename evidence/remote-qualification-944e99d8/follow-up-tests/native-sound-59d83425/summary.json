@@ -1,0 +1,171 @@
+{
+  "source": "59d8342569d494dc587cafde456ed71b5130978d",
+  "harnessSha256": "0a01b985460d94501aec3740c4a912bc35b51f1299d80ea21922312ee8614c96",
+  "provider": {
+    "firmware_source": "61827a714ca7b240c01a55ed347b5fd7b847c7c2",
+    "kernel_source": "4758a9573e0a2a95e73cb054a74e0aad39d5741e",
+    "wasm_bytes": 1087987,
+    "wasm_sha256": "9ad1ab9c533ccda4b506a0b0cc281de50af3dcd57370ffa916a5174277cbdbd0",
+    "device_control": false,
+    "full_physical_panel": false
+  },
+  "assets": 303,
+  "buildValidation": "Unmodified builder --check authenticated the existing product. All original provider checks and exercise cases were retained.",
+  "productModified": false,
+  "runs": [
+    {
+      "kind": "unfiltered original",
+      "command": "python -u run.py",
+      "viewportOrder": [
+        "1440x900",
+        "390x844",
+        "844x390"
+      ],
+      "exit": 1,
+      "startUTC": "2026-11-21T15:43:21Z",
+      "endUTC": "2026-11-21T15:54:36Z",
+      "results": [
+        {
+          "result": "passed",
+          "file": "original/native-sound/1440x900/proof.json",
+          "controls": 40,
+          "edits": 17,
+          "undoDepth": 16,
+          "draftSoundUndoRedoSlots": [
+            0,
+            1
+          ],
+          "draftSha256": "910049b9099fd26203814465542b1bc97047c17265b5adf4043ac3758f1a40f0",
+          "midiCalls": 0,
+          "requests": 159,
+          "providerNegativeCaseCodes": {
+            "unavailable": 2,
+            "busy": 2
+          }
+        },
+        {
+          "result": "failed",
+          "file": "original/native-sound/390x844/failure.json",
+          "exception": "Locator.click: Timeout 30000ms exceeded.",
+          "status": "Sound \u00b7 Emulator",
+          "pageErrors": [],
+          "requests": 30,
+          "lastRequest": {
+            "op": "set",
+            "voice": 1,
+            "parameter": 14,
+            "request": 30
+          },
+          "lastProviderError": null
+        }
+      ]
+    },
+    {
+      "kind": "instrumented diagnostic",
+      "viewport": "390x844",
+      "exit": 1,
+      "results": [
+        {
+          "result": "failed",
+          "file": "diagnostics/390x844/failure.json",
+          "exception": "Page.wait_for_function: Timeout 30000ms exceeded.",
+          "status": "Emulator Sound controls unavailable",
+          "pageErrors": [],
+          "requests": 58,
+          "lastRequest": {
+            "op": "set",
+            "voice": 0,
+            "parameter": 3,
+            "request": 9
+          },
+          "lastProviderError": {
+            "type": "sound-error",
+            "request": 1,
+            "firmware": "61827a714ca7b240c01a55ed347b5fd7b847c7c2",
+            "kernel": "9ad1ab9c533ccda4b506a0b0cc281de50af3dcd57370ffa916a5174277cbdbd0",
+            "session": "b3db4c6f-509b-454e-807b-65a87893aab5",
+            "message": "Chicago snapshot unavailable",
+            "code": "unavailable",
+            "noWrite": false
+          }
+        }
+      ]
+    },
+    {
+      "kind": "instrumented diagnostic",
+      "viewport": "844x390",
+      "exit": 1,
+      "results": [
+        {
+          "result": "failed",
+          "file": "diagnostics/844x390/failure.json",
+          "exception": "Locator.evaluate: Timeout 30000ms exceeded.",
+          "status": "Sound \u00b7 Emulator",
+          "pageErrors": [],
+          "requests": 20,
+          "lastRequest": {
+            "op": "set",
+            "voice": 1,
+            "parameter": 9,
+            "request": 20
+          },
+          "lastProviderError": null
+        }
+      ]
+    },
+    {
+      "kind": "final unmodified single-size",
+      "viewport": "390x844",
+      "exit": 0,
+      "results": [
+        {
+          "result": "passed",
+          "file": "final/390x844/proof.json",
+          "controls": 40,
+          "edits": 17,
+          "undoDepth": 16,
+          "draftSoundUndoRedoSlots": [
+            0,
+            1
+          ],
+          "draftSha256": "2f5549985f35d1b50e05863e0c8ca5bda1c092ef25f3bf2c27a43dd50b8913d8",
+          "midiCalls": 0,
+          "requests": 159,
+          "providerNegativeCaseCodes": {
+            "unavailable": 2,
+            "busy": 2
+          }
+        }
+      ],
+      "startUTC": "2026-11-21T16:06:48Z",
+      "endUTC": "2026-11-21T16:15:11Z"
+    },
+    {
+      "kind": "final unmodified single-size",
+      "viewport": "844x390",
+      "exit": 0,
+      "results": [
+        {
+          "result": "passed",
+          "file": "final/844x390/proof.json",
+          "controls": 40,
+          "edits": 17,
+          "undoDepth": 16,
+          "draftSoundUndoRedoSlots": [
+            0,
+            1
+          ],
+          "draftSha256": "cd3eee220651f2d72968141d41d5255a49be0462396a068a0a61b9e9290f1c2f",
+          "midiCalls": 0,
+          "requests": 159,
+          "providerNegativeCaseCodes": {
+            "unavailable": 2,
+            "busy": 2
+          }
+        }
+      ],
+      "startUTC": "2026-11-21T16:15:12Z",
+      "endUTC": "2026-11-21T16:22:11Z"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "tree": "73807d4b346d09de2b21f54e05ea67c8df6e1b5b",
+  "manifestFiles": 245,
+  "runtimePinFiles": 10,
+  "trackedFilesVerified": 275,
+  "structural": {
+    "fixtures": 9,
+    "matchedPass": 1,
+    "matchedReject": 8,
+    "accepted": true,
+    "product": "NOT_RUN",
+    "chromium": {
+      "status": "RUN",
+      "version": "151.0.7922.34",
+      "sandbox": true
+    }
+  },
+  "header": {
+    "summary": {
+      "screens": 3,
+      "pass": 2,
+      "fail": 0,
+      "no_baseline": 1,
+      "baseline_written": 0,
+      "header_fail": 0,
+      "page_errors": 0
+    },
+    "results": [
+      [
+        "grid-continuity-1024x640",
+        "PASS",
+        512
+      ],
+      [
+        "header-ssim-1024x640",
+        "PASS",
+        0.905927401190831
+      ],
+      [
+        "remote-sequence-1024x640",
+        "NOBASE",
+        0.0
+      ]
+    ],
+    "header_fails": [],
+    "errors": []
+  },
+  "headerFilteredExpectedExit": 1,
+  "comparatorContracts": 12,
+  "comparedTo868": {
+    "browser-fixtures.json": true,
+    "header/summary.json": true
+  },
+  "cleanAfter": true,
+  "allScopedBrowsersClosed": "2026-11-21T06:55:41.602+00:00",
+  "sha256": {
+    "identities.json": "8e5ae3b9abfb244c255b78778c1020e0764e44bf037fee151af688bbca31fe82",
+    "browser-fixtures.json": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356",
+    "header/summary.json": "832c83df462e51fe698e9e8c04f6018558af3724bd712f76b2eb73f99fd2cd3d",
+    "fixtures.log": "2ca3fce806aa1118e00480d8d9702aae445d95e5ca9e7574faf39219654455d5",
+    "build.log": "c96fd8f649c2bd0eea116246f90ae9f53a7507a3417ef1911f08f9bcbf922a04",
+    "header.log": "b5bb6ed60331ad16cd2639f661f6eeff744a2d373e49b82619237b8a5b9ef34e",
+    "commands.json": "6273a9dcbe0d66284236ca044aa522aa4493ba61222bf86b0d9dd21d8c085c9f"
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "seconds": 18.534,
+  "results": [
+    {
+      "branch": "old",
+      "browser": "151.0.7922.34",
+      "checks": 13,
+      "failures": [
+        "empty installer embeds the real sample and project workspaces"
+      ],
+      "freshReady": "PASS",
+      "screens": [
+        {
+          "width": 320,
+          "topPath": "/empty/",
+          "frames": 39,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/empty/": 1,
+            "/breaks/": 9,
+            "/projects/": 9,
+            "": 20
+          },
+          "workspaceFunctions": [
+            "undefined",
+            "undefined"
+          ]
+        },
+        {
+          "width": 390,
+          "topPath": "/empty/",
+          "frames": 39,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/empty/": 1,
+            "/breaks/": 9,
+            "/projects/": 9,
+            "": 20
+          },
+          "workspaceFunctions": [
+            "undefined",
+            "undefined"
+          ]
+        },
+        {
+          "width": 1280,
+          "topPath": "/empty/",
+          "frames": 39,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/empty/": 1,
+            "/breaks/": 9,
+            "/projects/": 9,
+            "": 20
+          },
+          "workspaceFunctions": [
+            "undefined",
+            "undefined"
+          ]
+        },
+        {
+          "width": 390,
+          "topPath": "/install/",
+          "frames": 39,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/install/": 1,
+            "/breaks/": 9,
+            "/projects/": 9,
+            "": 20
+          },
+          "workspaceFunctions": [
+            "undefined",
+            "undefined"
+          ]
+        }
+      ],
+      "routeGet": {
+        "/install/": {
+          "bytes": 554071,
+          "sha256": "2cb33ebe349899966c36296c162e7c9130bef0fa458c276e078bacd663a20147",
+          "type": "text/html",
+          "http": 200
+        },
+        "/empty/": {
+          "bytes": 551186,
+          "sha256": "eed47334f6d4fb67e7c46c7eedc1da0556d1e4e1ac6f4d6f7c9bc8f8f8e6cee2",
+          "type": "text/html",
+          "http": 200
+        },
+        "/breaks/?embedded=1": {
+          "bytes": 554071,
+          "sha256": "2cb33ebe349899966c36296c162e7c9130bef0fa458c276e078bacd663a20147",
+          "type": "text/html",
+          "http": 200
+        },
+        "/projects/?embedded=1": {
+          "bytes": 554071,
+          "sha256": "2cb33ebe349899966c36296c162e7c9130bef0fa458c276e078bacd663a20147",
+          "type": "text/html",
+          "http": 200
+        },
+        "/builds/": {
+          "bytes": 9404,
+          "sha256": "9d302edf07c11a1da5c422557d31c797af9f7a4e3e55f80c9d85176b16013e5b",
+          "type": "text/html",
+          "http": 200
+        },
+        "/build-status.json": {
+          "bytes": 275938,
+          "sha256": "4e1a0a08cde92dd39058232a5f4d0069dd70070622d38cc3fb661745ea0ff3da",
+          "type": "application/json",
+          "http": 200
+        }
+      },
+      "sourceSha256": "41f0a0fff84038b09522a16092e75a7e1703996c36a348692ee8c28f46e6e158",
+      "generatedInstallerSha256": "2cb33ebe349899966c36296c162e7c9130bef0fa458c276e078bacd663a20147",
+      "elapsed": 11.534
+    },
+    {
+      "branch": "candidate",
+      "browser": "151.0.7922.34",
+      "checks": 13,
+      "failures": [],
+      "freshReady": "PASS",
+      "screens": [
+        {
+          "width": 320,
+          "topPath": "/empty/",
+          "frames": 3,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/empty/": 1,
+            "/breaks/": 1,
+            "/projects/": 1
+          },
+          "workspaceFunctions": [
+            "function",
+            "function"
+          ]
+        },
+        {
+          "width": 390,
+          "topPath": "/empty/",
+          "frames": 3,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/empty/": 1,
+            "/breaks/": 1,
+            "/projects/": 1
+          },
+          "workspaceFunctions": [
+            "function",
+            "function"
+          ]
+        },
+        {
+          "width": 1280,
+          "topPath": "/empty/",
+          "frames": 3,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/empty/": 1,
+            "/breaks/": 1,
+            "/projects/": 1
+          },
+          "workspaceFunctions": [
+            "function",
+            "function"
+          ]
+        },
+        {
+          "width": 390,
+          "topPath": "/install/",
+          "frames": 3,
+          "directFramePaths": [
+            "/breaks/",
+            "/projects/"
+          ],
+          "byPath": {
+            "/install/": 1,
+            "/breaks/": 1,
+            "/projects/": 1
+          },
+          "workspaceFunctions": [
+            "function",
+            "function"
+          ]
+        }
+      ],
+      "routeGet": {
+        "/install/": {
+          "bytes": 554071,
+          "sha256": "2cb33ebe349899966c36296c162e7c9130bef0fa458c276e078bacd663a20147",
+          "type": "text/html",
+          "http": 200
+        },
+        "/empty/": {
+          "bytes": 551186,
+          "sha256": "eed47334f6d4fb67e7c46c7eedc1da0556d1e4e1ac6f4d6f7c9bc8f8f8e6cee2",
+          "type": "text/html",
+          "http": 200
+        },
+        "/breaks/?embedded=1": {
+          "bytes": 95556,
+          "sha256": "9da628734bf6694eca9c668d38ab5800b032cf67205a8339511bcc0584bd071b",
+          "type": "text/html",
+          "http": 200
+        },
+        "/projects/?embedded=1": {
+          "bytes": 116892,
+          "sha256": "1ec2acbaf573d0e149d2ad6f0240bfdcc16bd21547a3555342a898c3bb4f2959",
+          "type": "text/html",
+          "http": 200
+        },
+        "/builds/": {
+          "bytes": 9404,
+          "sha256": "9d302edf07c11a1da5c422557d31c797af9f7a4e3e55f80c9d85176b16013e5b",
+          "type": "text/html",
+          "http": 200
+        },
+        "/build-status.json": {
+          "bytes": 275938,
+          "sha256": "4e1a0a08cde92dd39058232a5f4d0069dd70070622d38cc3fb661745ea0ff3da",
+          "type": "application/json",
+          "http": 200
+        }
+      },
+      "sourceSha256": "df5447d72507a1f43e89546be1fecde18cfdac58a072a0f263e0aa86dd52781d",
+      "generatedInstallerSha256": "2cb33ebe349899966c36296c162e7c9130bef0fa458c276e078bacd663a20147",
+      "elapsed": 3.3
+    }
+  ]
+}

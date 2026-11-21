@@ -1,0 +1,110 @@
+{
+  "head": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+  "pngCount": 119,
+  "pngBytes": 4267745,
+  "verifiedPngHashes": 119,
+  "expectedStates": 119,
+  "observedStates": 119,
+  "missing": [],
+  "extra": [],
+  "exactExecutionSha256": "2a02dcd78265a59d72956fc0bc5632221f998a8a84aa83257dcb9085a76cc979",
+  "exactStatesSha256": "f50ee581ebb4865e69d47a03589bbaebef896f18139deacf3e6d030c056460fd",
+  "reachable": 5158,
+  "enabled": 5158,
+  "canReachAll": true,
+  "pageErrors": [],
+  "failures": [],
+  "priorHead": "982deaf7b9cc6bbcf71db4d232e4c354e98d67d3",
+  "geometryDifferences": [],
+  "visuallyCompared": 119,
+  "pixelDifferences": [
+    {
+      "name": "native-sound-miami",
+      "pixels": 25,
+      "maxRgbDelta": 1,
+      "bounds": [
+        566,
+        60,
+        658,
+        86
+      ]
+    },
+    {
+      "name": "native-sound-choice-unavailable",
+      "pixels": 39,
+      "maxRgbDelta": 1,
+      "bounds": [
+        763,
+        60,
+        831,
+        85
+      ]
+    },
+    {
+      "name": "native-sound-chicago",
+      "pixels": 39,
+      "maxRgbDelta": 1,
+      "bounds": [
+        763,
+        60,
+        831,
+        85
+      ]
+    },
+    {
+      "name": "native-mix-levels",
+      "pixels": 45,
+      "maxRgbDelta": 155,
+      "bounds": [
+        555,
+        62,
+        831,
+        268
+      ]
+    },
+    {
+      "name": "pattern-lock-break-level",
+      "pixels": 8845,
+      "maxRgbDelta": 239,
+      "bounds": [
+        138,
+        60,
+        830,
+        389
+      ]
+    },
+    {
+      "name": "sound-chicago-synth-one-file",
+      "pixels": 50,
+      "maxRgbDelta": 2,
+      "bounds": [
+        32,
+        8,
+        811,
+        381
+      ]
+    },
+    {
+      "name": "sound-chicago-superj6-import-partial",
+      "pixels": 53,
+      "maxRgbDelta": 1,
+      "bounds": [
+        566,
+        60,
+        762,
+        62
+      ]
+    },
+    {
+      "name": "sound-chicago-superj6-import-complete",
+      "pixels": 92,
+      "maxRgbDelta": 1,
+      "bounds": [
+        566,
+        60,
+        831,
+        85
+      ]
+    }
+  ]
+}

@@ -48,3 +48,30 @@ test('paint-across cancellation restores all touched steps and empty cells stay 
 test('shared drum pitch display uses the stored offset, never the MIDI voice',async()=>{
  const {laneText,laneFraction}=await import('../../web/product-site/remote/lane.mjs');const n={track:'drum909',note:36,pitchOffset:12,velocity:88};assert.equal(laneText('pitch',n,36),'+12st');assert.equal(laneFraction('pitch',n,36),.75);assert.equal(laneText('pitch',{...n,pitchOffset:-7},36),'-7st');
 });
+
+import {BreakChanceLane,breakChanceText} from '../../web/product-site/remote/break-chance.mjs';
+import {chanceDomain,encodeChance} from '../../web/product-site/remote/sequence.mjs';
+
+test('BREAK Chance exposes the stock editor domain once per step, including silent steps',()=>{
+ const codes=chanceDomain.map(encodeChance);
+ assert.deepEqual(codes,[...Array.from({length:20},(_,i)=>100-i*5),...Array.from({length:35},(_,i)=>101+i)]);
+ for(const label of chanceDomain)assert.equal(breakChanceText(encodeChance(label)),label);
+ assert.equal(breakChanceText(null),'100%');
+ const groups=stepGroups([{id:'a',start:0,track:'breaks'},{id:'b',start:0,track:'breaks'}],16000);
+ const values=Array(16).fill(null);values[0]=101;values[15]=135;
+ const html=renderStepSliders(groups,{kind:'chance',breakChance:values});
+ assert.match(html,/Step 1, 2 notes, chance 1:2/);assert.match(html,/Step 16, 0 notes, chance 8:8/);
+ assert.equal((html.match(/role="slider"/g)||[]).length,16);assert.doesNotMatch(html,/ disabled/);
+});
+test('BREAK stroke interpolates independent steps once and cancels without changing committed locks',()=>{
+ let saved=null,writes=0;
+ const lane=new BreakChanceLane({read:()=>saved,commit:values=>{saved=values;writes++;},paint:()=>{}});
+ lane.begin(1,{step:0});lane.preview(1,1,0);lane.preview(1,0,15);
+ assert.equal(writes,0);assert.equal(lane.values[15],135);lane.end(1);
+ assert.equal(writes,1);assert.equal(saved[0],null);assert.equal(saved[15],135);
+ const before=[...saved];lane.begin(2,{step:0});lane.preview(2,0,0);
+ assert.equal(lane.begin(3,{step:1}),false);lane.end(2);lane.end(3);
+ assert.deepEqual(saved,before);assert.equal(writes,1);
+ lane.nudge({step:0},'chance',-1);assert.equal(saved[0],95);
+ lane.nudge({step:0},'chance',1);assert.equal(saved[0],null);
+});

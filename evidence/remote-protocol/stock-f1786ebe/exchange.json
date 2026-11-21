@@ -1,0 +1,180 @@
+{
+  "stockFirmware": "f1786ebec2616477163b62b029c7e77405a9c3de",
+  "remote": "59d8342569d494dc587cafde456ed71b5130978d",
+  "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+  "inputs": [
+    {
+      "git": "59d8342569d494dc587cafde456ed71b5130978d",
+      "path": "tests/product-remote/stock-editor-probe.c",
+      "sha256": "74b51ab4828f4b5fe35802a0636fa238927f86c8303ec7326fb80ecef7c34574"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "tests/host/project_protocol_test.c",
+      "sha256": "b11614553f737219fa381a46725c3c2b3c25b480deb01709708f9adbe5d1990f"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/x0x.h",
+      "sha256": "b5b38ad704905ffb3abf9ecb78607839d69110c7ce80b71632391477318469ee"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/plat.h",
+      "sha256": "426e69bb62645a072f3a5f828aeb175fa9854ec9106cc014f8e22b96734019cd"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/engine.h",
+      "sha256": "7e5de7a9a351b07e1f3dd990bf6ec7ab2373712b6fe8ea320e8f39fc3c7f422c"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/dsp/x0x_param.h",
+      "sha256": "a9341e448f8e2e7c880734f6758df46c0e43669b4c6252b429f7070425b4c800"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/dsp/envelope_snapshot.h",
+      "sha256": "76a2327177444bd317b63b30033cf309f5d5e5acaa07db2e6adada93158dd8e9"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/seq/sequencer.h",
+      "sha256": "7910be9704ad1aa0fc057d5a5498de8ab848bf725d0b61c32e4a8fd411c1ac3a"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/seq/pattern.h",
+      "sha256": "39ba28ac063a3df864d498f1cce5ae153b0037767ffdf82315e7827411421191"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/seq/motion.h",
+      "sha256": "1eac93af3698769b22a5141e32431bfc46e7926c344dbcc2ac328f66d0f6b4f4"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/param_trace.h",
+      "sha256": "63339523a850e4b49074f3d1bedfcbc496f003b3e6d2cd694059dcfb3a958ba1"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/bass_identity.h",
+      "sha256": "22918583df4a2bb399e2172e7428c5c65ad74bb8c603bfced2adf3e9daea7d2c"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/original_sound.h",
+      "sha256": "8ae323648b5e910f66766f7be3313e2f7e2b97c3bd2b80682ac3782cea01084f"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "experiments/original_synth/chicago_program.h",
+      "sha256": "70ee6efa0552db32fc17fba9af8750db6a378de319e47a6c344523fb02f15bd3"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "experiments/original_synth/miami_program.h",
+      "sha256": "5e64dd9588ced099485fad57fdd3f910ef13dbbf1f206f50ddd745935c2c49ee"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/factory_banks.h",
+      "sha256": "26863e690c55c6c4c4d1cbbc0572f656f3b1508bd9d2a002e943c672df8c4a76"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/bass_note_sound.h",
+      "sha256": "9c21ee6ae0a3a42cd869ffbabf4fe986ed31e0cc3ae186b188d0e49ae491ec83"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/seq/tb3po.h",
+      "sha256": "7dd646a572129fc8df5628f6111f68fef6b54476446f75cc5f583b6f110f0073"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/dsp/breaks.h",
+      "sha256": "3156807e782b13c96328c570cf8ae9452223a69389c5ede6934d5b89b1bdb9a5"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/dsp/fxbus.h",
+      "sha256": "492402f5570faa15b24241259c1e76011bfb3054fdee0d2e320b3e9171ca519c"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/dsp/drum909_dsp.h",
+      "sha256": "f2f53c86e4b441897f72125d7d4e63651257d0c5e7540cd309daa655133d5837"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/dsp/fastmath.h",
+      "sha256": "c82737d5302d77b974d5071c9bc58915aca723a6e6f5f5185cbe43bad962189d"
+    },
+    {
+      "generated": "build/gen/x0x_drum_tables.h",
+      "sha256": "9235c69643359a1d9e4f692e754d25e8b9a4014b9e41886eed995d8aaf100eb5"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/version.h",
+      "sha256": "8d11a2ef671657898d1fd64b7b2fa64a0d41edb5b74781f58ff9170dd8c6ca57"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/slots.c",
+      "sha256": "c5909845dca000cebb749eeda8e1a631139942dceb1be3d184c9d6701b0f37ae"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/crc32_nibble.h",
+      "sha256": "92ee22e7e2bac7c50502671c33dce674afb4085344a3bc725ea277f15002dfb4"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/editor.c",
+      "sha256": "a495c7f1a50366af523e7abcd9c3310fbe75ea376f5df79dc71826e4ac199b66"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "tools/mboot/session_wire.h",
+      "sha256": "447cbbca64eddc0fa197d57cc60fcc9f9c7ec4bb1424899c8cf6c69db0593b6f"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "tools/mboot/capture_core.h",
+      "sha256": "170b21557618ff55c75b7be6a10b6399a1dab4a3812bc74164fedd7fa79939bc"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/app/boot_screen.h",
+      "sha256": "2ca8a5daa62add5be01c16e138506e25359c2b88fb45f8f4d33321a46e14bdbb"
+    },
+    {
+      "git": "f1786ebec2616477163b62b029c7e77405a9c3de",
+      "path": "firmware/src/ota.c",
+      "sha256": "2ea442e56b6232b2fcffc1b744a79dcc457b3b0da3a4508603f0e63e30a302cd"
+    }
+  ],
+  "generator": "tools/gen_drum_samples.py from f1786ebec2616477163b62b029c7e77405a9c3de",
+  "browser": {
+    "chromium": "151.0.7922.34",
+    "status": "Firmware replied: X0X DEV",
+    "exchanges": [
+      {
+        "request_hex": "f07d464c01f7",
+        "editor_deferred": false,
+        "reply_hex": "f07d464c0158305820444556000000004000005853470130f7"
+      },
+      {
+        "request_hex": "f07d444e0200000000005b000000000000000100000000000000000000000000000000000000000000000000000000000000f7",
+        "editor_deferred": true,
+        "reply_hex": ""
+      }
+    ]
+  },
+  "openAlsaSequencer": false,
+  "scope": "Production stock editor and OTA dispatcher in compiled host; production device identity UI with a read-only test transport. No physical keyboard."
+}

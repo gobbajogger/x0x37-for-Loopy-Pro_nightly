@@ -1,0 +1,31 @@
+✔ a page with no reviewed catalog sends nothing and leaves Apply disabled (22.558955ms)
+✔ the C fixture handshake reads confirmed values and a conflicting Apply is refused (437.08807ms)
+✔ an unsupported C control stays unconfirmed and cannot be applied (135.505356ms)
+✔ Apply and instrument Undo require independent reads of the committed revision (109.756997ms)
+✔ Undo keeps a later firmware revision even when the parameter value matches (129.013386ms)
+✔ the C revision guard refuses a change between the Undo read and write (120.77602ms)
+✔ queued scalar Apply and inverse SET confirm the stored target at the acknowledged revision (100.772563ms)
+✔ queued confirmation uses the canonical float returned by firmware (133.220531ms)
+✔ a queued edit that changes another control refreshes both values and offers no scalar Undo (99.532922ms)
+▶ an inverse of a queued edit reports changes outside the addressed stored value
+  ✔ queued inverse (141.99889ms)
+  ✔ immediate inverse (288.081074ms)
+✔ an inverse of a queued edit reports changes outside the addressed stored value (431.307345ms)
+✔ a queued inverse whose prior value is not read back fails closed (154.346475ms)
+▶ unverifiable writes do not create an Undo action
+  ✔ queued not stored (96.558793ms)
+  ✔ queued with different revision (424.290563ms)
+  ✔ different revision (299.448554ms)
+  ✔ different stored value (69.469603ms)
+✔ unverifiable writes do not create an Undo action (891.452999ms)
+✔ destroy during a pending readback retires the old connection and Undo (93.623167ms)
+✔ expired firmware lease rejects Undo even if a READ is still available (160.375725ms)
+✔ returning to a cached page requires a new handshake and drops the prior Undo (218.924275ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8875.931561

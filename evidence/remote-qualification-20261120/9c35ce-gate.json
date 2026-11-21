@@ -1,0 +1,82 @@
+{
+  "sha": "9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab",
+  "tree": "2016693ffa74437d4429d5390df2627b6c927b5c",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "lane": "remote",
+  "result": "FAIL",
+  "exitCode": 1,
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "offline": true,
+  "startedUtc": "2026-11-21T04:24:23.610Z",
+  "startedGateLabel": "DNBOX-GATE repo=nightly lane=remote sha=9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab started=20261121-1424 (UTC+10)",
+  "endedUtc": "2026-11-21T04:47:12Z",
+  "cleanTrackedAfter": true,
+  "rawLogBytes": 236809,
+  "rawLogSha256": "a3d4d28f57e1282faf8570bc5bcbe4b4119149c990edc47e9a2fa48944715dc0",
+  "repositoryLog": "build/dnbox-gate/9c35ce1e-20261121-1424.log",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "PASS"
+    },
+    {
+      "name": "browser-tests",
+      "result": "FAIL"
+    }
+  ],
+  "visualHeader": "header SSIM vs page-01 = 0.9059 (gate >= 0.90)",
+  "terminal": "DNBOX-GATE RESULT FAIL sha=9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab lane=remote log=build/dnbox-gate/9c35ce1e-20261121-1424.log",
+  "structural": null,
+  "visual": {
+    "screens": 109,
+    "pass": 5,
+    "fail": 0,
+    "no_baseline": 104,
+    "baseline_written": 0,
+    "header_fail": 0,
+    "page_errors": 0
+  },
+  "errors": [
+    {
+      "line": 3294,
+      "message": "playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 3298,
+      "message": "[FAIL] browser-tests"
+    },
+    {
+      "line": 3299,
+      "message": "DNBOX-GATE RESULT FAIL sha=9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab lane=remote log=build/dnbox-gate/9c35ce1e-20261121-1424.log"
+    }
+  ],
+  "published": false,
+  "workflowDispatched": false,
+  "physicalDeviceAccess": false,
+  "compressedLogSha256": "1feb0a6ce136ad6cc5d6951084287d872d2246f8ccd336019db986ed56f404f6",
+  "compressedLogBytes": 48437
+}

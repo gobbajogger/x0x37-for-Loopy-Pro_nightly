@@ -1,0 +1,254 @@
+{
+  "sourceProofSha256": "2c893c0d396f73110a573c678e5bcee7738edc62cc755cf093cb3cb5eefd88da",
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "controlHead": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "referenceKind": "Historical native Chromium capture proposals. No approved snapshot is provided.",
+  "viewportResults": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "imageSize": [
+        1440,
+        23921
+      ],
+      "seconds": 5.8,
+      "candidatePngSha256": "f2649331b4c982a18e0ad68a03b975e1138d9c0cdc096c3966df7c9eddbef70d",
+      "nativePngSha256": "f76e2bcaf4070f99e8edfd71e1109abfcd9a2ad3cde4ec1a0b880765a8251175",
+      "decodedRgbSha256": "dbd344c7e836c9113619ecf853f1d586a021da44f1c299191e967305d4866693",
+      "samePixelHash": true,
+      "differentPixels": 0,
+      "totalPixels": 34446240,
+      "overhangDifferentPixels": 0,
+      "scrollDprViewportUnchanged": true,
+      "viewportAndScrollAfter": [
+        1440,
+        900,
+        1,
+        0,
+        0
+      ],
+      "widths": [
+        1440,
+        1440
+      ],
+      "heights": [
+        23921,
+        23925
+      ],
+      "fontsUnchanged": true,
+      "imagesUnchanged": true,
+      "lazyImageCount": 15,
+      "loadedLazyImages": [
+        "fm1-panel.svg",
+        "fm1-keys.svg"
+      ],
+      "observedResources": {
+        "samples": 22,
+        "pssKiB": 471265,
+        "rendererRssKiB": 183280,
+        "systemOomKillDelta": 0
+      }
+    },
+    {
+      "viewport": [
+        1024,
+        640
+      ],
+      "imageSize": [
+        1024,
+        23618
+      ],
+      "seconds": 4.232,
+      "candidatePngSha256": "b7f262bfb0d20ba6e0115fc21519766394cd673cee8d1417310303308e59501c",
+      "nativePngSha256": "40b0bd0b0595899df0d3210e790c7179639620aa72fc99397555452ad8cbb2fe",
+      "decodedRgbSha256": "35b3903b1779125feb2a6dd0ba1d35a014584a3e367b051c9eab6d9439ea3e74",
+      "samePixelHash": true,
+      "differentPixels": 0,
+      "totalPixels": 24184832,
+      "overhangDifferentPixels": 0,
+      "scrollDprViewportUnchanged": true,
+      "viewportAndScrollAfter": [
+        1024,
+        640,
+        1,
+        0,
+        0
+      ],
+      "widths": [
+        1024,
+        1024
+      ],
+      "heights": [
+        23618,
+        23623
+      ],
+      "fontsUnchanged": true,
+      "imagesUnchanged": true,
+      "lazyImageCount": 15,
+      "loadedLazyImages": [
+        "fm1-panel.svg"
+      ],
+      "observedResources": {
+        "samples": 16,
+        "pssKiB": 424944,
+        "rendererRssKiB": 155404,
+        "systemOomKillDelta": 0
+      }
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "imageSize": [
+        844,
+        23755
+      ],
+      "seconds": 4.165,
+      "candidatePngSha256": "a11b286503202707219db56737ea75398a8285c3f0a36d45e459fd62bd00e8af",
+      "nativePngSha256": "6fcf3ead47a5ead67303ee848c5e495d646945a5f12277dd532566314b4a954d",
+      "decodedRgbSha256": "341c0c5ff1762dd4d3a1526b4fce8d8e9add71862171ea612885c6ce04c4d6f2",
+      "samePixelHash": true,
+      "differentPixels": 0,
+      "totalPixels": 20049220,
+      "overhangDifferentPixels": 0,
+      "scrollDprViewportUnchanged": true,
+      "viewportAndScrollAfter": [
+        844,
+        390,
+        1,
+        0,
+        0
+      ],
+      "widths": [
+        844,
+        844
+      ],
+      "heights": [
+        23755,
+        23759
+      ],
+      "fontsUnchanged": true,
+      "imagesUnchanged": true,
+      "lazyImageCount": 15,
+      "loadedLazyImages": [
+        "fm1-panel.svg"
+      ],
+      "observedResources": {
+        "samples": 17,
+        "pssKiB": 456251,
+        "rendererRssKiB": 182544,
+        "systemOomKillDelta": 0
+      }
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "imageSize": [
+        476,
+        36145
+      ],
+      "seconds": 3.147,
+      "candidatePngSha256": "e47c247c1f01fc5fc801d0db6e524e5831a30f146c6ef9d4608049546e2158a6",
+      "nativePngSha256": "297f44262515be14f201d1172d2ae8c7d21da8377ab16df5d0f6ef2e693db439",
+      "decodedRgbSha256": "8469ebf2b37499f97e7af5f0ffa9751eeccec21e0dea3a1bafe8bb98a4dc7fd0",
+      "samePixelHash": true,
+      "differentPixels": 0,
+      "totalPixels": 17205020,
+      "overhangDifferentPixels": 0,
+      "scrollDprViewportUnchanged": true,
+      "viewportAndScrollAfter": [
+        390,
+        844,
+        1,
+        0,
+        0
+      ],
+      "widths": [
+        476,
+        476
+      ],
+      "heights": [
+        36145,
+        36150
+      ],
+      "fontsUnchanged": true,
+      "imagesUnchanged": true,
+      "lazyImageCount": 15,
+      "loadedLazyImages": [
+        "fm1-panel.svg"
+      ],
+      "observedResources": {
+        "samples": 13,
+        "pssKiB": 444574,
+        "rendererRssKiB": 162972,
+        "systemOomKillDelta": 0
+      }
+    }
+  ],
+  "native1440": {
+    "captureSeconds": 3.782,
+    "nativePixels": {
+      "candidatePath": "/workspace/scratch/537b1f88ce48/evidence-local/manual-native-c062/quiet-native/site-manual-original-1440x900.png",
+      "nativePngSha256": "f76e2bcaf4070f99e8edfd71e1109abfcd9a2ad3cde4ec1a0b880765a8251175",
+      "candidatePngSha256": "f76e2bcaf4070f99e8edfd71e1109abfcd9a2ad3cde4ec1a0b880765a8251175",
+      "nativeSize": [
+        1440,
+        23921,
+        3
+      ],
+      "candidateSize": [
+        1440,
+        23921,
+        3
+      ],
+      "nativeDecodedSha256": "dbd344c7e836c9113619ecf853f1d586a021da44f1c299191e967305d4866693",
+      "candidateDecodedSha256": "dbd344c7e836c9113619ecf853f1d586a021da44f1c299191e967305d4866693",
+      "decodedRows": 23921,
+      "decodedPixels": 34446240,
+      "differentPixels": 0,
+      "differentChannels": 0,
+      "largestChannelDifference": 0,
+      "affectedBox": null,
+      "affectedRowRanges": [],
+      "portraitOverhangDifferentPixels": 0,
+      "near1024pxBandsSeamDifferences": {}
+    },
+    "afterState": [
+      1440,
+      23925
+    ],
+    "preState": [
+      1440,
+      23921
+    ],
+    "viewportAfter": [
+      1440,
+      900,
+      0,
+      0
+    ],
+    "imagesUnchanged": true,
+    "observedResources": {
+      "samples": 15,
+      "pssKiB": 749706,
+      "rendererRssKiB": 244396,
+      "systemOomKillDelta": 0
+    }
+  },
+  "allPixelsCompared": 95885312,
+  "allDifferentPixels": 0,
+  "gateSummary": {
+    "screens": 4,
+    "pass": 0,
+    "fail": 0,
+    "no_baseline": 4,
+    "baseline_written": 0,
+    "header_fail": 0,
+    "page_errors": 0
+  }
+}

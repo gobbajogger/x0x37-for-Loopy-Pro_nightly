@@ -1,6 +1,27 @@
 // Finite current-source controls for local drafts, never native engine/preset application.
 const SOURCE='ffd31a735acc5721d1f90a30fc1ceb283aad6fc5',BANKS={CHICAGO:0,MIAMI:1,JUNO:3};
 const copy=x=>structuredClone(x),integer=x=>Number.isSafeInteger(x),key=c=>[c.kind,c.target,c.voice,c.parameter,c.sourceBank].join(':');
+// original_value_text in firmware ffd31a73 converts these unipolar pots to percent.
+// Keep waveform names, bipolar envelope amounts, ADSR and selectors on their own paths.
+const percentParameters = [
+ new Set([1, 2, 3, 5, 6, 12, 18, 19]),          // Chicago
+ new Set([1, 2, 4, 5, 8, 9, 10, 12, 14, 15]),  // Miami
+];
+
+export function knobPercent(raw) {
+ return Math.floor((raw * 100 + 63) / 127);
+}
+
+export const unipolarPercent = raw => knobPercent(raw) + ' %';
+
+export function sourcePercent(row, raw) {
+ if (row?.kind !== 1 || row.target !== 2 || (row.voice !== 0 && row.voice !== 1) ||
+     (row.sourceBank !== 0 && row.sourceBank !== 1) ||
+     !percentParameters[row.sourceBank]?.has(row.parameter) || row.unit !== '%' ||
+     !Number.isInteger(raw) || raw < 0 || raw > 127) return null;
+ return unipolarPercent(raw);
+}
+
 export class SourceSounds{
  #groups=new Map();#controls=new Map();
  constructor(data,catalog){

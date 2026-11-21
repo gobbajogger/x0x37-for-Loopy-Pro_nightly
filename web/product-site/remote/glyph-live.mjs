@@ -17,7 +17,7 @@ export const FACE=FACE_THEME; // #101a1f panel (page-01 / R22 night face)
 // Which glyphs Lead's reference paints directly.
 export function referenceKind(fn,engine){
  const f=fnOf(fn),e=String(engine||'').toLowerCase();
- if(f==='WAVE')return e==='miami'||e==='juno'?'juno-wave':e==='chicago'?'chicago-wave':null;
+ if(f==='WAVE')return e==='juno'?'juno-wave':e==='chicago'?'chicago-wave':null;
  if(f==='WIDTH')return 'juno-width';
  if(f==='DECAY'&&/909/.test(e))return '909-bd-decay';
  return null;
@@ -36,10 +36,15 @@ export function paintPixels(data,w,h,fn,value01,engine,state={}){
  const pad=Math.max(1,Math.round(h*0.08)),gx=pad,gy=pad,gw=w-2*pad,gh=h-2*pad;
  const kind=referenceKind(fn,engine);
  if(kind){paintGlyph({data,width:w,height:h},kind,unit(value01)*127,gx,gy,gw,gh,INK);return kind;}
- const r=render(fn,value01,engine,{...state,valueDomain:'normalized'}),vw=r.cell?102:40,vh=r.cell?26:24,scale=Math.min(gw/vw,gh/vh);
+ const r=render(fn,value01,engine,{...state,valueDomain:'normalized'}),vw=r.zero!==undefined?29:r.cell?102:40,vh=r.zero!==undefined?19:r.cell?26:24,scale=Math.min(gw/vw,gh/vh);
  // The reel diameter is physical geometry. Preserve it in wide or tall cards.
  const sx=r.fn==='TAPE'?scale:gw/vw,sy=r.fn==='TAPE'?scale:gh/vh;
  const left=gx+(gw-sx*vw)/2,top=gy+(gh-sy*vh)/2;
+ if(r.zero!==undefined){
+  const y=top+r.zero*sy;
+  const dim=FACE.map((c,i)=>Math.round(c+(INK[i]-c)*3/16));
+  strokePoly(data,w,h,[[left+0.5*sx,y],[left+28.5*sx,y]],dim);
+ }
  for(const line of polylines(r.d))strokePoly(data,w,h,line.map(([x,y])=>[left+x*sx,top+y*sy]),INK);
  return r.fn;
 }
@@ -68,7 +73,9 @@ export function mountLiveGlyphs(root){
  for(const el of root.querySelectorAll('[data-glyph-fn]')){
   if(live.has(el))continue;const fn=el.dataset.glyphFn,engine=el.dataset.glyphEngine||'chicago';
   const c=document.createElement('canvas');c.className='glyph-canvas';c.setAttribute('aria-hidden','true');el.replaceChildren(c);
-  const a=new GlyphAnimator({value:unit(el.dataset.glyphValue,el.dataset.glyphDomain??'normalized'),draw:v=>drawGlyph(c,fn,v,engine)});live.set(el,a);el.glyphAnimator=a;n++;
+  const state=el.dataset.miamiParameter===undefined?{}:{miamiParameter:Number(el.dataset.miamiParameter)};
+  // Discrete selectors jump directly to the new native shape and its matching name.
+  const a=new GlyphAnimator({raf:state.miamiParameter===undefined?undefined:null,value:unit(el.dataset.glyphValue,el.dataset.glyphDomain??'normalized'),draw:v=>drawGlyph(c,fn,v,engine,state)});live.set(el,a);el.glyphAnimator=a;n++;
  }
  return n;
 }

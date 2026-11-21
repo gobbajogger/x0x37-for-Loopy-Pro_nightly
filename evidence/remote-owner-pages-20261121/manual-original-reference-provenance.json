@@ -1,0 +1,106 @@
+{
+  "historicalHead": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "gitInputs": {
+    "web/product-site/manual/original": "0f94e088aa0fe38eb304b5a96d3cb2d6f44c589e",
+    "web/product-site/site.css": "3a7f051ee13f5a5619b6e1f07cf97e68b99ea083",
+    "web/product-site/assets/BarlowSemiCondensed-Medium.ttf": "415429b64420872f198e76cbb1d309db5bfb1df4",
+    "web/product-site/assets/BarlowSemiCondensed-Bold.ttf": "ee04b09e31e98d2509354d7003797ec6540e796f"
+  },
+  "proposalArchiveSha256": "2eaff64e56a4d67e7ae86a3038da7aa03cb59d83db3a6fa3e325ff144cb53b0a",
+  "proposalManifestSha256": "6e1b91f7554ee9092e22069ec482458e3ff978f02c534ffdad8a9ef850c470d0",
+  "chromiumZipSha256": "3cfc2bd00d1bafcf8a68dc74c9c92bb7150ddc8d26ade948a776316e1cec4f14",
+  "headlessShellSha256": "e11fc9ce65c96313476f7ee9844b6fb6a9220fb048693cfe9eee00acf4170a9f",
+  "playwright": "1.62.0",
+  "chromium": "151.0.7922.34",
+  "freezeAndViewportAstIdentical": true,
+  "launchAndContextAstIdentical": true,
+  "references": [
+    {
+      "file": "site-manual-original-1024x640.png",
+      "dimensions": [
+        1024,
+        23618
+      ],
+      "bytes": 4275763,
+      "sha256": "40b0bd0b0595899df0d3210e790c7179639620aa72fc99397555452ad8cbb2fe",
+      "pixelSha256": "35b3903b1779125feb2a6dd0ba1d35a014584a3e367b051c9eab6d9439ea3e74",
+      "rgbRows": 23618
+    },
+    {
+      "file": "site-manual-original-1440x900.png",
+      "dimensions": [
+        1440,
+        23921
+      ],
+      "bytes": 4458357,
+      "sha256": "f76e2bcaf4070f99e8edfd71e1109abfcd9a2ad3cde4ec1a0b880765a8251175",
+      "pixelSha256": "dbd344c7e836c9113619ecf853f1d586a021da44f1c299191e967305d4866693",
+      "rgbRows": 23921
+    },
+    {
+      "file": "site-manual-original-390x844.png",
+      "dimensions": [
+        476,
+        36145
+      ],
+      "bytes": 4556053,
+      "sha256": "297f44262515be14f201d1172d2ae8c7d21da8377ab16df5d0f6ef2e693db439",
+      "pixelSha256": "8469ebf2b37499f97e7af5f0ffa9751eeccec21e0dea3a1bafe8bb98a4dc7fd0",
+      "rgbRows": 36145,
+      "overhang": {
+        "columns": 86,
+        "pixels": 3108470,
+        "sha256": "6ed414c9d44f923a52f5c895bc1cf92beeef04682fbf30983aa64d04d8574de8",
+        "backgroundRgb": [
+          7,
+          16,
+          20
+        ],
+        "pixelsDifferentFromBackground": 3865,
+        "nonBackgroundBoundsY": [
+          12,
+          69
+        ],
+        "lastNonBackgroundX": 475,
+        "rightmostFrequentRgb": [
+          [
+            [
+              7,
+              16,
+              20
+            ],
+            36097
+          ],
+          [
+            [
+              255,
+              179,
+              55
+            ],
+            38
+          ],
+          [
+            [
+              8,
+              17,
+              20
+            ],
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "file": "site-manual-original-844x390.png",
+      "dimensions": [
+        844,
+        23755
+      ],
+      "bytes": 4199057,
+      "sha256": "6fcf3ead47a5ead67303ee848c5e495d646945a5f12277dd532566314b4a954d",
+      "pixelSha256": "341c0c5ff1762dd4d3a1526b4fce8d8e9add71862171ea612885c6ce04c4d6f2",
+      "rgbRows": 23755
+    }
+  ]
+}

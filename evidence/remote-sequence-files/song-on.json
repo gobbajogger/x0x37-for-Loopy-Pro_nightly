@@ -1,0 +1,94 @@
+[
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "rowsRoundTripped": 4,
+    "fivePartChoices": 15,
+    "partSwitches": 15,
+    "checkedMuteMasks": [
+      1,
+      3,
+      7,
+      15,
+      31
+    ],
+    "patternBounds": [
+      0,
+      31
+    ],
+    "invalidAtomic": true,
+    "focusAndBoundaries": true,
+    "midiCalls": 0
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "rowsRoundTripped": 4,
+    "fivePartChoices": 15,
+    "partSwitches": 15,
+    "checkedMuteMasks": [
+      1,
+      3,
+      7,
+      15,
+      31
+    ],
+    "patternBounds": [
+      0,
+      31
+    ],
+    "invalidAtomic": true,
+    "focusAndBoundaries": true,
+    "midiCalls": 0
+  },
+  {
+    "size": [
+      844,
+      390
+    ],
+    "rowsRoundTripped": 4,
+    "fivePartChoices": 15,
+    "partSwitches": 15,
+    "checkedMuteMasks": [
+      1,
+      3,
+      7,
+      15,
+      31
+    ],
+    "patternBounds": [
+      0,
+      31
+    ],
+    "invalidAtomic": true,
+    "focusAndBoundaries": true,
+    "midiCalls": 0
+  },
+  {
+    "size": [
+      1024,
+      640
+    ],
+    "rowsRoundTripped": 4,
+    "fivePartChoices": 15,
+    "partSwitches": 15,
+    "checkedMuteMasks": [
+      1,
+      3,
+      7,
+      15,
+      31
+    ],
+    "patternBounds": [
+      0,
+      31
+    ],
+    "invalidAtomic": true,
+    "focusAndBoundaries": true,
+    "midiCalls": 0
+  }
+]

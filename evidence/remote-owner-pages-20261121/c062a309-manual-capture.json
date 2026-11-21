@@ -1,0 +1,146 @@
+{
+  "route": "site-manual-original-1440x900",
+  "result": "FAIL. Native screenshot raised Target crashed. No PNG or comparison was produced.",
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "tree": "73807d4b346d09de2b21f54e05ea67c8df6e1b5b",
+  "evidenceSha256": {
+    "native.json": "400c3a1afa6cbce71555b2e201bf80b1d79be2e970f3fa135ea2954c50c4a920",
+    "processes.json": "d4a8a8300e41dae94d8dc755744b38954fed70f88f1b2d2b0146d7326ab1cda6",
+    "native.log": "415441eb48fcdd16de3f59ca20765f07cb33850f95af178211a1dd4684e48153",
+    "check.py": "bb8c8537b932040462099427ce6971e5976e5325008d8a390fa83cfb3da3eab6",
+    "isolated-launch.json": "f07626156509b3f66d66ccc92eb3e183fedbc81a1eb615c4777285df5c9d4f39",
+    "headroom.jsonl": "9ebc4b7bbef0bbab27bebc947cde5d0bb6d2b9d5a21472b09cc99667e468cd63"
+  },
+  "comparisonHeads": [
+    "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+    "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+    "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398"
+  ],
+  "identicalInputs": {
+    "web/product-site/manual/original": "0f94e088aa0fe38eb304b5a96d3cb2d6f44c589e",
+    "web/product-site/site.css": "3a7f051ee13f5a5619b6e1f07cf97e68b99ea083",
+    "web/product-site/assets/BarlowSemiCondensed-Medium.ttf": "415429b64420872f198e76cbb1d309db5bfb1df4",
+    "web/product-site/assets/BarlowSemiCondensed-Bold.ttf": "ee04b09e31e98d2509354d7003797ec6540e796f",
+    "tests/visual/visual_gate.py": "86b8083249b28e09bfb6d1705eeac97b96d147f9"
+  },
+  "officialFullFailure": [
+    {
+      "utc": "2026-11-21T07:01:06.524Z",
+      "logBytes": 126918,
+      "availableKiB": 1544340,
+      "oomKill": 49
+    },
+    {
+      "utc": "2026-11-21T07:01:08.531Z",
+      "logBytes": 126958,
+      "availableKiB": 1411440,
+      "oomKill": 49
+    },
+    {
+      "utc": "2026-11-21T07:01:10.540Z",
+      "logBytes": 126958,
+      "availableKiB": 1384940,
+      "oomKill": 49
+    },
+    {
+      "utc": "2026-11-21T07:01:12.544Z",
+      "logBytes": 126958,
+      "availableKiB": 1410364,
+      "oomKill": 49
+    },
+    {
+      "utc": "2026-11-21T07:01:14.548Z",
+      "logBytes": 126958,
+      "availableKiB": 1398400,
+      "oomKill": 49
+    },
+    {
+      "utc": "2026-11-21T07:01:16.590Z",
+      "logBytes": 126958,
+      "availableKiB": 1361612,
+      "oomKill": 51
+    },
+    {
+      "utc": "2026-11-21T07:01:18.596Z",
+      "logBytes": 129109,
+      "availableKiB": 1959140,
+      "oomKill": 55
+    }
+  ],
+  "earlierGreenFull": [
+    {
+      "utc": "2026-11-21T06:27:15.716Z",
+      "logBytes": 126605,
+      "availableKiB": 3005736,
+      "oomKill": 43
+    },
+    {
+      "utc": "2026-11-21T06:27:17.716Z",
+      "logBytes": 126605,
+      "availableKiB": 2828252,
+      "oomKill": 43
+    },
+    {
+      "utc": "2026-11-21T06:27:19.716Z",
+      "logBytes": 126757,
+      "availableKiB": 2897656,
+      "oomKill": 43
+    }
+  ],
+  "isolatedNativeControl": {
+    "routeCount": 1,
+    "attempts": 1,
+    "captureSeconds": 6.755,
+    "documentPixelsBeforeCapture": [
+      1440,
+      23921
+    ],
+    "costOfOneRgbaSurfaceBytes": 137784960,
+    "fonts": "loaded",
+    "readyState": "complete",
+    "lazyImages": 15,
+    "imagesWithIntrinsicSize": 2,
+    "fixedOrStickyCount": 0,
+    "oomKill": [
+      59,
+      62
+    ],
+    "minimumAvailableKiB": 1364812,
+    "peakProcessTreePssKiB": 621388,
+    "peakRendererRssKiB": 229984,
+    "peakGpuRssKiB": 409404,
+    "lastLiveRenderer": {
+      "utc": "2026-11-21T07:08:55.590+00:00",
+      "roles": {
+        "browser": 34,
+        "renderer": 90,
+        "gpu-process": 56
+      },
+      "oomKill": 59
+    },
+    "nextOomSample": {
+      "utc": "2026-11-21T07:08:55.911+00:00",
+      "roles": {
+        "browser": 34,
+        "gpu-process": 56
+      },
+      "oomKill": 60
+    },
+    "closed": "2026-11-21T07:08:59.410+00:00",
+    "primary": null
+  },
+  "relatedIntegReference": {
+    "head": "1afa3dade49e3d1079e61b4b3090b40e662e0c5f",
+    "path": "tests/visual/__snapshots__/site-manual-original-1440x900.png",
+    "size": [
+      1440,
+      29956
+    ],
+    "bytes": 4667296,
+    "sha256": "a63127be8cd2f04d4e767b35f507b729fc5ac24778c434977be18d0fad40fcf8",
+    "scope": "Independent Integ website manual with different HTML/CSS and rendered dimensions. No approved Remote full-page reference."
+  },
+  "finding": "Repeated system OOM coincides with the isolated renderer disappearing and the original native screenshot crashing. System-wide counters do not identify the killed process. The renderer disappeared in the first sampled interval in which OOM increased. The renderer, GPU, process-tree metrics are sampled lower bounds.",
+  "environmentRemediation": "Run the existing full gate on a resource-reserved runner. Reproduce a native manual capture while logging available memory and OOM over the entire capture. The earlier passing stage had 2828252\u20133005736 KiB available and stable OOM; the isolated runner opened with 2387528 KiB but fell to 1364812 KiB. Initial instantaneous headroom alone did not predict success. Preserve normal full gate, timeout, and pixel thresholds.",
+  "boundedCaptureAssessment": "13 of 15 lazy images had no intrinsic size when native capture started. Scrolling to tiles can load them and change layout or pixels. Any proposed bounded implementation needs identical final dimensions and zero decoded-pixel difference at all four viewports against matched actual native Remote controls, matching lazy resource states, correct every seam and bottom edge, measured lower process memory, and failures on missing or wrong tiles and deadline exceedance. No bounded replacement has been qualified."
+}

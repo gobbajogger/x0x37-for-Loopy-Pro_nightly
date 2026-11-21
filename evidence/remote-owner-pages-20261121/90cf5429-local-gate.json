@@ -1,0 +1,52 @@
+{
+  "qualifiedHead": "90cf5429a0aac5929c72d8abf387d70c399488ad",
+  "startingTree": "a9758815a5a81754553b2cd4f0b819f18e69c2c1",
+  "command": "bash scripts/dnbox-gate.sh remote",
+  "bytes": 133279,
+  "sha256": "01b29dc44d4ec487710896c032659fc024b7ee9b5dde4b3dfbbc8e8d913302d4",
+  "gzBytes": 40285,
+  "gzSha256": "ff753f848c4254cd91f34b82a5dbff1c8363d9b6aaa06bf99f52a24ee9888d8c",
+  "start": "2026-11-21T10:17:50Z",
+  "end": "2026-11-21T10:22:14Z",
+  "exit": "1",
+  "steps": {
+    "cleanTree": "PASS",
+    "setup": "PASS",
+    "fetchBase": "SKIP (gate offline; live ref already fetched)",
+    "noLoss": "FAIL",
+    "limits": "PASS",
+    "build": "PASS",
+    "unitTests": "FAIL: required bundled browser unavailable",
+    "browserTests": "FAIL: required bundled browser unavailable"
+  },
+  "consolidated": "b3868da0df1237d86d442cb9259262ee90a13dcb",
+  "landscape": {
+    "exit": 1,
+    "states": 0,
+    "expected": 127,
+    "siteFiles": 265
+  },
+  "structural": {
+    "exit": 2,
+    "accepted": false,
+    "browser": "NOT_RUN",
+    "observed": 0,
+    "expected": 9
+  },
+  "header": {
+    "exit": 1,
+    "browser": "NOT_RUN"
+  },
+  "stock": {
+    "commit": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+    "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+    "probe": "tests/product-remote/stock-editor-probe.c",
+    "infoResponse": "f07d464c0158305820444556000000004000005853470130f7",
+    "helloRequest": "f07d444e0200000000005b000000000000000100000000000000000000000000000000000000000000000000000000000000f7",
+    "helloDeferred": true,
+    "helloResponseBytes": 0
+  },
+  "originalBankAvailable": false,
+  "pdfReview": "https://github.com/gobbajogger/DnBOX-nightly/pull/169#issuecomment-7061182962",
+  "logComment": "https://github.com/gobbajogger/DnBOX-nightly/pull/169#issuecomment-7061106028"
+}

@@ -1,0 +1,11 @@
+{
+  "command": [
+    "python3",
+    "tests/product-remote/funkybeats-browser.py"
+  ],
+  "started": "2026-11-21T05:00:42.408324+00:00",
+  "ended": "2026-11-21T05:03:55.974199+00:00",
+  "exit": 1,
+  "bytes": 4879,
+  "sha256": "5aebd6c39bb6ed7845d2dd6c2f17aae914c8f23abfd8902f4b39231006598e61"
+}

@@ -1,0 +1,251 @@
+{
+  "head": "0753ff3fd6ac01fc528f978e882b389e402c06b9",
+  "tree": "97bbcf9bffa477f65aadfa15da7b6e46a55d4c74",
+  "clean": true,
+  "runtime": {
+    "kernel.wasm": {
+      "bytes": 941835,
+      "sha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b"
+    },
+    "native-session.mjs": {
+      "bytes": 13837,
+      "sha256": "077161f1641a927df241112b71bfa46e25023d3808d08469851838dd9c876360"
+    },
+    "index.html": {
+      "bytes": 2083,
+      "sha256": "010718d268ec15e83da8c641eb82ec30588d3d001bd4cf07fb15a182bd82fc0b"
+    },
+    "session-codec.mjs": {
+      "bytes": 1982,
+      "sha256": "5924c689e512fc1c4e14718e0d267dce7ef287ec51183d1902e3d7902134845d"
+    },
+    "page.mjs": {
+      "bytes": 9154,
+      "sha256": "f4348ebcbedc94495c60f6bcf93848567fc6a0d3d9961f08c81c613fab5d9966"
+    },
+    "wasi.mjs": {
+      "bytes": 1507,
+      "sha256": "76221f9d11ff8be10d9844f0ecc696ddc0bafb694775a12a6b665c4d77a78f18"
+    },
+    "style.css": {
+      "bytes": 1903,
+      "sha256": "f9d8c09ebe689442f027b038482488a6e02db255db7553127b92b907b68cd5b8"
+    },
+    "runtime.json": {
+      "bytes": 285,
+      "sha256": "f11271f85ad61c9c5bc5f3959f8b5ffa2e3a8c8cbab90f4b43c7aeb94676b4e0"
+    },
+    "worklet.mjs": {
+      "bytes": 10887,
+      "sha256": "3841c8754053df804e103dc80ea31ab3dc0c4063112aa20b45f3b1421adbd034"
+    },
+    "observer.mjs": {
+      "bytes": 2631,
+      "sha256": "525c2437315760e448e4f631ca9ba1a9e2311d216b18ef93852969d09098b2d3"
+    }
+  },
+  "fixtureSha256": "309bf6219a65ba796b30b16d8572685174c218c39d3ad9056aae3ae6b5c88eff",
+  "manifestSha256": "657fa505d84a010467619b6c04e655d0a16e61f85d1d59956579184b4402e2cb",
+  "statesSha256": "8535ed5ca9a428ee6deb4d9486f80d6c6e04d287042d2b258f0863ed38aeb451",
+  "executionSha256": "fe66d508faf443ad2947c18db7e831bb0c80e2b020ed1ac363d92012275c6b36",
+  "states": 99,
+  "imageBytes": 3554812,
+  "distinctPNGs": 99,
+  "previousControlPresentations": 3937,
+  "currentControlPresentations": 3973,
+  "retainedStates": 98,
+  "unchangedPriorPNGs": 95,
+  "rasterChanges": [
+    {
+      "name": "native-sound-miami",
+      "changed": 25,
+      "bounds": [
+        566,
+        60,
+        658,
+        86
+      ],
+      "maxChannelDelta": 1
+    },
+    {
+      "name": "native-sound-choice-unavailable",
+      "changed": 25,
+      "bounds": [
+        566,
+        60,
+        658,
+        86
+      ],
+      "maxChannelDelta": 1
+    },
+    {
+      "name": "native-sound-chicago",
+      "changed": 25,
+      "bounds": [
+        566,
+        60,
+        658,
+        86
+      ],
+      "maxChannelDelta": 1
+    }
+  ],
+  "nonRasterChanges": [],
+  "breakChance": {
+    "viewport": [
+      844,
+      390
+    ],
+    "body": [
+      844,
+      844,
+      390
+    ],
+    "titles": [],
+    "controlCount": 36,
+    "reachable": 36,
+    "blocked": [],
+    "nestedScroll": [
+      {
+        "tag": "DIV",
+        "id": "roll-scroll",
+        "cls": "",
+        "client": 693,
+        "scroll": 1400
+      }
+    ],
+    "horizontalClips": [],
+    "roll": {
+      "completeRows": 16,
+      "clippedLabels": [],
+      "row": 16,
+      "paneHeight": 257,
+      "firstRow": 45,
+      "lastRow": 60
+    },
+    "name": "break-chance-authored",
+    "pdfPages": [
+      11,
+      15
+    ],
+    "sha256": "c506fb8526e999194070b89d9c713a43a0358f40043f39e78e0bf98d97c85c83",
+    "breakChance": {
+      "enabledSteps": 16,
+      "values": [
+        "100%",
+        "100%",
+        "8:8",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%"
+      ],
+      "lane": {
+        "x": 138,
+        "y": 361,
+        "width": 693,
+        "height": 29
+      },
+      "roll": {
+        "x": 138,
+        "y": 103,
+        "width": 693,
+        "height": 257
+      },
+      "authoredCell": {
+        "x": 313,
+        "y": 361,
+        "width": 87.5,
+        "height": 29
+      }
+    }
+  },
+  "desktop": {
+    "view": [
+      1440,
+      900
+    ],
+    "part": "chicago",
+    "source": "draft",
+    "bank": "CHICAGO",
+    "pane": [
+      20,
+      159,
+      1400,
+      701
+    ],
+    "scrollTop": 0,
+    "graph": [
+      736,
+      547.359375,
+      676,
+      100
+    ],
+    "shape": "M0.0 22.0 L0.0 20.6 L0.1 19.3 L0.1 18.1 L0.2 16.9 L0.2 15.8 L0.2 14.8 L0.3 13.9 L0.3 13.0 L0.3 12.1 L0.4 11.3 L0.4 10.5 L0.5 9.8 L0.5 9.2 L0.5 8.5 L0.6 8.0 L0.6 7.4 L0.7 6.9 L0.7 6.4 L0.7 5.9 L0.8 5.5 L0.8 5.1 L0.9 4.7 L0.9 4.3 L0.9 4.0 L0.9 4.0 L2.1 5.3 L3.2 6.4 L4.4 7.3 L5.5 8.1 L6.7 8.7 L7.8 9.2 L9.0 9.7 L10.2 10.0 L11.3 10.3 L12.5 10.5 L13.6 10.7 L14.8 10.9 L15.9 11.0 L17.1 11.1 L18.2 11.2 L19.4 11.3 L20.5 11.4 L21.7 11.4 L22.8 11.4 L24.0 11.5 L25.1 11.5 L26.3 11.5 L27.4 11.6 L28.6 11.6 L36.4 11.7 L36.4 11.7 L36.6 12.7 L36.7 13.7 L36.9 14.6 L37.0 15.4 L37.2 16.1 L37.3 16.7 L37.5 17.2 L37.6 17.7 L37.8 18.2 L37.9 18.6 L38.1 18.9 L38.2 19.3 L38.4 19.6 L38.5 19.8 L38.7 20.0 L38.8 20.2 L39.0 20.4 L39.1 20.6 L39.3 20.7 L39.4 20.9 L39.6 21.0 L39.7 21.1 L39.9 21.2 L40.0 22.0",
+    "stages": [
+      {
+        "label": "ATTACK",
+        "value": "27%",
+        "rect": [
+          728,
+          659.359375,
+          167,
+          47.59375
+        ],
+        "id": "source-sound/CHICAGO/0|1:2:0:7:0"
+      },
+      {
+        "label": "DECAY",
+        "value": "40%",
+        "rect": [
+          903,
+          659.359375,
+          167,
+          47.59375
+        ],
+        "id": "source-sound/CHICAGO/0|1:2:0:8:0"
+      },
+      {
+        "label": "SUSTAIN",
+        "value": "57%",
+        "rect": [
+          1078,
+          659.359375,
+          167,
+          47.59375
+        ],
+        "id": "source-sound/CHICAGO/0|1:2:0:9:0"
+      },
+      {
+        "label": "RELEASE",
+        "value": "17%",
+        "rect": [
+          1253,
+          659.359375,
+          167,
+          47.59375
+        ],
+        "id": "source-sound/CHICAGO/0|1:2:0:10:0"
+      }
+    ],
+    "sha256": "f5b0b9cced7c8eb30f7afc3240dc8b9ab7346a7e948f00bd74437a0cd4a6847f",
+    "bytes": 67095,
+    "errors": [],
+    "browser": "151.0.7922.34",
+    "result": "PASS"
+  },
+  "desktopDeltaFromPrivateCandidate": {
+    "changed": 0,
+    "bounds": null,
+    "maxChannelDelta": 0
+  }
+}

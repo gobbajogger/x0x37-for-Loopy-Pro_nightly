@@ -1,0 +1,77 @@
+{
+  "archiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+  "bank": "84B1A8EB-BA34-4B8B-B3BE-6FE8CADB40DA",
+  "program": "4DBA5169-1A26-45B7-9A8C-BE968BB2EA36",
+  "matchedOriginalFields": 13,
+  "owners": 2,
+  "scope": "Independently authored offline Draft; 13 original controls on one source-authored record per Bass owner. No device/kernel endpoint or native bank import.",
+  "sourceCommit": "7e68fc39608d88441d2923277b53364f1d5248bf",
+  "sourceCatalog": {
+    "path": "https://github.com/gobbajogger/DnBOX/blob/7e68fc39608d88441d2923277b53364f1d5248bf/experiments/sound-hardware-v1/mapping/results/implementer_brief/public_control_catalog.json",
+    "sha256": "e1be22d91887954da614cf197ef98680d0f21dfc8b9ca9bec1dba0a304f6e711"
+  },
+  "sourceFunctions": "https://github.com/gobbajogger/DnBOX/blob/7e68fc39608d88441d2923277b53364f1d5248bf/experiments/sound-hardware-v1/mapping/results/implementer_brief/BEHAVIOR-BRIEF.md#L31-L42",
+  "candidateArchive": {
+    "path": "https://github.com/gobbajogger/DnBOX/blob/7e68fc39608d88441d2923277b53364f1d5248bf/experiments/sound-hardware-v1/sj6-amp2/oscillator-prenote.tar.gz",
+    "sha256": "108f7fbe3eea38bd8e4a9defcb30cb44be7c85ee33980ac51aaaa7a9f9c5d8e5",
+    "acceptedLayerRecords": 1079,
+    "incompleteSquareLayerRecords": 201,
+    "programsWithTwoAcceptedLayers": 474,
+    "programsWithAll13OriginalFields": 25,
+    "totalPrograms": 640,
+    "entry": "engine_superj6_pre_note_wave",
+    "conditions": "Single idle owner and layer, next nonempty audio block, no held or releasing update",
+    "xipBytesBelowReserve": {
+      "Elite": 192,
+      "Pro": 180
+    }
+  },
+  "areas": {
+    "wave": {
+      "ids": [
+        82,
+        83
+      ],
+      "raw": "binary32 normalized stops 0, f32(1/3), f32(2/3), 1",
+      "display": [
+        "Sine",
+        "Triangle",
+        "Saw",
+        "Square"
+      ]
+    },
+    "pwm": {
+      "widthIds": [
+        78,
+        79
+      ],
+      "enableIds": [
+        210,
+        211
+      ],
+      "setpoint": "50 - 47u percent duty",
+      "active": "Enabled square; otherwise the captured base duty is 50%."
+    },
+    "sub": {
+      "id": 202,
+      "raw": "continuous normalized 0\u20131; percent shows control position"
+    },
+    "lfo": {
+      "rateIds": [
+        88,
+        96,
+        100
+      ],
+      "HzEnableIds": [
+        195,
+        196,
+        197
+      ],
+      "frequency": "16u^3.33 Hz",
+      "tempo": "Normalized tempo position only; published original division/boundary table unavailable."
+    }
+  },
+  "olderDrafts": "JUNO and all preexisting IDs remain unmodified. SuperJ6 uses the archived bank digest, bank UUID, program UID, owner slot and source field ID.",
+  "sourceAllowed": "Only measured scalar facts and identifiers for this subset, original code, complete program payloads, installers and archives excluded. Repository RULES.md 13; producer mapping/results/implementer_brief/BEHAVIOR-BRIEF.md.",
+  "verification": "python3 tools/check-superj6-draft-source.py /path/to/J6presets.zip"
+}

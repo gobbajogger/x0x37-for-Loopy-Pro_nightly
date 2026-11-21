@@ -1,0 +1,821 @@
+{
+  "browser": "151.0.7922.34",
+  "count": 72,
+  "failures": [],
+  "pageErrors": [],
+  "enabledControlPresentations": 3106,
+  "reachablePresentations": 3106,
+  "manifestSha256": "b1e706e0e5062d5168cf8c0b2fdc01d9221b63e7459c7edefdf7f5f05af68e72",
+  "kernelSha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+  "states": [
+    {
+      "name": "roll-chicago",
+      "pdfPages": [
+        1,
+        2,
+        14,
+        15,
+        21
+      ],
+      "controlCount": 25,
+      "reachable": 25,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 71,
+        "lastRow": 86
+      },
+      "sha256": "ce85baf190941f1a962b923de7ae58b469a7167343c8d65e9ec9a8ede589c353"
+    },
+    {
+      "name": "sound-chicago-CHICAGO",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 38,
+      "reachable": 38,
+      "sha256": "e046ceb6d8e7b8405564b8e30e7afab12df999cd89c99d937b268c0136e7f998"
+    },
+    {
+      "name": "sound-chicago-MIAMI",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 34,
+      "reachable": 34,
+      "sha256": "df4e14dd307072c61b5f2bdec6aa10b5b6f6d5115d532f71391ae98e77884dd2"
+    },
+    {
+      "name": "sound-chicago-JUNO",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 34,
+      "reachable": 34,
+      "sha256": "acad99d228420faf3f479bc4661979a192826acfdfe42d2b1624b35ec9f5bbc2"
+    },
+    {
+      "name": "patterns-chicago",
+      "pdfPages": [
+        9,
+        19
+      ],
+      "controlCount": 52,
+      "reachable": 52,
+      "sha256": "f6bee7792429215a566281c32648afa4a3eeb2cd0ab73a78e66dff0d6a97531a"
+    },
+    {
+      "name": "locks-chicago",
+      "pdfPages": [
+        3,
+        17
+      ],
+      "controlCount": 44,
+      "reachable": 44,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 71,
+        "lastRow": 86
+      },
+      "sha256": "c4aee3f83b05a5799a9c04634a4dc554063eb68a98daa6af04f1da0e7720bcc9"
+    },
+    {
+      "name": "drums-chicago",
+      "pdfPages": [
+        2,
+        15
+      ],
+      "controlCount": 197,
+      "reachable": 197,
+      "sha256": "4e6d0e6abe3c39c930b4d6256ed319a9ec2c32295ae0fc33837a4172fc6478f3"
+    },
+    {
+      "name": "roll-miami",
+      "pdfPages": [
+        1,
+        2,
+        14,
+        15,
+        21
+      ],
+      "controlCount": 19,
+      "reachable": 19,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "sha256": "e0712f6846dda4bf213d0f9a5a955cd56f7479dd4c185e73719e1e313026310f"
+    },
+    {
+      "name": "sound-miami-CHICAGO",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 38,
+      "reachable": 38,
+      "sha256": "ba994826c663f412cc9571ce2f38aae5d109c65763cdf51d74cadeb9b20989ad"
+    },
+    {
+      "name": "sound-miami-MIAMI",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 34,
+      "reachable": 34,
+      "sha256": "9feacd9c801108b2dcc17b738ab5c0c1da937b44eba107a5e0e5da84d1f6901c"
+    },
+    {
+      "name": "sound-miami-JUNO",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 34,
+      "reachable": 34,
+      "sha256": "24b3b9877b457cdc5a2418dddc6f8e082434c0a11e2ca0aeb0446ddffa93d18f"
+    },
+    {
+      "name": "patterns-miami",
+      "pdfPages": [
+        9,
+        19
+      ],
+      "controlCount": 52,
+      "reachable": 52,
+      "sha256": "8a7d9d4e8418d6e823f71db42f743f1feabfe0186ffaa4851b9b893052d82055"
+    },
+    {
+      "name": "locks-miami",
+      "pdfPages": [
+        3,
+        17
+      ],
+      "controlCount": 38,
+      "reachable": 38,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "sha256": "dcd3b0f938f0357d2a3ddafe5eac62ad08011baadf4f4f699a0a43d838469eea"
+    },
+    {
+      "name": "drums-miami",
+      "pdfPages": [
+        2,
+        15
+      ],
+      "controlCount": 197,
+      "reachable": 197,
+      "sha256": "f9645a9c6c63eb9e05c49df5d20b04e14cd7c3506f16b122820d66f43f2d934e"
+    },
+    {
+      "name": "roll-drum909",
+      "pdfPages": [
+        1,
+        2,
+        14,
+        15,
+        21
+      ],
+      "controlCount": 23,
+      "reachable": 23,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 83,
+        "lastRow": 98
+      },
+      "sha256": "b1633833fd151a2be7058e6849255492ae2791d06fde0c30061c125599016f1f"
+    },
+    {
+      "name": "sound-drum909-0",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "b61d7e6ceca8a9bbfd2f6306e174b657e31d366c0d1e911ed3d8221a41d60820"
+    },
+    {
+      "name": "sound-drum909-1",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "786e5e0f481a8ec516b76a640f31e86535c1b88e17f6ca5af78e88c92cdd0954"
+    },
+    {
+      "name": "sound-drum909-2",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "1992f3e1460fba62aec66ab7e1da299cfde414637e7a842e0d1a84c1fe2668b5"
+    },
+    {
+      "name": "sound-drum909-3",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "414f80c60473c63ebb5501560ea7e9c701349ba3ff6bf880c40156ba2156dac0"
+    },
+    {
+      "name": "sound-drum909-4",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "df921d674f5f6eb73bec3b7c648eb54773dd437e86271e3ce3576d1b465e3349"
+    },
+    {
+      "name": "sound-drum909-5",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "5ba986dab72acf7104ee7916efaf9f9ea65a7d12371949edacbf8d92e053a5a3"
+    },
+    {
+      "name": "sound-drum909-6",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "8ae7147db1b4f2b90b16c348b08c35677bf9bede2efdb4361150628efd61d4c6"
+    },
+    {
+      "name": "sound-drum909-7",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "f60b578865e700181d60e2afabb25f6d0dbb79c565583232d91b7ddb56559927"
+    },
+    {
+      "name": "sound-drum909-8",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "73353c9c128135cdbada8f00c80ca79318020ad7b2c5559076129f43ac623e7f"
+    },
+    {
+      "name": "sound-drum909-9",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "ebdd21023edc7c7ff54900af98bbe32dd692bc238a3b36014cdef58c9fef88c6"
+    },
+    {
+      "name": "sound-drum909-10",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "111bfc35f6a682f431b50b4bc98954798117c7ee526d825fb4f25985b0afbd5a"
+    },
+    {
+      "name": "patterns-drum909",
+      "pdfPages": [
+        9,
+        19
+      ],
+      "controlCount": 52,
+      "reachable": 52,
+      "sha256": "37a017d78fcf4f55c4d64a80708a6de638f4c62e099662e0606163e893c967dd"
+    },
+    {
+      "name": "locks-drum909",
+      "pdfPages": [
+        3,
+        17
+      ],
+      "controlCount": 42,
+      "reachable": 42,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 83,
+        "lastRow": 98
+      },
+      "sha256": "715234959cc08a14192b35a007f48f9b86be3e65e72860019ae5f4035a600838"
+    },
+    {
+      "name": "drums-drum909",
+      "pdfPages": [
+        2,
+        15
+      ],
+      "controlCount": 194,
+      "reachable": 194,
+      "sha256": "fd85267aecbba3f58308bc2e856673fa2c416f6923bcb98d91a942a70227dd91"
+    },
+    {
+      "name": "roll-drum808",
+      "pdfPages": [
+        1,
+        2,
+        14,
+        15,
+        21
+      ],
+      "controlCount": 21,
+      "reachable": 21,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 81,
+        "lastRow": 96
+      },
+      "sha256": "630567bfc761c63a9b7ca56ad9031dd812175d5406340fb332b9e2a31b6adaf1"
+    },
+    {
+      "name": "sound-drum808-0",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "241ad334e793403e1e49563d9e13c259d2840aa89fbee30f92d26b5ec1906186"
+    },
+    {
+      "name": "sound-drum808-1",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "96484c43e7b2ff9843d78b3399748782fc519fdf07e8d1edc661cc751aeb37a2"
+    },
+    {
+      "name": "sound-drum808-2",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "7acf15e8d2b7723b86b05d0325a0186bebcb513086a819f0e74c2428ac753b37"
+    },
+    {
+      "name": "sound-drum808-3",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "b4f35f9f51f24549a267a74b937630bfc35f297ce363d646f73b1eeea8b09862"
+    },
+    {
+      "name": "sound-drum808-4",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "3cf0aee6f216f2d2dd6d2219a3524a97a52f9104f4a9b1e91c94219454a4ba4f"
+    },
+    {
+      "name": "sound-drum808-5",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "ab7b7737351b257960425aff9f53c8c33efc87763073f2aaffe35d4768e882b3"
+    },
+    {
+      "name": "sound-drum808-6",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "913aa9487fd76d3d0f2fc9811c2987326d205cf3701a747c20082daa153233fd"
+    },
+    {
+      "name": "sound-drum808-7",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "3855fcf1aeceaf6294a47673e972b35f1dad3acd05add5cabe403393608da91d"
+    },
+    {
+      "name": "sound-drum808-8",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "6538c28f6ba54af8c0af0b21d04ce8ad7201c46e4a770954a0352a19e7f6a3ff"
+    },
+    {
+      "name": "sound-drum808-9",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "95d9d6f12b92f58c9a79847e130a41c006b5d50373432b53a66f879404c50ac9"
+    },
+    {
+      "name": "sound-drum808-10",
+      "pdfPages": [
+        18
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "eb010a6810184bd6616b4de4397bf8c09e7e151ea86916653c6e7f213198336e"
+    },
+    {
+      "name": "patterns-drum808",
+      "pdfPages": [
+        9,
+        19
+      ],
+      "controlCount": 52,
+      "reachable": 52,
+      "sha256": "06ce970fa377529952390cb010a7ba86cb8e15ff2900810c861246a5d14b9859"
+    },
+    {
+      "name": "locks-drum808",
+      "pdfPages": [
+        3,
+        17
+      ],
+      "controlCount": 40,
+      "reachable": 40,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 81,
+        "lastRow": 96
+      },
+      "sha256": "d332c6d650ca8739fc86cb3aba92ebf64b54c1bfe0bad44671ccc3a618a0a01c"
+    },
+    {
+      "name": "drums-drum808",
+      "pdfPages": [
+        2,
+        15
+      ],
+      "controlCount": 194,
+      "reachable": 194,
+      "sha256": "63b832c15546ac64aca55168996b0a46f0dcb699e3584bae4619d7fb3a7317a7"
+    },
+    {
+      "name": "roll-breaks",
+      "pdfPages": [
+        11
+      ],
+      "controlCount": 49,
+      "reachable": 49,
+      "sha256": "7e8e9dccb16d264c4cc89c860cf4fa8373ef7681577024329427dabfd3a76f26"
+    },
+    {
+      "name": "break-notes",
+      "pdfPages": [
+        11
+      ],
+      "controlCount": 19,
+      "reachable": 19,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 54,
+        "lastRow": 69
+      },
+      "sha256": "d2a4d38607f69ea10c34ce25702736f8ad2296c671840f9c98b8e90a2752a581"
+    },
+    {
+      "name": "sound-breaks",
+      "pdfPages": [
+        11
+      ],
+      "controlCount": 22,
+      "reachable": 22,
+      "sha256": "d397a72ed443d1e3760e38c9e19b88dedd8d2c91cfce40c783a39aa033fe6a59"
+    },
+    {
+      "name": "patterns-breaks",
+      "pdfPages": [
+        9,
+        19
+      ],
+      "controlCount": 52,
+      "reachable": 52,
+      "sha256": "3089eb00780327553949e24dceffdc52f964eb82f32882a9378965db4d82b70b"
+    },
+    {
+      "name": "locks-breaks",
+      "pdfPages": [
+        3,
+        17
+      ],
+      "controlCount": 36,
+      "reachable": 36,
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "sha256": "c468361a32fb5bb63681ebb8a69f8720419a13e594d7a6e236a34b78f3067714"
+    },
+    {
+      "name": "drums-breaks",
+      "pdfPages": [
+        2,
+        15
+      ],
+      "controlCount": 197,
+      "reachable": 197,
+      "sha256": "c8359984304940b3a82d8faea877677cfce13a3df27036f2322eb116412e56e9"
+    },
+    {
+      "name": "draft-mix-levels",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 47,
+      "reachable": 47,
+      "sha256": "020f746e1583aad14403d85eef9e66424feeec4081a5674c02ef71c4c2282853"
+    },
+    {
+      "name": "draft-mix-pan",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 43,
+      "reachable": 43,
+      "sha256": "015a65e01704c77d732a00a6a5ced7b450e53f61931c4565cc0cc3d71c0114e0"
+    },
+    {
+      "name": "draft-mix-sends",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 52,
+      "reachable": 52,
+      "sha256": "9571ade4ae407eaa1a9872d31ecbbb1d06c93c145800deb600187fbaf1d3cf6c"
+    },
+    {
+      "name": "draft-mix-fx",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 46,
+      "reachable": 46,
+      "sha256": "955e056a86e417d3595e5fe32270701a92d4d3dc59ced0d4dbbabc4780ed0103"
+    },
+    {
+      "name": "projects",
+      "pdfPages": [
+        12,
+        20
+      ],
+      "controlCount": 23,
+      "reachable": 23,
+      "sha256": "ff911c82eb5d6cd2920c495b68eccfe36405fd9edfce5947388bd04098060087"
+    },
+    {
+      "name": "song-empty",
+      "pdfPages": [
+        10
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "b967be70c088f23540f7aafbedf94d649b9b1fdeb3dd4a5cea3adc18ea63c0d3"
+    },
+    {
+      "name": "all-part-patterns",
+      "pdfPages": [
+        9,
+        19
+      ],
+      "controlCount": 180,
+      "reachable": 180,
+      "sha256": "a97bdbca75ac6a582cab41811fb6df7d810ce6316b05dcddb3cee0b8a2ee637a"
+    },
+    {
+      "name": "song-row",
+      "pdfPages": [
+        10
+      ],
+      "controlCount": 28,
+      "reachable": 28,
+      "sha256": "133bd3f906743853954428cca725c300a9912b5047ea0f6c3047a069ba44d1a5"
+    },
+    {
+      "name": "review-dialog",
+      "pdfPages": [
+        13
+      ],
+      "controlCount": 1,
+      "reachable": 1,
+      "sha256": "dcb5deccaaef9f99c7fca7eb34ae855f68960fe8cb9f7cbfcbfabe36659536de"
+    },
+    {
+      "name": "more-menu",
+      "pdfPages": [
+        13
+      ],
+      "controlCount": 181,
+      "reachable": 181,
+      "sha256": "8faea9bdd233c1258ee43fab1fcf34c726a565025947179c65054d077d82571c"
+    },
+    {
+      "name": "connect-feedback",
+      "pdfPages": [
+        13
+      ],
+      "controlCount": 1,
+      "reachable": 1,
+      "sha256": "b8230a02b8534ca14cdc40f6825a3d9dd11994bf440ed823840f8520fbd16b74"
+    },
+    {
+      "name": "draft-invalid",
+      "pdfPages": [
+        13
+      ],
+      "controlCount": 1,
+      "reachable": 1,
+      "sha256": "41698f212f80e9bf7389a04c7245378025c7fd9591fbd039df4f2a736434b87a"
+    },
+    {
+      "name": "draft-import",
+      "pdfPages": [
+        13
+      ],
+      "controlCount": 2,
+      "reachable": 2,
+      "sha256": "785e1c00fe21bbead3b1134fb7207ca0a67c74eebed21d0234952a00d1628e0c"
+    },
+    {
+      "name": "native-sound-miami",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 38,
+      "reachable": 38,
+      "sha256": "24467ecdf79f6016507a2376cc15803de378da8d5bb230cde111e4a47a0df412"
+    },
+    {
+      "name": "native-sound-choice-unavailable",
+      "pdfPages": [
+        5
+      ],
+      "controlCount": 18,
+      "reachable": 18,
+      "sha256": "0a36f033afc2591df7cfb151c18b653eb78396f4eb0af52f0e723ffe73ad7ccc"
+    },
+    {
+      "name": "native-sound-chicago",
+      "pdfPages": [
+        4,
+        5,
+        24
+      ],
+      "controlCount": 38,
+      "reachable": 38,
+      "sha256": "23282ed25d395ab25791551216b87b3f74948ca24e3253ffd5dd0b8d0d6fff59"
+    },
+    {
+      "name": "native-mix-levels",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 36,
+      "reachable": 36,
+      "sha256": "e202475d9aad5c49c8bf96d37ed008709bf662647a86313b77b4730aa2b720ef"
+    },
+    {
+      "name": "native-mix-pan",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 32,
+      "reachable": 32,
+      "sha256": "a0652ae503fab33cef51b991be60a3bf0f7433e6237dbe051a74ad1474299cff"
+    },
+    {
+      "name": "native-mix-sends",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 41,
+      "reachable": 41,
+      "sha256": "96ea1cd53a7632107534d60c45ee3787bb6fbae42c202585a3cfd603e68a396b"
+    },
+    {
+      "name": "native-mix-fx",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        16,
+        23
+      ],
+      "controlCount": 35,
+      "reachable": 35,
+      "sha256": "1d61f7fc68a6506b3859ea8af6e7ee11f6e90dfe7b73f59164bdbaab46a1e6b5"
+    },
+    {
+      "name": "device",
+      "pdfPages": [
+        13
+      ],
+      "controlCount": 17,
+      "reachable": 17,
+      "sha256": "2c91ce00a8b2ac64cae86410789ffd0d2b06312b574626f136f8e9abe08b57ff"
+    },
+    {
+      "name": "identity",
+      "pdfPages": [
+        13
+      ],
+      "controlCount": 3,
+      "reachable": 3,
+      "sha256": "03d3673e140499f1511fafe6d9279d2862bd3e7af519f5bce8063934e3bf2d10"
+    }
+  ]
+}

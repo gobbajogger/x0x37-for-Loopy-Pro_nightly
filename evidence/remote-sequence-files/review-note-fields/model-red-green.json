@@ -1,0 +1,71 @@
+{
+  "edited": [
+    {
+      "id": "n0",
+      "track": "drum909",
+      "before": {
+        "id": "n0",
+        "track": "drum909",
+        "note": 36,
+        "velocity": 88,
+        "channel": 9,
+        "start": 0,
+        "end": 0,
+        "sourceOrder": 0,
+        "pulse": true
+      },
+      "after": {
+        "id": "n0",
+        "track": "drum909",
+        "note": 36,
+        "velocity": 88,
+        "channel": 9,
+        "start": 0,
+        "end": 0,
+        "sourceOrder": 0,
+        "pulse": true,
+        "pan": 65,
+        "pitchOffset": -1
+      },
+      "status": "local-draft"
+    }
+  ],
+  "review": {
+    "before": [
+      "Notes · drum909: C2, velocity 88, start 0, end 0, chance not set, pulse → C2, velocity 88, start 0, end 0, chance not set, pulse"
+    ],
+    "after": [
+      "Notes · 909 · C2 at sample 0: Pan C → R1 · Pitch offset 0st → -1st"
+    ]
+  },
+  "displayBoundaries": [
+    {
+      "patch": {
+        "pan": 0,
+        "pitchOffset": -24
+      },
+      "shown": "Notes · 909 · C2 at sample 0: Pan C → L50 · Pitch offset 0st → -24st"
+    },
+    {
+      "patch": {
+        "pan": 127,
+        "pitchOffset": 24
+      },
+      "shown": "Notes · 909 · C2 at sample 0: Pan C → R50 · Pitch offset 0st → +24st"
+    },
+    {
+      "patch": {
+        "pan": 64,
+        "pitchOffset": 0
+      },
+      "shown": "Notes · 909 · C2 at sample 0: Pan C (default → 64) · Pitch offset 0st (default → 0)"
+    },
+    {
+      "patch": {
+        "velocity": 69,
+        "pan": 65
+      },
+      "shown": "Notes · 909: C2, velocity 88, start 0, end 0, chance not set, pulse → C2, velocity 69, start 0, end 0, chance not set, pulse · Pan C → R1"
+    }
+  ]
+}

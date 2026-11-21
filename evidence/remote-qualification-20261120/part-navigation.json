@@ -1,0 +1,284 @@
+[
+  {
+    "state": "before",
+    "width": 844,
+    "view": "sound",
+    "fullNotes": [],
+    "park": [
+      0,
+      2065
+    ],
+    "back": [
+      0,
+      2885
+    ]
+  },
+  {
+    "state": "before",
+    "width": 844,
+    "view": "drums",
+    "fullNotes": [],
+    "park": [
+      0,
+      2065
+    ],
+    "back": [
+      0,
+      2885
+    ]
+  },
+  {
+    "state": "before",
+    "width": 844,
+    "view": "patterns",
+    "fullNotes": [],
+    "park": [
+      0,
+      2065
+    ],
+    "back": [
+      0,
+      2885
+    ]
+  },
+  {
+    "state": "before",
+    "width": 390,
+    "view": "sound",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2612
+    ],
+    "back": [
+      0,
+      2517
+    ]
+  },
+  {
+    "state": "before",
+    "width": 390,
+    "view": "drums",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2612
+    ],
+    "back": [
+      0,
+      2517
+    ]
+  },
+  {
+    "state": "before",
+    "width": 390,
+    "view": "patterns",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2644
+    ],
+    "back": [
+      0,
+      2517
+    ]
+  },
+  {
+    "state": "before",
+    "width": 1440,
+    "view": "sound",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2536
+    ],
+    "back": [
+      0,
+      2441
+    ]
+  },
+  {
+    "state": "before",
+    "width": 1440,
+    "view": "drums",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2536
+    ],
+    "back": [
+      0,
+      2441
+    ]
+  },
+  {
+    "state": "before",
+    "width": 1440,
+    "view": "patterns",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2536
+    ],
+    "back": [
+      0,
+      2441
+    ]
+  },
+  {
+    "state": "after",
+    "width": 844,
+    "view": "sound",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2682
+    ],
+    "back": [
+      0,
+      2682
+    ]
+  },
+  {
+    "state": "after",
+    "width": 844,
+    "view": "drums",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2682
+    ],
+    "back": [
+      0,
+      2682
+    ]
+  },
+  {
+    "state": "after",
+    "width": 844,
+    "view": "patterns",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2682
+    ],
+    "back": [
+      0,
+      2682
+    ]
+  },
+  {
+    "state": "after",
+    "width": 390,
+    "view": "sound",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2498
+    ],
+    "back": [
+      0,
+      2498
+    ]
+  },
+  {
+    "state": "after",
+    "width": 390,
+    "view": "drums",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2498
+    ],
+    "back": [
+      0,
+      2498
+    ]
+  },
+  {
+    "state": "after",
+    "width": 390,
+    "view": "patterns",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2498
+    ],
+    "back": [
+      0,
+      2498
+    ]
+  },
+  {
+    "state": "after",
+    "width": 1440,
+    "view": "sound",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2460
+    ],
+    "back": [
+      0,
+      2460
+    ]
+  },
+  {
+    "state": "after",
+    "width": 1440,
+    "view": "drums",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2460
+    ],
+    "back": [
+      0,
+      2460
+    ]
+  },
+  {
+    "state": "after",
+    "width": 1440,
+    "view": "patterns",
+    "fullNotes": [
+      "C4, velocity 81, 11025 to 13781 samples"
+    ],
+    "park": [
+      0,
+      2460
+    ],
+    "back": [
+      0,
+      2460
+    ]
+  }
+]

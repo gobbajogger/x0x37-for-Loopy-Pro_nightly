@@ -1,0 +1,415 @@
+{
+  "sha": "944e99d87125e60aff9e3020ead7212fb47687d6",
+  "harnessSha256": "9b3883b81f33c1a5a35705c30ff362b401395bf54258742a47b05a91a9d9b1df",
+  "geometryProbeSha256": "8f4f887bee60c66f0a6a2cc65c4f441d12f14c2036240d0c05bfafc0ac7be405",
+  "kernelSha256": "9ad1ab9c533ccda4b506a0b0cc281de50af3dcd57370ffa916a5174277cbdbd0",
+  "sourceManifestSha256": "f179e371d8276d712b79fb1b3f11363a345cf9ae595d347d73d979b75bae94f6",
+  "started": "2026-11-21T14:42:53.124760+00:00",
+  "expected": [
+    "drums-accent-drum808",
+    "drums-drum808",
+    "drums-voices-7-11-drum808",
+    "locks-drum808",
+    "original-drum808-10",
+    "original-drum808-8",
+    "original-drum808-9",
+    "pattern-lock-bass-b-cutoff",
+    "pattern-lock-break-level",
+    "patterns-drum808",
+    "sound-drum808-10",
+    "sound-drum808-8",
+    "sound-drum808-9"
+  ],
+  "scope": "Independent focused recovery of missing state names; each case starts with a fresh context; ordinary actions; original 30s timeouts; immutable reachability probe and authored pattern assertions; no full traversal.",
+  "sandbox": true,
+  "viewport": [
+    844,
+    390
+  ],
+  "states": [
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "Sound \u00b7 808"
+      ],
+      "controlCount": 30,
+      "reachable": 30,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "name": "sound-drum808-8",
+      "sha256": "0fabc282a9198005f6f0f05809599010deaf6f8995b74ec9024989d2d3a170f3",
+      "pdfPages": [
+        18
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "Sound \u00b7 808"
+      ],
+      "controlCount": 19,
+      "reachable": 19,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "name": "original-drum808-8",
+      "sha256": "6f5ff7ad99a75a34cf798bf05d5f41f965c951f03ae1c11361d5649fd53f0130",
+      "pdfPages": [
+        18
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "Sound \u00b7 808"
+      ],
+      "controlCount": 30,
+      "reachable": 30,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "name": "sound-drum808-9",
+      "sha256": "2c09a9a3ac16a1411d3986ba35fe481117ea8dedcacd3ec5bc9aa5e9a68779d9",
+      "pdfPages": [
+        18
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "Sound \u00b7 808"
+      ],
+      "controlCount": 19,
+      "reachable": 19,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "name": "original-drum808-9",
+      "sha256": "c77ccc54d78165c896f1a1002a5cf46dd4682e0fd594e2288ee5fa4fdfc80a1e",
+      "pdfPages": [
+        18
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "Sound \u00b7 808"
+      ],
+      "controlCount": 30,
+      "reachable": 30,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "name": "sound-drum808-10",
+      "sha256": "581565b1ab1c052dd4a55388a919dd1b44ae9aba493ffdaa43b22f8c363e5360",
+      "pdfPages": [
+        18
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "Sound \u00b7 808"
+      ],
+      "controlCount": 19,
+      "reachable": 19,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "name": "original-drum808-10",
+      "sha256": "183b2a86dca28fa804cfe9f6776c31c50516f2d3e7350dcab1204c420d8284a3",
+      "pdfPages": [
+        18
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "808"
+      ],
+      "controlCount": 52,
+      "reachable": 52,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "name": "patterns-drum808",
+      "sha256": "c260f21775f1c5103dbec1efe69ce99e43ed2d3f320ded3b3857cda5844009a2",
+      "pdfPages": [
+        9,
+        19
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "Sequence \u00b7 808 \u00b7 Draft",
+        "Motion \u00b7 MIAMI Wave"
+      ],
+      "controlCount": 40,
+      "reachable": 40,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 81,
+        "lastRow": 96
+      },
+      "name": "locks-drum808",
+      "sha256": "d332c6d650ca8739fc86cb3aba92ebf64b54c1bfe0bad44671ccc3a618a0a01c",
+      "pdfPages": [
+        3,
+        17
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "808 \u00b7 Draft",
+        "Sound \u00b7 BD"
+      ],
+      "controlCount": 214,
+      "reachable": 214,
+      "blocked": [],
+      "nestedScroll": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "drum-scroll funkybeats-sequencer",
+          "client": 468,
+          "scroll": 768
+        }
+      ],
+      "horizontalClips": [],
+      "name": "drums-drum808",
+      "sha256": "93f258240bba5336ce43554cacba77ce1e80c936c95f7f77a086ad95cd229605",
+      "pdfPages": [
+        2,
+        15
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "808 \u00b7 Draft",
+        "Sound \u00b7 BD"
+      ],
+      "controlCount": 214,
+      "reachable": 214,
+      "blocked": [],
+      "nestedScroll": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "drum-scroll funkybeats-sequencer",
+          "client": 468,
+          "scroll": 768
+        }
+      ],
+      "horizontalClips": [],
+      "name": "drums-voices-7-11-drum808",
+      "sha256": "040be39dae47de000c49f7bf600bdd3c5887d28d92b117766f42b0d18dc6d376",
+      "pdfPages": [
+        2,
+        15
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [
+        "808 \u00b7 Draft",
+        "Sound \u00b7 BD"
+      ],
+      "controlCount": 215,
+      "reachable": 215,
+      "blocked": [],
+      "nestedScroll": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "drum-scroll funkybeats-sequencer",
+          "client": 468,
+          "scroll": 768
+        }
+      ],
+      "horizontalClips": [],
+      "name": "drums-accent-drum808",
+      "sha256": "5eb39d6b48b33ec856c1d641a7ec761667ae1426a9116bc3be38dd16bc3e19d6",
+      "pdfPages": [
+        2,
+        15
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [],
+      "controlCount": 35,
+      "reachable": 35,
+      "blocked": [],
+      "nestedScroll": [],
+      "horizontalClips": [],
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 59,
+        "lastRow": 74
+      },
+      "name": "pattern-lock-bass-b-cutoff",
+      "sha256": "74b27378fe3395ecc2a211450f64288b7e276662351ea20077dbceca85276f56",
+      "pdfPages": [
+        3,
+        17,
+        22
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "body": [
+        844,
+        844,
+        390
+      ],
+      "titles": [],
+      "controlCount": 36,
+      "reachable": 36,
+      "blocked": [],
+      "nestedScroll": [
+        {
+          "tag": "DIV",
+          "id": "roll-scroll",
+          "cls": "",
+          "client": 693,
+          "scroll": 1400
+        }
+      ],
+      "horizontalClips": [],
+      "roll": {
+        "completeRows": 16,
+        "clippedLabels": [],
+        "row": 16,
+        "paneHeight": 257,
+        "firstRow": 45,
+        "lastRow": 60
+      },
+      "name": "pattern-lock-break-level",
+      "sha256": "b3bb834bd0fd29469539d48d4438e76ee1ef38b6e0cf74837516c73a0321362d",
+      "pdfPages": [
+        11,
+        15
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "caseErrors": [],
+  "missing": [],
+  "enabledControlPresentations": 953,
+  "reachablePresentations": 953,
+  "browser": "151.0.7922.34",
+  "finished": "2026-11-21T14:44:17.352048+00:00",
+  "elapsedSeconds": 84.23
+}

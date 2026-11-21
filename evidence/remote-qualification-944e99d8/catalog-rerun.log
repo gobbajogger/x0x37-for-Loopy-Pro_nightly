@@ -1,0 +1,7 @@
+{"case":"stable-parent-control","exit":0,"wrote_inside":false,"stderr":""}
+{"case":"async-parent-rebind","exit":1,"wrote_inside":false,"stderr":"output must be a new directory outside the repository"}
+PASS: qualified local rendering, 333 rejection cases and download-byte verifier. Synthetic evidence only; NOT candidate QA.
+
+real	1m39.726s
+user	0m5.025s
+sys	0m4.087s

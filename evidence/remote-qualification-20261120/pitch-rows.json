@@ -1,0 +1,177 @@
+{
+  "base": "fec2254c187f2884230b08921b0337b95da8f8d0",
+  "checks": {
+    "UI-SOURCE-OF-TRUTH.md": "Remote pitch rows at least 16px",
+    "UI-DEFECT-TESTS-SPEC.md": "B13 landscape at least 16 pitch rows and no clipped labels"
+  },
+  "old": {
+    "roll-chicago": {
+      "pitchHeight": 17,
+      "paneHeight": 187,
+      "completeRows": 10
+    },
+    "locks-chicago": {
+      "pitchHeight": 16,
+      "paneHeight": 159,
+      "completeRows": 9
+    },
+    "roll-miami": {
+      "pitchHeight": 40,
+      "paneHeight": 187,
+      "completeRows": 4
+    },
+    "locks-miami": {
+      "pitchHeight": 40,
+      "paneHeight": 159,
+      "completeRows": 3
+    },
+    "roll-drum909": {
+      "pitchHeight": 40,
+      "paneHeight": 187,
+      "completeRows": 3
+    },
+    "locks-drum909": {
+      "pitchHeight": 40,
+      "paneHeight": 159,
+      "completeRows": 3
+    },
+    "roll-drum808": {
+      "pitchHeight": 40,
+      "paneHeight": 187,
+      "completeRows": 3
+    },
+    "locks-drum808": {
+      "pitchHeight": 40,
+      "paneHeight": 159,
+      "completeRows": 3
+    },
+    "break-notes": {
+      "pitchHeight": 16,
+      "paneHeight": 139,
+      "completeRows": 8
+    },
+    "locks-breaks": {
+      "pitchHeight": 16,
+      "paneHeight": 159,
+      "completeRows": 9
+    }
+  },
+  "new": {
+    "sequence-chicago": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "ce85baf190941f1a962b923de7ae58b469a7167343c8d65e9ec9a8ede589c353"
+    },
+    "motion-chicago": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "c4c6d71a878b881f77ec0c0fc40cb73894636f67f5b7ccff03f18e99228e3f2d"
+    },
+    "sequence-miami": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "e0712f6846dda4bf213d0f9a5a955cd56f7479dd4c185e73719e1e313026310f"
+    },
+    "motion-miami": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "96cb37f203638f46d9e59b29872424b763ae3b6e371a67a6d1c20aaa3e762a2c"
+    },
+    "sequence-drum808": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "630567bfc761c63a9b7ca56ad9031dd812175d5406340fb332b9e2a31b6adaf1"
+    },
+    "motion-drum808": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "d332c6d650ca8739fc86cb3aba92ebf64b54c1bfe0bad44671ccc3a618a0a01c"
+    },
+    "sequence-drum909": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "b1633833fd151a2be7058e6849255492ae2791d06fde0c30061c125599016f1f"
+    },
+    "motion-drum909": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "715234959cc08a14192b35a007f48f9b86be3e65e72860019ae5f4035a600838"
+    },
+    "sequence-breaks": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "9ada44a93ddc8ccc2394fa279b184a9586dd864074d38e740b14ab9141296bd5"
+    },
+    "motion-breaks": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "6386ea72aa85fd581de36257299c626205e2177f57f2c4177797c445a27eeaaf"
+    },
+    "invalid-session-footer": {
+      "pitchHeight": 16,
+      "paneHeight": 257,
+      "completeRows": 16,
+      "clippedLabels": [],
+      "pngSha256": "d73118d6ca03cf4ee3746d6aa9e2e87f25558d701be0feeb5541543d581887b3"
+    }
+  },
+  "feedback": {
+    "feedback": "Local draft: source identity mismatch; no automatic migration",
+    "feedbackClass": "status-message",
+    "feedbackClipped": false,
+    "feedbackBox": {
+      "x": 402,
+      "y": 36,
+      "width": 430,
+      "height": 24,
+      "top": 36,
+      "right": 832,
+      "bottom": 60,
+      "left": 402
+    }
+  },
+  "sourceFiles": {
+    "remote/app.mjs": "31bf3a7336e72b2f8d05427d5e32ac720390ddeccd3edf224e204bab0409fc14",
+    "remote/style.css": "02bf9cc1c5a788aaff4577c6bb3a434a4c13d2c642bba2bd4cf7750938a29f7b"
+  },
+  "previousRegression": {
+    "redPartReturn": [
+      [
+        "sound",
+        0,
+        1
+      ],
+      [
+        "drums",
+        0,
+        1
+      ],
+      [
+        "patterns",
+        0,
+        1
+      ]
+    ],
+    "partFixNavigationPass": true
+  }
+}

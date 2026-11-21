@@ -1,10 +1,22 @@
-// Source: firmware/src/app/editor.c at83fc6d60289869116f93352cf845a9a7e271cdba.
-// Identity-only. This protocol explicitly exposes no engine/parameter controls.
-export function parseInfo(data){
- const a=Array.from(data);if(a.length<13||a[0]!==240||a.at(-1)!==247||a.slice(1,-1).some(v=>!Number.isInteger(v)||v<0||v>127)||a.slice(1,5).join(',')!=='125,70,76,1')throw Error('Invalid INFO reply');
- const end=a.indexOf(0,5);if(end<5||end>29||a.length!==end+8)throw Error('Invalid INFO shape');
- const version=String.fromCharCode(...a.slice(5,end));if(!/^X0X [\x20-\x7e]+$/.test(version)||a.slice(end+1,end+4).some(v=>v!==0)||a[end+5]!==0||a[end+6]!==0)throw Error('Unsupported INFO schema');
- return Object.freeze({version,steps:a[end+4],remoteControl:false,authority:'uncorrelated identity reply'});
+// Firmware app/editor.c, ED_INFO. The optional XSG v1 extension advertises
+// sample snapshot support and grants no Remote parameter access.
+const snapshotExtension = [0x58, 0x53, 0x47, 1, 48];
+
+export function parseInfo(data) {
+ const bytes = Array.from(data);
+ const end = bytes.indexOf(0, 5);
+ if (bytes[0] !== 0xf0 || bytes.at(-1) !== 0xf7 ||
+     bytes.slice(1, -1).some(v => !Number.isInteger(v) || v < 0 || v > 127) ||
+     bytes.slice(1, 5).join(',') !== '125,70,76,1') throw Error('Invalid INFO reply');
+ if (end < 5 || end > 29 || bytes.length < end + 8) throw Error('Invalid INFO shape');
+ const extra = bytes.slice(end + 7, -1);
+ if (extra.length && (extra.length !== snapshotExtension.length ||
+     extra.some((v, i) => v !== snapshotExtension[i]))) throw Error('Unsupported INFO extension');
+ const version = String.fromCharCode(...bytes.slice(5, end));
+ if (!/^X0X [\x20-\x7e]+$/.test(version) ||
+     bytes.slice(end + 1, end + 4).some(v => v !== 0) ||
+     bytes[end + 5] !== 0 || bytes[end + 6] !== 0) throw Error('Unsupported INFO schema');
+ return Object.freeze({version, steps: bytes[end + 4], remoteControl: false, authority: 'uncorrelated identity reply'});
 }
 export function permissionMessage(error){
  return error?.name==='NotAllowedError'?'MIDI permission was not granted.':error?.name==='NotSupportedError'?'Use a browser with Web MIDI support.':'Unable to access MIDI. Check browser permissions and try again.';

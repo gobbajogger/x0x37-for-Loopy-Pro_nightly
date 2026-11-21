@@ -44,7 +44,7 @@ navigator.requestMIDIAccess = async () => {
   }};
   return {inputs:new Map([['in',input]]), outputs:new Map([['out',output]])};
 };
-'''.replace('__FIXTURE_BUNDLE_JSON__', BUNDLE)
+'''
 
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -56,6 +56,10 @@ checks = []
 def check(value, label):
     checks.append((label, bool(value)))
     print(('PASS ' if value else 'FAIL ') + label, flush=True)
+
+async def connect_test_midi(page, bundle, midi):
+    await page.expose_binding('dnboxMidi', midi)
+    await page.add_init_script(MIDI.replace('__FIXTURE_BUNDLE_JSON__', bundle))
 
 async def main():
     server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
@@ -87,8 +91,7 @@ async def main():
         page = await browser.new_page(viewport={'width': 1280, 'height': 900})
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
-        await page.expose_binding('dnboxMidi', midi)
-        await page.add_init_script(MIDI)
+        await connect_test_midi(page, BUNDLE, midi)
         await page.goto(base + '/remote/', wait_until='networkidle')
         await page.wait_for_function('document.getElementById("status").textContent !== "Loading…"')
         check(OPS == [], 'loading the Remote sends no SysEx')
@@ -119,9 +122,18 @@ async def main():
         await page.locator('#fw-1').evaluate('el=>{el.value="800";el.dispatchEvent(new Event("input"));}')
         check(not await page.locator('#apply').is_disabled(), 'an edit arms Apply and still sends nothing')
         check(3 not in OPS, 'editing does not SET')
+        before_apply = len(OPS)
         await page.locator('details.overflow').evaluate('d=>{d.open=true}');await page.locator('#apply').click()
         await page.wait_for_function('document.getElementById("conn-state").textContent === "Firmware confirmed 800."')
         check(OPS.count(3) == 1, 'Apply writes the edited control once')
+        # A long snapshot can renew the same lease between any two reads.
+        check([op for op in OPS[before_apply:] if op != 6] == [3, 2, 2, 2], 'Apply reads the committed catalog back')
+        before_undo = len(OPS)
+        await page.get_by_role('button', name='Undo instrument edit').click()
+        await page.wait_for_function('document.getElementById("conn-state").textContent === "Firmware restored 500."')
+        check([op for op in OPS[before_undo:] if op != 6] == [2, 3, 2, 2, 2], 'Undo checks the revision, writes once and rereads the catalog')
+        check(await page.locator('#fw-1').input_value() == '500', 'Undo shows the fresh stored value')
+        check(await page.locator('#firmware-undo').count() == 0, 'confirmed instrument Undo is consumed')
         fixture('change')
         await page.locator('#fw-1').evaluate('el=>{el.value="700";el.dispatchEvent(new Event("input"));}')
         await page.locator('details.overflow').evaluate('d=>{d.open=true}');await page.locator('#apply').click()
@@ -131,6 +143,9 @@ async def main():
         await page.wait_for_function('document.getElementById("conn-state").textContent === "Disconnected"')
         check(fixture('tick 0')['active'] == 0, 'Disconnect closes the C lease')
         check(errors == [] and plain_errors == [], 'the page raised no script errors')
+        if checkout := os.environ.get('DNBOX_REMOTE_HOST_CHECKOUT'):
+            from firmware_queued_host import verify_queued_cutoff
+            await verify_queued_cutoff(browser, base, Path(checkout), connect_test_midi)
         await browser.close()
     server.shutdown()
     PROC.kill()

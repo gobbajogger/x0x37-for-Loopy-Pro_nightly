@@ -1,0 +1,291 @@
+{
+  "base_commit": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "base_tree": "2fb817f42421b9bb99eaab1b95ee85e0398eccc7",
+  "patch_sha256": "cb878ffe861adf8ddd6c2b389ac31e0c1c7e3ad4e13ce8027c4212d73800064f",
+  "source_files": {
+    "tests/product-remote/funkybeats-browser.py": {
+      "base": "c0178783e10f25edd0c6e362a8e78ec07e87451be81ca524ac787ccf6180eee4",
+      "candidate": "307a556b9de14aa64b12f4cdc14f7f0a8465fa4f85e0670039b4bef9e74fa427"
+    },
+    "web/product-site/SOURCE-MANIFEST.json": {
+      "base": "d283bdb038ff8887f026b270c1fba34fcfe02f33a7f92b50c17be3a09dcb2690",
+      "candidate": "107dd0dedb4ad8ce7dbd69ca672d50c2cbac2656571748485e7b061327b98ac1"
+    },
+    "web/product-site/remote/app.mjs": {
+      "base": "f1c179baa9c5bc725f5e43cc317a49e48bf98a915050c954ec87011cdd55831c",
+      "candidate": "5f7bfd6dea034a9308304c4414d3a5ef0c4f575270a9b371be5809547025ff62"
+    },
+    "web/product-site/remote/style.css": {
+      "base": "9223b5814f0d611f7b6028135fc6e626eeafec71b063eef2ff9e83c954ecfb8d",
+      "candidate": "825cfd36b7b190d492feaf6515da8c681580d48b32cf714c5be43d13707e8589"
+    }
+  },
+  "document_owner": {
+    "page": 4,
+    "sha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "basis": "Chicago Draft Sound owner page shows four visible stages and a complete curve in desktop layout"
+  },
+  "browser": "151.0.7922.34",
+  "normal_entry": [
+    "Remote",
+    "Bass A",
+    "Sound",
+    "Draft",
+    "CHICAGO"
+  ],
+  "before": {
+    "observed_graph_intersection_ratio": 0.41484373807907104,
+    "stage_buttons": [
+      {
+        "text": "ATTACK\n27%",
+        "rect": [
+          20,
+          930.515625,
+          344,
+          47.59375
+        ]
+      },
+      {
+        "text": "DECAY\n40%",
+        "rect": [
+          372,
+          930.515625,
+          344,
+          47.59375
+        ]
+      },
+      {
+        "text": "SUSTAIN\n57%",
+        "rect": [
+          724,
+          930.515625,
+          344,
+          47.59375
+        ]
+      },
+      {
+        "text": "RELEASE\n17%",
+        "rect": [
+          1076,
+          930.515625,
+          344,
+          47.59375
+        ]
+      }
+    ],
+    "baseline_measurement": "../chicago-donor-8e61e9/remote-8e61e9-desktop.json",
+    "log": "red.log",
+    "supplemental_ninth_case": "After all eight baseline rasters were saved, this scratch-only second slot selector timed out. No conclusion from this ninth selector. The separate successful existing full_envelopes test covers both slots."
+  },
+  "after": {
+    "pane": [
+      20,
+      159,
+      1400,
+      701
+    ],
+    "scrollTop": 0,
+    "scrollWidth": 1440,
+    "scrollHeight": 923,
+    "target": [
+      {
+        "label": "ADSR envelope",
+        "rect": [
+          736,
+          547.359375,
+          676,
+          100
+        ]
+      },
+      {
+        "label": "ATTACK\n27%",
+        "rect": [
+          728,
+          659.359375,
+          167,
+          47.59375
+        ]
+      },
+      {
+        "label": "DECAY\n40%",
+        "rect": [
+          903,
+          659.359375,
+          167,
+          47.59375
+        ]
+      },
+      {
+        "label": "SUSTAIN\n57%",
+        "rect": [
+          1078,
+          659.359375,
+          167,
+          47.59375
+        ]
+      },
+      {
+        "label": "RELEASE\n17%",
+        "rect": [
+          1253,
+          659.359375,
+          167,
+          47.59375
+        ]
+      }
+    ],
+    "units": [
+      [
+        "OSCILLATOR",
+        [
+          20,
+          329.390625,
+          692,
+          14.390625
+        ]
+      ],
+      [
+        "FILTER 1",
+        [
+          728,
+          329.390625,
+          692,
+          14.390625
+        ]
+      ],
+      [
+        "FILTER 2",
+        [
+          20,
+          520.96875,
+          692,
+          14.390625
+        ]
+      ],
+      [
+        "ENVELOPE",
+        [
+          728,
+          520.96875,
+          692,
+          14.390625
+        ]
+      ],
+      [
+        "AMPLIFIER",
+        [
+          20,
+          722.953125,
+          692,
+          14.390625
+        ]
+      ],
+      [
+        "ARPEGGIATOR",
+        [
+          728,
+          722.953125,
+          692,
+          14.390625
+        ]
+      ],
+      [
+        "EFFECT",
+        [
+          20,
+          858.53125,
+          692,
+          14.390625
+        ]
+      ]
+    ],
+    "controlIDs": [
+      "source-sound/CHICAGO/0|1:2:0:0:0",
+      "source-sound/CHICAGO/0|1:2:0:1:0",
+      "source-sound/CHICAGO/0|1:2:0:2:0",
+      "source-sound/CHICAGO/0|1:2:0:3:0",
+      "source-sound/CHICAGO/0|1:2:0:4:0",
+      "source-sound/CHICAGO/0|1:2:0:5:0",
+      "source-sound/CHICAGO/0|1:2:0:6:0",
+      "source-sound/CHICAGO/0|1:2:0:7:0",
+      "source-sound/CHICAGO/0|1:2:0:8:0",
+      "source-sound/CHICAGO/0|1:2:0:9:0",
+      "source-sound/CHICAGO/0|1:2:0:10:0",
+      "source-sound/CHICAGO/0|1:2:0:11:0",
+      "source-sound/CHICAGO/0|1:2:0:12:0",
+      "source-sound/CHICAGO/0|1:2:0:13:0",
+      "source-sound/CHICAGO/0|1:2:0:15:0",
+      "source-sound/CHICAGO/0|1:2:0:14:0",
+      "source-sound/CHICAGO/0|1:2:0:16:0",
+      "source-sound/CHICAGO/0|1:2:0:17:0",
+      "source-sound/CHICAGO/0|1:2:0:18:0",
+      "source-sound/CHICAGO/0|1:2:0:19:0"
+    ]
+  },
+  "screenshots": [
+    {
+      "state": "chicago-chicago-1440x900",
+      "before": "0d2ce833b93be84094f9e72c20f3d0d8a396a322d9335766be1f28428e79057c",
+      "after": "f5b0b9cced7c8eb30f7afc3240dc8b9ab7346a7e948f00bd74437a0cd4a6847f",
+      "after_bytes": 67095,
+      "identical": false
+    },
+    {
+      "state": "chicago-chicago-1024x640",
+      "before": "dd628d8dd21009a7f31f54d621f1b3f0596f95d4ec9a9b85c1a152d83b2a9732",
+      "after": "dd628d8dd21009a7f31f54d621f1b3f0596f95d4ec9a9b85c1a152d83b2a9732",
+      "after_bytes": 40651,
+      "identical": true
+    },
+    {
+      "state": "chicago-chicago-844x390",
+      "before": "5565bb31c238bb75729648f592a48cab531212ebf9c1d884a90aeba74dca2a88",
+      "after": "5565bb31c238bb75729648f592a48cab531212ebf9c1d884a90aeba74dca2a88",
+      "after_bytes": 31314,
+      "identical": true
+    },
+    {
+      "state": "chicago-chicago-390x844",
+      "before": "b46a6124136b885c39a625e3026bec8127ee0de6bd5b89f74f2cd3fcf4fb765a",
+      "after": "b46a6124136b885c39a625e3026bec8127ee0de6bd5b89f74f2cd3fcf4fb765a",
+      "after_bytes": 42124,
+      "identical": true
+    },
+    {
+      "state": "chicago-miami-1440x900",
+      "before": "83f0fcd88444bb3183e019190cf4e92e8e36d24d80c75349abfb7a18ed8817d2",
+      "after": "83f0fcd88444bb3183e019190cf4e92e8e36d24d80c75349abfb7a18ed8817d2",
+      "after_bytes": 58970,
+      "identical": true
+    },
+    {
+      "state": "chicago-juno-1440x900",
+      "before": "3f990259e1e5a0a3b57cf5dcbc0ab2548f34a7b7f5ee25f7d5e524c97e24e111",
+      "after": "3f990259e1e5a0a3b57cf5dcbc0ab2548f34a7b7f5ee25f7d5e524c97e24e111",
+      "after_bytes": 60191,
+      "identical": true
+    },
+    {
+      "state": "chicago-superj6-1440x900",
+      "before": "4d044786070d7ac739a57ad4c0a37c71d2202b8951ce414e88bd49770f98f74f",
+      "after": "4d044786070d7ac739a57ad4c0a37c71d2202b8951ce414e88bd49770f98f74f",
+      "after_bytes": 57974,
+      "identical": true
+    },
+    {
+      "state": "chicago-synth-one-1440x900",
+      "before": "0d370bb00530427087f6acb19faef212bdc33d96eb703c7d7aa6317a51d85aad",
+      "after": "0d370bb00530427087f6acb19faef212bdc33d96eb703c7d7aa6317a51d85aad",
+      "after_bytes": 54788,
+      "identical": true
+    }
+  ],
+  "validation": {
+    "product_build": "228 files; actual normal entry",
+    "mandatory_new_p4_case": "FAIL on unmodified 8e61 base and PASS on candidate",
+    "original_full_envelopes": "PASS",
+    "focused_node_tests": 30,
+    "git_diff_check": "PASS",
+    "isolated_checkouts": true
+  }
+}

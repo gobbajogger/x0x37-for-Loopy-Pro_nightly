@@ -1,0 +1,2186 @@
+{
+  "sha": "944e99d87125e60aff9e3020ead7212fb47687d6",
+  "harnessSha256": "9b3883b81f33c1a5a35705c30ff362b401395bf54258742a47b05a91a9d9b1df",
+  "expected": 127,
+  "unionObserved": 114,
+  "missing": [
+    "drums-accent-drum808",
+    "drums-drum808",
+    "drums-voices-7-11-drum808",
+    "locks-drum808",
+    "original-drum808-10",
+    "original-drum808-8",
+    "original-drum808-9",
+    "pattern-lock-bass-b-cutoff",
+    "pattern-lock-break-level",
+    "patterns-drum808",
+    "sound-drum808-10",
+    "sound-drum808-8",
+    "sound-drum808-9"
+  ],
+  "explanation": "Unique state names with completed stdout geometry and corresponding PNG. Each run is independent. Error screenshots excluded. Combined coverage does not constitute an uninterrupted pass.",
+  "newStatesInRunOrder": [
+    98,
+    11,
+    5
+  ],
+  "overlappingStatesWithDifferentEnabledCounts": {
+    "all-part-patterns": {
+      "1": 180,
+      "3": 181
+    },
+    "break-notes": {
+      "1": 19,
+      "3": 20
+    },
+    "draft-mix-fx": {
+      "1": 62,
+      "3": 63
+    },
+    "draft-mix-levels": {
+      "1": 48,
+      "3": 49
+    },
+    "draft-mix-master": {
+      "1": 38,
+      "3": 39
+    },
+    "draft-mix-pan": {
+      "1": 44,
+      "3": 45
+    },
+    "draft-mix-sends": {
+      "1": 53,
+      "3": 54
+    },
+    "drums-breaks": {
+      "1": 217,
+      "3": 218
+    },
+    "locks-breaks": {
+      "1": 36,
+      "3": 38
+    },
+    "original-drum808-0": {
+      "1": 19,
+      "2": 20,
+      "3": 20
+    },
+    "original-drum808-1": {
+      "1": 19,
+      "2": 20,
+      "3": 20
+    },
+    "patterns-breaks": {
+      "1": 52,
+      "3": 53
+    },
+    "projects": {
+      "1": 27,
+      "3": 28
+    },
+    "projects-original-kept": {
+      "1": 28,
+      "3": 29
+    },
+    "roll-breaks": {
+      "1": 49,
+      "3": 50
+    },
+    "roll-drum808": {
+      "1": 21,
+      "2": 22,
+      "3": 22
+    },
+    "song-empty": {
+      "1": 18,
+      "3": 20
+    },
+    "sound-breaks": {
+      "1": 22,
+      "3": 23
+    },
+    "sound-drum808-0": {
+      "1": 36,
+      "2": 37,
+      "3": 37
+    },
+    "sound-drum808-1": {
+      "1": 36,
+      "2": 37,
+      "3": 37
+    },
+    "sound-drum808-2": {
+      "1": 33,
+      "2": 34,
+      "3": 34
+    }
+  },
+  "runs": [
+    {
+      "run": 1,
+      "status": "terminal; harness report; failed",
+      "file": "944-landscape.log",
+      "logSha256": "c748dcaa22c1956de2c0004ba5f8a1212914bdb9ef9296920937c0ad3ab19a7c",
+      "capturedStates": 98,
+      "enabledPresentations": 3702,
+      "blockedPresentations": 0,
+      "extraPngs": [
+        "drum808-error",
+        "drum909-error"
+      ],
+      "emittedStatesJson": true,
+      "directory": "nightly/.output/landscape-evidence-kms918gy",
+      "states": {
+        "roll-chicago": {
+          "enabled": 25,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-gate": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-slide": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-accent": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-release": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-CHICAGO": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-MIAMI": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-Synth One": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-SuperJ6": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-chicago": {
+          "enabled": 52,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-chicago": {
+          "enabled": 44,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-chicago": {
+          "enabled": 217,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-miami": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-gate": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-slide": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-accent": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-release": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-CHICAGO": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-MIAMI": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-Synth One": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-SuperJ6": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-miami": {
+          "enabled": 52,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-miami": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-miami": {
+          "enabled": 217,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-drum909": {
+          "enabled": 23,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-0": {
+          "enabled": 39,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-0": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-1": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-1": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-2": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-2": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-3": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-3": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-4": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-4": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-5": {
+          "enabled": 27,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-5": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-6": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-6": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-7": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-7": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-8": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-8": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-9": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-9": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-10": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-10": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-drum808": {
+          "enabled": 21,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-0": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-0": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-1": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-1": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-2": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-breaks": {
+          "enabled": 49,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "break-notes": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-breaks": {
+          "enabled": 22,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-breaks": {
+          "enabled": 52,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-breaks": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-breaks": {
+          "enabled": 217,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-levels": {
+          "enabled": 48,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-pan": {
+          "enabled": 44,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-sends": {
+          "enabled": 53,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-fx": {
+          "enabled": 62,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-master": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects": {
+          "enabled": 27,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-empty": {
+          "enabled": 3,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-invalid": {
+          "enabled": 3,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-editor": {
+          "enabled": 6,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-kept": {
+          "enabled": 28,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "song-empty": {
+          "enabled": 18,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "all-part-patterns": {
+          "enabled": 180,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "song-row": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "review-dialog": {
+          "enabled": 2,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "review-discard-confirm": {
+          "enabled": 2,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "more-menu": {
+          "enabled": 181,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "connect-feedback": {
+          "enabled": 1,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-invalid": {
+          "enabled": 1,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-import": {
+          "enabled": 2,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-JUNO": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-JUNO": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-sound-miami": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-sound-choice-unavailable": {
+          "enabled": 18,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-sound-chicago": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-levels": {
+          "enabled": 37,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-pan": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-sends": {
+          "enabled": 42,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-fx": {
+          "enabled": 51,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-master": {
+          "enabled": 27,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "device": {
+          "enabled": 17,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            1024
+          ]
+        },
+        "identity": {
+          "enabled": 3,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            749
+          ]
+        },
+        "break-chance-authored": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "pattern-lock-bass-a-cutoff": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-synth-one-file": {
+          "enabled": 28,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-superj6-import-complete": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-superj6-import-partial": {
+          "enabled": 25,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-synth-one-file": {
+          "enabled": 28,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-superj6-import-complete": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-superj6-import-partial": {
+          "enabled": 25,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        }
+      }
+    },
+    {
+      "run": 2,
+      "status": "worker terminated; partial stdout",
+      "file": "944-landscape-retry.log",
+      "logSha256": "bf4d996a244277b095413ff5b1fa60b8ddb68ce19833f501e100038696ac36ed",
+      "capturedStates": 32,
+      "enabledPresentations": 1113,
+      "blockedPresentations": 0,
+      "extraPngs": [
+        "native-error"
+      ],
+      "emittedStatesJson": false,
+      "directory": "nightly/.output/landscape-evidence-qjrhit8f",
+      "states": {
+        "roll-chicago": {
+          "enabled": 25,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-gate": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-slide": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-accent": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-release": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-CHICAGO": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-MIAMI": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-Synth One": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-SuperJ6": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-chicago": {
+          "enabled": 52,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-chicago": {
+          "enabled": 44,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-chicago": {
+          "enabled": 217,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-miami": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-drum808": {
+          "enabled": 22,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-0": {
+          "enabled": 37,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-0": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-1": {
+          "enabled": 37,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-1": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-2": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-2": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-3": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-3": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-4": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-4": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-5": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-5": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-6": {
+          "enabled": 37,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-6": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-7": {
+          "enabled": 31,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-7": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "device": {
+          "enabled": 17,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            1024
+          ]
+        },
+        "identity": {
+          "enabled": 3,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            749
+          ]
+        }
+      }
+    },
+    {
+      "run": 3,
+      "status": "terminal; navigation timeout; exit 1",
+      "file": "944-landscape-final.log",
+      "logSha256": "87ab818ef8b6204fa24fa747e878cefb9653158ad93305c98515398e4a4dc100",
+      "capturedStates": 94,
+      "enabledPresentations": 4210,
+      "blockedPresentations": 0,
+      "extraPngs": [
+        "drum808-error"
+      ],
+      "emittedStatesJson": false,
+      "directory": "environment/944-landscape-final-evidence",
+      "states": {
+        "roll-chicago": {
+          "enabled": 25,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-gate": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-slide": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-accent": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-chicago-release": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-CHICAGO": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-MIAMI": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-Synth One": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-SuperJ6": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-chicago": {
+          "enabled": 52,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-chicago": {
+          "enabled": 44,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-chicago": {
+          "enabled": 217,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-miami": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-gate": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-slide": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-accent": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "bass-miami-release": {
+          "enabled": 35,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-CHICAGO": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-MIAMI": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-Synth One": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-SuperJ6": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-miami": {
+          "enabled": 52,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-miami": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-miami": {
+          "enabled": 217,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-drum909": {
+          "enabled": 23,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-0": {
+          "enabled": 39,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-0": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-1": {
+          "enabled": 36,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-1": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-2": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-2": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-3": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-3": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-4": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-4": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-5": {
+          "enabled": 27,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-5": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-6": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-6": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-7": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-7": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-8": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-8": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-9": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-9": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum909-10": {
+          "enabled": 30,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum909-10": {
+          "enabled": 19,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-drum909": {
+          "enabled": 52,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-drum909": {
+          "enabled": 42,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-drum909": {
+          "enabled": 214,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-voices-7-11-drum909": {
+          "enabled": 214,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-accent-drum909": {
+          "enabled": 215,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-drum808": {
+          "enabled": 22,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-0": {
+          "enabled": 37,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-0": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-1": {
+          "enabled": 37,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-1": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-drum808-2": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "original-drum808-2": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "roll-breaks": {
+          "enabled": 50,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "break-notes": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-breaks": {
+          "enabled": 23,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "patterns-breaks": {
+          "enabled": 53,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "locks-breaks": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "drums-breaks": {
+          "enabled": 218,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-levels": {
+          "enabled": 49,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-pan": {
+          "enabled": 45,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-sends": {
+          "enabled": 54,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-fx": {
+          "enabled": 63,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-mix-master": {
+          "enabled": 39,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects": {
+          "enabled": 28,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-empty": {
+          "enabled": 3,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-invalid": {
+          "enabled": 3,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-editor": {
+          "enabled": 6,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "projects-original-kept": {
+          "enabled": 29,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "song-empty": {
+          "enabled": 20,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "all-part-patterns": {
+          "enabled": 181,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "song-row": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "review-dialog": {
+          "enabled": 2,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "review-discard-confirm": {
+          "enabled": 2,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "more-menu": {
+          "enabled": 181,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "connect-feedback": {
+          "enabled": 1,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-invalid": {
+          "enabled": 1,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "draft-import": {
+          "enabled": 2,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-chicago-JUNO": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "sound-miami-JUNO": {
+          "enabled": 34,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-sound-miami": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-sound-choice-unavailable": {
+          "enabled": 18,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-sound-chicago": {
+          "enabled": 38,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-levels": {
+          "enabled": 37,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-pan": {
+          "enabled": 33,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-sends": {
+          "enabled": 42,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-fx": {
+          "enabled": 51,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        },
+        "native-mix-master": {
+          "enabled": 27,
+          "blocked": 0,
+          "size": [
+            844,
+            844,
+            390
+          ]
+        }
+      }
+    }
+  ]
+}

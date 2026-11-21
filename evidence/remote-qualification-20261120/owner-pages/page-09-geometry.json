@@ -1,0 +1,73 @@
+{
+  "viewport": [
+    1440,
+    900
+  ],
+  "pdf": {
+    "sha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "page": 9,
+    "selectedGrid": {
+      "padWidth": 90.0,
+      "padHeight": 80.0,
+      "columnPitch": 107.0,
+      "rowPitch": 105.0,
+      "groupBounds": [
+        53.0,
+        296.0,
+        892.0,
+        691.0
+      ]
+    },
+    "leftPanelShare": 0.6449
+  },
+  "before": {
+    "sha256": "7bbf513633e861cf0b1951c948af851e8fe8bf2c3d40ffcb9eb86897e5346d82",
+    "selectedGrid": {
+      "padWidth": 132.875,
+      "padHeight": 44.0,
+      "columnPitch": 137.875,
+      "rowPitch": 49.0,
+      "groupBounds": [
+        25,
+        214.391,
+        1123,
+        405.391
+      ]
+    },
+    "visibleAndHit": 32,
+    "expandedIdentities": 160,
+    "controls": [
+      "Selected part",
+      "All parts",
+      "Review draft"
+    ]
+  },
+  "after": {
+    "sha256": "144b4ed89c9aa0271129d25ad019d0a4fdf45c0743922a8e5c83a354a1e226c2",
+    "selectedGrid": {
+      "padWidth": 93.906,
+      "padHeight": 81.0,
+      "columnPitch": 109.743,
+      "rowPitch": 104.391,
+      "groupBounds": [
+        41,
+        230.391,
+        903.125,
+        624.562
+      ]
+    },
+    "visibleAndHit": 32,
+    "expandedIdentities": 160,
+    "controls": [
+      "Selected part",
+      "All parts",
+      "Review draft"
+    ],
+    "leftPanelShare": 0.6458
+  },
+  "candidateAssets": {
+    "index.html": "d664d5ad1cb55336c88f180d9f2fabd181c07aab5cfdb48c0638c482fe0342b3",
+    "app.mjs": "898f00955f6c408f01ce6198d11da67cff23fd45b768cc63c9c6b16849ee8d35",
+    "style.css": "492c3efc234767d79c2519bb2a1902f6d5eacd2243e65361c072c027e77ccd15"
+  }
+}

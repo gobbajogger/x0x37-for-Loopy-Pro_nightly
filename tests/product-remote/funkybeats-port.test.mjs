@@ -34,7 +34,7 @@ test('ported upstream sequencer renders all typed drum cells with safe, stable i
   const notes=[{id:'first',track,note:36,start:0,velocity:88},{id:'fifth',track,note:36,start:22050,velocity:104},{id:'foreign',track:'other',note:36,start:0,velocity:20}];
   const html=renderFunkyBeatsDrums({kit,notes,endSample:88200});
   assert.equal((html.match(/data-drum-note=/g)||[]).length,176);
-  assert.equal((html.match(/class="seq-step-group"/g)||[]).length,48);
+  assert.equal((html.match(/class="seq-step-group"/g)||[]).length,52);
   assert.match(html,/BD step 1 velocity 88/);assert.match(html,/BD step 5 velocity 104/);assert.doesNotMatch(html,/data-hit="foreign"/);
   assert.equal(DRUM_VOICES[kit].length,11);assert.doesNotMatch(html,/seq-mute|seq-solo|seq-eucl|AudioContext|Not loaded/);
   const escaped=renderFunkyBeatsDrums({kit,notes:[{...notes[0],id:'"<script>'}],endSample:88200});assert.doesNotMatch(escaped,/<script>/);assert.match(escaped,/&quot;&lt;script&gt;/);

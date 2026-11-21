@@ -1,0 +1,5 @@
+# Slice 1–32 on BREAK page 11
+
+The [Remote change](https://github.com/gobbajogger/DnBOX-nightly/commit/8750bd599ea6e360f4a8faa724586a861a92c873) opens the corresponding slice field from the selected BREAK step. Before the change, pressing the Slices button left keyboard focus on the button. In Chromium 151.0.7922.34, the corrected control focused step 8, accepted slice 32, and preserved the selected pattern's step-8 Level lock, the separate MIAMI Motion values and the existing launch selections. The check passed at 1440 × 900, 844 × 390 and 390 × 844. All 15 toolbar controls received their center hit. Delayed loading respected focus moved to Connect. [Browser observations](browser.json) · [Reproduction and before/after results](page11-evidence.tar.gz)
+
+The compiled stock firmware sampled a recorded touch on the actual next sequencer step, interpolated levels 20, 40, 60 and 80 and cancelled a pending touch when the real pattern changed. Native BREAK free-motion recording still needs the active part's pattern/position telemetry and a recording transaction. [Stock C replay](native-motion.json)

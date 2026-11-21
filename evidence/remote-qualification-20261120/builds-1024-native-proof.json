@@ -1,0 +1,104 @@
+{
+  "sourceHead": "451be1fafd0a328c0f489084d3807da216024d7e",
+  "archiveSourceHead": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "method": "one page.screenshot(full_page=True, timeout=120000)",
+  "screenshotOnlyTimeoutMs": 120000,
+  "dimensions": [
+    1024,
+    640
+  ],
+  "flags": [
+    "--font-render-hinting=none",
+    "--disable-lcd-text",
+    "--force-color-profile=srgb"
+  ],
+  "overlap": "451 Local gate ordinary viewport FunkyBeats; source confirmed no other giant screenshot",
+  "loadBefore": "50.25 45.22 39.60 25/1204 17",
+  "memAvailBeforeKiB": 3440644,
+  "sourceIdentities": {
+    "builds/index.html": "804efb7bccb2a13a878d2a5cbb1e4e3206288da4d276378a3f1014f7d5eeb59d",
+    "builds/history.mjs": "a009a008798a98d67b46832600dca3f69502770ac242b1f0635b8a19098d3080",
+    "builds/history-filter.mjs": "9ebfb0b241de121011e7dabd3cecaf052060838f3009a9bf7d822bf4382b8cd7",
+    "data/history.json": "ad782e5bb3cc16bae209515ce41ae4c20a4508cb1ebed22cf0836e0cef471cfe",
+    "site.css": "62579cf8f5058cc79137d96005634c8d2a032b5a8dfce1dae2fc79bf7230c605",
+    "assets/BarlowSemiCondensed-Medium.ttf": "4998b693a190b76f2b11315844345a8546c1e2e6a320905507a9eed04edf8b48",
+    "assets/BarlowSemiCondensed-Bold.ttf": "5bd6757e459a110da81b44532f0f43058e2dab2401688abca84f2fdbde193cbb"
+  },
+  "tmpDirectoryRoot": "/home/agent/.cache/dnbox-gate/tmp",
+  "browser": "151.0.7922.34",
+  "geometry": {
+    "document": [
+      1024,
+      72467
+    ],
+    "viewport": [
+      1024,
+      640,
+      1,
+      0,
+      0,
+      1024,
+      640,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "fonts": "loaded",
+    "moving": false,
+    "fixed": false,
+    "filter": [
+      "197 of 197 records",
+      "",
+      "all",
+      "all"
+    ]
+  },
+  "fonts": [
+    [
+      "Barlow",
+      "normal",
+      "loaded"
+    ],
+    [
+      "Barlow",
+      "700",
+      "loaded"
+    ]
+  ],
+  "capture": {
+    "seconds": 23.757,
+    "pythonPeakRssBytes": 55848960,
+    "processTreePeakSummedRssBytes": 2120728576,
+    "processTreeMaxChildren": 8
+  },
+  "compressed": {
+    "actual": {
+      "length": 10104060,
+      "sha256": "57c07688cfa12c2d14967d85b1ca54c162682f2acb854f38af82ef273eb53590"
+    },
+    "archive": {
+      "length": 10104060,
+      "sha256": "57c07688cfa12c2d14967d85b1ca54c162682f2acb854f38af82ef273eb53590"
+    }
+  },
+  "comparison": {
+    "equal": true,
+    "size": [
+      1024,
+      72467,
+      3
+    ],
+    "rows": 72467,
+    "bytes": 222618624,
+    "differentRows": 0,
+    "firstDifference": null,
+    "pixelSha256": [
+      "1d7de4201ef6957c1a3860f6f972de4878ce8feaa2273f574325e598c1664a1f",
+      "1d7de4201ef6957c1a3860f6f972de4878ce8feaa2273f574325e598c1664a1f"
+    ]
+  },
+  "pageErrors": [],
+  "passed": true
+}

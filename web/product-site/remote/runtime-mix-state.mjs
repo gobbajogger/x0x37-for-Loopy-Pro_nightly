@@ -38,6 +38,7 @@ export function createRuntimeMixState(bindings,{onState=()=>{}}={}){
   try{
    const result=await action(current);if(mine!==epoch)return;
    const next=parse(result.reply);
+   if(next.get(result.key)!==result.expected)throw Error('Native Mix change not confirmed');
    result.commit();values=next;phase='ready';notify();
   }catch(error){if(mine===epoch)unavailable();throw error;}
  }
@@ -45,17 +46,18 @@ export function createRuntimeMixState(bindings,{onState=()=>{}}={}){
   const g=groups.get(key);
   if(!g||!Number.isSafeInteger(value)||value<g.min||value>g.max)throw Error('Invalid native Mix edit');
   return transaction(async current=>{
-   const reply=await current.set({target:g.target,voice:g.voice,parameter:g.parameter,expected:values.get(key),value});
+   const before=values.get(key);
+   const reply=await current.set({target:g.target,voice:g.voice,parameter:g.parameter,expected:before,value});
    if(typeof reply?.undoToken!=='string'||!reply.undoToken.length||reply.undoToken.length>256)throw Error('Invalid native Undo receipt');
-   return{reply,commit(){history.push(reply.undoToken);if(history.length>16)history.shift();}};
+   return{reply,key,expected:value,commit(){history.push({key,before,token:reply.undoToken});if(history.length>16)history.shift();}};
   });
  }
  async function undo(){
   if(!history.length)throw Error('No native edit to undo');
-  const token=history.at(-1);
+  const {key,before,token}=history.at(-1);
   return transaction(async current=>{
    const reply=await current.undo({token});if(reply?.undoToken!==null)throw Error('Invalid native Undo result');
-   return{reply,commit(){history.pop();}};
+   return{reply,key,expected:before,commit(){history.pop();}};
   });
  }
  return{connect,change,undo,close,snapshot};

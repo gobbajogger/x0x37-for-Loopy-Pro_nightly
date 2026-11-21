@@ -1,0 +1,4 @@
+{"files":248,"output":"/workspace/scratch/7113924d764d/remote-final/.output/project-proof","emulator":false,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+PASS Projects: backup, presets, MIDI range and guide, samples, manual, original Draft preserved 1440x900
+PASS Projects: backup, presets, MIDI range and guide, samples, manual, original Draft preserved 390x844
+PASS Projects: backup, presets, MIDI range and guide, samples, manual, original Draft preserved 844x390

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
-import test from'node:test';import{execFileSync,spawn}from'node:child_process';import assert from'node:assert/strict';import{mkdtempSync,mkdirSync,writeFileSync,readFileSync,existsSync,symlinkSync,linkSync,unlinkSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';import{createHash}from'node:crypto';import{buildProductSite}from'../scripts/build-product-site.mjs';
+import test from'node:test';import{execFileSync}from'node:child_process';import assert from'node:assert/strict';import{mkdtempSync,mkdirSync,writeFileSync,readFileSync,existsSync,symlinkSync,linkSync,unlinkSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';import{createHash}from'node:crypto';import{buildProductSite}from'../scripts/build-product-site.mjs';
+import {runFifoOperation} from './fixtures/fifo-operation.mjs';
 function fixture(){const root=mkdtempSync(join(tmpdir(),'dnbox-product-source-')),src=join(root,'web/product-site');mkdirSync(src,{recursive:true});writeFileSync(join(src,'index.html'),'<h1>DnBOX</h1>');const m={schema:'dnbox-product-site-source/1',publicationQualified:false,files:[{path:'index.html',bytes:14,sha256:createHash('sha256').update('<h1>DnBOX</h1>').digest('hex')}]};writeFileSync(join(src,'SOURCE-MANIFEST.json'),JSON.stringify(m));return{root,src,m,save(){writeFileSync(join(src,'SOURCE-MANIFEST.json'),JSON.stringify(m))}}}
 test('normal deterministic source build/check never changes Pages/catalog/source',()=>{const f=fixture();mkdirSync(join(f.root,'docs'));writeFileSync(join(f.root,'docs/versions.json'),'protected');const r=buildProductSite({repoRoot:f.root});assert.equal(r.files,1);assert.equal(r.published,false);assert.equal(readFileSync(join(f.root,'docs/versions.json'),'utf8'),'protected');assert.equal(buildProductSite({repoRoot:f.root,check:true}).files,1)});
 test('unsafe destinations and malformed paths fail closed',()=>{for(const dest of['docs','docs/sub','web','web/sub','.git','']){const f=fixture();assert.throws(()=>buildProductSite({repoRoot:f.root,output:join(f.root,dest)}),/Unsafe|cannot/)}for(const p of['../bad','/bad','a/../b','a\\b','a//b']){const f=fixture();f.m.files[0].path=p;f.save();assert.throws(()=>buildProductSite({repoRoot:f.root}),/path/);}});
@@ -10,24 +11,12 @@ test('recognized output hardlink cannot overwrite a protected synthetic catalog'
 
 test('recognized output special files refuse without opening or blocking',()=>{const f=fixture(),out=join(f.root,'.output/product-site');mkdirSync(out,{recursive:true});execFileSync('mkfifo',[join(out,'index.html')]);assert.throws(()=>buildProductSite({repoRoot:f.root}),/Regular output/);});
 
-// Startup/import readiness is independent of the blocked-I/O operation budget.
-// A loaded machine may take longer than500ms to start Node; that is not a FIFO read.
-async function manifestOperation(module,repoRoot,{startupMs=15000,operationMs=500,startupDelayMs=0}={}){
- const code=`const {buildProductSite}=await import(${JSON.stringify(module)});if(${startupDelayMs})await new Promise(r=>setTimeout(r,${startupDelayMs}));process.send({phase:'ready'});process.once('message',m=>{if(m.phase!=='go'){process.exitCode=2;process.disconnect();return;}process.send({phase:'operation-start'},()=>{try{buildProductSite({repoRoot:${JSON.stringify(repoRoot)}});process.send({phase:'result',outcome:'returned'});}catch(e){process.send({phase:'result',outcome:'threw',message:e.message});}finally{process.disconnect();}});});`;
- return await new Promise((resolve,reject)=>{
-  const start=performance.now(),child=spawn(process.execPath,['--input-type=module','-e',code],{stdio:['ignore','pipe','pipe','ipc']});
-  let readyAt=null,operationAt=null,result=null,timedOut=null,stderr='',timer;
-  const expire=phase=>{timedOut=phase;child.kill('SIGKILL');};
-  timer=setTimeout(()=>expire('startup'),startupMs);
-  child.stderr.on('data',b=>{stderr+=b;});child.stdout.resume();
-  child.on('message',m=>{
-   if(m.phase==='ready'){readyAt=performance.now();clearTimeout(timer);timer=setTimeout(()=>expire('operation-start'),startupMs);child.send({phase:'go'});}
-   else if(m.phase==='operation-start'){operationAt=performance.now();clearTimeout(timer);timer=setTimeout(()=>expire('operation'),operationMs);}
-   else if(m.phase==='result'){result=m;clearTimeout(timer);timer=setTimeout(()=>expire('shutdown'),startupMs);}
-  });
-  child.on('error',e=>{clearTimeout(timer);reject(e);});
-  child.on('close',(code,signal)=>{clearTimeout(timer);resolve({code,signal,result,timedOut,stderr,ready:readyAt!==null,operationStarted:operationAt!==null,startupElapsedMs:readyAt===null?null:readyAt-start,operationElapsedMs:operationAt===null?null:performance.now()-operationAt});});
- });
+function manifestOperation(module, repoRoot, options={}) {
+ return runFifoOperation(
+  `const {buildProductSite}=await import(${JSON.stringify(module)});`,
+  `buildProductSite({repoRoot:${JSON.stringify(repoRoot)}})`,
+  {operationMs:500, ...options},
+ );
 }
 function fifoManifest(){const f=fixture(),manifest=join(f.src,'SOURCE-MANIFEST.json');unlinkSync(manifest);execFileSync('mkfifo',[manifest]);return f;}
 // The actual manifest must be checked before readFileSync, not just its assets.

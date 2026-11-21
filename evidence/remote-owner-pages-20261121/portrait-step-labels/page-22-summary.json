@@ -1,0 +1,31 @@
+{
+  "base": "307dfe5825848672575f350af9ed66d331901351",
+  "candidate": "453eeda7cedbaad47889e0cbf5bd7664f9dbd80e",
+  "publishedGateBefore": "c45b642cce2cd6119c820d542d10f8a4fa7f1e6f25c523afa8ea933da297e90f",
+  "candidateGateAfter": "2d886d13d8cce73a5bcc0f2c34776cb91f2c3bdfe27c1f15182562a9dfa0ac12",
+  "paired": "cf35cb0b9b9bf236c1e00a512b98b2c6725d7a92ad987769339111d914c23071",
+  "detail": "6254c4ddb14be73653a5632bbb5cfe5d377d98a0c4a5879d71e5e48aba5fdaec",
+  "productFiles": {
+    "step-lane.mjs": "e5256f685bd727342b59edd7462fd7c376f43d21ed9ceb59d73f442b2160b4aa",
+    "app.mjs": "f1398bdaa085581270dd9bcb33d2e4d5555052a4fdfcd74da6f4abde4955421c",
+    "style.css": "c92676d5f7e10a91f9e6215d4c0ede528d82bd1e09fac5dad98d3ec24df289fc"
+  },
+  "manifest": "35224481b89196500beb4cc55751bd59e1ae21352ea7dd107ef1c7f3bedeb879",
+  "historicalFail": {
+    "viewport": [
+      390,
+      844
+    ],
+    "labelsFailing": 16,
+    "labelTextWidth": 20,
+    "usableOutputWidth": 17.75,
+    "buttonWidth": 18.75
+  },
+  "candidateResult": [
+    "STEP_LABELS PASS 390 844 16 cell bounds, 9 lanes, mixed and complete selected readouts",
+    "STEP_LABELS PASS 844 390 16 cell bounds, 9 lanes, mixed and complete selected readouts",
+    "STEP_LABELS PASS 1024 640 16 cell bounds, 9 lanes, mixed and complete selected readouts",
+    "STEP_LABELS PASS 1440 900 16 cell bounds, 9 lanes, mixed and complete selected readouts"
+  ],
+  "nativeReview": "dbe50969bcb6eb297e5f1bc6c39c2b3cfec9c73476aa818b7819d773763254b5"
+}

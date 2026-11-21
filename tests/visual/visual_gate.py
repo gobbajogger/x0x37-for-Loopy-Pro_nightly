@@ -18,7 +18,8 @@ import numpy as np
 from PIL import Image
 from playwright.sync_api import sync_playwright
 from grid_continuity import assert_grid_continuity
-from full_page_capture import capture_full_page
+from manual_capture import capture_original_manual
+from full_page_capture import capture_full_page as capture_web_page
 
 ROOT = Path(__file__).resolve().parents[2]
 SNAP = ROOT / 'tests/visual/__snapshots__'
@@ -48,6 +49,54 @@ FREEZE_CSS = "*,*::before,*::after{animation:none!important;transition:none!impo
 
 def port():
     s = socket.socket(); s.bind(('127.0.0.1', 0)); p = s.getsockname()[1]; s.close(); return p
+
+def wait_for_home_capture(page):
+    # The homepage statically declares its artwork, fonts and replay. Only these
+    # rendered assets determine the full-page screenshot.
+    page.evaluate("""async () => {
+        await document.fonts.ready;
+        const require = (ok, message) => { if (!ok) throw Error('Homepage capture: ' + message); };
+        require(document.readyState === 'complete', 'document has not loaded');
+        const sheet = [...document.styleSheets].find(s => s.href === new URL('site.css',location.href).href);
+        require(sheet?.cssRules.length, 'site.css did not load');
+        for (const weight of ['normal','700']) {
+            require([...document.fonts].some(f => f.family === 'Barlow' && f.weight === weight && f.status === 'loaded'),
+                    'Barlow ' + weight + ' did not load');
+        }
+        for (const image of document.images) {
+            await image.decode();
+            require(image.naturalWidth && image.naturalHeight, 'empty image ' + image.currentSrc);
+        }
+        const stage = document.querySelector('#replay-display'), play = document.querySelector('#demo-play');
+        const stop = document.querySelector('#demo-stop'), initial = document.querySelector('#frame-voice-0');
+        require(stage?.firstElementChild?.isEqualNode(initial?.content.firstElementChild),
+                'initial voice frame is missing or differs from source');
+        require(play?.textContent === 'Next control' && document.querySelector('.demo-tabs [data-demo=voice]')?.getAttribute('aria-pressed') === 'true',
+                'reduced-motion replay is not initialized');
+        require([stage,play,stop].every(el => el?.checkVisibility() && el.getBoundingClientRect().width > 0),
+                'replay display or controls are hidden');
+    }""")
+    frames = page.evaluate_handle("() => ({previous: null, stable: 0})")
+    try:
+        page.wait_for_function("""state => {
+            const boxes = ['body','header','#replay-display','#demo-play','#demo-stop','footer'].flatMap(s => {
+                const r=document.querySelector(s).getBoundingClientRect(); return [r.x,r.y,r.width,r.height];
+            });
+            const now = JSON.stringify(boxes);
+            state.stable = now === state.previous ? state.stable + 1 : 0;
+            state.previous = now;
+            return state.stable >= 2;
+        }""", arg=frames, polling='raf')
+    finally:
+        frames.dispose()
+
+
+
+def capture_full_page(page, route, name):
+    if route == 'manual/original/index.html':
+        return capture_original_manual(page)
+    return capture_web_page(page, route, name)
+
 
 def remote_states():
     def lane(n):
@@ -292,11 +341,17 @@ def main():
     try:
         with sync_playwright() as pw, closing(viewport_contexts(pw)) as viewports:
             attach_installer_responses = installer_responses()
-            def settle(pg, url, name):
+            def settle(pg, url, name, site_route=None):
                 try:
+                    print(f'Loading {name}: {url}', flush=True)
                     pg.goto(url)
                     pg.add_style_tag(content=FREEZE_CSS)
-                    pg.evaluate('document.fonts.ready'); pg.wait_for_load_state('networkidle'); pg.wait_for_timeout(250)
+                    if site_route == 'index.html':
+                        wait_for_home_capture(pg)
+                    else:
+                        pg.evaluate('document.fonts.ready')
+                        pg.wait_for_load_state('networkidle')
+                    pg.wait_for_timeout(250)
                 except Exception as error:
                     raise RuntimeError(f'{name} failed to settle at {url}: {error}') from error
             for w, h, c in viewports:
@@ -318,14 +373,18 @@ def main():
                             # x 0..720; connection status and Connect are asserted structurally on the right.
                             # Undo/Redo live in the engine row, not an overflow menu.
                             from PIL import ImageFilter
-                            shot = Image.open(__import__('io').BytesIO(pg.screenshot(clip={'x': 0, 'y': 0, 'width': 1024, 'height': 148}))).convert('L')
+                            shot_png = pg.screenshot(clip={'x': 0, 'y': 0, 'width': 1024, 'height': 148})
+                            shot = Image.open(__import__('io').BytesIO(shot_png)).convert('L')
                             ref = Image.open(FIX).convert('L'); s = ref.width / 1024
                             ref = ref.crop((0, 0, ref.width, round(148 * s))).resize((1024, 148), Image.LANCZOS)
                             prep = lambda im: np.asarray(im.crop((0, 0, 720, 148)).filter(ImageFilter.GaussianBlur(2)))
                             score = ssim(prep(shot), prep(ref)); results.append(('header-ssim-1024x640', 'PASS' if score >= 0.9 else 'FAIL', score))
+                            if results[-1][1] == 'FAIL':
+                                write_actual_output('header-ssim-1024x640-actual.png', shot_png)
                             print(f"header SSIM vs page-01 = {score:.4f} (gate >= 0.90)")
                     try:
                         if act: act(pg); pg.wait_for_timeout(150)
+                        print(f'Capturing {full}', flush=True)
                         screenshot = pg.screenshot()
                     except Exception as error:
                         raise RuntimeError(f'{full} interaction or screenshot failed: {error}') from error
@@ -336,10 +395,11 @@ def main():
                     pg = c.new_page(); pg.on('pageerror', lambda e, n=full: errors.append(f'{n}: {e}'))
                     if rel == 'install/index.html':
                         attach_installer_responses(pg)
-                    settle(pg, base + '/product-site/' + rel, full)
+                    settle(pg, base + '/product-site/' + rel, full, site_route=rel)
                     scroll_width = pg.evaluate('document.documentElement.scrollWidth')
                     if scroll_width > w:
                         errors.append(f'{full}: page extends to {scroll_width}px in a {w}px viewport')
+                    print(f'Capturing {full}', flush=True)
                     compare(full, capture_full_page(pg, rel, full), results); pg.close()
                 for rel in OFFLINE:
                     full = 'offline-' + rel.replace('.html', '') + '-' + tag
@@ -348,6 +408,7 @@ def main():
                     if OFFLINE_BUILT[rel] == 'install/index.html':
                         attach_installer_responses(pg)
                     settle(pg, built + '/' + OFFLINE_BUILT[rel], full)
+                    print(f'Capturing {full}', flush=True)
                     compare(full, capture_full_page(pg, rel, full), results); pg.close()
     finally:
         srv.terminate(); srv2.terminate()

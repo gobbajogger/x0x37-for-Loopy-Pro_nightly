@@ -1,0 +1,104 @@
+{
+  "head": "0753ff3fd6ac01fc528f978e882b389e402c06b9",
+  "tree": "97bbcf9bffa477f65aadfa15da7b6e46a55d4c74",
+  "conditions": {
+    "allInputs": true,
+    "structural": true,
+    "build": true,
+    "header": true,
+    "cleanAfter": true
+  },
+  "chromeClosedAt": "2026-11-21T05:11:11.117+00:00",
+  "chrome": {
+    "status": "RUN",
+    "version": "151.0.7922.34",
+    "sandbox": true
+  },
+  "executions": {
+    "fixtures": {
+      "command": [
+        "python3",
+        "tests/visual/fixtures/web-structural/browser_fixtures.py",
+        "--fixtures-only",
+        "--output",
+        "/workspace/scratch/537b1f88ce48/evidence-local/scoped-0753ff3f/browser-fixtures.json"
+      ],
+      "started": "2026-11-21T05:10:58.930+00:00",
+      "ended": "2026-11-21T05:11:01.251+00:00",
+      "exit": 0
+    },
+    "build": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "started": "2026-11-21T05:11:01.251+00:00",
+      "ended": "2026-11-21T05:11:02.416+00:00",
+      "exit": 0
+    },
+    "header": {
+      "command": [
+        "npm",
+        "run",
+        "test:visual"
+      ],
+      "started": "2026-11-21T05:11:02.418+00:00",
+      "ended": "2026-11-21T05:11:11.117+00:00",
+      "exit": 1
+    }
+  },
+  "manifestFilesVerified": 219,
+  "runtimeFilesVerified": 10,
+  "gitBlobsVerified": 252,
+  "structural": {
+    "fixtureCount": 9,
+    "fixtureOnly": true,
+    "productStatus": "NOT_RUN",
+    "negativeControls": 8
+  },
+  "visualContractChecks": 12,
+  "headerSummary": {
+    "summary": {
+      "screens": 3,
+      "pass": 2,
+      "fail": 0,
+      "no_baseline": 1,
+      "baseline_written": 0,
+      "header_fail": 0,
+      "page_errors": 0
+    },
+    "results": [
+      [
+        "grid-continuity-1024x640",
+        "PASS",
+        512
+      ],
+      [
+        "header-ssim-1024x640",
+        "PASS",
+        0.905927401190831
+      ],
+      [
+        "remote-sequence-1024x640",
+        "NOBASE",
+        0.0
+      ]
+    ],
+    "header_fails": [],
+    "errors": []
+  },
+  "comparedWith8e61": {
+    "browser-fixtures.json": true,
+    "header/summary.json": true
+  },
+  "filesSha256": {
+    "verification.json": "c5c4ea6927930180825c2fac7f6c1b25481c800f9e6ba275d6363865a2cfd53c",
+    "commands.json": "1c2e799158738d38239ab788dbb4e2bb48c4e7b9df1166207f002f0cac4fceab",
+    "browser-fixtures.json": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356",
+    "header/summary.json": "832c83df462e51fe698e9e8c04f6018558af3724bd712f76b2eb73f99fd2cd3d",
+    "fixtures.log": "c82c840a67c352004fa0726f17ff5e6cde67bc1fcb0bf216653684448308ebe6",
+    "header.log": "ebcbdbf3bcb5d2c874ed22886dc0fd565d8c96ee81df3be95fc00c2530592ea1",
+    "build.log": "de8465208f1854a3d462043e0ddfa4404f88a0c3a987818b5739f011e2bbd7f7"
+  }
+}

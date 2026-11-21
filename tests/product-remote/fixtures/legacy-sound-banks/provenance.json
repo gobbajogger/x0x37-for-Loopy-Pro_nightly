@@ -1,0 +1,25 @@
+{
+  "sourceCommit": "44f057a30d1b6155fca625f5a2ef5c8c9fc122a8",
+  "sourceTree": "255eae754ba67758284b97c3d9cfb2b9b56f9c1d",
+  "browser": "151.0.7922.34",
+  "viewport": [
+    1280,
+    720
+  ],
+  "method": "Original stock browser app. Open Sound, select JUNO for Bass A and Bass B, then Save Draft from the project menu. The exact downloaded bytes are stored.",
+  "file": "both-owners.json",
+  "bytes": 3164,
+  "sha256": "ea14c9f6521c87b70f4f1bdebe197017c0000051f0df17b5034e8e65f7507b52",
+  "sourceBlobs": {
+    "web/product-site/remote/app.mjs": "8074c4ab513929b1169ccbc69926f888a749c811",
+    "web/product-site/remote/draft-file.mjs": "72e71b3e5968ef834016410be4535547dfe7bff0",
+    "web/product-site/remote/draft-ui.mjs": "5b592e6f845cd430fd19dfedc1fff37386acdd4e",
+    "web/product-site/remote/source-sounds.json": "fcbd6cb6b45c5449be0ff2d3c350790c04966fe9"
+  },
+  "additionalFixture": {
+    "file": "inactive-owner-a.json",
+    "bytes": 3248,
+    "sha256": "5f60ef9e49ecc54ade6fe8d73b573a4990ff36217771d84bd38b7e3061754e79",
+    "method": "Source-event DOM harness executing the original app from the same revision. On Bass A, select JUNO, edit its first scalar, switch to Chicago and save via the original Draft export handler."
+  }
+}

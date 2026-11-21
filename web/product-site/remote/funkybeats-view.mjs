@@ -1,4 +1,5 @@
 import{renderSvg}from'./glyph-render.mjs';
+import {drumAccent} from './drum-accent.mjs';
 // SPDX-License-Identifier: GPL-3.0-only
 // DnBOX adapter for the actual MIT FunkyBeats DOM builder. The upstream methods,
 // not a screenshot recreation, construct the tree. Typed captured DnBOX events
@@ -21,7 +22,35 @@ export const DRUM_VOICES=Object.freeze({
  '909':Object.freeze([['BD',36],['SD',38],['LT',41],['MT',45],['HT',50],['RS',37],['CP',39],['CH',42],['OH',46],['CR',49],['RD',51]]),
  '808':Object.freeze([['BD',36],['SD',38],['LT',41],['MT',45],['HT',50],['RS',37],['CP',39],['CB',56],['CY',49],['OH',46],['CH',42]])
 });
-export function renderFunkyBeatsDrums({kit='909',notes,endSample,steps=16}){
+function appendAccentRow(grid, kit, steps, accents) {
+ const row = grid.appendChild(new Element('div'));
+ row.className = 'seq-row drum-accent-row';
+ row.setAttribute('id','drum'+kit+'-accent');
+ row.setAttribute('role', 'group');
+ row.setAttribute('aria-label', kit + ' kit accent');
+ const label = row.appendChild(new Element('span'));
+ label.className = 'seq-channel-info';
+ label.textContent = drumAccent.label;
+ for (let start = 0; start < steps; start += 4) {
+  const group = row.appendChild(new Element('div'));
+  group.className = 'seq-step-group';
+  for (let step = start; step < Math.min(start + 4, steps); step++) {
+   const value = accents?.[step] ?? null;
+   const button = group.appendChild(new Element('button'));
+   button.className = 'seq-step drum-accent-step';
+   button.setAttribute('type', 'button');
+   button.dataset.drumAccentStep = step;
+   button.dataset.accentTrack = 'drum' + kit;
+   button.setAttribute('aria-pressed', value === null ? 'mixed' : String(value));
+   const description = kit + ' Accent step ' + (step + 1) + ', ' + drumAccent.text(value);
+   button.setAttribute('aria-label', description);
+   button.setAttribute('title', description);
+   button.textContent = value === null ? '—' : value ? '●' : '○';
+  }
+ }
+}
+
+export function renderFunkyBeatsDrums({kit='909',notes,endSample,steps=16,accents}){
  if(!DRUM_VOICES[kit]||!Array.isArray(notes)||!Number.isInteger(endSample)||endSample<=0||!Number.isInteger(steps)||steps<1||steps>64)throw Error('Invalid local drum viewport');
  const track=kit==='808'?'drum808':'drum909',color=kit==='808'?'#ff4841':'#ff9529',voices=DRUM_VOICES[kit],channels=voices.map(([name])=>({name,type:'drum',color}));
  const state=createSequencerState({channels,patternCount:1,defaultSteps:steps});
@@ -29,6 +58,7 @@ export function renderFunkyBeatsDrums({kit='909',notes,endSample,steps=16}){
  const document={createElement:tag=>new Element(tag),createTextNode:s=>String(s),querySelector:s=>s==='.sequencer-grid'?grid:null};
  const ui=createFunkyBeatsUI({document,channels,state});ui.buildSequencerGrid();
  for(let ch=0;ch<voices.length;ch++){
+  grid.children[ch].setAttribute('id','drum'+kit+'-voice-'+(ch+1));
   const row=grid.children[ch],info=row.children[0];info.children=info.children.filter(n=>!n.className?.includes('seq-channel-btns'));info.setAttribute('aria-label',voices[ch][0]);
   for(let s=0;s<steps;s++){
    const start=Math.round(s*endSample/steps),event=notes.find(n=>n.track===track&&n.note===voices[ch][1]&&Math.abs(n.start-start)<2),step=ui.stepElements[ch][s];
@@ -39,13 +69,15 @@ export function renderFunkyBeatsDrums({kit='909',notes,endSample,steps=16}){
    if(event){step.className+=' hit';step.dataset.hit=event.id;step.children[0].style.opacity=String(.3+modelStep.velocity*.7);step.children[1].style.height=(modelStep.velocity*100)+'%';step.textContent=String(event.velocity);}
   }
  }
+ appendAccentRow(grid, kit, steps, accents);
  const header='<div class="seq-row seq-numbers"><span>VOICE</span>'+Array.from({length:Math.ceil(steps/4)},(_,g)=>'<div class="seq-step-group">'+Array.from({length:Math.min(4,steps-g*4)},(_,i)=>'<span>'+String(g*4+i+1)+'</span>').join('')+'</div>').join('')+'</div>';
  return'<div class="drum-scroll funkybeats-sequencer" data-upstream="809e1e78" style="--track:'+color+'">'+header+serialize(grid)+'</div>';
 }
 
 // Actual upstream performance grid; local selection only, never queued playback.
-export function renderFunkyBeatsLauncher({parts,targets,patternCount=32}){
+export function renderFunkyBeatsLauncher({parts,targets,patternCount=32,selectedPart=null}){
  if(!Array.isArray(parts)||parts.length!==5||!Array.isArray(targets)||targets.length!==5||patternCount!==32||targets.some(v=>v!==null&&(!Number.isInteger(v)||v<0||v>=patternCount)))throw Error('Invalid local launch selection');
+ if(selectedPart!==null&&(!Number.isInteger(selectedPart)||selectedPart<0||selectedPart>=parts.length))throw Error('Invalid selected part');
  const colors=['#ff9529','#ff4841','#82f05a','#46cdff','#d678ff'];
  const channels=parts.map((name,i)=>({name:String(name),type:i<2?'drum':'synth',color:colors[i]}));
  const container=new Element('div');
@@ -56,9 +88,10 @@ export function renderFunkyBeatsLauncher({parts,targets,patternCount=32}){
  const grid=container.children.find(n=>n.className==='perform-grid');
  grid.children=grid.children.filter(n=>n.className!=='perform-header');
  for(let ch=0;ch<parts.length;ch++)for(let p=0;p<patternCount;p++){
-  const cell=ui.performCells[ch][p];cell.dataset.launchPart=ch;cell.textContent='P'+(p+1);cell.setAttribute('type','button');
+  const cell=ui.performCells[ch][p];cell.dataset.launchPart=ch;cell.textContent=String(p+1).padStart(2,'0');cell.setAttribute('type','button');
   cell.setAttribute('aria-pressed',String(targets[ch]===p));cell.setAttribute('aria-label',parts[ch]+' P'+(p+1)+', not loaded');
  }
+ if(selectedPart!==null){const label=grid.children.filter(n=>n.className==='perform-row-label')[selectedPart];grid.children=[label,...ui.performCells[selectedPart]];}
  return '<div class="launch-scroll funkybeats-launcher" data-upstream="809e1e78">'+serialize(grid)+'</div>';
 }
 // Native source domains are supplied explicitly; no upstream percent defaults.

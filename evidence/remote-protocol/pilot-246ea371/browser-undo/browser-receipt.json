@@ -1,0 +1,148 @@
+{
+  "scope": "Real archived firmware host over stdio and the Remote product page in Chromium. Test-only catalog. Stored parameter state; no physical keyboard, USB/BLE, or audio confirmation.",
+  "uiBase": "242f0189af17d7c48b3b7274dea064a84dbc6664",
+  "firmwareSource": "246ea3718c6c72ba80bbd1aafcd5356f871c78c8",
+  "patchSha256": "a5b797ca7757183be9b4df62ae76b2778092875847a0d9383e0383d16e44035a",
+  "firmwareBinarySha256": "d73028eb779a39bf9aada3015b162e78b01f3b1053ccded6deb2f6b6df22909f",
+  "catalog": {
+    "count": 326,
+    "confirmedAtOpen": 294,
+    "crc32": "eec38bc1",
+    "nativeAdmitted": false
+  },
+  "fixtureMidiResponseDeadlineMs": 5000,
+  "browser": "151.0.7922.34",
+  "wireColumns": [
+    "command",
+    "responseStatus",
+    "control",
+    "revision",
+    "storedTarget"
+  ],
+  "wireLegend": {
+    "command": {
+      "2": "READ",
+      "3": "SET"
+    },
+    "responseStatus": {
+      "0": "OK",
+      "1": "QUEUED"
+    }
+  },
+  "actualBrowser": [
+    {
+      "test": "Chicago stored cutoff through Remote Apply and Undo",
+      "source": "246ea3718c6c72ba80bbd1aafcd5356f871c78c8",
+      "control": 257,
+      "browser": "151.0.7922.34",
+      "wire": [
+        [
+          2,
+          0,
+          257,
+          1,
+          32
+        ],
+        [
+          3,
+          1,
+          257,
+          2,
+          33
+        ],
+        [
+          2,
+          0,
+          257,
+          2,
+          33
+        ],
+        [
+          2,
+          0,
+          257,
+          2,
+          33
+        ],
+        [
+          3,
+          1,
+          257,
+          3,
+          32
+        ],
+        [
+          2,
+          0,
+          257,
+          3,
+          32
+        ]
+      ]
+    },
+    {
+      "test": "Coupled COMP uses explicit Apply in both directions; scalar Undo withheld",
+      "THRESH": [
+        [
+          0,
+          64
+        ],
+        [
+          0,
+          60
+        ],
+        [
+          0,
+          61
+        ]
+      ],
+      "MAKEUP": [
+        [
+          0,
+          85
+        ],
+        [
+          0,
+          85
+        ],
+        [
+          0,
+          84
+        ]
+      ],
+      "COMP": [
+        [
+          0,
+          95
+        ],
+        [
+          0,
+          96
+        ],
+        [
+          0,
+          95
+        ]
+      ]
+    }
+  ],
+  "before": "The base UI disconnected at the first queued CUTOFF SET. The original error was \"Change queued. Reconnect to read the stored value.\"",
+  "guardTests": {
+    "passed": 21,
+    "failed": 0,
+    "logSha256": "03d5f2758530d012c8a7365dbaeb3a3704a55a848c2827332bb4e5aa1576bb57"
+  },
+  "productBuild": {
+    "files": 303,
+    "firmwareWrites": false,
+    "catalogMutations": []
+  },
+  "qaLogs": {
+    "beforeSha256": "df495afe59af750a730f607edad9aff061808a3fd8557161adafcd74e8d75264",
+    "actualBrowserSha256": "6461cbff6e6efab9ebb5b207e980179b70d18f84bdf2cd107d3b647942f28abf"
+  },
+  "reproduce": [
+    "Build the separately pinned DnBOX checkout with sh tests/host/remote_actual_core_test.sh.",
+    "From DnBOX-nightly, run DNBOX_REMOTE_HOST_CHECKOUT=/absolute/path/to/pinned/DnBOX python tests/product-remote/firmware-browser.py with the qualified Playwright browser installed."
+  ]
+}

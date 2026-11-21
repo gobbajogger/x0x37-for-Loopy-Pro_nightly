@@ -1,0 +1,92 @@
+{
+  "sha": "cc53d936c178f33e6c5890c108f798a10bc98149",
+  "tree": "22eb6bbbf84ce449d985a3fc41afb40fa3c31731",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "lane": "remote",
+  "result": "FAIL",
+  "exitCode": 1,
+  "startedUtc": "2026-11-21T05:21:51.127Z",
+  "endedUtc": "2026-11-21T05:28:39.084Z",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "FAIL"
+    },
+    {
+      "name": "browser-tests",
+      "result": "FAIL"
+    }
+  ],
+  "offline": true,
+  "trackedCleanAfter": true,
+  "qualifiedRuntimeFiles": 10,
+  "superJ6ArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+  "originalsEnabled": [
+    "Miami firmware",
+    "drum firmware",
+    "Synth One firmware",
+    "SuperJ6 archive"
+  ],
+  "browser": "Playwright bundled Chromium, normal sandbox",
+  "terminal": "DNBOX-GATE RESULT FAIL sha=cc53d936c178f33e6c5890c108f798a10bc98149 lane=remote log=build/dnbox-gate/cc53d936-20261121-1521.log",
+  "repositoryLog": "build/dnbox-gate/cc53d936-20261121-1521.log",
+  "rawLogSha256": "684caf481e7ee2fe853abd36514f75470b02d2a57f0872ef11c1b7aa645d6f20",
+  "rawLogBytes": 584989,
+  "compressedLogSha256": "39beb503d9c09b0130d0572857ea084b55633d25116ab7cdc03d65709cffddc9",
+  "compressedLogBytes": 95908,
+  "errors": [
+    {
+      "line": 1783,
+      "message": "\u2716 tracked current sources have no retired engine name (190.652566ms)"
+    },
+    {
+      "line": 1808,
+      "message": "\u2716 failing tests:"
+    },
+    {
+      "line": 1811,
+      "message": "\u2716 tracked current sources have no retired engine name (190.652566ms)"
+    },
+    {
+      "line": 1836,
+      "message": "[FAIL] unit-tests"
+    },
+    {
+      "line": 1906,
+      "message": "playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 1927,
+      "message": "[FAIL] browser-tests"
+    },
+    {
+      "line": 1928,
+      "message": "DNBOX-GATE RESULT FAIL sha=cc53d936c178f33e6c5890c108f798a10bc98149 lane=remote log=build/dnbox-gate/cc53d936-20261121-1521.log"
+    }
+  ]
+}

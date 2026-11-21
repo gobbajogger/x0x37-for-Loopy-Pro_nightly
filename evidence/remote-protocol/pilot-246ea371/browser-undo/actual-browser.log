@@ -1,0 +1,2 @@
+{"test": "Chicago stored cutoff through Remote Apply and Undo", "source": "246ea3718c6c72ba80bbd1aafcd5356f871c78c8", "control": 257, "browser": "151.0.7922.34", "wire": [[2, 0, 257, 1, 32], [3, 1, 257, 2, 33], [2, 0, 257, 2, 33], [2, 0, 257, 2, 33], [3, 1, 257, 3, 32], [2, 0, 257, 3, 32]]}
+{"test": "Coupled COMP uses explicit Apply in both directions; scalar Undo withheld", "THRESH": [[0, 64], [0, 60], [0, 61]], "MAKEUP": [[0, 85], [0, 85], [0, 84]], "COMP": [[0, 95], [0, 96], [0, 95]]}

@@ -1,0 +1,14 @@
+{
+  "states": [
+    "pattern-lock-bass-a-cutoff",
+    "pattern-lock-bass-b-cutoff",
+    "pattern-lock-break-level"
+  ],
+  "completeInventoryCount": 119,
+  "browser": "151.0.7922.34",
+  "enabledControlPresentations": 109,
+  "reachablePresentations": 109,
+  "sourceManifestSha256": "dd360bd04849591a4604650fd048e8148d82eb7cf78f8c332a5af45fa001df9a",
+  "mainModuleSha256": "7f53e54dd1fc5c86338f2c456b82bf8b5f20f97a85fe1d41573bedf88eff9ed1",
+  "pageErrors": []
+}

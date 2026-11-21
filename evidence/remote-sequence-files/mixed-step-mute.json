@@ -1,0 +1,18 @@
+{
+  "mixedInstall": true,
+  "stepUndoRedoNeighbors": true,
+  "drumAccent": true,
+  "songMuteMask": 21,
+  "bassExplicitTieSlideNoAccentRelease15": true,
+  "rejectedInvalidBreak": true,
+  "rejectedInvalidBank": true,
+  "replacedWithOldFile": true,
+  "gestureGuards": true,
+  "originalBanks": 12,
+  "programs": 640,
+  "parameterEdits": 11720,
+  "exportBytes": 2670390,
+  "limit": 12582912,
+  "bothParts": true,
+  "allEditsRoundTrip": true
+}

@@ -1,0 +1,84 @@
+{
+  "sha": "1767bd8f828884d1b06da9b2b4eee7ba2d71e84a",
+  "tree": "b7a986add887f4ed9aa216251e1b150f48c066a6",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "lane": "remote",
+  "result": "FAIL",
+  "exitCode": 1,
+  "startedUtc": "2026-11-21T05:40:43.241Z",
+  "endedUtc": "2026-11-21T05:48:06.422Z",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "FAIL"
+    },
+    {
+      "name": "browser-tests",
+      "result": "FAIL"
+    }
+  ],
+  "offline": true,
+  "trackedCleanAfter": true,
+  "qualifiedRuntimeFiles": 10,
+  "superJ6ArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+  "originalsEnabled": [
+    "Miami firmware",
+    "drum firmware",
+    "Synth One firmware",
+    "SuperJ6 archive"
+  ],
+  "browser": "Playwright bundled Chromium, normal sandbox",
+  "terminal": "DNBOX-GATE RESULT FAIL sha=1767bd8f828884d1b06da9b2b4eee7ba2d71e84a lane=remote log=build/dnbox-gate/1767bd8f-20261121-1540.log",
+  "repositoryLog": "build/dnbox-gate/1767bd8f-20261121-1540.log",
+  "rawLogSha256": "251b70cdf46734a966029c5d7418d8cfb103a81134d1b46087a8313178b107df",
+  "rawLogBytes": 134763,
+  "compressedLogSha256": "e8e6cea98a16350e0176fd9bf50a0e0908eb4a6776bb3999f570cd042c7a20cf",
+  "compressedLogBytes": 40702,
+  "errors": [
+    {
+      "line": 1882,
+      "message": "playwright._impl._errors.TimeoutError: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 1883,
+      "message": "[FAIL] unit-tests"
+    },
+    {
+      "line": 1950,
+      "message": "playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 1961,
+      "message": "[FAIL] browser-tests"
+    },
+    {
+      "line": 1962,
+      "message": "DNBOX-GATE RESULT FAIL sha=1767bd8f828884d1b06da9b2b4eee7ba2d71e84a lane=remote log=build/dnbox-gate/1767bd8f-20261121-1540.log"
+    }
+  ]
+}

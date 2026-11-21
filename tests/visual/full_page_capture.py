@@ -29,6 +29,13 @@ def capture_full_page(page, route, name):
             width, height = geometry[:2]
             if geometry[-1] == 1 and width * height > SINGLE_CAPTURE_PIXELS and height > BAND_ROWS:
                 return capture_bands(page, geometry, deadline)
+            # A native, single-shot Builds capture must also contain the entire document.
+            png = page.screenshot(full_page=True)
+            with Image.open(BytesIO(png)) as captured:
+                if captured.format != 'PNG' or (geometry[-1] == 1 and captured.size != (width, height)):
+                    raise ValueError(f'Expected full Builds PNG {width}x{height}, got {captured.format} {captured.size}')
+                captured.verify()
+            return png
         return page.screenshot(full_page=True)
     except Exception as error:
         raise RuntimeError(f'{name} full-page capture failed: {error}') from error

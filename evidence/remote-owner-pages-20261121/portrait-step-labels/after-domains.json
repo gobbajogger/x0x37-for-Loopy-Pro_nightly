@@ -1,0 +1,641 @@
+{
+  "style": "7a20a0a07a3cb5759c99c394295c85abe5700b7fed169ec0b67e630cbd0a4d6d",
+  "browser": "151.0.7922.34",
+  "viewports": {
+    "390x844": {
+      "cellExtent": 18.75,
+      "cellTests": 1035,
+      "headerTests": 1967,
+      "domains": {
+        "velocity": 127,
+        "chance": 55,
+        "pan": 101,
+        "pitch": 255,
+        "gate": 4,
+        "slide": 3,
+        "accent": 3,
+        "release": 17,
+        "drumAccent": 3,
+        "other": 1,
+        "locks": 466
+      },
+      "badCells": [],
+      "badHeaders": [
+        [
+          "locks",
+          "P01 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P04 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ]
+      ],
+      "badDots": []
+    },
+    "844x390": {
+      "cellExtent": 47.625,
+      "cellTests": 1035,
+      "headerTests": 1967,
+      "domains": {
+        "velocity": 127,
+        "chance": 55,
+        "pan": 101,
+        "pitch": 255,
+        "gate": 4,
+        "slide": 3,
+        "accent": 3,
+        "release": 17,
+        "drumAccent": 3,
+        "other": 1,
+        "locks": 466
+      },
+      "badCells": [],
+      "badHeaders": [
+        [
+          "locks",
+          "P01 \u00b7 SAW/PUL",
+          [
+            2,
+            -7,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P01 \u00b7 CHO/FLG",
+          [
+            2,
+            -4,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P01 \u00b7 PHASER",
+          [
+            2,
+            -2,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P01 \u00b7 RING MOD",
+          [
+            2,
+            -6,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P01 \u00b7 COMPRESSOR",
+          [
+            2,
+            -21,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P01 \u00b7 DECIMATOR",
+          [
+            2,
+            -13,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 SAW/PUL",
+          [
+            2,
+            -9,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 CHO/FLG",
+          [
+            2,
+            -6,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 PHASER",
+          [
+            2,
+            -4,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 RING MOD",
+          [
+            2,
+            -8,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 COMPRESSOR",
+          [
+            2,
+            -23,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 DECIMATOR",
+          [
+            2,
+            -15,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P02 \u00b7 SAW/PUL",
+          [
+            2,
+            -9,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P02 \u00b7 CHO/FLG",
+          [
+            2,
+            -6,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P02 \u00b7 PHASER",
+          [
+            2,
+            -4,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P02 \u00b7 RING MOD",
+          [
+            2,
+            -8,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P02 \u00b7 COMPRESSOR",
+          [
+            2,
+            -23,
+            13.5,
+            3.5
+          ]
+        ],
+        [
+          "locks",
+          "P02 \u00b7 DECIMATOR",
+          [
+            2,
+            -15,
+            13.5,
+            3.5
+          ]
+        ]
+      ],
+      "badDots": [
+        [
+          "pitch",
+          "-94st"
+        ],
+        [
+          "pitch",
+          "-84st"
+        ],
+        [
+          "pitch",
+          "-64st"
+        ],
+        [
+          "pitch",
+          "-54st"
+        ],
+        [
+          "pitch",
+          "-49st"
+        ],
+        [
+          "pitch",
+          "-48st"
+        ],
+        [
+          "pitch",
+          "-46st"
+        ],
+        [
+          "pitch",
+          "-45st"
+        ],
+        [
+          "pitch",
+          "-44st"
+        ],
+        [
+          "pitch",
+          "-43st"
+        ],
+        [
+          "pitch",
+          "-42st"
+        ],
+        [
+          "pitch",
+          "-40st"
+        ],
+        [
+          "pitch",
+          "-34st"
+        ],
+        [
+          "pitch",
+          "-24st"
+        ],
+        [
+          "pitch",
+          "+24st"
+        ],
+        [
+          "pitch",
+          "+34st"
+        ],
+        [
+          "pitch",
+          "+40st"
+        ],
+        [
+          "pitch",
+          "+42st"
+        ],
+        [
+          "pitch",
+          "+43st"
+        ],
+        [
+          "pitch",
+          "+44st"
+        ],
+        [
+          "pitch",
+          "+45st"
+        ],
+        [
+          "pitch",
+          "+46st"
+        ],
+        [
+          "pitch",
+          "+48st"
+        ],
+        [
+          "pitch",
+          "+49st"
+        ],
+        [
+          "pitch",
+          "+54st"
+        ],
+        [
+          "pitch",
+          "+64st"
+        ],
+        [
+          "pitch",
+          "+84st"
+        ],
+        [
+          "pitch",
+          "+94st"
+        ]
+      ]
+    },
+    "320x640": {
+      "cellExtent": 14.375,
+      "cellTests": 1035,
+      "headerTests": 1967,
+      "domains": {
+        "velocity": 127,
+        "chance": 55,
+        "pan": 101,
+        "pitch": 255,
+        "gate": 4,
+        "slide": 3,
+        "accent": 3,
+        "release": 17,
+        "drumAccent": 3,
+        "other": 1,
+        "locks": 466
+      },
+      "badCells": [],
+      "badHeaders": [
+        [
+          "locks",
+          "P01 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P04 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ]
+      ],
+      "badDots": []
+    },
+    "360x780": {
+      "cellExtent": 16.875,
+      "cellTests": 1035,
+      "headerTests": 1967,
+      "domains": {
+        "velocity": 127,
+        "chance": 55,
+        "pan": 101,
+        "pitch": 255,
+        "gate": 4,
+        "slide": 3,
+        "accent": 3,
+        "release": 17,
+        "drumAccent": 3,
+        "other": 1,
+        "locks": 466
+      },
+      "badCells": [],
+      "badHeaders": [
+        [
+          "locks",
+          "P01 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P04 \u00b7 COMPRESSOR",
+          [
+            2,
+            -8,
+            41,
+            -7
+          ]
+        ]
+      ],
+      "badDots": []
+    },
+    "1024x640": {
+      "cellExtent": 57.875,
+      "cellTests": 1035,
+      "headerTests": 1967,
+      "domains": {
+        "velocity": 127,
+        "chance": 55,
+        "pan": 101,
+        "pitch": 255,
+        "gate": 4,
+        "slide": 3,
+        "accent": 3,
+        "release": 17,
+        "drumAccent": 3,
+        "other": 1,
+        "locks": 466
+      },
+      "badCells": [],
+      "badHeaders": [
+        [
+          "locks",
+          "P01 \u00b7 COMPRESSOR",
+          [
+            2,
+            -16,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P01 \u00b7 DECIMATOR",
+          [
+            2,
+            -6,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 COMPRESSOR",
+          [
+            2,
+            -16,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 DECIMATOR",
+          [
+            2,
+            -6,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P04 \u00b7 COMPRESSOR",
+          [
+            2,
+            -16,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P04 \u00b7 DECIMATOR",
+          [
+            2,
+            -6,
+            41,
+            -7
+          ]
+        ]
+      ],
+      "badDots": []
+    },
+    "1440x900": {
+      "cellExtent": 83.875,
+      "cellTests": 1035,
+      "headerTests": 1967,
+      "domains": {
+        "velocity": 127,
+        "chance": 55,
+        "pan": 101,
+        "pitch": 255,
+        "gate": 4,
+        "slide": 3,
+        "accent": 3,
+        "release": 17,
+        "drumAccent": 3,
+        "other": 1,
+        "locks": 466
+      },
+      "badCells": [],
+      "badHeaders": [
+        [
+          "locks",
+          "P01 \u00b7 COMPRESSOR",
+          [
+            2,
+            -16,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P01 \u00b7 DECIMATOR",
+          [
+            2,
+            -6,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 COMPRESSOR",
+          [
+            2,
+            -16,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P32 \u00b7 DECIMATOR",
+          [
+            2,
+            -6,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P04 \u00b7 COMPRESSOR",
+          [
+            2,
+            -16,
+            41,
+            -7
+          ]
+        ],
+        [
+          "locks",
+          "P04 \u00b7 DECIMATOR",
+          [
+            2,
+            -6,
+            41,
+            -7
+          ]
+        ]
+      ],
+      "badDots": []
+    }
+  }
+}

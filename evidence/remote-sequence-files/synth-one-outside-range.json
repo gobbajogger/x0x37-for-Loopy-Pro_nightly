@@ -1,0 +1,56 @@
+{
+  "1440x900": {
+    "fields": [
+      {
+        "raw": "125",
+        "name": "Wave \u00b7 Outside range",
+        "hasWaveDrawing": false,
+        "valid": false
+      },
+      {
+        "raw": "-10",
+        "name": "Wave \u00b7 Outside range",
+        "hasWaveDrawing": false,
+        "valid": false
+      }
+    ],
+    "rawFileIdentical": true,
+    "errors": []
+  },
+  "844x390": {
+    "fields": [
+      {
+        "raw": "125",
+        "name": "Wave \u00b7 Outside range",
+        "hasWaveDrawing": false,
+        "valid": false
+      },
+      {
+        "raw": "-10",
+        "name": "Wave \u00b7 Outside range",
+        "hasWaveDrawing": false,
+        "valid": false
+      }
+    ],
+    "rawFileIdentical": true,
+    "errors": []
+  },
+  "390x844": {
+    "fields": [
+      {
+        "raw": "125",
+        "name": "Wave \u00b7 Outside range",
+        "hasWaveDrawing": false,
+        "valid": false
+      },
+      {
+        "raw": "-10",
+        "name": "Wave \u00b7 Outside range",
+        "hasWaveDrawing": false,
+        "valid": false
+      }
+    ],
+    "rawFileIdentical": true,
+    "errors": []
+  }
+}

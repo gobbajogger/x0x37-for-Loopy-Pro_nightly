@@ -1,0 +1,134 @@
+{
+  "sha": "4398ed8e04c93b0f525a7d455e84fbc247ed6318",
+  "tree": "45d18f6cad3fad5cfcbf8ca15aee430548cff9ed",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "lane": "remote",
+  "result": "FAIL",
+  "exitCode": 1,
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "offline": true,
+  "startedUtc": "2026-11-21T05:48:58.339Z",
+  "startedGateLabel": "DNBOX-GATE repo=nightly lane=remote sha=4398ed8e04c93b0f525a7d455e84fbc247ed6318 started=20261121-1548 (UTC+10)",
+  "endedUtc": "2026-11-21T06:10:51.976Z",
+  "cleanTrackedAfter": true,
+  "rawLogBytes": 233278,
+  "rawLogSha256": "aa628039ea49e73abc3659db5440614d62122ebc644f67efded798515566f198",
+  "repositoryLog": "build/dnbox-gate/4398ed8e-20261121-1548.log",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "PASS"
+    },
+    {
+      "name": "browser-tests",
+      "result": "FAIL"
+    }
+  ],
+  "visualHeader": "header SSIM vs page-01 = 0.9059 (gate >= 0.90)",
+  "terminal": "DNBOX-GATE RESULT FAIL sha=4398ed8e04c93b0f525a7d455e84fbc247ed6318 lane=remote log=build/dnbox-gate/4398ed8e-20261121-1548.log",
+  "structural": null,
+  "visual": {
+    "screens": 109,
+    "pass": 5,
+    "fail": 0,
+    "no_baseline": 104,
+    "baseline_written": 0,
+    "header_fail": 0,
+    "page_errors": 0
+  },
+  "errors": [
+    {
+      "line": 3244,
+      "message": "playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded."
+    },
+    {
+      "line": 3251,
+      "message": "[FAIL] browser-tests"
+    },
+    {
+      "line": 3252,
+      "message": "DNBOX-GATE RESULT FAIL sha=4398ed8e04c93b0f525a7d455e84fbc247ed6318 lane=remote log=build/dnbox-gate/4398ed8e-20261121-1548.log"
+    }
+  ],
+  "published": false,
+  "workflowDispatched": false,
+  "physicalDeviceAccess": false,
+  "compressedLogSha256": "140618b93a5ab1a8e777c00a53ff8cc34ec6a876f678b2c5dbf6784d5872e243",
+  "compressedLogBytes": 53184,
+  "durationSeconds": 1313.637,
+  "providers": {
+    "head": "4398ed8e04c93b0f525a7d455e84fbc247ed6318",
+    "tree": "45d18f6cad3fad5cfcbf8ca15aee430548cff9ed",
+    "sources": "6466a3715c96b7ecf1dd255a218cbd571408a314",
+    "banks": 12,
+    "presets": 694,
+    "bankManifestSha256": "806d92dae2ef75b073168e5b85ee2dc6055f2c3b10ceca3a0e40933514c37622",
+    "superJ6ArchiveBytes": 451262,
+    "superJ6ArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+    "runtimePinSha256": "c42ad2d0e9f163087b15d293217589d094a6560d97afd64bf93931293be1250f",
+    "predecessorExitCode": 1,
+    "predecessorEndedUtc": "2026-11-21T05:48:06.422Z",
+    "explicitOriginalFirmwareInputs": [
+      "DNBOX_MIAMI_FIRMWARE",
+      "DNBOX_DRUM_FIRMWARE",
+      "DNBOX_SYNTH_ONE_FIRMWARE"
+    ],
+    "superJ6Input": "DNBOX_SUPERJ6_ARCHIVE",
+    "runtimeInput": "DNBOX_EMULATOR_RUNTIME",
+    "pinnedRuntimeFiles": 10
+  },
+  "passiveTiming": {
+    "head": "4398ed8e04c93b0f525a7d455e84fbc247ed6318",
+    "intervalSec": 2.0,
+    "samples": 656,
+    "maximumSampleGapSec": 2.774,
+    "maximumSampleGapObservedUtc": "2026-11-21T06:10:30.364Z",
+    "pressureSourcesPresent": [],
+    "failureWindows": [
+      {
+        "when": "2026-11-21T06:10:52.191Z",
+        "observedSignals": [
+          "playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.",
+          "[FAIL] browser-tests",
+          "DNBOX-GATE RESULT FAIL sha=4398ed8e04c93b0f525a7d455e84fbc247ed6318 lane=remote log=build/dnbox-gate/4398ed8e-20261121-1548.log"
+        ],
+        "previous45sMaxGap": 2.774,
+        "previous45sMaxLate": 0.774
+      }
+    ],
+    "scope": "Read-only system-wide observations, not per-process attribution. Gate events are timestamped when first seen in the raw stream.",
+    "dataSha256": "2f988d85e68f23fe4d7a98674528bd98d3e308770d6e94ca864b16564c307148",
+    "gzipSha256": "efd3df68be09ed458f1c19a37f2e9178932acd2c33b4416f458e867f9b933a4a",
+    "summarySha256": "388a52322a7e452773d7b995f842cc910d1178cc03f0ca6ebde8027808179d01"
+  },
+  "executor": {
+    "launch-single-v3.py": "0ed53879f3cda04e1bf23c49e259689efd721916739ba85758738168dea0ece7",
+    "coordinate-single-v4.py": "4b74ff0d5cae1e76aa6f90d1fc5a877d9438bd9e31e0ca12544f06c93f752053",
+    "passive-gate-heartbeat.py": "3f1219d6f358081ea0302285efef018e08e18ceaf2824cb7f5b9b5027b52f383"
+  },
+  "lastCompletedAdmissionCheck": "CHECK 680 controller insert-fail blocks MIDI"
+}

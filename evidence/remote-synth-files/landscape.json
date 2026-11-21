@@ -1,0 +1,204 @@
+{
+  "aggregate-original": {
+    "controlCount": 188,
+    "reachable": 188,
+    "expectedStateCount": 105,
+    "blocked": 0,
+    "horizontalClips": 0,
+    "pageErrors": [],
+    "states": [
+      {
+        "controlCount": 28,
+        "reachable": 28,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-chicago-synth-one-file",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 31,
+        "reachable": 31,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-chicago-superj6-import-partial",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 35,
+        "reachable": 35,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-chicago-superj6-import-complete",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 28,
+        "reachable": 28,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-miami-synth-one-file",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 31,
+        "reachable": 31,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-miami-superj6-import-partial",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 35,
+        "reachable": 35,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-miami-superj6-import-complete",
+        "pdfPages": [
+          5
+        ]
+      }
+    ]
+  },
+  "aggregate-fixture": {
+    "controlCount": 174,
+    "reachable": 174,
+    "expectedStateCount": 105,
+    "blocked": 0,
+    "horizontalClips": 0,
+    "pageErrors": [],
+    "states": [
+      {
+        "controlCount": 28,
+        "reachable": 28,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-chicago-synth-one-file",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 35,
+        "reachable": 35,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-chicago-superj6-import-complete",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 24,
+        "reachable": 24,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-chicago-superj6-import-partial",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 28,
+        "reachable": 28,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-miami-synth-one-file",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 35,
+        "reachable": 35,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-miami-superj6-import-complete",
+        "pdfPages": [
+          5
+        ]
+      },
+      {
+        "controlCount": 24,
+        "reachable": 24,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "blocked": [],
+        "horizontalClips": [],
+        "name": "sound-miami-superj6-import-partial",
+        "pdfPages": [
+          5
+        ]
+      }
+    ]
+  },
+  "manifestSha256": "bc38761eff1c8b57da1558facd3f3c17126c46aeb8ceafd8ef9a3516a0e342cb",
+  "testFileSha256": "3477c4f649a9c0939b095cd34988ce43ef35737c2b18e05e753df4aa0c40843c"
+}

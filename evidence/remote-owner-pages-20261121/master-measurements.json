@@ -1,0 +1,205 @@
+{
+  "base": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "measurements": [
+    {
+      "edition": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "shortcutEntries": 0,
+      "nativeProviderStarted": false,
+      "pageErrors": []
+    },
+    {
+      "edition": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "shortcutEntries": 1,
+      "nativeProviderStarted": false,
+      "docWidth": 1440,
+      "originalMacros": [
+        "Master Drive",
+        "Master COMP",
+        "Master PUMP",
+        "Master FILTER"
+      ],
+      "detailIdentities": [
+        "6:0",
+        "6:1",
+        "6:2",
+        "6:3",
+        "6:4",
+        "6:5",
+        "6:7",
+        "6:10",
+        "6:11",
+        "4:1",
+        "4:3",
+        "4:0"
+      ],
+      "macroPanel": [
+        20,
+        263,
+        837.203125,
+        226.59375,
+        489.59375
+      ],
+      "detailPanel": [
+        869.203125,
+        263,
+        550.78125,
+        443.59375,
+        706.59375
+      ],
+      "smallestWidth": 196.796875,
+      "smallestHeight": 58,
+      "visibleButtons": 16,
+      "masterMonitor": 0,
+      "undoRecoveredOriginal": true,
+      "pageErrors": []
+    },
+    {
+      "edition": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "shortcutEntries": 0,
+      "nativeProviderStarted": false,
+      "pageErrors": []
+    },
+    {
+      "edition": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "shortcutEntries": 1,
+      "nativeProviderStarted": false,
+      "docWidth": 390,
+      "originalMacros": [
+        "Master Drive",
+        "Master COMP",
+        "Master PUMP",
+        "Master FILTER"
+      ],
+      "detailIdentities": [
+        "6:0",
+        "6:1",
+        "6:2",
+        "6:3",
+        "6:4",
+        "6:5",
+        "6:7",
+        "6:10",
+        "6:11",
+        "4:1",
+        "4:3",
+        "4:0"
+      ],
+      "macroPanel": [
+        12,
+        291,
+        366,
+        155.578125,
+        446.578125
+      ],
+      "detailPanel": [
+        12,
+        458.578125,
+        366,
+        631.515625,
+        1090.09375
+      ],
+      "smallestWidth": 82,
+      "smallestHeight": 91.1875,
+      "visibleButtons": 10,
+      "masterMonitor": 0,
+      "undoRecoveredOriginal": true,
+      "pageErrors": []
+    },
+    {
+      "edition": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "shortcutEntries": 0,
+      "nativeProviderStarted": false,
+      "pageErrors": []
+    },
+    {
+      "edition": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "shortcutEntries": 1,
+      "nativeProviderStarted": false,
+      "docWidth": 844,
+      "originalMacros": [
+        "Master Drive",
+        "Master COMP",
+        "Master PUMP",
+        "Master FILTER"
+      ],
+      "detailIdentities": [
+        "6:0",
+        "6:1",
+        "6:2",
+        "6:3",
+        "6:4",
+        "6:5",
+        "6:7",
+        "6:10",
+        "6:11",
+        "4:1",
+        "4:3",
+        "4:0"
+      ],
+      "macroPanel": [
+        12,
+        187,
+        487.359375,
+        157.984375,
+        344.984375
+      ],
+      "detailPanel": [
+        511.359375,
+        187,
+        320.640625,
+        551.59375,
+        738.59375
+      ],
+      "smallestWidth": 109.328125,
+      "smallestHeight": 76,
+      "visibleButtons": 8,
+      "masterMonitor": 0,
+      "undoRecoveredOriginal": true,
+      "pageErrors": []
+    }
+  ],
+  "nativeMasterPcmViewportChecks": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      1024,
+      640
+    ]
+  ],
+  "kernelSha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+  "browserSandbox": true
+}

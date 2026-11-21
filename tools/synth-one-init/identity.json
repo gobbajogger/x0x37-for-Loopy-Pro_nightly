@@ -1,0 +1,12 @@
+{
+  "repository": "gobbajogger/DnBOX",
+  "revision": "7e68fc39608d88441d2923277b53364f1d5248bf",
+  "inputs": {
+    "firmware/src/dsp/s1_dry_voice.c": "70a67cb1dfeed73893b42c7e875d64f6547313e8",
+    "firmware/src/dsp/s1_dry_voice.h": "cd2a19747954476af0b6962e389b7e11a106dc58",
+    "firmware/src/app/s1_dry_part.c": "bd58cf61897755920bebdae704f40fd33f78d0de",
+    "firmware/src/dsp/dnbx_s1_envelope.h": "98214d46e5b696795c1da793109519260345a724",
+    "firmware/src/dsp/fastmath.h": "946bf78b91a21839c5394c1fc6a7a537635ee468",
+    "firmware/src/dsp/dnbx_s1_envelope.c": "c18c0f1f1940682756a4518a8eb55e2333addf39"
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "baselineCommit": "242f0189af17d7c48b3b7274dea064a84dbc6664",
+  "renderer": "151.0.7922.34",
+  "sandbox": true,
+  "ownerPdfSHA256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+  "exactHeadApplicationSHA256": "6f4c89778770901bc4393114e958936471adf869bba2e3a3572abfdd2c13ef01",
+  "beforeEmptyRollCorrectionApplicationSHA256": "3c8b0643b546953bb0891e362f9c8a68cc426595fed0c39229d925e359dcbb68",
+  "afterEmptyRollCorrectionApplicationSHA256": "ba52fd20d92c7cda3bc8b576236cf742c83461563897a22c7304ed0fe82e2cc3",
+  "before844": {
+    "axis": 1400,
+    "pane": 660,
+    "viewport": 660,
+    "scale": 1,
+    "completeSteps": 7
+  },
+  "after": {
+    "390": {
+      "1": {
+        "axis": 300,
+        "pane": 300,
+        "viewport": 300,
+        "scale": 1,
+        "completeSteps": 16,
+        "focus": true
+      },
+      "2": {
+        "axis": 600,
+        "pane": 300,
+        "viewport": 300,
+        "scale": 2,
+        "completeSteps": 8,
+        "focus": true
+      }
+    },
+    "844": {
+      "1": {
+        "axis": 660,
+        "pane": 660,
+        "viewport": 660,
+        "scale": 1,
+        "completeSteps": 16,
+        "focus": true
+      },
+      "2": {
+        "axis": 1320,
+        "pane": 660,
+        "viewport": 660,
+        "scale": 2,
+        "completeSteps": 8,
+        "focus": true
+      }
+    },
+    "1440": {
+      "1": {
+        "axis": 1342,
+        "pane": 1342,
+        "viewport": 1342,
+        "scale": 1,
+        "completeSteps": 16,
+        "focus": true
+      },
+      "2": {
+        "axis": 2684,
+        "pane": 1342,
+        "viewport": 1342,
+        "scale": 2,
+        "completeSteps": 8,
+        "focus": true
+      }
+    }
+  },
+  "navigationButtonBoundsAndCenterHit": {
+    "1440": [
+      [
+        "Slices",
+        20,
+        159,
+        61,
+        40,
+        true
+      ],
+      [
+        "Generator",
+        85,
+        159,
+        79,
+        40,
+        true
+      ],
+      [
+        "Notes",
+        168,
+        159,
+        60,
+        40,
+        true
+      ],
+      [
+        "Step locks",
+        232,
+        159,
+        83,
+        40,
+        true
+      ],
+      [
+        "Review draft",
+        319,
+        159,
+        94,
+        40,
+        true
+      ]
+    ],
+    "844": [
+      [
+        "Slices",
+        12,
+        88,
+        94,
+        40,
+        true
+      ],
+      [
+        "Generator",
+        12,
+        132,
+        94,
+        40,
+        true
+      ],
+      [
+        "Notes",
+        12,
+        176,
+        94,
+        40,
+        true
+      ],
+      [
+        "Step locks",
+        12,
+        220,
+        94,
+        40,
+        true
+      ],
+      [
+        "Review draft",
+        12,
+        264,
+        94,
+        40,
+        true
+      ]
+    ],
+    "390": [
+      [
+        "Slices",
+        12,
+        187,
+        61,
+        40,
+        true
+      ],
+      [
+        "Generator",
+        77,
+        187,
+        79,
+        40,
+        true
+      ],
+      [
+        "Notes",
+        160,
+        187,
+        60,
+        40,
+        true
+      ],
+      [
+        "Step locks",
+        224,
+        187,
+        83,
+        40,
+        true
+      ],
+      [
+        "Review draft",
+        12,
+        231,
+        94,
+        40,
+        true
+      ]
+    ]
+  },
+  "verifiedAtAllThreeSizes": [
+    "open selected BREAK pattern P03 level locks",
+    "focus first step",
+    "edit step 8 to -0.1dB",
+    "review exact entry and restore dialog focus",
+    "Undo clears override and Redo restores value",
+    "export and reopen on Notes and patternLock",
+    "Delete clears override"
+  ],
+  "browserPageErrors": [],
+  "secondInterruptedRun": {
+    "action": "Find Patterns workspace tab",
+    "deadlineMs": 30000,
+    "result": "Locator lookup timed out during the unchanged three-size replay."
+  },
+  "independentGeometryTrial": {
+    "method": "DOM activation and keyboard events in sandboxed Chromium, geometry at 1x and 2x and local override read/Review/Undo/Redo at each viewport",
+    "errors": []
+  },
+  "interruptedRun": {
+    "viewport": [
+      844,
+      390
+    ],
+    "action": "Click Slices after Draft download",
+    "deadlineMs": 30000,
+    "result": "Timeout after visible, enabled and stable checks; first post-sizing pass stopped before portrait."
+  },
+  "passedCorrectedPointerAndFileReplay": {
+    "appSHA256": "ba52fd20d92c7cda3bc8b576236cf742c83461563897a22c7304ed0fe82e2cc3",
+    "browser": "151.0.7922.34",
+    "pageErrors": [],
+    "workflow": [
+      "open selected BREAK pattern P03 level locks",
+      "focus first step",
+      "edit step 8 to -0.1dB",
+      "review exact entry and restore dialog focus",
+      "Undo clears override and Redo restores value",
+      "export and reopen on Notes and patternLock",
+      "Delete clears override"
+    ],
+    "checks": {
+      "1440": {
+        "AXIS": {
+          "axis": 1342,
+          "pane": 1342,
+          "viewport": 1342,
+          "scale": 1,
+          "completeSteps": 16
+        },
+        "JOURNEY": [
+          [
+            "Slices",
+            20,
+            159,
+            61,
+            40,
+            true
+          ],
+          [
+            "Generator",
+            85,
+            159,
+            79,
+            40,
+            true
+          ],
+          [
+            "Notes",
+            168,
+            159,
+            60,
+            40,
+            true
+          ],
+          [
+            "Step locks",
+            232,
+            159,
+            83,
+            40,
+            true
+          ],
+          [
+            "Review draft",
+            319,
+            159,
+            94,
+            40,
+            true
+          ]
+        ]
+      },
+      "844": {
+        "AXIS": {
+          "axis": 660,
+          "pane": 660,
+          "viewport": 660,
+          "scale": 1,
+          "completeSteps": 16
+        },
+        "JOURNEY": [
+          [
+            "Slices",
+            12,
+            88,
+            94,
+            40,
+            true
+          ],
+          [
+            "Generator",
+            12,
+            132,
+            94,
+            40,
+            true
+          ],
+          [
+            "Notes",
+            12,
+            176,
+            94,
+            40,
+            true
+          ],
+          [
+            "Step locks",
+            12,
+            220,
+            94,
+            40,
+            true
+          ],
+          [
+            "Review draft",
+            12,
+            264,
+            94,
+            40,
+            true
+          ]
+        ]
+      },
+      "390": {
+        "AXIS": {
+          "axis": 300,
+          "pane": 300,
+          "viewport": 300,
+          "scale": 1,
+          "completeSteps": 16
+        },
+        "JOURNEY": [
+          [
+            "Slices",
+            12,
+            187,
+            61,
+            40,
+            true
+          ],
+          [
+            "Generator",
+            77,
+            187,
+            79,
+            40,
+            true
+          ],
+          [
+            "Notes",
+            160,
+            187,
+            60,
+            40,
+            true
+          ],
+          [
+            "Step locks",
+            224,
+            187,
+            83,
+            40,
+            true
+          ],
+          [
+            "Review draft",
+            12,
+            231,
+            94,
+            40,
+            true
+          ]
+        ]
+      }
+    }
+  }
+}

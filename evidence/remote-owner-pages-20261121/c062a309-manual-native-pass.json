@@ -1,0 +1,272 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "started": "2026-11-21T07:14:55.800+00:00",
+  "stage": "closed",
+  "canonicalCapture": "visual_gate.capture_site_page -> page.screenshot(full_page=True), original 30s; captured exactly once",
+  "renderData": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "body": [
+      1440,
+      23921
+    ],
+    "root": [
+      1440,
+      23921
+    ],
+    "fonts": "loaded",
+    "ready": "complete",
+    "images": [
+      {
+        "path": "/product-site/manual/original/img/fm1-panel.svg",
+        "complete": true,
+        "w": 208,
+        "h": 150,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/fm1-keys.svg",
+        "complete": true,
+        "w": 300,
+        "h": 99,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-list.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-ask.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-909.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-readout.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-303.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-tb3po.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-break.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-home.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-motion.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-song.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-fx.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-mix.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-global.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      }
+    ],
+    "fixedSticky": []
+  },
+  "primary": {
+    "size": [
+      1440,
+      23921
+    ],
+    "pngBytes": 4458357,
+    "sha256": "f76e2bcaf4070f99e8edfd71e1109abfcd9a2ad3cde4ec1a0b880765a8251175",
+    "rawRGBAbytes": 137784960
+  },
+  "captureStarted": "2026-11-21T07:14:58.226+00:00",
+  "captureFinished": "2026-11-21T07:15:02.008+00:00",
+  "afterNative": {
+    "viewport": [
+      1440,
+      900,
+      0,
+      0
+    ],
+    "root": [
+      1440,
+      23925
+    ],
+    "fonts": "loaded",
+    "ready": "complete",
+    "images": [
+      {
+        "path": "/product-site/manual/original/img/fm1-panel.svg",
+        "complete": true,
+        "w": 208,
+        "h": 150,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/fm1-keys.svg",
+        "complete": true,
+        "w": 300,
+        "h": 99,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-list.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-ask.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-909.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-readout.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-303.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-tb3po.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-break.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-home.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-motion.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-song.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-fx.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-mix.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      },
+      {
+        "path": "/product-site/manual/original/img/screen-global.png",
+        "complete": false,
+        "w": 0,
+        "h": 0,
+        "loading": "lazy"
+      }
+    ]
+  },
+  "filteredExit": 1,
+  "closed": "2026-11-21T07:15:02.275+00:00",
+  "systemOomKills": [
+    73,
+    73
+  ],
+  "peakDescendantsRssKiB": 1227152,
+  "peakDescendantsPssKiB": 749706,
+  "peakRendererRssKiB": 244396,
+  "minimumSystemAvailableKiB": 1901944
+}

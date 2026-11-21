@@ -1,0 +1,722 @@
+{
+  "style": "61f4e75e8373df654bf003a97aee00567fa4268d66aeade9a9b135505968b3fb",
+  "browser": "151.0.7922.34",
+  "viewports": {
+    "390x844": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": [
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Wave lock",
+          "SAW/PUL",
+          [
+            [
+              "SAW/PUL",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Env/Gate lock",
+          "GATE",
+          [
+            [
+              "GATE",
+              19,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "DOWN",
+          [
+            [
+              "DOWN",
+              22,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "UP/DN",
+          [
+            [
+              "UP/DN",
+              24,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "DOWN",
+          [
+            [
+              "DOWN",
+              22,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "UP/DN",
+          [
+            [
+              "UP/DN",
+              24,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "DOWN",
+          [
+            [
+              "DOWN",
+              22,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "UP/DN",
+          [
+            [
+              "UP/DN",
+              24,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "DOWN",
+          [
+            [
+              "DOWN",
+              22,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "UP/DN",
+          [
+            [
+              "UP/DN",
+              24,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "DOWN",
+          [
+            [
+              "DOWN",
+              22,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "UP/DN",
+          [
+            [
+              "UP/DN",
+              24,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp mode lock",
+          "DOWN",
+          [
+            [
+              "DOWN",
+              22,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "1 OCT",
+          [
+            [
+              "1 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "2 OCT",
+          [
+            [
+              "2 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "1 OCT",
+          [
+            [
+              "1 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "2 OCT",
+          [
+            [
+              "2 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "1 OCT",
+          [
+            [
+              "1 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "2 OCT",
+          [
+            [
+              "2 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "1 OCT",
+          [
+            [
+              "1 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "2 OCT",
+          [
+            [
+              "2 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "1 OCT",
+          [
+            [
+              "1 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "2 OCT",
+          [
+            [
+              "2 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "Arp range lock",
+          "1 OCT",
+          [
+            [
+              "1 OCT",
+              21,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "CHO/FLG",
+          [
+            [
+              "CHO/FLG",
+              32,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "PHASER",
+          [
+            [
+              "PHASER",
+              30,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "RING MOD",
+          [
+            [
+              "RING MOD",
+              35,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "COMPRESSOR",
+          [
+            [
+              "COMPRESSOR",
+              51,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "DECIMATOR",
+          [
+            [
+              "DECIMATOR",
+              42,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "ENSEM",
+          [
+            [
+              "ENSEM",
+              26,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "SH DLY",
+          [
+            [
+              "SH DLY",
+              26,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "BPM DL",
+          [
+            [
+              "BPM DL",
+              27,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "HALL",
+          [
+            [
+              "HALL",
+              18,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "GT REV",
+          [
+            [
+              "GT REV",
+              27,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "CHO/FLG",
+          [
+            [
+              "CHO/FLG",
+              32,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "PHASER",
+          [
+            [
+              "PHASER",
+              30,
+              17.75
+            ]
+          ]
+        ],
+        [
+          "FX type lock",
+          "RING MOD",
+          [
+            [
+              "RING MOD",
+              35,
+              17.75
+            ]
+          ]
+        ]
+      ]
+    },
+    "844x390": {
+      "tests": 320,
+      "inkTests": 640,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": [
+        [
+          "FX type lock",
+          "COMPRESSOR",
+          [
+            [
+              "COMPRESSOR",
+              51,
+              46.625
+            ]
+          ]
+        ]
+      ]
+    },
+    "320x640": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": []
+    },
+    "360x780": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [],
+      "aria": [],
+      "cells": []
+    },
+    "1024x640": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [
+        [
+          "FX type lock",
+          "COMPRESSOR",
+          "value",
+          [
+            [
+              2,
+              0.7999725341796875,
+              37,
+              -1
+            ]
+          ]
+        ]
+      ],
+      "aria": [],
+      "cells": []
+    },
+    "1440x900": {
+      "tests": 320,
+      "inkTests": 960,
+      "uniqueTargetValues": 243,
+      "bad": [
+        [
+          "FX type lock",
+          "COMPRESSOR",
+          "value",
+          [
+            [
+              2,
+              0.7999725341796875,
+              37,
+              -1
+            ]
+          ]
+        ]
+      ],
+      "aria": [],
+      "cells": []
+    }
+  }
+}

@@ -10,7 +10,7 @@ LANE="${1:-unknown}"; SHA=$(git rev-parse HEAD); BASE=origin/integration/dnbox-c
 TS=$(TZ=Asia/Vladivostok date +%Y%m%d-%H%M); OUT=build/dnbox-gate; mkdir -p "$OUT"
 LOG="$OUT/${SHA:0:8}-$TS.log"; exec > >(tee "$LOG") 2>&1
 # Temp files and browser profile go OUTSIDE the checkout (some tests require output outside the repo) but in a folder we own.
-export TMPDIR="${HOME}/.cache/dnbox-gate/tmp"; mkdir -p "$TMPDIR"
+export TMPDIR="${DNBOX_GATE_TMPDIR:-${HOME}/.cache/dnbox-gate/tmp}"
 # Launchers use only Playwright's bundled Chromium; external executable overrides are forbidden.
 echo "browser: Playwright bundled Chromium (normal sandbox)"
 fail=0; void=0
@@ -32,7 +32,10 @@ step() {
 }
 echo "DNBOX-GATE repo=nightly lane=$LANE sha=$SHA started=$TS (UTC+10)"
 clean()   { git diff --quiet && git diff --cached --quiet; }
-setup()   { command -v node >/dev/null && command -v python3 >/dev/null || return 2
+setup()   { mkdir -p -- "$TMPDIR" && [ -w "$TMPDIR" ] || { echo "Set DNBOX_GATE_TMPDIR to a writable directory outside the checkout"; return 2; }
+            # Chromium can cancel a completed Blob download when TMPDIR contains a parent segment.
+            TMPDIR=$(CDPATH= cd -P -- "$TMPDIR" && pwd -P) || return 2
+            command -v node >/dev/null && command -v python3 >/dev/null || return 2
             if [ -f package-lock.json ]; then
               if [ "${DNBOX_GATE_ONLINE:-0}" = "1" ]; then
                 npm ci --no-audit --no-fund >/dev/null || return 2

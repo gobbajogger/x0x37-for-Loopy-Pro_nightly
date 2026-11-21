@@ -1,0 +1,122 @@
+{
+  "sha": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+  "tree": "446c64f2179ba924fc90b3aa66f9ecaed1d4da20",
+  "base": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "lane": "remote",
+  "result": "PASS",
+  "exitCode": 0,
+  "gateCommand": "bash scripts/dnbox-gate.sh remote",
+  "offline": true,
+  "startedUtc": "2026-11-21T06:24:01.596Z",
+  "startedGateLabel": "DNBOX-GATE repo=nightly lane=remote sha=868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398 started=20261121-1624 (UTC+10)",
+  "endedUtc": "2026-11-21T06:49:46.869Z",
+  "cleanTrackedAfter": true,
+  "rawLogBytes": 245123,
+  "rawLogSha256": "21b2cc0463ce39a95b0f1db677afb3d3d96678477801fdf5c96fd4b6685e48c8",
+  "repositoryLog": "build/dnbox-gate/868cd7c8-20261121-1624.log",
+  "steps": [
+    {
+      "name": "clean-tree",
+      "result": "PASS"
+    },
+    {
+      "name": "setup",
+      "result": "PASS"
+    },
+    {
+      "name": "fetch-base",
+      "result": "SKIP"
+    },
+    {
+      "name": "no-loss",
+      "result": "PASS"
+    },
+    {
+      "name": "limits",
+      "result": "PASS"
+    },
+    {
+      "name": "build",
+      "result": "PASS"
+    },
+    {
+      "name": "unit-tests",
+      "result": "PASS"
+    },
+    {
+      "name": "browser-tests",
+      "result": "PASS"
+    }
+  ],
+  "visualHeader": "header SSIM vs page-01 = 0.9059 (gate >= 0.90)",
+  "terminal": "DNBOX-GATE RESULT PASS sha=868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398 lane=remote log=build/dnbox-gate/868cd7c8-20261121-1624.log",
+  "structural": {
+    "accepted": false,
+    "cases": 9,
+    "browser": {
+      "status": "RUN",
+      "version": "151.0.7922.34",
+      "sandbox": true
+    },
+    "sha256": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356",
+    "fixturesAccepted": true,
+    "productStatus": "NOT_RUN",
+    "exit": 0,
+    "expectationMatches": 9
+  },
+  "visual": {
+    "screens": 109,
+    "pass": 5,
+    "fail": 0,
+    "no_baseline": 104,
+    "baseline_written": 0,
+    "header_fail": 0,
+    "page_errors": 0
+  },
+  "published": false,
+  "workflowDispatched": false,
+  "physicalDeviceAccess": false,
+  "compressedLogSha256": "fb114360270511d09951c57095f928e54e6c32b956e06af799b3a1cd2f4fac07",
+  "compressedLogBytes": 54533,
+  "durationSeconds": 1545.273,
+  "providers": {
+    "head": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+    "tree": "446c64f2179ba924fc90b3aa66f9ecaed1d4da20",
+    "sources": "6466a3715c96b7ecf1dd255a218cbd571408a314",
+    "banks": 12,
+    "presets": 694,
+    "bankManifestSha256": "806d92dae2ef75b073168e5b85ee2dc6055f2c3b10ceca3a0e40933514c37622",
+    "superJ6ArchiveBytes": 451262,
+    "superJ6ArchiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+    "runtimePinSha256": "c42ad2d0e9f163087b15d293217589d094a6560d97afd64bf93931293be1250f",
+    "predecessorExitCode": 0,
+    "predecessorEndedUtc": "2026-11-21T06:23:10.141Z",
+    "explicitOriginalFirmwareInputs": [
+      "DNBOX_MIAMI_FIRMWARE",
+      "DNBOX_DRUM_FIRMWARE",
+      "DNBOX_SYNTH_ONE_FIRMWARE"
+    ],
+    "superJ6Input": "DNBOX_SUPERJ6_ARCHIVE",
+    "runtimeInput": "DNBOX_EMULATOR_RUNTIME",
+    "pinnedRuntimeFiles": 10
+  },
+  "passiveTiming": {
+    "head": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+    "intervalSec": 2.0,
+    "samples": 774,
+    "maximumSampleGapSec": 2.08,
+    "maximumSampleGapObservedUtc": "2026-11-21T06:48:02.296Z",
+    "pressureSourcesPresent": [],
+    "failureWindows": [],
+    "scope": "Read-only system-wide observations, not per-process attribution. Gate events are timestamped when first seen in the raw stream.",
+    "dataSha256": "ebaf8d278241502b7cf1c0fd4f877ce757943b968dd7861fb94d6a10d3873ab7",
+    "gzipSha256": "354ae336d0dea3b10a48b82d505b8bdf5ad4649fbd40c2f53d24ac77f45395ed",
+    "summarySha256": "480ad56f8bc89c4623a2aec8d50129c5cabadec73a8c83be253fb1b9d57441a1"
+  },
+  "executor": {
+    "launch-single-v3.py": "0ed53879f3cda04e1bf23c49e259689efd721916739ba85758738168dea0ece7",
+    "coordinate-single-v5.py": "2101ed3cb6ec3895bb6113dff7367931330d341036dd4a3d6076f16e3b221f9e",
+    "passive-gate-heartbeat.py": "3f1219d6f358081ea0302285efef018e08e18ceaf2824cb7f5b9b5027b52f383"
+  },
+  "lastCompletedAdmissionCheck": "CHECK 680 controller insert-fail blocks MIDI"
+}

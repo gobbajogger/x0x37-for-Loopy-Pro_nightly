@@ -1,0 +1,399 @@
+{
+  "before": {
+    "1440": {
+      "Projects": {
+        "reachable": 23,
+        "controlCount": 23,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "cards": [
+          "Projects",
+          "Samples",
+          "Presets",
+          "MIDI exchange"
+        ]
+      },
+      "Song": {
+        "reachable": 34,
+        "controlCount": 34,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "switches": 0
+      },
+      "Synth One": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "shapes": [
+          [
+            "0",
+            "Morph",
+            1
+          ],
+          [
+            "50",
+            "Morph",
+            1
+          ],
+          [
+            "100",
+            "Morph",
+            1
+          ]
+        ]
+      },
+      "SuperJ6": {
+        "reachable": 32,
+        "controlCount": 32,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "copy": 0
+      },
+      "errors": []
+    },
+    "844": {
+      "Projects": {
+        "reachable": 23,
+        "controlCount": 23,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "cards": [
+          "Projects",
+          "Samples",
+          "Presets",
+          "MIDI exchange"
+        ]
+      },
+      "Song": {
+        "reachable": 34,
+        "controlCount": 34,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "switches": 0
+      },
+      "Synth One": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "shapes": [
+          [
+            "0",
+            "Morph",
+            1
+          ],
+          [
+            "50",
+            "Morph",
+            1
+          ],
+          [
+            "100",
+            "Morph",
+            1
+          ]
+        ]
+      },
+      "SuperJ6": {
+        "reachable": 32,
+        "controlCount": 32,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "copy": 0
+      },
+      "errors": []
+    },
+    "390": {
+      "Projects": {
+        "reachable": 23,
+        "controlCount": 23,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "cards": [
+          "Projects",
+          "Samples",
+          "Presets",
+          "MIDI exchange"
+        ]
+      },
+      "Song": {
+        "reachable": 34,
+        "controlCount": 34,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "switches": 0
+      },
+      "Synth One": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "shapes": [
+          [
+            "0",
+            "Morph",
+            1
+          ],
+          [
+            "50",
+            "Morph",
+            1
+          ],
+          [
+            "100",
+            "Morph",
+            1
+          ]
+        ]
+      },
+      "SuperJ6": {
+        "reachable": 32,
+        "controlCount": 32,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "copy": 0
+      },
+      "errors": []
+    }
+  },
+  "after": {
+    "1440": {
+      "Projects": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "cards": [
+          "Project backup",
+          "Original presets",
+          "MIDI for a DAW"
+        ]
+      },
+      "Song": {
+        "reachable": 46,
+        "controlCount": 46,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "switches": 10,
+        "switchWidthHeight": [
+          44,
+          44
+        ]
+      },
+      "Synth One": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "shapes": [
+          [
+            "0",
+            "Wave \u00b7 Triangle",
+            1
+          ],
+          [
+            "50",
+            "Wave \u00b7 Square \u2194 Narrow pulse",
+            1
+          ],
+          [
+            "100",
+            "Wave \u00b7 Saw",
+            1
+          ]
+        ]
+      },
+      "SuperJ6": {
+        "reachable": 34,
+        "controlCount": 34,
+        "body": [
+          1440,
+          1440,
+          900
+        ],
+        "copy": 1
+      },
+      "errors": []
+    },
+    "844": {
+      "Projects": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "cards": [
+          "Project backup",
+          "Original presets",
+          "MIDI for a DAW"
+        ]
+      },
+      "Song": {
+        "reachable": 46,
+        "controlCount": 46,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "switches": 10,
+        "switchWidthHeight": [
+          44,
+          44
+        ]
+      },
+      "Synth One": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "shapes": [
+          [
+            "0",
+            "Wave \u00b7 Triangle",
+            1
+          ],
+          [
+            "50",
+            "Wave \u00b7 Square \u2194 Narrow pulse",
+            1
+          ],
+          [
+            "100",
+            "Wave \u00b7 Saw",
+            1
+          ]
+        ]
+      },
+      "SuperJ6": {
+        "reachable": 34,
+        "controlCount": 34,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "copy": 1
+      },
+      "errors": []
+    },
+    "390": {
+      "Projects": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "cards": [
+          "Project backup",
+          "Original presets",
+          "MIDI for a DAW"
+        ]
+      },
+      "Song": {
+        "reachable": 46,
+        "controlCount": 46,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "switches": 10,
+        "switchWidthHeight": [
+          44,
+          44
+        ]
+      },
+      "Synth One": {
+        "reachable": 27,
+        "controlCount": 27,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "shapes": [
+          [
+            "0",
+            "Wave \u00b7 Triangle",
+            1
+          ],
+          [
+            "50",
+            "Wave \u00b7 Square \u2194 Narrow pulse",
+            1
+          ],
+          [
+            "100",
+            "Wave \u00b7 Saw",
+            1
+          ]
+        ]
+      },
+      "SuperJ6": {
+        "reachable": 34,
+        "controlCount": 34,
+        "body": [
+          390,
+          390,
+          844
+        ],
+        "copy": 1
+      },
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "head": "8734a199697fbe986e18ef35d82dba0ef0ea58c5",
+  "tree": "3504660593c2eaa708533201ac9a454147d7ffe0",
+  "cleanBefore": true,
+  "verifiedBlobs": 248,
+  "build": {
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "started": "2026-11-21T03:33:08.944+00:00",
+    "ended": "2026-11-21T03:33:12.046+00:00",
+    "exit": 0
+  },
+  "structural": {
+    "command": [
+      "python3",
+      "tests/visual/fixtures/web-structural/browser_fixtures.py",
+      "--fixtures-only",
+      "--output",
+      "/workspace/scratch/537b1f88ce48/evidence-local/structural-header-8734a199/browser-fixtures.json"
+    ],
+    "started": "2026-11-21T03:33:02.648+00:00",
+    "ended": "2026-11-21T03:33:08.937+00:00",
+    "exit": 0
+  },
+  "browser": {
+    "status": "RUN",
+    "version": "151.0.7922.34",
+    "sandbox": true
+  },
+  "structuralFixturesAccepted": true,
+  "fixtureFiles": [
+    {
+      "file": "r3-909-distinct-fork.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "duplicate-ref-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "r3-808-sparse.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "r3-808-full-source.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "r3-cryptic-caption.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "missing-caption-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "positive-dense.html",
+      "matched": true,
+      "observedExit": 0
+    },
+    {
+      "file": "hidden-caption-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    },
+    {
+      "file": "aria-only-caption-mutant.html",
+      "matched": true,
+      "observedExit": 1
+    }
+  ],
+  "visualFilter": "^remote-sequence-1024x640$",
+  "header": {
+    "command": [
+      "npm",
+      "run",
+      "test:visual"
+    ],
+    "started": "2026-11-21T03:33:12.046+00:00",
+    "ended": "2026-11-21T03:33:23.275+00:00",
+    "exit": 1
+  },
+  "headerSummary": {
+    "summary": {
+      "screens": 3,
+      "pass": 2,
+      "fail": 0,
+      "no_baseline": 1,
+      "baseline_written": 0,
+      "header_fail": 0,
+      "page_errors": 0
+    },
+    "results": [
+      [
+        "grid-continuity-1024x640",
+        "PASS",
+        512
+      ],
+      [
+        "header-ssim-1024x640",
+        "PASS",
+        0.905927401190831
+      ],
+      [
+        "remote-sequence-1024x640",
+        "NOBASE",
+        0.0
+      ]
+    ],
+    "header_fails": [],
+    "errors": []
+  },
+  "cleanAfter": true,
+  "filesSha256": {
+    "inputs.json": "01ea2e4c8f7fd936c8df3c0d1455aae051bd4c01040c4df308b6d4090c921728",
+    "browser-fixtures.json": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356",
+    "header/summary.json": "832c83df462e51fe698e9e8c04f6018558af3724bd712f76b2eb73f99fd2cd3d",
+    "header.log": "5ebed0499eb9d1c52f68568518bdf440b0514d96b3cc447563d6272454d65fdc",
+    "fixtures.log": "231f5aad1d2d1aae4d57af0c752d48fc94c52beca69928c7e821b50144d2da57",
+    "build.log": "eb6da67e3e0b9e3aafad9664d9b4c9373112e948a63777432e9bec9a227fcd88"
+  }
+}

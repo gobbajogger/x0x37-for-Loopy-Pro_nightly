@@ -1,0 +1,46 @@
+{
+  "consumer_before": "307dfe5825848672575f350af9ed66d331901351",
+  "consumer_after": "08fd065316c2234b77f9cac2050414dc18b54cb7",
+  "reference": "https://github.com/gobbajogger/DnBOX/blob/74b50bdfe2e1d9ac7f22445cdf5ab3726bb85272/experiments/superj6-conductor-source-20261115/lfo_laws.cpp",
+  "operation": "Frequency obtained from the Linux-compiled lfo_rate at build 9. The Remote formats Hz to three decimal places after the binary32 result.",
+  "inputs": "0 and 1, and three adjacent binary32 inputs around each of 16,000 decimal rounding boundaries.",
+  "before": {
+    "cases": 48002,
+    "mismatches": 1338,
+    "failures": [
+      {
+        "raw": "3d7cc788",
+        "output": "3ac49ba6",
+        "source": 0.001500000013038516,
+        "expected": "0.002 Hz",
+        "actual": "0.001 Hz"
+      },
+      {
+        "raw": "3deee8e5",
+        "output": "3c4ccccd",
+        "source": 0.012500000186264515,
+        "expected": "0.013 Hz",
+        "actual": "0.012 Hz"
+      },
+      {
+        "raw": "3e13f963",
+        "output": "3cd0e560",
+        "source": 0.025499999523162842,
+        "expected": "0.025 Hz",
+        "actual": "0.026 Hz"
+      }
+    ]
+  },
+  "after": {
+    "cases": 48002,
+    "mismatches": 0,
+    "failures": []
+  },
+  "independent": {
+    "source": "74b50bdfe2e1d9ac7f22445cdf5ab3726bb85272",
+    "binary32": 10005,
+    "displayComparisons": 60030,
+    "mismatches": 0
+  },
+  "literalTempoNames": "No original application's literal text was observed in this comparison."
+}

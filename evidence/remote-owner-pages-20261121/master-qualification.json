@@ -1,0 +1,262 @@
+{
+  "base": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "measurements": [
+    {
+      "edition": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "shortcutEntries": 0,
+      "nativeProviderStarted": false,
+      "pageErrors": []
+    },
+    {
+      "edition": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "shortcutEntries": 1,
+      "nativeProviderStarted": false,
+      "docWidth": 1440,
+      "originalMacros": [
+        "Master Drive",
+        "Master COMP",
+        "Master PUMP",
+        "Master FILTER"
+      ],
+      "detailIdentities": [
+        "6:0",
+        "6:1",
+        "6:2",
+        "6:3",
+        "6:4",
+        "6:5",
+        "6:7",
+        "6:10",
+        "6:11",
+        "4:1",
+        "4:3",
+        "4:0"
+      ],
+      "macroPanel": [
+        20,
+        263,
+        837.203125,
+        226.59375,
+        489.59375
+      ],
+      "detailPanel": [
+        869.203125,
+        263,
+        550.78125,
+        443.59375,
+        706.59375
+      ],
+      "smallestWidth": 196.796875,
+      "smallestHeight": 58,
+      "visibleButtons": 16,
+      "masterMonitor": 0,
+      "undoRecoveredOriginal": true,
+      "pageErrors": []
+    },
+    {
+      "edition": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "shortcutEntries": 0,
+      "nativeProviderStarted": false,
+      "pageErrors": []
+    },
+    {
+      "edition": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "shortcutEntries": 1,
+      "nativeProviderStarted": false,
+      "docWidth": 390,
+      "originalMacros": [
+        "Master Drive",
+        "Master COMP",
+        "Master PUMP",
+        "Master FILTER"
+      ],
+      "detailIdentities": [
+        "6:0",
+        "6:1",
+        "6:2",
+        "6:3",
+        "6:4",
+        "6:5",
+        "6:7",
+        "6:10",
+        "6:11",
+        "4:1",
+        "4:3",
+        "4:0"
+      ],
+      "macroPanel": [
+        12,
+        291,
+        366,
+        155.578125,
+        446.578125
+      ],
+      "detailPanel": [
+        12,
+        458.578125,
+        366,
+        631.515625,
+        1090.09375
+      ],
+      "smallestWidth": 82,
+      "smallestHeight": 91.1875,
+      "visibleButtons": 10,
+      "masterMonitor": 0,
+      "undoRecoveredOriginal": true,
+      "pageErrors": []
+    },
+    {
+      "edition": "before",
+      "viewport": [
+        844,
+        390
+      ],
+      "shortcutEntries": 0,
+      "nativeProviderStarted": false,
+      "pageErrors": []
+    },
+    {
+      "edition": "after",
+      "viewport": [
+        844,
+        390
+      ],
+      "shortcutEntries": 1,
+      "nativeProviderStarted": false,
+      "docWidth": 844,
+      "originalMacros": [
+        "Master Drive",
+        "Master COMP",
+        "Master PUMP",
+        "Master FILTER"
+      ],
+      "detailIdentities": [
+        "6:0",
+        "6:1",
+        "6:2",
+        "6:3",
+        "6:4",
+        "6:5",
+        "6:7",
+        "6:10",
+        "6:11",
+        "4:1",
+        "4:3",
+        "4:0"
+      ],
+      "macroPanel": [
+        12,
+        187,
+        487.359375,
+        157.984375,
+        344.984375
+      ],
+      "detailPanel": [
+        511.359375,
+        187,
+        320.640625,
+        551.59375,
+        738.59375
+      ],
+      "smallestWidth": 109.328125,
+      "smallestHeight": 76,
+      "visibleButtons": 8,
+      "masterMonitor": 0,
+      "undoRecoveredOriginal": true,
+      "pageErrors": []
+    }
+  ],
+  "nativeMasterPcmViewportChecks": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      1024,
+      640
+    ]
+  ],
+  "kernelSha256": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+  "browserSandbox": true,
+  "ownerReferences": {
+    "pdfSha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "pages": [
+      6,
+      7,
+      16
+    ],
+    "desktopComparison": "page-07-master-comparison.webp"
+  },
+  "nativePcm": [
+    {
+      "viewport": "1440x900",
+      "peak": 0.07417726516723633,
+      "shown": "-22.6 dBFS",
+      "gain": 8,
+      "historyWindows": 21,
+      "firmwareTime": 1254
+    },
+    {
+      "viewport": "390x844",
+      "peak": 0.08330535888671875,
+      "shown": "-21.6 dBFS",
+      "gain": 8,
+      "historyWindows": 20,
+      "firmwareTime": 1150
+    },
+    {
+      "viewport": "844x390",
+      "peak": 0.06896281242370605,
+      "shown": "-23.2 dBFS",
+      "gain": 8,
+      "historyWindows": 20,
+      "firmwareTime": 1185
+    },
+    {
+      "viewport": "1024x640",
+      "peak": 0.05723679065704346,
+      "shown": "-24.8 dBFS",
+      "gain": 16,
+      "historyWindows": 20,
+      "firmwareTime": 1150
+    }
+  ],
+  "destinationLimits": "Draft edits and Undo are local. The Emulator destination exposes four mapped macros and the original stereo worklet sample peak and L/R waveform. The pinned provider supplies no gain-reduction or five separated stem readings. Physical-device access and transport controls were not exercised.",
+  "inputs": {
+    "reference-7.png": "44b39aed3ae4e2bf632f34e198b3646b7ce677313e6617d511bfcd35d8b5ef5c",
+    "before-1440x900.png": "d8e594c3dec227ff70b6d77b41393296385096ec94cabcb7016d5d763e7fa61b",
+    "after-1440x900.png": "73f591bccd81e4ff529dce47d0b4af6de0402fb1cc6be5d1764cc0b253bcf708",
+    "destination-1440x900.png": "7ae294576923c74fdcef819fe3838df91521955f498f5abe5b7b381a486c51d1"
+  },
+  "proofInputs": {
+    "destination-contract.json": "1e462cbe2f2998dbf7f4bbfb1164cbf26d5b6e0ef94d379e361521736e0c09db",
+    "measurements.json": "cca46ae065978a9bb0ddeb97485fc923730066a7eacc9f9069856d2318ca0c69",
+    "browser.log": "8f36c761c4544608fe51988f3eee44e2d5ff5bb89088ffb4eb28f5ae57da9cdc",
+    "change-final.patch": "0551dea9412d55ac8c69f3a61a03691154755954222d9a72669b58404c0792b0",
+    "page-07-master-comparison.webp": "f9e64b525a4233c2144f8b841118ec3afc5fe78bf2cef892d22b0e81378cc123"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "firmware_commit": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+  "toolchain_zip_sha256": "ed379c483468c44f10cf3be7db32356b9623e16320a021cf2a4e06ec96ab5f19",
+  "restored_links": 44,
+  "clang": "clang version 4.0.1 () ()\nTarget: x86_64-unknown-linux-gnu\nThread model: posix",
+  "sdk_tag": "AC79NN_SDK_V1.2.14_2026-10-13",
+  "sdk_pins": {
+    "uboot.boot": {
+      "bytes": 14444,
+      "sha256": "64ccc63e4df3238046fadb200f1b134311d8fe6ec6e3ccb8c8b81379231b867e"
+    },
+    "cfg_tool.bin": {
+      "bytes": 383,
+      "sha256": "276579954f076886a6a7694f65dc71c034a63a2c204b76749065c0ac7b010d1b"
+    },
+    "cfg/eq_cfg_hw.bin": {
+      "bytes": 1278,
+      "sha256": "179ac9f4501d2cf8c3bdbc06fcda1e46228b7ace7e339342c767bb6568de57d8"
+    }
+  }
+}

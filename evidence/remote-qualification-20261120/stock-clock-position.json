@@ -1,0 +1,59 @@
+{
+  "repo": "gobbajogger/DnBOX",
+  "sha": "76040daa5b52d686a8b7b544296ba5d79610a95d",
+  "sourceInputs": {
+    "firmware/src/seq/sequencer.c": "1c92a17d43a444d067a8aff60eb0f3a5e8e3fc8f",
+    "firmware/src/seq/sequencer.h": "f4b5d83735db10bc6cf16abdf70241d1093117ca",
+    "firmware/src/seq/pattern.c": "6f25c2a2f448273f5dffd7befc0d8a2ea6a5888c",
+    "firmware/src/seq/pattern.h": "9810f8977dccb726e09d34666657f1e01bf83b1e",
+    "firmware/src/seq/tb3po.c": "fc4cb5363f12d05d1f5e0d4ab7f6e620820897ec",
+    "firmware/src/seq/tb3po.h": "299225dfe4cb0fa847dc0fd2aa1958d5b93f2f1c",
+    "firmware/src/x0x_cold.h": "089256ed4b45ceb220aa713a9dfa023efe9b85ad"
+  },
+  "result": {
+    "source": "stock sequencer callbacks",
+    "inputSamples": 88199,
+    "bpm": 120,
+    "timestampedMidiPacketsIdentical": 98,
+    "clockTicks": 96,
+    "firstStatus": 250,
+    "lastStatus": 252,
+    "forwardBassSteps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "reverseBassSteps": [
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      2,
+      1,
+      0
+    ]
+  },
+  "reproduction": "cc -O2 -Wall -Wextra -Werror -ffp-contract=off -I\"$STOCK/firmware/src/seq\" tests/product-remote/stock-clock-position.c \"$STOCK/firmware/src/seq/\"{sequencer,pattern,tb3po}.c -o /tmp/remote-clock-test && /tmp/remote-clock-test"
+}

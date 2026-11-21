@@ -1,0 +1,5 @@
+{"files":239,"output":"/workspace/scratch/7113924d764d/remote-master/.output/tmp_nglefgo","emulator":true,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+PASS master PCM 1440x900 {"peak": 0.05707740783691406, "shown": "-24.9 dBFS", "gain": 16, "historyWindows": 23, "firmwareTime": 1498}
+PASS master PCM 390x844 {"peak": 0.09528279304504395, "shown": "-20.4 dBFS", "gain": 8, "historyWindows": 20, "firmwareTime": 1254}
+PASS master PCM 844x390 {"peak": 0.08330070972442627, "shown": "-21.6 dBFS", "gain": 8, "historyWindows": 20, "firmwareTime": 1289}
+PASS master PCM 1024x640 {"peak": 0.06895816326141357, "shown": "-23.2 dBFS", "gain": 8, "historyWindows": 22, "firmwareTime": 1324}

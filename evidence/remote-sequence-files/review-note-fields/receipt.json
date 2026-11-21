@@ -1,0 +1,167 @@
+{
+  "parent": "982deaf7b9cc6bbcf71db4d232e4c354e98d67d3",
+  "scope": "P13 Review of local sample-addressed note changes. No instrument selection, readback or native-state mapping.",
+  "authored": {
+    "owner": "909",
+    "sourceNote": "C2",
+    "sample": 0,
+    "velocity": 88,
+    "before": {
+      "pan": "default 64",
+      "pitchOffset": "default 0"
+    },
+    "after": {
+      "pan": 65,
+      "pitchOffset": -1
+    }
+  },
+  "cohorts": {
+    "before": {
+      "text": "Notes · drum909: C2, velocity 88, start 0, end 0, chance not set, pulse → C2, velocity 88, start 0, end 0, chance not set, pulse",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900,
+          "result": "FAIL",
+          "geometry": {
+            "left": 434,
+            "top": 442.265625,
+            "right": 1006,
+            "bottom": 473.453125,
+            "textScrollWidth": 572,
+            "textClientWidth": 572
+          },
+          "png": "before-1440x900.png",
+          "sha256": "b2d7a0f72a0a1372e2bbe724407cfb025cd33a5e31053ea5a4d2dc0ca6c11de3"
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "result": "FAIL",
+          "geometry": {
+            "left": 136,
+            "top": 187.265625,
+            "right": 708,
+            "bottom": 218.453125,
+            "textScrollWidth": 572,
+            "textClientWidth": 572
+          },
+          "png": "before-844x390.png",
+          "sha256": "09cf6f1c3393dd0795a21fb02dd639154b95b7f8ddbc475fb5b7684d0aa0f696"
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "result": "FAIL",
+          "geometry": {
+            "left": 26,
+            "top": 414.265625,
+            "right": 364,
+            "bottom": 445.453125,
+            "textScrollWidth": 338,
+            "textClientWidth": 338
+          },
+          "png": "before-390x844.png",
+          "sha256": "2872833992bf594f42f4baa0d4d67e20182d043a58d04aa4a5f4b11cbc9e2941"
+        }
+      ],
+      "browser": "151.0.7922.34",
+      "closed": "2026-11-21T06:15:22.100+00:00"
+    },
+    "after": {
+      "text": "Notes · 909 · C2 at sample 0: Pan C → R1 · Pitch offset 0st → -1st",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900,
+          "result": "PASS",
+          "geometry": {
+            "left": 552,
+            "top": 450.0625,
+            "right": 888,
+            "bottom": 465.65625,
+            "textScrollWidth": 336,
+            "textClientWidth": 336
+          },
+          "png": "after-1440x900.png",
+          "sha256": "0c48ef6fd0c718a8ef914c5b361d8db0818836ccce5c7dd5a4599683c59afc86"
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "result": "PASS",
+          "geometry": {
+            "left": 254,
+            "top": 195.0625,
+            "right": 590,
+            "bottom": 210.65625,
+            "textScrollWidth": 336,
+            "textClientWidth": 336
+          },
+          "png": "after-844x390.png",
+          "sha256": "61763fbb462bf2180cf9c6e3a18831efddf53cd3436edff17d8ff074dd8bab43"
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "result": "PASS",
+          "geometry": {
+            "left": 27,
+            "top": 422.0625,
+            "right": 363,
+            "bottom": 437.65625,
+            "textScrollWidth": 336,
+            "textClientWidth": 336
+          },
+          "png": "after-390x844.png",
+          "sha256": "2c606346ebfb399efd619d5c3bcdbac0ee4138a6b3dcf91f7a2aba73ca20290b"
+        }
+      ],
+      "browser": "151.0.7922.34",
+      "closed": "2026-11-21T06:16:55.582+00:00"
+    }
+  },
+  "history": "Undo pitch leaves Pan C → R1; Undo pan leaves No changes; two Redo operations restore the exact notes from the actual Draft export and the identical Review text.",
+  "originalCompleteJourney": "PASS 844x390, includes all Draft domains and retained older history",
+  "modelCounts": {
+    "tests": 29,
+    "fail": 0
+  },
+  "manifestVerified": 243,
+  "patched": {
+    "web/product-site/remote/app.mjs": {
+      "bytes": 102548,
+      "sha256": "7793fded146e0b1a6341c099401b2da288101b94c1a7c1c234775ecbe0c11bd8"
+    },
+    "web/product-site/SOURCE-MANIFEST.json": {
+      "bytes": 42213,
+      "sha256": "0400c46dda5548aff6b9788fa1be333d2a388dbca52480bc97eb4c27c1c56c51"
+    },
+    "tests/product-remote/discard_draft_journey.py": {
+      "bytes": 7305,
+      "sha256": "981372e3e382a54e09a147f74dee5940139574f948cc5a1434dfd5e42882c686"
+    }
+  },
+  "evidence": {
+    "review-fields.patch": {
+      "bytes": 6748,
+      "sha256": "6fa46708ec84b8e79acaac49a3cd4c1d97651e04bb86051af5fbba7d275f6ecb"
+    },
+    "before.json": {
+      "bytes": 1982,
+      "sha256": "3ebeec47934befe641a143cca6389b2abc8ffe72e43ce83942224525ca729cf5"
+    },
+    "after.json": {
+      "bytes": 1401,
+      "sha256": "b5bb8850e0f15538f353f846a2533e40a8bd2d19d58385a2b8113296d72faff3"
+    },
+    "model-red-green.json": {
+      "bytes": 1709,
+      "sha256": "9e010b890d3ff1d825c0f289473c21ed96f2d5a563c46c3f34d75bde10a5a4c2"
+    },
+    "model.log": {
+      "bytes": 3011,
+      "sha256": "31b6faf72849a82d7df002d1fc2b4e81965bd6c91ca28e77e51df345f870adaa"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "head": "c062a3090b1fa8620b707ed50c5757586ebfaa6b",
+  "intervalSec": 2.0,
+  "samples": 203,
+  "maximumSampleGapSec": 3.117,
+  "maximumSampleGapObservedUtc": "2026-11-21T07:04:19.708Z",
+  "pressureSourcesPresent": [],
+  "failureWindows": [
+    {
+      "when": "2026-11-21T07:01:18.596Z",
+      "observedSignals": [
+        "playwright._impl._errors.Error: Page.screenshot: Target crashed",
+        "[FAIL] unit-tests",
+        "== browser-tests"
+      ],
+      "previous45sMaxGap": 2.043,
+      "previous45sMaxLate": 0.043
+    },
+    {
+      "when": "2026-11-21T07:04:30.196Z",
+      "observedSignals": [
+        "playwright._impl._errors.TimeoutError: Locator.select_option: Timeout 30000ms exceeded.",
+        "[FAIL] browser-tests",
+        "DNBOX-GATE RESULT FAIL sha=c062a3090b1fa8620b707ed50c5757586ebfaa6b lane=remote log=build/dnbox-gate/c062a309-20261121-1657.log"
+      ],
+      "previous45sMaxGap": 3.117,
+      "previous45sMaxLate": 1.117
+    }
+  ],
+  "scope": "Read-only system-wide observations, not per-process attribution. Gate events are timestamped when first seen in the raw stream."
+}

@@ -2,10 +2,10 @@
 // Test a private copy so malformed manifests never touch tracked files.
 import assert from 'node:assert/strict';
 import * as fs from 'node:fs';
-import { tmpdir } from 'node:os';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawnSync } from 'node:child_process';
+import { withStatusFixture } from './fixtures/status-fixture.mjs';
+import { runNodeCli } from './fixtures/node-cli.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const required = [
   'scripts/verify-build-status.mjs', 'build-status.json', 'docs/build-status.json',
@@ -14,22 +14,24 @@ const required = [
   'docs/scheduler-handoffs/catalog-sync-20261024-r25.json',
   'tests/fixtures/history-appendonly-baseline-20261024.json'
 ];
+// Register the existing cases in source order and execute one CLI at a time.
+const cases = [];
 function run(label, mutate, shouldPass = false) {
-  const dir = fs.mkdtempSync(join(tmpdir(), 'x0x37-status-'));
-  try {
-    for (const name of required) {
-      const target = join(dir, name);
-      fs.mkdirSync(dirname(target), {recursive:true});
-      fs.copyFileSync(join(root, name), target);
-    }
-    fs.writeFileSync(join(dir, 'package.json'), '{"type":"module"}\n');
+  cases.push(async (dir, reset) => {
+    reset();
     mutate(dir);
-    const r = spawnSync(process.execPath, [join(dir, required[0])], {cwd: dir, encoding:'utf8', timeout:15000});
-    assert.equal(r.error, undefined, label + ' spawned');
-    if (shouldPass) assert.equal(r.status, 0, label + ': ' + r.stderr);
-    else assert.notEqual(r.status, 0, label + ' was wrongly accepted');
+    const r = await runNodeCli(join(dir, required[0]), [], {cwd: dir, label});
+    assert.equal(r.status, shouldPass ? 0 : 1, label + ': ' + r.stderr);
+    if (!shouldPass) assert.match(r.stderr, /AssertionError/, label + ': expected verifier rejection\n' + r.stderr);
     console.log('PASS ' + label);
-  } finally {fs.rmSync(dir, {recursive:true, force:true});}
+  });
+}
+async function runCases() {
+  const files = new Map(required.map(name => [name,fs.readFileSync(join(root,name))]));
+  files.set('package.json', Buffer.from('{"type":"module"}\n'));
+  await withStatusFixture(files, async (dir, reset) => {
+    for (const check of cases) await check(dir,reset);
+  });
 }
 const edit = fn => dir => {
   const j = JSON.parse(fs.readFileSync(join(dir,'build-status.json'),'utf8'));
@@ -487,7 +489,7 @@ run('r16-combined-source-noninstallable-positive',edit(j=>{
 }),true);
 run('r16-wrong-merged-root',edit(j=>j.history.find(r=>r.id==='integration-pr103-r16-pr110-integrated-current-20261024').source_tree='f'.repeat(40)));
 
-console.log('PASS: status-history allowlist and malicious-nesting fixtures; no firmware artifacts');
+cases.push(() => console.log('PASS: status-history allowlist and malicious-nesting fixtures; no firmware artifacts'));
 
 // Exact SMC79 real native private-byte receipt must remain QA_PENDING and non-installable.
 const checkedNativeId='integration-pr103-smc79-native-build-20261024-r13';
@@ -909,3 +911,4 @@ for(let n=0;n<3;n++){
 run('r48-WBL1-forged-Pro-package',r48Mutate(0,r=>{r.reported_package_sha256.pro='f'.repeat(64)}));
 run('r48-WBL1-forged-controller',r48Mutate(0,r=>{r.reported_controller_sha256='f'.repeat(64)}));
 run('r48-unapproved-firmware-download-HREF',r48Mutate(0,r=>{r.download_url='https://evil.invalid/unapproved.fwsc'}));
+await runCases();

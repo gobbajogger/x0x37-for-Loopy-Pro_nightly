@@ -1,0 +1,154 @@
+{
+  "scope": "One qualitative and measured Chicago Bass A first-oscillator subcase, with one exact desktop Draft capture; no overall grade.",
+  "remoteHead": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "remoteTree": "2fb817f42421b9bb99eaab1b95ee85e0398eccc7",
+  "remoteManifestSha256": "d283bdb038ff8887f026b270c1fba34fcfe02f33a7f92b50c17be3a09dcb2690",
+  "fwHead": "ef6449c69aa257ca3a232549bfc5f669c198ae1e",
+  "fwArtifact": "docs/lanes/fwui/current/native-routes/chicago-wave-valid-lock.png",
+  "fwGitBlob": "817b3fb5836056b8009d18dee4c8415cfe0eedda",
+  "fwFixtureBlob": "b8681e97c64651d329c60f5eb67ff905496b09b0",
+  "ownerPdf": {
+    "path": "docs/design/OWNER-BASELINE-1836.pdf",
+    "sha256": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+    "page": 4,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  "stateComparison": {
+    "shared": "Chicago, Bass A, SAW endpoint at WAVE 0 (owner label 0%, exact Remote raw 0 and SAW; native factory 0 displays SAW), Glide 14%, Peak 75%, ENV +56%, Bite 83%, Gnaw 0%, A27/D40/S57/R17%.",
+    "owner": "Example project P01; header stopped, 120 BPM; cutoff25%. No explicit factory, current note, pitch, note gate or held step is identified.",
+    "remote": "Normal local Draft, slot0, CHICAGO / P01, 120 BPM, Wave0, Glide18, Cutoff32 (25%), Peak95, ENV99, Bite106, Gnaw0, ADSR 34/51/73/21 in captured source controls. No hardware, native held-step assertion or per-note pitch evidence.",
+    "firmware": "Factory0, original Chicago, slot0 PART_303A, page0, first step held for edit, assigned cutoff lock raw127=100%, header125 BPM. Fixture does not specify the actual note pitch or issue a note trigger. The unused invalid sibling lock 128 comparison has no admission here."
+  },
+  "measurements": {
+    "ownerPDF": {
+      "file": "owner-p4.png",
+      "bytes": 102634,
+      "sha256": "0c5b67ff902812be4174cac2230c3909477065092b51cdbb69b47889fe0cf05e",
+      "rgbSha256": "ffabfaa5f29aa2ba74f374220d4ccdc1edd097633bfe7bda1ea7fb1e01be317a",
+      "explicitPlotCropXYXY": [
+        96,
+        331,
+        368,
+        385
+      ],
+      "detectedWaveInkBoundsInclusive": [
+        99,
+        331,
+        365,
+        379
+      ],
+      "strokePixels": 1273,
+      "sampleColumns": 267,
+      "midpointOfResetExtremaFraction": 0.4981,
+      "leftRightNormalizedScreenYSlopes": [
+        1.0469,
+        1.0473
+      ],
+      "displayedShape": "left segment descends on screen, one rising reset near center, right segment descends"
+    },
+    "firmwareHost": {
+      "file": "chicago-wave-valid-lock.png",
+      "bytes": 11408,
+      "sha256": "6abeaea20a7b2b683411648c8cb4527167ffba78731ca138059b04a3fbc38fcb",
+      "rgbSha256": "0400029b2e45e67876f6c4a63e9a5e024695cc016b6106528c976bd8c7d174b7",
+      "explicitPlotCropXYXY": [
+        6,
+        50,
+        40,
+        68
+      ],
+      "detectedWaveInkBoundsInclusive": [
+        9,
+        51,
+        37,
+        65
+      ],
+      "strokePixels": 41,
+      "sampleColumns": 29,
+      "midpointOfResetExtremaFraction": 0.5,
+      "leftRightNormalizedScreenYSlopes": [
+        1.1333,
+        1.1333
+      ],
+      "displayedShape": "left segment descends on screen, one rising reset near center, right segment descends"
+    },
+    "remoteDesktop": {
+      "file": "remote-8e61e9-desktop.png",
+      "bytes": 53838,
+      "sha256": "0d2ce833b93be84094f9e72c20f3d0d8a396a322d9335766be1f28428e79057c",
+      "rgbSha256": "055f51a816cd60a5640d9239c600027d3d461264dd666b414b7ff2c34ed2e1eb",
+      "explicitPlotCropXYXY": [
+        29,
+        360,
+        149,
+        393
+      ],
+      "detectedWaveInkBoundsInclusive": [
+        32,
+        364,
+        145,
+        389
+      ],
+      "strokePixels": 206,
+      "sampleColumns": 114,
+      "midpointOfResetExtremaFraction": 0.5,
+      "leftRightNormalizedScreenYSlopes": [
+        1.065,
+        1.065
+      ],
+      "displayedShape": "left segment descends on screen, one rising reset near center, right segment descends"
+    }
+  },
+  "method": "Original PNGs with no resampling were measured. Tight manually recorded crops exclude labels/grid. White wave ink requires each RGB channel >95. Median ink y at each x defines the path; its own sampled min/max define amplitude and the first/last ink x define phase. Reset midpoint lies halfway between max/min median-column positions. Segment statistics exclude outer 8% and central 20%. Shapes reflect schematic UI, not audio waveform or sample-phase accuracy; these are descriptive measurements without an acceptance threshold.",
+  "normalizedShapeComparisons": {
+    "ownerPDF": {
+      "comparedTo": "remoteDesktop",
+      "normalizedMeanAbsoluteVerticalDifference": 0.0094,
+      "normalizedMaximumAbsoluteVerticalDifference": 0.02462
+    },
+    "firmwareHost": {
+      "comparedTo": "remoteDesktop",
+      "normalizedMeanAbsoluteVerticalDifference": 0.02092,
+      "normalizedMaximumAbsoluteVerticalDifference": 0.05405
+    }
+  },
+  "localLayout": {
+    "ownerVisibleEnvelope": "All four labels and graph are visible on initial 1440x900; letter labels sampled near y695, waveform bottom near y777.",
+    "remoteADSRBounds": [
+      [
+        20,
+        930.515625,
+        344,
+        47.59375
+      ],
+      [
+        372,
+        930.515625,
+        344,
+        47.59375
+      ],
+      [
+        724,
+        930.515625,
+        344,
+        47.59375
+      ],
+      [
+        1076,
+        930.515625,
+        344,
+        47.59375
+      ]
+    ],
+    "availableRowWidth": 1400,
+    "twoOccupiedCardsRight": 716,
+    "unusedRHSAfterOscillatorCardsPx": 704,
+    "drift": "First desktop view omits ADSR values beneath the scroll viewport and leaves right half of two control rows unused. Owner correction 2 still requires that the raw list stay removed."
+  },
+  "qualified": "Bass A Chicago WAVE raw0 is visibly SAW with its center reset and both descending screen ramps. The original slot and parameter identities and independent displayed Glide match.",
+  "unresolved": "Only the oscillator setting is matched. The held cutoff, tempo and rendering geometry differ; pitch, audio timing, a 17:00 batch crosswalk, and whole-page or C3 approval cannot be inferred.",
+  "relativeEvidence": "remote-8e61e9-desktop.json supplies full exact source IDs, group geometry and DOM values."
+}

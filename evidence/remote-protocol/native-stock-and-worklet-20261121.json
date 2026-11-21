@@ -1,0 +1,344 @@
+{
+  "date_utc": "2026-11-21",
+  "nightly_parent": "ad98484d12cb9e2d52c9668b5ff9a36faaf3fc04",
+  "tested_nightly_blobs": {
+    "web/product-site/remote/runtime-mix-state.mjs": "f7cd13bc0ad28769d59686ce60aed0f00c753b8e",
+    "web/product-site/remote/runtime-sound-state.mjs": "0ce16790c13be835a4678e5ed88c120bf34259e6",
+    "tests/product-remote/runtime-mix-state.test.mjs": "3a85b8b2f0b3c446f08147abc0d0ee1f5fca82fa",
+    "tests/product-remote/runtime-sound-state.test.mjs": "9038028a25bcd1d059ece4b31b01584794bb04e3",
+    "tests/product-remote/native-readback.mjs": "bd3325d6f2177aa4bc1d8fbb7bce8e023cffea44",
+    "tests/product-remote/touchosc-host.py": "983a02652b0409bc19faa70cb65aea3fa70bbf1b",
+    "tests/product-remote/stock-editor-probe.c": "bc7a18bf5edad035d82e793a48d09f2f7e347fe1"
+  },
+  "stock_dispatcher_blobs": {
+    "firmware/src/app/editor.c": "d3d8e8d5237b00d96cea5c0c7474536e3fb15853",
+    "firmware/src/ota.c": "af42a32311ec8ea41167dd0b5abbc1fbeeeba506",
+    "tests/host/project_protocol_test.c": "832cf02369a5d15f5d2f6b6d189ba0d0833f3b07"
+  },
+  "other_firmware_heads_with_same_three_stock_blobs": {
+    "DnBOX #973": "63278e3322aefa89b25f129ca2fccc35ef3b3b3d",
+    "DnBOX #975": "9dd6f2df020340f7a82ab241ef07c6ec16195ebc",
+    "DnBOX #976": "70d0cf6bffd8a2d9eacdd8756a2119a6cd58ac47"
+  },
+  "stock_host": {
+    "firmware_commit": "3e307cfa455d22dfca5e4ef439080816b4e4f859",
+    "packed_layout_sha256": "d56abf8cbfc005b35033403ca4371c1bbda2b1e43fe9d7bf765153ff05ad1124",
+    "result": "PASS",
+    "outbound_columns": [
+      "channel",
+      "note",
+      "note_on",
+      "note_off",
+      "idle_dbfs",
+      "sounding_dbfs"
+    ],
+    "outbound": [
+      [
+        2,
+        60,
+        "midi 91 3C 64 0",
+        "midi 81 3C 00 0",
+        -180.0,
+        -16.0
+      ],
+      [
+        2,
+        61,
+        "midi 91 3D 64 0",
+        "midi 81 3D 00 0",
+        -180.0,
+        -15.9
+      ],
+      [
+        2,
+        62,
+        "midi 91 3E 64 0",
+        "midi 81 3E 00 0",
+        -180.0,
+        -16.0
+      ],
+      [
+        2,
+        63,
+        "midi 91 3F 64 0",
+        "midi 81 3F 00 0",
+        -180.0,
+        -15.9
+      ],
+      [
+        2,
+        64,
+        "midi 91 40 64 0",
+        "midi 81 40 00 0",
+        -180.0,
+        -15.8
+      ],
+      [
+        2,
+        65,
+        "midi 91 41 64 0",
+        "midi 81 41 00 0",
+        -180.0,
+        -15.9
+      ],
+      [
+        2,
+        66,
+        "midi 91 42 64 0",
+        "midi 81 42 00 0",
+        -180.0,
+        -15.9
+      ],
+      [
+        2,
+        67,
+        "midi 91 43 64 0",
+        "midi 81 43 00 0",
+        -180.0,
+        -15.8
+      ],
+      [
+        2,
+        68,
+        "midi 91 44 64 0",
+        "midi 81 44 00 0",
+        -180.0,
+        -15.9
+      ],
+      [
+        2,
+        69,
+        "midi 91 45 64 0",
+        "midi 81 45 00 0",
+        -180.0,
+        -15.9
+      ],
+      [
+        2,
+        70,
+        "midi 91 46 64 0",
+        "midi 81 46 00 0",
+        -180.0,
+        -16.0
+      ],
+      [
+        2,
+        71,
+        "midi 91 47 64 0",
+        "midi 81 47 00 0",
+        -180.0,
+        -16.0
+      ],
+      [
+        3,
+        60,
+        "midi 92 3C 64 0",
+        "midi 82 3C 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        61,
+        "midi 92 3D 64 0",
+        "midi 82 3D 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        62,
+        "midi 92 3E 64 0",
+        "midi 82 3E 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        63,
+        "midi 92 3F 64 0",
+        "midi 82 3F 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        64,
+        "midi 92 40 64 0",
+        "midi 82 40 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        65,
+        "midi 92 41 64 0",
+        "midi 82 41 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        66,
+        "midi 92 42 64 0",
+        "midi 82 42 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        67,
+        "midi 92 43 64 0",
+        "midi 82 43 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        68,
+        "midi 92 44 64 0",
+        "midi 82 44 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        69,
+        "midi 92 45 64 0",
+        "midi 82 45 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        70,
+        "midi 92 46 64 0",
+        "midi 82 46 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        3,
+        71,
+        "midi 92 47 64 0",
+        "midi 82 47 00 0",
+        -180.0,
+        -18.3
+      ],
+      [
+        10,
+        36,
+        "midi 99 24 64 0",
+        "midi 89 24 00 0",
+        -180.0,
+        -11.3
+      ],
+      [
+        10,
+        38,
+        "midi 99 26 64 0",
+        "midi 89 26 00 0",
+        -180.0,
+        -8.0
+      ],
+      [
+        10,
+        42,
+        "midi 99 2A 64 0",
+        "midi 89 2A 00 0",
+        -180.0,
+        -14.4
+      ],
+      [
+        10,
+        46,
+        "midi 99 2E 64 0",
+        "midi 89 2E 00 0",
+        -180.0,
+        -12.5
+      ],
+      [
+        11,
+        36,
+        "midi 9A 24 64 0",
+        "midi 8A 24 00 0",
+        -180.0,
+        -13.3
+      ],
+      [
+        11,
+        38,
+        "midi 9A 26 64 0",
+        "midi 8A 26 00 0",
+        -180.0,
+        -10.2
+      ],
+      [
+        11,
+        42,
+        "midi 9A 2A 64 0",
+        "midi 8A 2A 00 0",
+        -180.0,
+        -13.1
+      ],
+      [
+        11,
+        46,
+        "midi 9A 2E 64 0",
+        "midi 8A 2E 00 0",
+        -180.0,
+        -12.8
+      ]
+    ],
+    "unassigned_channel_16": "silent",
+    "host_midi_output": [
+      "1045 ms: FA 00 00",
+      "1045 ms: 99 24 58",
+      "1045 ms: 89 24 00",
+      "2961 ms: 99 24 58",
+      "2961 ms: 89 24 00",
+      "3327 ms: FC 00 00"
+    ],
+    "scope": "Packed TouchOSC callback scripts and stock firmware host. Chromium Web MIDI callbacks run against the stock editor/OTA dispatcher. No physical keyboard or native TouchOSC application was used.",
+    "browser_identity": {
+      "chromium": "151.0.7922.34",
+      "status": "Firmware replied: X0X DEV",
+      "exchanges": [
+        {
+          "request_hex": "f07d464c01f7",
+          "editor_deferred": false,
+          "reply_hex": "f07d464c0158305820444556000000004000005853470130f7"
+        },
+        {
+          "request_hex": "f07d444e0200000000005b000000000000000100000000000000000000000000000000000000000000000000000000000000f7",
+          "editor_deferred": true,
+          "reply_hex": ""
+        }
+      ]
+    }
+  },
+  "pinned_worklet": {
+    "firmware": "61827a714ca7b240c01a55ed347b5fd7b847c7c2",
+    "kernel": "4758a9573e0a2a95e73cb054a74e0aad39d5741e",
+    "wasm_sha256": "9ad1ab9c533ccda4b506a0b0cc281de50af3dcd57370ffa916a5174277cbdbd0",
+    "mix": 29,
+    "chicago_bass_a": 20,
+    "chicago_bass_b": 20,
+    "fresh_reads_after_edit_and_undo": 138
+  },
+  "worklet_scope": "Real pinned WebAssembly kernel, worklet, control providers and Remote transaction consumers. Node supplies message ports and a 44.1 kHz render clock. Every control was edited and restored. A separate provider read all controls after each operation. A Chicago read issues a new revision, so the editing consumer obtained a new reading before each new edit.",
+  "regressions": {
+    "baseline_expected_rejections_missing": [
+      "Mix edit returned old value",
+      "Mix Undo returned edited value",
+      "Chicago Undo returned edited value"
+    ],
+    "focused_node_states": 25,
+    "DNR2_and_identity_tests": 15
+  },
+  "commands": [
+    "node --test --test-concurrency=1 tests/product-remote/runtime-mix-state.test.mjs tests/product-remote/runtime-sound-state.test.mjs tests/product-remote/firmware-link.test.mjs tests/product-remote/identity-protocol.test.mjs",
+    "DNBOX_EMULATOR_RUNTIME=/path/to/pinned/emu node tests/product-remote/native-readback.mjs",
+    "python3 tests/product-remote/touchosc-host.py /path/to/DnBOX --firmware-ref 3e307cfa455d22dfca5e4ef439080816b4e4f859 --browser-identity --json stock.json"
+  ]
+}

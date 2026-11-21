@@ -1,0 +1,121 @@
+{
+  "sourceHead": "9eb4a18d7475cdb7269cd63d6f3d932d33d0ac2f",
+  "originalOwnerPDF": "db826c9cbeb84971f2d030c847043a21749ad4172e30739773494df0c9acca17",
+  "page": 15,
+  "controls": [
+    {
+      "label": "Voices 1–6",
+      "ownerXYWH": [
+        12.0,
+        354.0,
+        108.0,
+        28.0
+      ],
+      "actualXYWH": [
+        12,
+        338,
+        114,
+        44
+      ]
+    },
+    {
+      "label": "Voices 7–11",
+      "ownerXYWH": [
+        132.0,
+        354.0,
+        108.0,
+        28.0
+      ],
+      "actualXYWH": [
+        130,
+        338,
+        114,
+        44
+      ]
+    },
+    {
+      "label": "Accent lane",
+      "ownerXYWH": [
+        252.0,
+        354.0,
+        140.0,
+        28.0
+      ],
+      "actualXYWH": [
+        248,
+        338,
+        114,
+        44
+      ]
+    },
+    {
+      "label": "Review draft",
+      "ownerXYWH": [
+        420.0,
+        354.0,
+        149.0,
+        28.0
+      ],
+      "actualXYWH": [
+        366,
+        338,
+        114,
+        44
+      ]
+    }
+  ],
+  "geometryDecision": "Use 44px landscape targets and retain the side-by-side sound panel. The four navigation controls occupy the existing 468px grid panel and share the reference bottom at 382. The sequence grid retains 40px step targets and scrollable access to all 11 voices.",
+  "verifiedChanges": {
+    "originalTwoKitsWithoutNamedNavigation": 2,
+    "candidateTwoKitsWithAllFourActions": 2,
+    "originalCellsPerKit": 176,
+    "originalAccentCellsPerKit": 16,
+    "originalDraftAndHistoryEqualAfterAllActions": true,
+    "directTapAndKeyboardFocus": "Voices 1–6 → first BD step, Voices 7–11 → first CP step, Accent lane → first kit Accent, Review draft → original dialogue, Escape → current opener.",
+    "normalRegressionAlsoPasses": "Existing complete 909/808 16-step Accent touch/edit/Undo/Redo/old Draft/rejection at 844×390 and 390×844.",
+    "otherViewportControlsHidden": [
+      [
+        390,
+        844
+      ],
+      [
+        1440,
+        900
+      ],
+      [
+        1024,
+        640
+      ]
+    ],
+    "browser": "151.0.7922.34",
+    "pageErrors": 0,
+    "originalFunkyBeatsNodeTestsPassed": 23,
+    "originalAppInteractionHarnessesPassed": 4,
+    "pinnedManifestFilesRehashed": 245
+  },
+  "allBrowsersClosed": "2026-11-21T06:50:47.347+00:00",
+  "sourceFiles": {
+    "tests/product-remote/drum_navigation_journey.py": "77d6dfd1665035f8de5707895cfabfd1efd18ac490d17855009e2fcac7fe2ea0",
+    "tests/product-remote/funkybeats-browser.py": "f96ed01d371a611dd5f241327337e4b9c8d8aae722b891e0bcc474e89bdf6908",
+    "web/product-site/SOURCE-MANIFEST.json": "fed87247a4901fcfcae47c0a32086aef38d2e6c03ba3f6b13da8aa1f54dcf124",
+    "web/product-site/remote/app.mjs": "60103743b78c2bc9a719768cca84193c75541d6facd0eb4fb1aab6bd2c8bd506",
+    "web/product-site/remote/funkybeats-view.mjs": "246d96ed404e977c1d540c15ac8e9077df93e331d7c6180096a6e7114914b030",
+    "web/product-site/remote/style.css": "b59f4efdb9efd32f9572576e5c3d71f0f7fdd86352e1ba9ef89702de28531f7d"
+  },
+  "captures": {
+    "after-808-entry.png": "4f4b96fc6f67b360a723538738df19c73df2f044bb68fc7ac10ca4066fdb3283",
+    "after-909-entry.png": "b90d4a69480ca5203f41dd0b3ebf6480349393c957e8afac8de4527925be3ab9",
+    "after-909-jump-0.png": "31aabfad154909dbc9245afc183fd7a94719b831855f52bbf07943ae0fa146fa",
+    "after-909-jump-1.png": "ca00d6c53b0880a7cc28317b27d57f9c421c62042837e06134ebeca275e02252",
+    "after-909-jump-2.png": "d026a838dba845456acf6fe4539b030fd989380163c7ca185df1fb56cc1de820",
+    "before-808-entry.png": "295294ecda9ef4c9d1e2f6b7b202837483866d9a828703baab86cad6c54dbf03",
+    "before-909-entry.png": "56f2b89f117d8681f8f57bfafb1d8af585bb95caeda02b939069769397e07e32"
+  },
+  "evidence": {
+    "browser.json": "16dae92b4a8b28c39cd040f69c73c5e15efe64996762fac9f2b7ebce7ca24259",
+    "owner.json": "513d1831c51e4137d77683593f7b2c9ebfd7490040776a26a8c75c021d2a430c",
+    "node.log": "5adb2689b04993ccc20b602ef1c2d33a3883aa30b690387b359f94d61afef343",
+    "app-draft-correction.log": "608cac71b2c841ac6c5a01a555f5966305aab530192f1fb7a76bc582eea01c29",
+    "p15.final.patch": "ad361543d3b374a5a8d4f72ad06db0ddc69b6daa93eb64b0f5b708823bdad31c"
+  }
+}

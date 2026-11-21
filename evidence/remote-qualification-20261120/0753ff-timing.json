@@ -1,0 +1,21 @@
+{
+  "head": "0753ff3fd6ac01fc528f978e882b389e402c06b9",
+  "intervalSec": 2.0,
+  "samples": 481,
+  "maximumSampleGapSec": 6.392,
+  "maximumSampleGapObservedUtc": "2026-11-21T05:28:09.503Z",
+  "pressureSourcesPresent": [],
+  "failureWindows": [
+    {
+      "when": "2026-11-21T05:28:38.824Z",
+      "observedSignals": [
+        "playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 30000ms exceeded.",
+        "[FAIL] browser-tests",
+        "DNBOX-GATE RESULT FAIL sha=0753ff3fd6ac01fc528f978e882b389e402c06b9 lane=remote log=build/dnbox-gate/0753ff3f-20261121-1512.log"
+      ],
+      "previous45sMaxGap": 6.392,
+      "previous45sMaxLate": 4.392
+    }
+  ],
+  "scope": "Read-only system-wide observations, not per-process attribution. Gate events are timestamped when first seen in the raw stream."
+}

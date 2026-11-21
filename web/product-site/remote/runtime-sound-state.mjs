@@ -39,13 +39,27 @@ export function createRuntimeSoundState(bindings,{voice,onState=()=>{}}={}){
  async function transaction(action){
   if(phase!=='ready'||!provider||!admitted)throw Error('Native Chicago is not ready');
   const mine=epoch,current=provider;phase='busy';notify();
-  try{const result=await action(current);if(mine!==epoch)return;const next=parse(result.reply);result.check?.(next);result.commit();adopt(next);phase='ready';notify();}
+  try{const result=await action(current);if(mine!==epoch)return;const next=parse(result.reply);
+   if(next.values.get(result.key)!==result.expected)throw Error('Chicago change not confirmed');
+   result.commit();adopt(next);phase='ready';notify();}
   catch(error){if(mine===epoch){if(error?.code==='busy'&&error.noWrite===true&&provider===current&&admitted){phase='ready';notify();}else clear('unavailable');}throw error;}
  }
  async function change(key,value){
   const g=groups.get(key);if(!g||!Number.isSafeInteger(value)||value<g.min||value>g.max)throw Error('Invalid Chicago edit');
-  return transaction(async current=>{const reply=await current.set({revision,target:2,voice,parameter:g.parameter,expected:values.get(key),value});if(!opaque(reply?.undoToken))throw Error('Invalid Chicago Undo token');return{reply,check(next){if(next.values.get(key)!==value)throw Error('Chicago edit not confirmed');},commit(){history.push(reply.undoToken);if(history.length>16)history.shift();}};});
+  return transaction(async current=>{
+   const before=values.get(key);
+   const reply=await current.set({revision,target:2,voice,parameter:g.parameter,expected:before,value});
+   if(!opaque(reply?.undoToken))throw Error('Invalid Chicago Undo token');
+   return{reply,key,expected:value,commit(){history.push({key,before,token:reply.undoToken});if(history.length>16)history.shift();}};
+  });
  }
- async function undo(){if(!history.length)throw Error('No Chicago edit to undo');const token=history.at(-1);return transaction(async current=>{const reply=await current.undo({token});if(reply?.undoToken!==null)throw Error('Invalid Chicago Undo result');return{reply,commit(){history.pop();}};});}
+ async function undo(){
+  if(!history.length)throw Error('No Chicago edit to undo');
+  const {key,before,token}=history.at(-1);
+  return transaction(async current=>{
+   const reply=await current.undo({token});if(reply?.undoToken!==null)throw Error('Invalid Chicago Undo result');
+   return{reply,key,expected:before,commit(){history.pop();}};
+  });
+ }
  return{connect,change,undo,close,snapshot};
 }

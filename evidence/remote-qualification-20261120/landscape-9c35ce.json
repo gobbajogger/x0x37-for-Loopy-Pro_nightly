@@ -1,0 +1,37 @@
+{
+  "older": "451be1fafd0a328c0f489084d3807da216024d7e",
+  "newer": "9c35ce1e6bc7bb2a1222ea89c48af527d1fe4bab",
+  "identicalGitObjects": {
+    "web/product-site": "b98faa9827394c465322550930d4f8bd2c41f9c8",
+    "web/product-site/SOURCE-MANIFEST.json": "a054b7ed575d6b1920980f9219bca369507cb58c",
+    "tests/product-remote": "51bd89351e5d2eae29bf2a446111ecc4f9a9ca61",
+    "tests/product-remote/landscape-browser.py": "45da8a949d51031fb74ce729df6a467c5683a15a",
+    "scripts/build-product-site.mjs": "1feaa469cefe147500f6148ae2a7c6dc5edd3384",
+    "scripts/emulator-runtime-pin.json": "5a8582b4bc8e871914022f85bcfd9bb46090520c"
+  },
+  "commitChangedPaths": [
+    "M\tdocs/lanes/remote.md",
+    "A\tevidence/remote-qualification-20261120/37982b3-gate.json",
+    "A\tevidence/remote-qualification-20261120/37982b3-gate.log.gz",
+    "A\tevidence/remote-qualification-20261120/37982b3-r48-replay.json",
+    "A\tevidence/remote-qualification-20261120/approved-site-inventory.json",
+    "A\tevidence/remote-qualification-20261120/builds-1024-native-proof.json",
+    "A\tevidence/remote-qualification-20261120/builds-native-four-sizes.json",
+    "A\tevidence/remote-qualification-20261120/header-structural-451be1.json",
+    "A\tevidence/remote-qualification-20261120/landscape-451be1-states.json.gz",
+    "A\tevidence/remote-qualification-20261120/landscape-451be1.json",
+    "A\tevidence/remote-qualification-20261120/pattern-donor-recovery.json",
+    "A\tevidence/remote-qualification-20261120/r22-glyph-qualification.json",
+    "M\tpackage.json",
+    "M\ttests/visual/test_visual_gate.py",
+    "M\ttests/visual/visual_gate.py"
+  ],
+  "identicalNonImageGeometryStates": 98,
+  "statesWithChangedReachabilityMetrics": [],
+  "oldNewIdenticalPngs": 98,
+  "statesWithChangedPngs": [],
+  "allNewPngsVerified": 98,
+  "newTotalBytes": 3524417,
+  "minimumBytes": 21874,
+  "maximumBytes": 46928
+}

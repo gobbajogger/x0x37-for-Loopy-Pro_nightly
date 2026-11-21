@@ -1,0 +1,4251 @@
+{
+  "commit": "944e99d87125e60aff9e3020ead7212fb47687d6",
+  "imagePixelSize": [
+    844,
+    390
+  ],
+  "expectedStates": 127,
+  "selection": "First chronological recorded observation per expected state with a matching native-size PNG and zero blocked controls. A terminal harness geometry failure for that state or a retained full geometry record with clipping disqualifies the observation. A completed state observation from a failed/partial journey is identified individually.",
+  "dataAvailability": "Full native reachability rows retain total enabled/reachable counts, blocked controls, clipping, overflow and roll diagnostics. The native probe names controls only if they are blocked. No complete per-control identity roster is available for successful controls. Partial runs retain enabled/blocked counts, body size, and the printed roll metrics. Horizontal-clip diagnostics and scroll details were not serialized for those states.",
+  "result": "Evidence from separate browser attempts. Combined coverage does not qualify an uninterrupted traversal.",
+  "runs": [
+    {
+      "run": 1,
+      "kind": "unfiltered",
+      "status": "terminal; harness report; failed",
+      "log": "944-landscape.log",
+      "logSha256": "c748dcaa22c1956de2c0004ba5f8a1212914bdb9ef9296920937c0ad3ab19a7c",
+      "screenshotDirectory": "nightly/.output/landscape-evidence-kms918gy",
+      "detailedGeometryPath": "nightly/.output/landscape-evidence-kms918gy/states.json",
+      "observed": 98
+    },
+    {
+      "run": 2,
+      "kind": "unfiltered",
+      "status": "worker terminated; partial stdout",
+      "log": "944-landscape-retry.log",
+      "logSha256": "bf4d996a244277b095413ff5b1fa60b8ddb68ce19833f501e100038696ac36ed",
+      "screenshotDirectory": "nightly/.output/landscape-evidence-qjrhit8f",
+      "detailedGeometryPath": null,
+      "observed": 32
+    },
+    {
+      "run": 3,
+      "kind": "unfiltered",
+      "status": "terminal; navigation timeout; exit 1",
+      "log": "944-landscape-final.log",
+      "logSha256": "87ab818ef8b6204fa24fa747e878cefb9653158ad93305c98515398e4a4dc100",
+      "screenshotDirectory": "environment/944-landscape-final-evidence",
+      "detailedGeometryPath": null,
+      "observed": 94
+    },
+    {
+      "run": 4,
+      "kind": "focused",
+      "status": "focused exit 0",
+      "log": "944-landscape-focused.log",
+      "logSha256": "a9539ea026add571d465817c21bf9d13a663c8b6e09cb0468927bea30a621290",
+      "screenshotDirectory": "environment/944-landscape-focused-evidence",
+      "detailedGeometryPath": "environment/944-landscape-focused.json",
+      "observed": 13
+    }
+  ],
+  "states": [
+    {
+      "state": "all-part-patterns",
+      "file": "screenshots/all-part-patterns.png",
+      "sha256": "a97bdbca75ac6a582cab41811fb6df7d810ce6316b05dcddb3cee0b8a2ee637a",
+      "sourceRun": 1,
+      "sourceLogLine": 85,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 180,
+        "reachable": 180,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          9,
+          19
+        ]
+      }
+    },
+    {
+      "state": "bass-chicago-accent",
+      "file": "screenshots/bass-chicago-accent.png",
+      "sha256": "bab1d6b476192379215b3f59262660ddc822b331fa584297d3ef3a9b646b7df7",
+      "sourceRun": 1,
+      "sourceLogLine": 6,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 762,
+            "scroll": 790
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 71,
+          "lastRow": 86
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "bass-chicago-gate",
+      "file": "screenshots/bass-chicago-gate.png",
+      "sha256": "986719cc7e205f5208228473142ee6b4b8b7a57cc32d86506f02fe4711e93938",
+      "sourceRun": 1,
+      "sourceLogLine": 4,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 762,
+            "scroll": 790
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 71,
+          "lastRow": 86
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "bass-chicago-release",
+      "file": "screenshots/bass-chicago-release.png",
+      "sha256": "e471fc6e34b512fa66d0bf5c2f55fc6b37ef82be8fe77b281f575b9bd27f54ee",
+      "sourceRun": 1,
+      "sourceLogLine": 7,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 762,
+            "scroll": 790
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 71,
+          "lastRow": 86
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "bass-chicago-slide",
+      "file": "screenshots/bass-chicago-slide.png",
+      "sha256": "1c3fc15a7bbab43df282ccd3dd5f5211219fa78bab467d1089ab65d2deb6551e",
+      "sourceRun": 1,
+      "sourceLogLine": 5,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 762,
+            "scroll": 790
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 71,
+          "lastRow": 86
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "bass-miami-accent",
+      "file": "screenshots/bass-miami-accent.png",
+      "sha256": "d35b3c52d9d5adc1aa5cdc4a7a19158542e841ca184505d92581869f228a28c1",
+      "sourceRun": 1,
+      "sourceLogLine": 18,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 35,
+        "reachable": 35,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "bass-miami-gate",
+      "file": "screenshots/bass-miami-gate.png",
+      "sha256": "96ff79ce9076e0706b99af367286584d850f77314a8dbe5a490aeba804e2b559",
+      "sourceRun": 1,
+      "sourceLogLine": 16,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 35,
+        "reachable": 35,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "bass-miami-release",
+      "file": "screenshots/bass-miami-release.png",
+      "sha256": "c028d8be7591437246885813ed4c8b5469e725211722277563556d1c75747afd",
+      "sourceRun": 1,
+      "sourceLogLine": 19,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 35,
+        "reachable": 35,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "bass-miami-slide",
+      "file": "screenshots/bass-miami-slide.png",
+      "sha256": "1c0d5fcbcca8e72dbb5740eeb663218441b9da27906943c4fac0a3052f7ec4ea",
+      "sourceRun": 1,
+      "sourceLogLine": 17,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 35,
+        "reachable": 35,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          3,
+          22
+        ]
+      }
+    },
+    {
+      "state": "break-chance-authored",
+      "file": "screenshots/break-chance-authored.png",
+      "sha256": "acf07bb1b86fd0040fb326597946fc13e23069f34ce6373a92583205fac4e15d",
+      "sourceRun": 1,
+      "sourceLogLine": 105,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 693,
+            "scroll": 1400
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 45,
+          "lastRow": 60
+        },
+        "pdfPages": [
+          11,
+          15
+        ],
+        "breakChance": {
+          "enabledSteps": 16,
+          "values": [
+            "100%",
+            "100%",
+            "8:8",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%",
+            "100%"
+          ],
+          "lane": {
+            "x": 138,
+            "y": 361,
+            "width": 693,
+            "height": 29
+          },
+          "roll": {
+            "x": 138,
+            "y": 103,
+            "width": 693,
+            "height": 257
+          },
+          "authoredCell": {
+            "x": 313,
+            "y": 361,
+            "width": 87.5,
+            "height": 29
+          }
+        }
+      }
+    },
+    {
+      "state": "break-notes",
+      "file": "screenshots/break-notes.png",
+      "sha256": "1e01ae03de76a992364519b036f5c4206e8ef47b5f1d2fd0e1ed55e041828f41",
+      "sourceRun": 1,
+      "sourceLogLine": 69,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 693,
+            "scroll": 1400
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 54,
+          "lastRow": 69
+        },
+        "pdfPages": [
+          11
+        ]
+      }
+    },
+    {
+      "state": "connect-feedback",
+      "file": "screenshots/connect-feedback.png",
+      "sha256": "b47e5bf774dee8b4111c0dae4396b547fa4a7c30d8862c2b6c314844aa216d27",
+      "sourceRun": 1,
+      "sourceLogLine": 90,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Connection"
+        ],
+        "controlCount": 1,
+        "reachable": 1,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "device",
+      "file": "screenshots/device.png",
+      "sha256": "2c91ce00a8b2ac64cae86410789ffd0d2b06312b574626f136f8e9abe08b57ff",
+      "sourceRun": 1,
+      "sourceLogLine": 103,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          1024
+        ],
+        "titles": [
+          "Your instrument.Within reach.",
+          "Connect your keyboard"
+        ],
+        "controlCount": 17,
+        "reachable": 17,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "draft-import",
+      "file": "screenshots/draft-import.png",
+      "sha256": "785e1c00fe21bbead3b1134fb7207ca0a67c74eebed21d0234952a00d1628e0c",
+      "sourceRun": 1,
+      "sourceLogLine": 92,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Open draft"
+        ],
+        "controlCount": 2,
+        "reachable": 2,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "draft-invalid",
+      "file": "screenshots/draft-invalid.png",
+      "sha256": "8e7c44ada8f83c77e680125dcdd02835044ebf2e8fe2ad3d42e15279a7984429",
+      "sourceRun": 1,
+      "sourceLogLine": 91,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Open draft"
+        ],
+        "controlCount": 1,
+        "reachable": 1,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "draft-mix-fx",
+      "file": "screenshots/draft-mix-fx.png",
+      "sha256": "bbfcd993d0c1bcc0818462a1de9fd06c4f4c06320479e2c4914234d89224dc00",
+      "sourceRun": 1,
+      "sourceLogLine": 77,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Reverb",
+          "Delay",
+          "Part sends",
+          "Tape",
+          "Master",
+          "More \u00b7 Draft"
+        ],
+        "controlCount": 62,
+        "reachable": 62,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "draft-mix-levels",
+      "file": "screenshots/draft-mix-levels.png",
+      "sha256": "37e7f41c4c73c69453079e8b709c3c949780dee48fdc4ad50c148a610199425c",
+      "sourceRun": 1,
+      "sourceLogLine": 74,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Parts",
+          "Master",
+          "More \u00b7 Draft"
+        ],
+        "controlCount": 48,
+        "reachable": 48,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "draft-mix-master",
+      "file": "screenshots/draft-mix-master.png",
+      "sha256": "eff8aa37dc02900aa5389ee4f009436aad3f978edefab0377d1241a6fbba11f5",
+      "sourceRun": 1,
+      "sourceLogLine": 78,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Master",
+          "More \u00b7 Draft"
+        ],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "draft-mix-pan",
+      "file": "screenshots/draft-mix-pan.png",
+      "sha256": "f3273c482efe42f438f1c06ebfe7e969944e6c1f68ee082206b20bdd18f1847d",
+      "sourceRun": 1,
+      "sourceLogLine": 75,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Parts",
+          "Master",
+          "More \u00b7 Draft"
+        ],
+        "controlCount": 44,
+        "reachable": 44,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "draft-mix-sends",
+      "file": "screenshots/draft-mix-sends.png",
+      "sha256": "eb1b07708f5fe475f86b42713b3d0e220fb0a86a06ffab80f2c75a05aa0c7fd5",
+      "sourceRun": 1,
+      "sourceLogLine": 76,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Parts",
+          "Master",
+          "More \u00b7 Draft"
+        ],
+        "controlCount": 53,
+        "reachable": 53,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "drums-accent-drum808",
+      "file": "screenshots/drums-accent-drum808.png",
+      "sha256": "5eb39d6b48b33ec856c1d641a7ec761667ae1426a9116bc3be38dd16bc3e19d6",
+      "sourceRun": 4,
+      "sourceLogLine": 14,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "808 \u00b7 Draft",
+          "Sound \u00b7 BD"
+        ],
+        "controlCount": 215,
+        "reachable": 215,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "cls": "drum-scroll funkybeats-sequencer",
+            "client": 468,
+            "scroll": 768
+          }
+        ],
+        "horizontalClips": [],
+        "pdfPages": [
+          2,
+          15
+        ]
+      }
+    },
+    {
+      "state": "drums-accent-drum909",
+      "file": "screenshots/drums-accent-drum909.png",
+      "sha256": "570478c371817b5c6a16430130f6eafc4bedf1e350684b65e3fc77eebc072c35",
+      "sourceRun": 3,
+      "sourceLogLine": 53,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 215,
+        "reachable": 215,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "drums-breaks",
+      "file": "screenshots/drums-breaks.png",
+      "sha256": "a06d54fcc64a865a2cb52e8b44623a4b2d0e8a5bb5886d0dc9f8421a44abaabf",
+      "sourceRun": 1,
+      "sourceLogLine": 73,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "909 \u00b7 Draft",
+          "Sound \u00b7 BD"
+        ],
+        "controlCount": 217,
+        "reachable": 217,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "cls": "drum-scroll funkybeats-sequencer",
+            "client": 468,
+            "scroll": 768
+          }
+        ],
+        "horizontalClips": [],
+        "pdfPages": [
+          2,
+          15
+        ]
+      }
+    },
+    {
+      "state": "drums-chicago",
+      "file": "screenshots/drums-chicago.png",
+      "sha256": "7f99541462e21f0942d7c0f9e0f752680173fa08cacb7d531d06d2e7f7808cf3",
+      "sourceRun": 1,
+      "sourceLogLine": 14,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "909 \u00b7 Draft",
+          "Sound \u00b7 BD"
+        ],
+        "controlCount": 217,
+        "reachable": 217,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "cls": "drum-scroll funkybeats-sequencer",
+            "client": 468,
+            "scroll": 768
+          }
+        ],
+        "horizontalClips": [],
+        "pdfPages": [
+          2,
+          15
+        ]
+      }
+    },
+    {
+      "state": "drums-drum808",
+      "file": "screenshots/drums-drum808.png",
+      "sha256": "93f258240bba5336ce43554cacba77ce1e80c936c95f7f77a086ad95cd229605",
+      "sourceRun": 4,
+      "sourceLogLine": 12,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "808 \u00b7 Draft",
+          "Sound \u00b7 BD"
+        ],
+        "controlCount": 214,
+        "reachable": 214,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "cls": "drum-scroll funkybeats-sequencer",
+            "client": 468,
+            "scroll": 768
+          }
+        ],
+        "horizontalClips": [],
+        "pdfPages": [
+          2,
+          15
+        ]
+      }
+    },
+    {
+      "state": "drums-drum909",
+      "file": "screenshots/drums-drum909.png",
+      "sha256": "ef67a272b092d079784345d76022040d908077c8d1bfb21371a285fe98fa3af3",
+      "sourceRun": 3,
+      "sourceLogLine": 51,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 214,
+        "reachable": 214,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "drums-miami",
+      "file": "screenshots/drums-miami.png",
+      "sha256": "d167fbf2ada97de448cacb7727fdd649128d38a8d510f070fa18c530e076754e",
+      "sourceRun": 1,
+      "sourceLogLine": 26,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "909 \u00b7 Draft",
+          "Sound \u00b7 BD"
+        ],
+        "controlCount": 217,
+        "reachable": 217,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "cls": "drum-scroll funkybeats-sequencer",
+            "client": 468,
+            "scroll": 768
+          }
+        ],
+        "horizontalClips": [],
+        "pdfPages": [
+          2,
+          15
+        ]
+      }
+    },
+    {
+      "state": "drums-voices-7-11-drum808",
+      "file": "screenshots/drums-voices-7-11-drum808.png",
+      "sha256": "040be39dae47de000c49f7bf600bdd3c5887d28d92b117766f42b0d18dc6d376",
+      "sourceRun": 4,
+      "sourceLogLine": 13,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "808 \u00b7 Draft",
+          "Sound \u00b7 BD"
+        ],
+        "controlCount": 214,
+        "reachable": 214,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "cls": "drum-scroll funkybeats-sequencer",
+            "client": 468,
+            "scroll": 768
+          }
+        ],
+        "horizontalClips": [],
+        "pdfPages": [
+          2,
+          15
+        ]
+      }
+    },
+    {
+      "state": "drums-voices-7-11-drum909",
+      "file": "screenshots/drums-voices-7-11-drum909.png",
+      "sha256": "6c6d160c669c6b6972b91095617c5e155b17f4fd962a67876802606e853762d4",
+      "sourceRun": 3,
+      "sourceLogLine": 52,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 214,
+        "reachable": 214,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "identity",
+      "file": "screenshots/identity.png",
+      "sha256": "03d3673e140499f1511fafe6d9279d2862bd3e7af519f5bce8063934e3bf2d10",
+      "sourceRun": 1,
+      "sourceLogLine": 104,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          749
+        ],
+        "titles": [
+          "Your instrument.A wider view.",
+          "Connect DnBOX"
+        ],
+        "controlCount": 3,
+        "reachable": 3,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "locks-breaks",
+      "file": "screenshots/locks-breaks.png",
+      "sha256": "33b4b582b8ed1d1b76d4ae19dc74dedc43ede4e8af370001c0be45ca599c081e",
+      "sourceRun": 1,
+      "sourceLogLine": 72,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sequence \u00b7 BREAK \u00b7 Draft",
+          "Motion \u00b7 MIAMI Wave"
+        ],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          3,
+          17
+        ]
+      }
+    },
+    {
+      "state": "locks-chicago",
+      "file": "screenshots/locks-chicago.png",
+      "sha256": "c9850c20ea7717dd02473699d1fefde14b0577de91e7742a76f0dfe369a79a6e",
+      "sourceRun": 1,
+      "sourceLogLine": 13,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sequence \u00b7 Bass A / SuperJ6 \u00b7 Draft",
+          "Motion \u00b7 MIAMI Wave"
+        ],
+        "controlCount": 44,
+        "reachable": 44,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 367,
+            "scroll": 395
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 71,
+          "lastRow": 86
+        },
+        "pdfPages": [
+          3,
+          17
+        ]
+      }
+    },
+    {
+      "state": "locks-drum808",
+      "file": "screenshots/locks-drum808.png",
+      "sha256": "d332c6d650ca8739fc86cb3aba92ebf64b54c1bfe0bad44671ccc3a618a0a01c",
+      "sourceRun": 4,
+      "sourceLogLine": 11,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sequence \u00b7 808 \u00b7 Draft",
+          "Motion \u00b7 MIAMI Wave"
+        ],
+        "controlCount": 40,
+        "reachable": 40,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 81,
+          "lastRow": 96
+        },
+        "pdfPages": [
+          3,
+          17
+        ]
+      }
+    },
+    {
+      "state": "locks-drum909",
+      "file": "screenshots/locks-drum909.png",
+      "sha256": "db0b7418cc536536a14b63666de063c815fdfd521c659bd9f57d600f23297f68",
+      "sourceRun": 3,
+      "sourceLogLine": 50,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 42,
+        "reachable": 42,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 83,
+          "lastRow": 98
+        },
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "locks-miami",
+      "file": "screenshots/locks-miami.png",
+      "sha256": "b753fdc8c6cbf41211084384817921efa010ffaa720d42b54cab5eed9f17b564",
+      "sourceRun": 1,
+      "sourceLogLine": 25,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sequence \u00b7 Bass B / SuperJ6 \u00b7 Draft",
+          "Motion \u00b7 MIAMI Wave"
+        ],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          3,
+          17
+        ]
+      }
+    },
+    {
+      "state": "more-menu",
+      "file": "screenshots/more-menu.png",
+      "sha256": "8faea9bdd233c1258ee43fab1fcf34c726a565025947179c65054d077d82571c",
+      "sourceRun": 1,
+      "sourceLogLine": 89,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 181,
+        "reachable": 181,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "native-mix-fx",
+      "file": "screenshots/native-mix-fx.png",
+      "sha256": "aed6d7d3f9a35ca0bbe85e020e18e95b9d4b6ba1c46f6f5c1e88c2d75c73948f",
+      "sourceRun": 1,
+      "sourceLogLine": 101,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Reverb",
+          "Delay",
+          "Part sends",
+          "Tape",
+          "Master"
+        ],
+        "controlCount": 51,
+        "reachable": 51,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "native-mix-levels",
+      "file": "screenshots/native-mix-levels.png",
+      "sha256": "14f9ddf415f014844a5ac88af0e5f4e691775385eae55ac952021728d133dad2",
+      "sourceRun": 1,
+      "sourceLogLine": 98,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Parts",
+          "Master"
+        ],
+        "controlCount": 37,
+        "reachable": 37,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "native-mix-master",
+      "file": "screenshots/native-mix-master.png",
+      "sha256": "7e7a947e723753eb090421b5a3fd29ef74a5bd710256510624def5dba96f689c",
+      "sourceRun": 1,
+      "sourceLogLine": 102,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Master"
+        ],
+        "controlCount": 27,
+        "reachable": 27,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "native-mix-pan",
+      "file": "screenshots/native-mix-pan.png",
+      "sha256": "fd4cf31330631d4069db86c692541ac9fa0ed59b2ffd636d8cb5a8b4593bdba1",
+      "sourceRun": 1,
+      "sourceLogLine": 99,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Parts",
+          "Master"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "native-mix-sends",
+      "file": "screenshots/native-mix-sends.png",
+      "sha256": "4c8d41f81aa3993e34480fdc20f9d8b74b5116176096ddaeb579a6f5e72cb2e4",
+      "sourceRun": 1,
+      "sourceLogLine": 100,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Parts",
+          "Master"
+        ],
+        "controlCount": 42,
+        "reachable": 42,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          6,
+          7,
+          8,
+          16,
+          23
+        ]
+      }
+    },
+    {
+      "state": "native-sound-chicago",
+      "file": "screenshots/native-sound-chicago.png",
+      "sha256": "23282ed25d395ab25791551216b87b3f74948ca24e3253ffd5dd0b8d0d6fff59",
+      "sourceRun": 1,
+      "sourceLogLine": 97,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "CHICAGO \u00b7 A \u00b7 Emulator",
+          "OSCILLATOR",
+          "FILTER 1",
+          "FILTER 2",
+          "ENVELOPE",
+          "AMPLIFIER",
+          "ARPEGGIATOR",
+          "EFFECT"
+        ],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "native-sound-choice-unavailable",
+      "file": "screenshots/native-sound-choice-unavailable.png",
+      "sha256": "4badbad525477de9654116f2932971f3c9c537654ce5335e0f1fb1d5872c1faa",
+      "sourceRun": 1,
+      "sourceLogLine": 96,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 18,
+        "reachable": 18,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "state": "native-sound-miami",
+      "file": "screenshots/native-sound-miami.png",
+      "sha256": "24467ecdf79f6016507a2376cc15803de378da8d5bb230cde111e4a47a0df412",
+      "sourceRun": 1,
+      "sourceLogLine": 95,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "CHICAGO \u00b7 B \u00b7 Emulator",
+          "OSCILLATOR",
+          "FILTER 1",
+          "FILTER 2",
+          "ENVELOPE",
+          "AMPLIFIER",
+          "ARPEGGIATOR",
+          "EFFECT"
+        ],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "original-drum808-0",
+      "file": "screenshots/original-drum808-0.png",
+      "sha256": "41150d3dcae549b9b1288cda369603df92fe9ed03651182ecc7445d2b0b2f14f",
+      "sourceRun": 1,
+      "sourceLogLine": 58,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum808-1",
+      "file": "screenshots/original-drum808-1.png",
+      "sha256": "7001c36b3bc28e693c449b3a3590e502590df08385e1c5d9490ca221c2917702",
+      "sourceRun": 1,
+      "sourceLogLine": 60,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum808-10",
+      "file": "screenshots/original-drum808-10.png",
+      "sha256": "183b2a86dca28fa804cfe9f6776c31c50516f2d3e7350dcab1204c420d8284a3",
+      "sourceRun": 4,
+      "sourceLogLine": 7,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum808-2",
+      "file": "screenshots/original-drum808-2.png",
+      "sha256": "3f047ae20f38e12c540ff9acd64913b3805aa8ab87cf13c101db0224165d361d",
+      "sourceRun": 2,
+      "sourceLogLine": 30,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 20,
+        "reachable": 20,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "original-drum808-3",
+      "file": "screenshots/original-drum808-3.png",
+      "sha256": "a790e8de59dc62243c472e17b5b8df2ffc17bfcc89575acd20ebc7c35c438203",
+      "sourceRun": 2,
+      "sourceLogLine": 32,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 20,
+        "reachable": 20,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "original-drum808-4",
+      "file": "screenshots/original-drum808-4.png",
+      "sha256": "1ded4ad3c7a5d2c5ef882c90d6927356012a8a368b51998e28aa65de9912aef6",
+      "sourceRun": 2,
+      "sourceLogLine": 34,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 20,
+        "reachable": 20,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "original-drum808-5",
+      "file": "screenshots/original-drum808-5.png",
+      "sha256": "4e6c91f7a68c4f4426822449e94c0c23d22266c464ad028f2f9195c1c39570ab",
+      "sourceRun": 2,
+      "sourceLogLine": 36,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 20,
+        "reachable": 20,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "original-drum808-6",
+      "file": "screenshots/original-drum808-6.png",
+      "sha256": "02f7e43b30204cbcd7a48f9f761e49664fcb0e45fb01f81f5dd820a6a0581223",
+      "sourceRun": 2,
+      "sourceLogLine": 38,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 20,
+        "reachable": 20,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "original-drum808-7",
+      "file": "screenshots/original-drum808-7.png",
+      "sha256": "c1315b2e4cb8e5a88e673574e9165cd24607f1c1ae2debb5959cd4a60cebfd8d",
+      "sourceRun": 2,
+      "sourceLogLine": 40,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 20,
+        "reachable": 20,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "original-drum808-8",
+      "file": "screenshots/original-drum808-8.png",
+      "sha256": "6f5ff7ad99a75a34cf798bf05d5f41f965c951f03ae1c11361d5649fd53f0130",
+      "sourceRun": 4,
+      "sourceLogLine": 3,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum808-9",
+      "file": "screenshots/original-drum808-9.png",
+      "sha256": "c77ccc54d78165c896f1a1002a5cf46dd4682e0fd594e2288ee5fa4fdfc80a1e",
+      "sourceRun": 4,
+      "sourceLogLine": 5,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-0",
+      "file": "screenshots/original-drum909-0.png",
+      "sha256": "bf42eb41320dbe255886a8971fc20a62408b9737430adcf88098f9d2667e3268",
+      "sourceRun": 1,
+      "sourceLogLine": 29,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-1",
+      "file": "screenshots/original-drum909-1.png",
+      "sha256": "8917bb3a5df7f94943acf95cd760284d98f153eb19372753478e1aa1ea212a95",
+      "sourceRun": 1,
+      "sourceLogLine": 31,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-10",
+      "file": "screenshots/original-drum909-10.png",
+      "sha256": "2b06355877f14c3b826b368b5961b39aee1335dbb40775660468b799ee40e47d",
+      "sourceRun": 1,
+      "sourceLogLine": 49,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-2",
+      "file": "screenshots/original-drum909-2.png",
+      "sha256": "4281d3c3c79b82f104a4322c0c478856ee00e4b7cb03465854d7ef8ac5843dc8",
+      "sourceRun": 1,
+      "sourceLogLine": 33,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-3",
+      "file": "screenshots/original-drum909-3.png",
+      "sha256": "c3bee08e0025bc958d18edb0c495fe5a8f8f0746e6775036f151fdb4a078b813",
+      "sourceRun": 1,
+      "sourceLogLine": 35,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-4",
+      "file": "screenshots/original-drum909-4.png",
+      "sha256": "1c60c1bdacf031fa46ae593924b4b1bbaa9d652dac3170093307e7e65527e814",
+      "sourceRun": 1,
+      "sourceLogLine": 37,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-5",
+      "file": "screenshots/original-drum909-5.png",
+      "sha256": "89de8d9293ed86fe85954d0c4690147e9aa877db1c3bb78109e23663359654f3",
+      "sourceRun": 1,
+      "sourceLogLine": 39,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-6",
+      "file": "screenshots/original-drum909-6.png",
+      "sha256": "912cf7cb2e95fb9e624146dce9e06a82c310a99df49131591a977eb2c657f3fe",
+      "sourceRun": 1,
+      "sourceLogLine": 41,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-7",
+      "file": "screenshots/original-drum909-7.png",
+      "sha256": "52e45800017d58e280dafef2bb2ab18deb0881584f62954f9ce821c8f6f415aa",
+      "sourceRun": 1,
+      "sourceLogLine": 43,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-8",
+      "file": "screenshots/original-drum909-8.png",
+      "sha256": "df0973132080dc9844e62402760edecd818e39aeaaec3c0ce92c8c60e69ef359",
+      "sourceRun": 1,
+      "sourceLogLine": 45,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "original-drum909-9",
+      "file": "screenshots/original-drum909-9.png",
+      "sha256": "ba6746d90e878f7c5a9d09802ca7138352e12f53bd0a61b7c09c384bede2ecac",
+      "sourceRun": 1,
+      "sourceLogLine": 47,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "pattern-lock-bass-a-cutoff",
+      "file": "screenshots/pattern-lock-bass-a-cutoff.png",
+      "sha256": "c7e75275a367a416778eeda4f035ce3f5a6524a6f05a073326acb44d71868026",
+      "sourceRun": 1,
+      "sourceLogLine": 106,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 762,
+            "scroll": 790
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 71,
+          "lastRow": 86
+        },
+        "pdfPages": [
+          3,
+          17,
+          22
+        ]
+      }
+    },
+    {
+      "state": "pattern-lock-bass-b-cutoff",
+      "file": "screenshots/pattern-lock-bass-b-cutoff.png",
+      "sha256": "74b27378fe3395ecc2a211450f64288b7e276662351ea20077dbceca85276f56",
+      "sourceRun": 4,
+      "sourceLogLine": 17,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 35,
+        "reachable": 35,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          3,
+          17,
+          22
+        ]
+      }
+    },
+    {
+      "state": "pattern-lock-break-level",
+      "file": "screenshots/pattern-lock-break-level.png",
+      "sha256": "b3bb834bd0fd29469539d48d4438e76ee1ef38b6e0cf74837516c73a0321362d",
+      "sourceRun": 4,
+      "sourceLogLine": 20,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 693,
+            "scroll": 1400
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 45,
+          "lastRow": 60
+        },
+        "pdfPages": [
+          11,
+          15
+        ]
+      }
+    },
+    {
+      "state": "patterns-breaks",
+      "file": "screenshots/patterns-breaks.png",
+      "sha256": "978d5eda2f02d8f2a9585c8fd6e0917c19cf8e59e75f52d88230e246f433a844",
+      "sourceRun": 1,
+      "sourceLogLine": 71,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "BREAK"
+        ],
+        "controlCount": 52,
+        "reachable": 52,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          9,
+          19
+        ]
+      }
+    },
+    {
+      "state": "patterns-chicago",
+      "file": "screenshots/patterns-chicago.png",
+      "sha256": "0403536c6f1c15c5f2e80b6242476a8fc4ccc846f6c4b829bcf81ab1885745ef",
+      "sourceRun": 1,
+      "sourceLogLine": 12,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Bass A"
+        ],
+        "controlCount": 52,
+        "reachable": 52,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          9,
+          19
+        ]
+      }
+    },
+    {
+      "state": "patterns-drum808",
+      "file": "screenshots/patterns-drum808.png",
+      "sha256": "c260f21775f1c5103dbec1efe69ce99e43ed2d3f320ded3b3857cda5844009a2",
+      "sourceRun": 4,
+      "sourceLogLine": 10,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "808"
+        ],
+        "controlCount": 52,
+        "reachable": 52,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          9,
+          19
+        ]
+      }
+    },
+    {
+      "state": "patterns-drum909",
+      "file": "screenshots/patterns-drum909.png",
+      "sha256": "2326536947f74be495a15fbef31b814225bd339be644d6f8e93f7d1f92ce3058",
+      "sourceRun": 3,
+      "sourceLogLine": 49,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 52,
+        "reachable": 52,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "patterns-miami",
+      "file": "screenshots/patterns-miami.png",
+      "sha256": "5b52876e674a137d64040ca272721f47b554027a13646bc73ca4b90989a5db2b",
+      "sourceRun": 1,
+      "sourceLogLine": 24,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Bass B"
+        ],
+        "controlCount": 52,
+        "reachable": 52,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          9,
+          19
+        ]
+      }
+    },
+    {
+      "state": "projects",
+      "file": "screenshots/projects.png",
+      "sha256": "f9ff15018774646da50442108608dd0573c7e58ac5ac704f91c6d9fe7d8014d9",
+      "sourceRun": 1,
+      "sourceLogLine": 79,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Projects",
+          "Project backup",
+          "Original presets",
+          "MIDI for a DAW",
+          "Current session"
+        ],
+        "controlCount": 27,
+        "reachable": 27,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          12,
+          20
+        ]
+      }
+    },
+    {
+      "state": "projects-original-editor",
+      "file": "screenshots/projects-original-editor.png",
+      "sha256": "dbf8e2bdd996123ad38653d91a95698d8ef28654b6ec89875a6ff77ed5c9202f",
+      "sourceRun": 1,
+      "sourceLogLine": 82,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Original presets"
+        ],
+        "controlCount": 6,
+        "reachable": 6,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          12,
+          20
+        ]
+      }
+    },
+    {
+      "state": "projects-original-empty",
+      "file": "screenshots/projects-original-empty.png",
+      "sha256": "15532a6c3e9d30c6602a86549deec3f416c248d1aede9b33e3283ca3661e138b",
+      "sourceRun": 1,
+      "sourceLogLine": 80,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Original presets"
+        ],
+        "controlCount": 3,
+        "reachable": 3,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          12,
+          20
+        ]
+      }
+    },
+    {
+      "state": "projects-original-invalid",
+      "file": "screenshots/projects-original-invalid.png",
+      "sha256": "c3885728ee1ac7f107a87956c692a1dcd364815c5b4e6098b295ecfa9ba97094",
+      "sourceRun": 1,
+      "sourceLogLine": 81,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Original presets"
+        ],
+        "controlCount": 3,
+        "reachable": 3,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          12,
+          20
+        ]
+      }
+    },
+    {
+      "state": "projects-original-kept",
+      "file": "screenshots/projects-original-kept.png",
+      "sha256": "4e79e0bd5857b920ff347e174140c77e9f963791cf7a1f7e2d1ef28d4379a735",
+      "sourceRun": 1,
+      "sourceLogLine": 83,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Projects",
+          "Project backup",
+          "Original presets",
+          "MIDI for a DAW",
+          "Current session"
+        ],
+        "controlCount": 28,
+        "reachable": 28,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          12,
+          20
+        ]
+      }
+    },
+    {
+      "state": "review-dialog",
+      "file": "screenshots/review-dialog.png",
+      "sha256": "fe28c1f30e2504c2ca2a44cc91e200f7ebf93aaf5c5094bbdd21ce1877b5a0bf",
+      "sourceRun": 1,
+      "sourceLogLine": 87,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Local changes"
+        ],
+        "controlCount": 2,
+        "reachable": 2,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "review-discard-confirm",
+      "file": "screenshots/review-discard-confirm.png",
+      "sha256": "919d8447004629e9a140f0b764d2cd0bf8d2671615b0f8592bb3d99382719f77",
+      "sourceRun": 1,
+      "sourceLogLine": 88,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Discard local draft?"
+        ],
+        "controlCount": 2,
+        "reachable": 2,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "state": "roll-breaks",
+      "file": "screenshots/roll-breaks.png",
+      "sha256": "820f70e7acf19e52d79c05e777b0818b11fe0840e073a74976cafd8ada01b170",
+      "sourceRun": 1,
+      "sourceLogLine": 68,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Starting breaks"
+        ],
+        "controlCount": 49,
+        "reachable": 49,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          11
+        ]
+      }
+    },
+    {
+      "state": "roll-chicago",
+      "file": "screenshots/roll-chicago.png",
+      "sha256": "dd5eb2c517d8aafe656a09730079495d9e410c5f32f405c97a5aa259ee93202a",
+      "sourceRun": 1,
+      "sourceLogLine": 3,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 25,
+        "reachable": 25,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 762,
+            "scroll": 790
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 71,
+          "lastRow": 86
+        },
+        "pdfPages": [
+          1,
+          2,
+          14,
+          15,
+          21
+        ]
+      }
+    },
+    {
+      "state": "roll-drum808",
+      "file": "screenshots/roll-drum808.png",
+      "sha256": "9720e22a3f056b570f31e6bea58e141c44ea0c0bac94cfa85edab0b2c475a74e",
+      "sourceRun": 1,
+      "sourceLogLine": 56,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 21,
+        "reachable": 21,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 81,
+          "lastRow": 96
+        },
+        "pdfPages": [
+          1,
+          2,
+          14,
+          15,
+          21
+        ]
+      }
+    },
+    {
+      "state": "roll-drum909",
+      "file": "screenshots/roll-drum909.png",
+      "sha256": "ebaeafb21b8eed19299f0ddc0c144ecc2f51c56ac75f0ffbb5f31886b0bf9c43",
+      "sourceRun": 1,
+      "sourceLogLine": 27,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 23,
+        "reachable": 23,
+        "blocked": [],
+        "nestedScroll": [
+          {
+            "tag": "DIV",
+            "id": "roll-scroll",
+            "cls": "",
+            "client": 762,
+            "scroll": 790
+          }
+        ],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 83,
+          "lastRow": 98
+        },
+        "pdfPages": [
+          1,
+          2,
+          14,
+          15,
+          21
+        ]
+      }
+    },
+    {
+      "state": "roll-miami",
+      "file": "screenshots/roll-miami.png",
+      "sha256": "de6dcf8e75beb8c2b6d8b6a0a6df560ef1502a135df167b11b24e05b31589642",
+      "sourceRun": 1,
+      "sourceLogLine": 15,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "roll": {
+          "completeRows": 16,
+          "clippedLabels": [],
+          "row": 16,
+          "paneHeight": 257,
+          "firstRow": 59,
+          "lastRow": 74
+        },
+        "pdfPages": [
+          1,
+          2,
+          14,
+          15,
+          21
+        ]
+      }
+    },
+    {
+      "state": "song-empty",
+      "file": "screenshots/song-empty.png",
+      "sha256": "8f00c882f124fae744667ce4d110d98eca3b08c1aec0bf2a956328103e8319d8",
+      "sourceRun": 1,
+      "sourceLogLine": 84,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Song \u00b7 Draft"
+        ],
+        "controlCount": 18,
+        "reachable": 18,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          10
+        ]
+      }
+    },
+    {
+      "state": "song-row",
+      "file": "screenshots/song-row.png",
+      "sha256": "17b726397bbbaec451a9110bb64a43f6bd4a4dce87538f2f881a3d6b0888c086",
+      "sourceRun": 1,
+      "sourceLogLine": 86,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Song \u00b7 Draft"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          10
+        ]
+      }
+    },
+    {
+      "state": "sound-breaks",
+      "file": "screenshots/sound-breaks.png",
+      "sha256": "1e90361fcf3dd600a83cd5ed1ca1c623ea4466fd6860274c3dd8322c07fb501e",
+      "sourceRun": 1,
+      "sourceLogLine": 70,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 BREAK"
+        ],
+        "controlCount": 22,
+        "reachable": 22,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          11
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-CHICAGO",
+      "file": "screenshots/sound-chicago-CHICAGO.png",
+      "sha256": "77b8159647f93e2165e2be67434fdaef311388b327e6908f2b7095b82a0bdb0f",
+      "sourceRun": 1,
+      "sourceLogLine": 8,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass A / CHICAGO",
+          "OSCILLATOR",
+          "FILTER 1",
+          "FILTER 2",
+          "ENVELOPE",
+          "AMPLIFIER",
+          "ARPEGGIATOR",
+          "EFFECT"
+        ],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-JUNO",
+      "file": "screenshots/sound-chicago-JUNO.png",
+      "sha256": "53c8f58abec46e5c2e00a46deb945401b154575b9c5665da7933dfe63c447f9d",
+      "sourceRun": 1,
+      "sourceLogLine": 93,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass A / JUNO",
+          "OSCILLATOR",
+          "FILTER",
+          "ENVELOPE",
+          "LFO/CHORUS"
+        ],
+        "controlCount": 34,
+        "reachable": 34,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-MIAMI",
+      "file": "screenshots/sound-chicago-MIAMI.png",
+      "sha256": "caed1005e1e7f12704ee4783ca44f3b2a7ea31bc8aeb475d4d9c28b8ec39947a",
+      "sourceRun": 1,
+      "sourceLogLine": 9,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass A / MIAMI",
+          "CARRIER",
+          "XMOD",
+          "FILTER",
+          "WOBBLE",
+          "OUTPUT"
+        ],
+        "controlCount": 34,
+        "reachable": 34,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-SuperJ6",
+      "file": "screenshots/sound-chicago-SuperJ6.png",
+      "sha256": "82ff6f15c06d4525521f6e3751635fb4e8a6a121bee892a47b8edd7deb49ed6d",
+      "sourceRun": 1,
+      "sourceLogLine": 11,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass A / SuperJ6",
+          "PWM String Pad"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-Synth One",
+      "file": "screenshots/sound-chicago-Synth One.png",
+      "sha256": "ba0c7112a3dbe72f2b95abbc80ec4283a691dd773be88dcd211e64aee78e75a1",
+      "sourceRun": 1,
+      "sourceLogLine": 10,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass A / Synth One",
+          "INIT \u00b7 source values",
+          "Amplitude envelope",
+          "Filter envelope"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-superj6-import-complete",
+      "file": "screenshots/sound-chicago-superj6-import-complete.png",
+      "sha256": "8fe4855aac624cc07b39b9627f60bca3038576c3df2c318627868eaa21101557",
+      "sourceRun": 1,
+      "sourceLogLine": 114,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass A / SuperJ6",
+          "Local <1>"
+        ],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-superj6-import-partial",
+      "file": "screenshots/sound-chicago-superj6-import-partial.png",
+      "sha256": "e8c8833a4d864fb4388dc44749580328d03d635a29ff6b5b12aaf6aed2d3908b",
+      "sourceRun": 1,
+      "sourceLogLine": 115,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass A / SuperJ6",
+          "Local <2>"
+        ],
+        "controlCount": 25,
+        "reachable": 25,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "state": "sound-chicago-synth-one-file",
+      "file": "screenshots/sound-chicago-synth-one-file.png",
+      "sha256": "b5f397f9546bae95807c844898ddc59883f7844ab2568657902c13ba62566428",
+      "sourceRun": 1,
+      "sourceLogLine": 113,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Synth One preset files \u00b7 Bass A"
+        ],
+        "controlCount": 28,
+        "reachable": 28,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "state": "sound-drum808-0",
+      "file": "screenshots/sound-drum808-0.png",
+      "sha256": "db97ce10f083cbd6d7942ad0e2eb2b73f8ca7681d76063a010d07edcf93399ea",
+      "sourceRun": 1,
+      "sourceLogLine": 57,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum808-1",
+      "file": "screenshots/sound-drum808-1.png",
+      "sha256": "9542e0f73ea20bda684cd73ff5f794776434e41432c51e979f256a6a8650306b",
+      "sourceRun": 1,
+      "sourceLogLine": 59,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum808-10",
+      "file": "screenshots/sound-drum808-10.png",
+      "sha256": "581565b1ab1c052dd4a55388a919dd1b44ae9aba493ffdaa43b22f8c363e5360",
+      "sourceRun": 4,
+      "sourceLogLine": 6,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum808-2",
+      "file": "screenshots/sound-drum808-2.png",
+      "sha256": "0d2016541277e79717b7140ce986b6fdd3c8ae8320ab71e6116d7ba6d8a0e078",
+      "sourceRun": 1,
+      "sourceLogLine": 61,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum808-3",
+      "file": "screenshots/sound-drum808-3.png",
+      "sha256": "43aab89e20907c9ed3abba80007d256151cc7f36a7953a87252b1c419853db29",
+      "sourceRun": 2,
+      "sourceLogLine": 31,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 34,
+        "reachable": 34,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "sound-drum808-4",
+      "file": "screenshots/sound-drum808-4.png",
+      "sha256": "901a230b485262fd28c02d27d2933fbc2120156ead99f021b3c923220bac7a37",
+      "sourceRun": 2,
+      "sourceLogLine": 33,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 34,
+        "reachable": 34,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "sound-drum808-5",
+      "file": "screenshots/sound-drum808-5.png",
+      "sha256": "649527b1d44a976daffa26a2eee42b71e8ae46a59db75b5b6301a5f24999b415",
+      "sourceRun": 2,
+      "sourceLogLine": 35,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 34,
+        "reachable": 34,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "sound-drum808-6",
+      "file": "screenshots/sound-drum808-6.png",
+      "sha256": "84d7500693e263992a9a4f76f39b010ff77fb63a18a28d2bc8af33584d478781",
+      "sourceRun": 2,
+      "sourceLogLine": 37,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 37,
+        "reachable": 37,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "sound-drum808-7",
+      "file": "screenshots/sound-drum808-7.png",
+      "sha256": "7ea045ad21dd8f2a2700f178b01fbf6f35cb87932f65af6f47a9519dfb8313d1",
+      "sourceRun": 2,
+      "sourceLogLine": 39,
+      "geometryAvailability": "partial; stdout fields only",
+      "metrics": {
+        "controlCount": 31,
+        "reachable": 31,
+        "blockedCount": 0,
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "roll": null,
+        "horizontalClips": null,
+        "nestedScroll": null
+      }
+    },
+    {
+      "state": "sound-drum808-8",
+      "file": "screenshots/sound-drum808-8.png",
+      "sha256": "0fabc282a9198005f6f0f05809599010deaf6f8995b74ec9024989d2d3a170f3",
+      "sourceRun": 4,
+      "sourceLogLine": 2,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum808-9",
+      "file": "screenshots/sound-drum808-9.png",
+      "sha256": "2c09a9a3ac16a1411d3986ba35fe481117ea8dedcacd3ec5bc9aa5e9a68779d9",
+      "sourceRun": 4,
+      "sourceLogLine": 4,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 808"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-0",
+      "file": "screenshots/sound-drum909-0.png",
+      "sha256": "cd9fc86901d3135be00aedab344810dc723c1c9a672f3ea871abd5fff7a500b7",
+      "sourceRun": 1,
+      "sourceLogLine": 28,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 39,
+        "reachable": 39,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-1",
+      "file": "screenshots/sound-drum909-1.png",
+      "sha256": "52a55fa3bd8f18bc5b9209f460352b5977b4c44bd0702f659404a003e7e33ba7",
+      "sourceRun": 1,
+      "sourceLogLine": 30,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-10",
+      "file": "screenshots/sound-drum909-10.png",
+      "sha256": "24868a3c2ddd2dea91bce0215a1b585fcd5a42f19f4d39ec425dccc375798b5e",
+      "sourceRun": 1,
+      "sourceLogLine": 48,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-2",
+      "file": "screenshots/sound-drum909-2.png",
+      "sha256": "cf5b6c31ef671aa2cd8eb2873b244f1dbf68fd31b61126b52473b7e238c563fa",
+      "sourceRun": 1,
+      "sourceLogLine": 32,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-3",
+      "file": "screenshots/sound-drum909-3.png",
+      "sha256": "42312af4c3223179af98c5e5b3cd3e9479617fd9ae9aa94ceb0a7be257fb9133",
+      "sourceRun": 1,
+      "sourceLogLine": 34,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-4",
+      "file": "screenshots/sound-drum909-4.png",
+      "sha256": "68558b48771a4cd7be8c480d46ce7c67ab1132aed1fb0722c68b921f14b9a54f",
+      "sourceRun": 1,
+      "sourceLogLine": 36,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-5",
+      "file": "screenshots/sound-drum909-5.png",
+      "sha256": "68f41c59f95942ea19bb9bfa63f9a943f9f4ccd6be6d17cb2e4fdd4e55342a98",
+      "sourceRun": 1,
+      "sourceLogLine": 38,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 27,
+        "reachable": 27,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-6",
+      "file": "screenshots/sound-drum909-6.png",
+      "sha256": "e41d2cfa835f230a962b9135b903ee6a1561e6de7a2ea2bf5953c4106a1f6976",
+      "sourceRun": 1,
+      "sourceLogLine": 40,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-7",
+      "file": "screenshots/sound-drum909-7.png",
+      "sha256": "2297b915d4c5087dd7a4243701f4b13d5e7f15faeb1c8ad3dbf40357a3d711f8",
+      "sourceRun": 1,
+      "sourceLogLine": 42,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-8",
+      "file": "screenshots/sound-drum909-8.png",
+      "sha256": "17b0b749d73c8a397fc216c1c2d6c945586bd1e8517e5f9bae776c5a085a61ce",
+      "sourceRun": 1,
+      "sourceLogLine": 44,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-drum909-9",
+      "file": "screenshots/sound-drum909-9.png",
+      "sha256": "8d6764c7df04e9dfe78ff02fae31966b466063e5c35d17eaf693fe0013e57c13",
+      "sourceRun": 1,
+      "sourceLogLine": 46,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 909"
+        ],
+        "controlCount": 30,
+        "reachable": 30,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          18
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-CHICAGO",
+      "file": "screenshots/sound-miami-CHICAGO.png",
+      "sha256": "72062da356d4c4190a9bb11d197ebb82239c693d8ca83809a3467fc1df56fd29",
+      "sourceRun": 1,
+      "sourceLogLine": 20,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass B / CHICAGO",
+          "OSCILLATOR",
+          "FILTER 1",
+          "FILTER 2",
+          "ENVELOPE",
+          "AMPLIFIER",
+          "ARPEGGIATOR",
+          "EFFECT"
+        ],
+        "controlCount": 38,
+        "reachable": 38,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-JUNO",
+      "file": "screenshots/sound-miami-JUNO.png",
+      "sha256": "19895b89b4bf1053b0a20bc2eadb7b62642e62d001c8e4bca85a3c31a8835673",
+      "sourceRun": 1,
+      "sourceLogLine": 94,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass B / JUNO",
+          "OSCILLATOR",
+          "FILTER",
+          "ENVELOPE",
+          "LFO/CHORUS"
+        ],
+        "controlCount": 34,
+        "reachable": 34,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-MIAMI",
+      "file": "screenshots/sound-miami-MIAMI.png",
+      "sha256": "c43985b2e41034b1c49cc3388487a679bb038243e7a8ae8299c5a239991ec8f9",
+      "sourceRun": 1,
+      "sourceLogLine": 21,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass B / MIAMI",
+          "CARRIER",
+          "XMOD",
+          "FILTER",
+          "WOBBLE",
+          "OUTPUT"
+        ],
+        "controlCount": 34,
+        "reachable": 34,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-SuperJ6",
+      "file": "screenshots/sound-miami-SuperJ6.png",
+      "sha256": "94d994cbdb712685bd73e8c506d2092a1d25744d2f9ef46fac60c9f3684ee315",
+      "sourceRun": 1,
+      "sourceLogLine": 23,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass B / SuperJ6",
+          "PWM String Pad"
+        ],
+        "controlCount": 33,
+        "reachable": 33,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-Synth One",
+      "file": "screenshots/sound-miami-Synth One.png",
+      "sha256": "c269bfb6009b9b3a9ad5dc25cff5cad68ea9a1095fa0f2f91d6958246c8e36e7",
+      "sourceRun": 1,
+      "sourceLogLine": 22,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass B / Synth One",
+          "INIT \u00b7 source values",
+          "Amplitude envelope",
+          "Filter envelope"
+        ],
+        "controlCount": 19,
+        "reachable": 19,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          4,
+          5,
+          24
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-superj6-import-complete",
+      "file": "screenshots/sound-miami-superj6-import-complete.png",
+      "sha256": "f1e0b6b98543d69ac658608cb6fb80a11445dd6841213911deff6362924185c8",
+      "sourceRun": 1,
+      "sourceLogLine": 117,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass B / SuperJ6",
+          "Local <1>"
+        ],
+        "controlCount": 36,
+        "reachable": 36,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-superj6-import-partial",
+      "file": "screenshots/sound-miami-superj6-import-partial.png",
+      "sha256": "c2e43b2c38f5e4d2a31b96d4d6364d88a9aa8a8061492dd37d0f41f1a5208c6e",
+      "sourceRun": 1,
+      "sourceLogLine": 118,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Sound \u00b7 Bass B / SuperJ6",
+          "Local <2>"
+        ],
+        "controlCount": 25,
+        "reachable": 25,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "state": "sound-miami-synth-one-file",
+      "file": "screenshots/sound-miami-synth-one-file.png",
+      "sha256": "52bee6d15fa386a817527a52788814dffbc43bac620233e23e14d609a300518d",
+      "sourceRun": 1,
+      "sourceLogLine": 116,
+      "geometryAvailability": "full saved probe row",
+      "metrics": {
+        "viewport": [
+          844,
+          390
+        ],
+        "body": [
+          844,
+          844,
+          390
+        ],
+        "titles": [
+          "Synth One preset files \u00b7 Bass B"
+        ],
+        "controlCount": 28,
+        "reachable": 28,
+        "blocked": [],
+        "nestedScroll": [],
+        "horizontalClips": [],
+        "pdfPages": [
+          5
+        ]
+      }
+    }
+  ],
+  "selectedCount": 127,
+  "missing": {},
+  "selectedByRun": {
+    "1": 98,
+    "2": 11,
+    "3": 5,
+    "4": 13
+  },
+  "uniqueImageDigests": 127
+}

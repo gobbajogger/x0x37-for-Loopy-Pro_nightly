@@ -1,0 +1,24 @@
+127.0.0.1 - - [21/Nov/2026 15:44:06] "GET /remote/identity/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2026 15:44:07] "GET /site.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2026 15:44:07] "GET /remote/identity/app.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2026 15:44:07] "GET /assets/BarlowSemiCondensed-Medium.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2026 15:44:07] "GET /assets/BarlowSemiCondensed-Bold.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2026 15:44:07] "GET /remote/identity/remote.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2026 15:44:09] "GET /remote/device/vendor/codec.mjs HTTP/1.1" 200 -
+{
+  "inputFiles": 31,
+  "chromium": "151.0.7922.34",
+  "status": "Firmware replied: X0X DEV",
+  "exchanges": [
+    {
+      "request_hex": "f07d464c01f7",
+      "editor_deferred": false,
+      "reply_hex": "f07d464c0158305820444556000000004000005853470130f7"
+    },
+    {
+      "request_hex": "f07d444e0200000000005b000000000000000100000000000000000000000000000000000000000000000000000000000000f7",
+      "editor_deferred": true,
+      "reply_hex": ""
+    }
+  ]
+}

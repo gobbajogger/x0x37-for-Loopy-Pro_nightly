@@ -1,0 +1,119 @@
+Landscape evidence: /workspace/scratch/9e49eae90574/nightly/.output/landscape-evidence-kms918gy
+{"files":302,"output":"/workspace/scratch/9e49eae90574/nightly/.output/landscape-site-yaisimu2","emulator":true,"published":false,"firmwareWrites":false,"catalogMutations":[]}
+roll-chicago 25 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 71, 'lastRow': 86}
+bass-chicago-gate 38 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 71, 'lastRow': 86}
+bass-chicago-slide 38 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 71, 'lastRow': 86}
+bass-chicago-accent 38 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 71, 'lastRow': 86}
+bass-chicago-release 38 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 71, 'lastRow': 86}
+sound-chicago-CHICAGO 38 0 [844, 844, 390] None
+sound-chicago-MIAMI 34 0 [844, 844, 390] None
+sound-chicago-Synth One 19 0 [844, 844, 390] None
+sound-chicago-SuperJ6 33 0 [844, 844, 390] None
+patterns-chicago 52 0 [844, 844, 390] None
+locks-chicago 44 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 71, 'lastRow': 86}
+drums-chicago 217 0 [844, 844, 390] None
+roll-miami 19 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 59, 'lastRow': 74}
+bass-miami-gate 35 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 59, 'lastRow': 74}
+bass-miami-slide 35 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 59, 'lastRow': 74}
+bass-miami-accent 35 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 59, 'lastRow': 74}
+bass-miami-release 35 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 59, 'lastRow': 74}
+sound-miami-CHICAGO 38 0 [844, 844, 390] None
+sound-miami-MIAMI 34 0 [844, 844, 390] None
+sound-miami-Synth One 19 0 [844, 844, 390] None
+sound-miami-SuperJ6 33 0 [844, 844, 390] None
+patterns-miami 52 0 [844, 844, 390] None
+locks-miami 38 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 59, 'lastRow': 74}
+drums-miami 217 0 [844, 844, 390] None
+roll-drum909 23 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 83, 'lastRow': 98}
+sound-drum909-0 39 0 [844, 844, 390] None
+original-drum909-0 19 0 [844, 844, 390] None
+sound-drum909-1 36 0 [844, 844, 390] None
+original-drum909-1 19 0 [844, 844, 390] None
+sound-drum909-2 33 0 [844, 844, 390] None
+original-drum909-2 19 0 [844, 844, 390] None
+sound-drum909-3 33 0 [844, 844, 390] None
+original-drum909-3 19 0 [844, 844, 390] None
+sound-drum909-4 33 0 [844, 844, 390] None
+original-drum909-4 19 0 [844, 844, 390] None
+sound-drum909-5 27 0 [844, 844, 390] None
+original-drum909-5 19 0 [844, 844, 390] None
+sound-drum909-6 30 0 [844, 844, 390] None
+original-drum909-6 19 0 [844, 844, 390] None
+sound-drum909-7 30 0 [844, 844, 390] None
+original-drum909-7 19 0 [844, 844, 390] None
+sound-drum909-8 30 0 [844, 844, 390] None
+original-drum909-8 19 0 [844, 844, 390] None
+sound-drum909-9 30 0 [844, 844, 390] None
+original-drum909-9 19 0 [844, 844, 390] None
+sound-drum909-10 30 0 [844, 844, 390] None
+original-drum909-10 19 0 [844, 844, 390] None
+CASE ERROR drum909 Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="Return to Sound", exact=True)
+    - locator resolved to <button type="button" data-drum-return="">Return to Sound</button>
+  - attempting click action
+    
+roll-drum808 21 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 81, 'lastRow': 96}
+sound-drum808-0 36 0 [844, 844, 390] None
+original-drum808-0 19 0 [844, 844, 390] None
+sound-drum808-1 36 0 [844, 844, 390] None
+original-drum808-1 19 0 [844, 844, 390] None
+sound-drum808-2 33 0 [844, 844, 390] None
+CASE ERROR drum808 Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+roll-breaks 49 0 [844, 844, 390] None
+break-notes 19 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 54, 'lastRow': 69}
+sound-breaks 22 0 [844, 844, 390] None
+patterns-breaks 52 0 [844, 844, 390] None
+locks-breaks 36 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 59, 'lastRow': 74}
+drums-breaks 217 0 [844, 844, 390] None
+draft-mix-levels 48 0 [844, 844, 390] None
+draft-mix-pan 44 0 [844, 844, 390] None
+draft-mix-sends 53 0 [844, 844, 390] None
+draft-mix-fx 62 0 [844, 844, 390] None
+draft-mix-master 38 0 [844, 844, 390] None
+projects 27 0 [844, 844, 390] None
+projects-original-empty 3 0 [844, 844, 390] None
+projects-original-invalid 3 0 [844, 844, 390] None
+projects-original-editor 6 0 [844, 844, 390] None
+projects-original-kept 28 0 [844, 844, 390] None
+song-empty 18 0 [844, 844, 390] None
+all-part-patterns 180 0 [844, 844, 390] None
+song-row 33 0 [844, 844, 390] None
+review-dialog 2 0 [844, 844, 390] None
+review-discard-confirm 2 0 [844, 844, 390] None
+more-menu 181 0 [844, 844, 390] None
+connect-feedback 1 0 [844, 844, 390] None
+draft-invalid 1 0 [844, 844, 390] None
+draft-import 2 0 [844, 844, 390] None
+sound-chicago-JUNO 34 0 [844, 844, 390] None
+sound-miami-JUNO 34 0 [844, 844, 390] None
+native-sound-miami 38 0 [844, 844, 390] None
+native-sound-choice-unavailable 18 0 [844, 844, 390] None
+native-sound-chicago 38 0 [844, 844, 390] None
+native-mix-levels 37 0 [844, 844, 390] None
+native-mix-pan 33 0 [844, 844, 390] None
+native-mix-sends 42 0 [844, 844, 390] None
+native-mix-fx 51 0 [844, 844, 390] None
+native-mix-master 27 0 [844, 844, 390] None
+device 17 0 [844, 844, 1024] None
+identity 3 0 [844, 844, 749] None
+break-chance-authored 36 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 45, 'lastRow': 60}
+pattern-lock-bass-a-cutoff 38 0 [844, 844, 390] {'completeRows': 16, 'clippedLabels': [], 'row': 16, 'paneHeight': 257, 'firstRow': 71, 'lastRow': 86}
+CASE ERROR authored pattern locks Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-engine=\"miami\"]")
+    - locator resolved to <button type="button" class="engine" data-engine="miami" aria-pressed="false">…</button>
+  - attempting click action
+    -
+sound-chicago-synth-one-file 28 0 [844, 844, 390] None
+sound-chicago-superj6-import-complete 36 0 [844, 844, 390] None
+sound-chicago-superj6-import-partial 25 0 [844, 844, 390] None
+sound-miami-synth-one-file 28 0 [844, 844, 390] None
+sound-miami-superj6-import-complete 36 0 [844, 844, 390] None
+sound-miami-superj6-import-partial 25 0 [844, 844, 390] None
+844×390 landscape {"browser": "151.0.7922.34", "count": 98, "failures": [["drum909", "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"button\", name=\"Return to Sound\", exact=True)\n    - locator resolved to <button type=\"button\" data-drum-return=\"\">Return to Sound</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n"], ["drum808", "Page.screenshot: Timeout 30000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n"], ["authored pattern locks", "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"[data-engine=\\\"miami\\\"]\")\n    - locator resolved to <button type=\"button\" class=\"engine\" data-engine=\"miami\" aria-pressed=\"false\">\u2026</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n"], ["coverage", ["drums-accent-drum808", "drums-accent-drum909", "drums-drum808", "drums-drum909", "drums-voices-7-11-drum808", "drums-voices-7-11-drum909", "locks-drum808", "locks-drum909", "original-drum808-10", "original-drum808-2", "original-drum808-3", "original-drum808-4", "original-drum808-5", "original-drum808-6", "original-drum808-7", "original-drum808-8", "original-drum808-9", "pattern-lock-bass-b-cutoff", "pattern-lock-break-level", "patterns-drum808", "patterns-drum909", "sound-drum808-10", "sound-drum808-3", "sound-drum808-4", "sound-drum808-5", "sound-drum808-6", "sound-drum808-7", "sound-drum808-8", "sound-drum808-9"], []]], "pageErrors": [], "enabledControlPresentations": 3702, "reachablePresentations": 3702, "manifestSha256": "f179e371d8276d712b79fb1b3f11363a345cf9ae595d347d73d979b75bae94f6", "kernelSha256": "9ad1ab9c533ccda4b506a0b0cc281de50af3dcd57370ffa916a5174277cbdbd0"}

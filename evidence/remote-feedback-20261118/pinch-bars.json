@@ -1,0 +1,57 @@
+{
+  "type": "Remote local Draft viewport",
+  "traceSource": "ffd31a735acc5721d1f90a30fc1ceb283aad6fc5",
+  "trace": {
+    "sampleRate": 44100,
+    "endSample": 88200,
+    "microsecondsPerQuarter": 500000,
+    "timeSignatures": []
+  },
+  "displayGrid": {
+    "beatsPerBar": 4,
+    "capturedBars": 1,
+    "pinchBars": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "sourceLimit": "Unrecorded time has a ruler and shading. Notes, lane edits, file identities and playback remain bounded by the source trace.",
+  "browser": {
+    "engine": "sandboxed Playwright Chromium",
+    "version": "151.0.7922.34",
+    "viewport": [
+      844,
+      390
+    ],
+    "input": "CDP touch with two real browser pointer contacts",
+    "observedBarSequence": [
+      1,
+      2,
+      4,
+      8,
+      4,
+      2,
+      1,
+      2
+    ],
+    "unrecordedTapDragProducedEdits": false,
+    "twoFingerVerticalPanPixels": 20,
+    "sourceNoteIdsAndSampleBoundsPreserved": true,
+    "wideDraftSaveOpen": true
+  },
+  "draftCodec": {
+    "legacyQuarterStepValuesChecked": 13,
+    "additionalViewportScales": [
+      0.125,
+      0.25,
+      0.5
+    ]
+  },
+  "components": [
+    "tests/product-remote/funkybeats-browser.py:gesture_navigation",
+    "tests/product-remote/gesture-navigation.test.mjs",
+    "tests/product-workspace/draft-file.test.mjs"
+  ]
+}

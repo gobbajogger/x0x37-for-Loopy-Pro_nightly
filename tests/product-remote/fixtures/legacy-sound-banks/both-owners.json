@@ -1,0 +1,169 @@
+{
+  "schema": "dnbox-local-workspace-draft/1",
+  "kind": "local-preview-only",
+  "identity": {
+    "trace": "67e1e9e48264a79c1e47dd760e1e0e898b65796041a1489b88d724789e5e3a55",
+    "catalog": "5852d63f7f634b3d430082c0f8f3d8cd8451dc4ec31302baf00000cd5b0028c0",
+    "components": "2882a2af257df5f3c4ddfe261e839da7304203522d7905d00b74dd0d74b5d507",
+    "source-sounds": "a15c137f94b3a2e722ec80f6c720ee988da08d86b78cfe90de7a142e0985dfb7"
+  },
+  "notes": [
+    {
+      "id": "n0",
+      "track": "drum909",
+      "note": 36,
+      "velocity": 88,
+      "channel": 9,
+      "start": 0,
+      "end": 0,
+      "sourceOrder": 0,
+      "pulse": true
+    },
+    {
+      "id": "n1",
+      "track": "chicago",
+      "note": 48,
+      "velocity": 93,
+      "channel": 1,
+      "start": 0,
+      "end": 8268,
+      "sourceOrder": 2,
+      "pulse": false
+    },
+    {
+      "id": "n2",
+      "track": "drum808",
+      "note": 38,
+      "velocity": 88,
+      "channel": 10,
+      "start": 11025,
+      "end": 11025,
+      "sourceOrder": 4,
+      "pulse": true
+    },
+    {
+      "id": "n3",
+      "track": "miami",
+      "note": 60,
+      "velocity": 81,
+      "channel": 2,
+      "start": 11025,
+      "end": 13781,
+      "sourceOrder": 6,
+      "pulse": false
+    },
+    {
+      "id": "n4",
+      "track": "drum909",
+      "note": 36,
+      "velocity": 88,
+      "channel": 9,
+      "start": 22050,
+      "end": 22050,
+      "sourceOrder": 8,
+      "pulse": true
+    },
+    {
+      "id": "n5",
+      "track": "chicago",
+      "note": 55,
+      "velocity": 117,
+      "channel": 1,
+      "start": 22050,
+      "end": 28444,
+      "sourceOrder": 10,
+      "pulse": false
+    },
+    {
+      "id": "n6",
+      "track": "chicago",
+      "note": 57,
+      "velocity": 100,
+      "channel": 1,
+      "start": 27562,
+      "end": 30318,
+      "sourceOrder": 11,
+      "pulse": false
+    },
+    {
+      "id": "n7",
+      "track": "drum808",
+      "note": 38,
+      "velocity": 88,
+      "channel": 10,
+      "start": 33075,
+      "end": 33075,
+      "sourceOrder": 14,
+      "pulse": true
+    },
+    {
+      "id": "n8",
+      "track": "drum909",
+      "note": 36,
+      "velocity": 88,
+      "channel": 9,
+      "start": 88200,
+      "end": 88200,
+      "sourceOrder": 16,
+      "pulse": true
+    },
+    {
+      "id": "n9",
+      "track": "chicago",
+      "note": 48,
+      "velocity": 93,
+      "channel": 1,
+      "start": 88200,
+      "end": 88200,
+      "sourceOrder": 18,
+      "pulse": true
+    }
+  ],
+  "parameters": [],
+  "motion": {
+    "target": "Bass B / MIAMI / CARRIER / WAVE",
+    "values": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "launch": [
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "song": [],
+  "soundBanks": [
+    "JUNO",
+    "JUNO"
+  ],
+  "context": {
+    "part": "miami",
+    "view": "sound",
+    "mode": "auto",
+    "lane": "velocity",
+    "zoom": 1,
+    "selected": "n3",
+    "selection": [],
+    "drumVoice": 0,
+    "motionSelected": 0,
+    "multi": false,
+    "drumEdit": false
+  }
+}

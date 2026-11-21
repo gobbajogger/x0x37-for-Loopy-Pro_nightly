@@ -1,9 +1,8 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """Actual generated UI, synthetic state only; no device or physical MIDI access."""
-import asyncio, hashlib, json, threading
+import asyncio, hashlib, json, tempfile, threading
 from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
-from playwright.async_api import async_playwright
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT.parent/'previews'
 PROBE='''window.review={state:()=>({active:workspaceActive,busy,selected:!!selected}),busy:v=>{busy=v;controls();}};'''
@@ -20,7 +19,11 @@ def check(v,label):
  checks.append({'label':label,'pass':bool(v)})
  assert v,label
  print('PASS '+label,flush=True)
+def write_receipt(receipt):
+ path=Path(tempfile.gettempdir())/'song-ux-review.json'
+ path.write_text(json.dumps(receipt,indent=2)+'\n')
 async def main():
+ from playwright.async_api import async_playwright
  OUT.mkdir(exist_ok=True)
  srv=ThreadingHTTPServer(('127.0.0.1',0),Handler);threading.Thread(target=srv.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{srv.server_port}'
  errors=[];screens=[]
@@ -67,6 +70,7 @@ async def main():
  srv.shutdown()
  paths=['web/x0x_installer.html','web/x0x_projects.html','web/x0x_projects.js','scripts/build-preview.mjs','scripts/render-qualified-nightly.mjs','docs/install/index.html','docs/projects/index.html']
  receipt={'result':'PASS','checks':checks,'browser_errors':errors,'screenshots':screens,'sha256':{x:hashlib.sha256((ROOT/x).read_bytes()).hexdigest() for x in paths},'limit':'Headless actual UI with synthetic busy probe; no device/MIDI/flash or deployed proof.'}
- Path('/tmp/song-ux-review.json').write_text(json.dumps(receipt,indent=2)+'\n')
+ write_receipt(receipt)
  print(str(len(checks))+' project workspace browser checks PASS')
-asyncio.run(main())
+if __name__=='__main__':
+ asyncio.run(main())

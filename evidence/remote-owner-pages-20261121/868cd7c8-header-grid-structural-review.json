@@ -1,0 +1,109 @@
+{
+  "head": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+  "tree": "446c64f2179ba924fc90b3aa66f9ecaed1d4da20",
+  "manifestFiles": 243,
+  "runtimePinFiles": 10,
+  "trackedFilesVerified": 273,
+  "reviewedP13ModuleExactlyMatched": true,
+  "structural": {
+    "fixtures": 9,
+    "accepted": true,
+    "product": "NOT_RUN",
+    "chromium": {
+      "status": "RUN",
+      "version": "151.0.7922.34",
+      "sandbox": true
+    }
+  },
+  "header": {
+    "summary": {
+      "screens": 3,
+      "pass": 2,
+      "fail": 0,
+      "no_baseline": 1,
+      "baseline_written": 0,
+      "header_fail": 0,
+      "page_errors": 0
+    },
+    "results": [
+      [
+        "grid-continuity-1024x640",
+        "PASS",
+        512
+      ],
+      [
+        "header-ssim-1024x640",
+        "PASS",
+        0.905927401190831
+      ],
+      [
+        "remote-sequence-1024x640",
+        "NOBASE",
+        0.0
+      ]
+    ],
+    "header_fails": [],
+    "errors": []
+  },
+  "headerFilteredExpectedExit": 1,
+  "comparatorContracts": 12,
+  "p13": {
+    "head": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+    "started": "2026-11-21T06:23:24.415+00:00",
+    "closed": "2026-11-21T06:23:32.577+00:00",
+    "cases": {
+      "1440x900": {
+        "review": "Notes · 909 · C2 at sample 0: Pan C → R1 · Pitch offset 0st → -1st",
+        "geometry": {
+          "left": 552,
+          "top": 450.0625,
+          "right": 888,
+          "bottom": 465.65625,
+          "width": 336,
+          "scroll": 336
+        },
+        "pageErrors": []
+      },
+      "844x390": {
+        "review": "Notes · 909 · C2 at sample 0: Pan C → R1 · Pitch offset 0st → -1st",
+        "geometry": {
+          "left": 254,
+          "top": 195.0625,
+          "right": 590,
+          "bottom": 210.65625,
+          "width": 336,
+          "scroll": 336
+        },
+        "pageErrors": []
+      },
+      "390x844": {
+        "review": "Notes · 909 · C2 at sample 0: Pan C → R1 · Pitch offset 0st → -1st",
+        "geometry": {
+          "left": 27,
+          "top": 422.0625,
+          "right": 363,
+          "bottom": 437.65625,
+          "width": 336,
+          "scroll": 336
+        },
+        "pageErrors": []
+      }
+    }
+  },
+  "comparedTo4398": {
+    "browser-fixtures.json": true,
+    "header/summary.json": true
+  },
+  "cleanAfter": true,
+  "allScopedBrowsersClosed": "2026-11-21T06:23:32.577+00:00",
+  "sha256": {
+    "identities.json": "dc0fa09e7d8976295395cca7b4018f1ae27de0b33b915687330e02083022b55f",
+    "browser-fixtures.json": "e9f43cea91cf798f1fa27efffc886977c93fab79b59b92366297f7cc76894356",
+    "header/summary.json": "832c83df462e51fe698e9e8c04f6018558af3724bd712f76b2eb73f99fd2cd3d",
+    "fixtures.log": "0bf44f9750bf186d4c420a6bd6658a9e8333226d656e22e30334fc9020445111",
+    "build.log": "3fe1fa03fbab463be578d605d5647e71876fd9d61665641a455cf11f1fb0d39a",
+    "header.log": "8905b82cf46e67dc839e3d92e6a8110546d910e234b70a82c40d6c815913f3cf",
+    "p13.json": "81ed76af89ee3594d72befe1b1a9a7b482bb44f88b0387cb65ff0bfee4b876c9",
+    "commands.json": "cde03df0c8d11b97ec63b6d4ed9d1225e3afb04a9df2da1e66035c0d9d365433"
+  }
+}

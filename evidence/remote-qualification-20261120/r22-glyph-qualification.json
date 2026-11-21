@@ -1,0 +1,216 @@
+{
+  "scope": "Owner source and artwork qualification; no runtime, visual gate, or product changes.",
+  "remoteCommit": "451be1fafd0a328c0f489084d3807da216024d7e",
+  "archives": {
+    "dnbox-glyphs.zip": {
+      "created_at": "2026-11-17T07:55:18.807262Z",
+      "bytes": 894341,
+      "sha256": "8f99329155a1b075b81319937bd0187a7d196c65f8bf6eda1cc9ea8c7ab97c6f"
+    },
+    "DnBOX-R22-per-page-source-map-v2.tar.gz": {
+      "created_at": "2026-11-19T10:11:38.278838Z",
+      "bytes": 579833,
+      "sha256": "9bdc25287049626bb7daa45c5d2dbd071a790f4361be1922156c0f0e28b54c91"
+    },
+    "DnBOX-approved-R22-MIX-comparison.tar.gz": {
+      "created_at": "2026-11-19T14:13:14.350874Z",
+      "bytes": 385956,
+      "sha256": "fe054e752b3c2790bc30b037d1945e3f5f98146654121cfa013eb4d605d229f2"
+    }
+  },
+  "ownerLock": {
+    "source": "docs/design/UI-SOURCE-OF-TRUTH.md:3,17; docs/design/OWNER-BASELINE-1836-NOTES.md:12; RULES.md:29 (rule 17)",
+    "asOf": "2026-11-16 17:22 (owner source heading, timezone unspecified)",
+    "locked": "improved 17:00 batch",
+    "rules": "Use R22 plus the approved set; no R23 glyphs.",
+    "batchIdentity": "UNRESOLVED"
+  },
+  "decisionZip": {
+    "members": {
+      "GLYPH-DECISIONS.md": {
+        "bytes": 15300,
+        "sha256": "e1a4cac2a8f0fddd2ab62608d08d3e6df26be0023cbe78ff2688de2a6b53e7c6"
+      },
+      "GLYPH-PICKS.png": {
+        "bytes": 960651,
+        "sha256": "d219ab459a456553399fca5d7d65b1f713c4ec0766240c35bddf0b4b6a07bd6b"
+      }
+    },
+    "source": "GLYPH-DECISIONS.md names an orchestrator decision under user delegation, 2026-11-17 17:33\u201317:40 UTC+10. GLYPH-PICKS.png marks chosen versus rejected pictures, 1400\u00d78813.",
+    "choiceCounts": {
+      "R22": 44,
+      "R22+fix": 22,
+      "R23": 5
+    },
+    "r23PictureRows": [
+      "THRESH",
+      "RATIO",
+      "ATTACK (comp)",
+      "RELEAS (comp)",
+      "MAKEUP"
+    ],
+    "citedDonors": [
+      "from-dot/R22-gallery/glyphs.json",
+      "r23/src/glyphs_r23.py",
+      "firmware/src/app/ui.c",
+      "ui_drum_voice.inc",
+      "ui_juno_glyph.inc"
+    ],
+    "historicalAnimationExamples": [
+      "0e58b960faa2",
+      "ca8299b6b",
+      "9d95fbc9c",
+      "37fab0432",
+      "038391f1e",
+      "d99f819f2",
+      "e5a75c7c8",
+      "628ad5189"
+    ],
+    "designScope": "Later named 71-row prescription for firmware. Value/live and bounds gate is specified for fwui. It is direct source for these individual decisions; substituting it wholesale would also introduce the five R23 pictures against rule 17.",
+    "explicitEarlierBatchLink": false
+  },
+  "gallery": {
+    "path": "web/product-site/reference/r22.html",
+    "bytes": 9521075,
+    "sha256": "722d701c4404f57e3ef3d5e5cd79c6c41bd78abb426cb85ec8758b0bb1402986",
+    "frozenProducer": "dc0f8a080843b427cda17e6c55e80043aef40788e5d711e7c6f13382c5c966ff",
+    "frozenConsumer": "67b21142b1539c9b519597bff5624fbce225fbca0be6f1f19ad781f614a576d5",
+    "glyphRecords": 139,
+    "glyphRawCases": 16812,
+    "registry": "210cddcd07e3f7423f3f290e48e37d18c1933f3d2b4dd54ab0a047e379a1a40e",
+    "registryScope": "82 Remote G001\u2013G082 IDs, independently defined; the decision document does not assign these IDs.",
+    "rehashedRoutes": 363,
+    "tagShaMatchesWithMap": 363,
+    "sourceIdentity": {
+      "975": "f698908e30205ab07d82487dc2ffc6bfa67868be66098435fedc3d4795d29f95",
+      "presentation": "8ce6a3006308737a7fbbaa859213ca25156f92246ba505bee88eedd65c7de4c6",
+      "original": "c7477695e9be0ca73f3c36afe897e0749094d651903de1df2a8c6c75b9c4cf4e"
+    },
+    "sourceMapConsumer": "04b5c8495c5ae4df91e3c2afd06cc81f35c077b8",
+    "sourceMapOlderR22": "ffd31a735acc5721d1f90a30fc1ceb283aad6fc5",
+    "routeClasses": {
+      "mixed/source-state comparator; not standalone R22-approved full donor": 32,
+      "compact R21-source bank carried into R22 + latest controls, not all live/bank states": 22,
+      "mixed original source states + retained fragment; no blanket whole-page match": 10,
+      "unmatched #975 route (or target/historical alternatives are not donor)": 25,
+      "original bank mapping/presentation plus source-backed proposals": 2,
+      "approved whole R22 visual anchor, not runtime admission": 4
+    },
+    "approvedSource08": {
+      "r22_board": "whole-ui-preservation-r19/r22/presentation/08-APPROVED-SYNTH-FRAGMENTS.png",
+      "sha256": "6234a349d6a700c9061130814600a26e16501a8eb02fb9ccd18d219594567b9e",
+      "status": "User-approved exact retained fragments, not native implementation or dedicated-engine approval",
+      "groups": {
+        "chicago_envelope": [
+          "retained-chicago-envelope"
+        ],
+        "chicago_wave": [
+          "retained-chicago-wave-000",
+          "retained-chicago-wave-032",
+          "retained-chicago-wave-064",
+          "retained-chicago-wave-096",
+          "retained-chicago-wave-127"
+        ],
+        "miami_vertical": [
+          "retained-family-07"
+        ],
+        "compact_juno_envelope": [
+          "retained-juno-envelope"
+        ],
+        "compact_juno_wave_width": [
+          "retained-juno-wave-000",
+          "retained-juno-wave-032",
+          "retained-juno-wave-064",
+          "retained-juno-wave-096",
+          "retained-juno-wave-127",
+          "retained-juno-width-000",
+          "retained-juno-width-064",
+          "retained-juno-width-127",
+          "retained-juno-width-pulse-off"
+        ]
+      }
+    },
+    "p18ExistingEvidence": {
+      "galleryViews": 363,
+      "controlRoles": {
+        "active glyph/value control": 60,
+        "inactive bank parameter summary": 23
+      },
+      "identicalGlyphTrees": 83,
+      "glyphOrigins": {
+        "retained R17 function schematic": 83
+      },
+      "minimumPixelIoU": 0.95153,
+      "maximumPixelIoU": 0.97845
+    }
+  },
+  "positiveCrossCheck": {
+    "row": "VOLUME in later GLYPH-PICKS.png; mapped to gallery Volume 1:4:0:0. Each complete chosen example exactly matches the native recorded rectangles, black background, 42\u00d726 source, integer 4\u00d7, source origin (100,27), RGB565 floor expansion. Several adjacent raw values may have the same quantized drawing.",
+    "evidence": [
+      {
+        "origin": [
+          300,
+          154
+        ],
+        "decodedRgbSha256": "6f27d62ceab98623b01e5b27a95a7d7add9c28290d243d30a0fcb19ca84a2b21",
+        "matchingRaw": [
+          0
+        ]
+      },
+      {
+        "origin": [
+          476,
+          154
+        ],
+        "decodedRgbSha256": "c9ffedbc9d346fd2b1d889984e688fedb1e3f51f5c775ae59a4c2dc96816b2a6",
+        "matchingRaw": [
+          63
+        ]
+      },
+      {
+        "origin": [
+          652,
+          154
+        ],
+        "decodedRgbSha256": "432e03bba01dbd64222938e79b29774cffb6a45d196e8a37a93bd3dab57ba0e0",
+        "matchingRaw": [
+          127
+        ]
+      }
+    ],
+    "scope": "Only this named R22 row in the later selection; identical earlier batch membership or approval cannot be inferred."
+  },
+  "approvedMix": {
+    "ownerPng": {
+      "bytes": 201327,
+      "sha256": "a22f56bd5404ccc3f0b29adc2c4c7e022e103985a04c3a154fd3d4891717dea7",
+      "pixelSha256RGB": "94780242554357ea3bc324f920bf41c641cedfce35a861022f02128a011303c7",
+      "dimensions": [
+        1080,
+        669
+      ]
+    },
+    "reportBoard16ContainerSha256": "435185e6dbb0fa26ed41090631e034908f0b457356caeeadf3c05e2969a18175",
+    "provenance": "README reports identical RGB with R22 Board 16, differing compressed bytes. The owner image is supplied, Board 16 PNG separately is not in these three archives.",
+    "scope": "Static 909/808 whole MIX reference. Captured host images in archive are comparison states. No 17:00 or live-art approval is attributed to the MIX reference.",
+    "sourceCommits": [
+      "600b3b45f8d59c3432d958238b05753eb6f2fcb5",
+      "04b5c8495c5ae4df91e3c2afd06cc81f35c077b8"
+    ]
+  },
+  "barlow": {
+    "fonts": {
+      "BarlowSemiCondensed-Medium.ttf": {
+        "bytes": 105560,
+        "sha256": "4998b693a190b76f2b11315844345a8546c1e2e6a320905507a9eed04edf8b48"
+      },
+      "BarlowSemiCondensed-Bold.ttf": {
+        "bytes": 111772,
+        "sha256": "5bd6757e459a110da81b44532f0f43058e2dab2401688abca84f2fdbde193cbb"
+      }
+    },
+    "scope": "Exact product Remote and site TTFs agree with the local firmware source TTFs and product manifest. These certify typography; no font identifies a pictogram decision set."
+  },
+  "missingCrosswalk": "Neither the time-labelled owner rule nor the later decisions identify the approved 17:00 file set, commit, digest or artifact. The ZIP supplies only a decision document and picks raster. The source map binds 363 individual SVGs and scoped approved boards to the frozen gallery but gives no 17:00 membership or asset IDs. Archive creation and upload times do not establish design identity. A link from the owner approval to its original files, or an owner-confirmed per-glyph ID/hash list, remains necessary.",
+  "qualification": "Exact R22 gallery and scoped approvals/real renderer cases are qualified. Exact preservation of all approved 17:00 glyphs remains unverified."
+}

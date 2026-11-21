@@ -1,0 +1,102 @@
+{
+  "1024": {
+    "text": "COMPRESSOR",
+    "box": [
+      23,
+      554,
+      52,
+      43
+    ],
+    "output": [
+      25,
+      581,
+      48,
+      9
+    ],
+    "textRect": [
+      25,
+      580,
+      49.015625,
+      11
+    ],
+    "outsideOriginal": [],
+    "outsideClone": [],
+    "insideMatches": 155,
+    "insideUnion": 160
+  },
+  "1440": {
+    "text": "COMPRESSOR",
+    "box": [
+      23,
+      814,
+      52,
+      43
+    ],
+    "output": [
+      25,
+      841,
+      48,
+      9
+    ],
+    "textRect": [
+      25,
+      840,
+      49.015625,
+      11
+    ],
+    "outsideOriginal": [],
+    "outsideClone": [],
+    "insideMatches": 155,
+    "insideUnion": 160
+  },
+  "390": {
+    "text": "COMPRESSOR",
+    "box": [
+      15,
+      762,
+      60,
+      43
+    ],
+    "output": [
+      20.484375,
+      789,
+      49.015625,
+      9
+    ],
+    "textRect": [
+      20.484375,
+      788,
+      49.015625,
+      11
+    ],
+    "outsideOriginal": [],
+    "outsideClone": [],
+    "insideMatches": 153,
+    "insideUnion": 153
+  },
+  "844": {
+    "text": "COMPRESSOR",
+    "box": [
+      15,
+      363,
+      52,
+      25
+    ],
+    "output": [
+      21.484375,
+      375.5,
+      39.015625,
+      11
+    ],
+    "textRect": [
+      21.484375,
+      375.5,
+      39.015625,
+      10
+    ],
+    "outsideOriginal": [],
+    "outsideClone": [],
+    "insideMatches": 79,
+    "insideUnion": 79
+  }
+}

@@ -5,17 +5,16 @@
 import test from 'node:test';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
-import { execSync } from 'node:child_process';
-import { writeFileSync, mkdtempSync, readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { writeFileSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderInstaller, publicCatalog } from '../scripts/render-qualified-nightly.mjs';
 
+import { liveInstaller as live, readLiveCatalog } from './fixtures/pinned-live-installer.mjs';
+
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const LIVE_INSTALL_BLOB = '15d43a0a8398a69c70e73aa7b6a6dc6bbe5bace0';
-const LIVE_CATALOG_BLOB = '24a8b208aa01d539b5ef4e23af73d9c4aa2ac3d8';
-const gitBlob = sha => execSync(`git cat-file -p ${sha}`, { cwd: root, encoding: 'utf8', maxBuffer: 10e6 });
 
 function sortKeys(value) {
   if (Array.isArray(value)) return value.map(sortKeys);
@@ -121,8 +120,6 @@ function parseUnifiedHunks(diff) {
 }
 
 function assertAllowedRendered(rendered) {
-  const live = gitBlob(LIVE_INSTALL_BLOB);
-  const catalog = JSON.parse(gitBlob(LIVE_CATALOG_BLOB));
   // The repos were renamed after this live snapshot (X0X37-for-Loopy-Pro -> DnBOX,
   // x0x37-for-Loopy-Pro_nightly -> DnBOX-nightly). Map the old names in the
   // snapshot and in the catalog it carries, so the rename itself is not reported as a hunk.
@@ -133,16 +130,20 @@ function assertAllowedRendered(rendered) {
   const a = normalize(renamed.replace(oldInstruction, 'return to normal DnBOX operation with KNOB BANK'));
   const b = normalize(rendered);
   const dir = mkdtempSync(join(tmpdir(), 'installer-diff-'));
-  const livePath = join(dir, 'live.html'), rendPath = join(dir, 'rendered.html');
-  writeFileSync(livePath, a.endsWith('\n') ? a : a + '\n');
-  writeFileSync(rendPath, b.endsWith('\n') ? b : b + '\n');
   let diff = '';
   try {
-    execSync(`diff -u ${livePath} ${rendPath}`, { encoding: 'utf8', maxBuffer: 10e6 });
-  } catch (e) {
-    // diff exits 1 on differences
-    if (e.status !== 1) throw e;
-    diff = e.stdout;
+    const livePath = join(dir, 'live.html'), rendPath = join(dir, 'rendered.html');
+    writeFileSync(livePath, a.endsWith('\n') ? a : a + '\n');
+    writeFileSync(rendPath, b.endsWith('\n') ? b : b + '\n');
+    try {
+      execFileSync('diff', ['-u', livePath, rendPath], { encoding: 'utf8', maxBuffer: 10e6 });
+    } catch (e) {
+      // diff exits 1 on differences
+      if (e.status !== 1) throw e;
+      diff = e.stdout;
+    }
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
   }
   const hunks = parseUnifiedHunks(diff);
   const unused = new Set(ALLOWED.map(x => x.id));
@@ -161,7 +162,7 @@ function assertAllowedRendered(rendered) {
   assert.equal(hunks.length, ALLOWED.length);
 }
 function currentRendered() {
-  return renderInstaller(JSON.parse(gitBlob(LIVE_CATALOG_BLOB))).replaceAll('x0x37-for-Loopy-Pro_nightly', 'DnBOX-nightly').replaceAll('X0X37-for-Loopy-Pro', 'DnBOX');
+  return renderInstaller(readLiveCatalog()).replaceAll('x0x37-for-Loopy-Pro_nightly', 'DnBOX-nightly').replaceAll('X0X37-for-Loopy-Pro', 'DnBOX');
 }
 test('full rendered installer vs live gh-pages differs only by allowlisted hunks', () => {
   assertAllowedRendered(currentRendered());
@@ -185,7 +186,7 @@ test('approved release diff rejects drift in the restart handshake and report bi
 });
 
 test('publicCatalog keeps display_version so 0.0.25.1 stays 0.0.25.1', () => {
-  const catalog = JSON.parse(gitBlob(LIVE_CATALOG_BLOB));
+  const catalog = readLiveCatalog();
   const pub = publicCatalog(catalog);
   const v = pub.versions.find(x => x.display_version === '0.0.25.1');
   assert.ok(v, '0.0.25.1 must survive publicCatalog()');

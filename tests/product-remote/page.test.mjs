@@ -5,7 +5,24 @@ class E{constructor(){this.children=[];this.options=[];this.value='';this.datase
 function env(request){const nodes=new Map(),document=new E(),window=new E();document.getElementById=id=>{if(!nodes.has(id)){const e=new E();e.ownerDocument=document;nodes.set(id,e);}return nodes.get(id)};document.createElement=()=>{const e=new E();e.ownerDocument=document;return e};let calls=0;const app=startRemote({document,window,navigator:{requestMIDIAccess:()=>{calls++;return request()}},bundle,randomClient:()=>97});return{app,document,window,node:document.getElementById,get permissionCalls(){return calls}};}
 function access(){let revision=1,epoch=0,value=4;const commands=[],input=new E();Object.assign(input,{id:'i',name:'Synthetic in',type:'input',state:'connected',open:async()=>{},close:async()=>{}});const output={id:'o',name:'Synthetic out',type:'output',state:'connected',open:async()=>{},close:async()=>{},send:bytes=>{const c=decodeCommand(bytes);commands.push(c);let r={...c,status:0,kind:c.control===11?1:c.control===29?3:0,value:c.control===11?value:0,revision,unit:42};if(c.op===OP.HELLO){r.control=2;r.value=123;}if(c.op===OP.OPEN)r.epoch=++epoch;if(c.op===OP.SET){value=c.value;r.value=value;r.revision=++revision;}input.fire('midimessage',{data:encodeReply(r)});}};return{input,output,commands,inputs:new Map([['i',input]]),outputs:new Map([['o',output]]),onstatechange:null};}
 test('no native admission means no permission request or fabricated controls',()=>{const document=new E(),nodes=new Map();document.getElementById=id=>{if(!nodes.has(id))nodes.set(id,{});return nodes.get(id)};let requests=0;startRemote({document,window:new E(),navigator:{requestMIDIAccess(){requests++}},bundle:null});assert.equal(requests,0);assert.equal(document.getElementById('permission').disabled,true);assert.match(document.getElementById('status').textContent,/awaiting review/);});
-test('actual page uses typed descriptors and returned state; blur uses paired DNR2 aggregate owner CLOSE before port disposal',async()=>{const a=access(),x=env(async()=>a);await x.node('permission').onclick();await x.node('connect').onclick();assert.match(x.node('status').textContent,/Synthetic test/);const [amount,hold]=x.node('surface').children;assert.equal(amount.children[1].value,'4');hold.children[1].fire('pointerdown',{pointerId:3,button:0,preventDefault(){}});await turn();assert.equal(a.commands.at(-1).op,OP.DOWN,JSON.stringify({status:x.node('status').textContent,disabled:hold.children[1].disabled,listeners:[...hold.children[1].listeners.keys()]}));x.window.fire('blur');await x.app.close();assert.equal(a.commands.at(-1).op,OP.CLOSE);assert.equal(a.commands.filter(c=>c.op===OP.UP).length,0,'DNR2 aggregate CLOSE replaces per-held UP cleanup');assert.equal(x.node('connect').disabled,false);await x.app.destroy();});
+test('actual page uses typed descriptors and returned state; blur uses paired DNR2 aggregate owner CLOSE before port disposal',async t=>{
+ const a=access(),x=env(async()=>a);
+ t.after(()=>x.app.destroy());
+ await x.node('permission').onclick();
+ await x.node('connect').onclick();
+ assert.match(x.node('status').textContent,/Synthetic test/);
+ const [amount,hold]=x.node('surface').children;
+ assert.equal(amount.children[1].value,'4');
+ const before=a.commands.length;
+ hold.children[1].fire('pointerdown',{pointerId:3,button:0,preventDefault(){}});
+ await turn();
+ const actions=()=>a.commands.slice(before).filter(command=>command.op!==OP.KEEPALIVE).map(command=>command.op);
+ assert.deepEqual(actions(),[OP.DOWN]);
+ x.window.fire('blur');
+ await x.app.close();
+ assert.deepEqual(actions(),[OP.DOWN,OP.CLOSE],'DNR2 aggregate CLOSE replaces per-held UP cleanup');
+ assert.equal(x.node('connect').disabled,false);
+});
 test('late permission result after final departure cannot attach listeners',async()=>{let finish;const a=access(),x=env(()=>new Promise(r=>finish=r));const request=x.node('permission').onclick();x.window.fire('pagehide',{persisted:false});finish(a);await request;assert.equal(a.onstatechange,null);assert.equal(x.node('input').options.length,0);assert.equal(x.node('connect').disabled,true);});
 test('cached return requires fresh manual connection and obtains new firmware epoch',async()=>{const a=access(),x=env(async()=>a);await x.node('permission').onclick();await x.node('connect').onclick();x.window.fire('pagehide',{persisted:true});await x.app.close();x.window.fire('pageshow',{persisted:true});assert.equal(a.commands.filter(c=>c.op===OP.OPEN).length,1);await x.node('connect').onclick();assert.equal(a.commands.filter(c=>c.op===OP.OPEN).length,2);await x.app.destroy();});
 

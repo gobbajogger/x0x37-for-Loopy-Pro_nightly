@@ -1,0 +1,20 @@
+{
+  "rows": 54,
+  "uniqueWAVs": 54,
+  "edges": 162,
+  "tempos": [
+    90,
+    120,
+    180
+  ],
+  "standardNoteAndTripletBins": 16,
+  "approximateQuarterBeats": {
+    "14": 12.001200120012001,
+    "16": 23.995200959808038
+  },
+  "maxDeviationFromCSourcePeriodSamples": 0.3333333333430346,
+  "format": "8 kHz, mono, unsigned 8-bit PCM",
+  "archiveSHA256": "919a806d9c446a55c311c3c7514564950934a47fe6ad0a9ce03e9a67a9d500df",
+  "metadataSHA256": "253a3c99cc0d805262d1fedc79c0b8d5fe591c476500cadb5db9411fe3ae02be",
+  "scope": "source-inspected Linux component, not a proprietary AU or a measurement of original UI text"
+}

@@ -1,0 +1,304 @@
+{
+  "repository": "gobbajogger/DnBOX-nightly",
+  "integDraftPR": 170,
+  "integHead": "5658da37d3ddbf30a0dd1ce5b7d6069dbab4019e",
+  "consolidatedHead": "914d68e8ed50698ea77c9d18c221c404629b9332",
+  "webHead": "47be9343d164a9f1cd94fed2f1053642db23afa3",
+  "remoteHead": "451be1fafd0a328c0f489084d3807da216024d7e",
+  "proposalArchive": "2eaff64e56a4d67e7ae86a3038da7aa03cb59d83db3a6fa3e325ff144cb53b0a",
+  "originalMissingCount": 104,
+  "integReviewed": 28,
+  "matchingNames": 28,
+  "identicalProposalPngs": 8,
+  "identicalProposalPixels": 8,
+  "remoteWorkspaceApproved": 0,
+  "remoteWorkspaceHeld": 32,
+  "unreviewedOrHeldOriginal": 76,
+  "consolidatedSnapshotCount": 0,
+  "webSnapshotCount": 0,
+  "remoteSnapshotCount": 0,
+  "remoteExactHeadImagesGenerated": 0,
+  "comparisonScope": "Immutable screenshots from the recorded consolidated proposal against Integ PR 170 separately approved images. Presets and Tools initial render sources match on Remote; only the post-INFO parser changed for disconnected Identity. The seven route/source closure comparison is separate from an actual screenshot at Remote head.",
+  "approvedReferences": [
+    {
+      "name": "site-help-1024x640.png",
+      "approvedIntegBlob": "b019d32076eb1988231cccefe2ac197573e8bae2",
+      "dimensions": [
+        1024,
+        1471
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-help-1440x900.png",
+      "approvedIntegBlob": "69814a267cd793ab7a707e6dd4c98bcb02ee2317",
+      "dimensions": [
+        1440,
+        1475
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-help-390x844.png",
+      "approvedIntegBlob": "a2b466c6d0192be2caeb6a9988a63df7106ab71f",
+      "dimensions": [
+        390,
+        1908
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-help-844x390.png",
+      "approvedIntegBlob": "130c378433f098f96ff0fca765411c76e8aae2ed",
+      "dimensions": [
+        844,
+        1462
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-manual-1024x640.png",
+      "approvedIntegBlob": "ac7f45ae1387b8ac36292ef219e4c7f9290d785b",
+      "dimensions": [
+        1024,
+        4841
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-manual-1440x900.png",
+      "approvedIntegBlob": "aab3b6b332766f9912513c01674ea4246105660e",
+      "dimensions": [
+        1440,
+        4845
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-manual-390x844.png",
+      "approvedIntegBlob": "3f50d5245f8e77c0ab953b28f4b8e02aab16a296",
+      "dimensions": [
+        390,
+        8361
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-manual-844x390.png",
+      "approvedIntegBlob": "430006e9e4e6e2d873c9ef06477252f7eb6668a9",
+      "dimensions": [
+        844,
+        4832
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-new-1024x640.png",
+      "approvedIntegBlob": "68059e1d87530cc83c99c8f6d230b5c27a74eb4c",
+      "dimensions": [
+        1024,
+        923
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-new-1440x900.png",
+      "approvedIntegBlob": "230d1d2417e8f75673e5df844ac2ae42028e62d7",
+      "dimensions": [
+        1440,
+        927
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-new-390x844.png",
+      "approvedIntegBlob": "44e0b2bd2643af18706cdf0abe0b593ca590a6a2",
+      "dimensions": [
+        390,
+        1204
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-new-844x390.png",
+      "approvedIntegBlob": "01bf79af3ba6fc054eabf7c32cee99556eaa2f82",
+      "dimensions": [
+        844,
+        914
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-presets-1024x640.png",
+      "approvedIntegBlob": "50164bda1ac29170d4e29cb0a731576295d0d9f0",
+      "dimensions": [
+        1024,
+        1608
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-presets-1440x900.png",
+      "approvedIntegBlob": "5765b66d3581f32ede1bf49a94c3a139dd0d31bf",
+      "dimensions": [
+        1440,
+        1613
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-presets-390x844.png",
+      "approvedIntegBlob": "5d472831bc2b4dfdc09b6afb96b9af83b7dde2af",
+      "dimensions": [
+        390,
+        1979
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-presets-844x390.png",
+      "approvedIntegBlob": "59b291e12fc87c5c01f823e22516710aaab8795f",
+      "dimensions": [
+        844,
+        1600
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-remote-identity-1024x640.png",
+      "approvedIntegBlob": "b479a6d64bc4718cc5dc70655993b955f1f58611",
+      "dimensions": [
+        1024,
+        756
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-remote-identity-1440x900.png",
+      "approvedIntegBlob": "36f7157bf1c27c600eefbfe5e9c58ae3755a429c",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-remote-identity-390x844.png",
+      "approvedIntegBlob": "77884e5a145f04f8915385c86265e70caea4f31b",
+      "dimensions": [
+        390,
+        889
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-remote-identity-844x390.png",
+      "approvedIntegBlob": "25dac5fae31b6a34d2d44de774a9e5818dbeb490",
+      "dimensions": [
+        844,
+        749
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-starting-breaks-1024x640.png",
+      "approvedIntegBlob": "a44969f826b65f2ef12866443214f55f74f20d32",
+      "dimensions": [
+        1024,
+        1784
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-starting-breaks-1440x900.png",
+      "approvedIntegBlob": "fbc71ae438eff4a89e55bb4216d601a7322b509b",
+      "dimensions": [
+        1440,
+        1788
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-starting-breaks-390x844.png",
+      "approvedIntegBlob": "2509456c1e4b0c636a3f3b88493f6f7e66cff70a",
+      "dimensions": [
+        390,
+        2058
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-starting-breaks-844x390.png",
+      "approvedIntegBlob": "9db61b24e771d5c47d2032d14281aec8f974929a",
+      "dimensions": [
+        844,
+        1773
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-tools-1024x640.png",
+      "approvedIntegBlob": "ebb89867ea7af6bdfe57f4bda7eee34026db96ec",
+      "dimensions": [
+        1024,
+        1023
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-tools-1440x900.png",
+      "approvedIntegBlob": "9773034e8ab4630a51fa8032c65250a5dd1ea3eb",
+      "dimensions": [
+        1440,
+        1001
+      ],
+      "sameProposalBytes": true,
+      "sameProposalPixels": true
+    },
+    {
+      "name": "site-tools-390x844.png",
+      "approvedIntegBlob": "37f1c8e5923eb3bfec0c34735eb4aa0d921f39a7",
+      "dimensions": [
+        390,
+        1623
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    },
+    {
+      "name": "site-tools-844x390.png",
+      "approvedIntegBlob": "a3a9d3f1c5993fad43ed3e5447aa9aedf63eefc2",
+      "dimensions": [
+        844,
+        1076
+      ],
+      "sameProposalBytes": false,
+      "sameProposalPixels": false
+    }
+  ]
+}

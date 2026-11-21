@@ -1,0 +1,240 @@
+{
+  "head": "8e61e906c5fb09338f7817699c0caa1a36a05c76",
+  "hashes": {
+    "tests/product-remote/funkybeats-browser.py": "c0178783e10f25edd0c6e362a8e78ec07e87451be81ca524ac787ccf6180eee4",
+    "tests/product-remote/fixtures/legacy-sound-banks/both-owners.json": "ea14c9f6521c87b70f4f1bdebe197017c0000051f0df17b5034e8e65f7507b52",
+    "web/product-site/remote/app.mjs": "f1c179baa9c5bc725f5e43cc317a49e48bf98a915050c954ec87011cdd55831c",
+    "web/product-site/remote/envelope-view.mjs": "bb0ea4fdb883caa0f22938ba78edd4f740a78b192a59e09f7411eee081ddcffd",
+    "web/product-site/SOURCE-MANIFEST.json": "d283bdb038ff8887f026b270c1fba34fcfe02f33a7f92b50c17be3a09dcb2690"
+  },
+  "stageReads": [
+    {
+      "part": "chicago",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=0 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "6%",
+      "seconds": 0.0077
+    },
+    {
+      "part": "chicago",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=1 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "31%",
+      "seconds": 0.0103
+    },
+    {
+      "part": "chicago",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=2 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "72%",
+      "seconds": 0.0073
+    },
+    {
+      "part": "chicago",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=3 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "31%",
+      "seconds": 0.0125
+    },
+    {
+      "part": "chicago",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=0 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "27%",
+      "seconds": 0.0054
+    },
+    {
+      "part": "chicago",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=1 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "40%",
+      "seconds": 0.0083
+    },
+    {
+      "part": "chicago",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=2 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "57%",
+      "seconds": 0.0097
+    },
+    {
+      "part": "chicago",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=3 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "17%",
+      "seconds": 0.0086
+    },
+    {
+      "part": "miami",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=0 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "6%",
+      "seconds": 0.0066
+    },
+    {
+      "part": "miami",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=1 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "31%",
+      "seconds": 0.0043
+    },
+    {
+      "part": "miami",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=2 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "72%",
+      "seconds": 0.0105
+    },
+    {
+      "part": "miami",
+      "bank": "JUNO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=3 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "34121c9fef21ac9f968d68dfcd8d6aeb3b616ac4069759377dc3058d2bf26cc9",
+      "text": "31%",
+      "seconds": 0.0076
+    },
+    {
+      "part": "miami",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=0 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "27%",
+      "seconds": 0.0144
+    },
+    {
+      "part": "miami",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=1 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "40%",
+      "seconds": 0.0098
+    },
+    {
+      "part": "miami",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=2 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "57%",
+      "seconds": 0.0039
+    },
+    {
+      "part": "miami",
+      "bank": "CHICAGO",
+      "width": 1440,
+      "height": 900,
+      "stageLocator": "<Locator frame=<Frame name= url='https://dnbox.test/remote/'> selector='#other-view .envelope-controls >> .envelope-stage >> nth=3 >> output'>",
+      "svgPixels": [
+        1384,
+        101
+      ],
+      "shapeSha256": "48e30ef13ed5d44bff1a2643df40d6e5d7519e3b94fe0c895ed9db1e3b4a83a7",
+      "text": "17%",
+      "seconds": 0.0082
+    }
+  ],
+  "pageErrors": [],
+  "crashes": [],
+  "browser": "151.0.7922.34",
+  "result": "PASS"
+}

@@ -1,0 +1,58 @@
+{
+  "head": "868cd7c8e4784f9f1f866e0fbcf0fcdcbcb1e398",
+  "tree": "446c64f2179ba924fc90b3aa66f9ecaed1d4da20",
+  "parent": "982deaf7b9cc6bbcf71db4d232e4c354e98d67d3",
+  "originalSuperJ6archiveSha256": "ab702e00b4cc425c9406b9b2b44e68ba0f40e1125d591fcaa422cc6a8c6272b8",
+  "originalSuperJ6archiveBytes": 451262,
+  "runtimeFilesSha256": {
+    "index.html": "010718d268ec15e83da8c641eb82ec30588d3d001bd4cf07fb15a182bd82fc0b",
+    "kernel.wasm": "09d6be238be42c540a202aa962f3848d0a0bff79c4a02fc6e7c8aa76bdaaf30b",
+    "native-session.mjs": "077161f1641a927df241112b71bfa46e25023d3808d08469851838dd9c876360",
+    "observer.mjs": "525c2437315760e448e4f631ca9ba1a9e2311d216b18ef93852969d09098b2d3",
+    "page.mjs": "f4348ebcbedc94495c60f6bcf93848567fc6a0d3d9961f08c81c613fab5d9966",
+    "runtime.json": "f11271f85ad61c9c5bc5f3959f8b5ffa2e3a8c8cbab90f4b43c7aeb94676b4e0",
+    "session-codec.mjs": "5924c689e512fc1c4e14718e0d267dce7ef287ec51183d1902e3d7902134845d",
+    "style.css": "f9d8c09ebe689442f027b038482488a6e02db255db7553127b92b907b68cd5b8",
+    "wasi.mjs": "76221f9d11ff8be10d9844f0ecc696ddc0bafb694775a12a6b665c4d77a78f18",
+    "worklet.mjs": "3841c8754053df804e103dc80ea31ab3dc0c4063112aa20b45f3b1421adbd034"
+  },
+  "sourceManifest": {
+    "sha256": "0400c46dda5548aff6b9788fa1be333d2a388dbca52480bc97eb4c27c1c56c51",
+    "count": 243
+  },
+  "originalSynthOne": {
+    "source": "6466a3715c96b7ecf1dd255a218cbd571408a314",
+    "banks": 12,
+    "presets": 694,
+    "manifestSha256": "806d92dae2ef75b073168e5b85ee2dc6055f2c3b10ceca3a0e40933514c37622"
+  },
+  "legacyDraftSha256": "ea14c9f6521c87b70f4f1bdebe197017c0000051f0df17b5034e8e65f7507b52",
+  "commands": [
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "start": "2026-11-21T06:22:52.525441+00:00",
+      "end": "2026-11-21T06:22:54.016249+00:00",
+      "exit": 0,
+      "sha256": "8efdb4214953462f6369e6cb9774168a4abd062b74b4d1a0ce95e8d708f64f8c"
+    },
+    {
+      "name": "R5",
+      "command": [
+        "python3",
+        "tests/product-remote/landscape-browser.py",
+        "--output",
+        "/workspace/scratch/537b1f88ce48/evidence-local/landscape-868cd7c8/landscape"
+      ],
+      "start": "2026-11-21T06:22:54.016891+00:00",
+      "end": "2026-11-21T06:23:40.264418+00:00",
+      "exit": 0,
+      "sha256": "8e5fd354415c6a7a5bf5186ff11b567e456432fffed1f0f43ba1058dccd250e4"
+    }
+  ],
+  "cleanAfter": true
+}

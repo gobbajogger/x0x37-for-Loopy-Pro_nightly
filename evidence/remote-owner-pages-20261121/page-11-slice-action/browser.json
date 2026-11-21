@@ -1,0 +1,173 @@
+{
+  "browser": "151.0.7922.34",
+  "checks": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "label": "Slice 1\u201332",
+      "slice": 32,
+      "stepFocus": "7",
+      "patternLock": [
+        1153,
+        3,
+        8,
+        126
+      ],
+      "unchangedMotion": true,
+      "unchangedLaunch": true,
+      "pageErrors": [],
+      "toolbar": [
+        {
+          "label": "Slice 1\u201332",
+          "width": 81,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Generator",
+          "width": 79,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Notes",
+          "width": 60,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Step locks",
+          "width": 83,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Review draft",
+          "width": 94,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        }
+      ],
+      "lateLoadKeptFocus": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "label": "Slice 1\u201332",
+      "slice": 32,
+      "stepFocus": "7",
+      "patternLock": [
+        1153,
+        3,
+        8,
+        126
+      ],
+      "unchangedMotion": true,
+      "unchangedLaunch": true,
+      "pageErrors": [],
+      "toolbar": [
+        {
+          "label": "Slice 1\u201332",
+          "width": 94,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Generator",
+          "width": 94,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Notes",
+          "width": 94,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Step locks",
+          "width": 94,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Review draft",
+          "width": 94,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        }
+      ],
+      "lateLoadKeptFocus": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "label": "Slice 1\u201332",
+      "slice": 32,
+      "stepFocus": "7",
+      "patternLock": [
+        1153,
+        3,
+        8,
+        126
+      ],
+      "unchangedMotion": true,
+      "unchangedLaunch": true,
+      "pageErrors": [],
+      "toolbar": [
+        {
+          "label": "Slice 1\u201332",
+          "width": 81,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Generator",
+          "width": 79,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Notes",
+          "width": 60,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Step locks",
+          "width": 83,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "label": "Review draft",
+          "width": 94,
+          "height": 40,
+          "inside": true,
+          "hit": true
+        }
+      ],
+      "lateLoadKeptFocus": true
+    }
+  ]
+}

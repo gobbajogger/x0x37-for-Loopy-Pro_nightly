@@ -1,0 +1,352 @@
+{
+  "schema": "dnbox-remote-p18-source-audit/1",
+  "gallerySha256": "722d701c4404f57e3ef3d5e5cd79c6c41bd78abb426cb85ec8758b0bb1402986",
+  "galleryViews": 363,
+  "componentFileSha256": "2882a2af257df5f3c4ddfe261e839da7304203522d7905d00b74dd0d74b5d507",
+  "consumerFreeze": "67b21142b1539c9b519597bff5624fbce225fbca0be6f1f19ad781f614a576d5",
+  "sourceFreeze": "dc0f8a080843b427cda17e6c55e80043aef40788e5d711e7c6f13382c5c966ff",
+  "sourceFrameCalls": 22,
+  "unchangedControlAttributeSets": 83,
+  "controlRoles": {
+    "active glyph/value control": 60,
+    "inactive bank parameter summary": 23
+  },
+  "identicalGlyphTrees": 83,
+  "glyphOrigins": {
+    "retained R17 function schematic": 83
+  },
+  "nativeViewport": [
+    0,
+    20,
+    240,
+    220
+  ],
+  "captureViewport": [
+    844,
+    390
+  ],
+  "glyphBandScreenPixels": [
+    12,
+    270,
+    492,
+    329
+  ],
+  "glyphBandSourcePixelsAt2x": [
+    0,
+    76,
+    480,
+    135
+  ],
+  "minimumPixelIoU": 0.95153,
+  "maximumPixelIoU": 0.97845,
+  "perVoice": [
+    {
+      "frame": "909-voice-00",
+      "sha256": "5b5821ed6c19a41a2d41ae4c65435a8e954738c34f20bb1a91355c7594d81a88",
+      "controls": 6,
+      "captureSha256": "b61d7e6ceca8a9bbfd2f6306e174b657e31d366c0d1e911ed3d8221a41d60820",
+      "glyphPixelIoU": 0.9596,
+      "sourceGlyphTrees": 6,
+      "activeControls": 4
+    },
+    {
+      "frame": "909-voice-01",
+      "sha256": "3b6c5e6ee2b35dc98352f697c1e4df5903e67acdf1ef77a2fb5f882a8f54fb31",
+      "controls": 5,
+      "captureSha256": "786e5e0f481a8ec516b76a640f31e86535c1b88e17f6ca5af78e88c92cdd0954",
+      "glyphPixelIoU": 0.97731,
+      "sourceGlyphTrees": 5,
+      "activeControls": 4
+    },
+    {
+      "frame": "909-voice-02",
+      "sha256": "27bb34a9824c637e5e700e3f67a48aa942bf8b0a51025d06bfe96fb47c853e28",
+      "controls": 4,
+      "captureSha256": "1992f3e1460fba62aec66ab7e1da299cfde414637e7a842e0d1a84c1fe2668b5",
+      "glyphPixelIoU": 0.95351,
+      "sourceGlyphTrees": 4,
+      "activeControls": 3
+    },
+    {
+      "frame": "909-voice-03",
+      "sha256": "50663393c3aa0735ad34614af441079dda0d461580ba6e1bed776c7c6c2ce4f3",
+      "controls": 4,
+      "captureSha256": "414f80c60473c63ebb5501560ea7e9c701349ba3ff6bf880c40156ba2156dac0",
+      "glyphPixelIoU": 0.95351,
+      "sourceGlyphTrees": 4,
+      "activeControls": 3
+    },
+    {
+      "frame": "909-voice-04",
+      "sha256": "db2d21d3aa596f2ec73e242a8cad8cf6b4a96bf29089250f11e5561a19b912f6",
+      "controls": 4,
+      "captureSha256": "df921d674f5f6eb73bec3b7c648eb54773dd437e86271e3ce3576d1b465e3349",
+      "glyphPixelIoU": 0.95351,
+      "sourceGlyphTrees": 4,
+      "activeControls": 3
+    },
+    {
+      "frame": "909-voice-05",
+      "sha256": "88fb214035fd73c4a284a1af092ce9480b33e5413ede5ec6d2534ea282018707",
+      "controls": 2,
+      "captureSha256": "5ba986dab72acf7104ee7916efaf9f9ea65a7d12371949edacbf8d92e053a5a3",
+      "glyphPixelIoU": 0.97845,
+      "sourceGlyphTrees": 2,
+      "activeControls": 1
+    },
+    {
+      "frame": "909-voice-06",
+      "sha256": "c1acb744e7bd367c837b8ba76e31079d3800c5d432ea538805d7ac50e843f4ed",
+      "controls": 3,
+      "captureSha256": "8ae7147db1b4f2b90b16c348b08c35677bf9bede2efdb4361150628efd61d4c6",
+      "glyphPixelIoU": 0.95944,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "909-voice-07",
+      "sha256": "edd55473b451128679bb8f29cadee88a157276bf0ce9746e5a23084e00b7a7f9",
+      "controls": 3,
+      "captureSha256": "f60b578865e700181d60e2afabb25f6d0dbb79c565583232d91b7ddb56559927",
+      "glyphPixelIoU": 0.95944,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "909-voice-08",
+      "sha256": "fd8152c55560443b88f1ada4987a0795b3ca97a62b98e88e6f426921bd4ed8f9",
+      "controls": 3,
+      "captureSha256": "73353c9c128135cdbada8f00c80ca79318020ad7b2c5559076129f43ac623e7f",
+      "glyphPixelIoU": 0.95944,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "909-voice-09",
+      "sha256": "964ed54058aefb95ec5a9a63889177dd58719f127aecb44a3b3dc255ca6c5c55",
+      "controls": 3,
+      "captureSha256": "ebdd21023edc7c7ff54900af98bbe32dd692bc238a3b36014cdef58c9fef88c6",
+      "glyphPixelIoU": 0.95944,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "909-voice-10",
+      "sha256": "3835a4c1f7aeeacfc7bd3e4a8ff305f5d9aa4c17c40e68c06b9b0ca4659f6090",
+      "controls": 3,
+      "captureSha256": "111bfc35f6a682f431b50b4bc98954798117c7ee526d825fb4f25985b0afbd5a",
+      "glyphPixelIoU": 0.95944,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "808-voice-00",
+      "sha256": "d09daf5955b48554b8181240d56d58765a1ec4bcde6a37151e234b08fe7304a9",
+      "controls": 5,
+      "captureSha256": "241ad334e793403e1e49563d9e13c259d2840aa89fbee30f92d26b5ec1906186",
+      "glyphPixelIoU": 0.95153,
+      "sourceGlyphTrees": 5,
+      "activeControls": 4
+    },
+    {
+      "frame": "808-voice-01",
+      "sha256": "58e066d94688cdd6cda661601592e235766b1e30d5fb5143bcbfce4f31f6bc56",
+      "controls": 5,
+      "captureSha256": "96484c43e7b2ff9843d78b3399748782fc519fdf07e8d1edc661cc751aeb37a2",
+      "glyphPixelIoU": 0.97552,
+      "sourceGlyphTrees": 5,
+      "activeControls": 4
+    },
+    {
+      "frame": "808-voice-02",
+      "sha256": "ee22b387a9fdb4a13597e79cb2f549ab183166241512829fd0e83ce3193b6a66",
+      "controls": 4,
+      "captureSha256": "7acf15e8d2b7723b86b05d0325a0186bebcb513086a819f0e74c2428ac753b37",
+      "glyphPixelIoU": 0.96972,
+      "sourceGlyphTrees": 4,
+      "activeControls": 3
+    },
+    {
+      "frame": "808-voice-03",
+      "sha256": "613c9add5e091b2ccdbdb4641a5767878ed2cdbcbd91d6a8b41b688d30491c8d",
+      "controls": 4,
+      "captureSha256": "b4f35f9f51f24549a267a74b937630bfc35f297ce363d646f73b1eeea8b09862",
+      "glyphPixelIoU": 0.96972,
+      "sourceGlyphTrees": 4,
+      "activeControls": 3
+    },
+    {
+      "frame": "808-voice-04",
+      "sha256": "d68d63208599ab98a5c54dc6217b7f0098dc2eaa123ad388d9729e31edc0c152",
+      "controls": 4,
+      "captureSha256": "3cf0aee6f216f2d2dd6d2219a3524a97a52f9104f4a9b1e91c94219454a4ba4f",
+      "glyphPixelIoU": 0.96972,
+      "sourceGlyphTrees": 4,
+      "activeControls": 3
+    },
+    {
+      "frame": "808-voice-05",
+      "sha256": "2a1f880ef5a1827aeba8d75b7ba488e8dd5d2c976bd2cb27dafd726d9566b432",
+      "controls": 4,
+      "captureSha256": "ab7b7737351b257960425aff9f53c8c33efc87763073f2aaffe35d4768e882b3",
+      "glyphPixelIoU": 0.96972,
+      "sourceGlyphTrees": 4,
+      "activeControls": 3
+    },
+    {
+      "frame": "808-voice-06",
+      "sha256": "bafca1f5c5591c1bcae03fbd391a3970537d33a86723776ee4ade6405af3b590",
+      "controls": 5,
+      "captureSha256": "913aa9487fd76d3d0f2fc9811c2987326d205cf3701a747c20082daa153233fd",
+      "glyphPixelIoU": 0.95733,
+      "sourceGlyphTrees": 5,
+      "activeControls": 4
+    },
+    {
+      "frame": "808-voice-07",
+      "sha256": "525593cd0120911c894280c4ad5fe1be45a11ffeedef06949426ee80af50814f",
+      "controls": 3,
+      "captureSha256": "3855fcf1aeceaf6294a47673e972b35f1dad3acd05add5cabe403393608da91d",
+      "glyphPixelIoU": 0.95573,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "808-voice-08",
+      "sha256": "acfbc835d35a507dbc1c4f31715c20d8da371685e1eb6cd627c3c443e642612f",
+      "controls": 3,
+      "captureSha256": "6538c28f6ba54af8c0af0b21d04ce8ad7201c46e4a770954a0352a19e7f6a3ff",
+      "glyphPixelIoU": 0.95573,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "808-voice-09",
+      "sha256": "4aa7bf1d8a565523427b5d96ceb52321033f6c6f499ce8d4432432ebb1bdfb2f",
+      "controls": 3,
+      "captureSha256": "95d9d6f12b92f58c9a79847e130a41c006b5d50373432b53a66f879404c50ac9",
+      "glyphPixelIoU": 0.95573,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    },
+    {
+      "frame": "808-voice-10",
+      "sha256": "08e14cee99a679c0f3e92a018a5f77f933ab3824ed88a401a9e03b69381275e0",
+      "controls": 3,
+      "captureSha256": "eb010a6810184bd6616b4de4397bf8c09e7e151ea86916653c6e7f213198336e",
+      "glyphPixelIoU": 0.95573,
+      "sourceGlyphTrees": 3,
+      "activeControls": 2
+    }
+  ],
+  "method": "Decoded the R22 gallery gzip payload. Rehashed each full SVG, compared the ordered XML elements, attributes and descendants of every marked glyph, and compared control-group attributes, bank panel rectangles and the projected hit bounds. Executed Remote sourceFrame for every drum voice. Independently rasterized each full source SVG at 2x with Inkscape and compared the colored first-bank glyph band with the previously captured 844x390 PNG using intersection over union. The pixel metric concerns that band only. XML comparison covers the whole cropped frame.",
+  "pixelMask": "8-bit RGB: red > 145, red minus green > 56, red minus blue > 85. Copied coordinates are half-open rectangles in pixels.",
+  "paths": {
+    "gallery": "web/product-site/reference/r22.html",
+    "projected": "web/product-site/remote/components.json",
+    "sourceFrame": "web/product-site/remote/frame.mjs",
+    "routes": "web/product-site/remote/app.mjs",
+    "landingArtReceipt": "web/product-site/APPROVED-PRESENTATION.json",
+    "capturedSha256Index": "evidence/remote-qualification-20261120/landscape.json",
+    "ownerP18": "evidence/remote-qualification-20261120/owner-pages/pages-17-20.webp",
+    "ownerSourceIndex": "evidence/remote-qualification-20261120/owner-pages/sources.json"
+  },
+  "routing": {
+    "soundDrumDraft": "909 or 808 selected voice -> component -> sourceFrame -> immutable body_svg with local hit targets; all 11 voices per kit. No data-glyph-fn mount points in these 22 source frames.",
+    "drumSequencer": "FunkyBeats step grid plus identical selected voice sourceFrame in the Sound side panel.",
+    "typedUnits": "Emulator Sound has only qualified Chicago bass A/B controls. Supported scalar bass Draft formatters and mixer pan/sends use typed FunkyBeats parameter rows. Neither supplies the P18 drum glyphs.",
+    "afterEdit": "Source SVG contains captured glyphs and values; Draft inspector and history hold edits. The embedded paths do not constitute an animated engine-value renderer."
+  },
+  "ownerP18": {
+    "referenceViewport": [
+      844,
+      390
+    ],
+    "publishedCaptureSha256": "b61d7e6ceca8a9bbfd2f6306e174b657e31d366c0d1e911ed3d8221a41d60820",
+    "firstBank": [
+      "Tune",
+      "Attack",
+      "Decay",
+      "P.Dpth"
+    ],
+    "consumerSpelling": {
+      "P.Dpth": "Pitch depth"
+    },
+    "sourceBankBounds": [
+      6,
+      26,
+      234,
+      88
+    ],
+    "sourceBankRadius": 4,
+    "shotBankBoundsPixels": [
+      24,
+      246,
+      480,
+      370
+    ],
+    "ownerLayout": "Owner PDF shows six controls in a strip; the captured 909 BD first bank shows four. Subsequent sections are below the first viewport.",
+    "sixColumnDraftFeasibility": {
+      "status": "source-complete for six 909 BD panels",
+      "labelsFromOwnerPdf": [
+        "TUNE",
+        "ATTACK",
+        "DECAY",
+        "P.DPTH",
+        "PITCH",
+        "ACCENT"
+      ],
+      "capturedValues": [
+        "34",
+        "10%",
+        "1.0s",
+        "0%",
+        "45",
+        "127"
+      ],
+      "catalogIds": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        354
+      ],
+      "kind": "U32",
+      "range": [
+        0,
+        127
+      ],
+      "roles": [
+        "active",
+        "active",
+        "active",
+        "active",
+        "inactive-bank summary",
+        "inactive-bank summary"
+      ],
+      "existingLocalAccess": "All 83 drum records, including all six 909 BD, have a non-HELD catalog domain and a source-hit button. Bank-summary is a visual role, not a write restriction. Native runtime admission remains false.",
+      "regressionObligations": [
+        "docs/lanes/remote.md paragraphs describing the all-voice review",
+        "tests/product-workspace/frame.test.mjs retains all 26 complete source body projections",
+        "tests/product-remote/drum-controls-browser.py requires original SVG DOM equality on current default Sound view at 1440\u00d7900, 390\u00d7844 and 844\u00d7390; tests all 83 direct hits and names",
+        "tests/product-remote/composition-browser.py requires selected source frame in the drum grid side panel"
+      ],
+      "implementationOption": "Compose six responsive captured glyph/label/value units on landscape Sound Draft and preserve the full source example as the accessible Open original destination pictured in the PDF. Preserve local selection, distinct Draft IDs and history, all-voice keyboard controls, current actions, transparent focus, and existing tests for the original mode. Add coverage for the default strip and six original IDs."
+    }
+  },
+  "r17bWebsiteArt": {
+    "scope": "Independent landing-page artwork contract. Keep distinct from the P18 control paths tagged retained R17 function schematic.",
+    "baselineDrumFunctionSha256": "f3c79cb3783510e3827e8290dd658bca02359c3a8a8c76895f22240f9131cdf8",
+    "baselineSharedWebsiteInstrumentsSha256": "e9f35e989f64ad97d1a936bde8467a86f1bc440dc8e1855c0914aed724fcbdc2",
+    "pairedR22HatFragments": 14,
+    "pairedR22HatSha256": "2d234b1ee918ae9b882800256ed3867757a64304ade44d0a352f3f50f6ccc4cd"
+  },
+  "approval1700": {
+    "status": "unidentified",
+    "knownReference": "docs/design/UI-SOURCE-OF-TRUTH.md and OWNER-BASELINE-1836-NOTES.md require preserving the 17:00 improved set.",
+    "missing": "No source commit, file list, glyph-to-artwork mapping or checksum binds that time-labelled approval to either pinned set. The attached 2026-10-23 bootstrap predates the reference.",
+    "next": "Firmware/UI design owner supplies hash-addressed set and identifies intended P4/P17/P18 functions. Compare those originals as a separate check."
+  },
+  "verdict": "All existing 22 drum body projections preserve their pinned R22 glyph paths and control identities. The scoped source and capture checks do not establish the separate 17:00 approval, first-screen six-unit composition, or edited live-glyph parity."
+}

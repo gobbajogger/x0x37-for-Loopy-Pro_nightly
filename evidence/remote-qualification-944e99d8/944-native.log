@@ -1,0 +1,24 @@
+✔ a page with no reviewed catalog sends nothing and leaves Apply disabled (9.868702ms)
+✔ the C fixture handshake reads confirmed values and a conflicting Apply is refused (96.329098ms)
+✔ an unsupported C control stays unconfirmed and cannot be applied (48.002394ms)
+✔ Apply and instrument Undo require independent reads of the committed revision (72.641112ms)
+✔ Undo keeps a later firmware revision even when the parameter value matches (53.459671ms)
+✔ the C revision guard refuses a change between the Undo read and write (48.282611ms)
+▶ queued or unverifiable writes do not create an Undo action
+  ✔ queued (51.128585ms)
+  ✔ different revision (279.24514ms)
+  ✔ different stored value (191.829332ms)
+✔ queued or unverifiable writes do not create an Undo action (524.430539ms)
+✔ destroy during a pending readback retires the old connection and Undo (80.529272ms)
+✔ expired firmware lease rejects Undo even if a READ is still available (158.673588ms)
+✔ returning to a cached page requires a new handshake and drops the prior Undo (149.470263ms)
+✔ legacy and stock snapshot-capable replies identify firmware without admitting controls (11.856367ms)
+✔ identity rejects partial, unknown and extended XSG capabilities (13.393865ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3296.141452

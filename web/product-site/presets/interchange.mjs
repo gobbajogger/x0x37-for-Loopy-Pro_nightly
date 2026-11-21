@@ -19,3 +19,51 @@ export function inspect(bytes,profile){if(!(bytes instanceof Uint8Array)||bytes.
 }
 export function edit(doc,index,key,value){let state=hidden.get(doc);if(!state||!Number.isInteger(index)||index<0||index>=state.presets.length)throw Error('Invalid document/index');let allowed=doc.profile==='synthone'?['name','author','userText']:['name','infoText'];if(!allowed.includes(key)||typeof value!=='string'||value.length>8192)throw Error('Only verified existing text metadata is editable');let n=requireType(get(state.presets[index],key),'string');let result=encoder.encode(state.text.slice(0,n.start)+JSON.stringify(value)+state.text.slice(n.end));inspect(result,doc.profile);return result;}
 export function session(){let preview=null,kept=null;return {preview(bytes,profile){preview=null;preview=inspect(bytes,profile);return preview;},keep(){if(!preview)throw Error('Preview required');kept=preview.original();preview=null;return Uint8Array.from(kept);},cancel(){preview=null;},kept(){return kept&&Uint8Array.from(kept);}};}
+
+// UTF-16 offsets refer to the original decoded JSON. Numeric file editors use
+// these spans so an edit leaves every other token, including unknown data, intact.
+export function synthOneNumericTokens(doc, index, keys) {
+  const state = hidden.get(doc);
+  if (doc?.profile !== 'synthone' || !state || !Number.isInteger(index) || !state.presets[index]) {
+    throw new RangeError('Unknown Synth One preset');
+  }
+  const fields = {};
+  for (const key of keys) {
+    const node = get(state.presets[index], key);
+    if (!node || node.type !== 'number') continue;
+    const value = Number(node.raw);
+    if (!Number.isFinite(value)) throw new RangeError('Non-finite Synth One value: ' + key);
+    fields[key] = {value, start:node.start, end:node.end};
+  }
+  return fields;
+}
+
+// Replace existing numeric values in record order, preserving every other token.
+export function superJ6NumericCopy(doc, changes) {
+  const state = hidden.get(doc);
+  if (doc?.profile !== 'superj6' || !state || !(changes instanceof Map)) throw Error('Expected original SuperJ6 bank');
+  if (!changes.size) return doc.original();
+  const pieces = [];
+  let end = 0, matched = 0;
+  for (const [index, preset] of state.presets.entries()) {
+    const edits = changes.get(index);
+    if (!edits) continue;
+    if (!(edits instanceof Map) || !edits.size) throw Error('Expected SuperJ6 parameter edits');
+    const seen = new Set();
+    for (const item of get(preset, 'parameterValues').children) {
+      const key = get(item, 'identifier').value;
+      if (!edits.has(key)) continue;
+      const value = edits.get(key);
+      if (seen.has(key) || !Number.isFinite(value)) throw Error('Ambiguous or invalid SuperJ6 parameter edit');
+      const token = get(item, 'value');
+      pieces.push(state.text.slice(end, token.start), JSON.stringify(value));
+      end = token.end;
+      seen.add(key);
+    }
+    if (seen.size !== edits.size) throw Error('Missing SuperJ6 parameter');
+    matched++;
+  }
+  if (matched !== changes.size) throw Error('Missing SuperJ6 program');
+  pieces.push(state.text.slice(end));
+  return encoder.encode(pieces.join(''));
+}
